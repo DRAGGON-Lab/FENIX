@@ -1,20 +1,22 @@
-# ADR-P01 — M0 BioIR Design and Experiment documents
+# ADR-P01 — M0-compatible BioIR subset for Design and Experiment
 
 **Status: PROPOSED — not ratified; not a normative contract.**
 
 Issue: [#12](https://github.com/DRAGGON-Lab/FENIX/issues/12), parent
 [EP-01](https://github.com/DRAGGON-Lab/FENIX/issues/3).
 Authority: [approved decisions](../../../docs/approved-decisions.md), especially
-D02–D05, D09, D15–D16 and D26. This proposal does not change those decisions.
+D02–D05, D09, D14–D16 and D26–D28. This proposal does not change those decisions.
 The human PI must approve the exact proposal before semantic validators,
 public APIs or normative fixtures are implemented. No approval is recorded here.
 
 ## Decision requested
 
 Adopt the accompanying [candidate schema](bioir-m0.schema.json) and the rules
-below as BioIR `0.1.0`, limited to a single representative cell with constitutive
-production and first-order degradation of one molecular species. Experiments
-have fixed parameters and initial counts. The schema version is proposed;
+below as the **M0-compatible BioIR subset**, proposed version `0.1.0`, limited
+to a single representative cell with constitutive production and first-order
+degradation of one molecular species. This is an initial subset, not the
+definitive representational scope of BioIR. Experiments have fixed parameters
+and initial counts. The schema version is proposed;
 package names, package versions and compatibility governance remain ADR-P06 work.
 
 The JSON Schema describes structure only. Cross-document references, uniqueness,
@@ -22,13 +24,46 @@ units relative to parameter roles, digest integrity and execution eligibility
 need separate checks after ratification. A schema-valid document alone is not a
 valid executable biological model.
 
+### Representation, execution and extension strategy
+
+BioIR's architectural scope includes arbitrary hierarchical biological systems,
+including nested compartments and multiple species (D05). M0's execution scope
+is production/degradation (D14). Keeping this first schema narrow reduces the
+initial contract and fixture burden without narrowing the architecture.
+
+A two-species Design is outside this versioned subset and fails this subset's
+structural constraints; that does not establish that it is invalid BioIR in
+general or biologically invalid. A broader BioIR schema is not defined here.
+For future schemas, document validity and backend execution eligibility must
+remain separate: a valid richer representation can still be explicitly rejected
+by an execution backend that cannot simulate it, without silent approximation.
+
+Future schema versions must preserve the ability to represent nested systems.
+Their ratified contracts must define hierarchical structure, reference scoping,
+and compatibility with this subset, including explicit migration rules.
+Compatible logical IDs should be preserved; any migration that changes content,
+including its schema version, produces a newly identified scientific revision.
+Existing revisions and their digests must remain available and unchanged.
+Experiment references must never be silently retargeted to migrated Designs.
+Do not add speculative hierarchy fields or silently reinterpret this subset;
+their definitions and migrations require later reviewed contracts.
+
 ### Documents and identities
 
 Both documents have an envelope containing `content`, `digest` and optional
 `metadata`. `content` is scientific; `metadata` is descriptive provenance only
-and cannot supply missing scientific fields. The entire committed document is
-immutable. Editing content creates a new revision; historical revisions remain
-available. Metadata variants cannot alter the scientific revision or its meaning.
+and cannot supply missing scientific fields. A committed **scientific revision**
+is immutable: editing content creates a new revision, and historical revisions
+remain available. Metadata variants cannot alter that scientific revision or
+its meaning. Different envelopes can contain identical content and different
+metadata, and therefore share the same scientific content digest.
+
+Metadata and provenance need separately audited records or immutable storage
+snapshots with their own identities. An immutable snapshot must not be overwritten
+to edit metadata; an amendment or new snapshot is a separate record. Its identity
+can differ without requiring a new scientific revision. Storage identity,
+audit mechanisms, signing and provenance formats remain ADR-P07 work; this ADR
+does not define an envelope digest or promise an authenticated archive.
 
 Content includes `kind`, `schema_version`, `id`, and `revision`. IDs are local,
 case-sensitive ASCII identifiers matching `[A-Za-z][A-Za-z0-9_-]*`, at most 64
@@ -45,9 +80,20 @@ and metadata envelope fields are excluded. This definition uses RFC 8785
 directly, without a FENIX normalization step; it is independent of the later
 FIR-specific ADR-P03. Do not use `json.dumps(sort_keys=True)` as its reference.
 
+This digest identifies the declared scientific content, including its ID,
+revision and schema version; it does not establish biological or algebraic
+equivalence. Comparing it with a **trusted expected digest** checks content
+integrity. Recomputing the digest and comparing it only with the accompanying
+envelope value checks self-consistency: someone able to replace both content
+and digest can produce another self-consistent document. Hashing alone proves
+neither authorship nor authenticity, authorization or origin. Trusted reference
+distribution and any authentication mechanisms are separate concerns.
+
 A resolver receives a document and a caller-supplied local Design collection.
-It verifies content integrity before resolving references. It must not fetch a
-Design over the network, accept a matching ID with a different digest, substitute
+It checks digest self-consistency before resolving references and matches the
+Design against the exact expected reference. Trust in that reference must be
+established separately; an internally consistent pair is not proof of origin.
+It must not fetch a Design over the network, accept a matching ID with a different digest, substitute
 a newer revision, or repair inputs. Experiment Design references include the
 exact Design ID, revision and digest; all three must match. Experiment content
 is hashed by the same rule, including that exact reference.
@@ -78,8 +124,8 @@ units required by their role. Unused or extra parameters are rejected in M0.
 
 ### Experiment content
 
-An Experiment contains its exact Design reference and a requested
-`profile: m0_ode`, explicitly a proposed capability identifier. It supplies one
+An Experiment contains its exact Design reference, biological conditions,
+parameters, initial counts and semantic observables. It supplies one
 quantity-valued assignment for each declared parameter and exactly one initial
 count for the declared species. Assignment IDs must be unique and exhaustive.
 Rate values and initial counts must be finite and nonnegative. Assignment units
@@ -87,11 +133,22 @@ must match their Design declarations exactly; initial counts use `molecule`.
 
 Direct observables reference the species and its amount port. Observable IDs
 are unique; an empty observable list is permitted. `interventions` is required
-and empty. There is no time grid, solver name, numerical tolerance, RNG setting,
-replicate count or run manifest here: those belong to ExecutionSpec/results.
+and empty. The **requested execution profile**, solver, tolerances, time grid,
+RNG configuration, replicates and limits belong to ExecutionSpec, outside
+Experiment scientific content. Results and run manifests are separate as well.
+No ExecutionSpec schema is introduced by this proposal.
 
-No SSA eligibility follows from this ODE profile. M0 accepts zero production,
-zero decay and zero initial count. The proposed function meaning is constant
+Changing only the execution request must not require a new biological Experiment
+revision or change its digest. FIR holds the resolved mathematical semantics and
+supported capabilities under ADR-P02; execution requests do not enter FIR model
+identity (D27–D28). The same Design and Experiment can be evaluated with ODE or
+SSA only when the resulting FIR and the requested execution profile meet the
+relevant admissibility rules. Fractional expected counts accepted for ODE, for
+example, do not automatically satisfy SSA requirements. This proposal grants no
+SSA support or eligibility and does not define the later SSA rules.
+
+M0 accepts zero production, zero decay and zero initial count. The proposed
+function meaning is constant
 production at rate alpha and first-order loss at rate beta times current count;
 ADR-P02 must encode this in FIR and #15 must establish independent mathematical
 references. This document does not ratify those later artifacts.
@@ -108,15 +165,18 @@ parsing; nonzero inputs rounded to zero are rejected. Negative zero is accepted
 as zero and serialized by JCS as `0`. The candidate JSON Schema cannot establish
 these raw-token checks. FIR numeric normalization still requires ADR-P03.
 
-Reject additional compartments/species, extracellular or population accounting,
-concentration units, transport, nonlinear rates, scheduled events, concentration
-observables and executable payloads. Future BioIR versions may describe more
-biology; this M0 proposal makes no claim to support those features.
+This M0-compatible subset excludes additional compartments/species,
+extracellular or population accounting, concentration units, transport,
+nonlinear rates, scheduled events and concentration observables. These are
+outside this subset rather than globally prohibited BioIR representations.
+Executable payloads remain forbidden. A `profile` field in Experiment content
+is rejected as a misplaced execution setting, not interpreted or ignored.
 
 ## Alternatives and consequences
 
-1. **Minimal M0 contract (proposed):** gives both native implementations a small,
-   auditable target; wider biology requires a later reviewed version/profile.
+1. **M0-compatible BioIR subset (proposed):** gives both native implementations
+   a small, auditable target while preserving the extension obligations above;
+   wider representation requires later reviewed schema versions and migrations.
 2. **Broad BioIR now:** could represent nested communities, events and arbitrary
    typed expressions immediately, but introduces scientific choices beyond the
    agreed M0 scope and delays independent verification.
@@ -144,12 +204,17 @@ other or importing a FENIX compiler. No remote schema resolution is allowed.
 | Paired examples, ordinary positive rates | Accept; resolve the exact Design |
 | Zero rate(s), fractional initial expected count, empty observables | Accept |
 | Whitespace/object-key order changes | Preserve digest |
-| Content mutation with old digest | Reject document integrity |
+| Metadata-only envelope changes | Preserve scientific content digest; audit separately |
+| Content mutation with old digest | Reject digest self-consistency |
+| Replacement content with recomputed digest | Self-consistent, but differs from trusted original digest; no authorship proof |
+| Different execution requests outside scientific content | Preserve Experiment revision/digest; check execution eligibility separately |
 | Correct Design ID but different revision or digest | Reject Experiment reference |
 | Duplicate raw key or collection ID | Reject before ambiguous lookup |
 | Missing port, unknown parameter or wrong parameter role | Reject reference with document path |
 | Concentration units or negative/nonfinite quantity | Reject quantity with document path |
-| Nonempty interventions or unsupported profile | Reject capability |
+| Additional species or compartments | Outside this subset; no general BioIR-validity conclusion |
+| Nonempty interventions | Outside this subset |
+| `profile` in Experiment content | Reject misplaced execution setting |
 | Unknown content field/version or executable callback | Reject without repair |
 
 The full candidate case list becomes reviewed fixtures only after ratification.
@@ -178,5 +243,6 @@ This PR must not close #12 or claim ratification before the required review.
 - Independent scientific/reference reviewer and evidence: **not recorded**
 
 Approval must cover document boundaries, identity bytes, identifiers, numeric
-policy, exact unit tokens, function meanings and capability limits. Changes to
-any of these require an explicit revision to this proposal before approval.
+policy, exact unit tokens, function meanings, subset extension obligations,
+execution separation and digest trust limits. Changes to any of these require
+an explicit revision to this proposal before approval.

@@ -9,7 +9,6 @@
       "revision": 1,
       "digest": "06b07d41b4974df77c7a992ca46c6a281099d0bd435a3ce05a54c022e91a394e"
     },
-    "profile": "m0_ode",
     "parameters": [
       {
         "parameter": "alpha",
@@ -46,5 +45,5 @@
     ],
     "interventions": []
   },
-  "digest": "7a77cf7965468ed5d86dccf73cfe1a6c76ab63af7bd1e87f88cf523dd449e935"
+  "digest": "226387b2feefb26979cdebaba61e179b4a7e258ec0c6dd10bf4180f1c97e53ae"
 }

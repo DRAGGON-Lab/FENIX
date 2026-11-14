@@ -1,5 +1,10 @@
 # ADR-P01 proposal review evidence — not ratification
 
+## Historical proposal checks before the three-concern revision
+
+These results apply to the earlier source fingerprint below, not the revised
+proposal. The subsequent review record covers the updated schema and examples.
+
 Date: 2026-11-14. Tooling base: `5dbefafabc58510af40e47cb112dfa3aa3880cea`.
 Proposal source fingerprint: `24514fb9cea349c8f330a0d50187e3fd07fe4f52b41a806d24a0bd21a08328a7` (SHA-256 of sorted relative
 path + NUL + bytes + NUL for proposal files and the two index files, excluding
@@ -67,3 +72,211 @@ The full general numeric/Unicode vector suite and pinned upstream JavaScript
 reference are #14/#16 work. This small independent example check does not
 substitute for those gates. #12 remains open until scientific approval and its
 post-ratification semantic validation requirements are met.
+
+
+## Revised proposal: representation, execution separation and digest guarantees
+
+Date: 2026-11-14. Status: **PROPOSED; PI ratification still pending**.
+Base revision: `e710935822a1576a135696fd0e18f5c8b8b4c3f2`. Reviewed dirty-source fingerprint: `d6b785cbd9d5bee49c72bd496f22781651bfc8d4affd5b5e3c5a02926e1f0fe5`.
+The fingerprint uses sorted relative path + NUL + bytes + NUL for all files
+under `spec/bioir/proposals/`, plus `spec/bioir/README.md` and
+`docs/approved-decisions.md`; this evidence report is excluded.
+
+Changes: explicitly identify the initial M0-compatible subset and its extension
+obligations; move requested execution profiles out of scientific Experiment
+content; distinguish content identity, separately audited metadata/snapshots,
+trusted-reference integrity and author authentication. No ExecutionSpec or
+storage/provenance implementation was introduced.
+
+The illustrative Experiment digest changed after removing `profile`. Its
+`schema_version` remains `0.1.0` because this is an unratified proposal revision.
+The Design example is byte-for-byte unchanged relative to the base revision.
+No approved fixture, historical committed scientific document or normative
+identity was rewritten. Earlier proposal bytes remain available in Git history.
+
+### Executed checks
+
+All commands below exited 0. Python ran under uv 0.11.29 / CPython 3.12.13 with
+jsonschema 4.26.0 and rfc8785 0.1.4. Julia used 1.10.13 with JSON 1.13.4 and
+JSONSchema 1.6.0 from its pinned environment; Node used v24.18.0.
+
+| Exact command | Outcome |
+|---|---|
+| `UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python /private/tmp/fenix-p01-revision-review.py` | PASS; meta-schema, 2 accepted examples, 8 structural rejection probes, digest boundary checks |
+| `JULIA_DEPOT_PATH=/private/tmp/fenix-julia-depot JULIA_PKG_OFFLINE=true /private/tmp/julia-1.10.13/bin/julia --startup-file=no --project=conformance/julia /private/tmp/fenix-p01-revision-review.jl` | PASS; 2 accepted examples and the same 8 structural rejection probes |
+| `node /private/tmp/fenix-p01-revision-review.cjs` | PASS; independently computed example digests and digest boundary checks |
+| `UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python scripts/check_repo.py` | PASS |
+| `UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v` | PASS; 6 tests |
+| `git diff --check` | PASS |
+| Native package smoke tests | NOT RUN for this documentation/schema revision; native package code is unchanged |
+| Semantic validators, scientific conformance, ODE/SSA execution and authentication | NOT RUN; these probes do not implement or establish those capabilities |
+| Human PI ratification | PENDING |
+
+Structural rejection probes cover the original unknown-field, invalid-unit,
+nonempty-intervention and newline-ID cases, plus misplaced `profile: m0_ode`,
+misplaced `profile: ssa`, a second species and a second compartment. The latter
+two demonstrate subset boundaries, not a general BioIR-validity decision.
+
+Python and Node independently verify the same digest properties for both
+examples: metadata changes preserve scientific identity; content mutation breaks
+comparison with the original digest; a recomputed replacement digest is
+self-consistent but differs from the trusted original; illustrative execution
+requests stored separately do not change scientific content identity. These
+checks do not establish SSA admissibility, signatures or author authenticity.
+
+### Exact review scripts
+
+The scripts were executed as temporary review artifacts, not installed as
+semantic validators or wired into scientific CI. Their contents are preserved
+below so the checks can be reproduced after temporary files expire. The Python
+baseline comparison deliberately names the original proposal commit rather than
+the moving branch HEAD.
+
+<details>
+<summary>fenix-p01-revision-review.py</summary>
+
+Artifact SHA-256: `b8e14a915e7645ab09b7ac19ea7275c90522c8e92e23d6899d63464cf762fea5`.
+
+```python
+import copy
+import hashlib
+import json
+import subprocess
+from pathlib import Path
+import rfc8785
+from jsonschema import Draft7Validator
+
+p = Path('spec/bioir/proposals')
+schema = json.loads((p / 'bioir-m0.schema.json').read_text())
+Draft7Validator.check_schema(schema)
+v = Draft7Validator(schema)
+design = json.loads((p / 'examples/design.json').read_text())
+experiment = json.loads((p / 'examples/experiment.json').read_text())
+def digest(content):
+    return hashlib.sha256(rfc8785.dumps(content)).hexdigest()
+for doc in (design, experiment):
+    v.validate(doc)
+    assert digest(doc['content']) == doc['digest']
+    annotated = copy.deepcopy(doc)
+    annotated['metadata'] = {'description': 'Separately audited annotation'}
+    v.validate(annotated)
+    assert annotated != doc and digest(annotated['content']) == doc['digest']
+    trusted = doc['digest']
+    changed = copy.deepcopy(doc)
+    changed['content']['revision'] += 1
+    assert digest(changed['content']) != changed['digest']
+    changed['digest'] = digest(changed['content'])
+    assert changed['digest'] == digest(changed['content'])
+    assert changed['digest'] != trusted
+    # Requests stay outside scientific content; this grants no execution support.
+    for request in ({'profile': 'ode'}, {'profile': 'ssa'}):
+        run_input = {'experiment': doc, 'execution_request': request}
+        assert digest(run_input['experiment']['content']) == trusted
+cases = []
+for name in ('unknown field', 'invalid unit', 'intervention', 'newline ID', 'ODE profile', 'SSA profile'):
+    c = copy.deepcopy(experiment)
+    if name == 'unknown field': c['content']['unknown'] = 1
+    elif name == 'invalid unit': c['content']['parameters'][0]['quantity']['unit'] = 'mM'
+    elif name == 'intervention': c['content']['interventions'] = [{'time': 1}]
+    elif name == 'newline ID': c['content']['id'] = 'baseline\n'
+    else: c['content']['profile'] = 'm0_ode' if name == 'ODE profile' else 'ssa'
+    cases.append((name, c))
+for collection in ('species', 'compartments'):
+    c = copy.deepcopy(design)
+    extra = copy.deepcopy(c['content'][collection][0])
+    extra['id'] += '_second'
+    c['content'][collection].append(extra)
+    cases.append(('additional ' + collection, c))
+for name, doc in cases:
+    assert not v.is_valid(doc), name
+baseline = subprocess.check_output(['git', 'show', 'e710935822a1576a135696fd0e18f5c8b8b4c3f2:spec/bioir/proposals/examples/design.json'])
+assert baseline == (p / 'examples/design.json').read_bytes()
+old_experiment = json.loads(subprocess.check_output(['git', 'show', 'e710935822a1576a135696fd0e18f5c8b8b4c3f2:spec/bioir/proposals/examples/experiment.json']))
+assert old_experiment['digest'] != experiment['digest']
+assert old_experiment['content']['schema_version'] == experiment['content']['schema_version'] == '0.1.0'
+print('PASS: Draft-07 meta-schema; 2 accepted examples; 8 structural rejection probes.')
+print('PASS: metadata/content/trusted-reference and separate execution-request digest probes for both documents.')
+print('PASS: Design bytes/digest unchanged; Experiment digest changed; schema version unchanged.')
+print('Proposal checks only: no semantic validation, approved vectors, authentication, ODE or SSA execution.')
+```
+
+</details>
+
+<details>
+<summary>fenix-p01-revision-review.jl</summary>
+
+Artifact SHA-256: `2189c81034cd6ab16c21167bb2ffe8603544bd2b30ca76d1bfd4bba299097089`.
+
+```julia
+using JSON, JSONSchema
+p = "spec/bioir/proposals"
+schema = JSONSchema.Schema(JSON.parsefile(joinpath(p, "bioir-m0.schema.json")))
+design = JSON.parsefile(joinpath(p, "examples/design.json"))
+experiment = JSON.parsefile(joinpath(p, "examples/experiment.json"))
+for doc in (design, experiment)
+    @assert JSONSchema.validate(schema, doc) === nothing
+end
+for name in ("unknown field", "invalid unit", "intervention", "newline ID", "ODE profile", "SSA profile")
+    c = deepcopy(experiment)
+    if name == "unknown field"
+        c["content"]["unknown"] = 1
+    elseif name == "invalid unit"
+        c["content"]["parameters"][1]["quantity"]["unit"] = "mM"
+    elseif name == "intervention"
+        c["content"]["interventions"] = [Dict("time" => 1)]
+    elseif name == "newline ID"
+        c["content"]["id"] = "baseline\n"
+    else
+        c["content"]["profile"] = name == "ODE profile" ? "m0_ode" : "ssa"
+    end
+    @assert JSONSchema.validate(schema, c) !== nothing
+end
+for collection in ("species", "compartments")
+    c = deepcopy(design)
+    extra = deepcopy(c["content"][collection][1])
+    extra["id"] *= "_second"
+    push!(c["content"][collection], extra)
+    @assert JSONSchema.validate(schema, c) !== nothing
+end
+println("PASS: Julia structural checks: 2 accepted, 8 rejected. Not scientific conformance.")
+```
+
+</details>
+
+<details>
+<summary>fenix-p01-revision-review.cjs</summary>
+
+Artifact SHA-256: `77ef7c3a9313035554860fb2e3a8f8235db9e79b61b4739d9c54fac37888f048`.
+
+```javascript
+const fs = require('node:fs');
+const crypto = require('node:crypto');
+const assert = require('node:assert/strict');
+// Independent ECMAScript approach following RFC 8785 Appendix A.
+function jcs(v) {
+  if (v === null || typeof v !== 'object') return JSON.stringify(v);
+  if (Array.isArray(v)) return '[' + v.map(jcs).join(',') + ']';
+  return '{' + Object.keys(v).sort().map(k => JSON.stringify(k) + ':' + jcs(v[k])).join(',') + '}';
+}
+const digest = c => crypto.createHash('sha256').update(jcs(c), 'utf8').digest('hex');
+for (const name of ['design', 'experiment']) {
+  const doc = JSON.parse(fs.readFileSync(`spec/bioir/proposals/examples/${name}.json`, 'utf8'));
+  assert.equal(digest(doc.content), doc.digest);
+  const annotated = structuredClone(doc);
+  annotated.metadata = {description: 'Separately audited annotation'};
+  assert.equal(digest(annotated.content), doc.digest);
+  const changed = structuredClone(doc);
+  changed.content.revision += 1;
+  assert.notEqual(digest(changed.content), changed.digest);
+  changed.digest = digest(changed.content);
+  assert.equal(digest(changed.content), changed.digest);
+  assert.notEqual(changed.digest, doc.digest);
+  for (const request of [{profile: 'ode'}, {profile: 'ssa'}]) {
+    const runInput = {experiment: doc, executionRequest: request};
+    assert.equal(digest(runInput.experiment.content), doc.digest);
+  }
+}
+console.log('PASS: independent ECMAScript example digests and metadata/content/trusted-reference/execution separation probes. No approved golden vectors or execution support.');
+```
+
+</details>

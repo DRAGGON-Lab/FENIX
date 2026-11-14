@@ -38,4 +38,4 @@
 
 **Scientific source of truth:** ratified ADR/specification and independent reference evidence, not the current source code or test behavior. Human scientific approval is required for revisions.
 
-**Proposal under review (not ratified):** [ADR-P01 — M0 BioIR Design and Experiment](../spec/bioir/proposals/ADR-P01.md).
+**Proposal under review (not ratified):** [ADR-P01 — M0-compatible BioIR subset](../spec/bioir/proposals/ADR-P01.md).

@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "urn:fenix:proposed:bioir:0.1.0",
-  "title": "PROPOSED ADR-P01 M0 BioIR envelope; not ratified",
-  "$comment": "Candidate structure only. See ADR-P01.md for required semantic and raw-token checks. No normative status.",
+  "$id": "urn:fenix:proposed:bioir:m0-subset:0.1.0",
+  "title": "PROPOSED ADR-P01 M0-compatible BioIR subset; not ratified",
+  "$comment": "Initial M0-compatible subset, not the definitive scope of BioIR. Structure only; semantic and raw-token checks require ADR-P01. Execution requests belong to ExecutionSpec. No normative status.",
   "type": "object",
   "properties": {
     "content": {
@@ -372,9 +372,6 @@
         "design": {
           "$ref": "#/definitions/design_reference"
         },
-        "profile": {
-          "const": "m0_ode"
-        },
         "parameters": {
           "type": "array",
           "items": {
@@ -411,7 +408,6 @@
         "id",
         "revision",
         "design",
-        "profile",
         "parameters",
         "initial_counts",
         "observables",
