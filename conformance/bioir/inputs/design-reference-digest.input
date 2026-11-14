@@ -1,0 +1,49 @@
+{
+  "content": {
+    "kind": "Experiment",
+    "schema_version": "0.1.0",
+    "id": "baseline",
+    "revision": 1,
+    "design": {
+      "id": "production_decay",
+      "revision": 1,
+      "digest": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "parameters": [
+      {
+        "parameter": "alpha",
+        "quantity": {
+          "value": 10,
+          "unit": "molecule/s"
+        }
+      },
+      {
+        "parameter": "beta",
+        "quantity": {
+          "value": 0.1,
+          "unit": "1/s"
+        }
+      }
+    ],
+    "initial_counts": [
+      {
+        "species": "x",
+        "quantity": {
+          "value": 0,
+          "unit": "molecule"
+        }
+      }
+    ],
+    "observables": [
+      {
+        "id": "amount_x",
+        "target": {
+          "species": "x",
+          "port": "amount"
+        }
+      }
+    ],
+    "interventions": []
+  },
+  "digest": "528b397cc510155d072b9fba0ed45fce14e277179c27627fbe9bbe667348d441"
+}

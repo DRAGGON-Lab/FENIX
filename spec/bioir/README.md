@@ -12,4 +12,7 @@ versioned extension and migration strategy without rewriting existing identities
 The paired documents remain illustrative examples, not approved golden fixtures.
 Parser/validator implementation approval requires the reviewed
 [language-neutral fixture catalog and independent native reports](../../conformance/README.md#parser-and-validator-fixture-catalog-gate).
+A [P01-only review candidate](../../conformance/bioir/README.md) now exercises
+raw parsing, structure, reference integrity, units, revisions and content digests
+independently in Python and Julia. Passing it does not self-approve its fixtures.
 FIR and FIR-specific canonicalization contracts remain pending ADR-P02/P03.

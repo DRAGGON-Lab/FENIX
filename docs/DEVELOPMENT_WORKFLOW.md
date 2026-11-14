@@ -67,13 +67,18 @@ The repository checker and harness tests check repository-document consistency, 
 
 Do not claim that a check passed unless it actually ran. A locally unavailable runtime is `NOT RUN`, not `PASS`.
 
+For P01 reference validation, also execute the independent catalog runners and
+report comparison from the [catalog instructions](../conformance/bioir/README.md).
+These check ratified P01 requirements against candidate fixtures and must not be
+reported as approval of those fixtures or as FIR/solver conformance.
+
 ## Review and GitHub enforcement
 
 Documented `AGENTS.md` policies alone **cannot technically enforce** human PI approval. For `main`, maintainers should configure a GitHub ruleset or branch protection with pull requests, required passing CI checks, no force pushes and human review. Once a verified scientific-review team/account exists, add CODEOWNERS for `spec/`, `conformance/` and normative ADRs, and enable required code-owner review.
 
 Do not invent a reviewer handle or claim CODEOWNERS enforcement exists without branch settings. The issue templates and PR template are prompts; CI tests are mechanical checks; human judgment evaluates scientific evidence.
 
-Recommended required checks after this change: `Repository harness`, `Python-only package` and `Julia-only package`, subject to observed GitHub Actions status names. Longer-term: independent analytical, cross-language and SSA profile conformance checks.
+Recommended required checks after this change: `Repository harness`, `Python-only package`, `Julia-only package` and `Candidate P01 reference conformance`, subject to observed GitHub Actions status names. Longer-term: independent analytical, cross-language and SSA profile conformance checks.
 
 ## Parallel agents and shared contracts
 

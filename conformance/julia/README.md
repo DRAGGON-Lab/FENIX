@@ -1,7 +1,9 @@
 # Julia reference-tool environment
 
 This environment pins development tools separately from the native library.
-It does not yet contain scientific validators or approved reference fixtures.
+It now runs the independent [P01 candidate catalog](../bioir/README.md)
+reference validator. Its fixtures require PI review before implementation
+approval; approved normative fixtures are not yet published.
 Do not count successful dependency installation as scientific conformance.
 
 Use juliaup to select the reference runtime:
@@ -21,4 +23,5 @@ After initial installation, check that the pinned tools load without network:
 JULIA_PKG_OFFLINE=true julia +1.10.13 --project=conformance/julia -e 'using JSON, JSONSchema, SHA, Test'
 ```
 
-Scientific validation commands will be added after their contracts are ratified.
+P01 reference commands are in the catalog instructions. FIR/solver conformance
+still requires its separately ratified contracts and independent evidence.
