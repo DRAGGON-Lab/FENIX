@@ -37,3 +37,5 @@
 **Blocking engineering ADRs:** P01 BioIR schemas; P02 FIR/capabilities; P03 JCS normalization and edge vectors (all before compiler work). P04 ODE tolerance, P05 SSA math/stats, P06 package/version governance, P07 run provenance/results remain to be ratified for their release gates.
 
 **Scientific source of truth:** ratified ADR/specification and independent reference evidence, not the current source code or test behavior. Human scientific approval is required for revisions.
+
+**Proposal under review (not ratified):** [ADR-P01 — M0 BioIR Design and Experiment](../spec/bioir/proposals/ADR-P01.md).
