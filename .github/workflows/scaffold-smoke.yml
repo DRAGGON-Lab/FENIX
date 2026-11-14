@@ -109,3 +109,28 @@ jobs:
         run: python conformance/compare_reports.py artifacts/p01-python.json artifacts/p01-julia.json
       - name: Independently cross-check P01 bytes and content digests
         run: node conformance/reference/check_p01.cjs
+
+  p03:
+    name: Candidate P03 serialization evidence
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9
+        with:
+          version: "0.11.29"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: uv sync --project packages/python --locked
+      - run: uv run --project packages/python --locked --offline python -m unittest discover -s conformance/canonicalization/tests -v
+      - run: uv run --project packages/python --locked --offline python conformance/canonicalization/review_p03.py --report artifacts/p03-python.json
+      - run: node conformance/canonicalization/review_p03.cjs --report artifacts/p03-node.json
+      - run: uv run --project packages/python --locked --offline python conformance/canonicalization/review_p03.py --compare artifacts/p03-python.json artifacts/p03-node.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: p03-serialization
+          path: artifacts/p03-*.json

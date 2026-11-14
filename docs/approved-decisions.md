@@ -55,3 +55,8 @@ implementation approval remain outstanding. P03 normalization, FIR bytes/hashes,
 ODE numerical references and SSA eligibility are not approved by this decision.
 See the [review evidence and ratification update](verification/ep01-p02-proposal.md).
 This approval does not close issue #13 or the remaining EP-01 gates.
+
+**Next contract proposal (not ratified):** [ADR-P03 — M0 FIR normalization and JCS identity](../spec/canonicalization/proposals/ADR-P03.md).
+[Candidate byte/digest evidence](../conformance/canonicalization/README.md) checks
+standard serialization only; proposed FIR parsing and normalization are NOT RUN.
+This proposal does not close #14 or approve canonical golden fixtures.

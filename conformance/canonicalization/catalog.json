@@ -1,0 +1,1007 @@
+{
+  "status": "REVIEW_REQUIRED",
+  "contract": "ADR-P03/0.1.0",
+  "cases": [
+    {
+      "id": "rfc-0000000000000000",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-0000000000000000.input",
+        "sha256": "fcdb4b423f4e5283afa249d762ef6aef150e91fccd810d43e5e719d14512dec7"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "0000000000000000",
+      "canonical": {
+        "path": "expected/rfc-0000000000000000.canonical",
+        "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+      }
+    },
+    {
+      "id": "rfc-8000000000000000",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-8000000000000000.input",
+        "sha256": "011891851d8f4c409a69f379af9c296c3c4c413ea5dfb7012a3bca40159d9ce0"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "8000000000000000",
+      "canonical": {
+        "path": "expected/rfc-8000000000000000.canonical",
+        "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+      }
+    },
+    {
+      "id": "rfc-0000000000000001",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-0000000000000001.input",
+        "sha256": "665e994827f6b03167e80c1513eb356e0d4f013f2e03a3b345e1e5e3c24dfca6"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "0000000000000001",
+      "canonical": {
+        "path": "expected/rfc-0000000000000001.canonical",
+        "sha256": "c46e7ca1be4c8734f373a56530787288fa2058d73d07855e9247e949f811a42a"
+      }
+    },
+    {
+      "id": "rfc-8000000000000001",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-8000000000000001.input",
+        "sha256": "6274dd3438adacf524c61b7b53a946494388a8fdcbd6ada59bb4f2a258332f0b"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "8000000000000001",
+      "canonical": {
+        "path": "expected/rfc-8000000000000001.canonical",
+        "sha256": "046f4049d09944fcb2efbf2ddb0ea8f05e0204591d6d02c9106efc88190fa7f9"
+      }
+    },
+    {
+      "id": "rfc-7fefffffffffffff",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-7fefffffffffffff.input",
+        "sha256": "9eaef1777c8655a9384fa2facd76d0cc51d9c204301ec80ab017b6911c49746b"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "7fefffffffffffff",
+      "canonical": {
+        "path": "expected/rfc-7fefffffffffffff.canonical",
+        "sha256": "c2784e1abd6317452708f3fbf9641c16b959561bc621a1d408c23a20aa2cb585"
+      }
+    },
+    {
+      "id": "rfc-ffefffffffffffff",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-ffefffffffffffff.input",
+        "sha256": "06000581423705d4df25e1380a1a4f6b5840a374bc0dd9006d2a459bb2a7bd79"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "ffefffffffffffff",
+      "canonical": {
+        "path": "expected/rfc-ffefffffffffffff.canonical",
+        "sha256": "f0347276b171ff0c36491c912285a2833de7313d1a103a4b1be0274bfe7c021f"
+      }
+    },
+    {
+      "id": "rfc-4340000000000000",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-4340000000000000.input",
+        "sha256": "ef1ea6a86f2df45171374f698470615fe0b770f69da7bf94555774e66f8cb191"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "4340000000000000",
+      "canonical": {
+        "path": "expected/rfc-4340000000000000.canonical",
+        "sha256": "c681da39d7273a6a24c15c9cac3a75526ff2ecf8ba4ee60346a0c70c8163bdb2"
+      }
+    },
+    {
+      "id": "rfc-c340000000000000",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-c340000000000000.input",
+        "sha256": "961cd3768b493720f41bfd724d9c6c174f537b50ea97b950846619a2f34b5f7e"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "c340000000000000",
+      "canonical": {
+        "path": "expected/rfc-c340000000000000.canonical",
+        "sha256": "83e109bfd7fb4984b47a46f363627c18dbbd7e57e36b05a04cd162d304df72e9"
+      }
+    },
+    {
+      "id": "rfc-4430000000000000",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-4430000000000000.input",
+        "sha256": "89cadb9c4bb00d166a52d071e9c6a88df5af6ecb39fc9f042649fb351027ad54"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "4430000000000000",
+      "canonical": {
+        "path": "expected/rfc-4430000000000000.canonical",
+        "sha256": "7933ef1b34c194c7a327ef424e54282dd2872bc7bda27812f9edf7882ca340c0"
+      }
+    },
+    {
+      "id": "rfc-7fffffffffffffff",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-7fffffffffffffff.input",
+        "sha256": "86f254cfe0c86ac1f84ae4918ffaacd4b8473d9c91ce817206cc7546070fcffb"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "reject",
+      "binary64_bits": "7fffffffffffffff"
+    },
+    {
+      "id": "rfc-7ff0000000000000",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-7ff0000000000000.input",
+        "sha256": "4719dede8b8f28401439189d30db977313c46ccb9ca5e98cccb46ccc7eec0d9b"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "reject",
+      "binary64_bits": "7ff0000000000000"
+    },
+    {
+      "id": "rfc-44b52d02c7e14af5",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-44b52d02c7e14af5.input",
+        "sha256": "f25562ec6d8717fbd7eb361ac55f087fc39591b2d1516c2caa75c52eb39d6305"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "44b52d02c7e14af5",
+      "canonical": {
+        "path": "expected/rfc-44b52d02c7e14af5.canonical",
+        "sha256": "143eadc1fc2fe10a563df313c717399d1835652d710fa189119ff2e1d5cde33d"
+      }
+    },
+    {
+      "id": "rfc-44b52d02c7e14af6",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-44b52d02c7e14af6.input",
+        "sha256": "c106319c7e5feb2c43834b21dad0a49af4ca6afe0d8dac1f66bb0b7457839565"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "44b52d02c7e14af6",
+      "canonical": {
+        "path": "expected/rfc-44b52d02c7e14af6.canonical",
+        "sha256": "0b1af6b73e932475817f8eb620deecf21ad7570df3400a23db5c79a9001597f7"
+      }
+    },
+    {
+      "id": "rfc-44b52d02c7e14af7",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-44b52d02c7e14af7.input",
+        "sha256": "016dd3b1003e0afc1ec2a6a42f12502479ccf0f89644c04f6a810bcc3aa88c4d"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "44b52d02c7e14af7",
+      "canonical": {
+        "path": "expected/rfc-44b52d02c7e14af7.canonical",
+        "sha256": "de7cb5db5ee06bf7ef5b74ebcf94cd9d7efda28125905f7ff590724953173c7b"
+      }
+    },
+    {
+      "id": "rfc-444b1ae4d6e2ef4e",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-444b1ae4d6e2ef4e.input",
+        "sha256": "481c0250d29c79a08a23a3afaea2e2c3d5e55fbf53fd0a9017e63bd006c64a3d"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "444b1ae4d6e2ef4e",
+      "canonical": {
+        "path": "expected/rfc-444b1ae4d6e2ef4e.canonical",
+        "sha256": "dcabf7269f6bb6ec5ba8b9530825cd7ffe215d4dd26e0a237f9d753513792c07"
+      }
+    },
+    {
+      "id": "rfc-444b1ae4d6e2ef4f",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-444b1ae4d6e2ef4f.input",
+        "sha256": "07596a755e5a7fb7d0bc5f92edd2fdd2fd322e03500c211caa71bc8adbfccf50"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "444b1ae4d6e2ef4f",
+      "canonical": {
+        "path": "expected/rfc-444b1ae4d6e2ef4f.canonical",
+        "sha256": "914b4f8b4bbe2f6e7c36ad7791fc842a7516d149e694b3a71b78cee465ff6d7a"
+      }
+    },
+    {
+      "id": "rfc-444b1ae4d6e2ef50",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-444b1ae4d6e2ef50.input",
+        "sha256": "822a65b0545b43a8ad6108aa4c3d05fec01d7e382490225c9bd24cdd7a841eca"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "444b1ae4d6e2ef50",
+      "canonical": {
+        "path": "expected/rfc-444b1ae4d6e2ef50.canonical",
+        "sha256": "241c4643fa70b1dcde1205b71be4e3bebb17e9f880c8e1a33d0ead6c27271d3c"
+      }
+    },
+    {
+      "id": "rfc-3eb0c6f7a0b5ed8c",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-3eb0c6f7a0b5ed8c.input",
+        "sha256": "dc9c2f0a0332d7390e2a43d37c7fab2f6868abd61369fa28342b0b072511d69c"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "3eb0c6f7a0b5ed8c",
+      "canonical": {
+        "path": "expected/rfc-3eb0c6f7a0b5ed8c.canonical",
+        "sha256": "2ace34b29d30d300aeacd4f2bb83367fa186f11a3f02ed461f35f00fd741a242"
+      }
+    },
+    {
+      "id": "rfc-3eb0c6f7a0b5ed8d",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-3eb0c6f7a0b5ed8d.input",
+        "sha256": "6ccbd01a6e9228c55d5d5d020d7f607cc67cceca28585a44504f5616ba90a218"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "3eb0c6f7a0b5ed8d",
+      "canonical": {
+        "path": "expected/rfc-3eb0c6f7a0b5ed8d.canonical",
+        "sha256": "159fb29a827ad04b260aa6c8ab6d8637f8f2b38af5c4f3cb49d6a21205e040f8"
+      }
+    },
+    {
+      "id": "rfc-41b3de4355555553",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-41b3de4355555553.input",
+        "sha256": "07f48703b2abcc49b2b9424424816bf5c3a0c89b0e371ca905d7aa2d1be6f577"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "41b3de4355555553",
+      "canonical": {
+        "path": "expected/rfc-41b3de4355555553.canonical",
+        "sha256": "0fdb7bafaf219ccaf278cd0c0a580473db01c774a0baafe72a07d01230ac5c6d"
+      }
+    },
+    {
+      "id": "rfc-41b3de4355555554",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-41b3de4355555554.input",
+        "sha256": "c501a2846fe302ee7412c09e8c2965b8d85d91e4cd2f33f8abd3a3b6eafee03a"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "41b3de4355555554",
+      "canonical": {
+        "path": "expected/rfc-41b3de4355555554.canonical",
+        "sha256": "bcbe1777b7d3c91c19c7f90100c595a9b3f1d9b395567da4258baf7ac655d403"
+      }
+    },
+    {
+      "id": "rfc-41b3de4355555555",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-41b3de4355555555.input",
+        "sha256": "049eb904f448c7e3a0d57b2db1f771520beda72cc988a6940898719195044ba5"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "41b3de4355555555",
+      "canonical": {
+        "path": "expected/rfc-41b3de4355555555.canonical",
+        "sha256": "6bd9be1c141028789cc35db62f1b43e80d5d4ee24d6d542e775deb16799ff4c7"
+      }
+    },
+    {
+      "id": "rfc-41b3de4355555556",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-41b3de4355555556.input",
+        "sha256": "bb43e473f6f70edc98b59ccf123f79af05adaff246533774f3949d242236b0ee"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "41b3de4355555556",
+      "canonical": {
+        "path": "expected/rfc-41b3de4355555556.canonical",
+        "sha256": "1e099031ca0cb3cf4054688f7e2e8c95fc72828de5fa7605ce3f729e6cf79d43"
+      }
+    },
+    {
+      "id": "rfc-41b3de4355555557",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-41b3de4355555557.input",
+        "sha256": "8a1a8bdb0a89978ea8d7d835fe1c206ec276120937bd4f611d82148bf557d03e"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "41b3de4355555557",
+      "canonical": {
+        "path": "expected/rfc-41b3de4355555557.canonical",
+        "sha256": "cf68ab5e198a77538aafd967fb122a305ba1df95c9348b1fe3dff453c7f7215f"
+      }
+    },
+    {
+      "id": "rfc-becbf647612f3696",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-becbf647612f3696.input",
+        "sha256": "afc31ba1a3ce9bfde1ec87b540695d26a299886290ee9af6c5f4ee211cd6ccf2"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "becbf647612f3696",
+      "canonical": {
+        "path": "expected/rfc-becbf647612f3696.canonical",
+        "sha256": "4e703d4e0928e4f339d03e1fb5454ddc33db657ad735b02530d98123b4fd4b61"
+      }
+    },
+    {
+      "id": "rfc-43143ff3c1cb0959",
+      "stage": "binary64_jcs",
+      "input": {
+        "path": "inputs/rfc-43143ff3c1cb0959.input",
+        "sha256": "a1524a876db2bd3648e6ee108cc53ee19b5077dfb256c91d54e2d6aed11c33a0"
+      },
+      "reference": "RFC 8785 Appendix B",
+      "expected_outcome": "accept",
+      "binary64_bits": "43143ff3c1cb0959",
+      "canonical": {
+        "path": "expected/rfc-43143ff3c1cb0959.canonical",
+        "sha256": "e1547479d27f057e3197d49417a1dcbe19dd8781b34fa9f83b789925943d00cb"
+      }
+    },
+    {
+      "id": "unicode-order",
+      "stage": "json_jcs",
+      "input": {
+        "path": "inputs/unicode-order.input",
+        "sha256": "a0dc85337a8ceaf1b8f0c1e292951c3182d3719a1eec6dd16a2ee786711c06fe"
+      },
+      "reference": "RFC 8785 sections 3.1–3.2; ADR-P03 input policy",
+      "expected_outcome": "accept",
+      "canonical": {
+        "path": "expected/unicode-order.canonical",
+        "sha256": "92e7983e723d61e32c200b7533b12e3fc16273f0a7de4ac694eef6111748256c"
+      }
+    },
+    {
+      "id": "composed",
+      "stage": "json_jcs",
+      "input": {
+        "path": "inputs/composed.input",
+        "sha256": "f2886017e9c7abacf804b54d64787dce2b611c9544ba21f3affdd126a6e50086"
+      },
+      "reference": "RFC 8785 sections 3.1–3.2; ADR-P03 input policy",
+      "expected_outcome": "accept",
+      "canonical": {
+        "path": "expected/composed.canonical",
+        "sha256": "f2886017e9c7abacf804b54d64787dce2b611c9544ba21f3affdd126a6e50086"
+      }
+    },
+    {
+      "id": "decomposed",
+      "stage": "json_jcs",
+      "input": {
+        "path": "inputs/decomposed.input",
+        "sha256": "3d68ce21f2899a475713cdbe7562ba9bdb6b1dfde8af1f221bdff4a0935b53b2"
+      },
+      "reference": "RFC 8785 sections 3.1–3.2; ADR-P03 input policy",
+      "expected_outcome": "accept",
+      "canonical": {
+        "path": "expected/decomposed.canonical",
+        "sha256": "3d68ce21f2899a475713cdbe7562ba9bdb6b1dfde8af1f221bdff4a0935b53b2"
+      }
+    },
+    {
+      "id": "escapes",
+      "stage": "json_jcs",
+      "input": {
+        "path": "inputs/escapes.input",
+        "sha256": "b7d0de3808c8c5c2fd7466e27b528db20b5e971604b89be3c0d1028931e3bbd4"
+      },
+      "reference": "RFC 8785 sections 3.1–3.2; ADR-P03 input policy",
+      "expected_outcome": "accept",
+      "canonical": {
+        "path": "expected/escapes.canonical",
+        "sha256": "b7d0de3808c8c5c2fd7466e27b528db20b5e971604b89be3c0d1028931e3bbd4"
+      }
+    },
+    {
+      "id": "nested",
+      "stage": "json_jcs",
+      "input": {
+        "path": "inputs/nested.input",
+        "sha256": "ee23ebf8d55f97bc8245595a54d333e34b3ca802f65839c8cf27cba2df00ea72"
+      },
+      "reference": "RFC 8785 sections 3.1–3.2; ADR-P03 input policy",
+      "expected_outcome": "accept",
+      "canonical": {
+        "path": "expected/nested.canonical",
+        "sha256": "db241c2d6457f91a472a8d5ae74a424ff9bc4ef8968f925e42b6927ebbbf7216"
+      }
+    },
+    {
+      "id": "large-rounding",
+      "stage": "json_jcs",
+      "input": {
+        "path": "inputs/large-rounding.input",
+        "sha256": "a1c367c29158357e62a3ff5d3e800fb7698a22396439dbc0a9d4929322afd35d"
+      },
+      "reference": "RFC 8785 sections 3.1–3.2; ADR-P03 input policy",
+      "expected_outcome": "accept",
+      "canonical": {
+        "path": "expected/large-rounding.canonical",
+        "sha256": "c681da39d7273a6a24c15c9cac3a75526ff2ecf8ba4ee60346a0c70c8163bdb2"
+      }
+    },
+    {
+      "id": "large-readback",
+      "stage": "json_jcs",
+      "input": {
+        "path": "inputs/large-readback.input",
+        "sha256": "cd9a017f17df93b0ec8483e0098652f2599ec412bca734411501b16c5291fb57"
+      },
+      "reference": "RFC 8785 sections 3.1–3.2; ADR-P03 input policy",
+      "expected_outcome": "accept",
+      "canonical": {
+        "path": "expected/large-readback.canonical",
+        "sha256": "8fa4a0cdb0a98b4d9a79cc496f69b1d9ea172390094239961266446383d2988b"
+      }
+    },
+    {
+      "id": "signed-zero",
+      "stage": "json_jcs",
+      "input": {
+        "path": "inputs/signed-zero.input",
+        "sha256": "c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+      },
+      "reference": "RFC 8785 sections 3.1–3.2; ADR-P03 input policy",
+      "expected_outcome": "accept",
+      "canonical": {
+        "path": "expected/signed-zero.canonical",
+        "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+      }
+    },
+    {
+      "id": "lone-surrogate",
+      "stage": "json_jcs",
+      "input": {
+        "path": "inputs/lone-surrogate.input",
+        "sha256": "8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+      },
+      "reference": "RFC 8785 section 3.2.2.2",
+      "expected_outcome": "reject"
+    },
+    {
+      "id": "fir-base",
+      "stage": "fir_identity",
+      "input": {
+        "path": "inputs/fir-base.input",
+        "sha256": "e266d5ede3440a42347badaec911c87fcc2f720d294d499d9cf771b33381dd6d"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope",
+      "expected_outcome": "accept",
+      "normalized": {
+        "path": "expected/fir-base.normalized.json",
+        "sha256": "c1c30918fd9791375557ac435293b3d0477eeb097f5911049d03627f4cd7305c"
+      },
+      "model_canonical": {
+        "path": "expected/fir-base.model.canonical",
+        "sha256": "a7b5915f0c710477243eff7339ec5c2442fe2b8e16fba2c70adefc73cfcaa40c"
+      },
+      "canonical": {
+        "path": "expected/fir-base.canonical",
+        "sha256": "cf4011a6c97891192c0b84951dd53ae38bd1fc629e05c885a8dff30bd5e53a50"
+      },
+      "normalization_status": "NOT_RUN"
+    },
+    {
+      "id": "fir-permuted",
+      "stage": "fir_identity",
+      "input": {
+        "path": "inputs/fir-permuted.input",
+        "sha256": "f28f7d9119672cb0b38524a3efc5573f3a64eeed67915a85bd1cd17d3c9cc539"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope",
+      "expected_outcome": "accept",
+      "normalized": {
+        "path": "expected/fir-permuted.normalized.json",
+        "sha256": "c1c30918fd9791375557ac435293b3d0477eeb097f5911049d03627f4cd7305c"
+      },
+      "model_canonical": {
+        "path": "expected/fir-permuted.model.canonical",
+        "sha256": "a7b5915f0c710477243eff7339ec5c2442fe2b8e16fba2c70adefc73cfcaa40c"
+      },
+      "canonical": {
+        "path": "expected/fir-permuted.canonical",
+        "sha256": "cf4011a6c97891192c0b84951dd53ae38bd1fc629e05c885a8dff30bd5e53a50"
+      },
+      "normalization_status": "NOT_RUN"
+    },
+    {
+      "id": "fir-labels",
+      "stage": "fir_identity",
+      "input": {
+        "path": "inputs/fir-labels.input",
+        "sha256": "5ca026a3cdbebda518bb1d2231f89eb9b3a5c30abf3efa3ca96a17815f1e1e7c"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope",
+      "expected_outcome": "accept",
+      "normalized": {
+        "path": "expected/fir-labels.normalized.json",
+        "sha256": "c1c30918fd9791375557ac435293b3d0477eeb097f5911049d03627f4cd7305c"
+      },
+      "model_canonical": {
+        "path": "expected/fir-labels.model.canonical",
+        "sha256": "a7b5915f0c710477243eff7339ec5c2442fe2b8e16fba2c70adefc73cfcaa40c"
+      },
+      "canonical": {
+        "path": "expected/fir-labels.canonical",
+        "sha256": "cf4011a6c97891192c0b84951dd53ae38bd1fc629e05c885a8dff30bd5e53a50"
+      },
+      "normalization_status": "NOT_RUN"
+    },
+    {
+      "id": "fir-standalone",
+      "stage": "fir_identity",
+      "input": {
+        "path": "inputs/fir-standalone.input",
+        "sha256": "ef0b9804a78404bb473864fac8777716d4a4a808a3f1b69bfd529307b37b09b1"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope",
+      "expected_outcome": "accept",
+      "normalized": {
+        "path": "expected/fir-standalone.normalized.json",
+        "sha256": "c1c30918fd9791375557ac435293b3d0477eeb097f5911049d03627f4cd7305c"
+      },
+      "model_canonical": {
+        "path": "expected/fir-standalone.model.canonical",
+        "sha256": "a7b5915f0c710477243eff7339ec5c2442fe2b8e16fba2c70adefc73cfcaa40c"
+      },
+      "canonical": {
+        "path": "expected/fir-standalone.canonical",
+        "sha256": "cf4011a6c97891192c0b84951dd53ae38bd1fc629e05c885a8dff30bd5e53a50"
+      },
+      "normalization_status": "NOT_RUN"
+    },
+    {
+      "id": "fir-initial-five",
+      "stage": "fir_identity",
+      "input": {
+        "path": "inputs/fir-initial-five.input",
+        "sha256": "031cd37140838b02ddb5fd10cf43c816ea0225cb65528bd5304f4c4ea9968d48"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope",
+      "expected_outcome": "accept",
+      "normalized": {
+        "path": "expected/fir-initial-five.normalized.json",
+        "sha256": "10393e73b6f0bed49c23f3f4af30cc58a1eae997099167a83ca96a39507ab103"
+      },
+      "model_canonical": {
+        "path": "expected/fir-initial-five.model.canonical",
+        "sha256": "961c047ada972ee95cf4ea10dc9ed7acf3b16db6302ba94ca766e38d580ac3cf"
+      },
+      "canonical": {
+        "path": "expected/fir-initial-five.canonical",
+        "sha256": "7bcfab4a9bd3a195c1966de6e8183a05bdb39cbd4d4fcddc30e15d8eb9f9df70"
+      },
+      "normalization_status": "NOT_RUN"
+    },
+    {
+      "id": "fir-rate-change",
+      "stage": "fir_identity",
+      "input": {
+        "path": "inputs/fir-rate-change.input",
+        "sha256": "00d7cbb384a3d1185b93b416c868feef2cc9a3fdf2f27c457e8aef2bfdacd0da"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope",
+      "expected_outcome": "accept",
+      "normalized": {
+        "path": "expected/fir-rate-change.normalized.json",
+        "sha256": "a2dd39f982674aa8e256fe30f84db21f7a605a98b094ed32c68fe8827f40c8a6"
+      },
+      "model_canonical": {
+        "path": "expected/fir-rate-change.model.canonical",
+        "sha256": "ffd47638d6567d928bd4fd2f97b2ab6a83fb521208078055f677779404bb1954"
+      },
+      "canonical": {
+        "path": "expected/fir-rate-change.canonical",
+        "sha256": "5dfc5598068bb9fdb1dd42ea01a0a5b2a081b51bf45703e7628d0bfde786475f"
+      },
+      "normalization_status": "NOT_RUN"
+    },
+    {
+      "id": "fir-observable-rename",
+      "stage": "fir_identity",
+      "input": {
+        "path": "inputs/fir-observable-rename.input",
+        "sha256": "f3b9f98d7d735573f03d67c8e131a0d820aa55570736f0cdfb8a4225907d9fa0"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope",
+      "expected_outcome": "accept",
+      "normalized": {
+        "path": "expected/fir-observable-rename.normalized.json",
+        "sha256": "474021f5b8b43bad2afd72af0bd5572c6c191fb1a4954b12da594fc66597f83e"
+      },
+      "model_canonical": {
+        "path": "expected/fir-observable-rename.model.canonical",
+        "sha256": "e1c6fecf830f49cf537e2d6bf775442db2b2aae66e85b42e07f95b66554da399"
+      },
+      "canonical": {
+        "path": "expected/fir-observable-rename.canonical",
+        "sha256": "d30f352433a2bd61351856680a8445b541fce37a8d91e662446d087b63b94ef1"
+      },
+      "normalization_status": "NOT_RUN"
+    },
+    {
+      "id": "fir-two-observables",
+      "stage": "fir_identity",
+      "input": {
+        "path": "inputs/fir-two-observables.input",
+        "sha256": "d01b45c40e834ad5e60bfefc5005184a86885ab5794a1bad310e00e32959c7ea"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope",
+      "expected_outcome": "accept",
+      "normalized": {
+        "path": "expected/fir-two-observables.normalized.json",
+        "sha256": "e4797c6173fa02f6fc52eaf7c95334a1b14ee7804125c8de6c31ed4338aaed4a"
+      },
+      "model_canonical": {
+        "path": "expected/fir-two-observables.model.canonical",
+        "sha256": "151b5784eb15f269cfb3b272a797fb9c447bd92b24953a90cce6101c6e8dc49f"
+      },
+      "canonical": {
+        "path": "expected/fir-two-observables.canonical",
+        "sha256": "d9496a5068056714b46d1829e0680f3a574ebbf3058096a2fc874f96e47b307e"
+      },
+      "normalization_status": "NOT_RUN"
+    },
+    {
+      "id": "fir-observables-permuted",
+      "stage": "fir_identity",
+      "input": {
+        "path": "inputs/fir-observables-permuted.input",
+        "sha256": "818942fc52d059d260219218757e51a37a976e6cf160f91616c2859355579199"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope",
+      "expected_outcome": "accept",
+      "normalized": {
+        "path": "expected/fir-observables-permuted.normalized.json",
+        "sha256": "e4797c6173fa02f6fc52eaf7c95334a1b14ee7804125c8de6c31ed4338aaed4a"
+      },
+      "model_canonical": {
+        "path": "expected/fir-observables-permuted.model.canonical",
+        "sha256": "151b5784eb15f269cfb3b272a797fb9c447bd92b24953a90cce6101c6e8dc49f"
+      },
+      "canonical": {
+        "path": "expected/fir-observables-permuted.canonical",
+        "sha256": "d9496a5068056714b46d1829e0680f3a574ebbf3058096a2fc874f96e47b307e"
+      },
+      "normalization_status": "NOT_RUN"
+    },
+    {
+      "id": "fir-negative-zero",
+      "stage": "fir_identity",
+      "input": {
+        "path": "inputs/fir-negative-zero.input",
+        "sha256": "d1300c85fdcb96026d07fc4e6416a60f254728389b50e53e9c91a1f300408183"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope",
+      "expected_outcome": "accept",
+      "normalized": {
+        "path": "expected/fir-negative-zero.normalized.json",
+        "sha256": "c1c30918fd9791375557ac435293b3d0477eeb097f5911049d03627f4cd7305c"
+      },
+      "model_canonical": {
+        "path": "expected/fir-negative-zero.model.canonical",
+        "sha256": "a7b5915f0c710477243eff7339ec5c2442fe2b8e16fba2c70adefc73cfcaa40c"
+      },
+      "canonical": {
+        "path": "expected/fir-negative-zero.canonical",
+        "sha256": "cf4011a6c97891192c0b84951dd53ae38bd1fc629e05c885a8dff30bd5e53a50"
+      },
+      "normalization_status": "NOT_RUN"
+    },
+    {
+      "id": "fir-large-a",
+      "stage": "fir_identity",
+      "input": {
+        "path": "inputs/fir-large-a.input",
+        "sha256": "49868af10b80f8bbe67dabc7f3323e3bcdd8b017aee05fbc7f4195f1eaf8db04"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope",
+      "expected_outcome": "accept",
+      "normalized": {
+        "path": "expected/fir-large-a.normalized.json",
+        "sha256": "e3306113a5034dda471ac2f61984a553861f9b876050347fb3250e0b88001dac"
+      },
+      "model_canonical": {
+        "path": "expected/fir-large-a.model.canonical",
+        "sha256": "99fae6cd7eadfec53a889c1a81b5bbbec681f6564fccfb5ba2a0f4a0f924e8ee"
+      },
+      "canonical": {
+        "path": "expected/fir-large-a.canonical",
+        "sha256": "2990415cedb9490da98c3957d77faa33b56d10de069396ef644795a33d530132"
+      },
+      "normalization_status": "NOT_RUN"
+    },
+    {
+      "id": "fir-large-b",
+      "stage": "fir_identity",
+      "input": {
+        "path": "inputs/fir-large-b.input",
+        "sha256": "e7ada6549fc007a30d6c931eea424a290d41c9c0c41bc130bb070bb886fb6dc8"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope",
+      "expected_outcome": "accept",
+      "normalized": {
+        "path": "expected/fir-large-b.normalized.json",
+        "sha256": "e3306113a5034dda471ac2f61984a553861f9b876050347fb3250e0b88001dac"
+      },
+      "model_canonical": {
+        "path": "expected/fir-large-b.model.canonical",
+        "sha256": "99fae6cd7eadfec53a889c1a81b5bbbec681f6564fccfb5ba2a0f4a0f924e8ee"
+      },
+      "canonical": {
+        "path": "expected/fir-large-b.canonical",
+        "sha256": "2990415cedb9490da98c3957d77faa33b56d10de069396ef644795a33d530132"
+      },
+      "normalization_status": "NOT_RUN"
+    },
+    {
+      "id": "fir-numeric-spelling",
+      "stage": "fir_identity",
+      "input": {
+        "path": "inputs/fir-numeric-spelling.input",
+        "sha256": "0d33e07146435dff0e87592cdea37b7507aad65e51a46d2340d22b32ab9949a2"
+      },
+      "reference": "ADR-P03 binary64 spelling equivalence",
+      "expected_outcome": "accept",
+      "normalized": {
+        "path": "expected/fir-standalone.normalized.json",
+        "sha256": "c1c30918fd9791375557ac435293b3d0477eeb097f5911049d03627f4cd7305c"
+      },
+      "model_canonical": {
+        "path": "expected/fir-standalone.model.canonical",
+        "sha256": "a7b5915f0c710477243eff7339ec5c2442fe2b8e16fba2c70adefc73cfcaa40c"
+      },
+      "canonical": {
+        "path": "expected/fir-standalone.canonical",
+        "sha256": "cf4011a6c97891192c0b84951dd53ae38bd1fc629e05c885a8dff30bd5e53a50"
+      },
+      "normalization_status": "NOT_RUN"
+    },
+    {
+      "id": "duplicate-key",
+      "stage": "contract_only",
+      "input": {
+        "path": "inputs/duplicate-key.input",
+        "sha256": "99846dec4aebf1c4a60cb0197ff78eaa10ad644daa3744fbc9162b0daae977ad"
+      },
+      "reference": "ADR-P03 input and validation boundary",
+      "expected_outcome": "reject"
+    },
+    {
+      "id": "invalid-utf8",
+      "stage": "contract_only",
+      "input": {
+        "path": "inputs/invalid-utf8.input",
+        "sha256": "2c1ba6ac713bfc21e74f3429be952fca3e7a796734394fd18a48eb6713880d89"
+      },
+      "reference": "ADR-P03 input and validation boundary",
+      "expected_outcome": "reject"
+    },
+    {
+      "id": "bom",
+      "stage": "contract_only",
+      "input": {
+        "path": "inputs/bom.input",
+        "sha256": "aa25e978046d680ef8740d837e6de5bc1e2a2dc6089dbda1012544b538d53f65"
+      },
+      "reference": "ADR-P03 input and validation boundary",
+      "expected_outcome": "reject"
+    },
+    {
+      "id": "trailing-comma",
+      "stage": "contract_only",
+      "input": {
+        "path": "inputs/trailing-comma.input",
+        "sha256": "a3e9007c4356922ae64718791f03bb64b52d2c7b759d42f33a24669005e75688"
+      },
+      "reference": "ADR-P03 input and validation boundary",
+      "expected_outcome": "reject"
+    },
+    {
+      "id": "overflow",
+      "stage": "contract_only",
+      "input": {
+        "path": "inputs/overflow.input",
+        "sha256": "f2bba4568fecd4b9729970732e571ac9373a33fb2d6a960794a41f0f2ecdbc25"
+      },
+      "reference": "ADR-P03 input and validation boundary",
+      "expected_outcome": "reject"
+    },
+    {
+      "id": "underflow",
+      "stage": "contract_only",
+      "input": {
+        "path": "inputs/underflow.input",
+        "sha256": "d42d88695a3f56ff2ce7799a2f261ccb39a2b1a5db8ed284b74b9c452804ed16"
+      },
+      "reference": "ADR-P03 input and validation boundary",
+      "expected_outcome": "reject"
+    },
+    {
+      "id": "nan-literal",
+      "stage": "contract_only",
+      "input": {
+        "path": "inputs/nan-literal.input",
+        "sha256": "d5b592c05dc25b5032553f1b27f4139be95e881f73db33b02b05ab20c3f9981e"
+      },
+      "reference": "ADR-P03 input and validation boundary",
+      "expected_outcome": "reject"
+    },
+    {
+      "id": "infinity-literal",
+      "stage": "contract_only",
+      "input": {
+        "path": "inputs/infinity-literal.input",
+        "sha256": "d0067cad9a63e0813759a2bb841051ca73570c0da2e08e840a8eb45db6a7a010"
+      },
+      "reference": "ADR-P03 input and validation boundary",
+      "expected_outcome": "reject"
+    },
+    {
+      "id": "fir-invalid-reference",
+      "stage": "contract_only",
+      "input": {
+        "path": "inputs/fir-invalid-reference.input",
+        "sha256": "9504c6c09165513d4c1c8dd9f9c777dd8c9803b413463d82f78b365f54debb72"
+      },
+      "reference": "Ratified ADR-P02 exact semantic checks",
+      "expected_outcome": "reject"
+    },
+    {
+      "id": "fir-invalid-equation",
+      "stage": "contract_only",
+      "input": {
+        "path": "inputs/fir-invalid-equation.input",
+        "sha256": "433f8b78814e74f75b2476132bc63ff7e03e167f85123f1d9f98f2d2e5bfe8e1"
+      },
+      "reference": "Ratified ADR-P02 exact semantic checks",
+      "expected_outcome": "reject"
+    },
+    {
+      "id": "fir-invalid-ssa",
+      "stage": "contract_only",
+      "input": {
+        "path": "inputs/fir-invalid-ssa.input",
+        "sha256": "d26743054a66cf4b55807300170c6564ee44e7fe43a8933a3a5a6d5922f9ee46"
+      },
+      "reference": "Ratified ADR-P02 exact semantic checks",
+      "expected_outcome": "reject"
+    },
+    {
+      "id": "fir-invalid-production-role",
+      "stage": "contract_only",
+      "input": {
+        "path": "inputs/fir-invalid-production-role.input",
+        "sha256": "bcd6c83a15db38ab61ab461293ceac21695ca7ec2703f99c53a938dba1487b8c"
+      },
+      "reference": "Ratified ADR-P02 exact semantic checks",
+      "expected_outcome": "reject"
+    },
+    {
+      "id": "fir-duplicate-id",
+      "stage": "contract_only",
+      "input": {
+        "path": "inputs/fir-duplicate-id.input",
+        "sha256": "dd5659c77e27047c3c4a271a4587184d943ef6032eed4641993d9d3fccaa13a0"
+      },
+      "reference": "ADR-P03 validation before normalization",
+      "expected_outcome": "reject"
+    },
+    {
+      "id": "fir-unsupported-version",
+      "stage": "contract_only",
+      "input": {
+        "path": "inputs/fir-unsupported-version.input",
+        "sha256": "23333bbdea728c588b8097d7e9e08ee1f8bf5d6e77c72e982b9a8dba49ce78c9"
+      },
+      "reference": "ADR-P03 validation before normalization",
+      "expected_outcome": "reject"
+    },
+    {
+      "id": "fir-execution-field",
+      "stage": "contract_only",
+      "input": {
+        "path": "inputs/fir-execution-field.input",
+        "sha256": "7ccd9012a041814e48aabdac283c1f4e045a9c99db06f89805939189c481affb"
+      },
+      "reference": "ADR-P03 validation before normalization",
+      "expected_outcome": "reject"
+    },
+    {
+      "id": "exact-zero-exponent",
+      "stage": "contract_only",
+      "input": {
+        "path": "inputs/exact-zero-exponent.input",
+        "sha256": "c19de4d9d49a74c1a8f3912074f33b1614d374088b42bf8f16880c4afbd4505d"
+      },
+      "reference": "ADR-P03 input policy",
+      "expected_outcome": "accept"
+    },
+    {
+      "id": "subnormal-input",
+      "stage": "contract_only",
+      "input": {
+        "path": "inputs/subnormal-input.input",
+        "sha256": "c46e7ca1be4c8734f373a56530787288fa2058d73d07855e9247e949f811a42a"
+      },
+      "reference": "ADR-P03 input policy",
+      "expected_outcome": "accept"
+    },
+    {
+      "id": "domain-separation",
+      "stage": "json_jcs",
+      "input": {
+        "path": "inputs/domain-separation.input",
+        "sha256": "67aa123539437db0cf044c4d7a4429921ee2dc0d9c2eacdf96c5090dac67ab27"
+      },
+      "canonical": {
+        "path": "expected/domain-separation.canonical",
+        "sha256": "69637def352bb12ee38e42152f35b0c7b26976d3aba6b71444ec286b3b6512dd"
+      },
+      "reference": "ADR-P03 namespace sensitivity; generic JSON only, not a supported FIR version/domain",
+      "expected_outcome": "accept"
+    },
+    {
+      "id": "version-separation",
+      "stage": "json_jcs",
+      "input": {
+        "path": "inputs/version-separation.input",
+        "sha256": "0ece26832184df53d6d083a1a0cd11ca673dba8de2e9724d2e51d34e29cba358"
+      },
+      "canonical": {
+        "path": "expected/version-separation.canonical",
+        "sha256": "b4edac83adb9dc1ddccace5ff46ef1ec9af9774079d9761aec6de2fafef721bb"
+      },
+      "reference": "ADR-P03 namespace sensitivity; generic JSON only, not a supported FIR version/domain",
+      "expected_outcome": "accept"
+    }
+  ]
+}
