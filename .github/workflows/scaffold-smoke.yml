@@ -18,10 +18,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          version: "0.11.29"
+      - name: Install locked Python environment
+        run: uv sync --project packages/python --locked
       - name: Check agent instruction layout and documentation links
-        run: python scripts/check_repo.py
+        run: uv run --project packages/python --locked --offline python scripts/check_repo.py
       - name: Test offline harness validator
-        run: python -m unittest discover -s scripts/tests -v
+        run: uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v
 
   python:
     name: Python-only package
@@ -31,10 +36,20 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          version: "0.11.29"
       - name: Install Python scaffold without Julia
-        run: python -m pip install --no-deps -e packages/python
+        run: uv sync --project packages/python --locked
       - name: Python smoke checks
-        run: python -m unittest discover -s packages/python/tests -v
+        run: uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v
+      - name: Build Python distributions
+        run: uv build --project packages/python
+      - name: Test wheel in a clean environment without development dependencies
+        run: |
+          uv venv --python 3.12 /tmp/fenix-wheel
+          uv pip install --python /tmp/fenix-wheel/bin/python --no-deps packages/python/dist/*.whl
+          /tmp/fenix-wheel/bin/python -m unittest discover -s packages/python/tests -v
 
   julia:
     name: Julia-only package
@@ -43,6 +58,14 @@ jobs:
       - uses: actions/checkout@v4
       - uses: julia-actions/setup-julia@v2
         with:
-          version: "1"
+          version: "1.10.13"
       - name: Julia smoke checks (no Python dependency)
         run: julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'
+      - name: Install pinned reference tools
+        run: julia --project=conformance/julia -e 'using Pkg; Pkg.instantiate()'
+      - name: Load reference tools offline (not scientific conformance)
+        env:
+          JULIA_PKG_OFFLINE: "true"
+        run: julia --project=conformance/julia -e 'using JSON, JSONSchema, SHA, Test'
+      - name: Check tracked environment files were not rewritten
+        run: git diff --exit-code -- conformance/julia/Project.toml conformance/julia/Manifest.toml

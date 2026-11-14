@@ -51,17 +51,19 @@ Review owner and approval needed:
 
 ### Verification commands
 
-Run independently from the repository root:
+Run independently from the repository root with uv 0.11.29 and Python 3.12. Julia uses native Pkg; CI pins Julia 1.10.13, available through juliaup. Install the Python environment before running the offline checks:
 
 ```sh
-python scripts/check_repo.py
-python -m unittest discover -s scripts/tests -v
-python -m pip install --no-deps -e packages/python
-python -m unittest discover -s packages/python/tests -v
+uv sync --project packages/python --locked
+uv run --project packages/python --locked --offline python scripts/check_repo.py
+uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v
+uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v
 julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'
 ```
 
-The first two check repository-document consistency, **not science**. Native package smoke tests check packaging only. When M0/M1 scientific conformance suites exist, an agent must additionally execute the relevant mathematical and cross-language checks.
+Commit uv-generated `packages/python/uv.lock`; do not hand-edit it. Keep reference tools in the development group rather than runtime dependencies. The separate [Julia reference environment](../conformance/julia/README.md) commits its Pkg-generated manifest; the library manifest remains ignored. Dependency installation can require network access; subsequent offline checks must not fetch resources.
+
+The repository checker and harness tests check repository-document consistency, **not science**. Native package smoke tests check packaging only. When M0/M1 scientific conformance suites exist, an agent must additionally execute the relevant mathematical and cross-language checks.
 
 Do not claim that a check passed unless it actually ran. A locally unavailable runtime is `NOT RUN`, not `PASS`.
 
