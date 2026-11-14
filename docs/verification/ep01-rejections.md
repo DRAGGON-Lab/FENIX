@@ -195,9 +195,17 @@ artifact hashes, the 75-file source fingerprint, retained reports, commands and
 approval boundaries. Its P3 Node test-count typo was corrected to five; no
 remaining confirmed documentation finding was reported.
 
-Hosted GitHub Actions execution: **NOT RUN locally**. CI now extends the native
-Python/Julia jobs with separate reports and uses a dependent comparison job under
-the locked Python environment. CI status is to be assessed on the PR.
+Hosted GitHub Actions execution: **PASS**, all seven jobs at scientific-source
+commit `cbe599f856d955faa1664d34306eb1ac3f3ec0d6` on
+[PR #56](https://github.com/DRAGGON-Lab/FENIX/pull/56),
+[run 43655199519](https://github.com/DRAGGON-Lab/FENIX/actions/runs/43655199519).
+This includes Repository harness, Python-only package, Julia-only package,
+Candidate P01 reference conformance, Candidate P03 serialization evidence,
+Candidate production-decay reference agreement and the new Candidate BioIR/FIR
+rejection reference agreement. Native reports were produced separately and
+successfully compared by the dependent locked Python job. This hosted result
+was observed after the local verification above; the subsequent evidence-only
+record amendment does not change the 75-file source fingerprint.
 Human PI acceptance of the concrete rejection suite: **PENDING / NOT RUN**.
 Public package parser/validator, compiler, normalization, solver and biological
 validation: **NOT RUN / outside this fixture-publication task**. The approved P03
