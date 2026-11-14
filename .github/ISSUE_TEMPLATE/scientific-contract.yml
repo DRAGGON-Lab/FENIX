@@ -1,0 +1,43 @@
+name: Scientific contract / ADR proposal
+description: Propose a normative BioIR, FIR, canonicalization or scientific fixture decision for PI review
+title: "[Scientific ADR] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: "Use for decisions that change mathematical meaning, units, schemas, supported execution profiles, golden reference evidence or canonical hashes. An agent cannot ratify this issue."
+  - type: textarea
+    id: decision
+    attributes:
+      label: Exact decision needed
+      description: Define the scientific ambiguity, its release gate and why existing approved materials do not resolve it
+    validations:
+      required: true
+  - type: textarea
+    id: options
+    attributes:
+      label: Alternatives and tradeoffs
+      description: Include at least two defensible options, scope, reversibility and failure consequences
+    validations:
+      required: true
+  - type: textarea
+    id: mathematics
+    attributes:
+      label: Units, equations, invariants and scientific assumptions
+      description: Explain every symbol in an equation and include unsupported or negative cases
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Independent reference and validation plan
+      description: Explain how reference vectors will be established without trusting the implementation under test
+    validations:
+      required: true
+  - type: textarea
+    id: decision_record
+    attributes:
+      label: Proposed ADR, compatibility implications and required human approval
+      description: Identify ratifying PI or maintainers; status remains PROPOSED until explicit approval
+    validations:
+      required: true

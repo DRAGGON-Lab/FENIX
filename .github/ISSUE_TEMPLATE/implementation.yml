@@ -1,0 +1,50 @@
+name: Scoped implementation task
+description: Small, testable change against an already approved contract
+title: "[Implementation] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: "One behavior, one PR. Read AGENTS.md and the development workflow before implementation. Do not invent scientific contracts."
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Goal and expected outcome
+      description: Include observable success behavior and user/scientific motivation
+    validations:
+      required: true
+  - type: textarea
+    id: authority
+    attributes:
+      label: Approved architecture decisions and ratified ADR references
+      description: Cite specific documents; pending ADRs do not authorize scientific implementation
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and explicitly excluded work
+      description: Name likely files and state non-goals, including cross-language work not in this issue
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Positive and negative acceptance criteria
+      description: Specify behavior, invalid inputs, boundaries, and evidence needed for acceptance
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification commands and independent scientific reference
+      description: Name exact commands and oracle/invariant where scientific semantics are involved; mark nonapplicable scientific checks
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies, blockers and review owner
+      description: Link blocking ADRs and required human PI scientific review if applicable
+    validations:
+      required: true

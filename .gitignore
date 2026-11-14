@@ -27,3 +27,6 @@ Manifest.toml
 !.env.example
 results/
 artifacts/
+
+# Claude Code per-user project instructions (may override AGENTS.md loading)
+CLAUDE.local.md

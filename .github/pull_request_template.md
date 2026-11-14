@@ -12,6 +12,13 @@ One issue; describe expected behavior and explicit non-goals.
 
 List touched files and why. Document new dependencies and compatibility impact.
 
+## Agentic review and verification
+
+- [ ] Checked applicable root and scoped `AGENTS.md` instructions
+- [ ] Updated source-of-truth docs without adding duplicate policy files
+- [ ] Ran `python scripts/check_repo.py` or recorded why not
+- [ ] Ran `python -m unittest discover -s scripts/tests -v` or recorded why not
+
 ## Tests actually executed
 
 | Runtime | Exact command | Outcome |

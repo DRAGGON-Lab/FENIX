@@ -10,6 +10,19 @@ permissions:
   contents: read
 
 jobs:
+  harness:
+    name: Repository harness
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check agent instruction layout and documentation links
+        run: python scripts/check_repo.py
+      - name: Test offline harness validator
+        run: python -m unittest discover -s scripts/tests -v
+
   python:
     name: Python-only package
     runs-on: ubuntu-latest
