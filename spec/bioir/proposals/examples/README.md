@@ -1,8 +1,8 @@
-# ADR-P01 proposal examples
+# ADR-P01 illustrative examples
 
-These documents illustrate the proposed M0-compatible BioIR subset. They are **not
+These documents illustrate the ratified M0-compatible BioIR subset. They are **not
 approved fixtures** and must not be used as normative expectations by either
-native package. Read the [proposal](../ADR-P01.md) before reviewing them.
+native package. Read the [ADR](../ADR-P01.md) before reviewing them.
 
 `design.json` describes one molecular species in a representative cell, with
 constitutive production and first-order loss. `experiment.json` assigns fixed
@@ -24,8 +24,11 @@ Their example digests were calculated with external Python `rfc8785` 0.1.4 and
 `hashlib.sha256`, then cross-checked independently with ECMAScript primitive
 serialization, UTF-16 key sorting and Node's SHA-256 implementation. This checks
 the examples only; it does not validate general FENIX canonicalization or ratify
-the proposed digest policy. No canonicalization golden vectors are published.
+general digest behavior. No canonicalization golden vectors are published.
 
-Before #12 can be completed, the human PI must ratify ADR-P01 and independent
-native semantic validators must check revision integrity, references, units,
-uniqueness and capability limits. The larger rejection suite remains #17 work.
+ADR-P01 was ratified on 2026-11-14. Before #12 can be completed, the required
+fixture catalog must be reviewed and independent native validators must satisfy
+the [catalog gate](../../../../conformance/README.md#parser-and-validator-fixture-catalog-gate),
+including revision integrity, references, units, uniqueness and capability limits.
+The larger rejection suite remains #17 work; these illustrative examples do not
+substitute for that evidence.

@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "urn:fenix:proposed:bioir:m0-subset:0.1.0",
-  "title": "PROPOSED ADR-P01 M0-compatible BioIR subset; not ratified",
-  "$comment": "Initial M0-compatible subset, not the definitive scope of BioIR. Structure only; semantic and raw-token checks require ADR-P01. Execution requests belong to ExecutionSpec. No normative status.",
+  "title": "ADR-P01 ratified M0-compatible BioIR subset 0.1.0",
+  "$comment": "Ratified 2026-11-14. Initial M0-compatible subset, not the definitive scope of BioIR. Structure only; see ADR-P01 for semantic/raw-token checks and the fixture-catalog gate before validator implementation approval. Execution requests belong to ExecutionSpec. The historical schema identifier is retained unchanged.",
   "type": "object",
   "properties": {
     "content": {

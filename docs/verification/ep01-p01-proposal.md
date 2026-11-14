@@ -1,4 +1,7 @@
-# ADR-P01 proposal review evidence — not ratification
+# ADR-P01 review evidence and ratification record
+
+The proposal checks below are historical. The final governance-update section
+records subsequent human ratification and the outstanding fixture-catalog gate.
 
 ## Historical proposal checks before the three-concern revision
 
@@ -280,3 +283,43 @@ console.log('PASS: independent ECMAScript example digests and metadata/content/t
 ```
 
 </details>
+
+
+## Governance update: human ratification and fixture-catalog gate
+
+Date: 2026-11-14. Reviewed scientific-contract revision:
+`35805663e3912f8858bbfbe0c178cf009c5454e2`.
+The human PI explicitly approved ADR-P01 in this conversation and added the
+language-neutral fixture-catalog acceptance requirement. The approval is
+transcribed in the ADR; it is human approval, not agent self-ratification.
+No public review URL or separate personal name was supplied.
+
+Dirty-source fingerprint before commit: `c9e2427e62f2a6bcba6e9ae260436b341242629e94edfa962f75e6cf72956d8d`.
+This SHA-256 covers sorted relative path + NUL + bytes + NUL for the changed
+files listed by `git diff --name-only`, excluding this report. It identifies the
+administrative status and acceptance-gate updates, not new scientific fixtures.
+
+The schema's assertions, identifier and both example files remain unchanged.
+Only schema title/comment status metadata changed. Numeric, Unicode and digest
+rules were not redesigned. The user-approved gate is recorded in the ADR and
+conformance requirements, assigned principally to follow-on issues #16 and #17.
+It requires original inputs, explicit acceptance/rejection, reviewed categories
+and independent Python/Julia reports before validator implementation approval.
+No catalog, new error taxonomy, native validator or normative vector was created.
+
+Checks executed from the repository root, all final commands exiting 0:
+
+| Command / check | Outcome |
+|---|---|
+| `UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python scripts/check_repo.py` | PASS |
+| `UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v` | PASS, 6 tests |
+| `UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python -` with administrative assertions | PASS; schema equals reviewed schema after excluding title/comment; both examples byte-identical to reviewed revision; Draft-07 schema valid; both examples structurally valid; both existing digests match external rfc8785/SHA-256 calculations; ratification revision and gate present |
+| `git diff --check` | PASS |
+| Native package tests and native scientific validation | NOT RUN for this documentation/status-only change; native package source and schema assertions unchanged |
+| Language-neutral catalog and independent implementation acceptance reports | NOT RUN / PENDING; required follow-on work |
+
+Runtime: uv 0.11.29, CPython 3.12.13, jsonschema 4.26.0, rfc8785 0.1.4.
+Historical PENDING ratification entries above describe their original runs; the
+current contract status is RATIFIED. Fixture review, golden-vector approval and
+validator implementation acceptance remain outstanding. Issue #12 and epic #3
+are not recorded as complete by this governance update.

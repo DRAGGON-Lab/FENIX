@@ -2,7 +2,7 @@
 
 **Biomolecular and collective computation** — independently implemented native Python and Julia scientific libraries governed by shared language-neutral biological and mathematical contracts.
 
-**Status:** Architecture v0.1 approved (29 decisions); repository scaffold only. **No biological modeling APIs, normative BioIR/FIR schemas or numerical solvers are implemented.**
+**Status:** Architecture v0.1 approved (29 decisions); package scaffold with the [ratified ADR-P01 M0-compatible BioIR subset](spec/bioir/README.md). **No biological modeling APIs, scientific validators, FIR schema or numerical solvers are implemented.** Validator implementation approval requires a reviewed language-neutral fixture catalog and independent Python/Julia reports.
 
 ## Concept
 
@@ -16,7 +16,7 @@ Read [PRODUCT.md](PRODUCT.md), [ARCHITECTURE.md](ARCHITECTURE.md), [AGENTS.md](A
 
 ## Repository map
 
-`packages/python` and `packages/julia`: independently installable scaffold packages; `spec/`: reserved for ratified BioIR, FIR and canonicalization contracts; `conformance/`: independent scientific fixtures; `examples/`: verified examples; `.github/`: independent package smoke CI.
+`packages/python` and `packages/julia`: independently installable scaffold packages; `spec/`: ratified BioIR subset and pending FIR/canonicalization contracts; `conformance/`: independent scientific fixtures; `examples/`: verified examples; `.github/`: independent package smoke CI.
 
 ## Development and smoke tests
 

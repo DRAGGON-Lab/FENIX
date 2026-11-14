@@ -1,3 +1,11 @@
-# Normative scientific specifications — PENDING
+# Language-neutral scientific specifications
 
-This directory is reserved for separately versioned language-neutral contracts. **No BioIR, FIR or canonicalization schema has been approved or implemented.** Before creating or changing a normative file, obtain human-PI-approved ADR-P01 (BioIR), ADR-P02 (FIR and capability matrix) or ADR-P03 (JCS canonicalization). Independent positive/negative examples and reviewable mathematical references are mandatory.
+The [M0-compatible BioIR subset](bioir/README.md), version `0.1.0`, is ratified
+under ADR-P01. FIR/capability and FIR-specific canonicalization contracts remain
+pending ADR-P02 and ADR-P03. No compilers or scientific validators are implemented.
+
+New or changed normative rules require human PI approval. Independent references
+and reviewed positive/negative fixtures remain mandatory. In particular,
+parser/validator implementation approval requires the
+[language-neutral fixture catalog and independent Python/Julia reports](../conformance/README.md#parser-and-validator-fixture-catalog-gate).
+Ratifying P01 does not approve golden fixtures or waive those follow-on gates.
