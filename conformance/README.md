@@ -54,3 +54,9 @@ remains pending.
 
 The catalog review and both native reports are required evidence. Existing
 JSON Schema example probes and package smoke tests do not satisfy this gate.
+
+The [issue #16 canonicalization catalog](canonicalization/README.md) now maps
+all nine serialization requirements to executable case IDs and records exact
+UTF-8 output bytes in independent Python/ECMAScript reports. The vectors remain
+REVIEW_REQUIRED; native FIR parsing/normalization and the broader #17 rejection
+catalog are separate work. See the [issue #16 evidence](../docs/verification/ep01-canonicalization-vectors.md).

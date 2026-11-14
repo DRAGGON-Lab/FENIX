@@ -53,8 +53,12 @@ class DeclarationOrderingTests(unittest.TestCase):
 class EvidenceTests(unittest.TestCase):
     def test_rejects_missing_duplicate_and_false_success_reports(self):
         expected = review()
-        other = copy.deepcopy(expected)
-        other['implementation'] = 'independent-test-report'
+        # The real independent Node report is exercised in test_boundaries.
+        # Here use the precise registered identity and runtime shape.
+        from review_p03 import provenance
+        other = dict(copy.deepcopy(expected), **provenance(HERE, 'independent-ecmascript-rfc8785'))
+        other['runtime'] = {'name': 'node', 'version': '24.18.0', 'engine': 'v8',
+                            'engine_version': '13.6.233.17-node.37', 'serializer': 'ECMAScript JSON.stringify'}
         compare([expected, other])
         for mutation in ('missing', 'duplicate', 'false-normalization', 'wrong-digest', 'stale'):
             bad = copy.deepcopy(other)

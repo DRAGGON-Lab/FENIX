@@ -9,3 +9,7 @@ The drafting-era path remains stable; the ADR's ratification record determines
 its status. Independent fixture and implementation approval remain pending.
 No native FIR normalizer, parser or compiler is implemented here. P01 BioIR
 hashing is unchanged.
+
+Issue #16 extends the existing catalog with an executable requirement coverage
+map and auditable independent byte reports. The [verification record](../../docs/verification/ep01-canonicalization-vectors.md)
+describes the candidate expectations and checks; ADR-P03 remains unchanged.
