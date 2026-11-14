@@ -1,4 +1,8 @@
-# EP-01 production–decay oracle evidence — review required
+# EP-01 production–decay oracle evidence — approved
+
+**Current status: APPROVED by the human PI.** See the
+[acceptance record](#human-pi-acceptance-recorded). Earlier REVIEW_REQUIRED and
+pending statements below describe historical revisions.
 
 Date: 2026-11-14. Issue [#15](https://github.com/DRAGGON-Lab/FENIX/issues/15).
 Branch: `conformance/15-production-decay-oracle`. Base: current `origin/main`,
@@ -242,3 +246,70 @@ reports remain excluded. Verification ran dirty on the follow-up baseline.
 The existing Python CI job now runs the retained rational audit as well as its
 tests. No fixtures or numerical evaluator reports were regenerated. The catalog
 remains REVIEW_REQUIRED, issue #15 remains open, and P04 remains separate.
+
+
+## Human PI acceptance recorded
+
+On **2026-11-14**, the repository user, acting as human PI, explicitly accepted
+the reviewed issue #15 oracle on PR
+[#54](https://github.com/DRAGGON-Lab/FENIX/pull/54):
+
+> Ok, I reviewed it and accept it, please record that desicion and make a final push with that before I merge the PR
+
+Approval source: this Codex conversation; no public approval URL or separate
+personal name was supplied. Reviewed revision:
+[`1982357b3deed88e8e0cd8f745effd5c3bd960b3`](https://github.com/DRAGGON-Lab/FENIX/commit/1982357b3deed88e8e0cd8f745effd5c3bd960b3).
+The reviewed source fingerprint is
+`e8e994304de37c01681ca3884d00d3efe90e2c41854bd0228e0839c124f68985`;
+the reviewed catalog SHA-256 is
+`ccf91c358d0a34eb793942e23790e539360bbb658489d4f91563f11d36b5dac2`.
+
+**Decision: ACCEPTED.** This approves the concrete bounded production–decay
+mathematical oracle, its derivation, 40 numerical reference samples, independent
+Python/Julia evaluators and retained rational audit. The catalog now records
+APPROVED. The draft error budget remains a reference-artifact budget; acceptance
+does not ratify P04 numerical solver thresholds or failure policy, SSA eligibility,
+native compiler/solver implementations or empirical predictive validity.
+No PR is merged or issue closed by this record; the user will merge PR #54.
+
+Only approval metadata, status handling and current-status documentation change.
+The catalog schema/runners support REVIEW_REQUIRED and APPROVED artifacts;
+unknown status remains a tested rejection. CLI/comparison status output follows
+the loaded catalog. Numerical formulas, input encodings, units and all 50-digit
+expectations are unchanged. Both native reports were executed again to refresh
+catalog/evaluator checksums; all 160 computation rows are exactly equal to the
+reviewed revision. The comparison still agrees at 70 significant digits.
+
+Approval-record source fingerprint:
+`124cb9852d3c8f141fda7515aa7a2eeb2ebc882cabee001c04c6c697238bbef4`.
+Algorithm: sorted repository-relative path + NUL + bytes + NUL SHA-256 over
+nine non-cache files under `conformance/production_decay/`, plus the four
+CI/documentation paths in the earlier fingerprint and `docs/approved-decisions.md`
+(14 files). This evidence record and report artifacts are excluded.
+Verification ran dirty on reviewed revision `1982357`, with the same locked
+runtime/cache settings documented above.
+
+| Current artifact | SHA-256 |
+|---|---|
+| Catalog (status metadata changed only) | `468c05a59fc23106dfc2e9e3454e9709ef0b61c9e130885180ecd4e67a07406d` |
+| Python report (all computation rows unchanged) | `a29f92938d6f466749d0531869c2aa9f29a243561f4635372c351fcdfee7d37e` |
+| Julia report (all computation rows unchanged) | `8ba294073831ed75925e9d4615cc0cbdc05e37a018eb591b5fd468f0f60dfc1d` |
+
+| Command/check | Acceptance-record result |
+|---|---|
+| Python oracle report command recorded above | PASS; 80 unchanged computations |
+| Julia oracle report command recorded above | PASS; 80 unchanged computations |
+| Python cross-language comparison command recorded above | PASS; 40 samples / 160 computations, fixture_status APPROVED |
+| Python production-decay unittest command recorded above | PASS; 16 tests |
+| Julia production-decay test command recorded above | PASS; 648 assertions |
+| Rational auditor command recorded above | PASS; all 40 approved samples |
+| Repository/link checker and harness unittest commands recorded above | PASS; repository/links and 6 harness tests |
+| Python and Julia package smoke commands recorded above | PASS; 2 assertions/tests each |
+| Structured baseline comparison with `1982357` | PASS; only catalog status changed; native report computation rows unchanged |
+| `git diff --exit-code 1982357 -- spec packages conformance/bioir conformance/python conformance/julia conformance/canonicalization` | PASS; existing contracts, packages and unrelated catalogs/tools unchanged |
+| `git diff --check` and `git diff --cached --check` | PASS |
+| Hosted checks for the final approval-record commit | NOT RUN locally; checked separately in GitHub |
+
+Scientific acceptance follows the explicit human instruction above, independently
+of automated check results. Earlier pending gates for P01/P03 and future execution
+contracts remain separate from this oracle acceptance.

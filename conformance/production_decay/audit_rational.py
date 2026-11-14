@@ -121,7 +121,7 @@ def main():
         results = audit_catalog(args.catalog)
         for identity in results:
             print(f'PASS: {identity}')
-        print(f'PASS: {len(results)} samples; catalog_sha256={hashlib.sha256(args.catalog.read_bytes()).hexdigest()}; REVIEW_REQUIRED')
+        print(f'PASS: {len(results)} samples; catalog_sha256={hashlib.sha256(args.catalog.read_bytes()).hexdigest()}; fixture_status={json.loads(args.catalog.read_bytes())["status"]}')
     except (ValueError, OSError) as exc:
         print(f'FAIL: {exc}', file=sys.stderr)
         return 1

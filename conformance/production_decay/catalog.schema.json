@@ -6,7 +6,7 @@
   "required": ["format", "status", "contract", "units", "cases"],
   "properties": {
     "format": {"const": "production-decay-catalog-v1"},
-    "status": {"const": "REVIEW_REQUIRED"},
+    "status": {"enum": ["REVIEW_REQUIRED", "APPROVED"]},
     "contract": {"const": "spec/fir/proposals/ADR-P02.md"},
     "units": {"const": {"alpha": "molecule/s", "beta": "1/s", "x0": "molecule", "time": "s", "expected": "molecule"}},
     "cases": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/case"}}

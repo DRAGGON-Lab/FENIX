@@ -1,6 +1,6 @@
 {
   "format": "production-decay-catalog-v1",
-  "status": "REVIEW_REQUIRED",
+  "status": "APPROVED",
   "contract": "spec/fir/proposals/ADR-P02.md",
   "units": {
     "alpha": "molecule/s",

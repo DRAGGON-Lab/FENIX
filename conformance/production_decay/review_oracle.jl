@@ -115,7 +115,7 @@ function main(args)
     report = make_report()
     mkpath(dirname(args[2]))
     write(args[2], JSON.json(report; pretty=true) * "\n")
-    println("PASS: $(length(report["rows"])) computations; candidate expectations remain REVIEW_REQUIRED")
+    println("PASS: $(length(report["rows"])) computations; fixture_status=$(load_catalog()["status"])")
 end
 end
 

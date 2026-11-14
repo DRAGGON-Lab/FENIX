@@ -1,10 +1,11 @@
-# Production–decay analytical oracle — review required
+# Production–decay analytical oracle — approved
 
 Issue [#15](https://github.com/DRAGGON-Lab/FENIX/issues/15), under the ratified
-[ADR-P02 M0 model](../../spec/fir/proposals/ADR-P02.md). This derivation and the
-[candidate catalog](../../conformance/production_decay/catalog.json) are
-**REVIEW_REQUIRED**. Neither scientific fixture approval nor ADR-P04 solver
-thresholds follow from agreement of the reference tools.
+[ADR-P02 M0 model](../../spec/fir/proposals/ADR-P02.md). The human PI accepted this derivation and the concrete
+[reference catalog](../../conformance/production_decay/catalog.json) at revision
+`1982357b3deed88e8e0cd8f745effd5c3bd960b3`; see the
+[acceptance record](../verification/ep01-production-decay-oracle.md#human-pi-acceptance-recorded).
+**Current status: APPROVED.** P04 solver thresholds remain a separate decision.
 
 ## Model, units and assumptions
 

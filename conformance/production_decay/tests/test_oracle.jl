@@ -11,6 +11,7 @@ end
 
 @testset "Candidate mathematical oracle" begin
     catalog = load_catalog()
+    @test catalog["status"] == "APPROVED"
     report = make_report()
     expected_keys = Set((c["id"], s["time_bits"], p) for c in catalog["cases"]
                         for s in c["samples"] for p in (512, 1024))
@@ -87,7 +88,7 @@ end
         push!(mutations, data)
     end
     data = deepcopy(catalog); data["units"]["alpha"] = "molecule/min"; push!(mutations, data)
-    data = deepcopy(catalog); data["status"] = "APPROVED"; push!(mutations, data)
+    data = deepcopy(catalog); data["status"] = "UNKNOWN"; push!(mutations, data)
     data = deepcopy(catalog); push!(data["cases"], deepcopy(data["cases"][1])); push!(mutations, data)
     data = deepcopy(catalog); push!(data["cases"][1]["samples"], deepcopy(data["cases"][1]["samples"][1])); push!(mutations, data)
     data = deepcopy(catalog)

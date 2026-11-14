@@ -6,12 +6,12 @@ Development tools are available through Python's locked development group and
 the separately pinned [Julia environment](julia/README.md). These environments
 include independent P01 reference validators and a
 [candidate fixture catalog](bioir/README.md) awaiting PI review. Native library
-validators and approved normative fixtures are not yet available.
+validators and approved normative P01 fixtures are not yet available.
 
-The [production–decay candidate oracle](production_decay/README.md) derives the
+The [production–decay oracle](production_decay/README.md) derives the
 ratified P02 ODE and checks fixed reference values with independent Python and
-Julia multiprecision evaluators. It remains REVIEW_REQUIRED; solver thresholds
-and failure policy await ADR-P04.
+Julia multiprecision evaluators. The human PI accepted its concrete reference
+fixtures; solver thresholds and failure policy await ADR-P04.
 
 ## Parser and validator fixture catalog gate
 

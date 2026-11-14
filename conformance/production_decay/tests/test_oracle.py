@@ -31,6 +31,7 @@ class OracleTests(unittest.TestCase):
         cls.report = oracle.make_report()
 
     def test_complete_coverage_and_fixed_candidates(self):
+        self.assertEqual(self.catalog['status'], 'APPROVED')
         jsonschema.Draft202012Validator.check_schema(oracle.read_json(ROOT / 'catalog.schema.json'))
         jsonschema.validate(self.catalog, oracle.read_json(ROOT / 'catalog.schema.json'))
         expected = {(c['id'], s['time_bits'], p)
@@ -149,7 +150,7 @@ class OracleTests(unittest.TestCase):
         duplicate_zero['time_bits'] = bits(-0.0)
         data['cases'][0]['samples'].append(duplicate_zero)
         mutations.append(data)
-        data = copy.deepcopy(self.catalog); data['status'] = 'APPROVED'
+        data = copy.deepcopy(self.catalog); data['status'] = 'UNKNOWN'
         mutations.append(data)
         for index, data in enumerate(mutations):
             with self.subTest(index=index), tempfile.TemporaryDirectory() as tmp:

@@ -59,7 +59,7 @@ def load_catalog(path=CATALOG):
     catalog = read_json(path)
     fields(catalog, ('format', 'status', 'contract', 'units', 'cases'), 'catalog')
     if (catalog['format'] != 'production-decay-catalog-v1'
-            or catalog['status'] != 'REVIEW_REQUIRED'
+            or catalog['status'] not in ('REVIEW_REQUIRED', 'APPROVED')
             or catalog['contract'] != 'spec/fir/proposals/ADR-P02.md'
             or catalog['units'] != UNITS):
         raise ValueError('catalog format, review status, contract or units mismatch')
@@ -205,7 +205,7 @@ def compare_reports(python_report, julia_report, catalog_path=CATALOG):
     return {'status': 'PASS', 'samples': len(residuals), 'computations': 4 * len(residuals),
             'agreement_significant_digits': 70,
             'max_absolute_spread_molecule': str(max(residuals)),
-            'fixture_status': 'REVIEW_REQUIRED'}
+            'fixture_status': load_catalog(catalog_path)['status']}
 
 
 def main():
@@ -223,7 +223,7 @@ def main():
             report = make_report()
             args.report.parent.mkdir(parents=True, exist_ok=True)
             args.report.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
-            print(f'PASS: {len(report["rows"])} computations; candidate expectations remain REVIEW_REQUIRED')
+            print(f'PASS: {len(report["rows"])} computations; fixture_status={load_catalog()["status"]}')
     except (ValueError, OSError, ArithmeticError) as exc:
         print(f'FAIL: {exc}', file=sys.stderr)
         return 1

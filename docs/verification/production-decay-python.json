@@ -6,8 +6,8 @@
     "implementation": "CPython",
     "libmpdec": "4.0.0"
   },
-  "catalog_sha256": "ccf91c358d0a34eb793942e23790e539360bbb658489d4f91563f11d36b5dac2",
-  "evaluator_sha256": "187aa7cdf8faa4d633a71f5fecd5ead8e0920c9b30c1e15fbd391777dc936818",
+  "catalog_sha256": "468c05a59fc23106dfc2e9e3454e9709ef0b61c9e130885180ecd4e67a07406d",
+  "evaluator_sha256": "04c4abbc76fac689382c65b61ffeaabb2b34d73740742b433d2ca9072227f0a8",
   "precision_unit": "decimal_digits",
   "rows": [
     {

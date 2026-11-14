@@ -1,12 +1,15 @@
-# Candidate production–decay mathematical oracle
+# Approved production–decay mathematical oracle
 
-**Status: REVIEW_REQUIRED.** Issue [#15](https://github.com/DRAGGON-Lab/FENIX/issues/15).
+**Status: APPROVED by the human PI.** Issue [#15](https://github.com/DRAGGON-Lab/FENIX/issues/15).
+The human PI accepted the concrete oracle, its 40 numerical reference samples,
+independent evaluators and retained rational audit at reviewed revision
+`1982357b3deed88e8e0cd8f745effd5c3bd960b3`. See the
+[acceptance record](../../docs/verification/ep01-production-decay-oracle.md#human-pi-acceptance-recorded).
 The [derivation and error budget](../../docs/scientific-evidence/production-decay.md)
-follow ratified [ADR-P02](../../spec/fir/proposals/ADR-P02.md). The human PI must
-accept the concrete numerical fixtures separately; P04 solver thresholds remain
-unratified. This directory adds no native modeling API, solver or FIR extension.
+follow ratified [ADR-P02](../../spec/fir/proposals/ADR-P02.md). P04 solver
+thresholds remain separate. This directory adds no native modeling API or solver.
 
-## Fixed candidate catalog
+## Fixed reference catalog
 
 [catalog.json](catalog.json) follows [catalog.schema.json](catalog.schema.json).
 The root contract and units apply to every case and sample. Case IDs are stable;
@@ -36,7 +39,7 @@ Zero is explicitly `"0"`. These are reference-artifact encodings, not FIR syntax
 Coverage is bounded to this case matrix; no guarantee covers every finite input.
 
 Expectations were prepared using an exact rational Taylor sum outside the two
-shipped evaluators and all FENIX packages. They are fixed review candidates;
+shipped evaluators and all FENIX packages. They are fixed approved references;
 neither evaluator rewrites them and no regeneration command is shipped.
 
 The retained [read-only rational auditor](audit_rational.py) reconstructs the
@@ -85,13 +88,16 @@ finite decimal notation (optional fractional part and exponent), at most 4096
 characters, with at most four exponent digits. Reports are separate artifacts;
 `--report` may not overwrite either evaluator, the catalog or its schema.
 
+The artifact schema accepts REVIEW_REQUIRED and APPROVED status; this catalog is
+APPROVED. Checks report the catalog status rather than granting approval.
+
 The comparator requires the current catalog/source checksums, distinct Python
 and Julia identities, and complete unique sample coverage at both prescribed
 precisions. Each of the four computations must independently round half-even to
 the fixed 50-digit expectation, and all four must agree after half-even rounding
 to 70 significant digits. Stale/duplicate/missing/altered rows and missing
 precision runs fail. Precision agreement is observed stability, not a certified
-interval enclosure or fixture approval.
+interval enclosure. Fixture approval follows the human decision recorded above.
 
 The existing Python and Julia CI jobs run tests and upload separate reports.
 `Candidate production-decay reference agreement` downloads both and compares
