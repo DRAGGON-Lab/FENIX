@@ -1,0 +1,36 @@
+## Objective and linked issue
+
+One issue; describe expected behavior and explicit non-goals.
+
+## Scientific contract review
+
+- Approved decisions / ADR(s):
+- Changes BioIR/FIR semantics, units, canonicalization, capability declarations, mathematical golden data or compatibility? **Yes / No**
+- If yes, link **human PI-approved ADR**, independent references and updated test evidence before merging.
+
+## Changes and dependencies
+
+List touched files and why. Document new dependencies and compatibility impact.
+
+## Tests actually executed
+
+| Runtime | Exact command | Outcome |
+|---|---|---|
+| Python-only | | Not run |
+| Julia-only | | Not run |
+| Mathematical conformance | | Not run |
+
+## Positive/negative behavior and scientific evidence
+
+State expected success and rejection cases, assumptions and numeric tolerances if applicable.
+
+## Review checklist
+
+- [ ] No unapproved normative or golden-vector changes
+- [ ] Independent installation boundaries preserved
+- [ ] No unsafe serialized callbacks or committed secrets
+- [ ] Small focused change; no unrelated refactors
+- [ ] Documentation updated
+- [ ] Human review and CI results considered before merge
+
+## Limitations / follow-ups
