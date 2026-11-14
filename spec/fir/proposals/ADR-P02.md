@@ -41,21 +41,31 @@ The proposed governing mathematics is:
 ```text
 r_production(x) = alpha
 r_decay(x)      = beta * x
-S_production,x = +1
-S_decay,x      = -1
+S_x,production = +1
+S_x,decay      = -1
 x'(t)          = alpha - beta * x(t),    x(0) = x0
 ```
 
-`r` denotes deterministic molecular-count flux per representative cell per
-second; `S` is dimensionless molecular stoichiometry. Molecular count is the
-state quantity, not concentration. This describes the intended model and units;
+The reaction–equation invariant is
+\(\dot{\mathbf{x}}=S\mathbf{r}(\mathbf{x},\boldsymbol{\theta})\).
+Here `x` in bold is the state vector, `theta` is the resolved parameter vector,
+`r` is the vector of deterministic molecular-count fluxes per representative
+cell per second, and `S` is the dimensionless stoichiometry matrix. Rows of `S`
+are paired with explicit state IDs and columns with explicit reaction IDs;
+array position alone must not establish that pairing. For this M0 model, the
+state row is `[x]`, the reaction columns are `[production, decay]`, the parameter
+vector is `[alpha, beta]`, `S = [+1, -1]`, and `r = [alpha, beta*x]`.
+These are explanatory orderings, not P03 canonical array-order rules.
+Molecular count is the state quantity, not concentration. This describes the intended model and units;
 [issue #15](https://github.com/DRAGGON-Lab/FENIX/issues/15) must independently
 derive and evaluate its analytical reference, including `beta = 0` and limits.
 This proposal contains no solver tolerance or numerical accuracy claim.
 
 The M0 compiler will bind its only species to mathematical symbol `x`, and its
 production/decay parameter roles to `alpha`/`beta`. These are FIR-local symbols,
-not source Design identifiers. Source labels and revision digests are provenance.
+not source Design identifiers. This deliberately abstracts biological species
+identity into a generic mathematical symbol for M0. Source species identities,
+labels and revision digests belong to provenance.
 References are explicitly typed as state or parameter; an unqualified string
 must not be resolved by guessing between namespaces. Reaction identifiers are
 `production` and `decay`. Direct observable IDs retain the scientific observable
@@ -81,6 +91,7 @@ supply missing mathematics through provenance, author metadata or runtime state.
 | `provenance.design_digest` | Nonsemantic exact source Design content reference |
 | `provenance.experiment_digest` | Nonsemantic exact source Experiment content reference |
 | `provenance.compiler` | Nonsemantic compiler name/version record |
+| `provenance.symbol_map.states[]` | Nonsemantic mapping from FIR state to Design-qualified species, port and compartment |
 
 States have `quantity: molecular_count`, `scope: representative_cell`,
 `unit: molecule`. The initial value is mathematical experiment data, not solver
@@ -100,10 +111,49 @@ version/domain encoding and bytes before any implementation emits normative FIR
 digests. Examples intentionally contain no claimed FIR digest. Do not substitute
 a BioIR digest, Python serializer output or another compiler's output as an oracle.
 
-Committed FIR mathematics is immutable. Different provenance records can describe
-the same mathematical model identity. A requested execution profile or solver
-change does not create a different FIR model; altered resolved mathematics does.
-Integrity and author authentication remain distinct, as in P01.
+FIR identity is resolved mathematics **plus its named observable interface**.
+Equal kinetics alone are insufficient: initial quantities, units, scope,
+assumptions, capabilities, observables and all other semantic fields must also
+agree. In particular, renaming only observable `amount_x` to `protein_amount`
+changes semantic model identity even if its state, units and kinetics are equal.
+P03 normalization and hashing must preserve this distinction.
+
+GFP and LacI Designs may share M0 FIR identity when their complete semantic
+payloads match. Their BioIR identities and provenance remain distinct. Shared
+FIR identity establishes neither biological equivalence nor interchangeability.
+This M0 binding establishes no general variable-renaming or network-isomorphism
+rules for future models.
+
+Committed FIR mathematics and its named interface are immutable. Different
+provenance records can describe the same model identity. A requested execution
+profile or solver change does not create a different FIR model; altered semantic
+payload does. Integrity and author authentication remain distinct, as in P01.
+
+## Source mapping and producer contract
+
+Standalone mathematical FIR may omit `provenance`. A BioIR compiler-produced
+envelope must include `provenance.design_digest`, `provenance.experiment_digest`
+and `provenance.symbol_map.states`. This is a producer obligation checked against
+the supplied source documents, not a self-declared origin flag. The general
+schema intentionally accepts standalone envelopes without those fields; schema
+acceptance alone does not establish compiler-output completeness.
+
+Each state-map entry contains `fir_state_id`, `bioir_species_id`, `bioir_port_id`
+and `bioir_compartment_id`. A supplied M0 map must cover `x` exactly once, with no
+extra state entries. The map is qualified by `provenance.design_digest`, which
+is required whenever a map is supplied. Validate both digests against the exact
+supplied Design and Experiment content under P01, including the Experiment's
+exact Design reference; resolve
+the species in that Design, the port within that species (not globally), and
+the compartment in that Design. Require the species' compartment to match the
+mapped compartment and the port to be its P01 molecular-count port. Reject
+unresolved or inconsistent mappings; do not search other revisions or Designs.
+
+These are separate provenance checks and cannot supply missing mathematics or
+repair invalid `model` fields. All mapping fields, including their qualifying
+Design digest, are excluded from mathematical identity. Future hierarchical or
+additional-symbol mappings require versioned contract extensions; this map does
+not define mappings for arbitrary networks, parameters or reactions.
 
 ## Portable expressions and consistency checks
 
@@ -119,15 +169,23 @@ Exactly one reaction of each required role and exactly one equation for `x`
 must exist. Stoichiometry is respectively `+1` and `-1` for `x`.
 
 Reactions and equations deliberately provide two inspectable representations of
-the same mathematics. A semantic validator must reject disagreement rather than
-choosing one as authoritative at runtime. Dimensional consistency requires each
-flux/RHS to have unit `molecule/s`, using the declared parameter/state units.
+the same mathematics and must satisfy the invariant above. Validate typed
+references, exact role coverage, stoichiometric signs, flux templates and the
+RHS template together. A semantic validator must reject disagreement; neither
+representation may silently override or repair the other. Dimensional consistency
+requires each flux/RHS to have unit `molecule/s`, using the declared parameter
+and state units.
 Source function/port resolution must already satisfy P01; this FIR does not
-carry unresolved source ports or repair an invalid Design/Experiment.
+carry unresolved mathematical inputs or repair an invalid Design/Experiment.
+Source port IDs in provenance are traceability references, not mathematical inputs.
 
 This is exact template recognition, not a promise of general algebraic equivalence.
 Reassociated, commuted or differently encoded expressions are not silently
 simplified; any additional accepted encoding requires an approved contract.
+No numerical spot checks or general symbolic algebra may substitute for these
+exact M0 checks. Future multi-species contracts must specify derivative
+construction from reactions, state/reaction ordering, permitted comparison rules
+and negative fixtures before implementation.
 The schema checks node structure only. It does not prove expression references,
 units, exact role coverage or reaction/equation agreement.
 
@@ -168,9 +226,14 @@ are marked proposed until human scientific review and ratification.
 | Resolved production/degradation example | Accept M0 mathematical structure and exact semantic template |
 | Zero production, zero decay, fractional nonnegative initial value | Accept deterministic mathematics; no implied SSA support |
 | Change compiler/source digests in provenance only | Preserve eventual FIR model identity under P03 |
+| [GFP and LacI source pair](examples/README.md) with identical complete `model` objects | Preserve M0 FIR identity; keep distinct BioIR identities and provenance |
+| [Rename only the observable](examples/observable-renamed.json) | Different semantic identity; P03 must preserve the named interface |
 | Request different execution settings separately | Preserve eventual FIR model identity; check supported capabilities separately |
 | [Unsupported SSA declaration](examples/invalid-ssa.json) | Reject this subset's capability declaration |
 | [Broken RHS state reference](examples/invalid-reference.json) | Reject unresolved mathematical state reference; schema structure alone may pass |
+| [Reversed production sign](examples/invalid-production-sign.json) | Structurally accept; semantically reject stoichiometry/equation disagreement |
+| [Swapped rate references](examples/invalid-rate-references.json) | Structurally accept; semantically reject role/unit/consistency failure |
+| [Conflicting RHS](examples/invalid-equation.json) | Structurally accept; semantically reject equation disagreement despite valid references and units |
 | Wrong unit, unknown namespace or duplicate local IDs | Reject with field path; never convert or repair |
 | Missing/repeated reaction role or conflicting equation | Reject semantic consistency |
 | Negative/nonfinite parameter or initial value | Reject quantity; raw Unicode/number handling must follow a separately explicit applicable parser contract |
@@ -180,6 +243,8 @@ Schema/semantic fixtures must be separately reviewed and executed by independent
 Python and Julia validators after ratification. The larger normative rejection
 catalog is #17 work. P03 must define the FIR raw-input/numeric contract explicitly;
 this proposal does not inherit every P01 lexical restriction without that review.
+The [example review notes](examples/README.md) identify each isolated defect's
+paths and the separate structural, producer and source-resolution checks.
 
 ## Alternatives and review tradeoffs
 

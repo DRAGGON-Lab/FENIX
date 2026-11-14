@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "urn:fenix:proposed:fir:m0-subset:0.1.0",
   "title": "PROPOSED ADR-P02 M0 FIR subset; not ratified",
-  "$comment": "Structural proposal only. Semantic reference/role/unit/consistency checks require ADR-P02 ratification. Exact normalization and FIR digests require ADR-P03.",
+  "$comment": "Structural proposal only. Semantic reference/role/unit/consistency checks require ADR-P02 ratification. Exact normalization and FIR digests require ADR-P03. Standalone FIR may omit provenance; BioIR compiler outputs must include both source digests and the state map under the ADR producer contract.",
   "type": "object",
   "properties": {
     "model": {
@@ -127,10 +127,32 @@
             "version"
           ],
           "additionalProperties": false
+        },
+        "symbol_map": {
+          "type": "object",
+          "properties": {
+            "states": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/state_mapping"
+              },
+              "minItems": 1,
+              "maxItems": 1
+            }
+          },
+          "required": [
+            "states"
+          ],
+          "additionalProperties": false
         }
       },
       "required": [],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "dependencies": {
+        "symbol_map": [
+          "design_digest"
+        ]
+      }
     }
   },
   "required": [
@@ -362,6 +384,30 @@
         "id",
         "state",
         "unit"
+      ],
+      "additionalProperties": false
+    },
+    "state_mapping": {
+      "type": "object",
+      "properties": {
+        "fir_state_id": {
+          "const": "x"
+        },
+        "bioir_species_id": {
+          "$ref": "#/definitions/id"
+        },
+        "bioir_port_id": {
+          "$ref": "#/definitions/id"
+        },
+        "bioir_compartment_id": {
+          "$ref": "#/definitions/id"
+        }
+      },
+      "required": [
+        "fir_state_id",
+        "bioir_species_id",
+        "bioir_port_id",
+        "bioir_compartment_id"
       ],
       "additionalProperties": false
     }

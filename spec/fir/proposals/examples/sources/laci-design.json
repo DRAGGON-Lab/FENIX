@@ -1,0 +1,61 @@
+{
+  "content": {
+    "kind": "Design",
+    "schema_version": "0.1.0",
+    "id": "production_decay_LacI",
+    "revision": 1,
+    "compartments": [
+      {
+        "id": "cell",
+        "kind": "representative_cell",
+        "volume": {
+          "value": 1e-15,
+          "unit": "L"
+        }
+      }
+    ],
+    "species": [
+      {
+        "id": "LacI",
+        "compartment": "cell",
+        "ports": [
+          {
+            "id": "amount",
+            "kind": "molecular_count"
+          }
+        ]
+      }
+    ],
+    "parameters": [
+      {
+        "id": "alpha",
+        "unit": "molecule/s"
+      },
+      {
+        "id": "beta",
+        "unit": "1/s"
+      }
+    ],
+    "functions": [
+      {
+        "id": "production",
+        "kind": "constitutive_production",
+        "target": {
+          "species": "LacI",
+          "port": "amount"
+        },
+        "parameter": "alpha"
+      },
+      {
+        "id": "decay",
+        "kind": "first_order_decay",
+        "target": {
+          "species": "LacI",
+          "port": "amount"
+        },
+        "parameter": "beta"
+      }
+    ]
+  },
+  "digest": "3c545ff323e247d21a7f0161ab221fc5bf1ed6d23c2eab9a0686f12b5d26e14d"
+}

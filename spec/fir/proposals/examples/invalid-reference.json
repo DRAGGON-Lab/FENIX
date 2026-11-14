@@ -47,7 +47,7 @@
           },
           "right": {
             "op": "state",
-            "id": "missing"
+            "id": "x"
           }
         }
       }
@@ -97,6 +97,16 @@
   },
   "provenance": {
     "design_digest": "06b07d41b4974df77c7a992ca46c6a281099d0bd435a3ce05a54c022e91a394e",
-    "experiment_digest": "226387b2feefb26979cdebaba61e179b4a7e258ec0c6dd10bf4180f1c97e53ae"
+    "experiment_digest": "226387b2feefb26979cdebaba61e179b4a7e258ec0c6dd10bf4180f1c97e53ae",
+    "symbol_map": {
+      "states": [
+        {
+          "fir_state_id": "x",
+          "bioir_species_id": "x",
+          "bioir_port_id": "amount",
+          "bioir_compartment_id": "cell"
+        }
+      ]
+    }
   }
 }

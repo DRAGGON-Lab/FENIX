@@ -1,0 +1,49 @@
+{
+  "content": {
+    "kind": "Experiment",
+    "schema_version": "0.1.0",
+    "id": "baseline_GFP",
+    "revision": 1,
+    "design": {
+      "id": "production_decay_GFP",
+      "revision": 1,
+      "digest": "7bf9885f6430e0d8a3670f5429e840533bb10a8c0898755ecb5153b207e6b24f"
+    },
+    "parameters": [
+      {
+        "parameter": "alpha",
+        "quantity": {
+          "value": 10,
+          "unit": "molecule/s"
+        }
+      },
+      {
+        "parameter": "beta",
+        "quantity": {
+          "value": 0.1,
+          "unit": "1/s"
+        }
+      }
+    ],
+    "initial_counts": [
+      {
+        "species": "GFP",
+        "quantity": {
+          "value": 0,
+          "unit": "molecule"
+        }
+      }
+    ],
+    "observables": [
+      {
+        "id": "amount_x",
+        "target": {
+          "species": "GFP",
+          "port": "amount"
+        }
+      }
+    ],
+    "interventions": []
+  },
+  "digest": "40395621bb728def4bbff86f95dfb62ec868db8d533c5edd2c5ae23ab480c434"
+}

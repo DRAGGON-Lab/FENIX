@@ -1,6 +1,6 @@
 # FIR mathematical schema — pending ADR-P02
 
-Future normative FIR defines resolved states, count-based mathematical equations, reactions, applicable stochastic propensities, observations, interventions and explicit execution capability declarations. FIR is backend independent, immutable and mathematical. Its semantic hash excludes provenance.
+Future normative FIR defines resolved states, count-based mathematical equations, reactions, applicable stochastic propensities, observations, interventions and explicit execution capability declarations. FIR is backend independent and immutable; its identity includes resolved mathematics and the named observable interface. Its semantic hash excludes provenance, including source symbol mappings.
 
 **No schema has been ratified.** ODE validity alone never implies SSA support.
 

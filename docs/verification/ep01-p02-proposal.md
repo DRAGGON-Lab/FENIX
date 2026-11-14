@@ -78,3 +78,107 @@ and tab in `conformance/bioir/inputs/whitespace.input` imported from main. Its
 bytes were confirmed identical to main and preserved. The staged formatting
 check excludes only that one raw-input fixture; scientific fixture checks are
 not excluded or changed. The normal working-tree whitespace check also passed.
+
+## Identity, mapping and reaction–equation clarification
+
+Date: 2026-11-14. Base revision:
+`147c9c8a05e0087e9fb1e87f536cffa3bd1be1af`, existing branch
+`docs/13-fir-p02-proposal`. Checks ran on the dirty proposal revision before
+committing. The earlier evidence above is historical and is preserved.
+
+Revised source fingerprint:
+`97f61274429769c129d95f0c1e0d0f32324275f4371a31b1811de4fc724abce1`.
+The algorithm is unchanged: SHA-256 of sorted relative path + NUL + bytes + NUL
+for every file under `spec/fir/proposals/`, plus `spec/fir/README.md` and
+`docs/approved-decisions.md` (20 files). This includes the new structural review
+scripts and P02-local BioIR examples; this report is excluded. This is a source
+fingerprint, not a FIR model digest or canonical vector.
+
+Scope: proposed identity and producer/source-map contracts, reaction–equation
+invariant and exact M0 consistency rules, illustrative positive/negative examples
+and structural review scripts. No compiler, FIR semantic/provenance validator,
+solver, normalization or hashing implementation was added. ADR-P02 remains
+**PROPOSED; human PI ratification pending**.
+
+Runtime: uv 0.11.29, CPython 3.12.13/jsonschema 4.26.0/rfc8785 0.1.4;
+Julia 1.10.13/JSON 1.13.4/JSONSchema 1.6.0. All uv commands used
+`UV_CACHE_DIR=/private/tmp/fenix-uv-cache`. All Julia commands used
+`JULIA_DEPOT_PATH=/private/tmp/fenix-julia-depot`, `JULIA_PKG_OFFLINE=true` and
+`/private/tmp/julia-1.10.13/bin/julia --startup-file=no` in place of `julia`.
+Commands ran independently from the repository root.
+
+| Executed command/check | Outcome |
+|---|---|
+| `uv sync --project packages/python --locked --offline` | PASS; locked environment available without fetching |
+| `uv run --project packages/python --locked --offline python spec/fir/proposals/review_examples.py` | PASS; Draft-07 meta-schema check, all 9 FIR examples, 4 P01 source structures, identity/isolation and mapping assertions |
+| `julia --project=conformance/julia spec/fir/proposals/review_examples.jl` | PASS; 42 independent structural assertions |
+| Existing native P01 validators on original, GFP and LacI source pairs (commands below) | PASS in Python and Julia; exact Design references and both source content digests checked |
+| `uv run --project packages/python --locked --offline python scripts/check_repo.py` | PASS; repository links and harness |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v` | PASS; 6 tests |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v` | PASS; 2 smoke tests |
+| `julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'` | PASS; 2 smoke tests |
+| `git diff --exit-code 147c9c8a05e0087e9fb1e87f536cffa3bd1be1af -- spec/bioir conformance packages` | PASS; P01 specifications, fixtures, reference tools and package files unchanged |
+| `git diff --check` and `git diff --cached --check` | PASS; proposal whitespace |
+| FIR reference/role/unit/reaction–equation semantic validation and source-map resolution | NOT RUN; no implementation authorized before ratification |
+| FIR normalization, bytes or hashes | NOT RUN; ADR-P03 required |
+| Human PI ratification and independent scientific fixture/semantic review | PENDING |
+
+Every executed final check above exited 0. The GFP and LacI complete `model`
+objects equal each other and the base model; both BioIR source digests and the
+mapped species differ. The standalone observable-renaming example differs only
+at the semantic observable ID. No identity hash was computed to establish these
+payload comparisons.
+
+All three consistency negatives and the corrected RHS-reference negative pass
+both structural validators. Whole-envelope comparisons against independently
+mutated base copies confirm each contains only its documented defect, including
+unchanged provenance. Their expected semantic rejection paths and reasons are in
+the [example notes](../../spec/fir/proposals/examples/README.md). Structural
+acceptance is not a claim of mathematical validity.
+
+Both scripts reject absent/duplicate map entries, missing state-map fields,
+wrong FIR state ID, missing qualifying Design digest and unsupported mapping
+extensions. They accept standalone FIR and partial provenance, as required by
+the general schema. They also structurally accept unresolved source species,
+port and compartment IDs: post-ratification provenance validation must resolve
+these against the exact supplied Design and check the species-scoped port and
+compartment relationship. Compiler completeness remains a producer obligation,
+not an origin flag or a structural-schema claim.
+
+### Reproduce the separate P01 source checks
+
+These commands exercise existing P01 tools only. They do not implement FIR
+source-map resolution or change the P01 fixture catalog.
+
+```sh
+uv run --project packages/python --locked --offline python - <<'PY'
+import sys
+from pathlib import Path
+sys.path.insert(0, 'conformance/python')
+from p01 import strict_parse, validate_design, validate_experiment
+for directory, prefix in [(Path('spec/bioir/proposals/examples'), ''), (Path('spec/fir/proposals/examples/sources'), 'gfp-'), (Path('spec/fir/proposals/examples/sources'), 'laci-')]:
+    design = strict_parse((directory / (prefix + 'design.json')).read_bytes())
+    experiment = strict_parse((directory / (prefix + 'experiment.json')).read_bytes())
+    validate_design(design)
+    validate_experiment(experiment, design)
+print('PASS: 3 exact P01 Design/Experiment pairs, including source content digests.')
+PY
+```
+
+```sh
+julia --project=conformance/julia - <<'JL'
+include("conformance/julia/p01.jl")
+using .P01Reference
+for (directory, prefix) in [("spec/bioir/proposals/examples", ""), ("spec/fir/proposals/examples/sources", "gfp-"), ("spec/fir/proposals/examples/sources", "laci-")]
+    design = strict_parse(read(joinpath(directory, prefix * "design.json")))
+    experiment = strict_parse(read(joinpath(directory, prefix * "experiment.json")))
+    validate_design(design)
+    validate_experiment(experiment, design)
+end
+println("PASS: 3 exact P01 Design/Experiment pairs, including independently encoded source content digests.")
+JL
+```
+
+No approved golden vectors were emitted or changed. Issue #13 remains subject
+to human PI ratification and subsequent independent semantic validation; these
+structural checks do not close that gate.
