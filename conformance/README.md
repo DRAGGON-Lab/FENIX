@@ -25,8 +25,8 @@ and rejection fixtures. A [P01-only candidate catalog](bioir/README.md) is now
 available with independent native reports; review and fixture approval are still
 required. ADR-P02 now ratifies the M0 FIR contract; independent FIR fixture/semantic
 validation and fixture approval remain outstanding. ADR-P03 ratifies FIR
-normalization and byte identity; independent canonical reference-vector approval
-remains pending.
+normalization and byte identity; the human PI accepted the bounded canonicalization reference vectors; native
+parser/normalizer implementation approval remains separate.
 
 - Each fixture must identify its stable case ID, applicable contract/version and
   operation or validation stage, original input, explicit accept/reject outcome,
@@ -57,6 +57,7 @@ JSON Schema example probes and package smoke tests do not satisfy this gate.
 
 The [issue #16 canonicalization catalog](canonicalization/README.md) now maps
 all nine serialization requirements to executable case IDs and records exact
-UTF-8 output bytes in independent Python/ECMAScript reports. The vectors remain
-REVIEW_REQUIRED; native FIR parsing/normalization and the broader #17 rejection
+UTF-8 output bytes in independent Python/ECMAScript reports. The human PI
+accepted these vectors at reviewed revision `a58ea83`; the catalog is APPROVED.
+Native FIR parsing/normalization and the broader #17 rejection
 catalog are separate work. See the [issue #16 evidence](../docs/verification/ep01-canonicalization-vectors.md).

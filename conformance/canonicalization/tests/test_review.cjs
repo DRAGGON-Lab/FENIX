@@ -44,3 +44,21 @@ test('artifact and evaluator outputs are protected through aliases', () => {
     assert.throws(() => writeReport(path.join(root, 'inputs', 'new.input'), {}));
   } finally {fs.rmSync(tmp, {recursive:true, force:true});}
 });
+
+test('both supported catalog statuses preserve rows and reject unknown status', () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'fenix-p03-status-'));
+  try {
+    fs.cpSync(root, tmp, {recursive:true});
+    const catalog = JSON.parse(fs.readFileSync(path.join(tmp, 'catalog.json')));
+    const originalRows = review().cases;
+    for (const status of ['REVIEW_REQUIRED', 'APPROVED']) {
+      catalog.status = status;
+      fs.writeFileSync(path.join(tmp, 'catalog.json'), JSON.stringify(catalog));
+      const report = review(tmp);
+      assert.equal(report.fixture_status, status);
+      assert.deepEqual(report.cases, originalRows);
+    }
+    catalog.status = 'UNKNOWN';
+    assert.throws(() => validateCatalog(catalog));
+  } finally {fs.rmSync(tmp, {recursive:true, force:true});}
+});

@@ -1,4 +1,4 @@
-"""Check candidate serialization artifacts, never normalize or validate FIR semantics."""
+"""Check serialization reference artifacts, never normalize or validate FIR semantics."""
 import argparse
 import hashlib
 from importlib.metadata import version
@@ -65,12 +65,13 @@ def load_json(raw):
 
 
 def provenance(directory, implementation):
+    catalog_raw = (directory / 'catalog.json').read_bytes()
     return {
         'report_version': 1,
-        'catalog_sha256': sha((directory / 'catalog.json').read_bytes()),
+        'catalog_sha256': sha(catalog_raw),
         'catalog_schema_sha256': sha((directory / 'catalog.schema.json').read_bytes()),
         'evaluator_sha256': sha((directory / IMPLEMENTATIONS[implementation]).read_bytes()),
-        'fixture_status': 'REVIEW_REQUIRED',
+        'fixture_status': json.loads(catalog_raw)['status'],
         'implementation': implementation,
     }
 
@@ -155,6 +156,7 @@ def compare(reports, directory=HERE):
         for row in expected['cases']:
             if index[row['id']] != row:
                 raise ValueError('Report stage/outcome/bytes/digest mismatch: ' + row['id'])
+    return expected['fixture_status']
 
 
 def write_report(destination, report, directory=HERE):
@@ -174,10 +176,10 @@ if __name__ == '__main__':
     parser.add_argument('--compare', nargs=2, type=Path)
     args = parser.parse_args()
     if args.compare:
-        compare([json.loads(p.read_text()) for p in args.compare])
-        print('PASS: independent candidate serialization reports match; FIR validation/normalization NOT RUN.')
+        status = compare([json.loads(p.read_text()) for p in args.compare])
+        print(f'PASS: independent serialization reports match; fixture_status={status}; FIR validation/normalization NOT RUN.')
     else:
         report = review()
         if args.report:
             write_report(args.report, report)
-        print(f"PASS: {len(report['cases'])} catalog entries inspected; FIR validation/normalization NOT RUN.")
+        print(f"PASS: {len(report['cases'])} catalog entries inspected; fixture_status={report['fixture_status']}; FIR validation/normalization NOT RUN.")

@@ -3,7 +3,10 @@
   "type": "object",
   "properties": {
     "status": {
-      "const": "REVIEW_REQUIRED"
+      "enum": [
+        "REVIEW_REQUIRED",
+        "APPROVED"
+      ]
     },
     "contract": {
       "const": "ADR-P03/0.1.0"

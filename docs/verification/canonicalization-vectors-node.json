@@ -1,9 +1,9 @@
 {
   "report_version": 1,
-  "catalog_sha256": "dc4c17a08b623d0d3a46e134d9b5457c357783a92fc71211a2f9d4e24b38fa15",
-  "catalog_schema_sha256": "8852b54516c13cdc84db9d225e88229ba9795052e95c1511bdb9ef66dd3ebc3b",
-  "evaluator_sha256": "ab6dfd494ede4015c88fefa0833ddac859e300d09036467d712cb56199d386c3",
-  "fixture_status": "REVIEW_REQUIRED",
+  "catalog_sha256": "07858e1595f51a630427ed2a12ef8bfbf9c0df241688bffd5041e9ed424aa970",
+  "catalog_schema_sha256": "f423a666a94b31be30a62e90d32851a1a175995c5ed95781828367d448ba0a8b",
+  "evaluator_sha256": "aa759f8d1a1e082fca4acc0c50d57280bfebb483be384e5eab97563f1925940c",
+  "fixture_status": "APPROVED",
   "implementation": "independent-ecmascript-rfc8785",
   "runtime": {
     "name": "node",

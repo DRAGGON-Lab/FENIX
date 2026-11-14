@@ -1,4 +1,8 @@
-# EP-01 canonicalization reference-vector evidence — REVIEW_REQUIRED
+# EP-01 canonicalization reference-vector evidence — APPROVED
+
+**Current status: APPROVED by the human PI.** See the
+[acceptance record](#human-pi-acceptance-recorded). Earlier pending and
+REVIEW_REQUIRED statements below describe the reviewed implementation revision.
 
 Issue [#16](https://github.com/DRAGGON-Lab/FENIX/issues/16), M-1 / EP-01.
 Date: 2026-11-14. Branch: `conformance/16-canonicalization-vectors`.
@@ -192,3 +196,92 @@ for name in old_paths:
 print('PASS:',len(old_paths),'prior fixture files and',len(old['cases']),'prior cases unchanged')
 PY
 ```
+
+## Human PI acceptance recorded
+
+On **2026-11-14**, the repository user, acting as human PI, explicitly approved
+the reviewed issue #16 change on PR
+[#55](https://github.com/DRAGGON-Lab/FENIX/pull/55):
+
+> I approve this change. Please add the desicion and push the changes.
+
+Approval source: this Codex conversation; no separate personal name or public
+approval URL was supplied. Reviewed revision:
+[`a58ea8345f0e2f641ba152b065ee3fa6d9dc0625`](https://github.com/DRAGGON-Lab/FENIX/commit/a58ea8345f0e2f641ba152b065ee3fa6d9dc0625).
+Reviewed source fingerprint:
+`630be4a98940cf6b1bc33690071878ba50c459c63ac1e5bb9ee49ce4166123b3`.
+Reviewed catalog SHA-256:
+`dc4c17a08b623d0d3a46e134d9b5457c357783a92fc71211a2f9d4e24b38fa15`.
+All six hosted checks passed for that revision in the
+[reviewed CI run](https://github.com/DRAGGON-Lab/FENIX/actions/runs/43640235916).
+
+**Decision: ACCEPTED.** The concrete issue #16 serialization byte/digest vectors,
+coverage map, supplied expected normalized-object identity references and
+independent Python/ECMAScript reference checks are accepted under unchanged
+ADR-P03. The catalog now records **APPROVED**. All 17 contract_only outcomes
+remain **NOT_RUN**; this approval does not establish native FIR parsing, semantic
+validation, input-to-normalized transformation, idempotence or end-to-end round
+trips. P01 fixture gates and broader #17 implementation remain separate.
+This record performs no merge or issue closure; PR #55 remains for human merge.
+
+Only approval/status handling, report provenance and current-status documentation
+change. Catalog/schema and both checkers support REVIEW_REQUIRED and APPROVED;
+unknown status and report/catalog status disagreement remain tested rejections.
+CLI output follows the loaded catalog status. Report format version stays 1.
+All **170 reviewed fixture artifacts** and **84 catalog case records** are
+byte/record-identical to the reviewed revision. Catalog content differs only in
+its status. Both independently refreshed reports have **exactly the same 84 case
+rows**, including bytes/digests and 17 NOT_RUN results. Earlier artifact hashes
+above identify the reviewed revision; the saved report files now carry current
+approval provenance, identified below.
+
+Approval-record source fingerprint:
+`a398b48897c004dacf210491b0376d7d09a524af503a86242b88cac9028abaa0`.
+The sorted path + NUL + bytes + NUL SHA-256 algorithm above now covers all
+non-cache files under `conformance/canonicalization/`, the same three CI/index
+paths, and `PRODUCT.md`, `ARCHITECTURE.md`, `docs/approved-decisions.md`
+(**185 files**). This evidence record and generated report files remain excluded.
+Verification ran dirty on the reviewed revision with the same locked runtime
+versions and cached Julia settings documented above.
+
+| Approval-record artifact | SHA-256 |
+|---|---|
+| Catalog (only status changed) | `07858e1595f51a630427ed2a12ef8bfbf9c0df241688bffd5041e9ed424aa970` |
+| Catalog schema (approval status support) | `f423a666a94b31be30a62e90d32851a1a175995c5ed95781828367d448ba0a8b` |
+| Python evaluator | `5e40179401ed3f47d87d66ac91de6cc0ebb625e0d4b70c26a4766c92abcca5ed` |
+| ECMAScript evaluator | `aa759f8d1a1e082fca4acc0c50d57280bfebb483be384e5eab97563f1925940c` |
+| [Python report](canonicalization-vectors-python.json) | `8e9b9a15804e11f840f5e6a54924b10c6a88b6f5a805a83a4632146b730eb72e` |
+| [Node report](canonicalization-vectors-node.json) | `5833737627a31c34fa56249db779965a18dda27615978c7f8584a1273fc574c2` |
+
+The new approval-status regressions preceded the checker/schema edits: Python
+failed two status subcases (missing CLI status and rejected APPROVED catalog),
+and Node failed the APPROVED case. Both supported statuses now preserve all
+case rows, emit matching status metadata and compare successfully. Unknown
+catalog status and report/catalog status disagreement fail.
+
+| Exact command/check | Acceptance-record outcome |
+|---|---|
+| `uv sync --project packages/python --locked` | PASS; eight existing packages |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s conformance/canonicalization/tests -v` | PASS; 15 tests including supported/unknown approval status and report disagreement |
+| `node --test conformance/canonicalization/tests/test_review.cjs` | PASS; 5 tests |
+| Python report, Node report and comparison commands recorded above | PASS; 84 unchanged rows per report, fixture_status APPROVED; 63 PASS, 4 REJECT_CONFIRMED, 17 NOT_RUN |
+| `uv run --project packages/python --locked --offline python scripts/check_repo.py` | PASS; repository and links |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v` | PASS; 6 harness tests |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v` | PASS; 2 package smoke tests |
+| `julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'` | PASS; 2 package smoke assertions |
+| Structured comparison with `a58ea83` of catalog, 170 fixtures and both saved reports | PASS; status/provenance only; all fixture bytes, 84 case records and both sets of case rows unchanged |
+| `git diff --exit-code a58ea83 -- spec/canonicalization/proposals spec/fir spec/bioir packages conformance/bioir conformance/production_decay conformance/julia conformance/python conformance/reference conformance/compare_reports.py .github/workflows/scaffold-smoke.yml docs/verification/ep01-p03-proposal.md` | PASS; scientific contracts, packages, unrelated catalogs, CI and historical P03 record unchanged |
+| `git diff --check` and `git diff --cached --check` | PASS; final working and staged changes |
+| Hosted checks for approval-record commit | NOT RUN locally; checked separately in GitHub after push |
+
+Scientific acceptance follows the explicit human instruction quoted above,
+independently of automated test results. Fixture contents and ADR-P03 remain
+immutable at their reviewed identities.
+
+A separate read-only review of the acceptance-record follow-up independently
+confirmed the 185-file source fingerprint, all six current artifact hashes,
+170 unchanged fixtures, 84 unchanged catalog case records and unchanged report
+rows. It reran the 15 Python tests, 5 Node tests, report comparison,
+repository/link checker and whitespace checks, finding no issue. Hosted CI
+history was checked by the implementer through GitHub's API; that external
+claim was not independently reverified by the reviewer.

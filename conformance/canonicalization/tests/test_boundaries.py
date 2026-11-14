@@ -60,7 +60,7 @@ class BoundaryTests(unittest.TestCase):
             'runtime': lambda r: r.update(runtime={}),
             'runtime-name': lambda r: r['runtime'].update(name='CPython'),
             'runtime-version': lambda r: r['runtime'].update(version='unknown'),
-            'status': lambda r: r.update(fixture_status='APPROVED'),
+            'status': lambda r: r.update(fixture_status='REVIEW_REQUIRED' if r['fixture_status'] == 'APPROVED' else 'APPROVED'),
         }
         for key in ('catalog_sha256', 'catalog_schema_sha256', 'evaluator_sha256'):
             mutations[key] = lambda r, key=key: r.update({key: '0' * 64})
@@ -84,7 +84,31 @@ class BoundaryTests(unittest.TestCase):
             report['cases'][0].update(canonical_hex='31', canonical_sha256='6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b')
         with self.assertRaises(ValueError): compare(agreed)
 
+    def test_supported_approval_statuses_preserve_rows_and_require_matching_reports(self):
+        for status in ('REVIEW_REQUIRED', 'APPROVED'):
+            with self.subTest(status=status), tempfile.TemporaryDirectory() as tmp:
+                directory = Path(tmp) / 'catalog'
+                shutil.copytree(HERE, directory)
+                catalog = json.loads((directory / 'catalog.json').read_text())
+                catalog['status'] = status
+                (directory / 'catalog.json').write_text(json.dumps(catalog))
+                reports = []
+                for command in ([sys.executable, str(directory / 'review_p03.py')],
+                                ['node', str(directory / 'review_p03.cjs')]):
+                    output = Path(tmp) / 'report.json'
+                    result = subprocess.run(command + ['--report', str(output)], capture_output=True, text=True)
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    self.assertIn(status, result.stdout)
+                    report = json.loads(output.read_text())
+                    self.assertEqual(report['fixture_status'], status)
+                    self.assertEqual(report['cases'], self.python['cases'])
+                    reports.append(report)
+                compare(reports, directory)
+                reports[1]['fixture_status'] = 'REVIEW_REQUIRED' if status == 'APPROVED' else 'APPROVED'
+                with self.assertRaises(ValueError): compare(reports, directory)
+
     def test_both_catalog_boundaries(self):
+        def unknown_status(c): c['status'] = 'UNKNOWN'
         def missing(c): del c['coverage']['signed-zero']
         def unknown(c): c['coverage']['signed-zero'] = ['unknown']
         def duplicate(c): c['coverage']['signed-zero'] *= 2
@@ -98,7 +122,7 @@ class BoundaryTests(unittest.TestCase):
         def contract_bytes(c): next(x for x in c['cases'] if x['stage'] == 'contract_only')['canonical'] = c['cases'][0]['canonical']
         def digest(c): c['cases'][0]['input']['sha256'] = '0' * 64
         def bit_mismatch(c): c['cases'][0]['binary64_bits'] = '8000000000000000'
-        for mutate in (missing, unknown, duplicate, unexecuted, duplicate_id, stage, no_bytes,
+        for mutate in (unknown_status, missing, unknown, duplicate, unexecuted, duplicate_id, stage, no_bytes,
                        reject_bytes, foreign_fields, false_normalization, contract_bytes, digest, bit_mismatch):
             with self.subTest(mutation=mutate.__name__), tempfile.TemporaryDirectory() as tmp:
                 directory = Path(tmp) / 'catalog'

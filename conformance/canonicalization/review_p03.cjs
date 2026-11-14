@@ -17,7 +17,7 @@ function validateCatalog(catalog) {
   // Explicit dependency-free boundary checks matching catalog.schema.json.
   // This validates the catalog, not the scientific contents of raw FIR inputs.
   keys(catalog, ['status', 'contract', 'cases', 'coverage']);
-  assert.equal(catalog.status, 'REVIEW_REQUIRED');
+  assert.ok(['REVIEW_REQUIRED', 'APPROVED'].includes(catalog.status), 'Unknown catalog status');
   assert.equal(catalog.contract, 'ADR-P03/0.1.0');
   assert.ok(Array.isArray(catalog.cases) && catalog.cases.length > 0);
   const index = new Map();
@@ -169,6 +169,6 @@ if (require.main === module) {
   assert.equal(process.argv[2], '--report');
   const report = review();
   writeReport(process.argv[3], report);
-  console.log(`PASS: ${report.cases.length} entries inspected; FIR validation/normalization NOT RUN.`);
+  console.log(`PASS: ${report.cases.length} entries inspected; fixture_status=${report.fixture_status}; FIR validation/normalization NOT RUN.`);
 }
 module.exports = {canonical, review, validateCatalog, writeReport};
