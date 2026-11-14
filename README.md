@@ -12,7 +12,7 @@
 - **Execution:** SciPy and direct SciML ODE first; restricted direct SSA later, with explicit capability checks.
 - **Evidence:** independent mathematical references, cross-language conformance, automatic provenance. Agreement alone does not prove biological validity.
 
-Read [PRODUCT.md](PRODUCT.md), [ARCHITECTURE.md](ARCHITECTURE.md), [AGENTS.md](AGENTS.md), [AGENT.md](AGENT.md) and [approved decisions](docs/approved-decisions.md).
+Read [PRODUCT.md](PRODUCT.md), [ARCHITECTURE.md](ARCHITECTURE.md), [AGENTS.md](AGENTS.md), the [development workflow](docs/DEVELOPMENT_WORKFLOW.md), and [approved decisions](docs/approved-decisions.md). The [agentic engineering audit](docs/AGENTIC_ENGINEERING_AUDIT.md) records the review against current Codex and Claude Code guidance.
 
 ## Repository map
 
@@ -33,7 +33,14 @@ Julia 1.10+:
 julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'
 ```
 
-**Tests only verify packaging/imports. They do not establish scientific correctness.** The language packages do not depend on each other. No Docker Compose, service backend or GUI is required for this library; any future container workflows require a specific reproducibility need.
+Run the independent repository-harness checks before creating a PR:
+
+```sh
+python scripts/check_repo.py
+python -m unittest discover -s scripts/tests -v
+```
+
+**These checks and the package smoke tests do not establish scientific correctness.** The language packages do not depend on each other. No Docker Compose, service backend or GUI is required for this library; any future container workflows require a specific reproducibility need.
 
 ## Delivery
 
