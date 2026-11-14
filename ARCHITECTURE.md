@@ -1,6 +1,6 @@
 # FENIX architecture — approved v0.1 design baseline
 
-**Status:** Architectural intent approved; ADR-P01 ratifies the M0-compatible BioIR subset. Scientific implementation, FIR/capability and FIR-specific canonicalization contracts remain pending. Neither Python, Julia nor historical LOICA 2 code is normative. Ratified mathematical specifications, ADRs and independently reviewed oracles control scientific behavior.
+**Status:** Architectural intent approved; ADR-P01, ADR-P02 and ADR-P03 ratify the M0 BioIR, mathematical FIR/capability and canonicalization contracts. Scientific implementation and independent fixture approval remain pending. Neither Python, Julia nor historical LOICA 2 code is normative. Ratified mathematical specifications, ADRs and independently reviewed oracles control scientific behavior.
 
 ## Information and runtime boundaries
 
@@ -34,6 +34,6 @@ Two standalone packages in one monorepo. Python must not import Julia; Julia mus
 
 ## Governance and current risks
 
-**Before compiler development:** ADR-P01 is ratified for the M0-compatible BioIR subset, with its fixture-catalog acceptance gate still outstanding. ADR-P02 FIR schema/capabilities and ADR-P03 canonicalization edge rules/vectors remain pending. Later: P04 ODE tolerances, P05 restricted SSA mathematics, P06 package/version compatibility, P07 results/provenance.
+**Before compiler development:** ADR-P01 is ratified for the M0-compatible BioIR subset, with its fixture-catalog acceptance gate still outstanding. ADR-P02 FIR schema/capabilities and ADR-P03 canonicalization rules are ratified for M0; independent FIR fixture/semantic validation, canonical reference-vector approval and implementation approval remain outstanding. Later: P04 ODE tolerances, P05 restricted SSA mathematics, P06 package/version compatibility, P07 results/provenance.
 
 Only a human-approved ADR may change biological mathematics, contract meaning, units, capabilities, canonical hashes or golden references. Agents implement scoped, independently testable changes; passing smoke tests cannot be described as biological conformance. See [docs/approved-decisions.md](docs/approved-decisions.md).

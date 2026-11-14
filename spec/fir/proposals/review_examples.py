@@ -1,4 +1,4 @@
-"""Proposal-only structural review; no FIR semantic validation or hashing."""
+"""Structural review of illustrative fixtures; no FIR semantic validation or hashing."""
 
 import copy
 import json

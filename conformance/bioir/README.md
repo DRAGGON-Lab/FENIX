@@ -6,7 +6,8 @@ PI review before implementation approval/merge**. Passing these checks does not
 self-ratify fixtures, establish biological validity or complete EP-01.
 
 This is the P01 portion of #12's validation gate and follow-on #17/#16 evidence.
-FIR capabilities and FENIX FIR normalization remain blocked on ADR-P02/P03;
+ADR-P02 ratifies M0 FIR capabilities; FIR implementation/fixture approval remains
+outstanding and FENIX FIR normalization remains blocked on ADR-P03;
 this catalog does not close #13–#17. No native modeling package API is added.
 
 ## Catalog contract

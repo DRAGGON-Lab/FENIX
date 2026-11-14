@@ -388,3 +388,60 @@ end
 println("PASS: 6 exact P01 source pairs and independently encoded content digests.")
 JL
 ```
+
+## Human PI ratification recorded
+
+On 2026-11-14, the repository user explicitly approved ADR-P02 in this
+conversation:
+
+> i approve ADR-P02
+
+Reviewed revision: `86450affca4470d7540d04f04bdc6d3d07e1a60d`, on
+`docs/13-fir-p02-proposal`. The [ADR ratification record](../../spec/fir/proposals/ADR-P02.md#human-ratification-record)
+and [decision index](../approved-decisions.md) now record this approval.
+**Current status: RATIFIED for the M0 FIR subset.** Earlier PROPOSED/PENDING
+statements in this report are historical evidence of earlier revisions and have
+been preserved verbatim.
+
+This records approval of the reviewed mathematics, structural schema and
+semantic/producer rules, including initial-count and observable correspondence.
+It does not approve illustrative fixtures as golden references, implementations,
+numerical oracles, SSA eligibility or P03 normalization/bytes/hashes. Independent
+fixture/rejection review, semantic validation and implementation approval remain
+outstanding. No issue was closed or implementation work started by this update.
+
+The ratification update changes status records, schema annotations and current
+status references only. The schema's assertions, version and historical `$id`
+are unchanged. All 32 JSON illustrations/source documents are byte-identical to
+the reviewed revision. Drafting-era paths remain stable, following P01's
+precedent. Review-script descriptions now identify illustrative fixture checks;
+their validation assertions are unchanged.
+
+Ratification source fingerprint:
+`e6cde1934dfed0f2854c0c18a7c16f61d47d19542b9b084054876a2021d4def2`.
+The unchanged algorithm covers 39 files under `spec/fir/proposals/`, the FIR
+README and approved-decision index, sorted relative path + NUL + bytes + NUL;
+this report is excluded. This is a source fingerprint, not a FIR model digest.
+Checks ran on the dirty ratification update before committing, using the same
+locked uv/Python and Julia environments and cache/depot settings documented
+above.
+
+| Executed command/check | Outcome |
+|---|---|
+| `uv sync --project packages/python --locked --offline` | PASS |
+| `uv run --project packages/python --locked --offline python spec/fir/proposals/review_examples.py` | PASS; 24 FIR illustrations and 8 source structures |
+| `julia --project=conformance/julia spec/fir/proposals/review_examples.jl` | PASS; 99 structural assertions |
+| `uv run --project packages/python --locked --offline python scripts/check_repo.py` | PASS |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v` | PASS; 6 tests |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v` | PASS; 2 smoke tests |
+| `julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'` | PASS; 2 smoke tests |
+| Compare schema objects after removing only `title` and `$comment` | PASS; all assertions, version and identifier unchanged |
+| Compare every example/source JSON byte-for-byte with reviewed Git revision | PASS; all 32 unchanged |
+| Diff for package source, P01 contract/schema, raw fixtures/catalog and native reference tools | PASS; unchanged; status README prose was updated separately |
+| `git diff --check` and `git diff --cached --check` | PASS |
+| FIR semantic/provenance validator and numerical oracle | NOT RUN; not implemented or approved by this status update |
+| FIR canonicalization and model hashes | NOT RUN; require P03 |
+| Independent golden fixture approval and implementation approval | PENDING |
+
+Every final executed check exited 0. Human approval is established by the quoted
+instruction, not inferred from passing structural or package checks.

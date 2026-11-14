@@ -1,11 +1,20 @@
-# FIR mathematical schema — pending ADR-P02
+# FIR mathematical schema — M0 subset ratified
 
-Future normative FIR defines resolved states, count-based mathematical equations, reactions, applicable stochastic propensities, observations, interventions and explicit execution capability declarations. FIR is backend independent and immutable; its identity includes resolved mathematics and the named observable interface. Its semantic hash excludes provenance, including source symbol mappings.
+[ADR-P02](proposals/ADR-P02.md) and its [structural schema](proposals/fir-m0.schema.json),
+version `0.1.0`, were ratified by the human PI on 2026-11-14 at reviewed revision
+`86450affca4470d7540d04f04bdc6d3d07e1a60d`. The drafting-era paths and schema
+identifier remain unchanged for stable references; the ADR's ratification record
+determines their status.
 
-**No schema has been ratified.** ODE validity alone never implies SSA support.
+The M0 contract defines abstract count-space mathematics, named observable
+identity, exact reaction/equation agreement, source state/parameter mappings,
+and compiler/source parameter, initial-count and observable correspondence.
+Provenance and display labels do not enter FIR identity. ODE validity alone
+never implies SSA support.
 
-Review proposal: [ADR-P02 — M0 mathematical FIR and capabilities](proposals/ADR-P02.md),
-with a candidate structural schema and illustrative valid/invalid cases. These
-are **PROPOSED**, not normative mathematics or approved golden fixtures. P01
-reference/fixture acceptance remains a separate dependency; P02/P03 ratification
-is required before FIR implementation and normative FIR bytes/digests.
+The [examples](proposals/examples/README.md) remain illustrative, not approved
+golden fixtures. Independent fixture/rejection review, native semantic validation
+and implementation approval remain outstanding. P01 fixture/implementation
+acceptance is separate; [ADR-P03](../canonicalization/README.md) ratifies FIR
+normalization, bytes and hashes, with independent reference-vector approval pending.
+No native FIR compiler or solver is implemented by this ratification.

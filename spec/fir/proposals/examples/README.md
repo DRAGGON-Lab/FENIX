@@ -1,8 +1,9 @@
-# ADR-P02 illustrative examples — PROPOSED
+# ADR-P02 illustrative examples — fixture approval pending
 
 These are review illustrations, not approved golden fixtures or compiler output.
-The [ADR](../ADR-P02.md) and [candidate schema](../fir-m0.schema.json) remain
-PROPOSED. No FIR canonical bytes or hashes are provided before P03.
+The [ADR](../ADR-P02.md) and [schema](../fir-m0.schema.json) were ratified on
+2026-11-14. This does not approve these examples as normative fixtures.
+No FIR canonical bytes or hashes are provided before P03.
 
 ## Identity and source traceability
 
@@ -50,7 +51,7 @@ Labels may be Unicode strings, including empty strings; empty label collections
 are allowed. Keys must resolve to declared observables in a separate provenance
 check, and labels cannot supply scientific fields or appear inside `model`.
 
-After ratification, separate provenance validation must verify both source
+Separate provenance validation must verify both source
 digests against the exact supplied P01 content and resolve the Experiment's
 Design reference. It must resolve the mapped species, then its own port, then
 its compartment, checking compartment equality and molecular-count port kind.
@@ -105,15 +106,15 @@ also fails FIR reference resolution: M0 has no second valid state. This does not
 extend M0 merely to create a reference-valid wrong target. Expected diagnostics
 may identify the FIR path above and the corresponding source
 `/content/initial_counts/0/quantity` or `/content/observables` path; no error
-precedence or new category API is prescribed. These examples require semantic
-rejection after ratification; structural acceptance alone is not source agreement.
+precedence or new category API is prescribed. The ratified contract requires
+semantic rejection of these examples; the semantic validator is not implemented. Structural acceptance alone is not source agreement.
 
 ### Other isolated negatives
 
 Every negative starts independently from `production-decay.json`. Mathematical
 negatives preserve provenance; mapping negatives preserve the complete model.
-Paths use zero-based JSON Pointer indices. These are proposed semantic rejection
-reasons, not a frozen diagnostic API or precedence rule.
+Paths use zero-based JSON Pointer indices. These are contract rejection requirements; the examples remain subject to
+fixture approval and do not freeze a diagnostic API or precedence rule.
 
 | Example | Only changed path(s) | Structural result | Required semantic rejection |
 |---|---|---|---|

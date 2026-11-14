@@ -1,0 +1,194 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "status": {
+      "const": "REVIEW_REQUIRED"
+    },
+    "contract": {
+      "const": "ADR-P03/0.1.0"
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "stage": {
+            "enum": [
+              "binary64_jcs",
+              "json_jcs",
+              "fir_identity",
+              "contract_only"
+            ]
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "pattern": "^(inputs|expected)/[a-z0-9.-]+$"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "reference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expected_outcome": {
+            "enum": [
+              "accept",
+              "reject"
+            ]
+          },
+          "binary64_bits": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{16}$"
+          },
+          "canonical": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "pattern": "^(inputs|expected)/[a-z0-9.-]+$"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "normalized": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "pattern": "^(inputs|expected)/[a-z0-9.-]+$"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "model_canonical": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "pattern": "^(inputs|expected)/[a-z0-9.-]+$"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false
+          },
+          "normalization_status": {
+            "const": "NOT_RUN"
+          }
+        },
+        "required": [
+          "id",
+          "stage",
+          "input",
+          "reference",
+          "expected_outcome"
+        ],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "stage": {
+                  "const": "binary64_jcs"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "binary64_bits"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "stage": {
+                  "const": "fir_identity"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "normalized",
+                "model_canonical",
+                "canonical",
+                "normalization_status"
+              ],
+              "properties": {
+                "expected_outcome": {
+                  "const": "accept"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "stage": {
+                  "enum": [
+                    "json_jcs",
+                    "binary64_jcs"
+                  ]
+                },
+                "expected_outcome": {
+                  "const": "accept"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "canonical"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "status",
+    "contract",
+    "cases"
+  ],
+  "additionalProperties": false
+}
