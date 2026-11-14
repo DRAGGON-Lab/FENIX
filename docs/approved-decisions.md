@@ -64,8 +64,8 @@ and Unicode policy, JCS bytes and version/domain identity wrapper contract.
 [Candidate evidence](../conformance/canonicalization/README.md) checks expected
 declaration ordering and serialization; native input-to-normalized transformation,
 complete semantic validation, idempotence and end-to-end round trips are NOT RUN.
-Independent reference-vector and implementation approval remain pending; the
-catalog stays REVIEW_REQUIRED. See the [ratification record](verification/ep01-p03-proposal.md#human-pi-ratification-recorded).
+At contract ratification, reference-vector and implementation approval remained
+pending; subsequent concrete-vector acceptance is recorded below. See the [ratification record](verification/ep01-p03-proposal.md#human-pi-ratification-recorded).
 This approval does not close #14 or merge PR #53.
 
 
@@ -78,3 +78,15 @@ See the [acceptance record](verification/ep01-production-decay-oracle.md#human-p
 for the explicit human instruction, reviewed artifact identity and verification.
 This accepts the bounded mathematical reference under P02; it does not ratify
 P04 solver thresholds, SSA eligibility or empirical predictive validity.
+
+
+**Accepted canonicalization references, 2026-11-14:** The human PI accepted the
+concrete issue #16 [canonicalization vectors and independent reference checks](../conformance/canonicalization/README.md)
+at reviewed revision `a58ea8345f0e2f641ba152b065ee3fa6d9dc0625` on PR
+[#55](https://github.com/DRAGGON-Lab/FENIX/pull/55). The catalog is now APPROVED.
+The [acceptance record](verification/ep01-canonicalization-vectors.md#human-pi-acceptance-recorded)
+retains the explicit approval, reviewed source/artifact identity and verification.
+This accepts the bounded serialization byte/digest vectors and supplied expected
+normalized-object identity references under unchanged ADR-P03. All 17
+contract_only outcomes remain NOT_RUN; native FIR parsing, semantic validation,
+normalization, idempotence and end-to-end round trips remain separate gates.

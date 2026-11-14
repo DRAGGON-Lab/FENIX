@@ -3,7 +3,10 @@
   "type": "object",
   "properties": {
     "status": {
-      "const": "REVIEW_REQUIRED"
+      "enum": [
+        "REVIEW_REQUIRED",
+        "APPROVED"
+      ]
     },
     "contract": {
       "const": "ADR-P03/0.1.0"
@@ -180,15 +183,225 @@
                 "canonical"
               ]
             }
+          },
+          {
+            "if": {
+              "properties": {
+                "stage": {
+                  "enum": [
+                    "json_jcs",
+                    "contract_only"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "not": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "binary64_bits"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "normalized"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "model_canonical"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "normalization_status"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "stage": {
+                  "const": "binary64_jcs"
+                }
+              }
+            },
+            "then": {
+              "not": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "normalized"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "model_canonical"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "normalization_status"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "stage": {
+                  "const": "fir_identity"
+                }
+              }
+            },
+            "then": {
+              "not": {
+                "required": [
+                  "binary64_bits"
+                ]
+              }
+            }
+          },
+          {
+            "if": {
+              "anyOf": [
+                {
+                  "properties": {
+                    "stage": {
+                      "const": "contract_only"
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "expected_outcome": {
+                      "const": "reject"
+                    }
+                  }
+                }
+              ]
+            },
+            "then": {
+              "not": {
+                "required": [
+                  "canonical"
+                ]
+              }
+            }
           }
         ]
       }
+    },
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "utf16-key-ordering": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          }
+        },
+        "signed-zero": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          }
+        },
+        "numeric-spelling": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          }
+        },
+        "exponent-thresholds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          }
+        },
+        "subnormals": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          }
+        },
+        "nonfinite-rejection": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          }
+        },
+        "unicode-preservation": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          }
+        },
+        "array-ordering": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          }
+        },
+        "binary64-integer-boundary": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          }
+        }
+      },
+      "required": [
+        "utf16-key-ordering",
+        "signed-zero",
+        "numeric-spelling",
+        "exponent-thresholds",
+        "subnormals",
+        "nonfinite-rejection",
+        "unicode-preservation",
+        "array-ordering",
+        "binary64-integer-boundary"
+      ],
+      "additionalProperties": false
     }
   },
   "required": [
     "status",
     "contract",
-    "cases"
+    "cases",
+    "coverage"
   ],
   "additionalProperties": false
 }

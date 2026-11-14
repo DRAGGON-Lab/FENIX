@@ -168,10 +168,16 @@ jobs:
       - run: uv sync --project packages/python --locked
       - run: uv run --project packages/python --locked --offline python -m unittest discover -s conformance/canonicalization/tests -v
       - run: uv run --project packages/python --locked --offline python conformance/canonicalization/review_p03.py --report artifacts/p03-python.json
+      - run: node --test conformance/canonicalization/tests/test_review.cjs
       - run: node conformance/canonicalization/review_p03.cjs --report artifacts/p03-node.json
       - run: uv run --project packages/python --locked --offline python conformance/canonicalization/review_p03.py --compare artifacts/p03-python.json artifacts/p03-node.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: p03-serialization
-          path: artifacts/p03-*.json
+          name: p03-python
+          path: artifacts/p03-python.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: p03-node
+          path: artifacts/p03-node.json
