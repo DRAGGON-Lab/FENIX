@@ -2,7 +2,7 @@
 
 **Biomolecular and collective computation** — independently implemented native Python and Julia scientific libraries governed by shared language-neutral biological and mathematical contracts.
 
-**Status:** Architecture v0.1 approved (29 decisions); repository scaffold only. **No biological modeling APIs, normative BioIR/FIR schemas or numerical solvers are implemented.**
+**Status:** Architecture v0.1 approved (29 decisions); package scaffold with the [ratified ADR-P01 M0-compatible BioIR subset](spec/bioir/README.md). **No biological modeling APIs, scientific validators, FIR schema or numerical solvers are implemented.** Validator implementation approval requires a reviewed language-neutral fixture catalog and independent Python/Julia reports.
 
 ## Concept
 
@@ -16,28 +16,30 @@ Read [PRODUCT.md](PRODUCT.md), [ARCHITECTURE.md](ARCHITECTURE.md), [AGENTS.md](A
 
 ## Repository map
 
-`packages/python` and `packages/julia`: independently installable scaffold packages; `spec/`: reserved for ratified BioIR, FIR and canonicalization contracts; `conformance/`: independent scientific fixtures; `examples/`: verified examples; `.github/`: independent package smoke CI.
+`packages/python` and `packages/julia`: independently installable scaffold packages; `spec/`: ratified BioIR subset and pending FIR/canonicalization contracts; `conformance/`: independent scientific fixtures; `examples/`: verified examples; `.github/`: independent package smoke CI.
 
 ## Development and smoke tests
 
-Python 3.12+:
+Python 3.12+ with [uv](https://docs.astral.sh/uv/) (CI uses uv 0.11.29):
 
 ```sh
-python -m pip install --no-deps -e packages/python
-python -m unittest discover -s packages/python/tests -v
+uv sync --project packages/python --locked
+uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v
 ```
 
-Julia 1.10+:
+Julia 1.10+ with native Pkg; [juliaup](https://github.com/JuliaLang/juliaup) manages runtime versions (CI and reference tooling use 1.10.13):
 
 ```sh
 julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'
 ```
 
+The [Julia reference environment](conformance/julia/README.md) has a committed manifest; the library resolves independently. Python development tools are locked in the package development group. Use `uv add --project packages/python --group dev <tool>` to change them, then commit both the manifest and lockfile.
+
 Run the independent repository-harness checks before creating a PR:
 
 ```sh
-python scripts/check_repo.py
-python -m unittest discover -s scripts/tests -v
+uv run --project packages/python --locked --offline python scripts/check_repo.py
+uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v
 ```
 
 **These checks and the package smoke tests do not establish scientific correctness.** The language packages do not depend on each other. No Docker Compose, service backend or GUI is required for this library; any future container workflows require a specific reproducibility need.

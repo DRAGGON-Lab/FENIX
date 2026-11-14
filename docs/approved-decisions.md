@@ -34,6 +34,8 @@
 | D28 | FIR digest covers only canonical mathematical semantics, not provenance. |
 | D29 | RFC 8785/JCS with versioned FENIX semantic normalization and reference vectors. |
 
-**Blocking engineering ADRs:** P01 BioIR schemas; P02 FIR/capabilities; P03 JCS normalization and edge vectors (all before compiler work). P04 ODE tolerance, P05 SSA math/stats, P06 package/version governance, P07 run provenance/results remain to be ratified for their release gates.
+**Blocking engineering ADRs:** P02 FIR/capabilities and P03 JCS normalization and edge vectors remain pending before compiler work. ADR-P01 is ratified for the M0-compatible BioIR subset; its fixture and implementation acceptance gates remain open. P04 ODE tolerance, P05 SSA math/stats, P06 package/version governance, P07 run provenance/results remain to be ratified for their release gates.
 
 **Scientific source of truth:** ratified ADR/specification and independent reference evidence, not the current source code or test behavior. Human scientific approval is required for revisions.
+
+**Ratified contract, 2026-11-14:** [ADR-P01 — M0-compatible BioIR subset](../spec/bioir/proposals/ADR-P01.md). The human PI approved reviewed revision `35805663e3912f8858bbfbe0c178cf009c5454e2` in this conversation, with the added [fixture-catalog gate](../conformance/README.md#parser-and-validator-fixture-catalog-gate) before parser/validator implementation approval. This does not close #12 or approve golden fixtures; independent native validation and fixture evidence remain outstanding.

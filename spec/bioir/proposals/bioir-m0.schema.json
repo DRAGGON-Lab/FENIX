@@ -1,0 +1,419 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:fenix:proposed:bioir:m0-subset:0.1.0",
+  "title": "ADR-P01 ratified M0-compatible BioIR subset 0.1.0",
+  "$comment": "Ratified 2026-11-14. Initial M0-compatible subset, not the definitive scope of BioIR. Structure only; see ADR-P01 for semantic/raw-token checks and the fixture-catalog gate before validator implementation approval. Execution requests belong to ExecutionSpec. The historical schema identifier is retained unchanged.",
+  "type": "object",
+  "properties": {
+    "content": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/design"
+        },
+        {
+          "$ref": "#/definitions/experiment"
+        }
+      ]
+    },
+    "digest": {
+      "$ref": "#/definitions/digest"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "content",
+    "digest"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+      "maxLength": 64,
+      "not": {
+        "pattern": "[^A-Za-z0-9_-]"
+      }
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "minLength": 64,
+      "maxLength": 64
+    },
+    "target": {
+      "type": "object",
+      "properties": {
+        "species": {
+          "$ref": "#/definitions/id"
+        },
+        "port": {
+          "$ref": "#/definitions/id"
+        }
+      },
+      "required": [
+        "species",
+        "port"
+      ],
+      "additionalProperties": false
+    },
+    "compartment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "kind": {
+          "const": "representative_cell"
+        },
+        "volume": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "enum": [
+                "L"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "volume"
+      ],
+      "additionalProperties": false
+    },
+    "species": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "compartment": {
+          "$ref": "#/definitions/id"
+        },
+        "ports": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "$ref": "#/definitions/id"
+              },
+              "kind": {
+                "const": "molecular_count"
+              }
+            },
+            "required": [
+              "id",
+              "kind"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "maxItems": 1
+        }
+      },
+      "required": [
+        "id",
+        "compartment",
+        "ports"
+      ],
+      "additionalProperties": false
+    },
+    "parameter": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "unit": {
+          "enum": [
+            "molecule/s",
+            "1/s"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "unit"
+      ],
+      "additionalProperties": false
+    },
+    "function": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "kind": {
+          "enum": [
+            "constitutive_production",
+            "first_order_decay"
+          ]
+        },
+        "target": {
+          "$ref": "#/definitions/target"
+        },
+        "parameter": {
+          "$ref": "#/definitions/id"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "target",
+        "parameter"
+      ],
+      "additionalProperties": false
+    },
+    "design_reference": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "revision": {
+          "$ref": "#/definitions/revision"
+        },
+        "digest": {
+          "$ref": "#/definitions/digest"
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "digest"
+      ],
+      "additionalProperties": false
+    },
+    "parameter_value": {
+      "type": "object",
+      "properties": {
+        "parameter": {
+          "$ref": "#/definitions/id"
+        },
+        "quantity": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "enum": [
+                "molecule/s",
+                "1/s"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "parameter",
+        "quantity"
+      ],
+      "additionalProperties": false
+    },
+    "initial_count": {
+      "type": "object",
+      "properties": {
+        "species": {
+          "$ref": "#/definitions/id"
+        },
+        "quantity": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "enum": [
+                "molecule"
+              ]
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "species",
+        "quantity"
+      ],
+      "additionalProperties": false
+    },
+    "observable": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "target": {
+          "$ref": "#/definitions/target"
+        }
+      },
+      "required": [
+        "id",
+        "target"
+      ],
+      "additionalProperties": false
+    },
+    "design": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "Design"
+        },
+        "schema_version": {
+          "const": "0.1.0"
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "revision": {
+          "$ref": "#/definitions/revision"
+        },
+        "compartments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/compartment"
+          },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "species": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/species"
+          },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/parameter"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "functions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/function"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "required": [
+        "kind",
+        "schema_version",
+        "id",
+        "revision",
+        "compartments",
+        "species",
+        "parameters",
+        "functions"
+      ],
+      "additionalProperties": false
+    },
+    "experiment": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "Experiment"
+        },
+        "schema_version": {
+          "const": "0.1.0"
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "revision": {
+          "$ref": "#/definitions/revision"
+        },
+        "design": {
+          "$ref": "#/definitions/design_reference"
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/parameter_value"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "initial_counts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/initial_count"
+          },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "observables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/observable"
+          },
+          "minItems": 0
+        },
+        "interventions": {
+          "type": "array",
+          "items": {},
+          "minItems": 0,
+          "maxItems": 0
+        }
+      },
+      "required": [
+        "kind",
+        "schema_version",
+        "id",
+        "revision",
+        "design",
+        "parameters",
+        "initial_counts",
+        "observables",
+        "interventions"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

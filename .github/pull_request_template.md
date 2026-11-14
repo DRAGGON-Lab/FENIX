@@ -16,8 +16,8 @@ List touched files and why. Document new dependencies and compatibility impact.
 
 - [ ] Checked applicable root and scoped `AGENTS.md` instructions
 - [ ] Updated source-of-truth docs without adding duplicate policy files
-- [ ] Ran `python scripts/check_repo.py` or recorded why not
-- [ ] Ran `python -m unittest discover -s scripts/tests -v` or recorded why not
+- [ ] Ran `uv run --project packages/python --locked --offline python scripts/check_repo.py` or recorded why not
+- [ ] Ran `uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v` or recorded why not
 
 ## Tests actually executed
 
