@@ -21,8 +21,13 @@ UTF-8. All expectation changes require review; no regeneration command is shippe
 - `json_jcs`: standard serialization of JSON values, including Unicode ordering,
   escaping, numeric rounding and lone-surrogate rejection.
 - `fir_identity`: serialize the supplied expected normalized model and wrapper.
-  The input-to-normalized transformation is **NOT RUN**. This verifies exact
-  candidate bytes/digests, not an implementation of N or FIR semantic validation.
+  A separate test inspects every catalog entry's expected model for declaration
+  ordering across all six collections, using decoded UTF-16 code units and the
+  ADR's keys. It also requires every physical expected normalized artifact to be
+  referenced and inspected; multiple cases may share one artifact. These checks
+  verify ordering invariants on expected objects and exact candidate bytes/digests.
+  Native input-to-normalized transformation, complete semantic validation,
+  normalization idempotence and end-to-end FIR canonical round trips are **NOT RUN**.
 - `contract_only`: proposed FIR parsing/validation outcomes, **NOT RUN**. This
   includes duplicate decoded keys, malformed input, overflow/underflow, unsupported
   versions, duplicate IDs and P02 role/equation/reference/capability failures.
@@ -40,6 +45,15 @@ Python hashlib and Node crypto. These checks do not ratify the normalization
 choices or prove arbitrary parser correctness. Unicode primitive cases are not
 extensions to P02's ASCII semantic identifiers. Array order changes here belong
 to explicit FIR pre-normalization; JCS itself preserves array order.
+
+The initial serialization checks missed reversed observables in the two-observable
+permutation pair: both tools faithfully serialized the same incorrectly ordered
+expected arrays. The added ordering invariant caught both fixtures independently
+of serialization. Their corrected expectations place `amount_x` before
+`another_amount`; the original inputs remain distinct and unchanged. The Unicode
+comparator probes are test-only strings, not new valid FIR identifiers. See the
+[appended correction record](../../docs/verification/ep01-p03-proposal.md#ordering-correction)
+for the failing regression, corrected digests and verification commands.
 
 ## Reproduce from the repository root
 

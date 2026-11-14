@@ -77,12 +77,12 @@
   ],
   "observables": [
     {
-      "id": "another_amount",
+      "id": "amount_x",
       "state": "x",
       "unit": "molecule"
     },
     {
-      "id": "amount_x",
+      "id": "another_amount",
       "state": "x",
       "unit": "molecule"
     }

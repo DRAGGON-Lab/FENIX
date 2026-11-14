@@ -117,10 +117,24 @@ Expected normalized models are manually specified review candidates. Standard
 JCS serialization and candidate SHA-256 digests are independently checked by
 external Python `rfc8785` and an ECMAScript reference following RFC Appendix A
 with required invalid-value guards. Neither is a FENIX compiler or normalizer.
+An independent test now checks all six declaration-order invariants directly on
+every catalog entry's expected normalized object, with coverage of every physical
+normalized artifact, including shared references. Decoded strings are compared by
+UTF-16 code units. Comparator probes include supplementary Unicode characters
+only as test strings, without extending P02's ASCII identifier rules.
+
+The initial serializers preserved incorrectly ordered observable arrays in two
+expected models; successful serialization did not establish declaration ordering.
+The new invariant failed on both before their candidate artifacts were corrected
+to place `amount_x` before `another_amount`. Original inputs and scientific rules
+are unchanged. The [correction evidence](../../../docs/verification/ep01-p03-proposal.md#ordering-correction)
+records the regression and independent exact-byte checks.
+
 Parser/normalization rejection expectations are documented but **NOT RUN**;
 there is no proposed FIR parser/normalizer implementation in this change.
-Independent raw parsing, N idempotence and full FIR canonical round-trip tests
-remain required before implementation approval. Checkers never rewrite fixtures.
+Native input-to-normalized transformation, complete semantic validation,
+N idempotence and end-to-end FIR canonical round-trip tests remain **NOT RUN**
+and required before implementation approval. Checkers never rewrite fixtures.
 
 The RFC Appendix B expectations use published binary64 bit patterns and exact
 strings. Other candidate bytes are externally serialized from reviewed expected

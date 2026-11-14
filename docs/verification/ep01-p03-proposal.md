@@ -86,3 +86,78 @@ ordering, exact domain/version wrapper and digest scope, candidate normalized
 models, Unicode/numeric byte vectors and proposed rejection expectations. No
 candidate bytes or digests are labeled approved golden references. No issue was
 closed, package published, or compiler/normalizer/solver functionality added.
+
+## Ordering correction
+
+Date: 2026-11-14. PR [#53](https://github.com/DRAGGON-Lab/FENIX/pull/53), same
+branch. Correction baseline: `1849e11737b5b5c3c0e1ea0dabf323aa004074c7`.
+The earlier evidence above is preserved as a historical record. Its successful
+serialization checks missed incorrect expected observable ordering: both reference
+tools preserved supplied arrays, and neither checked the declaration-order
+invariant on expected models. Mutual byte/digest agreement therefore did not
+establish that the expected objects followed the proposed ordering rule.
+
+The regression was added **before** fixture changes. The P03 test command below
+exited 1 with exactly two failing subcases: `fir-two-observables` and
+`fir-observables-permuted`, each identifying its normalized artifact, `observables`
+collection and offending keys `another_amount`, `amount_x`. The other tests and
+comparator probes passed. After correcting only that observable order, the same
+command passes all five tests. It inspects all six declaration collections on
+every `fir_identity` expected object using decoded UTF-16 code units and the
+ADR's keys; a set comparison requires every physical expected normalized artifact
+to be referenced and inspected, while permitting shared artifacts. The comparator
+probes cover `amount_x` before `another_amount` and supplementary Unicode ordering
+that differs from Python code-point order. These are test-only strings, not new
+valid FIR identifiers.
+
+Only those two normalized models, their model/wrapper canonical bytes and their
+six catalog checksum fields were corrected. Both still have identical normalized,
+model and identity bytes; original inputs remain distinct, with unchanged SHA-256:
+
+- `fir-two-observables.input`: `d01b45c40e834ad5e60bfefc5005184a86885ab5794a1bad310e00e32959c7ea`.
+- `fir-observables-permuted.input`: `818942fc52d059d260219218757e51a37a976e6cf160f91616c2859355579199`.
+
+Both corrected fixtures have these SHA-256 values:
+
+| Artifact | SHA-256 |
+|---|---|
+| Expected normalized JSON | `dab852d00da5e4bf262ab7eb05f14bf6d3fc778375b24a02ce46ddb7e3980a31` |
+| Canonical model bytes | `d0e15f7edbe9ea8aa6540a0a86422388edccb4743f0b2217d8441ac2f5c7a4fb` |
+| Canonical identity-wrapper bytes | `003333595f696d2560bd3e6b120cd1c4fb7c8e42f7ff2102d567f6adbb0948a3` |
+
+Each reference serializer compares **complete model and wrapper bytes** against
+the artifacts, independently of hashes. Their complete reports are compared
+against the catalog and each other. Read-only baseline probes also checked every
+input and every other candidate artifact against `git show 1849e117:<path>`,
+required that only the six targeted expected files changed, and compared the
+permutation pair's normalized/model/wrapper bytes directly. All passed; unrelated
+expectations were not regenerated. No regeneration command or CI change was added.
+
+Corrected source fingerprint: `ff7ec0d0a4458ee127182adfcf07d39d88e26f737a209570b426aa2db70b2729`.
+Same algorithm and 147-file scope as above; this appended evidence report remains
+excluded. Verification ran dirty on the correction baseline. Environment unchanged:
+uv 0.11.29, CPython 3.12.13, jsonschema 4.26.0, rfc8785 0.1.4, Node v24.18.0,
+Julia 1.10.13. Python commands use `UV_CACHE_DIR=/private/tmp/fenix-uv-cache`;
+Julia uses the same depot, offline flag and explicit executable described above.
+
+| Command/check | Correction result |
+|---|---|
+| `uv sync --project packages/python --locked --offline` | PASS |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s conformance/canonicalization/tests -v` | FAIL before correction (two ordering subcases); PASS after correction (5 tests) |
+| `uv run --project packages/python --locked --offline python conformance/canonicalization/review_p03.py --report /private/tmp/fenix-p03-correction-python.json` | PASS; exact model/wrapper bytes and digests |
+| `node conformance/canonicalization/review_p03.cjs --report /private/tmp/fenix-p03-correction-node.json` | PASS; independent exact model/wrapper bytes and digests |
+| `uv run --project packages/python --locked --offline python conformance/canonicalization/review_p03.py --compare /private/tmp/fenix-p03-correction-python.json /private/tmp/fenix-p03-correction-node.json` | PASS; complete reports match, 67 rows: 47 serialization matches, 3 rejections, 17 contract-only NOT RUN |
+| `uv run --project packages/python --locked --offline python scripts/check_repo.py` | PASS; repository and relative links |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v` | PASS; 6 tests |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v` | PASS; 2 smoke tests |
+| `julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'` | PASS; 2 smoke tests |
+| `git diff --exit-code 1849e117 -- conformance/canonicalization/inputs spec/fir spec/bioir conformance/bioir conformance/python conformance/julia packages .github` | PASS; inputs, P01/P02, packages and CI unchanged |
+| `git diff --check` and `git diff --cached --check` | PASS |
+| Native input-to-normalized transformation, complete semantic validation, normalization idempotence, end-to-end FIR canonical round trips | NOT RUN; no native implementation |
+| Human PI ratification and reference-vector approval | PENDING |
+
+**Executed:** declaration-order invariants on expected objects, candidate
+serialization and digest verification. These do not demonstrate execution of N
+on original inputs. ADR-P03 remains **PROPOSED**, the catalog remains
+**REVIEW_REQUIRED**, and issue #14 remains open. Approval of the contract,
+candidate reference vectors and future native implementations are separate gates.

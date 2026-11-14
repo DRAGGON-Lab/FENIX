@@ -678,15 +678,15 @@
       "expected_outcome": "accept",
       "normalized": {
         "path": "expected/fir-two-observables.normalized.json",
-        "sha256": "e4797c6173fa02f6fc52eaf7c95334a1b14ee7804125c8de6c31ed4338aaed4a"
+        "sha256": "dab852d00da5e4bf262ab7eb05f14bf6d3fc778375b24a02ce46ddb7e3980a31"
       },
       "model_canonical": {
         "path": "expected/fir-two-observables.model.canonical",
-        "sha256": "151b5784eb15f269cfb3b272a797fb9c447bd92b24953a90cce6101c6e8dc49f"
+        "sha256": "d0e15f7edbe9ea8aa6540a0a86422388edccb4743f0b2217d8441ac2f5c7a4fb"
       },
       "canonical": {
         "path": "expected/fir-two-observables.canonical",
-        "sha256": "d9496a5068056714b46d1829e0680f3a574ebbf3058096a2fc874f96e47b307e"
+        "sha256": "003333595f696d2560bd3e6b120cd1c4fb7c8e42f7ff2102d567f6adbb0948a3"
       },
       "normalization_status": "NOT_RUN"
     },
@@ -701,15 +701,15 @@
       "expected_outcome": "accept",
       "normalized": {
         "path": "expected/fir-observables-permuted.normalized.json",
-        "sha256": "e4797c6173fa02f6fc52eaf7c95334a1b14ee7804125c8de6c31ed4338aaed4a"
+        "sha256": "dab852d00da5e4bf262ab7eb05f14bf6d3fc778375b24a02ce46ddb7e3980a31"
       },
       "model_canonical": {
         "path": "expected/fir-observables-permuted.model.canonical",
-        "sha256": "151b5784eb15f269cfb3b272a797fb9c447bd92b24953a90cce6101c6e8dc49f"
+        "sha256": "d0e15f7edbe9ea8aa6540a0a86422388edccb4743f0b2217d8441ac2f5c7a4fb"
       },
       "canonical": {
         "path": "expected/fir-observables-permuted.canonical",
-        "sha256": "d9496a5068056714b46d1829e0680f3a574ebbf3058096a2fc874f96e47b307e"
+        "sha256": "003333595f696d2560bd3e6b120cd1c4fb7c8e42f7ff2102d567f6adbb0948a3"
       },
       "normalization_status": "NOT_RUN"
     },

@@ -9,6 +9,47 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from review_p03 import HERE, compare, read_artifact, review
 
 
+def utf16_key(value):
+    """Big-endian bytes compare as unsigned UTF-16 code units, without a BOM."""
+    return value.encode('utf-16-be')
+
+
+class DeclarationOrderingTests(unittest.TestCase):
+    def test_utf16_comparator(self):
+        # These are comparator probes, not new valid FIR identifiers.
+        for earlier, later in (('amount_x', 'another_amount'),
+                               ('\U00010000', '\ue000'),
+                               ('\U0001f600', '\ufffd')):
+            with self.subTest(earlier=earlier, later=later):
+                self.assertLess(utf16_key(earlier), utf16_key(later))
+                self.assertEqual(sorted([later, earlier], key=utf16_key), [earlier, later])
+        self.assertGreater('\U00010000', '\ue000')  # Python code-point order differs.
+        self.assertEqual(utf16_key(json.loads('"\\u0061mount_x"')), utf16_key('amount_x'))
+
+    def test_expected_declaration_order(self):
+        catalog = json.loads((HERE / 'catalog.json').read_text())
+        inspected = set()
+        for case in catalog['cases']:
+            if case['stage'] != 'fir_identity':
+                continue
+            artifact = case['normalized']
+            model = json.loads(read_artifact(HERE, artifact))
+            inspected.add(artifact['path'])
+            for collection, key in (('states', 'id'), ('parameters', 'id'),
+                                    ('reactions', 'id'), ('observables', 'id'),
+                                    ('equations', 'state'), ('assumptions', None)):
+                keys = [item[key] if key else item for item in model[collection]]
+                for left, right in zip(keys, keys[1:]):
+                    with self.subTest(case=case['id'], artifact=artifact['path'],
+                                      collection=collection, left=left, right=right):
+                        self.assertLessEqual(utf16_key(left), utf16_key(right),
+                                             f'Out-of-order keys: {left!r}, {right!r}')
+        physical = {path.relative_to(HERE).as_posix()
+                    for path in (HERE / 'expected').rglob('*.normalized.json')}
+        self.assertSetEqual(inspected, physical,
+                            'Every expected normalized artifact must be referenced and inspected')
+
+
 class EvidenceTests(unittest.TestCase):
     def test_rejects_missing_duplicate_and_false_success_reports(self):
         expected = review()
