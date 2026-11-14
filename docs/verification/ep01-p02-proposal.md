@@ -289,3 +289,102 @@ JL
 Issue #13 remains open for human PI ratification and subsequent independent
 semantic validation. Passing structural or P01 reference checks does not approve
 these FIR fixtures or introduce new scientific support.
+
+## P1 review response: initial counts and exhaustive observables
+
+Date: 2026-11-14. Base revision:
+`40c82915568a807e6350abc90501b8d06dbdc63a`; branch
+`docs/13-fir-p02-proposal`. Checks ran on the dirty proposal before committing.
+Historical evidence above is preserved. Source fingerprint:
+`6059f264cb2aed4ffeb85c9a5044958f79db370e6fa976d6a698579cea68b75a`.
+The unchanged algorithm covers 39 files: sorted relative path + NUL + bytes + NUL
+for every file under `spec/fir/proposals/`, the FIR README and approved-decision
+index; this report is excluded. This is source evidence, not a FIR identity hash.
+
+The two live Codex review comments on PR #52 were read through GitHub's public
+review-comments API. Both findings are accepted without pushback:
+
+| Finding | Response |
+|---|---|
+| [P1: initial value against Experiment](https://github.com/DRAGGON-Lab/FENIX/pull/52#discussion_r4574565070) | The producer contract now requires each mapped state's initial value and unit to equal its exact Experiment initial-count assignment. No defaults, tolerance, conversion or repair is allowed. A positive FIR declares source initial count 5; its isolated negative changes only FIR initial value to 0. |
+| [P1: compiled observables against Experiment](https://github.com/DRAGGON-Lab/FENIX/pull/52#discussion_r4574565073) | The producer contract now requires exhaustive one-to-one observable IDs, mapped species/port-to-state targets and matching units. Empty source observables require an empty FIR list. Four isolated negatives cover invented, missing, renamed and wrong-target observables; a positive empty-observable pair is included. |
+
+P01 observables do not contain a separate unit field. The contract explicitly
+uses the source molecular-count port's `molecule` unit and requires the FIR
+observable and mapped state units to match. The wrong-target fixture changes
+only the observable state to `other`; M0 has no second valid state, so that
+case also fails local FIR reference resolution. No broader state model or
+diagnostic-precedence rule was invented to construct that fixture.
+
+Two new P02-local Experiments have fresh illustrative identities, valid P01
+content digests, and the unchanged P01 example Design reference. All existing
+source documents, P01 files and fixtures, package files, and candidate FIR
+schema are unchanged. The [fixture notes](../../spec/fir/proposals/examples/README.md)
+give each negative's changed path and required rejection reason.
+ADR-P02 remains **PROPOSED**. No FIR semantic/provenance validator, solver,
+scientific capability, canonical bytes or hashes were implemented. Existing
+standalone FIR behavior is preserved. Review-thread resolution state was not
+changed; the corrections are supplied for reviewer confirmation.
+
+### Executed checks
+
+Environment is unchanged: uv 0.11.29, CPython 3.12.13/jsonschema 4.26.0/rfc8785
+0.1.4; Julia 1.10.13 and its locked native reference dependencies. uv commands
+used `UV_CACHE_DIR=/private/tmp/fenix-uv-cache`; Julia used
+`JULIA_DEPOT_PATH=/private/tmp/fenix-julia-depot`, `JULIA_PKG_OFFLINE=true` and
+`/private/tmp/julia-1.10.13/bin/julia --startup-file=no`. From the repository root:
+
+| Command/check | Outcome |
+|---|---|
+| `uv sync --project packages/python --locked --offline` | PASS |
+| `uv run --project packages/python --locked --offline python spec/fir/proposals/review_examples.py` | PASS; 24 FIR examples, 8 source structures, fixed-fixture equality/isolation and structural unit rejection checks |
+| `julia --project=conformance/julia spec/fir/proposals/review_examples.jl` | PASS; 99 independent structural assertions |
+| Native P01 Design/Experiment checks on 6 source pairs (reproduction below) | PASS in Python and Julia, including both new source content digests |
+| `uv run --project packages/python --locked --offline python conformance/python/run_p01.py --report /private/tmp/fenix-p02-correspondence-python.json` | PASS; 92 cases |
+| `julia --project=conformance/julia conformance/julia/run_p01.jl --report /private/tmp/fenix-p02-correspondence-julia.json` | PASS; 92 cases |
+| `uv run --project packages/python --locked --offline python conformance/compare_reports.py /private/tmp/fenix-p02-correspondence-python.json /private/tmp/fenix-p02-correspondence-julia.json` | PASS; 92 matching cases |
+| `uv run --project packages/python --locked --offline python scripts/check_repo.py` | PASS; repository links and harness |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v` | PASS; 6 tests |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v` | PASS; 2 smoke tests |
+| `julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'` | PASS; 2 smoke tests |
+| Diff against base for P01, conformance, packages, existing source documents and FIR schema | PASS; unchanged |
+| `git diff --check` and `git diff --cached --check` | PASS |
+| General FIR semantic/provenance validation against sources | NOT RUN; implementation and independent semantic validation remain gated on ratification |
+| FIR canonicalization/digests and scientific approval | NOT RUN / PENDING; P03 and human approval required |
+
+Every final executed check exited 0. Structural acceptance of the five new
+negative FIR examples is intentional; the fixed-fixture comparisons establish
+isolated mutations, not execution of the future source-correspondence validator.
+
+Source validation used the existing native P01 tools only:
+
+```sh
+uv run --project packages/python --locked --offline python - <<'PY'
+import sys
+from pathlib import Path
+sys.path.insert(0,'conformance/python')
+from p01 import strict_parse, validate_design, validate_experiment
+original=Path('spec/bioir/proposals/examples')
+sources=Path('spec/fir/proposals/examples/sources')
+pairs=[(original/'design.json',original/'experiment.json')]+[(sources/(prefix+'design.json'),sources/(prefix+'experiment.json')) for prefix in ('gfp-','laci-','renamed-parameters-')]+[(original/'design.json',sources/(name+'-experiment.json')) for name in ('initial-five','no-observables')]
+for d,e in pairs:
+    design=strict_parse(d.read_bytes()); experiment=strict_parse(e.read_bytes())
+    validate_design(design); validate_experiment(experiment,design)
+print('PASS: 6 exact P01 source pairs and content digests.')
+PY
+```
+
+```sh
+julia --project=conformance/julia - <<'JL'
+include("conformance/julia/p01.jl")
+using .P01Reference
+original="spec/bioir/proposals/examples"
+sources="spec/fir/proposals/examples/sources"
+pairs=[(joinpath(original,"design.json"),joinpath(original,"experiment.json")); [(joinpath(sources,prefix*"design.json"),joinpath(sources,prefix*"experiment.json")) for prefix in ("gfp-","laci-","renamed-parameters-")]; [(joinpath(original,"design.json"),joinpath(sources,name*"-experiment.json")) for name in ("initial-five","no-observables")]]
+for (d,e) in pairs
+    design=strict_parse(read(d)); experiment=strict_parse(read(e))
+    validate_design(design); validate_experiment(experiment,design)
+end
+println("PASS: 6 exact P01 source pairs and independently encoded content digests.")
+JL
+```

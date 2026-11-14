@@ -23,6 +23,35 @@ def main():
         assert validator.is_valid(example) == (name != "invalid-ssa"), name
 
     base = examples["production-decay"]
+    # Fixed fixture comparisons only; these do not implement a source resolver.
+    for suffix in ("initial-five", "no-observables"):
+        expected = copy.deepcopy(base)
+        source = load(EXAMPLES / f"sources/{suffix}-experiment.json")
+        expected["provenance"]["experiment_digest"] = source["digest"]
+        if suffix == "initial-five":
+            assert source["content"]["initial_counts"][0]["quantity"] == {"value": 5, "unit": "molecule"}
+            expected["model"]["states"][0]["initial"] = 5
+        else:
+            assert source["content"]["observables"] == []
+            expected["model"]["observables"] = []
+        assert examples[f"production-decay-{suffix}"] == expected
+    expected = copy.deepcopy(examples["production-decay-initial-five"])
+    expected["model"]["states"][0]["initial"] = 0
+    assert examples["invalid-initial-count"] == expected
+    expected = copy.deepcopy(examples["production-decay-no-observables"])
+    expected["model"]["observables"] = copy.deepcopy(base["model"]["observables"])
+    assert examples["invalid-observable-invented"] == expected
+    expected = copy.deepcopy(base)
+    expected["model"]["observables"] = []
+    assert examples["invalid-observable-missing"] == expected
+    for suffix, key, value in (("renamed", "id", "protein_amount"), ("target", "state", "other")):
+        expected = copy.deepcopy(base)
+        expected["model"]["observables"][0][key] = value
+        assert examples[f"invalid-observable-{suffix}"] == expected
+    for collection in ("states", "observables"):
+        bad = copy.deepcopy(base)
+        bad["model"][collection][0]["unit"] = "mol"
+        assert not validator.is_valid(bad)
     gfp = examples["production-decay-gfp"]
     laci = examples["production-decay-laci"]
     assert base["model"] == gfp["model"] == laci["model"]
@@ -122,7 +151,7 @@ def main():
 
     source_schema = Draft7Validator(load(HERE.parents[1] / "bioir/proposals/bioir-m0.schema.json"))
     sources = sorted((EXAMPLES / "sources").glob("*.json"))
-    assert len(sources) == 6
+    assert len(sources) == 8
     for path in sources:
         source_schema.validate(load(path))
     parameters = base["provenance"]["symbol_map"]["parameters"]
@@ -151,7 +180,7 @@ def main():
     bad = copy.deepcopy(base)
     bad["model"]["observables"][0]["label"] = "Misplaced label"
     assert not validator.is_valid(bad)
-    print(f"PASS: {len(examples)} FIR examples, 6 source structures, identity/isolation, labels and mapping assertions (not FIR semantics).")
+    print(f"PASS: {len(examples)} FIR examples, 8 source structures, identity/isolation, source-correspondence fixtures, labels and mapping assertions (not FIR semantics).")
 
 
 if __name__ == "__main__":

@@ -178,6 +178,28 @@ the corresponding FIR parameter. Reject unresolved or wrong-role bindings,
 including bindings to an existing but inappropriate function. The source values
 must not substitute for absent resolved FIR values.
 
+For compiler-produced FIR, check every state's `initial` value and `unit`
+against the initial-count assignment for its mapped BioIR species in the exact
+Experiment qualified by `provenance.experiment_digest`. Require one matching
+assignment, equal represented numeric values and identical unit tokens (M0:
+`molecule`); reject missing assignments or value/unit mismatches. Do not apply a
+tolerance, convert units, use a default initial value or repair either document.
+For example, source initial count 5 and FIR initial value 0 must be rejected.
+
+Compiler-produced FIR must also have an exhaustive one-to-one correspondence
+between the exact Experiment's observables and `model.observables`. Match by
+unique observable ID, not array position or display label: no invented, omitted,
+renamed or duplicate observable is permitted. Resolve each source observable's
+species and species-scoped port through the validated state map; its FIR state
+must equal that mapped state. Require its FIR output unit to equal the mapped
+state unit and the source port's quantity unit (P01 molecular-count ports use
+`molecule`; the Experiment does not serialize a separate observable unit).
+Reject wrong targets or units. If the Experiment declares no observables, the
+FIR collection must be empty; do not synthesize a default observable. These
+correspondence checks establish source agreement, not P03 array normalization.
+The standalone observable-renaming illustration has no compiler-source claim
+and remains valid as a distinct mathematical output interface.
+
 These are separate provenance checks and cannot supply missing mathematics or
 repair invalid `model` fields. All mapping fields, including their qualifying
 Design digest, are excluded from mathematical identity. Future hierarchical or
@@ -268,6 +290,8 @@ are marked proposed until human scientific review and ratification.
 | [RHS omits decay](examples/invalid-equation-missing-decay.json) | Structurally accept; semantically reject `alpha` RHS despite valid references and units |
 | [Unresolved parameter map](examples/invalid-parameter-map-reference.json) or [wrong mapped function](examples/invalid-parameter-map-role.json) | Structurally accept; reject separate provenance validation; mathematics is unchanged |
 | [Display label A](examples/display-label-a.json) versus [B](examples/display-label-b.json) | Preserve complete semantic payload and eventual identity |
+| [Source initial count 5, FIR 0](examples/invalid-initial-count.json) | Structurally accept; reject compiler/source initial-count mismatch |
+| [Invented](examples/invalid-observable-invented.json), [missing](examples/invalid-observable-missing.json), [renamed](examples/invalid-observable-renamed.json) or [wrong-target observable](examples/invalid-observable-target.json) | Structurally accept; reject compiler/source observable correspondence |
 | Wrong unit, unknown namespace or duplicate local IDs | Reject with field path; never convert or repair |
 | Missing/repeated reaction role or conflicting equation | Reject semantic consistency |
 | Negative/nonfinite parameter or initial value | Reject quantity; raw Unicode/number handling must follow a separately explicit applicable parser contract |

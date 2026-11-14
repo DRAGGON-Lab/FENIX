@@ -12,6 +12,39 @@ const examples = Dict(splitext(name)[1] => JSON.parsefile(joinpath(examples_dir,
         @test valid(example) == (name != "invalid-ssa")
     end
     base = examples["production-decay"]
+    # Known fixture comparisons, not a general source correspondence validator.
+    for suffix in ("initial-five", "no-observables")
+        expected = deepcopy(base)
+        source = JSON.parsefile(joinpath(examples_dir, "sources/$(suffix)-experiment.json"))
+        expected["provenance"]["experiment_digest"] = source["digest"]
+        if suffix == "initial-five"
+            @test source["content"]["initial_counts"][1]["quantity"] == Dict("value" => 5, "unit" => "molecule")
+            expected["model"]["states"][1]["initial"] = 5
+        else
+            @test isempty(source["content"]["observables"])
+            expected["model"]["observables"] = []
+        end
+        @test examples["production-decay-$(suffix)"] == expected
+    end
+    expected = deepcopy(examples["production-decay-initial-five"])
+    expected["model"]["states"][1]["initial"] = 0
+    @test examples["invalid-initial-count"] == expected
+    expected = deepcopy(examples["production-decay-no-observables"])
+    expected["model"]["observables"] = deepcopy(base["model"]["observables"])
+    @test examples["invalid-observable-invented"] == expected
+    expected = deepcopy(base)
+    expected["model"]["observables"] = []
+    @test examples["invalid-observable-missing"] == expected
+    for (suffix, key, value) in (("renamed", "id", "protein_amount"), ("target", "state", "other"))
+        expected = deepcopy(base)
+        expected["model"]["observables"][1][key] = value
+        @test examples["invalid-observable-$(suffix)"] == expected
+    end
+    for collection in ("states", "observables")
+        bad = deepcopy(base)
+        bad["model"][collection][1]["unit"] = "mol"
+        @test !valid(bad)
+    end
     gfp = examples["production-decay-gfp"]
     laci = examples["production-decay-laci"]
     @test base["model"] == gfp["model"] == laci["model"]
@@ -116,7 +149,7 @@ const examples = Dict(splitext(name)[1] => JSON.parsefile(joinpath(examples_dir,
 
     source_schema = JSONSchema.Schema(JSON.parsefile(joinpath(@__DIR__, "../../bioir/proposals/bioir-m0.schema.json")))
     sources = filter(name -> endswith(name, ".json"), readdir(joinpath(examples_dir, "sources")))
-    @test length(sources) == 6
+    @test length(sources) == 8
     for name in sources
         @test JSONSchema.validate(source_schema, JSON.parsefile(joinpath(examples_dir, "sources", name))) === nothing
     end

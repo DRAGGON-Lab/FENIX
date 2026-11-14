@@ -69,6 +69,47 @@ already resolved FIR parameter. These checks are specified, not implemented.
 
 ## Isolated negative examples
 
+### Exact Experiment correspondence
+
+For compiler-produced FIR, every mapped state's initial value and unit must
+equal the mapped species' initial-count assignment in the exact Experiment.
+Reject differences without tolerance, conversion, defaults or repair.
+[Initial-five FIR](production-decay-initial-five.json) references a new
+[Experiment](sources/initial-five-experiment.json) with initial count 5 and
+declares initial value 5. Its [negative](invalid-initial-count.json) changes only
+`/model/states/0/initial` to 0, retaining the exact source digest and mapping.
+Both use the unchanged P01 example Design. Non-`molecule` initial or observable
+units are already structurally rejected by the relevant P01/FIR schemas.
+
+Require exhaustive one-to-one source/FIR observables matched by unique ID,
+mapped species/port-to-state target and unit. P01 source observables have no
+unit field: derive `molecule` from the molecular-count port and require the FIR
+observable and state units to agree. Do not synthesize default observables.
+[No-observables FIR](production-decay-no-observables.json) references a new
+[empty-observable Experiment](sources/no-observables-experiment.json) and has
+an empty FIR collection. Both new Experiments have fresh illustrative identities;
+all existing source revisions are unchanged. These correspondence requirements
+apply to compiler-produced FIR; standalone [observable renaming](observable-renamed.json)
+continues to illustrate a valid but different mathematical interface.
+
+| Negative | Only changed path versus its valid FIR | Structural result | Required compiler/source rejection |
+|---|---|---|---|
+| [Initial-count mismatch](invalid-initial-count.json) | `/model/states/0/initial` versus initial-five FIR | Accept | Source has 5 molecules, FIR has 0 |
+| [Invented observable](invalid-observable-invented.json) | `/model/observables` versus no-observables FIR | Accept | Source has no observables, FIR invents `amount_x` |
+| [Missing observable](invalid-observable-missing.json) | `/model/observables` versus base FIR | Accept | Source declares `amount_x`, FIR omits it |
+| [Renamed observable](invalid-observable-renamed.json) | `/model/observables/0/id` versus base FIR | Accept | FIR `protein_amount` does not match source `amount_x` |
+| [Wrong observable target](invalid-observable-target.json) | `/model/observables/0/state` versus base FIR | Accept | `other` is not the FIR state mapped to the source species/port |
+
+Each case contains only its stated field or collection mutation. The wrong target
+also fails FIR reference resolution: M0 has no second valid state. This does not
+extend M0 merely to create a reference-valid wrong target. Expected diagnostics
+may identify the FIR path above and the corresponding source
+`/content/initial_counts/0/quantity` or `/content/observables` path; no error
+precedence or new category API is prescribed. These examples require semantic
+rejection after ratification; structural acceptance alone is not source agreement.
+
+### Other isolated negatives
+
 Every negative starts independently from `production-decay.json`. Mathematical
 negatives preserve provenance; mapping negatives preserve the complete model.
 Paths use zero-based JSON Pointer indices. These are proposed semantic rejection
