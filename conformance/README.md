@@ -4,7 +4,9 @@ Planned independent analytical production/degradation reference, invalid/unsuppo
 
 Development tools are available through Python's locked development group and
 the separately pinned [Julia environment](julia/README.md). These environments
-provide tooling only; no normative fixtures or scientific validators exist yet.
+include independent P01 reference validators and a
+[candidate fixture catalog](bioir/README.md) awaiting PI review. Native library
+validators and approved normative fixtures are not yet available.
 
 ## Parser and validator fixture catalog gate
 
@@ -14,7 +16,9 @@ its raw-input and validation requirements executable as acceptance checks.
 This follow-on work belongs principally to
 [#16](https://github.com/DRAGGON-Lab/FENIX/issues/16) for canonicalization vectors
 and [#17](https://github.com/DRAGGON-Lab/FENIX/issues/17) for parser, validation
-and rejection fixtures. This records the gate; the catalog is not yet published.
+and rejection fixtures. A [P01-only candidate catalog](bioir/README.md) is now
+available with independent native reports; review and fixture approval are still
+required. FIR-specific fixture coverage remains pending ADR-P02/P03.
 
 - Each fixture must identify its stable case ID, applicable contract/version and
   operation or validation stage, original input, explicit accept/reject outcome,

@@ -1143,6 +1143,30 @@
       },
       "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
       "input_sha256": "0b8855b942d636ce9fb7f0f0cffa8e7044c22603ff7ac97d2daa2c503a12c8b3"
+    },
+    {
+      "id": "duplicate-function-role",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "design",
+      "input": "inputs/duplicate-function-role.input",
+      "input_sha256": "5349e5cfe1aa65156b91bc76ac5432cdd7d95f8de6475da5a8d4b7096635289a",
+      "expected": {
+        "outcome": "reject",
+        "category": "FUNCTION_ROLE",
+        "path": "/content/functions/1"
+      },
+      "reference": "ADR-P01: exactly one production and one decay function; array positions affect identity, not eligibility"
+    },
+    {
+      "id": "reordered-functions",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "design",
+      "input": "inputs/reordered-functions.input",
+      "input_sha256": "54a4f1acd581c9f3c0b2547b954d01af82883b8c2c0f4dc69d937b4d11eb8138",
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: exactly one production and one decay function; array positions affect identity, not eligibility"
     }
   ]
 }
