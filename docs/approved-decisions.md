@@ -67,3 +67,14 @@ complete semantic validation, idempotence and end-to-end round trips are NOT RUN
 Independent reference-vector and implementation approval remain pending; the
 catalog stays REVIEW_REQUIRED. See the [ratification record](verification/ep01-p03-proposal.md#human-pi-ratification-recorded).
 This approval does not close #14 or merge PR #53.
+
+
+**Accepted scientific oracle:** The human PI accepted the concrete issue #15
+[production–decay oracle](scientific-evidence/production-decay.md), its 40 reference
+samples, independent evaluators and retained rational audit at reviewed revision
+`1982357b3deed88e8e0cd8f745effd5c3bd960b3` on PR
+[#54](https://github.com/DRAGGON-Lab/FENIX/pull/54). The catalog is now APPROVED.
+See the [acceptance record](verification/ep01-production-decay-oracle.md#human-pi-acceptance-recorded)
+for the explicit human instruction, reviewed artifact identity and verification.
+This accepts the bounded mathematical reference under P02; it does not ratify
+P04 solver thresholds, SSA eligibility or empirical predictive validity.
