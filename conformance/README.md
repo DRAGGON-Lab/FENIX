@@ -8,6 +8,11 @@ include independent P01 reference validators and a
 [candidate fixture catalog](bioir/README.md) awaiting PI review. Native library
 validators and approved normative fixtures are not yet available.
 
+The [production–decay candidate oracle](production_decay/README.md) derives the
+ratified P02 ODE and checks fixed reference values with independent Python and
+Julia multiprecision evaluators. It remains REVIEW_REQUIRED; solver thresholds
+and failure policy await ADR-P04.
+
 ## Parser and validator fixture catalog gate
 
 ADR-P01 is [ratified](../spec/bioir/proposals/ADR-P01.md). Before parser/validator

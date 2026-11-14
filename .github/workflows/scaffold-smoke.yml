@@ -47,6 +47,15 @@ jobs:
         run: uv run --project packages/python --locked --offline python -m unittest discover -s conformance/python/tests -v
       - name: Independently validate candidate P01 fixtures in Python
         run: uv run --project packages/python --locked --offline python conformance/python/run_p01.py --report artifacts/p01-python.json
+      - name: Test candidate production-decay oracle and report failures
+        run: uv run --project packages/python --locked --offline python -m unittest discover -s conformance/production_decay/tests -v
+      - name: Evaluate candidate production-decay oracle in Python
+        run: uv run --project packages/python --locked --offline python conformance/production_decay/review_oracle.py --report artifacts/production-decay-python.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: production-decay-python
+          path: artifacts/production-decay-python.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -80,6 +89,19 @@ jobs:
         env:
           JULIA_PKG_OFFLINE: "true"
         run: julia --project=conformance/julia conformance/julia/run_p01.jl --report artifacts/p01-julia.json
+      - name: Test candidate production-decay oracle in Julia
+        env:
+          JULIA_PKG_OFFLINE: "true"
+        run: julia --project=conformance/julia conformance/production_decay/tests/test_oracle.jl
+      - name: Evaluate candidate production-decay oracle in Julia
+        env:
+          JULIA_PKG_OFFLINE: "true"
+        run: julia --project=conformance/julia conformance/production_decay/review_oracle.jl --report artifacts/production-decay-julia.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: production-decay-julia
+          path: artifacts/production-decay-julia.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -109,6 +131,23 @@ jobs:
         run: python conformance/compare_reports.py artifacts/p01-python.json artifacts/p01-julia.json
       - name: Independently cross-check P01 bytes and content digests
         run: node conformance/reference/check_p01.cjs
+
+  production-decay:
+    name: Candidate production-decay reference agreement
+    needs: [python, julia]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: production-decay-*
+          path: artifacts
+          merge-multiple: true
+      - name: Compare all four precision runs against fixed expectations
+        run: python conformance/production_decay/review_oracle.py --compare artifacts/production-decay-python.json artifacts/production-decay-julia.json
 
   p03:
     name: Candidate P03 serialization evidence
