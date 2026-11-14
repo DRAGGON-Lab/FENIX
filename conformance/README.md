@@ -19,8 +19,9 @@ and [#17](https://github.com/DRAGGON-Lab/FENIX/issues/17) for parser, validation
 and rejection fixtures. A [P01-only candidate catalog](bioir/README.md) is now
 available with independent native reports; review and fixture approval are still
 required. ADR-P02 now ratifies the M0 FIR contract; independent FIR fixture/semantic
-validation and fixture approval remain outstanding. FIR normalization and byte
-vectors remain pending ADR-P03.
+validation and fixture approval remain outstanding. ADR-P03 ratifies FIR
+normalization and byte identity; independent canonical reference-vector approval
+remains pending.
 
 - Each fixture must identify its stable case ID, applicable contract/version and
   operation or validation stage, original input, explicit accept/reject outcome,
@@ -42,7 +43,7 @@ vectors remain pending ADR-P03.
   to the other or generate the expected results from the implementation under
   test. Record both reports and any discrepancy before implementation approval.
 - Keep P01's raw-token policy distinct from pure RFC 8785 serialization and from
-  pending P03 FIR normalization. Review and approve expectations under their
+  ratified P03 FIR normalization. Review and approve expectations under their
   applicable contracts before publishing normative fixtures; do not infer new
   semantics to fill a missing expectation.
 

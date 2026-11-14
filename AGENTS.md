@@ -6,7 +6,7 @@ These instructions apply repository-wide. More specific `AGENTS.md` files in `pa
 
 - Read the issue, changed files and relevant tests. Consult [PRODUCT.md](PRODUCT.md) for scope, [ARCHITECTURE.md](ARCHITECTURE.md) for boundaries, [approved decisions](docs/approved-decisions.md) and ratified ADRs for scientific rules.
 - For orchestration, review, role handoffs, and verification commands see [development workflow](docs/DEVELOPMENT_WORKFLOW.md).
-- This is a **scaffold**, not a scientific library: ADR-P01 and ADR-P02 ratify only the M0-compatible BioIR and mathematical FIR subsets. FIR-specific canonicalization and independent golden references remain pending; do not silently invent them. Honor P01's fixture-catalog gate before parser/validator implementation approval.
+- This is a **scaffold**, not a scientific library: ADR-P01, ADR-P02 and ADR-P03 ratify only the M0-compatible BioIR, mathematical FIR and canonicalization contracts. Independent golden references and implementation approval remain pending; do not silently invent them. Honor P01's fixture-catalog gate before parser/validator implementation approval.
 - Ratified **language-neutral specifications and independent mathematical oracles** govern science, never Python, Julia, or LOICA source alone.
 
 ## Execution contract

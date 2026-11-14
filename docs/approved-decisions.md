@@ -34,7 +34,7 @@
 | D28 | FIR digest covers only canonical mathematical semantics, not provenance. |
 | D29 | RFC 8785/JCS with versioned FENIX semantic normalization and reference vectors. |
 
-**Blocking engineering ADR:** P03 JCS normalization and edge vectors remain pending before compiler work. ADR-P01 and ADR-P02 are ratified for the M0 BioIR and mathematical FIR subsets; independent fixture and implementation acceptance gates remain open. P04 ODE tolerance, P05 SSA math/stats, P06 package/version governance, P07 run provenance/results remain to be ratified for their release gates.
+**Remaining engineering gates:** ADR-P01, ADR-P02 and ADR-P03 are ratified for the M0 BioIR, mathematical FIR and canonicalization contracts; independent fixture and implementation acceptance gates remain open. P04 ODE tolerance, P05 SSA math/stats, P06 package/version governance, P07 run provenance/results remain to be ratified for their release gates.
 
 **Scientific source of truth:** ratified ADR/specification and independent reference evidence, not the current source code or test behavior. Human scientific approval is required for revisions.
 
@@ -56,7 +56,14 @@ ODE numerical references and SSA eligibility are not approved by this decision.
 See the [review evidence and ratification update](verification/ep01-p02-proposal.md).
 This approval does not close issue #13 or the remaining EP-01 gates.
 
-**Next contract proposal (not ratified):** [ADR-P03 — M0 FIR normalization and JCS identity](../spec/canonicalization/proposals/ADR-P03.md).
-[Candidate byte/digest evidence](../conformance/canonicalization/README.md) checks
-standard serialization only; proposed FIR parsing and normalization are NOT RUN.
-This proposal does not close #14 or approve canonical golden fixtures.
+**Ratified contract, 2026-11-14:** [ADR-P03 — M0 FIR normalization and JCS identity](../spec/canonicalization/proposals/ADR-P03.md).
+The human PI approved reviewed revision `fdee54e5ebc5226c0a83810872311cc8cbbec3fd`
+in this conversation with “ok I accept ADR-P03 please recorrd it and push it to
+the branch so I can merge it.” This ratifies the M0 FIR normalization, binary64
+and Unicode policy, JCS bytes and version/domain identity wrapper contract.
+[Candidate evidence](../conformance/canonicalization/README.md) checks expected
+declaration ordering and serialization; native input-to-normalized transformation,
+complete semantic validation, idempotence and end-to-end round trips are NOT RUN.
+Independent reference-vector and implementation approval remain pending; the
+catalog stays REVIEW_REQUIRED. See the [ratification record](verification/ep01-p03-proposal.md#human-pi-ratification-recorded).
+This approval does not close #14 or merge PR #53.

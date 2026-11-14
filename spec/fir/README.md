@@ -15,5 +15,6 @@ never implies SSA support.
 The [examples](proposals/examples/README.md) remain illustrative, not approved
 golden fixtures. Independent fixture/rejection review, native semantic validation
 and implementation approval remain outstanding. P01 fixture/implementation
-acceptance is separate; P03 must ratify FIR normalization, bytes and hashes.
+acceptance is separate; [ADR-P03](../canonicalization/README.md) ratifies FIR
+normalization, bytes and hashes, with independent reference-vector approval pending.
 No native FIR compiler or solver is implemented by this ratification.

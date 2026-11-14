@@ -1,9 +1,11 @@
 # P03 candidate serialization evidence — REVIEW REQUIRED
 
-The [PROPOSED ADR-P03](../../spec/canonicalization/proposals/ADR-P03.md) defines
-candidate M0 FIR normalization and identity. Nothing here is an approved golden
-fixture, production FIR implementation or PI signoff. Existing P01/P02 fixtures
-are unchanged. This catalog is separate from P01's stricter numeric token policy.
+The [ratified ADR-P03](../../spec/canonicalization/proposals/ADR-P03.md) defines
+M0 FIR normalization and identity. The human PI approved the contract on
+2026-11-14; independent approval of these candidate reference vectors remains
+pending. Nothing here is an approved golden fixture or production FIR
+implementation. Existing P01/P02 fixtures are unchanged. This catalog is
+separate from P01's stricter numeric token policy.
 
 `catalog.json` is checked against `catalog.schema.json`. Every case names its
 stage, exact input bytes/checksum, expected outcome and reference. Canonical
@@ -28,7 +30,7 @@ UTF-8. All expectation changes require review; no regeneration command is shippe
   verify ordering invariants on expected objects and exact candidate bytes/digests.
   Native input-to-normalized transformation, complete semantic validation,
   normalization idempotence and end-to-end FIR canonical round trips are **NOT RUN**.
-- `contract_only`: proposed FIR parsing/validation outcomes, **NOT RUN**. This
+- `contract_only`: candidate FIR parsing/validation outcomes, **NOT RUN**. This
   includes duplicate decoded keys, malformed input, overflow/underflow, unsupported
   versions, duplicate IDs and P02 role/equation/reference/capability failures.
 
@@ -41,8 +43,8 @@ The RFC Appendix B strings are transcribed published references, not output from
 our checkers. Other candidate bytes were prepared with external `rfc8785` from
 explicitly authored expected objects, then checked independently with ECMAScript
 primitive serialization and UTF-16 property ordering. SHA-256 is checked by both
-Python hashlib and Node crypto. These checks do not ratify the normalization
-choices or prove arbitrary parser correctness. Unicode primitive cases are not
+Python hashlib and Node crypto. These checks do not establish fixture approval
+or prove arbitrary parser correctness. Unicode primitive cases are not
 extensions to P02's ASCII semantic identifiers. Array order changes here belong
 to explicit FIR pre-normalization; JCS itself preserves array order.
 
@@ -73,8 +75,9 @@ never converts NOT RUN into PASS. It requires two distinct reference tools.
 Neither checker imports a FENIX compiler or invokes the other reference tool.
 
 Sources: [RFC 8785 sections 3.1–3.2, Appendices A/B](https://www.rfc-editor.org/rfc/rfc8785.html),
-ratified [P02](../../spec/fir/proposals/ADR-P02.md), and the explicit proposed
+ratified [P02](../../spec/fir/proposals/ADR-P02.md), and the ratified
 P03 choices. [Executed review evidence](../../docs/verification/ep01-p03-proposal.md)
 records the source fingerprint and remaining gates. Native independent parser,
-normalizer, idempotence and round-trip checks require ratification and follow-on
-implementation review. Issue #14 remains open for human PI signoff.
+normalizer, idempotence and round-trip checks remain NOT RUN and require follow-on
+implementation review. The [human ratification record](../../spec/canonicalization/proposals/ADR-P03.md#human-ratification-record)
+does not approve these vectors or close issue #14.

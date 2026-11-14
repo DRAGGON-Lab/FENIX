@@ -1,4 +1,4 @@
-# ADR-P03 proposal evidence — review required
+# ADR-P03 evidence and ratification record — fixture review required
 
 Date: 2026-11-14. Issue [#14](https://github.com/DRAGGON-Lab/FENIX/issues/14).
 Branch: `docs/14-jcs-p03-proposal`. Main base:
@@ -161,3 +161,52 @@ serialization and digest verification. These do not demonstrate execution of N
 on original inputs. ADR-P03 remains **PROPOSED**, the catalog remains
 **REVIEW_REQUIRED**, and issue #14 remains open. Approval of the contract,
 candidate reference vectors and future native implementations are separate gates.
+
+## Human PI ratification recorded
+
+On 2026-11-14, the repository user explicitly approved ADR-P03 in this conversation:
+
+> ok I accept ADR-P03 please recorrd it and push it to the branch so I can merge it.
+
+Reviewed revision: `fdee54e5ebc5226c0a83810872311cc8cbbec3fd`, on
+`docs/14-jcs-p03-proposal`, PR [#53](https://github.com/DRAGGON-Lab/FENIX/pull/53).
+The [ADR ratification record](../../spec/canonicalization/proposals/ADR-P03.md#human-ratification-record)
+and [decision index](../approved-decisions.md) record the approval and its scope.
+**Current contract status: RATIFIED.** Earlier PROPOSED/PENDING statements in
+this report describe historical revisions and are preserved as evidence.
+
+This approval ratifies canonicalization version `0.1.0` for P02 model schema
+`0.1.0`, including numeric/Unicode policy, declaration ordering, JCS bytes and the
+version/domain identity wrapper. Independent approval of candidate reference
+vectors and native implementations remains **PENDING**; the catalog remains
+**REVIEW_REQUIRED**. No native functionality was added, issue closed or PR merged.
+
+Only status records, approval provenance and current status summaries changed.
+Read-only comparison with the reviewed revision confirmed the adopted scope and
+all normative input, normalization, exact-byte and identity rules are unchanged.
+The catalog, raw inputs, expected artifacts, tests, reference tools, P01/P02
+contracts and package sources are byte-identical to that revision.
+
+Ratification source fingerprint:
+`2e1ada1e8c7275fbc60933804be2f2b1d7a2133a88b2f0d73d459231ba13fc74`.
+The same algorithm and 147-file scope described above apply; this evidence report
+is excluded. Checks ran dirty on the reviewed revision, using the same locked
+Python environment/cache and Julia executable/depot/offline settings as above.
+
+| Command/check | Ratification result |
+|---|---|
+| `uv sync --project packages/python --locked --offline` | PASS |
+| `uv run --project packages/python --locked --offline python scripts/check_repo.py` | PASS; repository and relative links |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v` | PASS; 6 tests |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v` | PASS; 2 smoke tests |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s conformance/canonicalization/tests -v` | PASS; 5 tests |
+| `julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'` | PASS; 2 smoke tests |
+| Compare adopted scope and normative rule sections with reviewed revision using `git show fdee54e:<path>` | PASS; unchanged |
+| `git diff --exit-code fdee54e -- conformance/canonicalization/catalog.json conformance/canonicalization/catalog.schema.json conformance/canonicalization/inputs conformance/canonicalization/expected conformance/canonicalization/tests conformance/canonicalization/review_p03.py conformance/canonicalization/review_p03.cjs spec/fir/proposals spec/bioir/proposals conformance/bioir conformance/python conformance/julia packages .github` | PASS; unchanged |
+| `git diff --check` and `git diff --cached --check` | PASS |
+| Native input-to-normalized transformation, complete semantic validation, normalization idempotence, end-to-end FIR canonical round trips | NOT RUN; not implemented by this status update |
+| Independent reference-vector and implementation approval | PENDING |
+
+Every final executed check exited 0. Contract ratification follows the explicit
+human instruction above; passing checks do not establish fixture or
+implementation approval.
