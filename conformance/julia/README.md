@@ -25,3 +25,7 @@ JULIA_PKG_OFFLINE=true julia +1.10.13 --project=conformance/julia -e 'using JSON
 
 P01 reference commands are in the catalog instructions. FIR/solver conformance
 still requires its separately ratified contracts and independent evidence.
+
+For the separate issue #17 reference validator and native tests, see the
+[rejection suite](../rejections/README.md). It shares this locked reference
+environment and does not add package APIs.
