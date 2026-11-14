@@ -25,7 +25,8 @@ and edge vectors. P01's BioIR hashing rule does not silently define FIR hashing.
 
 ## Scientific model and namespaces
 
-One resolved state `x` represents nonnegative expected molecular count per
+M0 `x` is an abstract mathematical state, not a biological species identity.
+This one resolved state represents nonnegative expected molecular count per
 representative cell. Time is seconds. Its initial value `x0` is finite and
 nonnegative; fractional expected counts are permitted for deterministic execution.
 The resolved production parameter `alpha` is finite/nonnegative in `molecule/s`;
@@ -69,7 +70,7 @@ labels and revision digests belong to provenance.
 References are explicitly typed as state or parameter; an unqualified string
 must not be resolved by guessing between namespaces. Reaction identifiers are
 `production` and `decay`. Direct observable IDs retain the scientific observable
-IDs from the Experiment and therefore remain part of the mathematical interface.
+IDs from the Experiment and therefore remain part of the semantic output interface.
 
 ## Payload and identity boundaries
 
@@ -92,6 +93,8 @@ supply missing mathematics through provenance, author metadata or runtime state.
 | `provenance.experiment_digest` | Nonsemantic exact source Experiment content reference |
 | `provenance.compiler` | Nonsemantic compiler name/version record |
 | `provenance.symbol_map.states[]` | Nonsemantic mapping from FIR state to Design-qualified species, port and compartment |
+| `provenance.symbol_map.parameters[]` | Nonsemantic mapping from FIR parameters to Design-qualified parameters and function roles |
+| `provenance.display_labels.observables` | Nonsemantic display text keyed by semantic observable ID |
 
 States have `quantity: molecular_count`, `scope: representative_cell`,
 `unit: molecule`. The initial value is mathematical experiment data, not solver
@@ -118,6 +121,15 @@ agree. In particular, renaming only observable `amount_x` to `protein_amount`
 changes semantic model identity even if its state, units and kinetics are equal.
 P03 normalization and hashing must preserve this distinction.
 
+Optional display labels are presentation text, separate from the semantic output
+interface. `provenance.display_labels.observables` maps observable IDs to strings
+(including Unicode text); every key must refer to a declared observable. Changing
+or removing labels never changes FIR identity. Labels cannot replace IDs, resolve
+mathematical references or appear under `model`. Label-reference resolution is a
+separate provenance check; the schema checks only key/value structure. Empty
+label collections and empty strings are permitted. This subset defines labels
+for observables only, not a general annotation system.
+
 GFP and LacI Designs may share M0 FIR identity when their complete semantic
 payloads match. Their BioIR identities and provenance remain distinct. Shared
 FIR identity establishes neither biological equivalence nor interchangeability.
@@ -133,8 +145,9 @@ payload does. Integrity and author authentication remain distinct, as in P01.
 
 Standalone mathematical FIR may omit `provenance`. A BioIR compiler-produced
 envelope must include `provenance.design_digest`, `provenance.experiment_digest`
-and `provenance.symbol_map.states`. This is a producer obligation checked against
-the supplied source documents, not a self-declared origin flag. The general
+and a complete `provenance.symbol_map` with both `states` and `parameters`.
+This is a producer obligation checked against the supplied source documents,
+not a self-declared origin flag. The general
 schema intentionally accepts standalone envelopes without those fields; schema
 acceptance alone does not establish compiler-output completeness.
 
@@ -149,11 +162,27 @@ the compartment in that Design. Require the species' compartment to match the
 mapped compartment and the port to be its P01 molecular-count port. Reject
 unresolved or inconsistent mappings; do not search other revisions or Designs.
 
+Each parameter-map entry requires `fir_parameter_id`, `bioir_parameter_id`,
+`bioir_function_id` and `bioir_function_kind`. A supplied map must contain both
+complete sections: exactly one state entry for `x` and exactly one parameter
+entry each for `alpha` and `beta`, in either order. These are fixed M0 symbols;
+the word canonical does not establish P03 normalization or general renaming.
+All source IDs are qualified by the exact Design digest, not guessed from their
+spelling. The parameter and function must exist in their Design namespaces;
+the function's parameter must match `bioir_parameter_id`, its kind must match
+`bioir_function_kind`, and its target must match the mapped species and port.
+`alpha` must bind to `constitutive_production` with unit `molecule/s`, and `beta`
+to `first_order_decay` with unit `1/s`. Check the exact Experiment's assignment
+for each mapped source parameter, including its unit and resolved value, against
+the corresponding FIR parameter. Reject unresolved or wrong-role bindings,
+including bindings to an existing but inappropriate function. The source values
+must not substitute for absent resolved FIR values.
+
 These are separate provenance checks and cannot supply missing mathematics or
 repair invalid `model` fields. All mapping fields, including their qualifying
 Design digest, are excluded from mathematical identity. Future hierarchical or
 additional-symbol mappings require versioned contract extensions; this map does
-not define mappings for arbitrary networks, parameters or reactions.
+not define mappings for arbitrary networks, additional symbols or reactions.
 
 ## Portable expressions and consistency checks
 
@@ -234,6 +263,11 @@ are marked proposed until human scientific review and ratification.
 | [Reversed production sign](examples/invalid-production-sign.json) | Structurally accept; semantically reject stoichiometry/equation disagreement |
 | [Swapped rate references](examples/invalid-rate-references.json) | Structurally accept; semantically reject role/unit/consistency failure |
 | [Conflicting RHS](examples/invalid-equation.json) | Structurally accept; semantically reject equation disagreement despite valid references and units |
+| [Reversed decay sign](examples/invalid-decay-sign.json) | Structurally accept; semantically reject decay stoichiometry/equation disagreement |
+| [Wrong production role](examples/invalid-production-role.json) | Structurally accept; semantically reject `beta*x` production despite valid references and flux units |
+| [RHS omits decay](examples/invalid-equation-missing-decay.json) | Structurally accept; semantically reject `alpha` RHS despite valid references and units |
+| [Unresolved parameter map](examples/invalid-parameter-map-reference.json) or [wrong mapped function](examples/invalid-parameter-map-role.json) | Structurally accept; reject separate provenance validation; mathematics is unchanged |
+| [Display label A](examples/display-label-a.json) versus [B](examples/display-label-b.json) | Preserve complete semantic payload and eventual identity |
 | Wrong unit, unknown namespace or duplicate local IDs | Reject with field path; never convert or repair |
 | Missing/repeated reaction role or conflicting equation | Reject semantic consistency |
 | Negative/nonfinite parameter or initial value | Reject quantity; raw Unicode/number handling must follow a separately explicit applicable parser contract |

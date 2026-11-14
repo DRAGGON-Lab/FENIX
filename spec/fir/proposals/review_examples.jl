@@ -42,6 +42,38 @@ const examples = Dict(splitext(name)[1] => JSON.parsefile(joinpath(examples_dir,
     rhs = expected["model"]["equations"][1]["rhs"]
     rhs["left"], rhs["right"] = rhs["right"], rhs["left"]
     @test examples["invalid-equation"] == expected
+    expected = deepcopy(base)
+    expected["model"]["reactions"][2]["stoichiometry"]["x"] = 1
+    @test examples["invalid-decay-sign"] == expected
+    expected = deepcopy(base)
+    expected["model"]["reactions"][1]["flux"] = deepcopy(base["model"]["reactions"][2]["flux"])
+    @test examples["invalid-production-role"] == expected
+    expected = deepcopy(base)
+    expected["model"]["equations"][1]["rhs"] = Dict("op" => "parameter", "id" => "alpha")
+    @test examples["invalid-equation-missing-decay"] == expected
+    for (name, key, value) in (("invalid-parameter-map-reference", "bioir_parameter_id", "missing"),
+                               ("invalid-parameter-map-role", "bioir_function_id", "decay"))
+        expected = deepcopy(base)
+        expected["provenance"]["symbol_map"]["parameters"][1][key] = value
+        @test examples[name] == expected
+    end
+    renamed_source = examples["production-decay-renamed-parameters"]
+    @test renamed_source["model"] == base["model"]
+    @test [item["bioir_parameter_id"] for item in renamed_source["provenance"]["symbol_map"]["parameters"]] == ["k_prod", "k_loss"]
+    expected = deepcopy(base)
+    expected["provenance"]["design_digest"] = JSON.parsefile(joinpath(examples_dir, "sources/renamed-parameters-design.json"))["digest"]
+    expected["provenance"]["experiment_digest"] = JSON.parsefile(joinpath(examples_dir, "sources/renamed-parameters-experiment.json"))["digest"]
+    for (entry, parameter, function_id) in zip(expected["provenance"]["symbol_map"]["parameters"],
+                                              ("k_prod", "k_loss"), ("synthesis", "degradation"))
+        entry["bioir_parameter_id"] = parameter
+        entry["bioir_function_id"] = function_id
+    end
+    @test renamed_source == expected
+    for (name, label) in (("display-label-a", "Protein amount"), ("display-label-b", "Expected protein molecules per cell"))
+        expected = deepcopy(base)
+        expected["provenance"]["display_labels"] = Dict("observables" => Dict("amount_x" => label))
+        @test examples[name] == expected
+    end
 
     @test valid(Dict("model" => base["model"]))
     @test valid(Dict("model" => base["model"], "provenance" => Dict()))
@@ -73,7 +105,7 @@ const examples = Dict(splitext(name)[1] => JSON.parsefile(joinpath(examples_dir,
     delete!(bad["provenance"], "design_digest")
     @test !valid(bad)
     bad = deepcopy(base)
-    bad["provenance"]["symbol_map"]["parameters"] = []
+    bad["provenance"]["symbol_map"]["reactions"] = []
     @test !valid(bad)
     # Structure cannot resolve source IDs against a supplied Design.
     for key in ("bioir_species_id", "bioir_port_id", "bioir_compartment_id")
@@ -84,8 +116,38 @@ const examples = Dict(splitext(name)[1] => JSON.parsefile(joinpath(examples_dir,
 
     source_schema = JSONSchema.Schema(JSON.parsefile(joinpath(@__DIR__, "../../bioir/proposals/bioir-m0.schema.json")))
     sources = filter(name -> endswith(name, ".json"), readdir(joinpath(examples_dir, "sources")))
-    @test length(sources) == 4
+    @test length(sources) == 6
     for name in sources
         @test JSONSchema.validate(source_schema, JSON.parsefile(joinpath(examples_dir, "sources", name))) === nothing
     end
+    parameters = base["provenance"]["symbol_map"]["parameters"]
+    for values in ([], parameters[1:1], [parameters[1], parameters[1]], vcat(parameters, parameters[1:1]))
+        bad = deepcopy(base)
+        bad["provenance"]["symbol_map"]["parameters"] = values
+        @test !valid(bad)
+    end
+    for key in keys(parameters[1])
+        bad = deepcopy(base)
+        delete!(bad["provenance"]["symbol_map"]["parameters"][1], key)
+        @test !valid(bad)
+    end
+    bad = deepcopy(base)
+    delete!(bad["provenance"]["symbol_map"], "parameters")
+    @test !valid(bad)
+    reversed_map = deepcopy(base)
+    reverse!(reversed_map["provenance"]["symbol_map"]["parameters"])
+    @test valid(reversed_map)
+    for labels in (Dict(), Dict("amount_x" => ""), Dict("amount_x" => "Molecules λ"), Dict("missing" => "Unresolved label"))
+        candidate = deepcopy(base)
+        candidate["provenance"]["display_labels"] = Dict("observables" => labels)
+        @test valid(candidate)
+    end
+    for labels in (Dict("amount_x" => 1), Dict("invalid id" => "label"))
+        bad = deepcopy(base)
+        bad["provenance"]["display_labels"] = Dict("observables" => labels)
+        @test !valid(bad)
+    end
+    bad = deepcopy(base)
+    bad["model"]["observables"][1]["label"] = "Misplaced label"
+    @test !valid(bad)
 end

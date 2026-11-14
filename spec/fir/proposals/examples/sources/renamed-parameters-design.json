@@ -1,0 +1,61 @@
+{
+  "content": {
+    "kind": "Design",
+    "schema_version": "0.1.0",
+    "id": "production_decay_parameter_names",
+    "revision": 1,
+    "compartments": [
+      {
+        "id": "cell",
+        "kind": "representative_cell",
+        "volume": {
+          "value": 1e-15,
+          "unit": "L"
+        }
+      }
+    ],
+    "species": [
+      {
+        "id": "x",
+        "compartment": "cell",
+        "ports": [
+          {
+            "id": "amount",
+            "kind": "molecular_count"
+          }
+        ]
+      }
+    ],
+    "parameters": [
+      {
+        "id": "k_prod",
+        "unit": "molecule/s"
+      },
+      {
+        "id": "k_loss",
+        "unit": "1/s"
+      }
+    ],
+    "functions": [
+      {
+        "id": "synthesis",
+        "kind": "constitutive_production",
+        "target": {
+          "species": "x",
+          "port": "amount"
+        },
+        "parameter": "k_prod"
+      },
+      {
+        "id": "degradation",
+        "kind": "first_order_decay",
+        "target": {
+          "species": "x",
+          "port": "amount"
+        },
+        "parameter": "k_loss"
+      }
+    ]
+  },
+  "digest": "ede1b47c0923777e963e3c996e5dd04768cf462e92fb51d76053fb2c78cb3dfd"
+}

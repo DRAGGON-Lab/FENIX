@@ -1,0 +1,126 @@
+{
+  "model": {
+    "schema_version": "0.1.0",
+    "time_unit": "s",
+    "states": [
+      {
+        "id": "x",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 0
+      }
+    ],
+    "parameters": [
+      {
+        "id": "alpha",
+        "value": 10,
+        "unit": "molecule/s"
+      },
+      {
+        "id": "beta",
+        "value": 0.1,
+        "unit": "1/s"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "production",
+        "stoichiometry": {
+          "x": 1
+        },
+        "flux": {
+          "op": "parameter",
+          "id": "alpha"
+        }
+      },
+      {
+        "id": "decay",
+        "stoichiometry": {
+          "x": -1
+        },
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "beta"
+          },
+          "right": {
+            "op": "state",
+            "id": "x"
+          }
+        }
+      }
+    ],
+    "equations": [
+      {
+        "state": "x",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "parameter",
+            "id": "alpha"
+          },
+          "right": {
+            "op": "multiply",
+            "left": {
+              "op": "parameter",
+              "id": "beta"
+            },
+            "right": {
+              "op": "state",
+              "id": "x"
+            }
+          }
+        }
+      }
+    ],
+    "observables": [
+      {
+        "id": "amount_x",
+        "state": "x",
+        "unit": "molecule"
+      }
+    ],
+    "assumptions": [
+      "single_representative_cell",
+      "well_mixed",
+      "fixed_volume",
+      "constant_rates",
+      "no_interventions"
+    ],
+    "capabilities": {
+      "ode": true,
+      "ssa": false
+    }
+  },
+  "provenance": {
+    "design_digest": "ede1b47c0923777e963e3c996e5dd04768cf462e92fb51d76053fb2c78cb3dfd",
+    "experiment_digest": "e0197dfadb35355ea9a34e379ea3dd109454df8095fddf66db7e0397c8a2a6a7",
+    "symbol_map": {
+      "states": [
+        {
+          "fir_state_id": "x",
+          "bioir_species_id": "x",
+          "bioir_port_id": "amount",
+          "bioir_compartment_id": "cell"
+        }
+      ],
+      "parameters": [
+        {
+          "fir_parameter_id": "alpha",
+          "bioir_parameter_id": "k_prod",
+          "bioir_function_id": "synthesis",
+          "bioir_function_kind": "constitutive_production"
+        },
+        {
+          "fir_parameter_id": "beta",
+          "bioir_parameter_id": "k_loss",
+          "bioir_function_id": "degradation",
+          "bioir_function_kind": "first_order_decay"
+        }
+      ]
+    }
+  }
+}

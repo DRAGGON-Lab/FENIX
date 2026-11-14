@@ -106,6 +106,20 @@
           "bioir_port_id": "amount",
           "bioir_compartment_id": "cell"
         }
+      ],
+      "parameters": [
+        {
+          "fir_parameter_id": "alpha",
+          "bioir_parameter_id": "alpha",
+          "bioir_function_id": "production",
+          "bioir_function_kind": "constitutive_production"
+        },
+        {
+          "fir_parameter_id": "beta",
+          "bioir_parameter_id": "beta",
+          "bioir_function_id": "decay",
+          "bioir_function_kind": "first_order_decay"
+        }
       ]
     }
   }

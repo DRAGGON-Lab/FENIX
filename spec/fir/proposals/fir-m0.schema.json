@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "urn:fenix:proposed:fir:m0-subset:0.1.0",
   "title": "PROPOSED ADR-P02 M0 FIR subset; not ratified",
-  "$comment": "Structural proposal only. Semantic reference/role/unit/consistency checks require ADR-P02 ratification. Exact normalization and FIR digests require ADR-P03. Standalone FIR may omit provenance; BioIR compiler outputs must include both source digests and the state map under the ADR producer contract.",
+  "$comment": "Structural proposal only. Semantic reference/role/unit/consistency checks require ADR-P02 ratification. Exact normalization and FIR digests require ADR-P03. Standalone FIR may omit provenance; BioIR compiler outputs must include both source digests and complete state/parameter maps under the ADR producer contract.",
   "type": "object",
   "properties": {
     "model": {
@@ -138,11 +138,61 @@
               },
               "minItems": 1,
               "maxItems": 1
+            },
+            "parameters": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/parameter_mapping"
+              },
+              "minItems": 2,
+              "maxItems": 2,
+              "allOf": [
+                {
+                  "contains": {
+                    "properties": {
+                      "fir_parameter_id": {
+                        "const": "alpha"
+                      }
+                    },
+                    "required": [
+                      "fir_parameter_id"
+                    ]
+                  }
+                },
+                {
+                  "contains": {
+                    "properties": {
+                      "fir_parameter_id": {
+                        "const": "beta"
+                      }
+                    },
+                    "required": [
+                      "fir_parameter_id"
+                    ]
+                  }
+                }
+              ]
             }
           },
           "required": [
-            "states"
+            "states",
+            "parameters"
           ],
+          "additionalProperties": false
+        },
+        "display_labels": {
+          "type": "object",
+          "properties": {
+            "observables": {
+              "type": "object",
+              "propertyNames": {
+                "$ref": "#/definitions/id"
+              },
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
           "additionalProperties": false
         }
       },
@@ -408,6 +458,36 @@
         "bioir_species_id",
         "bioir_port_id",
         "bioir_compartment_id"
+      ],
+      "additionalProperties": false
+    },
+    "parameter_mapping": {
+      "type": "object",
+      "properties": {
+        "fir_parameter_id": {
+          "enum": [
+            "alpha",
+            "beta"
+          ]
+        },
+        "bioir_parameter_id": {
+          "$ref": "#/definitions/id"
+        },
+        "bioir_function_id": {
+          "$ref": "#/definitions/id"
+        },
+        "bioir_function_kind": {
+          "enum": [
+            "constitutive_production",
+            "first_order_decay"
+          ]
+        }
+      },
+      "required": [
+        "fir_parameter_id",
+        "bioir_parameter_id",
+        "bioir_function_id",
+        "bioir_function_kind"
       ],
       "additionalProperties": false
     }

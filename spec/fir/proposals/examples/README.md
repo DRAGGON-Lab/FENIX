@@ -25,11 +25,30 @@ independent P01 validation checks them in Julia. These are BioIR source digests,
 not FIR digest vectors. Species IDs are illustrative biological labels: shared
 mathematics establishes neither biological equivalence nor interchangeability.
 
-Each compiler-produced envelope must contain both source digests and the state
-map. General standalone FIR can omit provenance, so a structurally accepted
-partial envelope is not evidence of compiler completeness. There is no origin
+Each compiler-produced envelope must contain both source digests and complete
+state and parameter maps. General standalone FIR can omit provenance, so a
+structurally accepted partial envelope is not evidence of compiler completeness. There is no origin
 flag. A supplied map structurally requires exactly one entry for `x`, all four
 entry fields, and the qualifying `design_digest`.
+
+A supplied map also requires two parameter entries covering `alpha` and `beta`
+exactly once in either order. Each entry names the FIR parameter, BioIR parameter,
+BioIR function ID and BioIR function kind. Source parameter names need not match
+the fixed M0 symbols: [renamed parameters](production-decay-renamed-parameters.json)
+has the same complete `model` as the base, using a new P02-local
+[Design](sources/renamed-parameters-design.json) and
+[Experiment](sources/renamed-parameters-experiment.json). Its `k_prod`/`k_loss`
+parameters and `synthesis`/`degradation` functions map to `alpha`/`beta`.
+All older source documents and their digests are preserved.
+
+Observable IDs remain part of the semantic output interface. Optional labels
+belong in `provenance.display_labels.observables`, keyed by those IDs. The
+[label A](display-label-a.json) and [label B](display-label-b.json) envelopes
+differ only in display text; their complete models and remaining provenance
+are identical. Compare the observable-renaming example, whose model differs.
+Labels may be Unicode strings, including empty strings; empty label collections
+are allowed. Keys must resolve to declared observables in a separate provenance
+check, and labels cannot supply scientific fields or appear inside `model`.
 
 After ratification, separate provenance validation must verify both source
 digests against the exact supplied P01 content and resolve the Experiment's
@@ -42,11 +61,18 @@ even if structurally valid. Relevant paths are
 The braces here abbreviate three paths, not a JSON Pointer syntax extension.
 No provenance check may supply or repair mathematical fields.
 
+Parameter provenance validation must resolve each parameter and function in the
+exact Design, verify the function's parameter, kind and mapped species/port
+target, and check `alpha`/production and `beta`/decay roles and units. The exact
+Experiment's corresponding assignment must agree in value and unit with the
+already resolved FIR parameter. These checks are specified, not implemented.
+
 ## Isolated negative examples
 
-Every negative starts independently from `production-decay.json`; provenance
-is identical. Paths use zero-based JSON Pointer indices. These are proposed
-semantic rejection reasons, not a frozen diagnostic API or precedence rule.
+Every negative starts independently from `production-decay.json`. Mathematical
+negatives preserve provenance; mapping negatives preserve the complete model.
+Paths use zero-based JSON Pointer indices. These are proposed semantic rejection
+reasons, not a frozen diagnostic API or precedence rule.
 
 | Example | Only changed path(s) | Structural result | Required semantic rejection |
 |---|---|---|---|
@@ -56,7 +82,17 @@ semantic rejection reasons, not a frozen diagnostic API or precedence rule.
 | [Swapped rate references](invalid-rate-references.json) | `/model/reactions/0/flux/id`, `/model/reactions/1/flux/left/id` | Accept | Production uses `beta`, decay uses `alpha*x`; references resolve but roles and flux dimensions are wrong and disagree with the unchanged RHS |
 | [Conflicting RHS](invalid-equation.json) | `/model/equations/0/rhs/left`, `/model/equations/0/rhs/right` (subtrees swapped) | Accept | `beta*x - alpha` has valid references and `molecule/s` units but disagrees with the unchanged reactions and required RHS |
 
-The three consistency negatives must pass structural validation and later fail
+Additional isolated cases:
+
+| Example | Only changed path | Structural result | Required rejection |
+|---|---|---|---|
+| [Reversed decay sign](invalid-decay-sign.json) | `/model/reactions/1/stoichiometry/x` | Accept | Decay requires `-1`; unchanged equation disagrees with `S*r` |
+| [Wrong production role](invalid-production-role.json) | `/model/reactions/0/flux` (subtree) | Accept | `beta*x` has valid references and flux units but violates the production role and disagrees with the equation |
+| [RHS missing decay](invalid-equation-missing-decay.json) | `/model/equations/0/rhs` (subtree) | Accept | `alpha` has valid references and derivative units but omits decay from the unchanged reactions |
+| [Missing mapped parameter](invalid-parameter-map-reference.json) | `/provenance/symbol_map/parameters/0/bioir_parameter_id` | Accept | Separate provenance rejection: source parameter `missing` does not exist |
+| [Wrong mapped function](invalid-parameter-map-role.json) | `/provenance/symbol_map/parameters/0/bioir_function_id` | Accept | Separate provenance rejection: existing `decay` function has the wrong kind and parameter for `alpha` |
+
+All six consistency negatives must pass structural validation and later fail
 semantic validation. Template recognition, role/reference/unit checks and exact
 stoichiometry establish M0 agreement; numerical sampling and general symbolic
 algebra are not substitutes. No semantic validator is implemented here.
