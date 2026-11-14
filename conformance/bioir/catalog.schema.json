@@ -1,0 +1,167 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "catalog_version": {
+      "const": 1
+    },
+    "status": {
+      "enum": [
+        "REVIEW_REQUIRED",
+        "APPROVED"
+      ]
+    },
+    "scope": {
+      "type": "string"
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "contract": {
+            "const": "ADR-P01/0.1.0"
+          },
+          "operation": {
+            "enum": [
+              "parse",
+              "canonical",
+              "design",
+              "experiment",
+              "revision"
+            ]
+          },
+          "input": {
+            "type": "string",
+            "pattern": "^inputs/[a-z0-9-]+[.]input$"
+          },
+          "input_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "design": {
+            "type": "string",
+            "pattern": "^inputs/[a-z0-9-]+[.]input$"
+          },
+          "previous": {
+            "type": "string",
+            "pattern": "^inputs/[a-z0-9-]+[.]input$"
+          },
+          "expected": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "outcome": {
+                    "const": "accept"
+                  },
+                  "value": {},
+                  "binary64_bits": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{16}$"
+                  },
+                  "canonical_utf8": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "outcome"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "outcome": {
+                    "const": "reject"
+                  },
+                  "category": {
+                    "enum": [
+                      "JSON_SYNTAX",
+                      "DUPLICATE_KEY",
+                      "INVALID_UNICODE",
+                      "INTEGER_RANGE",
+                      "NUMBER_RANGE",
+                      "NUMBER_UNDERFLOW",
+                      "SCHEMA",
+                      "DUPLICATE_ID",
+                      "REFERENCE",
+                      "UNIT",
+                      "FUNCTION_ROLE",
+                      "DIGEST",
+                      "DESIGN_REFERENCE",
+                      "IMMUTABLE_REVISION"
+                    ]
+                  },
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "outcome",
+                  "category"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "reference": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "contract",
+          "operation",
+          "input",
+          "input_sha256",
+          "expected",
+          "reference"
+        ],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "operation": {
+                  "const": "experiment"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "design"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "operation": {
+                  "const": "revision"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "previous"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "catalog_version",
+    "status",
+    "scope",
+    "cases"
+  ],
+  "additionalProperties": false
+}
