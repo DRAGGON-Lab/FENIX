@@ -1,0 +1,1148 @@
+{
+  "catalog_version": 1,
+  "status": "REVIEW_REQUIRED",
+  "scope": "Ratified P01 only; not approved normative fixtures or P03 FIR vectors. Merge requires PI review of these expectations.",
+  "cases": [
+    {
+      "id": "null",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/null.input",
+      "expected": {
+        "outcome": "accept",
+        "value": null
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+    },
+    {
+      "id": "bool",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/bool.input",
+      "expected": {
+        "outcome": "accept",
+        "value": false
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa"
+    },
+    {
+      "id": "integer",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/integer.input",
+      "expected": {
+        "outcome": "accept",
+        "value": 12
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918"
+    },
+    {
+      "id": "negative-zero",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/negative-zero.input",
+      "expected": {
+        "outcome": "accept",
+        "value": 0
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+    },
+    {
+      "id": "integer-negative-zero",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/integer-negative-zero.input",
+      "expected": {
+        "outcome": "accept",
+        "value": 0
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "ed79f26d03f412bde3db206601a698e0bb451bea9e3cc25289636ac17ea74b0a"
+    },
+    {
+      "id": "zero-tiny-exponent",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/zero-tiny-exponent.input",
+      "expected": {
+        "outcome": "accept",
+        "value": 0
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "c19de4d9d49a74c1a8f3912074f33b1614d374088b42bf8f16880c4afbd4505d"
+    },
+    {
+      "id": "whitespace",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/whitespace.input",
+      "expected": {
+        "outcome": "accept",
+        "value": [
+          1,
+          true,
+          null
+        ]
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "27386a77333068badf0332ffdda1ebd41cafaba51fd78115df68280a03781ae4"
+    },
+    {
+      "id": "unicode-literal",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/unicode-literal.input",
+      "expected": {
+        "outcome": "accept",
+        "value": "é😀"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "5120b0dbdd5539f03b48389a6740c87aa497758ca96b3d69165453c9e01f3235"
+    },
+    {
+      "id": "unicode-escaped",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/unicode-escaped.input",
+      "expected": {
+        "outcome": "accept",
+        "value": "é😀"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "03b28a2dafc32cfb4cb604e4980681c6b9885434f8a23c3af4c52b8899dfc1ce"
+    },
+    {
+      "id": "escaped-backslash",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/escaped-backslash.input",
+      "expected": {
+        "outcome": "accept",
+        "value": "\\ud800"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "eb5c7a825b6ee1b0ea16c7246ddd460a5a9dbd69e612726591d50d5395e6c854"
+    },
+    {
+      "id": "unicode-preserved",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/unicode-preserved.input",
+      "expected": {
+        "outcome": "accept",
+        "value": "é"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "8e0c35d689e13926898b948c3be0a6ec7277b6840a3a782d487921cf052d6008"
+    },
+    {
+      "id": "nested",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/nested.input",
+      "expected": {
+        "outcome": "accept",
+        "value": {
+          "x": [
+            {},
+            []
+          ]
+        }
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "3c3c311f173d0c911303ef672833e42ba2debe3fcb56c2e3ce7bc2aa1cbb1ad5"
+    },
+    {
+      "id": "one-decimal",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/one-decimal.input",
+      "expected": {
+        "outcome": "accept",
+        "binary64_bits": "3ff0000000000000"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "d0ff5974b6aa52cf562bea5921840c032a860a91a3512f7fe8f768f6bbe005f6"
+    },
+    {
+      "id": "decimal-rounding",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/decimal-rounding.input",
+      "expected": {
+        "outcome": "accept",
+        "binary64_bits": "3fb999999999999a"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "14be4b45f18e0d8c67b4f719b5144eee88497e413709d11d85b096d8e2346310"
+    },
+    {
+      "id": "round-to-even",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/round-to-even.input",
+      "expected": {
+        "outcome": "accept",
+        "binary64_bits": "3ff0000000000000"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "96ffc1cd819b19cb15df3dd632bcf3811c7382a8cd2cac42ee31864882b3003d"
+    },
+    {
+      "id": "min-subnormal",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/min-subnormal.input",
+      "expected": {
+        "outcome": "accept",
+        "binary64_bits": "0000000000000001"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "c46e7ca1be4c8734f373a56530787288fa2058d73d07855e9247e949f811a42a"
+    },
+    {
+      "id": "negative-subnormal",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/negative-subnormal.input",
+      "expected": {
+        "outcome": "accept",
+        "binary64_bits": "8000000000000001"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "046f4049d09944fcb2efbf2ddb0ea8f05e0204591d6d02c9106efc88190fa7f9"
+    },
+    {
+      "id": "max-finite",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/max-finite.input",
+      "expected": {
+        "outcome": "accept",
+        "binary64_bits": "7fefffffffffffff"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "217ab4b30c6f536b285884e38da73315e3c6e694910dbbd5ae36f396b6f835bb"
+    },
+    {
+      "id": "integer-limit",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/integer-limit.input",
+      "expected": {
+        "outcome": "accept",
+        "binary64_bits": "433fffffffffffff"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "f40b423c2dd95ff2b2f027e22208f438cf7242862e5e746860e697308c9add26"
+    },
+    {
+      "id": "negative-integer-limit",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/negative-integer-limit.input",
+      "expected": {
+        "outcome": "accept",
+        "binary64_bits": "c33fffffffffffff"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "4c933a456bb8f2e9894b2d0b26480439cd72d52fb8a27cbf8fd7f323f22c7815"
+    },
+    {
+      "id": "binary64-exponent-boundary",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/binary64-exponent-boundary.input",
+      "expected": {
+        "outcome": "accept",
+        "binary64_bits": "4340000000000000"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "6b658c6597411cedf1cb11958fbbfde732202f0d7aa88c8cb408046eb2bf7d79"
+    },
+    {
+      "id": "duplicate-root",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/duplicate-root.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "DUPLICATE_KEY",
+        "path": "/x"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "d38245cfdb5d2239d67fe2a719312768b668a6928d8d97d04fbce83215e50b44"
+    },
+    {
+      "id": "duplicate-escaped",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/duplicate-escaped.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "DUPLICATE_KEY",
+        "path": "/x"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "9b76ab5d01163a68899e361838ef85cf791c1a4aee792d8c714db00237a32647"
+    },
+    {
+      "id": "duplicate-nested",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/duplicate-nested.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "DUPLICATE_KEY",
+        "path": "/a/0/x"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "0e5a351590457e0ba2429edd0b485fc958451c596b7e1d291d4d9ba9975ab91f"
+    },
+    {
+      "id": "duplicate-pointer",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/duplicate-pointer.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "DUPLICATE_KEY",
+        "path": "/a~1b~0"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "f7cdb6b6567df081f72bfd9cc9ed6675ab34d28b63f062c029d0052caca713e3"
+    },
+    {
+      "id": "lone-high",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/lone-high.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "INVALID_UNICODE",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+    },
+    {
+      "id": "lone-low",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/lone-low.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "INVALID_UNICODE",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+    },
+    {
+      "id": "bad-surrogate-pair",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/bad-surrogate-pair.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "INVALID_UNICODE",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "a064ded5d950e5e7062f06533a7c93c6f169c4b5f88bb970bf72cc56809d588b"
+    },
+    {
+      "id": "invalid-utf8",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/invalid-utf8.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "INVALID_UNICODE"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "2c1ba6ac713bfc21e74f3429be952fca3e7a796734394fd18a48eb6713880d89"
+    },
+    {
+      "id": "utf8-surrogate",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/utf8-surrogate.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "INVALID_UNICODE"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "ee4a76500d4d714ca691afe56c1fd9e0a5fbcb42d6c8f8d7178aae4ddb683cf7"
+    },
+    {
+      "id": "integer-outside",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/integer-outside.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "INTEGER_RANGE"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "c681da39d7273a6a24c15c9cac3a75526ff2ecf8ba4ee60346a0c70c8163bdb2"
+    },
+    {
+      "id": "negative-integer-outside",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/negative-integer-outside.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "INTEGER_RANGE"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "83e109bfd7fb4984b47a46f363627c18dbbd7e57e36b05a04cd162d304df72e9"
+    },
+    {
+      "id": "integer-rounding-forbidden",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/integer-rounding-forbidden.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "INTEGER_RANGE"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "a1c367c29158357e62a3ff5d3e800fb7698a22396439dbc0a9d4929322afd35d"
+    },
+    {
+      "id": "overflow",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/overflow.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "NUMBER_RANGE"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "f2bba4568fecd4b9729970732e571ac9373a33fb2d6a960794a41f0f2ecdbc25"
+    },
+    {
+      "id": "negative-overflow",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/negative-overflow.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "NUMBER_RANGE"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "7c571ec50f301ee5e46e1caaff3e67d0710b46fd8a35807194979ed6d8a1d008"
+    },
+    {
+      "id": "underflow",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/underflow.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "NUMBER_UNDERFLOW"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "d42d88695a3f56ff2ce7799a2f261ccb39a2b1a5db8ed284b74b9c452804ed16"
+    },
+    {
+      "id": "negative-underflow",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/negative-underflow.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "NUMBER_UNDERFLOW"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "ee7e3b80afbb31879089a5572a426c1fcc495d93080acd225648fe88de702ac9"
+    },
+    {
+      "id": "round-to-zero",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/round-to-zero.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "NUMBER_UNDERFLOW"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "3b0cb48b99e7e1739c70683c19c8675a784dcd681a13fd11f538c4b03afc6881"
+    },
+    {
+      "id": "nan",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/nan.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "d5b592c05dc25b5032553f1b27f4139be95e881f73db33b02b05ab20c3f9981e"
+    },
+    {
+      "id": "infinity",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/infinity.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "d0067cad9a63e0813759a2bb841051ca73570c0da2e08e840a8eb45db6a7a010"
+    },
+    {
+      "id": "negative-infinity",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/negative-infinity.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "c64ddf11bcd45660f0cf66dd0c22d2b4570ef3d3fc6527a9a6f6c722aefa3c39"
+    },
+    {
+      "id": "leading-zero",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/leading-zero.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "938db8c9f82c8cb58d3f3ef4fd250036a48d26a712753d2fde5abd03a85cabf4"
+    },
+    {
+      "id": "trailing-data",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/trailing-data.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "2cec2bbf1a64ea5249e8a7ab9ecc782fa48be13f0b35ad5f52bdea741841a230"
+    },
+    {
+      "id": "trailing-comma",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/trailing-comma.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "886ad6246ed150b2930495926ba07d579307bc7fecaf4b391650dca8bae7bc66"
+    },
+    {
+      "id": "bad-number",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/bad-number.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "c977dbe785221d34114d345fdf8ff4e18bb4af66750751dbea29407f9738735f"
+    },
+    {
+      "id": "bad-escape",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/bad-escape.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "722cd80a90dd9305fea073dd4dfeeace433b327fccf462fcf466cd13551c6aa9"
+    },
+    {
+      "id": "raw-control",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/raw-control.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "a2bca62ab7e7f14c7d3990aa49b00f9f55700ff69e1131ca08534c8345828334"
+    },
+    {
+      "id": "truncated",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/truncated.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "aced72cfd547c2dd97712b69b63ce653b7f867ca39c8f5d41723047bebb6a901"
+    },
+    {
+      "id": "unclosed-string",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "parse",
+      "input": "inputs/unclosed-string.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input",
+      "input_sha256": "bcd6e30ceb9637842b0c6c0e6c2c2b2d233d393210ca1d5ae6bf88b647c14ef2"
+    },
+    {
+      "id": "design-valid",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "design",
+      "input": "inputs/design-valid.input",
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "input_sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+    },
+    {
+      "id": "experiment-valid",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/experiment-valid.input",
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+    },
+    {
+      "id": "metadata-variant",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "design",
+      "input": "inputs/metadata-variant.input",
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "input_sha256": "ca26b8e24044c0bdf97b6570fd553bb90cac8565b0067c44afcee38e63a2bf2f"
+    },
+    {
+      "id": "zero-rates-fractional-count",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/zero-rates-fractional-count.input",
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "51df3b32839db422ca1462a944bdebf66f8a23344c7d042849c438e0f96407d8"
+    },
+    {
+      "id": "design-digest",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "design",
+      "input": "inputs/design-digest.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "DIGEST",
+        "path": "/digest"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "input_sha256": "7bf87a0327a45bbcae40d9b228bee19aabe98713fdc143a0161552ee1a3b59e1"
+    },
+    {
+      "id": "experiment-digest",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/experiment-digest.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "DIGEST",
+        "path": "/digest"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "41decbf883ce8c9ee639dd6d7e961e01cf73ce3298d2408123d5d41ac89036d4"
+    },
+    {
+      "id": "design-reference-id",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/design-reference-id.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "DESIGN_REFERENCE",
+        "path": "/content/design/id"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "b7103395b8c097c03c62b7e55a66af9f564e9085f6e1ab6c3adb5d33860bfc2c"
+    },
+    {
+      "id": "design-reference-revision",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/design-reference-revision.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "DESIGN_REFERENCE",
+        "path": "/content/design/revision"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "1e9036ea7b77c341122ac852d5cebca44bce274e31ae4a9ac6a18d5306835df3"
+    },
+    {
+      "id": "design-reference-digest",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/design-reference-digest.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "DESIGN_REFERENCE",
+        "path": "/content/design/digest"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "72736824f8abe13e3f47d904ea51ec61cfd38bd9b906f68d27553e1691544d20"
+    },
+    {
+      "id": "missing-compartment",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "design",
+      "input": "inputs/missing-compartment.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "REFERENCE",
+        "path": "/content/species/0/compartment"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "input_sha256": "cf68c40b0f2243f9a0523433bc0c399cb06df2069b5e375c46033c4844fa0c55"
+    },
+    {
+      "id": "missing-function-port",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "design",
+      "input": "inputs/missing-function-port.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "REFERENCE",
+        "path": "/content/functions/0/target/port"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "input_sha256": "985f5436b6475432247be183fdc0b82363f1ce94573bef52d486878b6a05b712"
+    },
+    {
+      "id": "missing-function-species",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "design",
+      "input": "inputs/missing-function-species.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "REFERENCE",
+        "path": "/content/functions/0/target/species"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "input_sha256": "20d586b3e05c463db5f45e4ce73fda7e2c84ab620ebf848db5feda183edca169"
+    },
+    {
+      "id": "missing-function-parameter",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "design",
+      "input": "inputs/missing-function-parameter.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "REFERENCE",
+        "path": "/content/functions/0/parameter"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "input_sha256": "6e29e7665fc00b1a76af50ec27856ce58e6a5dba2bcd542449e1c0ec2a4b801b"
+    },
+    {
+      "id": "wrong-function-unit",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "design",
+      "input": "inputs/wrong-function-unit.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "UNIT",
+        "path": "/content/functions/0/parameter"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "input_sha256": "1fbb632f12f69dd015552d0027e1e296c5d1eee81851ba650f0a7e50c567bf50"
+    },
+    {
+      "id": "duplicate-function-id",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "design",
+      "input": "inputs/duplicate-function-id.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "DUPLICATE_ID",
+        "path": "/content/functions/1/id"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "input_sha256": "fdbcda92c6f68a3b0a945e12ca2c29bee35fc9ab520c2a5e5a1194966b4e050f"
+    },
+    {
+      "id": "duplicate-parameter-id",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "design",
+      "input": "inputs/duplicate-parameter-id.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "DUPLICATE_ID",
+        "path": "/content/parameters/1/id"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "input_sha256": "86961a6b846c9017132b54cb62ec27882cb00f54c1378ed465023bb8b078228b"
+    },
+    {
+      "id": "duplicate-assignment",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/duplicate-assignment.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "DUPLICATE_ID",
+        "path": "/content/parameters/1/parameter"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "f96d34e2c89c4bd8cd143aaca8a60323d9d11f05c69f294bc21fe5e467deb300"
+    },
+    {
+      "id": "wrong-assignment-unit",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/wrong-assignment-unit.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "UNIT",
+        "path": "/content/parameters/0/quantity/unit"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "fb6c2df84e4b52f636dc307dd06ef59657f02f31fc5cbe1e95e98b516de7bd81"
+    },
+    {
+      "id": "unknown-assignment",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/unknown-assignment.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "REFERENCE",
+        "path": "/content/parameters/0/parameter"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "9f7a8a8355e62ec5475f92c07b174e225528dfc588c4f2c5915be308adcfe2fd"
+    },
+    {
+      "id": "unknown-initial-species",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/unknown-initial-species.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "REFERENCE",
+        "path": "/content/initial_counts"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "233b1e3d73cefdc33ab2995e829af98505d2f8dd3992d7f0bbe521a358d5c919"
+    },
+    {
+      "id": "observable-port",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/observable-port.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "REFERENCE",
+        "path": "/content/observables/0/target/port"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "f9b94969a9bc57280bcc3040ed14b62b18bd1576347445813c7b53a579281310"
+    },
+    {
+      "id": "duplicate-observable-id",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/duplicate-observable-id.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "DUPLICATE_ID",
+        "path": "/content/observables/1/id"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "2c1a4bcbad93474456860b8dc9445ca126769421fc6e8c35f4355876821a43e9"
+    },
+    {
+      "id": "execution-profile",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/execution-profile.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "SCHEMA",
+        "path": ""
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "d58dbf50c365c9be0ede080b49c71e2021083b0466c851044cb16cd32e9c9511"
+    },
+    {
+      "id": "invalid-event",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/invalid-event.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "SCHEMA",
+        "path": ""
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "7b68c64e30462288d8fd97a9ca4757d73f94468fbac3e0e3621132379357d334"
+    },
+    {
+      "id": "invalid-unit",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/invalid-unit.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "SCHEMA",
+        "path": ""
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "c1839d12687ef21326274080e6d85ab82520d56351130e3eaebefb1d19f8ebde"
+    },
+    {
+      "id": "negative-rate",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/negative-rate.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "SCHEMA",
+        "path": ""
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "a461b5192053c3348819b799a3ed236abed67ffdc1ec38251067fd4247c1703d"
+    },
+    {
+      "id": "boolean-count",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/boolean-count.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "SCHEMA",
+        "path": ""
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "0bf7d5f43fa6fae4ac1dc59c7ef8ec9bf0e7938e70ca9f2e8c380cec26b1a490"
+    },
+    {
+      "id": "unknown-field",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/unknown-field.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "SCHEMA",
+        "path": ""
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "908f7a7cc92649ee32d6f5c0c6f0d93cfa632110c037c31b8a3f2fab7884ec29"
+    },
+    {
+      "id": "unsupported-version",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "experiment",
+      "input": "inputs/unsupported-version.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "SCHEMA",
+        "path": ""
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "design": "inputs/design-valid.input",
+      "input_sha256": "bb78f129f055e8355b3b83a3a76e251c413cab1d5184c4c81fe002689130e9fc"
+    },
+    {
+      "id": "extra-species",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "design",
+      "input": "inputs/extra-species.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "SCHEMA",
+        "path": ""
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "input_sha256": "996222b15a5d5c5c1627a6420256c0ad1f4e32a6b724622b7f0cbcb731817845"
+    },
+    {
+      "id": "extra-compartments",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "design",
+      "input": "inputs/extra-compartments.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "SCHEMA",
+        "path": ""
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "input_sha256": "87041f7c584d36ff2ede89cf738927f002429cceb26588ed72c175a783f8500c"
+    },
+    {
+      "id": "design-revision-advance",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "design",
+      "input": "inputs/design-revision-advance.input",
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "input_sha256": "5e09903cc208ac7e379a770f73904ffb458bca2f9a9f93e812c19eeb06e76fae"
+    },
+    {
+      "id": "revision-advance",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "revision",
+      "input": "inputs/revision-advance.input",
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "previous": "inputs/design-valid.input",
+      "input_sha256": "5e09903cc208ac7e379a770f73904ffb458bca2f9a9f93e812c19eeb06e76fae"
+    },
+    {
+      "id": "revision-metadata",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "revision",
+      "input": "inputs/revision-metadata.input",
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "previous": "inputs/design-valid.input",
+      "input_sha256": "ca26b8e24044c0bdf97b6570fd553bb90cac8565b0067c44afcee38e63a2bf2f"
+    },
+    {
+      "id": "revision-replace",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "revision",
+      "input": "inputs/revision-replace.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "IMMUTABLE_REVISION",
+        "path": "/content/revision"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "previous": "inputs/design-valid.input",
+      "input_sha256": "6fcab39ab5d6856938624c5a68dcc8d2c3084f69b1797fd0dabe7b393e18e44d"
+    },
+    {
+      "id": "revision-rollback",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "revision",
+      "input": "inputs/revision-rollback.input",
+      "expected": {
+        "outcome": "reject",
+        "category": "IMMUTABLE_REVISION",
+        "path": "/content/revision"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "previous": "inputs/design-revision-advance.input",
+      "input_sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+    },
+    {
+      "id": "canonical-numbers",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "canonical",
+      "input": "inputs/canonical-numbers.input",
+      "expected": {
+        "outcome": "accept",
+        "canonical_utf8": "[1,0,0.000001,1e-7,100000000000000000000,1e+21,5e-324]"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "input_sha256": "87b7de0563263077f4599347fef3f68726f9de3f7fb1af42224cf949f0df945c"
+    },
+    {
+      "id": "canonical-order",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "canonical",
+      "input": "inputs/canonical-order.input",
+      "expected": {
+        "outcome": "accept",
+        "canonical_utf8": "{\"\\r\":3,\"1\":6,\"€\":2,\"😀\":4,\"דּ\":5}"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "input_sha256": "8c62e8d51b01889f688b5d5862833b0d056d2710d6bc8664ea3b5415ead547b7"
+    },
+    {
+      "id": "canonical-array",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "canonical",
+      "input": "inputs/canonical-array.input",
+      "expected": {
+        "outcome": "accept",
+        "canonical_utf8": "[3,1,2]"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "input_sha256": "51bda7ab4e44726cde71fcb6e4b515357059bb6b6dd5146d1fc50f73f11678c6"
+    },
+    {
+      "id": "canonical-unicode",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "canonical",
+      "input": "inputs/canonical-unicode.input",
+      "expected": {
+        "outcome": "accept",
+        "canonical_utf8": "\"é\""
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "input_sha256": "8e0c35d689e13926898b948c3be0a6ec7277b6840a3a782d487921cf052d6008"
+    },
+    {
+      "id": "canonical-controls",
+      "contract": "ADR-P01/0.1.0",
+      "operation": "canonical",
+      "input": "inputs/canonical-controls.input",
+      "expected": {
+        "outcome": "accept",
+        "canonical_utf8": "\"\\u000f\\n\\\\\\\"\""
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content",
+      "input_sha256": "0b8855b942d636ce9fb7f0f0cffa8e7044c22603ff7ac97d2daa2c503a12c8b3"
+    }
+  ]
+}
