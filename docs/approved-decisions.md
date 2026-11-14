@@ -39,3 +39,7 @@
 **Scientific source of truth:** ratified ADR/specification and independent reference evidence, not the current source code or test behavior. Human scientific approval is required for revisions.
 
 **Ratified contract, 2026-11-14:** [ADR-P01 — M0-compatible BioIR subset](../spec/bioir/proposals/ADR-P01.md). The human PI approved reviewed revision `35805663e3912f8858bbfbe0c178cf009c5454e2` in this conversation, with the added [fixture-catalog gate](../conformance/README.md#parser-and-validator-fixture-catalog-gate) before parser/validator implementation approval. This does not close #12 or approve golden fixtures; independent native validation and fixture evidence remain outstanding.
+
+**Next contract proposal (not ratified):** [ADR-P02 — M0 mathematical FIR and capabilities](../spec/fir/proposals/ADR-P02.md).
+This proposal defines candidate mathematics and identity boundaries for review;
+it does not authorize FIR implementation or close issue #13.
