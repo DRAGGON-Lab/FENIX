@@ -2,6 +2,13 @@ using Test, JSON
 include(joinpath(@__DIR__, "../review_oracle.jl"))
 using .ProductionDecayOracle
 
+monotonic(pairs; decreasing=false) = issorted(last.(sort(pairs; by=first)); rev=decreasing)
+
+@testset "Monotonicity retains time/value association" begin
+    @test !monotonic([(2, 1), (0, 0), (1, 2)])
+    @test !monotonic([(2, 1), (0, 2), (1, 0)]; decreasing=true)
+end
+
 @testset "Candidate mathematical oracle" begin
     catalog = load_catalog()
     report = make_report()
@@ -10,18 +17,21 @@ using .ProductionDecayOracle
     @test length(report["rows"]) == length(expected_keys)
     @test Set((r["case_id"], r["time_bits"], r["precision"]) for r in report["rows"]) == expected_keys
     @test report["implementation"] == "julia-bigfloat"
-    for p in (512, 1024), case in catalog["cases"]
+    original = deepcopy(catalog)
+    for p in (512, 1024), case in catalog["cases"], samples in
+        (case["samples"], reverse(case["samples"]), circshift(case["samples"], 1))
         a, b, x = [decode(case["parameters"][k]) for k in ("alpha", "beta", "x0")]
         @test evaluate(a, b, x, 0.0, p) == x
-        values = [evaluate(a, b, x, decode(s["time_bits"]), p) for s in case["samples"]]
+        pairs = [(decode(s["time_bits"]), evaluate(a, b, x, decode(s["time_bits"]), p)) for s in samples]
+        values = last.(pairs)
         @test all(v -> v >= 0, values)
         setprecision(BigFloat, p) do
             q = b == 0 ? nothing : BigFloat(a) / BigFloat(b)
-            @test issorted(values; rev=(b > 0 && BigFloat(x) > q))
+            @test monotonic(pairs; decreasing=(b > 0 && BigFloat(x) > q))
             if b > 0
                 @test all(v -> min(BigFloat(x), q) <= v <= max(BigFloat(x), q), values)
             end
-            for (s, value) in zip(case["samples"], values)
+            for (s, value) in zip(samples, values)
                 @test decimal_string(value, 50) == s["expected"]
                 if a == 0 && x == 0
                     @test iszero(value)
@@ -35,6 +45,7 @@ using .ProductionDecayOracle
             end
         end
     end
+    @test catalog == original
     setprecision(BigFloat, 1024) do
         for t in (0.5, 1.0, 10.0)
             linear = BigFloat(0.5) + 2 * BigFloat(t)
@@ -45,7 +56,9 @@ using .ProductionDecayOracle
             end
         end
         wrong = BigFloat(100) * -expm1(-parse(BigFloat, "0.1"))
-        @test decimal_string(wrong, 50) != catalog["cases"][1]["samples"][2]["expected"]
+        case = only(c for c in catalog["cases"] if c["id"] == "baseline-zero")
+        sample = only(s for s in case["samples"] if s["time_bits"] == "3ff0000000000000")
+        @test decimal_string(wrong, 50) != sample["expected"]
     end
 end
 

@@ -49,6 +49,8 @@ jobs:
         run: uv run --project packages/python --locked --offline python conformance/python/run_p01.py --report artifacts/p01-python.json
       - name: Test candidate production-decay oracle and report failures
         run: uv run --project packages/python --locked --offline python -m unittest discover -s conformance/production_decay/tests -v
+      - name: Audit fixed candidates with exact rational Taylor enclosures
+        run: uv run --project packages/python --locked --offline python conformance/production_decay/audit_rational.py
       - name: Evaluate candidate production-decay oracle in Python
         run: uv run --project packages/python --locked --offline python conformance/production_decay/review_oracle.py --report artifacts/production-decay-python.json
       - uses: actions/upload-artifact@v4

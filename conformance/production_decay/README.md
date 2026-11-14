@@ -39,6 +39,22 @@ Expectations were prepared using an exact rational Taylor sum outside the two
 shipped evaluators and all FENIX packages. They are fixed review candidates;
 neither evaluator rewrites them and no regeneration command is shipped.
 
+The retained [read-only rational auditor](audit_rational.py) reconstructs the
+documented preparation calculation: the exact 401-term Taylor recurrence and
+its first-omitted-term enclosure. It checks both endpoints against the fixed
+50-digit expectation with exact rational half-even rounding. This is a retained
+reconstruction, not an archive of the original scratch generator. It imports
+neither evaluator nor FENIX and uses the already locked schema tool.
+The audit requires `beta*t < 11` and `|(alpha-beta*x0)*t| < 20000` for its
+documented bounds; these are audit limits, not additional FIR constraints.
+It prints sample identities, results and the catalog checksum, exits nonzero
+on failure, and has no write or regeneration option. Use `--catalog PATH` to
+audit a separate candidate file.
+
+Sample order has no mathematical meaning. Both native test suites sort a
+separate view of `(time, value)` pairs by decoded numerical time before checking
+monotonicity, preserving the original sample/value association for other checks.
+
 ## Execute independently
 
 Use the existing locked environments; no new dependencies are needed. From root:
@@ -46,6 +62,7 @@ Use the existing locked environments; no new dependencies are needed. From root:
 ```sh
 uv sync --project packages/python --locked
 uv run --project packages/python --locked --offline python -m unittest discover -s conformance/production_decay/tests -v
+uv run --project packages/python --locked --offline python conformance/production_decay/audit_rational.py
 uv run --project packages/python --locked --offline python conformance/production_decay/review_oracle.py --report artifacts/production-decay-python.json
 julia --project=conformance/julia -e 'using Pkg; Pkg.instantiate()'
 JULIA_PKG_OFFLINE=true julia --project=conformance/julia conformance/production_decay/tests/test_oracle.jl

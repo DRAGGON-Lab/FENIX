@@ -19,6 +19,11 @@ def bits(value):
     return struct.pack(">d", value).hex()
 
 
+def assert_monotonic(test, pairs, decreasing=False):
+    values = [value for _, value in sorted(pairs, key=lambda pair: pair[0])]
+    test.assertEqual(values, sorted(values, reverse=decreasing))
+
+
 class OracleTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -55,20 +60,32 @@ class OracleTests(unittest.TestCase):
                         self.assertEqual(value, Decimal.from_float(x + a * t))
 
     def test_nonnegative_monotonic_and_equilibrium_bounds(self):
-        with localcontext() as ctx:
-            ctx.prec = 200
-            for case in self.catalog['cases']:
-                a, b, x = [oracle.decode(case['parameters'][k])
-                           for k in ('alpha', 'beta', 'x0')]
-                values = [oracle.evaluate(a, b, x, oracle.decode(s['time_bits']), 200)
-                          for s in case['samples']]
-                self.assertTrue(all(v >= 0 for v in values))
-                q = Decimal.from_float(a) / Decimal.from_float(b) if b else None
-                increasing = not b or Decimal.from_float(x) <= q
-                self.assertEqual(values, sorted(values, reverse=not increasing))
-                if b:
-                    self.assertTrue(all(min(Decimal.from_float(x), q) <= v
-                                        <= max(Decimal.from_float(x), q) for v in values))
+        for precision in (100, 200):
+            with localcontext() as ctx:
+                ctx.prec = precision
+                for case in self.catalog['cases']:
+                    original = copy.deepcopy(case['samples'])
+                    for samples in (original, list(reversed(original)), original[1:] + original[:1]):
+                        a, b, x = [oracle.decode(case['parameters'][k])
+                                   for k in ('alpha', 'beta', 'x0')]
+                        pairs = [(oracle.decode(s['time_bits']),
+                                  oracle.evaluate(a, b, x, oracle.decode(s['time_bits']), precision))
+                                 for s in samples]
+                        values = [v for _, v in pairs]
+                        self.assertTrue(all(v >= 0 for v in values))
+                        q = Decimal.from_float(a) / Decimal.from_float(b) if b else None
+                        increasing = not b or Decimal.from_float(x) <= q
+                        assert_monotonic(self, pairs, decreasing=not increasing)
+                        if b:
+                            self.assertTrue(all(min(Decimal.from_float(x), q) <= v
+                                                <= max(Decimal.from_float(x), q) for v in values))
+                    self.assertEqual(case['samples'], original)
+
+    def test_monotonic_check_rejects_wrong_time_value_association(self):
+        with self.assertRaises(AssertionError):
+            assert_monotonic(self, [(2, 1), (0, 0), (1, 2)])
+        with self.assertRaises(AssertionError):
+            assert_monotonic(self, [(2, 1), (0, 2), (1, 0)], decreasing=True)
 
     def test_small_decay_fixed_time_limit_and_bound(self):
         with localcontext() as ctx:
@@ -89,11 +106,12 @@ class OracleTests(unittest.TestCase):
         with localcontext() as ctx:
             ctx.prec = 200
             wrong = Decimal(100) * (1 - (-Decimal('0.1')).exp())
-        sample = self.catalog['cases'][0]['samples'][1]
+        case = next(c for c in self.catalog['cases'] if c['id'] == 'baseline-zero')
+        sample = next(s for s in case['samples'] if s['time_bits'] == bits(1.0))
         self.assertNotEqual(oracle.round_significant(wrong, 50), Decimal(sample['expected']))
         broken = copy.deepcopy(self.report)
         for row in broken['rows']:
-            if row['case_id'] == self.catalog['cases'][0]['id'] and row['time_bits'] == sample['time_bits']:
+            if row['case_id'] == case['id'] and row['time_bits'] == sample['time_bits']:
                 row['value'] = str(wrong)
         with self.assertRaises(ValueError):
             oracle.validate_report(broken)

@@ -76,6 +76,12 @@ Expectations were prepared outside FENIX and outside both shipped evaluators
 using exact rational Taylor sums of the solution, then checked independently
 by both tools. See the [provenance and executed evidence](../verification/ep01-production-decay-oracle.md).
 There is no shipped expectation-regeneration command.
+The [retained rational auditor](../../conformance/production_decay/audit_rational.py)
+now reconstructs that documented preparation calculation as a read-only check.
+It uses exact rational half-even rounding of the Taylor enclosure endpoints,
+so its publication check does not depend on finite-precision decimal arithmetic.
+This bounded rational enclosure is separate evidence from the two evaluators'
+observed precision stability; it does not certify solver error or all finite inputs.
 
 Python evaluates the integrating-factor expression with `Decimal` at 100 and
 200 decimal digits. Binary64 decoding precedes

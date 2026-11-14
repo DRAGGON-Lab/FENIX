@@ -177,3 +177,68 @@ become approved scientific fixtures. Keep issue #15 open and the catalog
 REVIEW_REQUIRED until that decision. P04 numerical solver thresholds and failure
 policy remain a separate unratified contract; approval of the implementation
 plan does not ratify either the numerical fixtures or P04.
+
+## Review follow-up: sample order and retained rational audit
+
+Date: 2026-11-14. PR [#54](https://github.com/DRAGGON-Lab/FENIX/pull/54).
+Follow-up baseline: `66be371c44a0d580ddf646b5a1688e00f284b287`. The preceding
+record describes that historical revision and is preserved. Environment and
+cache/runtime command prefixes are unchanged from the record above.
+
+Read-only reproduction reversed the catalog's samples in memory: the previous
+monotonicity checks failed seven Python cases and fourteen Julia case/precision
+pairs. Sorting a separate `(numerical time, value)` view made those probes pass.
+The updated suites exercise original, reversed and rotated samples at both
+precisions, retain the original sample/value association for expectation checks,
+and reject deliberately incorrect time/value associations. They assert that
+the input catalog was not mutated. Decimal-real `0.1` regressions now select
+case `baseline-zero` and time bits `3ff0000000000000` by identity instead of
+position, keeping that regression meaningful under reordering.
+
+The retained [rational auditor](../../conformance/production_decay/audit_rational.py)
+is a read-only reconstruction of the documented candidate-preparation recurrence,
+not a verbatim archive of the scratch generator. It independently decodes
+binary64 bits to exact fractions, calculates terms `n=0…400`, and bounds the
+remainder by the absolute first omitted term, with factorial denominator `402!`.
+The bounds `beta*t < 11` and `|(alpha-beta*x0)*t| < 20000` are checked before
+calculation; they restrict this audit rather than FIR admissibility. Both
+endpoints are rounded half-even to 50 significant digits using exact integer
+quotient/remainder operations, replacing the scratch script's finite-precision
+decimal publication step. All 40 enclosures round to the unchanged expectations.
+This supplies a bounded enclosure audit separately from the two evaluators'
+observed precision stability and makes no solver-error claim.
+
+The auditor imports neither evaluator nor any FENIX package, adds no dependency,
+and has no write/regeneration path. Its optional `--catalog PATH` selects an
+input; stdout identifies every checked sample and the catalog checksum, and
+errors produce a nonzero exit. Tests cover half-even ties, decade carries,
+negative rounding, exact zero/initial/equilibrium/zero-decay cases, omitted-tail
+indexing, malformed/negative/nonfinite encodings, incorrect units, audit-domain
+limits and corrupt expectations. CLI tests verify byte-identical inputs after
+both successful and failing audits. The new audit tests initially failed to
+import the not-yet-created module; all final tests below pass.
+
+Follow-up source fingerprint:
+`e8e994304de37c01681ca3884d00d3efe90e2c41854bd0228e0839c124f68985`.
+The same sorted path + NUL + bytes + NUL SHA-256 algorithm and scope as above
+now cover 13 files (nine under `conformance/production_decay/`, excluding caches,
+and the same four documentation/CI paths). The evidence record and output
+reports remain excluded. Verification ran dirty on the follow-up baseline.
+
+| Command/check | Follow-up result |
+|---|---|
+| `uv run --project packages/python --locked --offline python -m unittest discover -s conformance/production_decay/tests -v` | PASS; 16 tests, including four rational-audit tests |
+| `julia --project=conformance/julia conformance/production_decay/tests/test_oracle.jl` | PASS; 647 assertions |
+| `uv run --project packages/python --locked --offline python conformance/production_decay/audit_rational.py` | PASS; all 40 samples, unchanged catalog checksum |
+| `uv run --project packages/python --locked --offline python conformance/production_decay/review_oracle.py --compare docs/verification/production-decay-python.json docs/verification/production-decay-julia.json` | PASS; existing 160 computations still agree at 70 digits |
+| `uv run --project packages/python --locked --offline python scripts/check_repo.py` | PASS; repository and links |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v` | PASS; 6 harness tests |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v` | PASS; 2 smoke tests |
+| `julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'` | PASS; 2 smoke tests |
+| Baseline byte comparison with `66be371` for catalog/schema, both evaluators, saved numerical reports, `spec`, `packages` and existing conformance catalogs/tools | PASS; unchanged |
+| Ruby standard-library CI YAML parse; `git diff --check`; `git diff --cached --check` | PASS |
+| Hosted follow-up CI and human PI fixture acceptance | NOT RUN locally / pending |
+
+The existing Python CI job now runs the retained rational audit as well as its
+tests. No fixtures or numerical evaluator reports were regenerated. The catalog
+remains REVIEW_REQUIRED, issue #15 remains open, and P04 remains separate.
