@@ -34,7 +34,7 @@
 | D28 | FIR digest covers only canonical mathematical semantics, not provenance. |
 | D29 | RFC 8785/JCS with versioned FENIX semantic normalization and reference vectors. |
 
-**Blocking engineering ADRs:** P02 FIR/capabilities and P03 JCS normalization and edge vectors remain pending before compiler work. ADR-P01 is ratified for the M0-compatible BioIR subset; its fixture and implementation acceptance gates remain open. P04 ODE tolerance, P05 SSA math/stats, P06 package/version governance, P07 run provenance/results remain to be ratified for their release gates.
+**Blocking engineering ADR:** P03 JCS normalization and edge vectors remain pending before compiler work. ADR-P01 and ADR-P02 are ratified for the M0 BioIR and mathematical FIR subsets; independent fixture and implementation acceptance gates remain open. P04 ODE tolerance, P05 SSA math/stats, P06 package/version governance, P07 run provenance/results remain to be ratified for their release gates.
 
 **Scientific source of truth:** ratified ADR/specification and independent reference evidence, not the current source code or test behavior. Human scientific approval is required for revisions.
 
@@ -42,9 +42,16 @@
 
 **Implementation review candidate:** [P01 fixture catalog and independent runners](../conformance/bioir/README.md), with [executed evidence](verification/ep01-p01-reference.md).
 Both native reports are available for review; fixture and implementation approval
-remain human decisions before the issue #12 PR can merge. P02/P03 and the wider
-EP-01 fixture issues remain separate gates.
+remain human decisions before the issue #12 PR can merge. P03 and the wider
+EP-01 fixture issues remain separate gates; P02 contract ratification does not
+approve fixtures or implementations.
 
-**Next contract proposal (not ratified):** [ADR-P02 — M0 mathematical FIR and capabilities](../spec/fir/proposals/ADR-P02.md).
-This proposal defines candidate mathematics and identity boundaries for review;
-it does not authorize FIR implementation or close issue #13.
+**Ratified contract, 2026-11-14:** [ADR-P02 — M0 mathematical FIR and capabilities](../spec/fir/proposals/ADR-P02.md).
+The human PI approved reviewed revision `86450affca4470d7540d04f04bdc6d3d07e1a60d`
+in this conversation with “i approve ADR-P02”. This ratifies the M0 FIR schema
+and semantic/producer contract, including initial-count and observable source
+correspondence. Independent fixture/rejection review, semantic validation and
+implementation approval remain outstanding. P03 normalization, FIR bytes/hashes,
+ODE numerical references and SSA eligibility are not approved by this decision.
+See the [review evidence and ratification update](verification/ep01-p02-proposal.md).
+This approval does not close issue #13 or the remaining EP-01 gates.

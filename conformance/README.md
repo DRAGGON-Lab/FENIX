@@ -18,7 +18,9 @@ This follow-on work belongs principally to
 and [#17](https://github.com/DRAGGON-Lab/FENIX/issues/17) for parser, validation
 and rejection fixtures. A [P01-only candidate catalog](bioir/README.md) is now
 available with independent native reports; review and fixture approval are still
-required. FIR-specific fixture coverage remains pending ADR-P02/P03.
+required. ADR-P02 now ratifies the M0 FIR contract; independent FIR fixture/semantic
+validation and fixture approval remain outstanding. FIR normalization and byte
+vectors remain pending ADR-P03.
 
 - Each fixture must identify its stable case ID, applicable contract/version and
   operation or validation stage, original input, explicit accept/reject outcome,

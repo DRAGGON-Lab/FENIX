@@ -15,4 +15,5 @@ Parser/validator implementation approval requires the reviewed
 A [P01-only review candidate](../../conformance/bioir/README.md) now exercises
 raw parsing, structure, reference integrity, units, revisions and content digests
 independently in Python and Julia. Passing it does not self-approve its fixtures.
-FIR and FIR-specific canonicalization contracts remain pending ADR-P02/P03.
+The [M0 FIR contract](../fir/README.md) is ratified under ADR-P02; FIR-specific
+canonicalization remains pending ADR-P03.

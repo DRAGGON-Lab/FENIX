@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "urn:fenix:proposed:fir:m0-subset:0.1.0",
-  "title": "PROPOSED ADR-P02 M0 FIR subset; not ratified",
-  "$comment": "Structural proposal only. Semantic reference/role/unit/consistency checks require ADR-P02 ratification. Exact normalization and FIR digests require ADR-P03. Standalone FIR may omit provenance; BioIR compiler outputs must include both source digests and complete state/parameter maps under the ADR producer contract.",
+  "title": "ADR-P02 ratified M0 FIR subset 0.1.0",
+  "$comment": "Ratified 2026-11-14 for the M0 FIR subset. Structure only; ADR-P02 requires separate reference, role, unit, consistency and compiler/source correspondence checks. Exact normalization and FIR digests require ADR-P03. Standalone FIR may omit provenance; BioIR compiler outputs must include both source digests and complete state/parameter maps. The historical schema identifier is retained unchanged.",
   "type": "object",
   "properties": {
     "model": {

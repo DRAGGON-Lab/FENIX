@@ -1,4 +1,4 @@
-# Proposal-only structural review; no FIR semantic validation or hashing.
+# Structural review of illustrative fixtures; no FIR semantic validation or hashing.
 using JSON, JSONSchema, Test
 
 const examples_dir = joinpath(@__DIR__, "examples")
@@ -7,7 +7,7 @@ valid(value) = JSONSchema.validate(schema, value) === nothing
 const examples = Dict(splitext(name)[1] => JSON.parsefile(joinpath(examples_dir, name))
                       for name in readdir(examples_dir) if endswith(name, ".json"))
 
-@testset "P02 proposal structure (not FIR semantics)" begin
+@testset "P02 illustrative structure (not FIR semantics)" begin
     for (name, example) in examples
         @test valid(example) == (name != "invalid-ssa")
     end

@@ -1,25 +1,26 @@
 # ADR-P02 — M0 mathematical FIR and capability contract
 
-**Status: PROPOSED — human PI ratification pending. Not a normative contract.**
+**Status: RATIFIED by the human PI on 2026-11-14 for the M0 FIR subset.**
 
 Issue: [#13](https://github.com/DRAGGON-Lab/FENIX/issues/13); dependency:
 [#12](https://github.com/DRAGGON-Lab/FENIX/issues/12) and ratified
 [ADR-P01](../../bioir/proposals/ADR-P01.md). Approved architectural authority:
 D02–D04, D06–D09, D14–D15 and D26–D29 in the
 [decision index](../../../docs/approved-decisions.md).
-This proposal prepares the next review while P01's reference implementation and
-fixture acceptance are reviewed separately. It does not bypass those gates.
+P01 reference implementation and fixture acceptance remain separate gates.
+Ratification of P02 does not approve implementations or golden fixtures.
 
-## Decision requested
+## Decision
 
-Ratify the [candidate FIR schema](fir-m0.schema.json), version `0.1.0`, and the
+Adopt the [FIR schema](fir-m0.schema.json), version `0.1.0`, and the
 semantic checks below for the M0 production/degradation subset. FIR's broader
 architecture remains extensible; nested/community mathematics, event handling
 and SSA eligibility are not defined by this first subset.
 
-No compiler, mathematical interpreter, solver, propensity implementation or
-normative byte/digest fixture is authorized by this proposal. Those require the
-applicable ratified contracts, independent evidence and implementation review.
+This ratification establishes the M0 FIR contract only. Compiler, mathematical
+interpreter, solver and propensity implementations and normative byte/digest
+fixtures still require their applicable contracts, independent evidence and
+implementation review; none is approved by this ratification.
 ADR-P03 will define FIR normalization, canonical bytes, digest scope encoding
 and edge vectors. P01's BioIR hashing rule does not silently define FIR hashing.
 
@@ -37,7 +38,7 @@ high-precision references must use those represented parameter values rather
 than silently substituting different decimal-real constants. P03 must separately
 settle the admissibility of raw numeric tokens and canonical serialization.
 
-The proposed governing mathematics is:
+The governing mathematics is:
 
 ```text
 r_production(x) = alpha
@@ -60,7 +61,7 @@ These are explanatory orderings, not P03 canonical array-order rules.
 Molecular count is the state quantity, not concentration. This describes the intended model and units;
 [issue #15](https://github.com/DRAGGON-Lab/FENIX/issues/15) must independently
 derive and evaluate its analytical reference, including `beta = 0` and limits.
-This proposal contains no solver tolerance or numerical accuracy claim.
+This contract contains no solver tolerance or numerical accuracy claim.
 
 The M0 compiler will bind its only species to mathematical symbol `x`, and its
 production/decay parameter roles to `alpha`/`beta`. These are FIR-local symbols,
@@ -208,7 +209,7 @@ not define mappings for arbitrary networks, additional symbols or reactions.
 
 ## Portable expressions and consistency checks
 
-The candidate schema represents only typed `parameter`/`state` references,
+The schema represents only typed `parameter`/`state` references,
 binary `multiply`, and binary `subtract` nodes. No string expressions, callbacks,
 code loading, `eval`, user functions or implicit coercions are permitted.
 Parameters and states resolve only within their declared FIR namespaces.
@@ -242,7 +243,7 @@ units, exact role coverage or reaction/equation agreement.
 
 ## Capability and execution separation
 
-The candidate M0 declaration is `capabilities: {"ode": true, "ssa": false}`.
+The M0 declaration is `capabilities: {"ode": true, "ssa": false}`.
 `ode: true` means the mathematics satisfies this deterministic contract; it does
 not assert that a solver is installed or that all trajectories can be computed
 without numerical overflow. Numerical failure reporting and tolerances belong
@@ -263,16 +264,17 @@ FIR with both profiles supported under their ratified contracts. A later P05
 must establish propensity mathematics, initial-count admissibility and eligibility
 before a schema/profile may declare SSA support. A future semantic version adding
 that meaning must specify compatibility/migration, not retroactively alter old
-M0 FIR payloads or digests. This proposal does not settle that later version.
+M0 FIR payloads or digests. This contract does not settle that later version.
 
 ## Examples, invalid cases and acceptance
 
-The [production/degradation example](examples/production-decay.json) is a
-proposal illustration with `alpha=10`, `beta=0.1` and `x0=0`. It is not an
-approved golden fixture or numerical solution. The candidate schema and examples
-are marked proposed until human scientific review and ratification.
+The [production/degradation example](examples/production-decay.json) is an
+illustration with `alpha=10`, `beta=0.1` and `x0=0`. It is not an
+approved golden fixture or numerical solution. The schema and semantic rules
+are ratified; the illustrative examples still require independent fixture review
+and explicit approval before normative use.
 
-| Review case | Expected result if this proposal is ratified |
+| Review case | Contract expectation; fixture approval remains separate |
 |---|---|
 | Resolved production/degradation example | Accept M0 mathematical structure and exact semantic template |
 | Zero production, zero decay, fractional nonnegative initial value | Accept deterministic mathematics; no implied SSA support |
@@ -298,15 +300,15 @@ are marked proposed until human scientific review and ratification.
 | Solver/profile/time grid inserted into `model` | Reject misplaced execution configuration |
 
 Schema/semantic fixtures must be separately reviewed and executed by independent
-Python and Julia validators after ratification. The larger normative rejection
-catalog is #17 work. P03 must define the FIR raw-input/numeric contract explicitly;
-this proposal does not inherit every P01 lexical restriction without that review.
+Python and Julia validators before implementation approval. The larger normative
+rejection catalog is #17 work. P03 must define the FIR raw-input/numeric contract explicitly;
+this contract does not inherit every P01 lexical restriction without that review.
 The [example review notes](examples/README.md) identify each isolated defect's
 paths and the separate structural, producer and source-resolution checks.
 
 ## Alternatives and review tradeoffs
 
-- **Explicit reaction plus equation representation (proposed):** easy scientific
+- **Explicit reaction plus equation representation (adopted):** easy scientific
   walkthrough and future profile extension; requires consistency validation of
   deliberately redundant mathematics.
 - **Equation-only payload:** smaller deterministic implementation, but reaction
@@ -316,15 +318,27 @@ paths and the separate structural, producer and source-resolution checks.
 
 The first contract remains a narrow FIR subset, with versioned extension rather
 than pretending unsupported community/hierarchical mathematics is already defined.
-Public native APIs and solver choices are not frozen by this schema proposal.
+Public native APIs and solver choices are not frozen by this subset contract.
 
 ## Human ratification record
 
-- Decision: **PENDING**
-- Ratifying human PI, reviewed revision, date and approval source: **not recorded**
-- Independent fixture/rejection review: **PENDING**
+- Decision: **RATIFIED** for the M0 FIR subset; fixture and implementation approval remain separate.
+- Ratifying human PI: the approving repository user in this Codex conversation;
+  no separate personal name was supplied.
+- Reviewed revision: [`86450affca4470d7540d04f04bdc6d3d07e1a60d`](https://github.com/DRAGGON-Lab/FENIX/commit/86450affca4470d7540d04f04bdc6d3d07e1a60d).
+- Approval recorded: **2026-11-14**, following review of that revision.
+- Approval source: explicit user instruction in this conversation, transcribed
+  below; no public approval URL was supplied.
+- Independent fixture/rejection review and implementation approval: **PENDING**.
 
-Review must explicitly cover namespaces and role binding, expression semantics,
-count/unit interpretation, redundant representation consistency, assumptions,
-semantic/provenance classification and capability scope. Do not mark #13 complete
-or implement these new mathematical contracts before the required approval.
+> i approve ADR-P02
+
+The approved scope includes M0 mathematics, identity and observable-interface
+boundaries, source state/parameter mappings, compiler/source initial-count and
+observable correspondence, consistency checks, units and capabilities. Approval
+ratifies this contract and its structural schema; it does not approve golden
+fixtures, semantic validator implementations, compiler/solver implementations,
+SSA eligibility, P03 normalization/hashes or independent numerical references.
+Do not treat this ratification as completion of issue #13's remaining evidence
+and implementation gates. Future changes to these scientific rules require
+human PI approval of a revised contract.
