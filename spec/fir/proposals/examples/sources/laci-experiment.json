@@ -1,0 +1,49 @@
+{
+  "content": {
+    "kind": "Experiment",
+    "schema_version": "0.1.0",
+    "id": "baseline_LacI",
+    "revision": 1,
+    "design": {
+      "id": "production_decay_LacI",
+      "revision": 1,
+      "digest": "3c545ff323e247d21a7f0161ab221fc5bf1ed6d23c2eab9a0686f12b5d26e14d"
+    },
+    "parameters": [
+      {
+        "parameter": "alpha",
+        "quantity": {
+          "value": 10,
+          "unit": "molecule/s"
+        }
+      },
+      {
+        "parameter": "beta",
+        "quantity": {
+          "value": 0.1,
+          "unit": "1/s"
+        }
+      }
+    ],
+    "initial_counts": [
+      {
+        "species": "LacI",
+        "quantity": {
+          "value": 0,
+          "unit": "molecule"
+        }
+      }
+    ],
+    "observables": [
+      {
+        "id": "amount_x",
+        "target": {
+          "species": "LacI",
+          "port": "amount"
+        }
+      }
+    ],
+    "interventions": []
+  },
+  "digest": "fcb3bdcc770b509f73939f9abbd63a3b4a197134ea6695719fe2fd86554e2ce2"
+}

@@ -1,0 +1,49 @@
+{
+  "content": {
+    "kind": "Experiment",
+    "schema_version": "0.1.0",
+    "id": "baseline_parameter_names",
+    "revision": 1,
+    "design": {
+      "id": "production_decay_parameter_names",
+      "revision": 1,
+      "digest": "ede1b47c0923777e963e3c996e5dd04768cf462e92fb51d76053fb2c78cb3dfd"
+    },
+    "parameters": [
+      {
+        "parameter": "k_prod",
+        "quantity": {
+          "value": 10,
+          "unit": "molecule/s"
+        }
+      },
+      {
+        "parameter": "k_loss",
+        "quantity": {
+          "value": 0.1,
+          "unit": "1/s"
+        }
+      }
+    ],
+    "initial_counts": [
+      {
+        "species": "x",
+        "quantity": {
+          "value": 0,
+          "unit": "molecule"
+        }
+      }
+    ],
+    "observables": [
+      {
+        "id": "amount_x",
+        "target": {
+          "species": "x",
+          "port": "amount"
+        }
+      }
+    ],
+    "interventions": []
+  },
+  "digest": "e0197dfadb35355ea9a34e379ea3dd109454df8095fddf66db7e0397c8a2a6a7"
+}

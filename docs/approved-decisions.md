@@ -44,3 +44,7 @@
 Both native reports are available for review; fixture and implementation approval
 remain human decisions before the issue #12 PR can merge. P02/P03 and the wider
 EP-01 fixture issues remain separate gates.
+
+**Next contract proposal (not ratified):** [ADR-P02 — M0 mathematical FIR and capabilities](../spec/fir/proposals/ADR-P02.md).
+This proposal defines candidate mathematics and identity boundaries for review;
+it does not authorize FIR implementation or close issue #13.

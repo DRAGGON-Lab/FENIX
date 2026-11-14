@@ -1,0 +1,495 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:fenix:proposed:fir:m0-subset:0.1.0",
+  "title": "PROPOSED ADR-P02 M0 FIR subset; not ratified",
+  "$comment": "Structural proposal only. Semantic reference/role/unit/consistency checks require ADR-P02 ratification. Exact normalization and FIR digests require ADR-P03. Standalone FIR may omit provenance; BioIR compiler outputs must include both source digests and complete state/parameter maps under the ADR producer contract.",
+  "type": "object",
+  "properties": {
+    "model": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "0.1.0"
+        },
+        "time_unit": {
+          "const": "s"
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/state"
+          },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/parameter"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "reactions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/reaction"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "equations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/equation"
+          },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "observables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/observable"
+          }
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "single_representative_cell",
+              "well_mixed",
+              "fixed_volume",
+              "constant_rates",
+              "no_interventions"
+            ]
+          },
+          "minItems": 5,
+          "maxItems": 5,
+          "uniqueItems": true
+        },
+        "capabilities": {
+          "type": "object",
+          "properties": {
+            "ode": {
+              "const": true
+            },
+            "ssa": {
+              "const": false
+            }
+          },
+          "required": [
+            "ode",
+            "ssa"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "schema_version",
+        "time_unit",
+        "states",
+        "parameters",
+        "reactions",
+        "equations",
+        "observables",
+        "assumptions",
+        "capabilities"
+      ],
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "design_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "experiment_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "compiler": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "version"
+          ],
+          "additionalProperties": false
+        },
+        "symbol_map": {
+          "type": "object",
+          "properties": {
+            "states": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/state_mapping"
+              },
+              "minItems": 1,
+              "maxItems": 1
+            },
+            "parameters": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/parameter_mapping"
+              },
+              "minItems": 2,
+              "maxItems": 2,
+              "allOf": [
+                {
+                  "contains": {
+                    "properties": {
+                      "fir_parameter_id": {
+                        "const": "alpha"
+                      }
+                    },
+                    "required": [
+                      "fir_parameter_id"
+                    ]
+                  }
+                },
+                {
+                  "contains": {
+                    "properties": {
+                      "fir_parameter_id": {
+                        "const": "beta"
+                      }
+                    },
+                    "required": [
+                      "fir_parameter_id"
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "required": [
+            "states",
+            "parameters"
+          ],
+          "additionalProperties": false
+        },
+        "display_labels": {
+          "type": "object",
+          "properties": {
+            "observables": {
+              "type": "object",
+              "propertyNames": {
+                "$ref": "#/definitions/id"
+              },
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [],
+      "additionalProperties": false,
+      "dependencies": {
+        "symbol_map": [
+          "design_digest"
+        ]
+      }
+    }
+  },
+  "required": [
+    "model"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+      "maxLength": 64,
+      "not": {
+        "pattern": "[^A-Za-z0-9_-]"
+      }
+    },
+    "parameter_ref": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "const": "parameter"
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        }
+      },
+      "required": [
+        "op",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "state_ref": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "const": "state"
+        },
+        "id": {
+          "$ref": "#/definitions/id"
+        }
+      },
+      "required": [
+        "op",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "multiply": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "const": "multiply"
+        },
+        "left": {
+          "$ref": "#/definitions/expression"
+        },
+        "right": {
+          "$ref": "#/definitions/expression"
+        }
+      },
+      "required": [
+        "op",
+        "left",
+        "right"
+      ],
+      "additionalProperties": false
+    },
+    "subtract": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "const": "subtract"
+        },
+        "left": {
+          "$ref": "#/definitions/expression"
+        },
+        "right": {
+          "$ref": "#/definitions/expression"
+        }
+      },
+      "required": [
+        "op",
+        "left",
+        "right"
+      ],
+      "additionalProperties": false
+    },
+    "expression": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/parameter_ref"
+        },
+        {
+          "$ref": "#/definitions/state_ref"
+        },
+        {
+          "$ref": "#/definitions/multiply"
+        },
+        {
+          "$ref": "#/definitions/subtract"
+        }
+      ]
+    },
+    "state": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "const": "x"
+        },
+        "quantity": {
+          "const": "molecular_count"
+        },
+        "scope": {
+          "const": "representative_cell"
+        },
+        "unit": {
+          "const": "molecule"
+        },
+        "initial": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "id",
+        "quantity",
+        "scope",
+        "unit",
+        "initial"
+      ],
+      "additionalProperties": false
+    },
+    "parameter": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "enum": [
+            "alpha",
+            "beta"
+          ]
+        },
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "enum": [
+            "molecule/s",
+            "1/s"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "value",
+        "unit"
+      ],
+      "additionalProperties": false
+    },
+    "reaction": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "enum": [
+            "production",
+            "decay"
+          ]
+        },
+        "stoichiometry": {
+          "type": "object",
+          "properties": {
+            "x": {
+              "enum": [
+                -1,
+                1
+              ]
+            }
+          },
+          "required": [
+            "x"
+          ],
+          "additionalProperties": false
+        },
+        "flux": {
+          "$ref": "#/definitions/expression"
+        }
+      },
+      "required": [
+        "id",
+        "stoichiometry",
+        "flux"
+      ],
+      "additionalProperties": false
+    },
+    "equation": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "$ref": "#/definitions/id"
+        },
+        "unit": {
+          "const": "molecule/s"
+        },
+        "rhs": {
+          "$ref": "#/definitions/expression"
+        }
+      },
+      "required": [
+        "state",
+        "unit",
+        "rhs"
+      ],
+      "additionalProperties": false
+    },
+    "observable": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/id"
+        },
+        "state": {
+          "$ref": "#/definitions/id"
+        },
+        "unit": {
+          "const": "molecule"
+        }
+      },
+      "required": [
+        "id",
+        "state",
+        "unit"
+      ],
+      "additionalProperties": false
+    },
+    "state_mapping": {
+      "type": "object",
+      "properties": {
+        "fir_state_id": {
+          "const": "x"
+        },
+        "bioir_species_id": {
+          "$ref": "#/definitions/id"
+        },
+        "bioir_port_id": {
+          "$ref": "#/definitions/id"
+        },
+        "bioir_compartment_id": {
+          "$ref": "#/definitions/id"
+        }
+      },
+      "required": [
+        "fir_state_id",
+        "bioir_species_id",
+        "bioir_port_id",
+        "bioir_compartment_id"
+      ],
+      "additionalProperties": false
+    },
+    "parameter_mapping": {
+      "type": "object",
+      "properties": {
+        "fir_parameter_id": {
+          "enum": [
+            "alpha",
+            "beta"
+          ]
+        },
+        "bioir_parameter_id": {
+          "$ref": "#/definitions/id"
+        },
+        "bioir_function_id": {
+          "$ref": "#/definitions/id"
+        },
+        "bioir_function_kind": {
+          "enum": [
+            "constitutive_production",
+            "first_order_decay"
+          ]
+        }
+      },
+      "required": [
+        "fir_parameter_id",
+        "bioir_parameter_id",
+        "bioir_function_id",
+        "bioir_function_kind"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
