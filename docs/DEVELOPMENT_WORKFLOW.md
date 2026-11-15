@@ -63,9 +63,11 @@ julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'
 
 Commit uv-generated `packages/python/uv.lock`; do not hand-edit it. Keep reference tools in the development group rather than runtime dependencies. The separate [Julia reference environment](../conformance/julia/README.md) commits its Pkg-generated manifest; the library manifest remains ignored. Dependency installation can require network access; subsequent offline checks must not fetch resources.
 
-The repository checker and harness tests check repository-document consistency, **not science**. Native package smoke tests check packaging only. When M0/M1 scientific conformance suites exist, an agent must additionally execute the relevant mathematical and cross-language checks.
+The repository checker and harness tests check repository-document consistency, **not science**. Python package tests now cover typed M0 content construction and serialization as well as packaging; Julia smoke tests check packaging only. When M0/M1 scientific conformance suites exist, an agent must additionally execute the relevant mathematical and cross-language checks.
 
 Do not claim that a check passed unless it actually ran. A locally unavailable runtime is `NOT RUN`, not `PASS`.
+
+For Python content changes, also run the native-content projections, Ruff and strict mypy commands in the [Python package instructions](../packages/python/README.md#development-checks). CI additionally builds and tests a clean wheel without development dependencies.
 
 For P01 reference validation, also execute the independent catalog runners and
 report comparison from the [catalog instructions](../conformance/bioir/README.md).

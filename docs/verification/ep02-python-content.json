@@ -1,0 +1,1361 @@
+{
+  "scope": "Issue #18: native uncommitted Python M0 BioIR content; human implementation review pending",
+  "recorded_utc": "2026-11-15T13:28:45.192050+00:00",
+  "source": {
+    "base_revision": "972f23b39e7423aaf8c0a711132008039dfb6f06",
+    "branch": "feat/18-python-bioir-content",
+    "dirty_during_verification": true,
+    "fingerprint_algorithm": "sorted relative path + NUL + bytes + NUL, SHA-256; this evidence pair excluded",
+    "source_sha256": "4de5e46d504283e9e8accc64a5eb318e9523fc1d548fc9ff0c2ecafd17c1fc62",
+    "files": {
+      ".github/workflows/scaffold-smoke.yml": "51a5423c3a080d7135ab4ba9104bcd45d994fc985e037d24f244b1934ee76895",
+      "PRODUCT.md": "a32244814585ab2321672e07909120dd7025c10f46d0d4c666825596748e979a",
+      "README.md": "696c8f9f766a7455acd2419df125c6207aab2e7c3c71ff9337af4c81b875a5ef",
+      "docs/DEVELOPMENT_WORKFLOW.md": "877c18e461f2eb406a7ee6f81c0c37f8ee8034374a57cff808d0b130287f440e",
+      "docs/verification/ep01-rejections.md": "47a23a94491dce2c547c3a05861ed3c808c2cdddfca17a316fc44d0b8474846b",
+      "docs/verification/rejections-julia.json": "7ec002c0be669e2a64e9fdea019d26d8167991182fde60d595511c813f868921",
+      "docs/verification/rejections-python.json": "b4fce6c7bfcc9dfb7a47b1a86922b45f664e639204bf5e683548023ba5482b5d",
+      "packages/python/README.md": "e92f4d8fb22e6ebdcfcce2b957bd0afa1385a5591059b5128b560107c3b78a30",
+      "packages/python/pyproject.toml": "9b006f263ed7e7c936233bec47dc47f5e6f591b12844bd275e462d40831b7786",
+      "packages/python/src/fenix/__init__.py": "3578a75169a3473bee69d0027f10527b143a1e978c20b462489593ac6a3e1fc3",
+      "packages/python/src/fenix/bioir/__init__.py": "de544584d2e26926a0e0b182a2fe0afb140eda4933e9deac4e34b0d43126b4f9",
+      "packages/python/src/fenix/bioir/_content.py": "9d23a909d724e774be203a31ddcf520e91e83710be593f26d8d7fafea8597287",
+      "packages/python/src/fenix/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packages/python/tests/test_bioir.py": "961b92928fd88229bba03fc38fbb6a8f0049a14d713d51d119ab6637b9f52f30",
+      "packages/python/tests/test_smoke.py": "3fc144b527e43d432eed9300e12be5c582d870e72e2e37d9fa9d22122ee96d0b",
+      "packages/python/tests_native_content/adapter.py": "580639d6c533c32d3b5cbdee10b386f13acf34590dc04dc9267cd6a308d89b79",
+      "packages/python/tests_native_content/coverage.json": "16776f9c45296325a2277b6e1c8993ef53922dc003c0889aac314e7587c96869",
+      "packages/python/tests_native_content/test_projections.py": "4b067cafbb658051ce1b652849c451b5e9d3710a360b92a362046e5827eaa809",
+      "packages/python/uv.lock": "2e0b9f22e4c2669fd5f424205ba832568ff95ef7f66f4e7d187e89a154ea2cda"
+    }
+  },
+  "runtime": {
+    "platform": "macOS-15.7.9-x86_64-i386-64bit",
+    "python": "3.12.13",
+    "uv": "0.11.29",
+    "julia": "1.10.13",
+    "node": "24.18.0",
+    "development_dependencies": {
+      "jsonschema": "4.26.0",
+      "rfc8785": "0.1.4",
+      "ruff": "0.17.5",
+      "mypy": "2.4.1"
+    }
+  },
+  "projection_coverage": {
+    "scope": "29 native-content projections, not full 92-case native conformance",
+    "cases": [
+      {
+        "id": "null",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "bool",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "integer",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "negative-zero",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "integer-negative-zero",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "zero-tiny-exponent",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "whitespace",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "unicode-literal",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "unicode-escaped",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "escaped-backslash",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "unicode-preserved",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "nested",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "one-decimal",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "decimal-rounding",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "round-to-even",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "min-subnormal",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "negative-subnormal",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "max-finite",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "integer-limit",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "negative-integer-limit",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "binary64-exponent-boundary",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "duplicate-root",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "duplicate-escaped",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "duplicate-nested",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "duplicate-pointer",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "lone-high",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "lone-low",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "bad-surrogate-pair",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "invalid-utf8",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "utf8-surrogate",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "integer-outside",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "negative-integer-outside",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "integer-rounding-forbidden",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "overflow",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "negative-overflow",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "underflow",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "negative-underflow",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "round-to-zero",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "nan",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "infinity",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "negative-infinity",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "leading-zero",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "trailing-data",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "trailing-comma",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "bad-number",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "bad-escape",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "raw-control",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "truncated",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "unclosed-string",
+        "status": "DEFERRED",
+        "reason": "Raw parsing and token/Unicode diagnostics are #19."
+      },
+      {
+        "id": "design-valid",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "experiment-valid",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "metadata-variant",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "zero-rates-fractional-count",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "design-digest",
+        "status": "DEFERRED",
+        "reason": "Committed envelope digest verification is #19."
+      },
+      {
+        "id": "experiment-digest",
+        "status": "DEFERRED",
+        "reason": "Committed envelope digest verification is #19."
+      },
+      {
+        "id": "design-reference-id",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "design-reference-revision",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "design-reference-digest",
+        "status": "DEFERRED",
+        "reason": "Exact Design digest correspondence is #19."
+      },
+      {
+        "id": "missing-compartment",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "missing-function-port",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "missing-function-species",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "missing-function-parameter",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "wrong-function-unit",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "duplicate-function-id",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "duplicate-parameter-id",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "duplicate-assignment",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "wrong-assignment-unit",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "unknown-assignment",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "unknown-initial-species",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "observable-port",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "duplicate-observable-id",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "execution-profile",
+        "status": "DEFERRED",
+        "reason": "Raw unknown-member diagnostics are #19; constructor keyword rejection is tested separately."
+      },
+      {
+        "id": "invalid-event",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "invalid-unit",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "negative-rate",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "boolean-count",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "unknown-field",
+        "status": "DEFERRED",
+        "reason": "Raw unknown-member diagnostics are #19; constructor keyword rejection is tested separately."
+      },
+      {
+        "id": "unsupported-version",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "extra-species",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "extra-compartments",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "design-revision-advance",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "revision-advance",
+        "status": "DEFERRED",
+        "reason": "Trusted revision replacement is #19."
+      },
+      {
+        "id": "revision-metadata",
+        "status": "DEFERRED",
+        "reason": "Trusted revision replacement is #19."
+      },
+      {
+        "id": "revision-replace",
+        "status": "DEFERRED",
+        "reason": "Trusted revision replacement is #19."
+      },
+      {
+        "id": "revision-rollback",
+        "status": "DEFERRED",
+        "reason": "Trusted revision replacement is #19."
+      },
+      {
+        "id": "canonical-numbers",
+        "status": "DEFERRED",
+        "reason": "Canonical bytes and digests are #19."
+      },
+      {
+        "id": "canonical-order",
+        "status": "DEFERRED",
+        "reason": "Canonical bytes and digests are #19."
+      },
+      {
+        "id": "canonical-array",
+        "status": "DEFERRED",
+        "reason": "Canonical bytes and digests are #19."
+      },
+      {
+        "id": "canonical-unicode",
+        "status": "DEFERRED",
+        "reason": "Canonical bytes and digests are #19."
+      },
+      {
+        "id": "canonical-controls",
+        "status": "DEFERRED",
+        "reason": "Canonical bytes and digests are #19."
+      },
+      {
+        "id": "duplicate-function-role",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      },
+      {
+        "id": "reordered-functions",
+        "status": "PROJECTED",
+        "reason": "Native content construction only; envelope metadata and digest excluded."
+      }
+    ]
+  },
+  "checks": [
+    {
+      "command": "uv build --project packages/python --offline",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:30.018069+00:00",
+      "seconds": 2.232,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "8ad2a5a6782bb27b557d75de1642f9843d89c012bb1ff7ad3bc5ae3216dcd8d1",
+      "name": "build",
+      "output_excerpt": "Copying src/fenix_bio.egg-info to build/bdist.macosx-10.15-x86_64/wheel/./fenix_bio-0.0.0-py3.12.egg-info\nrunning install_scripts\ncreating build/bdist.macosx-10.15-x86_64/wheel/fenix_bio-0.0.0.dist-info/WHEEL\ncreating '/Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/packages/python/dist/.tmp-m5h92ged/fenix_bio-0.0.0-py3-none-any.whl' and adding 'build/bdist.macosx-10.15-x86_64/wheel' to it\nadding 'fenix/__init__.py'\nadding 'fenix/py.typed'\nadding 'fenix/bioir/__init__.py'\nadding 'fenix/bioir/_content.py'\nadding 'fenix_bio-0.0.0.dist-info/METADATA'\nadding 'fenix_bio-0.0.0.dist-info/WHEEL'\nadding 'fenix_bio-0.0.0.dist-info/top_level.txt'\nadding 'fenix_bio-0.0.0.dist-info/RECORD'\nremoving build/bdist.macosx-10.15-x86_64/wheel\nSuccessfully built packages/python/dist/fenix_bio-0.0.0.tar.gz\nSuccessfully built packages/python/dist/fenix_bio-0.0.0-py3-none-any.whl"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline ruff format --check packages/python/src/fenix/bioir packages/python/tests/test_bioir.py packages/python/tests_native_content",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:25:52.152994+00:00",
+      "seconds": 0.13,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "f114d83b30c5c657ee43a847a45bafccaea255d82673feb87c26d252c61e29c1",
+      "name": "format",
+      "output_excerpt": "5 files already formatted"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:25:52.162756+00:00",
+      "seconds": 0.21,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "27e0e46b58761f9d352af65c053db5f56bae08ab173d574cb5ae9f5e861c7a4d",
+      "name": "harness",
+      "output_excerpt": "test_claude_import_requirements (test_check_repo.TestRepositoryHarness.test_claude_import_requirements) ... ok\ntest_duplicate_legacy_agent (test_check_repo.TestRepositoryHarness.test_duplicate_legacy_agent) ... ok\ntest_ignores_links_inside_code_fences (test_check_repo.TestRepositoryHarness.test_ignores_links_inside_code_fences) ... ok\ntest_missing_required_file (test_check_repo.TestRepositoryHarness.test_missing_required_file) ... ok\ntest_relative_links (test_check_repo.TestRepositoryHarness.test_relative_links) ... ok\ntest_valid_structure (test_check_repo.TestRepositoryHarness.test_valid_structure) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.057s\n\nOK"
+    },
+    {
+      "command": "julia --project=conformance/julia conformance/rejections/tests/test_harness.jl",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:42.018558+00:00",
+      "seconds": 10.724,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "573a1f2ba6139da2737c8f3d42c7abcec111237fb804d4d68ca1023c5ed1d8bf",
+      "name": "julia-harness",
+      "output_excerpt": "Test Summary:            | Pass  Total  Time\nNative catalog integrity |   12     12  3.8s\nTest Summary:            | Pass  Total  Time\nProtected output aliases |    9      9  0.3s\nTest Summary:                              | Pass  Total  Time\nProducer operations preserve supplied data |   18     18  1.4s\nTest Summary:            | Pass  Total  Time\nApproval status metadata |    6      6  0.2s"
+    },
+    {
+      "command": "julia --project=conformance/julia conformance/rejections/tests/test_reference.jl",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:30.014068+00:00",
+      "seconds": 13.805,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "d931f0895e16f0630fd837c44c7aeac4206e0a1aa2cf6b8d177995748fde8b4f",
+      "name": "julia-reference-tests",
+      "output_excerpt": "Test Summary:                               | Pass  Total  Time\nFixed rejection catalog and immutable input |  257    257  6.6s\nTest Summary:                          | Pass  Total  Time\nRaw numeric policy and exact templates |   11     11  0.8s"
+    },
+    {
+      "command": "julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:30.033843+00:00",
+      "seconds": 9.773,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "56acdd5bd15068b909b8d9b0e08df68d60fbb809cc5feeb06d1455120d55e24b",
+      "name": "julia-smoke",
+      "output_excerpt": "  [8dfed614] Test\n      Status `/private/var/folders/65/dt4l3nw13q57n8x9nlly46640000gn/T/jl_jVnJc9/Manifest.toml`\n  [b4f55250] Fenix v0.0.0 `~/Gonzalo/DRAGGONLab/FENIX/packages/julia`\n  [2a0f44e3] Base64\n  [b77e0a4c] InteractiveUtils\n  [56ddb016] Logging\n  [d6f4376e] Markdown\n  [9a3f8284] Random\n  [ea8e919c] SHA v0.7.0\n  [9e88b42a] Serialization\n  [8dfed614] Test\n     Testing Running tests...\nTest Summary:        | Pass  Total  Time\nFENIX Julia scaffold |    2      2  0.0s\n     Testing Fenix tests passed "
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline mypy --config-file packages/python/pyproject.toml",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:30.007310+00:00",
+      "seconds": 0.458,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "f9b031e5c45aa702cd4fef028d465551cb20a2c4698e0913c7b00766b20ac4d8",
+      "name": "mypy",
+      "output_excerpt": "Success: no issues found in 2 source files"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:29.990283+00:00",
+      "seconds": 0.2,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "35562fd4a64325c1ffa5a590b13ce16e1be1045b3f559b950d56e758eb2d2b1d",
+      "name": "native",
+      "output_excerpt": "test_design_references_duplicates_and_roles (test_bioir.TestContent.test_design_references_duplicates_and_roles) ... ok\ntest_experiment_context_and_references (test_bioir.TestContent.test_experiment_context_and_references) ... ok\ntest_ids_revisions_and_tokens (test_bioir.TestContent.test_ids_revisions_and_tokens) ... ok\ntest_immutable_and_fresh_outputs (test_bioir.TestContent.test_immutable_and_fresh_outputs) ... ok\ntest_native_numeric_policy (test_bioir.TestContent.test_native_numeric_policy) ... ok\ntest_positive_serialization_and_order (test_bioir.TestContent.test_positive_serialization_and_order) ... ok\ntest_tuples_types_and_cardinalities (test_bioir.TestContent.test_tuples_types_and_cardinalities) ... ok\ntest_units (test_bioir.TestContent.test_units) ... ok\ntest_content_api_boundary (test_smoke.TestScaffold.test_content_api_boundary) ... ok\ntest_version (test_smoke.TestScaffold.test_version) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.013s\n\nOK"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python conformance/production_decay/audit_rational.py",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:25:30.543597+00:00",
+      "seconds": 2.112,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "e36aef0eee1c42c206525cec265a8529211b15aa7b7be34984572f11890091ac",
+      "name": "oracle-audit",
+      "output_excerpt": "PASS: linear-production/3ff0000000000000\nPASS: linear-production/4024000000000000\nPASS: constant/0000000000000000\nPASS: constant/3fe0000000000000\nPASS: constant/3ff0000000000000\nPASS: constant/4024000000000000\nPASS: small-decay-20/0000000000000000\nPASS: small-decay-20/3fe0000000000000\nPASS: small-decay-20/3ff0000000000000\nPASS: small-decay-20/4024000000000000\nPASS: small-decay-40/0000000000000000\nPASS: small-decay-40/3fe0000000000000\nPASS: small-decay-40/3ff0000000000000\nPASS: small-decay-40/4024000000000000\nPASS: 40 samples; catalog_sha256=468c05a59fc23106dfc2e9e3454e9709ef0b61c9e130885180ecd4e67a07406d; fixture_status=APPROVED"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python conformance/production_decay/review_oracle.py --compare artifacts/production-decay-python.json artifacts/production-decay-julia.json",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:26:31.085540+00:00",
+      "seconds": 0.101,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "7b112e597ea510701e61b9c18bf395ba49c3a95725889f6164b9e92047b97272",
+      "name": "oracle-compare",
+      "output_excerpt": "{\n  \"status\": \"PASS\",\n  \"samples\": 40,\n  \"computations\": 160,\n  \"agreement_significant_digits\": 70,\n  \"max_absolute_spread_molecule\": \"5.483038997782072892764741245241733772381569827495994319602087029819688752781763019358273052263181080107003527825881577379736904645847759538628866821336334219154842278203552619182331279643952413927111203458559420717189157E-89\",\n  \"fixture_status\": \"APPROVED\"\n}"
+    },
+    {
+      "command": "julia --project=conformance/julia conformance/production_decay/tests/test_oracle.jl",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:25:30.553615+00:00",
+      "seconds": 6.219,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "6e0c1dc842edbbc4ebf19fec61aa0dd19df271e08114068a6a6109a97f9927df",
+      "name": "oracle-julia-tests",
+      "output_excerpt": "Test Summary:                               | Pass  Total  Time\nMonotonicity retains time/value association |    2      2  0.2s\nTest Summary:                 | Pass  Total  Time\nCandidate mathematical oracle |  603    603  2.7s\nTest Summary:                 | Pass  Total  Time\nDecimal half-even publication |    4      4  0.0s\nTest Summary:                   | Pass  Total  Time\nReject corrupt candidate inputs |   39     39  0.2s"
+    },
+    {
+      "command": "julia --project=conformance/julia conformance/production_decay/review_oracle.jl --report artifacts/production-decay-julia.json",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:25:30.580006+00:00",
+      "seconds": 4.716,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "12309edba44f0bcca41a40d4a06fd53577cf5127b006847e3a0ba3458b931b9f",
+      "name": "oracle-julia",
+      "output_excerpt": "PASS: 80 computations; fixture_status=APPROVED"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python conformance/production_decay/review_oracle.py --report artifacts/production-decay-python.json",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:25:30.569308+00:00",
+      "seconds": 0.195,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "12309edba44f0bcca41a40d4a06fd53577cf5127b006847e3a0ba3458b931b9f",
+      "name": "oracle-python",
+      "output_excerpt": "PASS: 80 computations; fixture_status=APPROVED"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s conformance/production_decay/tests -v",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:42.028959+00:00",
+      "seconds": 5.23,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "b237c7278b2a42157b7195c2d9ca41b1107957b848234c82a0055cd1ebb62c30",
+      "name": "oracle-tests",
+      "output_excerpt": "test_complete_coverage_and_fixed_candidates (test_oracle.OracleTests.test_complete_coverage_and_fixed_candidates) ... ok\ntest_corrupt_expectation_is_not_rewritten (test_oracle.OracleTests.test_corrupt_expectation_is_not_rewritten) ... ok\ntest_decimal_real_point_one_changes_reference (test_oracle.OracleTests.test_decimal_real_point_one_changes_reference) ... ok\ntest_duplicate_json_keys_rejected (test_oracle.OracleTests.test_duplicate_json_keys_rejected) ... ok\ntest_half_even_significant_rounding (test_oracle.OracleTests.test_half_even_significant_rounding) ... ok\ntest_initial_zero_equilibrium_and_dyadic_linear_arithmetic (test_oracle.OracleTests.test_initial_zero_equilibrium_and_dyadic_linear_arithmetic) ... ok\ntest_monotonic_check_rejects_wrong_time_value_association (test_oracle.OracleTests.test_monotonic_check_rejects_wrong_time_value_association) ... ok\ntest_nonnegative_monotonic_and_equilibrium_bounds (test_oracle.OracleTests.test_nonnegative_monotonic_and_equilibrium_bounds) ... ok\ntest_report_rejections (test_oracle.OracleTests.test_report_rejections) ... ok\ntest_small_decay_fixed_time_limit_and_bound (test_oracle.OracleTests.test_small_decay_fixed_time_limit_and_bound) ... ok\n\n----------------------------------------------------------------------\nRan 16 tests in 4.960s\n\nOK"
+    },
+    {
+      "command": "node conformance/reference/check_p01.cjs",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:42.014644+00:00",
+      "seconds": 0.456,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "a0d9b9811639ff7d620aac0755a37cdf899f9baa1f2687d1aee675a7afab5612",
+      "name": "p01-audit",
+      "output_excerpt": "Independent ECMAScript cross-check passed: 41 P01 canonical/digest cases; fixture_status=APPROVED."
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python conformance/compare_reports.py artifacts/p01-python.json artifacts/p01-julia.json",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:25:30.543596+00:00",
+      "seconds": 0.174,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "5342692022edd6fb11a3c742205dfb2946b3531d6aed9a5ad9dd650cecc9718b",
+      "name": "p01-compare",
+      "output_excerpt": "92 P01 reference fixtures matched independently in Python and Julia; fixture_status=APPROVED."
+    },
+    {
+      "command": "julia --project=conformance/julia conformance/julia/run_p01.jl --report artifacts/p01-julia.json",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:42.011430+00:00",
+      "seconds": 8.265,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "0b6b0806ab648b8e52d2cd19bf7d8c46ebf06106ea46e5f0633c95c7302f9031",
+      "name": "p01-julia",
+      "output_excerpt": "92 P01 reference cases; fixture_status=APPROVED; passed=true"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python conformance/python/run_p01.py --report artifacts/p01-python.json",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:42.008144+00:00",
+      "seconds": 0.461,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "0c576fe45ed6ef2d04ef26514eca002c3936870f28d2115e33703853f26d8a30",
+      "name": "p01-python",
+      "output_excerpt": "92 P01 reference cases; fixture_status=APPROVED; passed=True"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s conformance/python/tests -v",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:29.995777+00:00",
+      "seconds": 0.764,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "c5b566e1ed2a892de2a24dc3ae12570ff6bd293140b922488060f58f849525e5",
+      "name": "p01-tests",
+      "output_excerpt": "test_catalog (test_p01_catalog.TestP01Catalog.test_catalog) ... ok\ntest_agreeing_wrong_categories_are_not_success (test_reports.TestReports.test_agreeing_wrong_categories_are_not_success) ... ok\ntest_boolean_flags_and_status_are_not_coerced (test_reports.TestReports.test_boolean_flags_and_status_are_not_coerced) ... ok\ntest_cli_reports_catalog_status (test_reports.TestReports.test_cli_reports_catalog_status) ... ok\ntest_complete_report (test_reports.TestReports.test_complete_report) ... ok\ntest_failure_cannot_be_hidden_in_summary (test_reports.TestReports.test_failure_cannot_be_hidden_in_summary) ... ok\ntest_missing_duplicate_and_wrong_catalog (test_reports.TestReports.test_missing_duplicate_and_wrong_catalog) ... ok\ntest_schema_accepts_only_registered_approval_statuses (test_reports.TestReports.test_schema_accepts_only_registered_approval_statuses) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.459s\n\nOK"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python conformance/canonicalization/review_p03.py --compare artifacts/p03-python.json artifacts/p03-node.json",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:25:52.160960+00:00",
+      "seconds": 0.405,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "88b677b1716dd9dae2e0a4433a0fc83c3dfb06b7092500785e37cd61e0bcf348",
+      "name": "p03-compare",
+      "output_excerpt": "PASS: independent serialization reports match; fixture_status=APPROVED; FIR validation/normalization NOT RUN."
+    },
+    {
+      "command": "node --test conformance/canonicalization/tests/test_review.cjs",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:25:30.553751+00:00",
+      "seconds": 0.806,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "b085940e6a80aa4f98bcf5a24d5a254604454ea1e2cda0a0564dff5313cf82e0",
+      "name": "p03-node-tests",
+      "output_excerpt": "\u2714 UTF-16 recursive ordering and array positions (1.974353ms)\n\u2714 all fixed vectors emit bytes and leave contract checks unexecuted (76.814332ms)\n\u2714 boundary rejects inconsistent stages and coverage (14.792213ms)\n\u2714 artifact and evaluator outputs are protected through aliases (3.049776ms)\n\u2714 both supported catalog statuses preserve rows and reject unknown status (385.658562ms)\n\u2139 tests 5\n\u2139 suites 0\n\u2139 pass 5\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 655.440262"
+    },
+    {
+      "command": "node conformance/canonicalization/review_p03.cjs --report artifacts/p03-node.json",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:25:30.559190+00:00",
+      "seconds": 0.265,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "a65c885b89159d916597cb3cc1917531cf84f7bd0a20624225bd434a51d82690",
+      "name": "p03-node",
+      "output_excerpt": "PASS: 84 entries inspected; fixture_status=APPROVED; FIR validation/normalization NOT RUN."
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python conformance/canonicalization/review_p03.py --report artifacts/p03-python.json",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:25:30.565057+00:00",
+      "seconds": 0.597,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "0faa5e0c978b9f0a45c892e38c237d26f6eee23232eab4c7ba718c53a148f669",
+      "name": "p03-python",
+      "output_excerpt": "PASS: 84 catalog entries inspected; fixture_status=APPROVED; FIR validation/normalization NOT RUN."
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s conformance/canonicalization/tests -v",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:42.045095+00:00",
+      "seconds": 23.876,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "b4065a1f7c71fd41d3c312a796278f1697774f0625e55d42a98455f84785137a",
+      "name": "p03-tests",
+      "output_excerpt": "test_rehashed_wrong_expectations_fail_direct_byte_comparison (test_boundaries.BoundaryTests.test_rehashed_wrong_expectations_fail_direct_byte_comparison) ... ok\ntest_report_bytes_and_provenance (test_boundaries.BoundaryTests.test_report_bytes_and_provenance) ... ok\ntest_supported_approval_statuses_preserve_rows_and_require_matching_reports (test_boundaries.BoundaryTests.test_supported_approval_statuses_preserve_rows_and_require_matching_reports) ... ok\ntest_expected_declaration_order (test_review.DeclarationOrderingTests.test_expected_declaration_order) ... ok\ntest_utf16_comparator (test_review.DeclarationOrderingTests.test_utf16_comparator) ... ok\ntest_checksum_and_path_failures (test_review.EvidenceTests.test_checksum_and_path_failures) ... ok\ntest_identity_relations_are_declared_consistently (test_review.EvidenceTests.test_identity_relations_are_declared_consistently) ... ok\ntest_rejects_missing_duplicate_and_false_success_reports (test_review.EvidenceTests.test_rejects_missing_duplicate_and_false_success_reports) ... ok\ntest_fixed_coverage (test_vectors.VectorTests.test_fixed_coverage) ... ok\ntest_fixed_new_vectors (test_vectors.VectorTests.test_fixed_new_vectors) ... ok\n\n----------------------------------------------------------------------\nRan 15 tests in 23.581s\n\nOK"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_content -v",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:30.002808+00:00",
+      "seconds": 0.339,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "ebcad7bc0b8d18a3f2fa49796b85800f630cf13080a48b68007a674dd13c46a4",
+      "name": "projections",
+      "output_excerpt": "test_approved_projections (test_projections.TestNativeProjections.test_approved_projections) ... ok\ntest_coverage_partition (test_projections.TestNativeProjections.test_coverage_partition) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.037s\n\nOK"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python artifacts/ep02-18/audit_baseline.py",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:26:49.095482+00:00",
+      "seconds": 0.138,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "35ff1a78aeb0a724a0c3be3c521ea01dd91fdbf49165f5d691ab16957c8ffa5a",
+      "name": "protected-baseline",
+      "output_excerpt": "python: PASS, 207 unchanged case rows; only pyproject/lock provenance changed\njulia: PASS, 207 unchanged case rows; only pyproject/lock provenance changed\nPASS: all tracked contracts, fixture inputs, both catalogs and reference implementations unchanged"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s conformance/rejections/tests -v",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:30.012428+00:00",
+      "seconds": 11.739,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "7809886dafdecda06dec8fc23936e9740eafc0726297485637ef57d73530f330",
+      "name": "rejection-tests",
+      "output_excerpt": "test_binary64_policy_and_nested_paths (test_reference.ReferenceTests.test_binary64_policy_and_nested_paths) ... ok\ntest_fixed_catalog_diagnostics (test_reference.ReferenceTests.test_fixed_catalog_diagnostics) ... ok\ntest_no_expression_repair (test_reference.ReferenceTests.test_no_expression_repair) ... ok\ntest_validators_do_not_mutate_or_normalize (test_reference.ReferenceTests.test_validators_do_not_mutate_or_normalize) ... ok\ntest_report_catalog_status_disagreement (test_reports.ApprovalStatus.test_report_catalog_status_disagreement) ... ok\ntest_supported_statuses_preserve_cases_and_report_status (test_reports.ApprovalStatus.test_supported_statuses_preserve_cases_and_report_status) ... ok\ntest_corrupt_catalog_and_dependencies (test_reports.CatalogIntegrity.test_corrupt_catalog_and_dependencies) ... ok\ntest_complete_reports (test_reports.Reports.test_complete_reports) ... ok\ntest_output_paths_and_aliases (test_reports.Reports.test_output_paths_and_aliases) ... ok\ntest_report_corruption (test_reports.Reports.test_report_corruption) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 11.398s\n\nOK"
+    },
+    {
+      "command": "node conformance/rejections/audit_inputs.cjs",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:42.029378+00:00",
+      "seconds": 0.499,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "9668f4e624448995d6a69c7377501161cd85d9f42f6567d4b06839072f855a68",
+      "name": "rejections-audit",
+      "output_excerpt": "PASS: 144 BioIR digest checks; semantic faults cannot hide behind stale content digests."
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python conformance/rejections/review.py --compare artifacts/rejections-python.json artifacts/rejections-julia.json",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:25:30.542255+00:00",
+      "seconds": 0.567,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "554e2a3fc76293144c552f19738a04bed8b72bfe6a45c4d853f70a355811b672",
+      "name": "rejections-compare",
+      "output_excerpt": "PASS: 207 fixed rejection-suite expectations matched by Python and Julia; fixture_status=APPROVED."
+    },
+    {
+      "command": "julia --project=conformance/julia conformance/rejections/review.jl --report artifacts/rejections-julia.json",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:42.011468+00:00",
+      "seconds": 13.075,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "16ca1ea7f5374bfe1aa446dea65280aabbf97eef04d8040e7e09b4eabf45be60",
+      "name": "rejections-julia",
+      "output_excerpt": "207 rejection-suite cases; passed=true"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python conformance/rejections/review.py --report artifacts/rejections-python.json",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:42.006587+00:00",
+      "seconds": 2.704,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "447516ba9ba41afd36d0b35f351894d95b1cda6aa4bbfa6315aa9f4b70fedc35",
+      "name": "rejections-python",
+      "output_excerpt": "207 rejection-suite cases; passed=True"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python scripts/check_repo.py",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:27:44.441731+00:00",
+      "seconds": 0.195,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "8e8c8f9c13bdb5c2b4d3f55f913fc3adac04cb5fc5d4b3b77e976b236487fb49",
+      "name": "repo",
+      "output_excerpt": "Repository harness checks passed (not scientific conformance)."
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python conformance/rejections/review.py --compare docs/verification/rejections-python.json docs/verification/rejections-julia.json",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:25:51.572574+00:00",
+      "seconds": 0.368,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "554e2a3fc76293144c552f19738a04bed8b72bfe6a45c4d853f70a355811b672",
+      "name": "retained-compare",
+      "output_excerpt": "PASS: 207 fixed rejection-suite expectations matched by Python and Julia; fixture_status=APPROVED."
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline ruff check packages/python/src/fenix/bioir packages/python/tests/test_bioir.py packages/python/tests_native_content",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:25:52.166849+00:00",
+      "seconds": 0.116,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "name": "ruff",
+      "output_excerpt": "All checks passed!"
+    },
+    {
+      "command": "uv sync --project packages/python --locked --offline",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:25:52.178136+00:00",
+      "seconds": 0.066,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "9afeb9fbad232a34d654f80356cf7c468c9d1f793f8bf9710bc75c766f755548",
+      "name": "sync",
+      "output_excerpt": "Resolved 14 packages in 3ms\nChecked 14 packages in 0.75ms"
+    },
+    {
+      "command": "/private/tmp/fenix-18-wheel/bin/python artifacts/ep02-18/audit_wheel.py",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:26:30.829727+00:00",
+      "seconds": 0.135,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "62038b636982be2ddaa74643894113c2ef80e6688a6603f0290b9b09adada1f4",
+      "name": "wheel-audit",
+      "output_excerpt": "{\"installed_distributions\": [\"fenix-bio\"], \"bioir_path\": \"/private/tmp/fenix-18-wheel/lib/python3.12/site-packages/fenix/bioir/__init__.py\", \"py_typed\": true, \"runtime_dependencies\": []}"
+    },
+    {
+      "command": "uv venv --python 3.12 /private/tmp/fenix-18-wheel && uv pip install --python /private/tmp/fenix-18-wheel/bin/python --no-deps packages/python/dist/fenix_bio-0.0.0-py3-none-any.whl",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:54.551798+00:00",
+      "seconds": 0.193,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "59b44a7932cbfc9a74ed34797b0c1c7580c21f5a6a4cee6a502a75c039a94edd",
+      "name": "wheel-install",
+      "output_excerpt": "Using CPython 3.12.13\nCreating virtual environment at: /private/tmp/fenix-18-wheel\nActivate with: source /private/tmp/fenix-18-wheel/bin/activate\nUsing Python 3.12.13 environment at: /private/tmp/fenix-18-wheel\nResolved 1 package in 13ms\nPrepared 1 package in 15ms\nInstalled 1 package in 3ms\n + fenix-bio==0.0.0 (from file:///Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/packages/python/dist/fenix_bio-0.0.0-py3-none-any.whl)"
+    },
+    {
+      "command": "/private/tmp/fenix-18-wheel/bin/python -m unittest discover -s packages/python/tests -v",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:25:30.541817+00:00",
+      "seconds": 0.196,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "66bf3f15603f170397793185f3160d02a95302e6ed98e629a4f9452aca974847",
+      "name": "wheel-tests",
+      "output_excerpt": "test_design_references_duplicates_and_roles (test_bioir.TestContent.test_design_references_duplicates_and_roles) ... ok\ntest_experiment_context_and_references (test_bioir.TestContent.test_experiment_context_and_references) ... ok\ntest_ids_revisions_and_tokens (test_bioir.TestContent.test_ids_revisions_and_tokens) ... ok\ntest_immutable_and_fresh_outputs (test_bioir.TestContent.test_immutable_and_fresh_outputs) ... ok\ntest_native_numeric_policy (test_bioir.TestContent.test_native_numeric_policy) ... ok\ntest_positive_serialization_and_order (test_bioir.TestContent.test_positive_serialization_and_order) ... ok\ntest_tuples_types_and_cardinalities (test_bioir.TestContent.test_tuples_types_and_cardinalities) ... ok\ntest_units (test_bioir.TestContent.test_units) ... ok\ntest_content_api_boundary (test_smoke.TestScaffold.test_content_api_boundary) ... ok\ntest_version (test_smoke.TestScaffold.test_version) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.016s\n\nOK"
+    },
+    {
+      "command": "git diff --check && git diff --cached --check",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:27:44.747426+00:00",
+      "seconds": 0.034,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "name": "whitespace",
+      "output_excerpt": ""
+    },
+    {
+      "command": "ruby -e 'require \"yaml\"; YAML.load_file(\".github/workflows/scaffold-smoke.yml\"); puts \"YAML syntax PASS\"'",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:27:44.174926+00:00",
+      "seconds": 0.156,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "0247a02aea3299c289b1eb12cac0a6486e3c1cfd4d20ec0cf5b807d49cf8c9c8",
+      "name": "yaml",
+      "output_excerpt": "YAML syntax PASS"
+    }
+  ],
+  "initial_attempts": [
+    {
+      "command": "uv run --project packages/python --locked --offline ruff format --check packages/python/src/fenix/bioir packages/python/tests/test_bioir.py packages/python/tests_native_content",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:11.346859+00:00",
+      "seconds": 0.347,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "f114d83b30c5c657ee43a847a45bafccaea255d82673feb87c26d252c61e29c1",
+      "name": "format",
+      "output_excerpt": "5 files already formatted"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:11.360078+00:00",
+      "seconds": 0.479,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "11a46809a4b1cece1aab8a147c18f71522a6a7f2a4a4c0bc79f3756e31f58f75",
+      "name": "harness",
+      "output_excerpt": "Could not find platform dependent libraries <exec_prefix>\ntest_claude_import_requirements (test_check_repo.TestRepositoryHarness.test_claude_import_requirements) ... ok\ntest_duplicate_legacy_agent (test_check_repo.TestRepositoryHarness.test_duplicate_legacy_agent) ... ok\ntest_ignores_links_inside_code_fences (test_check_repo.TestRepositoryHarness.test_ignores_links_inside_code_fences) ... ok\ntest_missing_required_file (test_check_repo.TestRepositoryHarness.test_missing_required_file) ... ok\ntest_relative_links (test_check_repo.TestRepositoryHarness.test_relative_links) ... ok\ntest_valid_structure (test_check_repo.TestRepositoryHarness.test_valid_structure) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.062s\n\nOK"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline mypy --config-file packages/python/pyproject.toml",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:11.345316+00:00",
+      "seconds": 0.347,
+      "exit_code": 1,
+      "outcome": "FAIL",
+      "log_sha256": "259f588b15850a63c74994102300a064fc52bd30ca4772889da5dc4dae2e0e7a",
+      "name": "mypy",
+      "output_excerpt": "Could not find platform dependent libraries <exec_prefix>\nTraceback (most recent call last):\n  File \"/Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/packages/python/.venv/bin/mypy\", line 4, in <module>\n    from mypy.__main__ import console_entry\nModuleNotFoundError: No module named 'mypy'"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:11.347575+00:00",
+      "seconds": 0.441,
+      "exit_code": 1,
+      "outcome": "FAIL",
+      "log_sha256": "5efdf3ae22469860021d7b9de51e919c78b587e41e9a0c25b3590cc98af5adb3",
+      "name": "native",
+      "output_excerpt": "Traceback (most recent call last):\n  File \"/Users/gonzalovidal/.local/share/uv/python/cpython-3.12.13-macos-x86_64-none/lib/python3.12/unittest/loader.py\", line 396, in _find_test_path\n    module = self._get_module_from_name(name)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/gonzalovidal/.local/share/uv/python/cpython-3.12.13-macos-x86_64-none/lib/python3.12/unittest/loader.py\", line 339, in _get_module_from_name\n    __import__(name)\n  File \"/Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/packages/python/tests/test_smoke.py\", line 5, in <module>\n    import fenix\nModuleNotFoundError: No module named 'fenix'\n\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nFAILED (errors=2)"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s conformance/python/tests -v",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:11.350988+00:00",
+      "seconds": 0.458,
+      "exit_code": 1,
+      "outcome": "FAIL",
+      "log_sha256": "0ea63fe7fcefac559bd09a9db1a1c47e94ec3d2cae908717fc08774573c02e82",
+      "name": "p01-tests",
+      "output_excerpt": "  File \"/Users/gonzalovidal/.local/share/uv/python/cpython-3.12.13-macos-x86_64-none/lib/python3.12/unittest/loader.py\", line 339, in _get_module_from_name\n    __import__(name)\n  File \"/Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/conformance/python/tests/test_reports.py\", line 12, in <module>\n    from run_p01 import run\n  File \"/Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/conformance/python/run_p01.py\", line 9, in <module>\n    from p01 import ROOT, Rejection, evaluate\n  File \"/Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/conformance/python/p01.py\", line 10, in <module>\n    import rfc8785\nModuleNotFoundError: No module named 'rfc8785'\n\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nFAILED (errors=2)"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_content -v",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:11.345345+00:00",
+      "seconds": 0.461,
+      "exit_code": 1,
+      "outcome": "FAIL",
+      "log_sha256": "1065238e2b145e3186bf7b379c2f3559977564ee449aea343b714e44d18dfc92",
+      "name": "projections",
+      "output_excerpt": "    module = self._get_module_from_name(name)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/gonzalovidal/.local/share/uv/python/cpython-3.12.13-macos-x86_64-none/lib/python3.12/unittest/loader.py\", line 339, in _get_module_from_name\n    __import__(name)\n  File \"/Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/packages/python/tests_native_content/test_projections.py\", line 8, in <module>\n    from adapter import ProjectionError, construct\n  File \"/Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/packages/python/tests_native_content/adapter.py\", line 9, in <module>\n    from fenix.bioir import (\nModuleNotFoundError: No module named 'fenix'\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (errors=1)"
+    },
+    {
+      "command": "python artifacts/ep02-18/audit_baseline.py",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:26:30.704573+00:00",
+      "seconds": 0.011,
+      "exit_code": 127,
+      "outcome": "FAIL",
+      "log_sha256": "5b88129421a309958f7b958853b6f22857e43c88ca1fadbbb75c9398c5c14c63",
+      "name": "protected-baseline",
+      "output_excerpt": "/bin/sh: python: command not found"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s conformance/rejections/tests -v",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:11.346817+00:00",
+      "seconds": 0.449,
+      "exit_code": 1,
+      "outcome": "FAIL",
+      "log_sha256": "ced4579baf0733080c89962215f9e186e8b1452e09e92b396aadbb6875557121",
+      "name": "rejection-tests",
+      "output_excerpt": "    module = self._get_module_from_name(name)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/gonzalovidal/.local/share/uv/python/cpython-3.12.13-macos-x86_64-none/lib/python3.12/unittest/loader.py\", line 339, in _get_module_from_name\n    __import__(name)\n  File \"/Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/conformance/rejections/tests/test_reports.py\", line 11, in <module>\n    import reference as ref\n  File \"/Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/conformance/rejections/reference.py\", line 13, in <module>\n    from jsonschema import Draft7Validator\nModuleNotFoundError: No module named 'jsonschema'\n\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nFAILED (errors=2)"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline python scripts/check_repo.py",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:11.345340+00:00",
+      "seconds": 0.569,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "e6c1b3de362e32d11a83cf3c0590796367ee3166da0e905b7ea27133bcbe78cc",
+      "name": "repo",
+      "output_excerpt": "Could not find platform dependent libraries <exec_prefix>\nRepository harness checks passed (not scientific conformance)."
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline ruff check packages/python/src/fenix/bioir packages/python/tests/test_bioir.py packages/python/tests_native_content",
+      "environment": {
+        "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache",
+        "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+        "JULIA_PKG_OFFLINE": "true"
+      },
+      "julia_path": "/private/tmp/julia-1.10.13/bin/julia",
+      "started_utc": "2026-11-15T13:24:11.345478+00:00",
+      "seconds": 0.372,
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "name": "ruff",
+      "output_excerpt": "All checks passed!"
+    }
+  ],
+  "regression_red": {
+    "outcome": "FAIL (expected)",
+    "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v",
+    "output": "test_bioir (unittest.loader._FailedTest.test_bioir) ... ERROR\ntest_no_modeling_api_yet (test_smoke.TestScaffold.test_no_modeling_api_yet) ... ok\ntest_version (test_smoke.TestScaffold.test_version) ... ok\n\n======================================================================\nERROR: test_bioir (unittest.loader._FailedTest.test_bioir)\n----------------------------------------------------------------------\nImportError: Failed to import test module: test_bioir\nTraceback (most recent call last):\n  File \"/Users/gonzalovidal/.local/share/uv/python/cpython-3.12.13-macos-x86_64-none/lib/python3.12/unittest/loader.py\", line 396, in _find_test_path\n    module = self._get_module_from_name(name)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/gonzalovidal/.local/share/uv/python/cpython-3.12.13-macos-x86_64-none/lib/python3.12/unittest/loader.py\", line 339, in _get_module_from_name\n    __import__(name)\n  File \"/Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/packages/python/tests/test_bioir.py\", line 11, in <module>\n    from fenix.bioir import (\nModuleNotFoundError: No module named 'fenix.bioir'\n\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nFAILED (errors=1)\n",
+    "log_sha256": "1fbb6b76b623ceeb2b41b7882c6ac4dac527a204d79883df1f393d2ae4e0f1f1"
+  },
+  "review": {
+    "engineering": {
+      "outcome": "No confirmed defects",
+      "independently_executed": [
+        "editable package tests (11)",
+        "native projections (29 cases)",
+        "strict mypy",
+        "fresh no-deps wheel tests (11)",
+        "wheel marker and Requires-Dist audit",
+        "protected scientific baseline diff"
+      ]
+    },
+    "scientific": {
+      "outcome": "No confirmed scientific correctness findings",
+      "independently_executed": [
+        "package tests (11)",
+        "native projections (29 cases)",
+        "exact projection selection (6 accept, 23 reject, 63 deferred)",
+        "protected scientific baseline diff"
+      ]
+    },
+    "limitation": "Separate agent reviews are not human PI implementation approval."
+  },
+  "artifacts": {
+    "packages/python/dist/fenix_bio-0.0.0-py3-none-any.whl": "4013b9778037eb68e73c205ad641f3b37748ecb0984bdb097af2443191d5a77e",
+    "packages/python/dist/fenix_bio-0.0.0.tar.gz": "0d1b0db0fa02dd0240cfd02c2167f19df5e0325cc2e6e1b23aea7d142e2744c2",
+    "docs/verification/rejections-python.json": "b4fce6c7bfcc9dfb7a47b1a86922b45f664e639204bf5e683548023ba5482b5d",
+    "docs/verification/rejections-julia.json": "7ec002c0be669e2a64e9fdea019d26d8167991182fde60d595511c813f868921",
+    "conformance/bioir/catalog.json": "ffd8b03732094543baff2464ab8c83f672dab6ebb22f2237621a1df8e493fcbc",
+    "conformance/rejections/catalog.json": "5117b37ec7d4d45e111943e925dcfc27a3ac280ddeabfb456ff37b93a9750088"
+  },
+  "temporary_audit_sources": {
+    "artifacts/ep02-18/audit_baseline.py": "import hashlib\nimport json\nimport subprocess\nfrom pathlib import Path\n\nsubprocess.run(['git','diff','--exit-code','origin/main','--','spec','conformance'],check=True)\nfor language in ('python','julia'):\n path=f'docs/verification/rejections-{language}.json'\n old=json.loads(subprocess.check_output(['git','show','origin/main:'+path]))\n new=json.loads(Path(path).read_bytes())\n assert old['cases']==new['cases']\n assert {k:v for k,v in old.items() if k!='dependency_fingerprints'}=={k:v for k,v in new.items() if k!='dependency_fingerprints'}\n assert {k for k in old['dependency_fingerprints'] if old['dependency_fingerprints'][k]!=new['dependency_fingerprints'][k]}=={'packages/python/pyproject.toml','packages/python/uv.lock'}\n print(language+': PASS, 207 unchanged case rows; only pyproject/lock provenance changed')\nprint('PASS: all tracked contracts, fixture inputs, both catalogs and reference implementations unchanged')\n",
+    "artifacts/ep02-18/audit_wheel.py": "import importlib.metadata\nimport importlib.resources\nimport json\nfrom pathlib import Path\nimport fenix.bioir\n\ninstalled = sorted(d.metadata['Name'] for d in importlib.metadata.distributions())\nassert installed==['fenix-bio'],installed\nassert importlib.metadata.metadata('fenix-bio').get_all('Requires-Dist',[])==[]\nassert importlib.resources.files('fenix').joinpath('py.typed').is_file()\nassert 'site-packages' in fenix.bioir.__file__\nprint(json.dumps({'installed_distributions':installed,'bioir_path':fenix.bioir.__file__,'py_typed':True,'runtime_dependencies':[]}))\n"
+  },
+  "not_run": [
+    "Hosted CI (observed separately on PR)",
+    "Native raw parsing, committed envelopes, canonical bytes/digests and trusted exact references (#19)",
+    "FIR/compiler (#20), execution (#21/P04), results (#22/P07)",
+    "Historical P03 17 contract-only rows remain NOT_RUN; serialization reference checks did run"
+  ]
+}

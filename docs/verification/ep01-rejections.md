@@ -317,3 +317,13 @@ current source identity, commands and unchanged-artifact checks. This provenance
 refresh changes no rejection expectation or scientific rule. Negative capability
 fixtures remain non-exhaustive; native implementation and exhaustive-validation
 approval remain separate.
+
+## EP-02 Python content tooling provenance refresh
+
+Issue #18 adds locked development-only Ruff/mypy tooling and Python content
+package configuration. The [EP-02 verification record](ep02-python-content.md)
+records freshly executed independent reports and their current hashes. Both
+retained rejection reports change only the Python manifest/lock fingerprints;
+all 207 observed case rows and every other field remain identical to `972f23b`.
+The older hashes above identify earlier evidence revisions. This refresh changes
+no scientific contract, approved expectation, catalog or raw fixture byte.
