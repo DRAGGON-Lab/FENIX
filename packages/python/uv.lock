@@ -83,22 +83,24 @@ wheels = [
 name = "fenix-bio"
 version = "0.0.0"
 source = { editable = "." }
+dependencies = [
+    { name = "rfc8785" },
+]
 
 [package.dev-dependencies]
 dev = [
     { name = "jsonschema" },
     { name = "mypy" },
-    { name = "rfc8785" },
     { name = "ruff" },
 ]
 
 [package.metadata]
+requires-dist = [{ name = "rfc8785", specifier = ">=0.1.4,<0.2" }]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "jsonschema", specifier = ">=4,<5" },
     { name = "mypy", specifier = ">=1.18,<3" },
-    { name = "rfc8785", specifier = ">=0.1.4,<0.2" },
     { name = "ruff", specifier = ">=0.14,<1" },
 ]
 

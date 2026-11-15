@@ -1,4 +1,4 @@
-"""Immutable typed M0 content authoring; committed BioIR documents are pending."""
+"""Immutable M0 content authoring and verified committed document identities."""
 
 from ._content import (
     BioIRValidationError,
@@ -16,8 +16,12 @@ from ._content import (
     Quantity,
     Species,
 )
+from ._documents import DesignDocument, ExperimentDocument, Metadata
 
 __all__ = [
+    "DesignDocument",
+    "ExperimentDocument",
+    "Metadata",
     "BioIRValidationError",
     "Compartment",
     "DesignContent",

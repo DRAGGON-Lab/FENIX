@@ -1,7 +1,7 @@
-# Native Python M0 BioIR content
+# Native Python M0 BioIR
 
 Provisional distribution `fenix-bio`, module `fenix`, version `0.0.0`, pending
-package governance ADR-P06. Python 3.12+; no runtime dependencies or Julia required.
+package governance ADR-P06. Python 3.12+; the runtime JCS dependency is `rfc8785>=0.1.4,<0.2`. Julia is not required.
 
 `fenix.bioir` provides immutable, keyword-only dataclasses for the ratified
 [P01 M0 subset](../../spec/bioir/proposals/ADR-P01.md). `DesignContent` and
@@ -11,7 +11,7 @@ native values and local references. `to_dict()` returns fresh dictionaries/lists
 order and accepted numeric values without sorting or normalization.
 Successful construction or serialization does not establish committed document
 validity. In particular, an Experiment can carry a syntactically valid but
-incorrect Design digest until committed identity handling is available in #19.
+incorrect Design digest when using the content-only API. Use the committed document API below to verify identity.
 
 ```python
 from fenix.bioir import (
@@ -77,8 +77,8 @@ native nonfinite quantities use `NUMBER_RANGE` and oversized integers use
 `INTEGER_RANGE`. Structural and role-local quantity violations use `SCHEMA`.
 
 Raw JSON parsing, duplicate keys, malformed Unicode, token overflow/underflow,
-canonical bytes/digests, envelopes and exact committed Design references belong
-to [#19](https://github.com/DRAGGON-Lab/FENIX/issues/19). Python literals have already
+canonical bytes/digests, envelopes and exact committed Design references are
+handled by the committed document API delivered in [#19](https://github.com/DRAGGON-Lab/FENIX/issues/19). Python literals have already
 lost raw-token information; e.g. an underflowed literal is indistinguishable from
 zero at this boundary. No FIR, compiler, execution, results or wider BioIR support
 is supplied. Accepted fractional counts do not establish SSA eligibility.
@@ -99,7 +99,7 @@ through the editable installation, with the shipped `py.typed` marker and no
 blanket missing-import suppression. Configuration follows the
 [official Ruff configuration](https://docs.astral.sh/ruff/configuration/) and
 [mypy import guidance](https://mypy.readthedocs.io/en/stable/running_mypy.html).
-Ruff, mypy, jsonschema and rfc8785 are locked development tools only.
+Ruff, mypy and jsonschema are locked development tools; rfc8785 is a locked runtime dependency.
 
 The separate native-content suite uses a test-only structural adapter and
 `jsonschema` to check **29 content projections** from the approved 92-case P01
@@ -114,6 +114,85 @@ editable install and a clean wheel without development dependencies in CI.
 This evidence consists of approved fixed fixture projections and hand-authored
 behavioral regressions. Systematic generated-input/property-based and metamorphic
 validation has not been performed. It is tracked in
-[#59](https://github.com/DRAGGON-Lab/FENIX/issues/59) after #19 supplies raw parsing
-and committed identity, without adding an acceptance blocker for #18 or selecting
+[#59](https://github.com/DRAGGON-Lab/FENIX/issues/59) following #19's raw parsing and committed identity delivery, without adding an acceptance blocker for #18 or selecting
 a testing framework in this delivery.
+
+## Committed documents and exact Design references
+
+`DesignDocument`, `ExperimentDocument` and `Metadata` are frozen, slotted,
+keyword-only values. They compute their read-only scientific digest and expose
+strict JSON loading. The #18 content constructors remain uncommitted authoring.
+
+```python
+from dataclasses import replace
+from fenix.bioir import DesignDocument, ExperimentDocument, Metadata
+
+committed_design = DesignDocument(content=design, metadata=Metadata(name="Example"))
+resolved_content = replace(experiment, design=committed_design.reference, source_design=design)
+committed_experiment = ExperimentDocument(content=resolved_content, source_design=committed_design)
+wire_json = committed_experiment.to_json()
+loaded = ExperimentDocument.from_json(wire_json, designs=(committed_design,), expected_digest=committed_experiment.digest)
+assert loaded.digest == committed_experiment.digest
+```
+
+`canonical_content_bytes()` returns direct RFC 8785 content bytes for SHA-256;
+it excludes envelope digest and metadata and applies no FIR normalization.
+`to_dict()` returns fresh envelope data; `to_json()` is ordinary JSON for transport.
+These are distinct operations: a large valid floating token may canonicalize to
+an integer spelling outside P01's input token bound. Canonical bytes are hash
+material, not a promise of P01 readback. Ordinary envelope JSON round trips preserve
+the scientific digest, including large integral floats, signed zero and subnormals.
+
+`from_json(str | bytes, expected_digest=None, previous=None)` rejects malformed
+UTF-8/JSON, duplicate decoded keys, invalid Unicode, numeric range/underflow,
+missing/unknown fields and invalid content. Experiment loading requires an explicit
+`designs` tuple of verified Design documents. Both envelope digests are checked,
+and the exact Design ID/revision/digest must match; no network lookup, repair or
+newer-revision substitution occurs. Errors use `BioIRValidationError` with
+JSON Pointers relative to the input document, including `/content` where applicable.
+Required and unknown native constructor arguments retain Python argument errors.
+
+`previous` supplies the trusted predecessor for loading replacement content.
+`replace_content(content)` checks against the current document's logical ID and
+requires an explicitly higher revision when canonical content changes. Experiment
+replacement can supply an explicit `source_design`, otherwise it uses the current
+context. Old documents remain unchanged. `with_metadata(metadata)` returns a new
+envelope with the same scientific identity; omitted metadata and an explicit empty
+`Metadata()` object remain distinguishable. Snapshot/audit identities remain P07.
+
+The document conformance suite exercises all 92 P01 cases and the 97 P01 cases
+from the rejection catalog, with no claim for its 110 P03/FIR cases. Generic JSON
+fixtures directly exercise private production parser/JCS helpers; envelope cases
+use public loaders. The legacy root-only structural paths are coarsened only for
+the original catalog comparison; detailed paths and supplied input identities
+are checked separately. The 29-case content-only suite remains useful independently.
+
+```sh
+uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_documents -v
+```
+
+### Guarantees and evidence limits
+
+- **Digest validity is not provenance authentication.** Modified content with its
+  correctly recomputed digest is self-consistent, but may differ from what a
+  researcher authorized. The optional `expected_digest` permits comparison with
+  a trusted external expectation; establishing that trust is the caller's
+  responsibility. Signatures, archives and provenance auditing remain future work.
+- **Revision integrity is predecessor-relative.** Checks against a supplied
+  trusted `previous` document do not establish global revision history, prevent
+  concurrent conflicting branches or guarantee storage of historical documents.
+  Immutable in-memory values provide no persistence or authenticated archive.
+- **Generated-input conformance remains outstanding.** Approved fixed cases and
+  hand-authored regressions do not exhaust interactions between numeric parsing,
+  canonicalization, revisions and references. Property-based and metamorphic
+  investigation remains required future work under
+  [#59](https://github.com/DRAGGON-Lab/FENIX/issues/59), without becoming a retroactive
+  acceptance blocker for #19's bounded milestone.
+- **Python serializer agreement is not fully independent.** Production and the
+  Python reference both use `rfc8785`. Their serializer agreement alone is
+  insufficient independent evidence. The
+  [approved P01 expectations](../../conformance/bioir/README.md),
+  [approved canonicalization vectors](../../conformance/canonicalization/README.md)
+  and [executed Julia/Node comparisons and audits](../../docs/verification/ep02-python-documents.md#executed-outcomes)
+  supply additional bounded evidence for this milestone, without establishing
+  exhaustive serializer correctness or biological validity.
