@@ -25,4 +25,4 @@ for (const c of catalog.cases) {
     checked++;
   }
 }
-console.log(`Independent ECMAScript cross-check passed: ${checked} candidate canonical/digest cases. Fixture approval remains pending.`);
+console.log(`Independent ECMAScript cross-check passed: ${checked} P01 canonical/digest cases; fixture_status=${catalog.status}.`);

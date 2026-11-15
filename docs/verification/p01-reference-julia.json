@@ -766,9 +766,9 @@
       "passed": true
     }
   ],
-  "catalog_sha256": "6576accde94a567cee90094f33913ffbddbfec30abfb1047521539a787ff9390",
+  "catalog_sha256": "ffd8b03732094543baff2464ab8c83f672dab6ebb22f2237621a1df8e493fcbc",
   "catalog_version": 1,
-  "fixture_status": "REVIEW_REQUIRED",
+  "fixture_status": "APPROVED",
   "implementation": "independent-julia-reference",
   "passed": true,
   "runtime": "1.10.13"

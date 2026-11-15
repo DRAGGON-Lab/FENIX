@@ -12,9 +12,12 @@ versioned extension and migration strategy without rewriting existing identities
 The paired documents remain illustrative examples, not approved golden fixtures.
 Parser/validator implementation approval requires the reviewed
 [language-neutral fixture catalog and independent native reports](../../conformance/README.md#parser-and-validator-fixture-catalog-gate).
-A [P01-only review candidate](../../conformance/bioir/README.md) now exercises
-raw parsing, structure, reference integrity, units, revisions and content digests
-independently in Python and Julia. Passing it does not self-approve its fixtures.
+The human PI accepted all 92 registered [P01 reference expectations](../../conformance/bioir/README.md),
+including outcomes, canonical serialization, binary64 bit patterns and declared
+diagnostics. Native FENIX implementations, exhaustive validation, compiler or
+solver correctness and future BioIR semantics remain outside that decision.
+See the [acceptance record](../../docs/verification/ep01-p01-reference.md#human-pi-acceptance-recorded).
 The [M0 FIR contract](../fir/README.md) is ratified under ADR-P02; the
 [FIR canonicalization contract](../canonicalization/README.md) is ratified under
-ADR-P03, with independent reference-vector approval pending.
+ADR-P03; its bounded [reference vectors](../../conformance/canonicalization/README.md)
+have separate human PI acceptance.

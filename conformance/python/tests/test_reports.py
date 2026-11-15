@@ -1,6 +1,9 @@
 """Fault injection: broken/incomplete reports must never count as parity."""
 import copy
 import sys
+import json
+import subprocess
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -53,6 +56,25 @@ class TestReports(unittest.TestCase):
                 elif mutation == 'case':
                     other['cases'][0]['passed'] = 'false'
                 else:
-                    other['fixture_status'] = 'APPROVED'
+                    other['fixture_status'] = 'REVIEW_REQUIRED' if self.report['fixture_status'] == 'APPROVED' else 'APPROVED'
                 with self.assertRaises(ValueError):
                     compare(self.report, other)
+
+    def test_cli_reports_catalog_status(self):
+        with tempfile.TemporaryDirectory() as directory:
+            first = Path(directory)/'python.json'
+            second = Path(directory)/'julia.json'
+            first.write_text(json.dumps(self.report))
+            second.write_text(json.dumps(self.report))
+            command = [sys.executable, str(Path(__file__).resolve().parents[2]/'compare_reports.py'), str(first), str(second)]
+            result = subprocess.run(command, check=True, capture_output=True, text=True)
+            self.assertIn('fixture_status=' + self.report['fixture_status'], result.stdout)
+
+    def test_schema_accepts_only_registered_approval_statuses(self):
+        from jsonschema import Draft7Validator
+        root = Path(__file__).resolve().parents[3]
+        catalog = json.loads((root/'conformance/bioir/catalog.json').read_bytes())
+        schema = json.loads((root/'conformance/bioir/catalog.schema.json').read_bytes())
+        for status in ('REVIEW_REQUIRED', 'APPROVED'):
+            self.assertTrue(Draft7Validator(schema).is_valid(dict(catalog, status=status)))
+        self.assertFalse(Draft7Validator(schema).is_valid(dict(catalog, status='UNKNOWN')))

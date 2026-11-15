@@ -45,4 +45,5 @@ if __name__ == '__main__':
     parser.add_argument('julia_report', type=Path)
     args = parser.parse_args()
     count = compare(json.loads(args.python_report.read_text()), json.loads(args.julia_report.read_text()))
-    print(f'{count} candidate P01 fixtures matched independently in Python and Julia; fixture review remains required.')
+    status = json.loads((DIRECTORY / 'catalog.json').read_bytes())['status']
+    print(f'{count} P01 reference fixtures matched independently in Python and Julia; fixture_status={status}.')
