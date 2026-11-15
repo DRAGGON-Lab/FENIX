@@ -3,9 +3,11 @@
 The [M0-compatible BioIR subset](bioir/README.md), version `0.1.0`, is ratified
 under ADR-P01. The [M0 mathematical FIR/capability subset](fir/README.md) is
 ratified under ADR-P02. The [FIR canonicalization contract](canonicalization/README.md)
-is ratified under ADR-P03. Independent P01 reference validators and a
-[candidate catalog](../conformance/bioir/README.md) are available for review;
-native compilers and modeling-package validators are not implemented.
+is ratified under ADR-P03. Independent P01 reference validators and the
+[approved 92-case catalog](../conformance/bioir/README.md) provide bounded
+reference expectations. Native implementations, exhaustive validation, compiler
+correctness, solver correctness and future BioIR semantics are not approved by
+that acceptance; native compilers and modeling-package validators remain absent.
 
 New or changed normative rules require human PI approval. Independent references
 and reviewed positive/negative fixtures remain mandatory. In particular,

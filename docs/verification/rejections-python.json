@@ -2051,7 +2051,7 @@
   },
   "fixture_status": "APPROVED",
   "historical_catalog_fingerprints": {
-    "conformance/bioir/catalog.json": "6576accde94a567cee90094f33913ffbddbfec30abfb1047521539a787ff9390",
+    "conformance/bioir/catalog.json": "ffd8b03732094543baff2464ab8c83f672dab6ebb22f2237621a1df8e493fcbc",
     "conformance/canonicalization/catalog.json": "07858e1595f51a630427ed2a12ef8bfbf9c0df241688bffd5041e9ed424aa970"
   },
   "implementation": "independent-python-rejection-reference",

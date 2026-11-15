@@ -1,7 +1,7 @@
 {
   "catalog_version": 1,
-  "status": "REVIEW_REQUIRED",
-  "scope": "Ratified P01 only; not approved normative fixtures or P03 FIR vectors. Merge requires PI review of these expectations.",
+  "status": "APPROVED",
+  "scope": "Human-PI-approved ADR-P01 / BioIR M0 subset v0.1.0 reference expectations for the 92 registered cases only. Native FENIX implementations, exhaustive input validation, compiler correctness, solver correctness and future BioIR semantics are not approved.",
   "cases": [
     {
       "id": "null",

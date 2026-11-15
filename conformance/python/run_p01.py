@@ -1,4 +1,4 @@
-"""Run candidate P01 fixtures and emit a deterministic machine-readable report."""
+"""Run P01 reference fixtures and emit a deterministic machine-readable report."""
 import argparse
 import hashlib
 import sys
@@ -57,5 +57,5 @@ if __name__ == '__main__':
         args.report.write_text(text)
     else:
         print(text, end='')
-    print(f"{len(report['cases'])} candidate P01 cases; passed={report['passed']}", file=sys.stderr)
+    print(f"{len(report['cases'])} P01 reference cases; fixture_status={report['fixture_status']}; passed={report['passed']}", file=sys.stderr)
     raise SystemExit(0 if report['passed'] else 1)

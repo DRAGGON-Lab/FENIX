@@ -295,3 +295,25 @@ case records, unknown status and current report provenance. Final outcomes follo
 
 This human acceptance is established by the explicit instruction above, with the
 stated non-exhaustive coverage limitation. Automated success does not broaden it.
+
+## P01 fixture acceptance provenance refresh
+
+The human PI separately accepted the 92 P01 reference expectations identified by
+reviewed catalog SHA-256
+`6576accde94a567cee90094f33913ffbddbfec30abfb1047521539a787ff9390`.
+See the [P01 acceptance record](ep01-p01-reference.md#human-pi-acceptance-recorded).
+The catalog's approval status/scope metadata now gives current SHA-256
+`ffd8b03732094543baff2464ab8c83f672dab6ebb22f2237621a1df8e493fcbc`.
+Both retained rejection reports are refreshed solely in that historical P01
+catalog fingerprint. Their 207 case rows and all other report fields are unchanged
+from `eb750ff`; native generation and current comparison pass.
+
+Current [Python report](rejections-python.json) SHA-256:
+`08828c81c0ec4e3777a256ebda8621c7bd4d2f4254accdcf3583fbb1d0e9b349`.
+Current [Julia report](rejections-julia.json) SHA-256:
+`041b2527927d762c6ad89e5ff6dc03071039eca5e6e90effad1e4501f8e19a06`.
+Earlier hashes above identify the prior evidence revisions. The P01 record retains
+current source identity, commands and unchanged-artifact checks. This provenance
+refresh changes no rejection expectation or scientific rule. Negative capability
+fixtures remain non-exhaustive; native implementation and exhaustive-validation
+approval remain separate.

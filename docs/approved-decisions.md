@@ -40,11 +40,15 @@
 
 **Ratified contract, 2026-11-14:** [ADR-P01 — M0-compatible BioIR subset](../spec/bioir/proposals/ADR-P01.md). The human PI approved reviewed revision `35805663e3912f8858bbfbe0c178cf009c5454e2` in this conversation, with the added [fixture-catalog gate](../conformance/README.md#parser-and-validator-fixture-catalog-gate) before parser/validator implementation approval. This does not close #12 or approve golden fixtures; independent native validation and fixture evidence remain outstanding.
 
-**Implementation review candidate:** [P01 fixture catalog and independent runners](../conformance/bioir/README.md), with [executed evidence](verification/ep01-p01-reference.md).
-Both native reports are available for review; fixture and implementation approval
-remain human decisions before the issue #12 PR can merge. P03 and the wider
-EP-01 fixture issues remain separate gates; P02 contract ratification does not
-approve fixtures or implementations.
+**Accepted P01 reference expectations, 2026-11-15:** The human PI accepted the
+[P01 catalog](../conformance/bioir/README.md) identified by reviewed SHA-256
+`6576accde94a567cee90094f33913ffbddbfec30abfb1047521539a787ff9390`:
+all 92 registered expectations, comprising 34 acceptances and 58 rejections,
+including five canonical-serialization expectations, binary64 bit patterns and
+declared diagnostic categories and paths. The catalog is now APPROVED.
+**Not approved:** native FENIX implementations, exhaustive input validation,
+compiler correctness, solver correctness or future BioIR semantics. See the
+[explicit acceptance record](verification/ep01-p01-reference.md#human-pi-acceptance-recorded).
 
 **Ratified contract, 2026-11-14:** [ADR-P02 — M0 mathematical FIR and capabilities](../spec/fir/proposals/ADR-P02.md).
 The human PI approved reviewed revision `86450affca4470d7540d04f04bdc6d3d07e1a60d`

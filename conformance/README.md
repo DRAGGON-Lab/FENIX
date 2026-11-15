@@ -4,9 +4,10 @@ Planned independent analytical production/degradation reference, invalid/unsuppo
 
 Development tools are available through Python's locked development group and
 the separately pinned [Julia environment](julia/README.md). These environments
-include independent P01 reference validators and a
-[candidate fixture catalog](bioir/README.md) awaiting PI review. Native library
-validators and approved normative P01 fixtures are not yet available.
+include independent P01 reference validators and the human-PI-approved
+[P01 fixture catalog](bioir/README.md). Acceptance covers the 92 registered
+expectations; native FENIX implementations and exhaustive validation remain
+unapproved. See the [acceptance record](../docs/verification/ep01-p01-reference.md#human-pi-acceptance-recorded).
 
 The [production–decay oracle](production_decay/README.md) derives the
 ratified P02 ODE and checks fixed reference values with independent Python and
@@ -21,9 +22,10 @@ its raw-input and validation requirements executable as acceptance checks.
 This follow-on work belongs principally to
 [#16](https://github.com/DRAGGON-Lab/FENIX/issues/16) for canonicalization vectors
 and [#17](https://github.com/DRAGGON-Lab/FENIX/issues/17) for parser, validation
-and rejection fixtures. A [P01-only candidate catalog](bioir/README.md) is now
-available with independent native reports; review and fixture approval are still
-required. ADR-P02 now ratifies the M0 FIR contract; independent FIR fixture/semantic
+and rejection fixtures. The [P01-only catalog](bioir/README.md) now has explicit
+human PI acceptance for all 92 registered expectations and independent reference
+reports. This satisfies its bounded fixture-acceptance step; native implementation
+approval remains separate. ADR-P02 now ratifies the M0 FIR contract; independent FIR fixture/semantic
 validation and fixture approval remain outstanding. ADR-P03 ratifies FIR
 normalization and byte identity; the human PI accepted the bounded canonicalization reference vectors; native
 parser/normalizer implementation approval remains separate.

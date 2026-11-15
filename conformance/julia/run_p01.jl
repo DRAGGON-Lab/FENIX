@@ -50,5 +50,5 @@ elseif length(ARGS) == 2 && ARGS[1] == "--report"
 else
     error("Usage: run_p01.jl [--report path]")
 end
-println(stderr, "$(length(report["cases"])) candidate P01 cases; passed=$(report["passed"])")
+println(stderr, "$(length(report["cases"])) P01 reference cases; fixture_status=$(report["fixture_status"]); passed=$(report["passed"])")
 exit(report["passed"] ? 0 : 1)
