@@ -45,13 +45,15 @@ jobs:
         run: uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v
       - name: Check Python content style and types
         run: |
-          uv run --project packages/python --locked --offline ruff check packages/python/src/fenix/bioir packages/python/tests/test_bioir.py packages/python/tests/test_json.py packages/python/tests/test_documents.py packages/python/tests_native_content packages/python/tests_native_documents
-          uv run --project packages/python --locked --offline ruff format --check packages/python/src/fenix/bioir packages/python/tests/test_bioir.py packages/python/tests/test_json.py packages/python/tests/test_documents.py packages/python/tests_native_content packages/python/tests_native_documents
+          uv run --project packages/python --locked --offline ruff check packages/python/src/fenix/bioir packages/python/src/fenix/fir packages/python/src/fenix/compiler.py packages/python/tests/test_fir.py packages/python/tests/test_fir_validation.py packages/python/tests/test_compiler.py packages/python/tests/test_bioir.py packages/python/tests/test_json.py packages/python/tests/test_documents.py packages/python/tests_native_content packages/python/tests_native_documents packages/python/tests_native_fir
+          uv run --project packages/python --locked --offline ruff format --check packages/python/src/fenix/bioir packages/python/src/fenix/fir packages/python/src/fenix/compiler.py packages/python/tests/test_fir.py packages/python/tests/test_fir_validation.py packages/python/tests/test_compiler.py packages/python/tests/test_bioir.py packages/python/tests/test_json.py packages/python/tests/test_documents.py packages/python/tests_native_content packages/python/tests_native_documents packages/python/tests_native_fir
           uv run --project packages/python --locked --offline mypy --config-file packages/python/pyproject.toml
       - name: Test 29 approved P01 native-content projections
         run: uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_content -v
       - name: Test native P01 documents and raw inputs
         run: uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_documents -v
+      - name: Test native FIR validation, normalization and compilation
+        run: uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_fir -v
       - name: Test candidate P01 catalog and report failure detection
         run: uv run --project packages/python --locked --offline python -m unittest discover -s conformance/python/tests -v
       - name: Independently validate candidate P01 fixtures in Python

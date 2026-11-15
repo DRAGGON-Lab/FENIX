@@ -335,3 +335,13 @@ The [committed-document evidence](ep02-python-documents.md) records new native
 checks and regenerated reference reports. Both retained rejection reports change
 only the Python manifest/lock fingerprints; every other field and all 207 observed
 rows match `91dd4c2`. Previous artifact hashes remain historical identities.
+
+## EP-02 compiler configuration provenance refresh
+
+Issue #20 expands Python's strict type-check scope to the full native package and
+updates its package description. Both retained rejection reports are regenerated;
+only the Python project configuration fingerprint changes. Every case row and
+all other fields match `e182455`. The lockfile, fixtures, catalogs and independent
+reference implementations are unchanged. The [native compiler evidence](ep02-python-compiler.md)
+records new native validation/normalization/compiler results separately from
+historical reference results and NOT_RUN rows.

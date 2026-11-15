@@ -1,4 +1,4 @@
-"""Strict P01 token decoding and direct RFC 8785 serialization."""
+"""Strict P01/P03 token policies and direct RFC 8785 serialization."""
 
 from __future__ import annotations
 
@@ -27,8 +27,8 @@ def _fail(category: str, path: str, message: str) -> Never:
     raise BioIRValidationError(category, path, message)
 
 
-def _number(token: str, path: str) -> int | float:
-    if "." not in token and "e" not in token.lower():
+def _number(token: str, path: str, numeric_policy: str) -> int | float:
+    if numeric_policy == "p01" and "." not in token and "e" not in token.lower():
         digits = token.lstrip("-")
         if len(digits) > 16 or (len(digits) == 16 and digits > "9007199254740991"):
             _fail("INTEGER_RANGE", path, "integer token exceeds P01's safe range")
@@ -41,9 +41,9 @@ def _number(token: str, path: str) -> int | float:
     return value
 
 
-def _visit(value: Any, path: str = "") -> Any:
+def _visit(value: Any, path: str = "", numeric_policy: str = "p01") -> Any:
     if isinstance(value, _NumberToken):
-        return _number(value, path)
+        return _number(value, path, numeric_policy)
     if isinstance(value, str):
         try:
             value.encode("utf-8", errors="strict")
@@ -53,13 +53,16 @@ def _visit(value: Any, path: str = "") -> Any:
         result: dict[str, Any] = {}
         for key, item in value:
             child = pointer(path, key)
-            _visit(key, child)
+            _visit(key, child, numeric_policy)
             if key in result:
                 _fail("DUPLICATE_KEY", child, "duplicate decoded object member")
-            result[key] = _visit(item, child)
+            result[key] = _visit(item, child, numeric_policy)
         return result
     elif isinstance(value, list):
-        return [_visit(item, pointer(path, i)) for i, item in enumerate(value)]
+        return [
+            _visit(item, pointer(path, i), numeric_policy)
+            for i, item in enumerate(value)
+        ]
     return value
 
 
@@ -67,8 +70,14 @@ def _constant(token: str) -> Never:
     _fail("JSON_SYNTAX", "", f"non-JSON numeric constant: {token}")
 
 
-def parse_json(raw: str | bytes) -> Any:
-    """Decode original JSON without discarding duplicate keys or numeric tokens."""
+def parse_json(raw: str | bytes, *, numeric_policy: str = "p01") -> Any:
+    """Decode original JSON with explicit P01 (default) or P03 numeric policy.
+
+    P01 retains safe integers; P03 interprets every numeric token as binary64.
+    Both preserve duplicates and original tokens until rejection checks finish.
+    """
+    if numeric_policy not in ("p01", "p03"):
+        raise ValueError("unknown numeric policy")
     if type(raw) is bytes:
         try:
             text = raw.decode("utf-8", errors="strict")
@@ -88,7 +97,7 @@ def parse_json(raw: str | bytes) -> Any:
         )
     except json.JSONDecodeError:
         _fail("JSON_SYNTAX", "", "invalid JSON grammar")
-    return _visit(value)
+    return _visit(value, numeric_policy=numeric_policy)
 
 
 def canonical_bytes(value: Any) -> bytes:

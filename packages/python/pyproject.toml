@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "fenix-bio"
 version = "0.0.0"
-description = "FENIX native Python M0 BioIR content and committed documents (implementation review pending)"
+description = "FENIX native Python M0 BioIR and FIR compiler (implementation review pending)"
 readme = "README.md"
 requires-python = ">=3.12"
 license = {text = "MIT"}
@@ -29,7 +29,7 @@ select = ["E4", "E7", "E9", "F", "I", "UP", "B"]
 [tool.mypy]
 python_version = "3.12"
 strict = true
-packages = ["fenix.bioir"]
+packages = ["fenix"]
 
 [dependency-groups]
 dev = [
