@@ -66,3 +66,19 @@ end
         end
     end
 end
+
+@testset "Approval status metadata" begin
+    catalog = R.load_catalog()
+    schema = R.JSONSchema.Schema(JSON.parsefile(joinpath(R.HERE, "catalog.schema.json")))
+    cases = deepcopy(catalog["cases"])
+    for status in ("REVIEW_REQUIRED", "APPROVED")
+        candidate = deepcopy(catalog)
+        candidate["status"] = status
+        @test R.JSONSchema.validate(schema, candidate) === nothing
+        @test candidate["cases"] == cases
+    end
+    candidate = deepcopy(catalog)
+    candidate["status"] = "UNKNOWN"
+    @test R.JSONSchema.validate(schema, candidate) !== nothing
+    @test Review.provenance()["fixture_status"] == catalog["status"]
+end

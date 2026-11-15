@@ -109,4 +109,32 @@ class CatalogIntegrity(unittest.TestCase):
             with self.assertRaises(FileNotFoundError): ref.load_catalog(directory, root)
 
 
+class ApprovalStatus(unittest.TestCase):
+    def test_supported_statuses_preserve_cases_and_report_status(self):
+        from jsonschema import Draft7Validator
+        from unittest.mock import patch
+        catalog = ref.load_catalog()
+        schema = json.loads((ref.HERE/'catalog.schema.json').read_bytes())
+        original_cases = copy.deepcopy(catalog['cases'])
+        with tempfile.TemporaryDirectory() as folder:
+            folder = Path(folder)
+            (folder/'catalog.schema.json').write_text(json.dumps(schema))
+            for status in ('REVIEW_REQUIRED', 'APPROVED'):
+                with self.subTest(status=status):
+                    candidate = dict(catalog, status=status)
+                    Draft7Validator(schema).validate(candidate)
+                    (folder/'catalog.json').write_text(json.dumps(candidate))
+                    with patch.object(review, 'HERE', folder):
+                        self.assertEqual(review.provenance('independent-python-rejection-reference')['fixture_status'], status)
+                    self.assertEqual(candidate['cases'], original_cases)
+            invalid = dict(catalog, status='UNKNOWN')
+            self.assertFalse(Draft7Validator(schema).is_valid(invalid))
+
+    def test_report_catalog_status_disagreement(self):
+        report = review.run()
+        report['fixture_status'] = 'REVIEW_REQUIRED' if report['fixture_status'] == 'APPROVED' else 'APPROVED'
+        with self.assertRaisesRegex(ValueError, 'fixture_status'):
+            review.compare(report, {'report_version': 1})
+
+
 if __name__ == '__main__': unittest.main()

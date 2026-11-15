@@ -1,4 +1,9 @@
-# EP-01 BioIR/FIR rejection reference evidence — REVIEW_REQUIRED
+# EP-01 BioIR/FIR rejection reference evidence — APPROVED
+
+**Current status: APPROVED by the human PI on 2026-11-15.** See the
+[acceptance record](#human-pi-acceptance-recorded). The negative capability
+fixtures are **not exhaustive**. Earlier REVIEW_REQUIRED and pending-acceptance
+statements below describe the reviewed implementation revision.
 
 Issue [#17](https://github.com/DRAGGON-Lab/FENIX/issues/17), M-1 / EP-01.
 Date: 2026-11-14. Branch: `conformance/17-negative-fixtures`.
@@ -211,3 +216,82 @@ Public package parser/validator, compiler, normalization, solver and biological
 validation: **NOT RUN / outside this fixture-publication task**. The approved P03
 catalog's historical 17 `NOT_RUN` outcomes remain unchanged; this suite supplies
 new, separately scoped execution evidence.
+
+
+## Human PI acceptance recorded
+
+- Decision: **ACCEPTED** for the concrete 207-case rejection reference suite and
+  its bounded independent Python/Julia evidence. The catalog now records APPROVED.
+- Ratifying human PI: the approving repository user in this Codex conversation;
+  no separate personal name was supplied.
+- Approval recorded: **2026-11-15**.
+- Reviewed revision: [`b9bb961e7293c00c5728e8dd374fb4ef7a15b7ef`](https://github.com/DRAGGON-Lab/FENIX/commit/b9bb961e7293c00c5728e8dd374fb4ef7a15b7ef)
+  on [PR #56](https://github.com/DRAGGON-Lab/FENIX/pull/56).
+- Approval source: explicit user instruction in this conversation, transcribed
+  below; no public approval URL was supplied.
+
+> Ok I approve this. Record that the negative capability fixture was not exhaustive and push the changes.
+
+**The negative capability fixtures are not exhaustive.** Acceptance covers the
+207 registered cases, their fixed expected diagnostics and the supplied evidence.
+It does not establish complete coverage of unsupported capabilities, malformed
+inputs or combinations of faults. No general error-precedence contract follows
+from these fixtures. Additional coverage remains possible under the ratified
+contracts and its applicable review gates.
+
+Native package APIs, compilers, normalization, solvers and any new scientific
+semantics retain separate approval requirements. This acceptance changes no
+P01/P02/P03 scientific rule and does not imply biological validity. This record
+performs no merge or issue closure; PR #56 remains for human merge.
+
+Only approval/status handling, report provenance and current-status documentation
+change. Both supported statuses, REVIEW_REQUIRED and APPROVED, are accepted by
+the catalog schema and faithfully reported by each writer; unknown status and
+report/catalog disagreement remain rejected. Fixture contents, all 207 case
+records and their coverage registry remain unchanged from the reviewed revision.
+Earlier hashes above identify that reviewed revision; retained reports are
+refreshed below to carry current approval provenance.
+
+Approval-record source fingerprint:
+`24c538ca3111167686ab9c2ef4c4be7fe80f7b707195230c64e2deff67585445`.
+The sorted path + NUL + bytes + NUL SHA-256 algorithm above now covers the same
+75 source paths plus `PRODUCT.md`, `ARCHITECTURE.md` and
+`docs/approved-decisions.md` (**78 files**). This record and generated report
+files remain excluded. Verification ran dirty on the reviewed revision using
+the same locked runtime versions and local cache settings documented above.
+
+| Approval-record artifact | SHA-256 |
+|---|---|
+| Catalog (only status changed) | `5117b37ec7d4d45e111943e925dcfc27a3ac280ddeabfb456ff37b93a9750088` |
+| Catalog schema (supported approval statuses) | `268c37976902079a7ccbd7f365bbbc00a96cb6c9c02902f425b834665f99d5a6` |
+| Python report writer/comparator | `87fee105d6229b105293d77a6f9a3dd55a96d2e229edaef1df86dd79697040a0` |
+| Julia report writer | `286ed1a678bef040c47b4a513cc9388401c136045598704916269393c5889d23` |
+| [Python report](rejections-python.json) | `9792c4f687e04fe19a4a2c6dcd0bd4f200dc2607cbf04f0582421cdaba6761d1` |
+| [Julia report](rejections-julia.json) | `fe97b3734912b989fc95f023e010474efc0167d5b04255da262d1014c7f11e36` |
+
+The approval-status regression preceded the schema/writer changes: the APPROVED
+catalog was rejected by the old status constraint (**FAIL**, expected). The
+updated Python tests exercise both supported statuses, unknown status rejection
+and report/catalog disagreement; Julia separately checks both statuses, unchanged
+case records, unknown status and current report provenance. Final outcomes follow.
+
+| Exact command/check | Acceptance-record outcome |
+|---|---|
+| `uv run --project packages/python --locked --offline python -m unittest discover -s conformance/rejections/tests -v` | PASS; 10 tests, including all 207 cases and approval-status regressions |
+| `julia --project=conformance/julia conformance/rejections/tests/test_harness.jl` | PASS; 45 assertions, including six approval-status assertions |
+| `uv run --project packages/python --locked --offline python conformance/rejections/review.py --report artifacts/rejections-python.json` | PASS; 207 cases, APPROVED |
+| `julia --project=conformance/julia conformance/rejections/review.jl --report artifacts/rejections-julia.json` | PASS; 207 cases, APPROVED |
+| `uv run --project packages/python --locked --offline python conformance/rejections/review.py --compare artifacts/rejections-python.json artifacts/rejections-julia.json` | PASS; 207 unchanged outcomes, APPROVED |
+| `uv run --project packages/python --locked --offline python conformance/rejections/review.py --compare docs/verification/rejections-python.json docs/verification/rejections-julia.json` | PASS; retained approval reports |
+| `node conformance/rejections/audit_inputs.cjs` | PASS; 144 BioIR digest checks |
+| `uv run --project packages/python --locked --offline python scripts/check_repo.py` | PASS; repository and links |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v` | PASS; 6 harness tests |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v` | PASS; 2 smoke tests |
+| `julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'` | PASS; 2 smoke assertions |
+| Structured comparison with reviewed `b9bb961` of catalog, raw inputs and retained reports | PASS; status/provenance only, 56 unchanged new raw inputs, all 207 case records and coverage unchanged, identical case rows in both refreshed reports |
+| `git diff --exit-code b9bb961 -- conformance/rejections/inputs conformance/rejections/reference.py conformance/rejections/reference.jl spec/bioir spec/fir spec/canonicalization packages conformance/bioir conformance/canonicalization conformance/production_decay conformance/julia conformance/python conformance/reference conformance/compare_reports.py .github/workflows/scaffold-smoke.yml` | PASS; mathematical validators, scientific contracts, fixture bytes, package sources, CI, dependency locks and unrelated catalogs unchanged |
+| `git diff --check` and `git diff --cached --check` | PASS; working and staged changes |
+| Hosted checks for approval-record commit | NOT RUN locally; available on PR #56 after push |
+
+This human acceptance is established by the explicit instruction above, with the
+stated non-exhaustive coverage limitation. Automated success does not broaden it.

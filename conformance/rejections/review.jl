@@ -15,7 +15,7 @@ function provenance()
     Dict("report_version" => 1, "implementation" => IMPLEMENTATION,
          "catalog_sha256" => R.sha(read(joinpath(@__DIR__, "catalog.json"))),
          "catalog_schema_sha256" => R.sha(read(joinpath(@__DIR__, "catalog.schema.json"))),
-         "fixture_status" => "REVIEW_REQUIRED", "catalog_version" => "1.0.0",
+         "fixture_status" => JSON.parsefile(joinpath(@__DIR__, "catalog.json"))["status"], "catalog_version" => "1.0.0",
          "evaluator_fingerprints" => fingerprints(EVALUATORS),
          "schema_fingerprints" => fingerprints(SCHEMAS), "contract_fingerprints" => fingerprints(CONTRACTS),
          "dependency_fingerprints" => fingerprints(DEPENDENCIES), "historical_catalog_fingerprints" => fingerprints(HISTORICAL))

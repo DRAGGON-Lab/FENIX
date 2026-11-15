@@ -6,7 +6,10 @@
       "const": "1.0.0"
     },
     "status": {
-      "const": "REVIEW_REQUIRED"
+      "enum": [
+        "REVIEW_REQUIRED",
+        "APPROVED"
+      ]
     },
     "cases": {
       "type": "array",

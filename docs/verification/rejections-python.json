@@ -2030,8 +2030,8 @@
       "passed": true
     }
   ],
-  "catalog_schema_sha256": "169af56dce55bc0d5fb9b870c3345fb4aad4bb83b7610d1bfd688ea3c1ad926c",
-  "catalog_sha256": "29a1a3a04d12052ae335f1911410be18dafdb2892ea36b446eb86f9fca62fb88",
+  "catalog_schema_sha256": "268c37976902079a7ccbd7f365bbbc00a96cb6c9c02902f425b834665f99d5a6",
+  "catalog_sha256": "5117b37ec7d4d45e111943e925dcfc27a3ac280ddeabfb456ff37b93a9750088",
   "catalog_version": "1.0.0",
   "contract_fingerprints": {
     "spec/bioir/proposals/ADR-P01.md": "04465d06f33970d20ed8974607da716fcef7f16fcaa8fcfc3684ecc8ad7edc51",
@@ -2047,9 +2047,9 @@
   "evaluator_fingerprints": {
     "conformance/python/p01.py": "0005f54f605259b886412ef5c75d3c64c4467c7541f3c887ddd6777d7df8968e",
     "conformance/rejections/reference.py": "1664291207392b5da2f1dfb7979079201fd0c3c6f406918ccb59acb1dfb1d124",
-    "conformance/rejections/review.py": "296c5026aded79e59657dd77119469f42831a6d0f50b4ecd382130a9d0caf97f"
+    "conformance/rejections/review.py": "87fee105d6229b105293d77a6f9a3dd55a96d2e229edaef1df86dd79697040a0"
   },
-  "fixture_status": "REVIEW_REQUIRED",
+  "fixture_status": "APPROVED",
   "historical_catalog_fingerprints": {
     "conformance/bioir/catalog.json": "6576accde94a567cee90094f33913ffbddbfec30abfb1047521539a787ff9390",
     "conformance/canonicalization/catalog.json": "07858e1595f51a630427ed2a12ef8bfbf9c0df241688bffd5041e9ed424aa970"

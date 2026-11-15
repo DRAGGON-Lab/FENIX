@@ -36,7 +36,7 @@ def provenance(implementation):
         'report_version': 1, 'implementation': implementation,
         'catalog_sha256': sha((HERE/'catalog.json').read_bytes()),
         'catalog_schema_sha256': sha((HERE/'catalog.schema.json').read_bytes()),
-        'fixture_status': 'REVIEW_REQUIRED', 'catalog_version': '1.0.0',
+        'fixture_status': json.loads((HERE/'catalog.json').read_bytes())['status'], 'catalog_version': '1.0.0',
         'evaluator_fingerprints': fingerprints(IMPLEMENTATIONS[implementation]),
         'schema_fingerprints': fingerprints(SCHEMAS),
         'contract_fingerprints': fingerprints(CONTRACTS),
@@ -126,7 +126,7 @@ def main():
     if args.compare:
         reports = [p01.strict_parse(path.read_bytes()) for path in args.compare]
         count = compare(*reports)
-        print(f'PASS: {count} fixed rejection-suite expectations matched by Python and Julia; PI acceptance pending.')
+        print(f'PASS: {count} fixed rejection-suite expectations matched by Python and Julia; fixture_status={reports[0]['fixture_status']}.')
         return 0
     target = check_output(args.report) if args.report else None
     report = run()

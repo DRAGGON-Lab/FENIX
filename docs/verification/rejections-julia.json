@@ -2030,8 +2030,8 @@
       "passed": true
     }
   ],
-  "catalog_schema_sha256": "169af56dce55bc0d5fb9b870c3345fb4aad4bb83b7610d1bfd688ea3c1ad926c",
-  "catalog_sha256": "29a1a3a04d12052ae335f1911410be18dafdb2892ea36b446eb86f9fca62fb88",
+  "catalog_schema_sha256": "268c37976902079a7ccbd7f365bbbc00a96cb6c9c02902f425b834665f99d5a6",
+  "catalog_sha256": "5117b37ec7d4d45e111943e925dcfc27a3ac280ddeabfb456ff37b93a9750088",
   "catalog_version": "1.0.0",
   "contract_fingerprints": {
     "spec/bioir/proposals/ADR-P01.md": "04465d06f33970d20ed8974607da716fcef7f16fcaa8fcfc3684ecc8ad7edc51",
@@ -2047,9 +2047,9 @@
   "evaluator_fingerprints": {
     "conformance/julia/p01.jl": "111b1d6fe19fcd9cc279992e05bdf8046662d4ca1a98e417057bffb3e7961bd6",
     "conformance/rejections/reference.jl": "4172dbf15b6e8f7789b2e53db0b2aa2ac79f4b769eb974e3ed251bad94802359",
-    "conformance/rejections/review.jl": "02e647e949608c5d48ecb7868c893ba6984375b2915c132546d3a46bfd520394"
+    "conformance/rejections/review.jl": "286ed1a678bef040c47b4a513cc9388401c136045598704916269393c5889d23"
   },
-  "fixture_status": "REVIEW_REQUIRED",
+  "fixture_status": "APPROVED",
   "historical_catalog_fingerprints": {
     "conformance/bioir/catalog.json": "6576accde94a567cee90094f33913ffbddbfec30abfb1047521539a787ff9390",
     "conformance/canonicalization/catalog.json": "07858e1595f51a630427ed2a12ef8bfbf9c0df241688bffd5041e9ed424aa970"

@@ -94,4 +94,5 @@ When agents repeat the same avoidable failure, add the smallest high-value scope
 
 For issue #17 rejection validation, run both native suites/reports, comparison
 and independent digest audit from the [rejection-suite commands](../conformance/rejections/README.md#run-and-compare).
-These are candidate reference checks; human PI acceptance remains required.
+The bounded suite has human PI acceptance; negative capability fixtures are not
+exhaustive, and native package implementation approval remains separate.

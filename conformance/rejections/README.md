@@ -1,13 +1,17 @@
-# BioIR/FIR rejection reference suite — review required
+# BioIR/FIR rejection reference suite — approved
 
 Issue [#17](https://github.com/DRAGGON-Lab/FENIX/issues/17), under ratified
 [ADR-P01](../../spec/bioir/proposals/ADR-P01.md),
 [ADR-P02](../../spec/fir/proposals/ADR-P02.md) and
 [ADR-P03](../../spec/canonicalization/proposals/ADR-P03.md).
-The [catalog](catalog.json) is **REVIEW_REQUIRED**. These concrete expectations
-need human PI acceptance; passing reference checks does not approve package
-validators, compilers, normalization, solvers or new scientific semantics.
-Keep #17 open until the suite and its evidence are accepted.
+The human PI accepted the [catalog](catalog.json) and bounded reference evidence
+on 2026-11-15; its status is **APPROVED**. See the
+[acceptance record](../../docs/verification/ep01-rejections.md#human-pi-acceptance-recorded).
+**The negative capability fixtures are not exhaustive.** Acceptance covers the
+207 registered cases and their fixed expectations. It makes no claim that every
+unsupported capability, malformed document or combination of faults is covered.
+Package validators, compilers, normalization, solvers and new scientific semantics
+retain their separate approval gates.
 
 ## Scope and fixed expectations
 
@@ -110,6 +114,9 @@ uv run --project packages/python --locked --offline python conformance/rejection
 node conformance/rejections/audit_inputs.cjs
 ```
 
+Catalogs and report provenance support `REVIEW_REQUIRED` and `APPROVED`; unknown
+statuses and report/catalog status disagreement are rejected.
+
 Version 1 reports retain runtime/dependency identities and SHA-256 fingerprints
 of the catalog, catalog schema, ratified schemas/contracts, evaluators, dependency
 locks and historical catalogs. Comparison requires exactly the registered Python
@@ -126,7 +133,7 @@ compares them and runs the digest audit. The tests include corrupt catalogs,
 missing dependencies, unsafe paths/checksums, orphaned inputs, missing/extra/
 duplicate report rows, stale fingerprints and wrong diagnostics/identities.
 
-[Verification and remaining acceptance](../../docs/verification/ep01-rejections.md)
+[Verification and human PI acceptance](../../docs/verification/ep01-rejections.md)
 records executed commands and bounded claims. The approved P03 catalog is
 unchanged: its 17 historical `NOT_RUN` rows remain historical evidence; new
 execution results appear only in this suite.
