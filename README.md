@@ -2,7 +2,7 @@
 
 **Biomolecular and collective computation** — independently implemented native Python and Julia scientific libraries governed by shared language-neutral biological and mathematical contracts.
 
-**Status:** Architecture v0.1 approved (29 decisions); package scaffold with the [ratified ADR-P01 M0-compatible BioIR subset](spec/bioir/README.md), the [ratified ADR-P02 M0 FIR subset](spec/fir/README.md), the [ratified ADR-P03 canonicalization contract](spec/canonicalization/README.md) and [independent P01 reference validators/candidate fixtures](conformance/bioir/README.md) for review. **Native modeling/validation APIs, FIR compilers and numerical solvers are not implemented.** Reference fixture and implementation approval remain subject to PI review of the catalog and independent Python/Julia reports.
+**Status:** Architecture v0.1 approved (29 decisions); package scaffold with the [ratified ADR-P01 M0-compatible BioIR subset](spec/bioir/README.md), the [ratified ADR-P02 M0 FIR subset](spec/fir/README.md), the [ratified ADR-P03 canonicalization contract](spec/canonicalization/README.md) and [independent P01 reference validators/candidate fixtures](conformance/bioir/README.md) for review. **Python now provides an uncommitted M0 BioIR content API** with typed construction, validation and ordinary JSON serialization; see the [Python package](packages/python/README.md). Committed documents, native parsing, FIR compilers and solvers remain pending. The bounded reference catalogs are PI-approved; native implementation approval remains separate.
 
 ## Concept
 
@@ -16,7 +16,7 @@ Read [PRODUCT.md](PRODUCT.md), [ARCHITECTURE.md](ARCHITECTURE.md), [AGENTS.md](A
 
 ## Repository map
 
-`packages/python` and `packages/julia`: independently installable scaffold packages; `spec/`: ratified BioIR/FIR subsets and FIR canonicalization contract; `conformance/`: independent scientific fixtures; `examples/`: verified examples; `.github/`: independent package smoke CI.
+`packages/python`: native M0 content API; `packages/julia`: independently installable scaffold; `spec/`: ratified BioIR/FIR subsets and FIR canonicalization contract; `conformance/`: independent scientific fixtures; `examples/`: verified examples; `.github/`: independent package smoke CI.
 
 ## Development and smoke tests
 

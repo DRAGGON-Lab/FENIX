@@ -39,10 +39,17 @@ jobs:
       - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
         with:
           version: "0.11.29"
-      - name: Install Python scaffold without Julia
+      - name: Install Python package without Julia
         run: uv sync --project packages/python --locked
-      - name: Python smoke checks
+      - name: Python content and packaging tests
         run: uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v
+      - name: Check Python content style and types
+        run: |
+          uv run --project packages/python --locked --offline ruff check packages/python/src/fenix/bioir packages/python/tests/test_bioir.py packages/python/tests_native_content
+          uv run --project packages/python --locked --offline ruff format --check packages/python/src/fenix/bioir packages/python/tests/test_bioir.py packages/python/tests_native_content
+          uv run --project packages/python --locked --offline mypy --config-file packages/python/pyproject.toml
+      - name: Test 29 approved P01 native-content projections
+        run: uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_content -v
       - name: Test candidate P01 catalog and report failure detection
         run: uv run --project packages/python --locked --offline python -m unittest discover -s conformance/python/tests -v
       - name: Independently validate candidate P01 fixtures in Python

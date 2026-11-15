@@ -1,0 +1,465 @@
+{
+  "scope": "29 native-content projections, not full 92-case native conformance",
+  "cases": [
+    {
+      "id": "null",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "bool",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "integer",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "negative-zero",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "integer-negative-zero",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "zero-tiny-exponent",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "whitespace",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "unicode-literal",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "unicode-escaped",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "escaped-backslash",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "unicode-preserved",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "nested",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "one-decimal",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "decimal-rounding",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "round-to-even",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "min-subnormal",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "negative-subnormal",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "max-finite",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "integer-limit",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "negative-integer-limit",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "binary64-exponent-boundary",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "duplicate-root",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "duplicate-escaped",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "duplicate-nested",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "duplicate-pointer",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "lone-high",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "lone-low",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "bad-surrogate-pair",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "invalid-utf8",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "utf8-surrogate",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "integer-outside",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "negative-integer-outside",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "integer-rounding-forbidden",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "overflow",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "negative-overflow",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "underflow",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "negative-underflow",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "round-to-zero",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "nan",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "infinity",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "negative-infinity",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "leading-zero",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "trailing-data",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "trailing-comma",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "bad-number",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "bad-escape",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "raw-control",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "truncated",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "unclosed-string",
+      "status": "DEFERRED",
+      "reason": "Raw parsing and token/Unicode diagnostics are #19."
+    },
+    {
+      "id": "design-valid",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "experiment-valid",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "metadata-variant",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "zero-rates-fractional-count",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "design-digest",
+      "status": "DEFERRED",
+      "reason": "Committed envelope digest verification is #19."
+    },
+    {
+      "id": "experiment-digest",
+      "status": "DEFERRED",
+      "reason": "Committed envelope digest verification is #19."
+    },
+    {
+      "id": "design-reference-id",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "design-reference-revision",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "design-reference-digest",
+      "status": "DEFERRED",
+      "reason": "Exact Design digest correspondence is #19."
+    },
+    {
+      "id": "missing-compartment",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "missing-function-port",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "missing-function-species",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "missing-function-parameter",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "wrong-function-unit",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "duplicate-function-id",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "duplicate-parameter-id",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "duplicate-assignment",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "wrong-assignment-unit",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "unknown-assignment",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "unknown-initial-species",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "observable-port",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "duplicate-observable-id",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "execution-profile",
+      "status": "DEFERRED",
+      "reason": "Raw unknown-member diagnostics are #19; constructor keyword rejection is tested separately."
+    },
+    {
+      "id": "invalid-event",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "invalid-unit",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "negative-rate",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "boolean-count",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "unknown-field",
+      "status": "DEFERRED",
+      "reason": "Raw unknown-member diagnostics are #19; constructor keyword rejection is tested separately."
+    },
+    {
+      "id": "unsupported-version",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "extra-species",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "extra-compartments",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "design-revision-advance",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "revision-advance",
+      "status": "DEFERRED",
+      "reason": "Trusted revision replacement is #19."
+    },
+    {
+      "id": "revision-metadata",
+      "status": "DEFERRED",
+      "reason": "Trusted revision replacement is #19."
+    },
+    {
+      "id": "revision-replace",
+      "status": "DEFERRED",
+      "reason": "Trusted revision replacement is #19."
+    },
+    {
+      "id": "revision-rollback",
+      "status": "DEFERRED",
+      "reason": "Trusted revision replacement is #19."
+    },
+    {
+      "id": "canonical-numbers",
+      "status": "DEFERRED",
+      "reason": "Canonical bytes and digests are #19."
+    },
+    {
+      "id": "canonical-order",
+      "status": "DEFERRED",
+      "reason": "Canonical bytes and digests are #19."
+    },
+    {
+      "id": "canonical-array",
+      "status": "DEFERRED",
+      "reason": "Canonical bytes and digests are #19."
+    },
+    {
+      "id": "canonical-unicode",
+      "status": "DEFERRED",
+      "reason": "Canonical bytes and digests are #19."
+    },
+    {
+      "id": "canonical-controls",
+      "status": "DEFERRED",
+      "reason": "Canonical bytes and digests are #19."
+    },
+    {
+      "id": "duplicate-function-role",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    },
+    {
+      "id": "reordered-functions",
+      "status": "PROJECTED",
+      "reason": "Native content construction only; envelope metadata and digest excluded."
+    }
+  ]
+}
