@@ -86,3 +86,57 @@ engineering review results are recorded in the receipt. Agent reviews are bounde
 checks, not human PI implementation approval. Hosted CI is observed separately on
 the focused PR; it is not represented as locally executed evidence. No merge,
 publication, parent epic closure or subsequent delivery is included.
+
+## Review clarification — 2026-11-15
+
+This documentation-only follow-up is based on implementation revision
+`187aa9f69317eb56467ce208601c35801e10bbbb`. The source fingerprints, original
+machine-readable receipt, artifact hashes and broad execution results above remain
+historical evidence for that revision; they are unchanged and do not claim to
+verify subsequent documentation edits.
+
+The review found no confirmed blocking correctness defect. These limitations
+remain explicit for #19's bounded milestone:
+
+- **Self-consistency is not authorization or provenance authentication.** A
+  modified document with its correctly recomputed digest can be self-consistent
+  without being the document a researcher authorized. `expected_digest` allows
+  comparison against a caller-supplied trusted external expectation; establishing
+  that trust, signatures, archives and provenance auditing remain future work.
+- **Revision checks are predecessor-relative.** A trusted supplied predecessor
+  supports replacement validation. It does not establish global revision history,
+  prevent concurrent conflicting branches or guarantee that historical documents
+  remain stored. In-memory immutability supplies no persistence guarantee.
+- **Generated-input investigation remains required future conformance work.**
+  Fixed approved cases and hand-authored regressions do not exhaust interactions
+  among numeric parsing, canonicalization, revisions and references.
+  [Issue #59](https://github.com/DRAGGON-Lab/FENIX/issues/59) now explicitly includes
+  combined cross-feature scenarios, reproducible replay and minimized failures.
+  It remains open without becoming a retroactive acceptance blocker for #19 or
+  selecting a testing framework in this follow-up.
+- **Serializer agreement within Python is not fully independent.** Production and
+  the Python reference share `rfc8785`. Their serializer agreement alone is
+  insufficient independent evidence. The
+  [approved P01 expectations](../../conformance/bioir/README.md),
+  [approved canonicalization vectors](../../conformance/canonicalization/README.md)
+  and executed Julia/Node comparisons and audits listed above supply additional
+  bounded milestone evidence. They do not establish exhaustive correctness or
+  biological validity.
+
+Follow-up checks use the same locked Python environment and
+`UV_CACHE_DIR=/private/tmp/fenix-uv-cache`. Each listed command exited 0:
+
+| Exact command | Clarification outcome |
+|---|---|
+| `uv run --project packages/python --locked --offline python scripts/check_repo.py` | PASS, repository/local links |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v` | PASS, 28 methods |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_documents -v` | PASS, 3 methods; 92 original and overlapping 97-case P01 subset plus schema checks |
+| `git diff --exit-code 187aa9f -- . ':(exclude)packages/python/README.md' ':(exclude)docs/verification/ep02-python-documents.md'` | PASS, all other tracked files unchanged |
+| `git diff --check` and `git diff --cached --check` | PASS, working/staged whitespace |
+
+Only the package README and this human-readable verification record change
+locally. Production code, public API, tests, dependencies, scientific contracts,
+catalogs, fixtures and original execution receipts remain unchanged. Broad
+reference, Julia and wheel suites were **NOT RUN again locally** for this prose
+follow-up; their original results remain attached to `187aa9f`. Human
+implementation approval and merging remain pending.

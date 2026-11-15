@@ -152,11 +152,8 @@ newer-revision substitution occurs. Errors use `BioIRValidationError` with
 JSON Pointers relative to the input document, including `/content` where applicable.
 Required and unknown native constructor arguments retain Python argument errors.
 
-The optional `expected_digest` pins a caller's trusted expectation. Without it,
-loading checks self-consistency and exact local references, not origin or authorship.
-A verified immutable object is not an authenticated archive or persistence service.
-`previous` supplies the trusted predecessor for replacement checks; there is no
-global history lookup. `replace_content(content)` checks the same logical ID and
+`previous` supplies the trusted predecessor for loading replacement content.
+`replace_content(content)` checks against the current document's logical ID and
 requires an explicitly higher revision when canonical content changes. Experiment
 replacement can supply an explicit `source_design`, otherwise it uses the current
 context. Old documents remain unchanged. `with_metadata(metadata)` returns a new
@@ -174,7 +171,28 @@ are checked separately. The 29-case content-only suite remains useful independen
 uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_documents -v
 ```
 
-The Python reference and production code now share the external JCS dependency.
-Fixed approved bytes plus independent Julia/Node evidence are therefore essential;
-Python agreement alone is not independent canonicalizer evidence. Systematic
-generated-input/property-based conformance remains the separate issue #59.
+### Guarantees and evidence limits
+
+- **Digest validity is not provenance authentication.** Modified content with its
+  correctly recomputed digest is self-consistent, but may differ from what a
+  researcher authorized. The optional `expected_digest` permits comparison with
+  a trusted external expectation; establishing that trust is the caller's
+  responsibility. Signatures, archives and provenance auditing remain future work.
+- **Revision integrity is predecessor-relative.** Checks against a supplied
+  trusted `previous` document do not establish global revision history, prevent
+  concurrent conflicting branches or guarantee storage of historical documents.
+  Immutable in-memory values provide no persistence or authenticated archive.
+- **Generated-input conformance remains outstanding.** Approved fixed cases and
+  hand-authored regressions do not exhaust interactions between numeric parsing,
+  canonicalization, revisions and references. Property-based and metamorphic
+  investigation remains required future work under
+  [#59](https://github.com/DRAGGON-Lab/FENIX/issues/59), without becoming a retroactive
+  acceptance blocker for #19's bounded milestone.
+- **Python serializer agreement is not fully independent.** Production and the
+  Python reference both use `rfc8785`. Their serializer agreement alone is
+  insufficient independent evidence. The
+  [approved P01 expectations](../../conformance/bioir/README.md),
+  [approved canonicalization vectors](../../conformance/canonicalization/README.md)
+  and [executed Julia/Node comparisons and audits](../../docs/verification/ep02-python-documents.md#executed-outcomes)
+  supply additional bounded evidence for this milestone, without establishing
+  exhaustive serializer correctness or biological validity.
