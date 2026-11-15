@@ -61,3 +61,9 @@ UTF-8 output bytes in independent Python/ECMAScript reports. The human PI
 accepted these vectors at reviewed revision `a58ea83`; the catalog is APPROVED.
 Native FIR parsing/normalization and the broader #17 rejection
 catalog are separate work. See the [issue #16 evidence](../docs/verification/ep01-canonicalization-vectors.md).
+
+The human PI accepted the [BioIR/FIR rejection reference suite](rejections/README.md)
+and its independent Python/Julia evidence for #17. Its catalog is APPROVED for
+207 fixed cases. Negative capability fixtures are not exhaustive; package
+implementation approval remains a separate gate. See the
+[acceptance record](../docs/verification/ep01-rejections.md#human-pi-acceptance-recorded).

@@ -12,3 +12,11 @@ and reviewed positive/negative fixtures remain mandatory. In particular,
 parser/validator implementation approval requires the
 [language-neutral fixture catalog and independent Python/Julia reports](../conformance/README.md#parser-and-validator-fixture-catalog-gate).
 Ratifying P01, P02 or P03 does not approve golden fixtures or waive those follow-on gates.
+
+The [issue #17 rejection references](../conformance/rejections/README.md) exercise
+P01 raw input, P02 mathematical/source checks and P03 numeric input policy with
+independent Python/Julia reports. The human PI accepted the bounded suite; its
+catalog is APPROVED. Negative capability fixtures are not exhaustive. The ratified
+schemas and accepted canonicalization artifacts are unchanged; package
+implementation approval remains separate. See the
+[acceptance record](../docs/verification/ep01-rejections.md#human-pi-acceptance-recorded).

@@ -90,3 +90,16 @@ This accepts the bounded serialization byte/digest vectors and supplied expected
 normalized-object identity references under unchanged ADR-P03. All 17
 contract_only outcomes remain NOT_RUN; native FIR parsing, semantic validation,
 normalization, idempotence and end-to-end round trips remain separate gates.
+
+
+**Accepted rejection references, 2026-11-15:** The human PI accepted the concrete
+issue #17 [BioIR/FIR rejection suite](../conformance/rejections/README.md) and its
+independent Python/Julia evidence at reviewed revision
+`b9bb961e7293c00c5728e8dd374fb4ef7a15b7ef` on
+[PR #56](https://github.com/DRAGGON-Lab/FENIX/pull/56). The catalog is now APPROVED
+for the 207 registered cases and fixed expectations. **Negative capability
+fixtures are not exhaustive.** This acceptance does not establish complete
+coverage of unsupported capabilities or malformed inputs, approve native package
+APIs or change P01/P02/P03 scientific rules. See the
+[acceptance record](verification/ep01-rejections.md#human-pi-acceptance-recorded)
+for the explicit approval, reviewed artifact identity and refreshed evidence.

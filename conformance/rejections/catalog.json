@@ -1,0 +1,4298 @@
+{
+  "catalog_version": "1.0.0",
+  "status": "APPROVED",
+  "cases": [
+    {
+      "id": "p01-null",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/null.input",
+          "sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-bool",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/bool.input",
+          "sha256": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-integer",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/integer.input",
+          "sha256": "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-negative-zero",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/negative-zero.input",
+          "sha256": "c26617c7ccbcaa6631b45d851b8cf56e21d2ca624bdb1193afdbd4b560702cec"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-integer-negative-zero",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/integer-negative-zero.input",
+          "sha256": "ed79f26d03f412bde3db206601a698e0bb451bea9e3cc25289636ac17ea74b0a"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-zero-tiny-exponent",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/zero-tiny-exponent.input",
+          "sha256": "c19de4d9d49a74c1a8f3912074f33b1614d374088b42bf8f16880c4afbd4505d"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-whitespace",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/whitespace.input",
+          "sha256": "27386a77333068badf0332ffdda1ebd41cafaba51fd78115df68280a03781ae4"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-unicode-literal",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/unicode-literal.input",
+          "sha256": "5120b0dbdd5539f03b48389a6740c87aa497758ca96b3d69165453c9e01f3235"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-unicode-escaped",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/unicode-escaped.input",
+          "sha256": "03b28a2dafc32cfb4cb604e4980681c6b9885434f8a23c3af4c52b8899dfc1ce"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-escaped-backslash",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/escaped-backslash.input",
+          "sha256": "eb5c7a825b6ee1b0ea16c7246ddd460a5a9dbd69e612726591d50d5395e6c854"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-unicode-preserved",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/unicode-preserved.input",
+          "sha256": "8e0c35d689e13926898b948c3be0a6ec7277b6840a3a782d487921cf052d6008"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-nested",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/nested.input",
+          "sha256": "3c3c311f173d0c911303ef672833e42ba2debe3fcb56c2e3ce7bc2aa1cbb1ad5"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-one-decimal",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/one-decimal.input",
+          "sha256": "d0ff5974b6aa52cf562bea5921840c032a860a91a3512f7fe8f768f6bbe005f6"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-decimal-rounding",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/decimal-rounding.input",
+          "sha256": "14be4b45f18e0d8c67b4f719b5144eee88497e413709d11d85b096d8e2346310"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-round-to-even",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/round-to-even.input",
+          "sha256": "96ffc1cd819b19cb15df3dd632bcf3811c7382a8cd2cac42ee31864882b3003d"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-min-subnormal",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/min-subnormal.input",
+          "sha256": "c46e7ca1be4c8734f373a56530787288fa2058d73d07855e9247e949f811a42a"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-negative-subnormal",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/negative-subnormal.input",
+          "sha256": "046f4049d09944fcb2efbf2ddb0ea8f05e0204591d6d02c9106efc88190fa7f9"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-max-finite",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/max-finite.input",
+          "sha256": "217ab4b30c6f536b285884e38da73315e3c6e694910dbbd5ae36f396b6f835bb"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-integer-limit",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/integer-limit.input",
+          "sha256": "f40b423c2dd95ff2b2f027e22208f438cf7242862e5e746860e697308c9add26"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-negative-integer-limit",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/negative-integer-limit.input",
+          "sha256": "4c933a456bb8f2e9894b2d0b26480439cd72d52fb8a27cbf8fd7f323f22c7815"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-binary64-exponent-boundary",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/binary64-exponent-boundary.input",
+          "sha256": "6b658c6597411cedf1cb11958fbbfde732202f0d7aa88c8cb408046eb2bf7d79"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-duplicate-root",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/duplicate-root.input",
+          "sha256": "d38245cfdb5d2239d67fe2a719312768b668a6928d8d97d04fbce83215e50b44"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "DUPLICATE_KEY",
+        "path": "/x",
+        "stage": "parse",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-duplicate-escaped",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/duplicate-escaped.input",
+          "sha256": "9b76ab5d01163a68899e361838ef85cf791c1a4aee792d8c714db00237a32647"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "DUPLICATE_KEY",
+        "path": "/x",
+        "stage": "parse",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-duplicate-nested",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/duplicate-nested.input",
+          "sha256": "0e5a351590457e0ba2429edd0b485fc958451c596b7e1d291d4d9ba9975ab91f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "DUPLICATE_KEY",
+        "path": "/a/0/x",
+        "stage": "parse",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-duplicate-pointer",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/duplicate-pointer.input",
+          "sha256": "f7cdb6b6567df081f72bfd9cc9ed6675ab34d28b63f062c029d0052caca713e3"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "DUPLICATE_KEY",
+        "path": "/a~1b~0",
+        "stage": "parse",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-lone-high",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/lone-high.input",
+          "sha256": "8c0c59dd0d275aadcd462a5fe12eb352cbdfeaf961eae4f85a4660521df7d2f5"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "INVALID_UNICODE",
+        "path": "",
+        "stage": "parse",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-lone-low",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/lone-low.input",
+          "sha256": "353c7370beca95e64c258c908edac60c2ab30d355ca1b5b7fc31c5bce4a4c65a"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "INVALID_UNICODE",
+        "path": "",
+        "stage": "parse",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-bad-surrogate-pair",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/bad-surrogate-pair.input",
+          "sha256": "a064ded5d950e5e7062f06533a7c93c6f169c4b5f88bb970bf72cc56809d588b"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "INVALID_UNICODE",
+        "path": "",
+        "stage": "parse",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-invalid-utf8",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/invalid-utf8.input",
+          "sha256": "2c1ba6ac713bfc21e74f3429be952fca3e7a796734394fd18a48eb6713880d89"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "INVALID_UNICODE",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-utf8-surrogate",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/utf8-surrogate.input",
+          "sha256": "ee4a76500d4d714ca691afe56c1fd9e0a5fbcb42d6c8f8d7178aae4ddb683cf7"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "INVALID_UNICODE",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-integer-outside",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/integer-outside.input",
+          "sha256": "c681da39d7273a6a24c15c9cac3a75526ff2ecf8ba4ee60346a0c70c8163bdb2"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "INTEGER_RANGE",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-negative-integer-outside",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/negative-integer-outside.input",
+          "sha256": "83e109bfd7fb4984b47a46f363627c18dbbd7e57e36b05a04cd162d304df72e9"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "INTEGER_RANGE",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-integer-rounding-forbidden",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/integer-rounding-forbidden.input",
+          "sha256": "a1c367c29158357e62a3ff5d3e800fb7698a22396439dbc0a9d4929322afd35d"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "INTEGER_RANGE",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-overflow",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/overflow.input",
+          "sha256": "f2bba4568fecd4b9729970732e571ac9373a33fb2d6a960794a41f0f2ecdbc25"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "NUMBER_RANGE",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-negative-overflow",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/negative-overflow.input",
+          "sha256": "7c571ec50f301ee5e46e1caaff3e67d0710b46fd8a35807194979ed6d8a1d008"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "NUMBER_RANGE",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-underflow",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/underflow.input",
+          "sha256": "d42d88695a3f56ff2ce7799a2f261ccb39a2b1a5db8ed284b74b9c452804ed16"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "NUMBER_UNDERFLOW",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-negative-underflow",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/negative-underflow.input",
+          "sha256": "ee7e3b80afbb31879089a5572a426c1fcc495d93080acd225648fe88de702ac9"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "NUMBER_UNDERFLOW",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-round-to-zero",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/round-to-zero.input",
+          "sha256": "3b0cb48b99e7e1739c70683c19c8675a784dcd681a13fd11f538c4b03afc6881"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "NUMBER_UNDERFLOW",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-nan",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/nan.input",
+          "sha256": "d5b592c05dc25b5032553f1b27f4139be95e881f73db33b02b05ab20c3f9981e"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-infinity",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/infinity.input",
+          "sha256": "d0067cad9a63e0813759a2bb841051ca73570c0da2e08e840a8eb45db6a7a010"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-negative-infinity",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/negative-infinity.input",
+          "sha256": "c64ddf11bcd45660f0cf66dd0c22d2b4570ef3d3fc6527a9a6f6c722aefa3c39"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-leading-zero",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/leading-zero.input",
+          "sha256": "938db8c9f82c8cb58d3f3ef4fd250036a48d26a712753d2fde5abd03a85cabf4"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-trailing-data",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/trailing-data.input",
+          "sha256": "2cec2bbf1a64ea5249e8a7ab9ecc782fa48be13f0b35ad5f52bdea741841a230"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-trailing-comma",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/trailing-comma.input",
+          "sha256": "886ad6246ed150b2930495926ba07d579307bc7fecaf4b391650dca8bae7bc66"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-bad-number",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/bad-number.input",
+          "sha256": "c977dbe785221d34114d345fdf8ff4e18bb4af66750751dbea29407f9738735f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-bad-escape",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/bad-escape.input",
+          "sha256": "722cd80a90dd9305fea073dd4dfeeace433b327fccf462fcf466cd13551c6aa9"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-raw-control",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/raw-control.input",
+          "sha256": "a2bca62ab7e7f14c7d3990aa49b00f9f55700ff69e1131ca08534c8345828334"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-truncated",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/truncated.input",
+          "sha256": "aced72cfd547c2dd97712b69b63ce653b7f867ca39c8f5d41723047bebb6a901"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-unclosed-string",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/unclosed-string.input",
+          "sha256": "bcd6e30ceb9637842b0c6c0e6c2c2b2d233d393210ca1d5ae6bf88b647c14ef2"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "JSON_SYNTAX",
+        "stage": "parse",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: Parsing and unsupported input"
+    },
+    {
+      "id": "p01-design-valid",
+      "operation": "design",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-experiment-valid",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/experiment-valid.input",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-metadata-variant",
+      "operation": "design",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/metadata-variant.input",
+          "sha256": "ca26b8e24044c0bdf97b6570fd553bb90cac8565b0067c44afcee38e63a2bf2f"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-zero-rates-fractional-count",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/zero-rates-fractional-count.input",
+          "sha256": "51df3b32839db422ca1462a944bdebf66f8a23344c7d042849c438e0f96407d8"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-design-digest",
+      "operation": "design",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/design-digest.input",
+          "sha256": "7bf87a0327a45bbcae40d9b228bee19aabe98713fdc143a0161552ee1a3b59e1"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "DIGEST",
+        "path": "/digest",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-experiment-digest",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/experiment-digest.input",
+          "sha256": "41decbf883ce8c9ee639dd6d7e961e01cf73ce3298d2408123d5d41ac89036d4"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "DIGEST",
+        "path": "/digest",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-design-reference-id",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/design-reference-id.input",
+          "sha256": "b7103395b8c097c03c62b7e55a66af9f564e9085f6e1ab6c3adb5d33860bfc2c"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "DESIGN_REFERENCE",
+        "path": "/content/design/id",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-design-reference-revision",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/design-reference-revision.input",
+          "sha256": "1e9036ea7b77c341122ac852d5cebca44bce274e31ae4a9ac6a18d5306835df3"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "DESIGN_REFERENCE",
+        "path": "/content/design/revision",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-design-reference-digest",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/design-reference-digest.input",
+          "sha256": "72736824f8abe13e3f47d904ea51ec61cfd38bd9b906f68d27553e1691544d20"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "DESIGN_REFERENCE",
+        "path": "/content/design/digest",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-missing-compartment",
+      "operation": "design",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/missing-compartment.input",
+          "sha256": "cf68c40b0f2243f9a0523433bc0c399cb06df2069b5e375c46033c4844fa0c55"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "REFERENCE",
+        "path": "/content/species/0/compartment",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-missing-function-port",
+      "operation": "design",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/missing-function-port.input",
+          "sha256": "985f5436b6475432247be183fdc0b82363f1ce94573bef52d486878b6a05b712"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "REFERENCE",
+        "path": "/content/functions/0/target/port",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-missing-function-species",
+      "operation": "design",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/missing-function-species.input",
+          "sha256": "20d586b3e05c463db5f45e4ce73fda7e2c84ab620ebf848db5feda183edca169"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "REFERENCE",
+        "path": "/content/functions/0/target/species",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-missing-function-parameter",
+      "operation": "design",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/missing-function-parameter.input",
+          "sha256": "6e29e7665fc00b1a76af50ec27856ce58e6a5dba2bcd542449e1c0ec2a4b801b"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "REFERENCE",
+        "path": "/content/functions/0/parameter",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-wrong-function-unit",
+      "operation": "design",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/wrong-function-unit.input",
+          "sha256": "1fbb632f12f69dd015552d0027e1e296c5d1eee81851ba650f0a7e50c567bf50"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "UNIT",
+        "path": "/content/functions/0/parameter",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-duplicate-function-id",
+      "operation": "design",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/duplicate-function-id.input",
+          "sha256": "fdbcda92c6f68a3b0a945e12ca2c29bee35fc9ab520c2a5e5a1194966b4e050f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "DUPLICATE_ID",
+        "path": "/content/functions/1/id",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-duplicate-parameter-id",
+      "operation": "design",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/duplicate-parameter-id.input",
+          "sha256": "86961a6b846c9017132b54cb62ec27882cb00f54c1378ed465023bb8b078228b"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "DUPLICATE_ID",
+        "path": "/content/parameters/1/id",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-duplicate-assignment",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/duplicate-assignment.input",
+          "sha256": "f96d34e2c89c4bd8cd143aaca8a60323d9d11f05c69f294bc21fe5e467deb300"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "DUPLICATE_ID",
+        "path": "/content/parameters/1/parameter",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-wrong-assignment-unit",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/wrong-assignment-unit.input",
+          "sha256": "fb6c2df84e4b52f636dc307dd06ef59657f02f31fc5cbe1e95e98b516de7bd81"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "UNIT",
+        "path": "/content/parameters/0/quantity/unit",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-unknown-assignment",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/unknown-assignment.input",
+          "sha256": "9f7a8a8355e62ec5475f92c07b174e225528dfc588c4f2c5915be308adcfe2fd"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "REFERENCE",
+        "path": "/content/parameters/0/parameter",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-unknown-initial-species",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/unknown-initial-species.input",
+          "sha256": "233b1e3d73cefdc33ab2995e829af98505d2f8dd3992d7f0bbe521a358d5c919"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "REFERENCE",
+        "path": "/content/initial_counts",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-observable-port",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/observable-port.input",
+          "sha256": "f9b94969a9bc57280bcc3040ed14b62b18bd1576347445813c7b53a579281310"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "REFERENCE",
+        "path": "/content/observables/0/target/port",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-duplicate-observable-id",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/duplicate-observable-id.input",
+          "sha256": "2c1a4bcbad93474456860b8dc9445ca126769421fc6e8c35f4355876821a43e9"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "DUPLICATE_ID",
+        "path": "/content/observables/1/id",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-execution-profile",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/execution-profile.input",
+          "sha256": "d58dbf50c365c9be0ede080b49c71e2021083b0466c851044cb16cd32e9c9511"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "SCHEMA",
+        "path": "/content/profile",
+        "stage": "structure",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-invalid-event",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/invalid-event.input",
+          "sha256": "7b68c64e30462288d8fd97a9ca4757d73f94468fbac3e0e3621132379357d334"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "SCHEMA",
+        "path": "/content/interventions",
+        "stage": "structure",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-invalid-unit",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/invalid-unit.input",
+          "sha256": "c1839d12687ef21326274080e6d85ab82520d56351130e3eaebefb1d19f8ebde"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "SCHEMA",
+        "path": "/content/parameters/0/quantity/unit",
+        "stage": "structure",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-negative-rate",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/negative-rate.input",
+          "sha256": "a461b5192053c3348819b799a3ed236abed67ffdc1ec38251067fd4247c1703d"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "SCHEMA",
+        "path": "/content/parameters/0/quantity/value",
+        "stage": "structure",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-boolean-count",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/boolean-count.input",
+          "sha256": "0bf7d5f43fa6fae4ac1dc59c7ef8ec9bf0e7938e70ca9f2e8c380cec26b1a490"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "SCHEMA",
+        "path": "/content/initial_counts/0/quantity/value",
+        "stage": "structure",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-unknown-field",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/unknown-field.input",
+          "sha256": "908f7a7cc92649ee32d6f5c0c6f0d93cfa632110c037c31b8a3f2fab7884ec29"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "SCHEMA",
+        "path": "/content/unknown",
+        "stage": "structure",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-unsupported-version",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/unsupported-version.input",
+          "sha256": "bb78f129f055e8355b3b83a3a76e251c413cab1d5184c4c81fe002689130e9fc"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "SCHEMA",
+        "path": "/content/schema_version",
+        "stage": "structure",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-extra-species",
+      "operation": "design",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/extra-species.input",
+          "sha256": "996222b15a5d5c5c1627a6420256c0ad1f4e32a6b724622b7f0cbcb731817845"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "SCHEMA",
+        "path": "/content/species",
+        "stage": "structure",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-extra-compartments",
+      "operation": "design",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/extra-compartments.input",
+          "sha256": "87041f7c584d36ff2ede89cf738927f002429cceb26588ed72c175a783f8500c"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "SCHEMA",
+        "path": "/content/compartments",
+        "stage": "structure",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-design-revision-advance",
+      "operation": "design",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/design-revision-advance.input",
+          "sha256": "5e09903cc208ac7e379a770f73904ffb458bca2f9a9f93e812c19eeb06e76fae"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-revision-advance",
+      "operation": "revision",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/revision-advance.input",
+          "sha256": "5e09903cc208ac7e379a770f73904ffb458bca2f9a9f93e812c19eeb06e76fae"
+        },
+        "previous": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-revision-metadata",
+      "operation": "revision",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/revision-metadata.input",
+          "sha256": "ca26b8e24044c0bdf97b6570fd553bb90cac8565b0067c44afcee38e63a2bf2f"
+        },
+        "previous": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-revision-replace",
+      "operation": "revision",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/revision-replace.input",
+          "sha256": "6fcab39ab5d6856938624c5a68dcc8d2c3084f69b1797fd0dabe7b393e18e44d"
+        },
+        "previous": {
+          "path": "conformance/bioir/inputs/design-valid.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "IMMUTABLE_REVISION",
+        "path": "/content/revision",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-revision-rollback",
+      "operation": "revision",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/revision-rollback.input",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "previous": {
+          "path": "conformance/bioir/inputs/design-revision-advance.input",
+          "sha256": "5e09903cc208ac7e379a770f73904ffb458bca2f9a9f93e812c19eeb06e76fae"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "IMMUTABLE_REVISION",
+        "path": "/content/revision",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-canonical-numbers",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/canonical-numbers.input",
+          "sha256": "87b7de0563263077f4599347fef3f68726f9de3f7fb1af42224cf949f0df945c"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-canonical-order",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/canonical-order.input",
+          "sha256": "8c62e8d51b01889f688b5d5862833b0d056d2710d6bc8664ea3b5415ead547b7"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-canonical-array",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/canonical-array.input",
+          "sha256": "51bda7ab4e44726cde71fcb6e4b515357059bb6b6dd5146d1fc50f73f11678c6"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-canonical-unicode",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/canonical-unicode.input",
+          "sha256": "8e0c35d689e13926898b948c3be0a6ec7277b6840a3a782d487921cf052d6008"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-canonical-controls",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/canonical-controls.input",
+          "sha256": "0b8855b942d636ce9fb7f0f0cffa8e7044c22603ff7ac97d2daa2c503a12c8b3"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: Documents and identities / Design content / Experiment content"
+    },
+    {
+      "id": "p01-duplicate-function-role",
+      "operation": "design",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/duplicate-function-role.input",
+          "sha256": "5349e5cfe1aa65156b91bc76ac5432cdd7d95f8de6475da5a8d4b7096635289a"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "category": "FUNCTION_ROLE",
+        "path": "/content/functions/1",
+        "stage": "semantic",
+        "document": "primary"
+      },
+      "reference": "ADR-P01: exactly one production and one decay function; array positions affect identity, not eligibility"
+    },
+    {
+      "id": "p01-reordered-functions",
+      "operation": "design",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/bioir/inputs/reordered-functions.input",
+          "sha256": "54a4f1acd581c9f3c0b2547b954d01af82883b8c2c0f4dc69d937b4d11eb8138"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P01: exactly one production and one decay function; array positions affect identity, not eligibility"
+    },
+    {
+      "id": "p03-fir-base",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-base.input",
+          "sha256": "e266d5ede3440a42347badaec911c87fcc2f720d294d499d9cf771b33381dd6d"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope"
+    },
+    {
+      "id": "p03-fir-permuted",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-permuted.input",
+          "sha256": "f28f7d9119672cb0b38524a3efc5573f3a64eeed67915a85bd1cd17d3c9cc539"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope"
+    },
+    {
+      "id": "p03-fir-labels",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-labels.input",
+          "sha256": "5ca026a3cdbebda518bb1d2231f89eb9b3a5c30abf3efa3ca96a17815f1e1e7c"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope"
+    },
+    {
+      "id": "p03-fir-standalone",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-standalone.input",
+          "sha256": "ef0b9804a78404bb473864fac8777716d4a4a808a3f1b69bfd529307b37b09b1"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope"
+    },
+    {
+      "id": "p03-fir-initial-five",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-initial-five.input",
+          "sha256": "031cd37140838b02ddb5fd10cf43c816ea0225cb65528bd5304f4c4ea9968d48"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope"
+    },
+    {
+      "id": "p03-fir-rate-change",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-rate-change.input",
+          "sha256": "00d7cbb384a3d1185b93b416c868feef2cc9a3fdf2f27c457e8aef2bfdacd0da"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope"
+    },
+    {
+      "id": "p03-fir-observable-rename",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-observable-rename.input",
+          "sha256": "f3b9f98d7d735573f03d67c8e131a0d820aa55570736f0cdfb8a4225907d9fa0"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope"
+    },
+    {
+      "id": "p03-fir-two-observables",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-two-observables.input",
+          "sha256": "d01b45c40e834ad5e60bfefc5005184a86885ab5794a1bad310e00e32959c7ea"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope"
+    },
+    {
+      "id": "p03-fir-observables-permuted",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-observables-permuted.input",
+          "sha256": "818942fc52d059d260219218757e51a37a976e6cf160f91616c2859355579199"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope"
+    },
+    {
+      "id": "p03-fir-negative-zero",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-negative-zero.input",
+          "sha256": "d1300c85fdcb96026d07fc4e6416a60f254728389b50e53e9c91a1f300408183"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope"
+    },
+    {
+      "id": "p03-fir-large-a",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-large-a.input",
+          "sha256": "49868af10b80f8bbe67dabc7f3323e3bcdd8b017aee05fbc7f4195f1eaf8db04"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope"
+    },
+    {
+      "id": "p03-fir-large-b",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-large-b.input",
+          "sha256": "e7ada6549fc007a30d6c931eea424a290d41c9c0c41bc130bb070bb886fb6dc8"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P03 declaration ordering and identity scope"
+    },
+    {
+      "id": "p03-fir-numeric-spelling",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-numeric-spelling.input",
+          "sha256": "0d33e07146435dff0e87592cdea37b7507aad65e51a46d2340d22b32ab9949a2"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P03 binary64 spelling equivalence"
+    },
+    {
+      "id": "p03-duplicate-key",
+      "operation": "parse",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/duplicate-key.input",
+          "sha256": "99846dec4aebf1c4a60cb0197ff78eaa10ad644daa3744fbc9162b0daae977ad"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "parse",
+        "category": "DUPLICATE_KEY",
+        "document": "primary",
+        "path": "/x"
+      },
+      "reference": "ADR-P03 input and validation boundary"
+    },
+    {
+      "id": "p03-invalid-utf8",
+      "operation": "parse",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/invalid-utf8.input",
+          "sha256": "2c1ba6ac713bfc21e74f3429be952fca3e7a796734394fd18a48eb6713880d89"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "parse",
+        "category": "INVALID_UNICODE",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P03 input and validation boundary"
+    },
+    {
+      "id": "p03-bom",
+      "operation": "parse",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/bom.input",
+          "sha256": "aa25e978046d680ef8740d837e6de5bc1e2a2dc6089dbda1012544b538d53f65"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "parse",
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P03 input and validation boundary"
+    },
+    {
+      "id": "p03-trailing-comma",
+      "operation": "parse",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/trailing-comma.input",
+          "sha256": "a3e9007c4356922ae64718791f03bb64b52d2c7b759d42f33a24669005e75688"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "parse",
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P03 input and validation boundary"
+    },
+    {
+      "id": "p03-overflow",
+      "operation": "parse",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/overflow.input",
+          "sha256": "f2bba4568fecd4b9729970732e571ac9373a33fb2d6a960794a41f0f2ecdbc25"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "parse",
+        "category": "NUMBER_RANGE",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P03 input and validation boundary"
+    },
+    {
+      "id": "p03-underflow",
+      "operation": "parse",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/underflow.input",
+          "sha256": "d42d88695a3f56ff2ce7799a2f261ccb39a2b1a5db8ed284b74b9c452804ed16"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "parse",
+        "category": "NUMBER_UNDERFLOW",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P03 input and validation boundary"
+    },
+    {
+      "id": "p03-nan-literal",
+      "operation": "parse",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/nan-literal.input",
+          "sha256": "d5b592c05dc25b5032553f1b27f4139be95e881f73db33b02b05ab20c3f9981e"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "parse",
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P03 input and validation boundary"
+    },
+    {
+      "id": "p03-infinity-literal",
+      "operation": "parse",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/infinity-literal.input",
+          "sha256": "d0067cad9a63e0813759a2bb841051ca73570c0da2e08e840a8eb45db6a7a010"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "parse",
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P03 input and validation boundary"
+    },
+    {
+      "id": "p03-fir-invalid-reference",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-invalid-reference.input",
+          "sha256": "9504c6c09165513d4c1c8dd9f9c777dd8c9803b413463d82f78b365f54debb72"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "REFERENCE",
+        "document": "primary",
+        "path": "/model/equations/0/rhs/right/right/id"
+      },
+      "reference": "Ratified ADR-P02 exact semantic checks"
+    },
+    {
+      "id": "p03-fir-invalid-equation",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-invalid-equation.input",
+          "sha256": "433f8b78814e74f75b2476132bc63ff7e03e167f85123f1d9f98f2d2e5bfe8e1"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "TEMPLATE",
+        "document": "primary",
+        "path": "/model/equations/0/rhs"
+      },
+      "reference": "Ratified ADR-P02 exact semantic checks"
+    },
+    {
+      "id": "p03-fir-invalid-ssa",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-invalid-ssa.input",
+          "sha256": "d26743054a66cf4b55807300170c6564ee44e7fe43a8933a3a5a6d5922f9ee46"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/capabilities/ssa"
+      },
+      "reference": "Ratified ADR-P02 exact semantic checks"
+    },
+    {
+      "id": "p03-fir-invalid-production-role",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-invalid-production-role.input",
+          "sha256": "bcd6c83a15db38ab61ab461293ceac21695ca7ec2703f99c53a938dba1487b8c"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "TEMPLATE",
+        "document": "primary",
+        "path": "/model/reactions/0/flux"
+      },
+      "reference": "Ratified ADR-P02 exact semantic checks"
+    },
+    {
+      "id": "p03-fir-duplicate-id",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-duplicate-id.input",
+          "sha256": "dd5659c77e27047c3c4a271a4587184d943ef6032eed4641993d9d3fccaa13a0"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "DUPLICATE_ID",
+        "document": "primary",
+        "path": "/model/parameters/1/id"
+      },
+      "reference": "ADR-P03 validation before normalization"
+    },
+    {
+      "id": "p03-fir-unsupported-version",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-unsupported-version.input",
+          "sha256": "23333bbdea728c588b8097d7e9e08ee1f8bf5d6e77c72e982b9a8dba49ce78c9"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/schema_version"
+      },
+      "reference": "ADR-P03 validation before normalization"
+    },
+    {
+      "id": "p03-fir-execution-field",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/fir-execution-field.input",
+          "sha256": "7ccd9012a041814e48aabdac283c1f4e045a9c99db06f89805939189c481affb"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/solver"
+      },
+      "reference": "ADR-P03 validation before normalization"
+    },
+    {
+      "id": "p03-exact-zero-exponent",
+      "operation": "parse",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/exact-zero-exponent.input",
+          "sha256": "c19de4d9d49a74c1a8f3912074f33b1614d374088b42bf8f16880c4afbd4505d"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P03 input policy"
+    },
+    {
+      "id": "p03-subnormal-input",
+      "operation": "parse",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/subnormal-input.input",
+          "sha256": "c46e7ca1be4c8734f373a56530787288fa2058d73d07855e9247e949f811a42a"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P03 input policy"
+    },
+    {
+      "id": "p02-display-label-a",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/display-label-a.json",
+          "sha256": "79ea322af209933568402c66deafb1ba7d7b20e73ad04b21fb4f782389b8d4bf"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-display-label-b",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/display-label-b.json",
+          "sha256": "1daca4db13e4dfdefa3feefd460674cb8a542ac08cc3f87d6a76d92a57dfefef"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-invalid-decay-sign",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/invalid-decay-sign.json",
+          "sha256": "cf7b393754c83ba8f7b5ac2d7aaad7ea375792f3d3adb82991adc867ecb66af8"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "STOICHIOMETRY",
+        "document": "primary",
+        "path": "/model/reactions/1/stoichiometry/x"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-invalid-equation-missing-decay",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/invalid-equation-missing-decay.json",
+          "sha256": "6b92000cfc2b6338ff75e440c378d5289f6da6f4b5f560cd660c28bed89caa55"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "TEMPLATE",
+        "document": "primary",
+        "path": "/model/equations/0/rhs"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-invalid-equation",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/invalid-equation.json",
+          "sha256": "433f8b78814e74f75b2476132bc63ff7e03e167f85123f1d9f98f2d2e5bfe8e1"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "TEMPLATE",
+        "document": "primary",
+        "path": "/model/equations/0/rhs"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-invalid-initial-count",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/invalid-initial-count.json",
+          "sha256": "b5660cb2ffd2d79d44bd38fe1616b2462e7bb140fa42f12db821f06068954579"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/fir/proposals/examples/sources/initial-five-experiment.json",
+          "sha256": "206161fbc65ab53f48c39f64fab6abcd3f0cc6e6d09daf99baf46bc1edd3eef0"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "producer",
+        "category": "SOURCE_VALUE",
+        "document": "primary",
+        "path": "/model/states/0/initial"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-invalid-observable-invented",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/invalid-observable-invented.json",
+          "sha256": "27dd3870f8a790cbd6cb9faba124984b6f5609e9ff1af05a7e7d1555d8192886"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/fir/proposals/examples/sources/no-observables-experiment.json",
+          "sha256": "f43aa8c9fe3d3417d57865a7cd6c44a714f90fefeb5fdf17b24a027783731a54"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "producer",
+        "category": "SOURCE_OBSERVABLE",
+        "document": "primary",
+        "path": "/model/observables/0/id"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-invalid-observable-missing",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/invalid-observable-missing.json",
+          "sha256": "e8515b12e8810aa2878f183b8d248d33605e06e802e680aa8e84aba231664aed"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "producer",
+        "category": "SOURCE_OBSERVABLE",
+        "document": "primary",
+        "path": "/model/observables"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-invalid-observable-renamed",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/invalid-observable-renamed.json",
+          "sha256": "1fa0a11269e9b1d2171513ddb978b7fdf4010c14aa4109f915f2f9c41484bede"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "producer",
+        "category": "SOURCE_OBSERVABLE",
+        "document": "primary",
+        "path": "/model/observables/0/id"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-invalid-observable-target",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/invalid-observable-target.json",
+          "sha256": "81a05ea1465e2043c166c9db281f7fecf26831f9557157e0d12d4fa41d5f6cef"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "REFERENCE",
+        "document": "primary",
+        "path": "/model/observables/0/state"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-invalid-parameter-map-reference",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/invalid-parameter-map-reference.json",
+          "sha256": "7f3b1e02a4d6b23c9851adcaa9ec8d32e703fbf90d39a0076a9f309cd4e261f1"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "producer",
+        "category": "REFERENCE",
+        "document": "primary",
+        "path": "/provenance/symbol_map/parameters/0/bioir_parameter_id"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-invalid-parameter-map-role",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/invalid-parameter-map-role.json",
+          "sha256": "c50b8e5923bb6972ac12f2be863f21a42e5cd9af104f2a2f0d6767e9c8c0c3d2"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "producer",
+        "category": "SOURCE_ROLE",
+        "document": "primary",
+        "path": "/provenance/symbol_map/parameters/0/bioir_function_id"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-invalid-production-role",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/invalid-production-role.json",
+          "sha256": "bcd6c83a15db38ab61ab461293ceac21695ca7ec2703f99c53a938dba1487b8c"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "TEMPLATE",
+        "document": "primary",
+        "path": "/model/reactions/0/flux"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-invalid-production-sign",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/invalid-production-sign.json",
+          "sha256": "6e8e8ac7d778a164756efda3c4c89ffe2f3517f078e0868762590a012a75c4ff"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "STOICHIOMETRY",
+        "document": "primary",
+        "path": "/model/reactions/0/stoichiometry/x"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-invalid-rate-references",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/invalid-rate-references.json",
+          "sha256": "7cfef500dbab437781bd1e126ac89653288acfe4220af83a00f07676d9f29f90"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "TEMPLATE",
+        "document": "primary",
+        "path": "/model/reactions/0/flux"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-invalid-reference",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/invalid-reference.json",
+          "sha256": "9504c6c09165513d4c1c8dd9f9c777dd8c9803b413463d82f78b365f54debb72"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "REFERENCE",
+        "document": "primary",
+        "path": "/model/equations/0/rhs/right/right/id"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-invalid-ssa",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/invalid-ssa.json",
+          "sha256": "d26743054a66cf4b55807300170c6564ee44e7fe43a8933a3a5a6d5922f9ee46"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/capabilities/ssa"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-observable-renamed",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/observable-renamed.json",
+          "sha256": "f3b9f98d7d735573f03d67c8e131a0d820aa55570736f0cdfb8a4225907d9fa0"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-production-decay-gfp",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/production-decay-gfp.json",
+          "sha256": "27d613b8695e7571b9f69e91fb880651011526313348deaeb2e9033c41b53055"
+        },
+        "design": {
+          "path": "spec/fir/proposals/examples/sources/gfp-design.json",
+          "sha256": "d0b585787aa3079c0e88161c5245e75b025fc62cb5bb723ba09989b2d3265e57"
+        },
+        "experiment": {
+          "path": "spec/fir/proposals/examples/sources/gfp-experiment.json",
+          "sha256": "1be28ac7589ab1c11ac4c104ec14625b669eb0e25b80da23f6712ff225aa7d74"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-production-decay-initial-five",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/production-decay-initial-five.json",
+          "sha256": "eb949b0b6084c69cef9dc47aa24085e4f9771b81b2cddf092dc7ac0eaa1d565d"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/fir/proposals/examples/sources/initial-five-experiment.json",
+          "sha256": "206161fbc65ab53f48c39f64fab6abcd3f0cc6e6d09daf99baf46bc1edd3eef0"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-production-decay-laci",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/production-decay-laci.json",
+          "sha256": "f6792823b5ec3bd095fc93426b64c68697d3e87ee351b1a60f37cf4c3355c202"
+        },
+        "design": {
+          "path": "spec/fir/proposals/examples/sources/laci-design.json",
+          "sha256": "7bff2dc988a417c6d22cccf3e76648e06cd92595351a7b65a4dd596eb2d1fd3d"
+        },
+        "experiment": {
+          "path": "spec/fir/proposals/examples/sources/laci-experiment.json",
+          "sha256": "f80ad2cb9381f3c5685f8a50b5e6d179cc614ee0d0a86573c3ddff0ab9c21070"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-production-decay-no-observables",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/production-decay-no-observables.json",
+          "sha256": "7feab8838696317bd971e1349828ffee7ab886758425e918a9be727f9ccaa51c"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/fir/proposals/examples/sources/no-observables-experiment.json",
+          "sha256": "f43aa8c9fe3d3417d57865a7cd6c44a714f90fefeb5fdf17b24a027783731a54"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-production-decay-renamed-parameters",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/production-decay-renamed-parameters.json",
+          "sha256": "833a58dbaf197ca3e781064a7ef455470462823c8c86ccf3cb68828dff5818c5"
+        },
+        "design": {
+          "path": "spec/fir/proposals/examples/sources/renamed-parameters-design.json",
+          "sha256": "82de216d787fc88c27320fb64d771126920ad174d636a6b25beb1f69b23010cf"
+        },
+        "experiment": {
+          "path": "spec/fir/proposals/examples/sources/renamed-parameters-experiment.json",
+          "sha256": "e5bb98c667c6f251dd4a0ea10ca8343e39e63581a044f27265ba88fffa3d5887"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "p02-production-decay",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/production-decay.json",
+          "sha256": "e266d5ede3440a42347badaec911c87fcc2f720d294d499d9cf771b33381dd6d"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-duplicate-states",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-duplicate-states.input",
+          "sha256": "92d4c65947d0875f27104da3ec08c0c06fb2d45f96e1cd7cb46c8cd87947b35b"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/states"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-duplicate-parameters",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-duplicate-parameters.input",
+          "sha256": "7dad20c0207058cc18a491ab495632c3a06c53c44566f71c256ea4a17be4d921"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "DUPLICATE_ID",
+        "document": "primary",
+        "path": "/model/parameters/1/id"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-duplicate-reactions",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-duplicate-reactions.input",
+          "sha256": "95afd6d46765e085d16d1dce32feba7cf0209c3e8b580d6d4f6c37573235e277"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "DUPLICATE_ID",
+        "document": "primary",
+        "path": "/model/reactions/1/id"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-duplicate-equations",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-duplicate-equations.input",
+          "sha256": "f74db9b917a49629dad9fa3605759896680a505ad13adc9f769742113a41ed19"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/equations"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-duplicate-observables",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-duplicate-observables.input",
+          "sha256": "6eac30e1ae164da39eaa3c07775e0d2566952ff19703a9ec7b8916a0452a3b5d"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "DUPLICATE_ID",
+        "document": "primary",
+        "path": "/model/observables/1/id"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-state-unit",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-state-unit.input",
+          "sha256": "412f07e45aeffc8ae950c8d6dc9a1a4e4a1421dab408685a4e18f12e0a55dd47"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/states/0/unit"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-state-role-unit",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-state-role-unit.input",
+          "sha256": "a679a8a864234356a64178e1665d49a2370b5ee3e74bf688352ee4fb9b1e3a17"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/states/0/unit"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-rate-unit",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-rate-unit.input",
+          "sha256": "bc40a5ca7a5b1d6ce15c1924ab9f04a2b34937533ee673c1e5f6cfd4888388f8"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/parameters/0/unit"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-rate-role-unit",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-rate-role-unit.input",
+          "sha256": "93b14ca4791a60662b4ca9d77eadf324e86f0da7fbf48db2efb2eb055cf01bdd"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "UNIT",
+        "document": "primary",
+        "path": "/model/parameters/0/unit"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-equation-unit",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-equation-unit.input",
+          "sha256": "24431fefc7143778a84e1e3443aa8fea95191ac28331318e0a90a82ad97d5b57"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/equations/0/unit"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-observable-unit",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-observable-unit.input",
+          "sha256": "d19396c009d511eea0f9f37246e5fd60da22e90f8b77373efcb3328535f61a72"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/observables/0/unit"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-equation-reference",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-equation-reference.input",
+          "sha256": "11913c804bbf61b7091c5303511c50ddaeb95e8df6f9a6835aa810ca345808d7"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "REFERENCE",
+        "document": "primary",
+        "path": "/model/equations/0/state"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-typed-reference",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-typed-reference.input",
+          "sha256": "c0a915122d7bccf3f4f444ae0e3f43152241d2374df999fb917531ae990ff2ef"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "REFERENCE",
+        "document": "primary",
+        "path": "/model/reactions/0/flux/id"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-unknown-parameter",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-unknown-parameter.input",
+          "sha256": "8b467ccffb3bcc88cf08e0cbd3cc6c5a658ac31701707628dba46bb04b5f25b8"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "REFERENCE",
+        "document": "primary",
+        "path": "/model/reactions/0/flux/id"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-missing-expression-member",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-missing-expression-member.input",
+          "sha256": "da90fa3cd01aa6043c30f376133ac74c63799bb6516158ab86d24ba122252937"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/reactions/1/flux/right"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-unknown-expression-member",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-unknown-expression-member.input",
+          "sha256": "58b6df40e0a99c563840d2bf48365d8d566b332be2bdad32c418c121908b9893"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/reactions/0/flux/a~0b~1c"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-event",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-event.input",
+          "sha256": "c86c1228c056047f5bd1ed0c96f622be244e0353664fad3f3777cc042eff1f32"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/events"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-intervention",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-intervention.input",
+          "sha256": "e019a2d3e28ace3f30e78f0386599a6ca1c389f480d8f47a34c635bf03f4eef3"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/interventions"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-ode-declaration",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-ode-declaration.input",
+          "sha256": "d079a504b6c88c885b5e91e1c583720cb7a3814884d956e83d77aa86a11d544a"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/capabilities/ode"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-negative-initial",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-negative-initial.input",
+          "sha256": "2d4082b8602e9bf2739ed9012b807c70033d0e99ece1d96fcff4d96e7d84bf54"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/states/0/initial"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-boolean-rate",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-boolean-rate.input",
+          "sha256": "0ae240db3b9ad3ed49d75b38c2db0fb487bd14ee1f37a7fc03bcc95a2db0ebf0"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/parameters/0/value"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-assumption",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-assumption.input",
+          "sha256": "4bb31270389b5f092bcbcec662dd8d705a4232a3850aa2bf2380f44ff2b24ecd"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/assumptions"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-map-port",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-map-port.input",
+          "sha256": "de34a4c6d16088244e31f2c49a372552eb4618228b942eebd51b29415d060c2c"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "producer",
+        "category": "REFERENCE",
+        "document": "primary",
+        "path": "/provenance/symbol_map/states/0/bioir_port_id"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-map-species",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-map-species.input",
+          "sha256": "35af2848db64ad3b3a10ea11b583936f60fac47bcaa87f173e39475dcf924ead"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "producer",
+        "category": "REFERENCE",
+        "document": "primary",
+        "path": "/provenance/symbol_map/states/0/bioir_species_id"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-map-compartment",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-map-compartment.input",
+          "sha256": "966ad22adb2d6b26da33f895d84f2c81a54d80f53b8315105813a89fa00789e2"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "producer",
+        "category": "REFERENCE",
+        "document": "primary",
+        "path": "/provenance/symbol_map/states/0/bioir_compartment_id"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-map-role",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-map-role.input",
+          "sha256": "137cf88655c0d0f31f3a0f1c866c0182fce6be944ac1f766055de3ca48a9044e"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "producer",
+        "category": "SOURCE_ROLE",
+        "document": "primary",
+        "path": "/provenance/symbol_map/parameters/0/bioir_function_kind"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-source-rate",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-source-rate.input",
+          "sha256": "e1848aa7eeaee668ab9f1afc45b79f998ccef3721d17b0c2bd2e4ab1614c3412"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "producer",
+        "category": "SOURCE_VALUE",
+        "document": "primary",
+        "path": "/model/parameters/0/value"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-source-design-digest",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-source-design-digest.input",
+          "sha256": "a6aac1f4b3e13317d455aa65455fb10bb45038db54c66cc2aec48036125560c1"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "producer",
+        "category": "SOURCE_DIGEST",
+        "document": "primary",
+        "path": "/provenance/design_digest"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-source-experiment-digest",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-source-experiment-digest.input",
+          "sha256": "947e2ffbac59d9198b56444e09f722f44e9f02e8a3176bc098519379f946b5a6"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "producer",
+        "category": "SOURCE_DIGEST",
+        "document": "primary",
+        "path": "/provenance/experiment_digest"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-label-reference",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-label-reference.input",
+          "sha256": "60a2aed391c297516ffc3e397bc5c887d78ee98984daa957134f87f8022cbbf6"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "producer",
+        "category": "REFERENCE",
+        "document": "primary",
+        "path": "/provenance/display_labels/observables/missing"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "producer-missing-provenance",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/producer-missing-provenance.input",
+          "sha256": "ef0b9804a78404bb473864fac8777716d4a4a808a3f1b69bfd529307b37b09b1"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "producer",
+        "category": "SOURCE_REQUIRED",
+        "document": "primary",
+        "path": "/provenance"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "producer-missing-symbol_map",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/producer-missing-symbol_map.input",
+          "sha256": "b0c8393a4f5047dd99315736fd36da94eda6264d5b0b4ab6ac195f4c33712e7f"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "producer",
+        "category": "SOURCE_REQUIRED",
+        "document": "primary",
+        "path": "/provenance/symbol_map"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "producer-missing-experiment_digest",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/producer-missing-experiment_digest.input",
+          "sha256": "f06f285e0a607b4bf7c3c16a96a9a9c9d655805c1f67411207975a472c69e2f5"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "producer",
+        "category": "SOURCE_REQUIRED",
+        "document": "primary",
+        "path": "/provenance/experiment_digest"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "request-ode",
+      "operation": "capability",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/production-decay.json",
+          "sha256": "e266d5ede3440a42347badaec911c87fcc2f720d294d499d9cf771b33381dd6d"
+        },
+        "request": {
+          "path": "conformance/rejections/inputs/request-ode.input",
+          "sha256": "677d5712276f275b4d5ce6638b5b0a09c7ac1fd18a948fc763c006761749c3bc"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "request-ssa",
+      "operation": "capability",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/production-decay.json",
+          "sha256": "e266d5ede3440a42347badaec911c87fcc2f720d294d499d9cf771b33381dd6d"
+        },
+        "request": {
+          "path": "conformance/rejections/inputs/request-ssa.input",
+          "sha256": "cf10794a61e450241b72053b589c4ce33c31dded9f6aa03c687665a5ba992138"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "capability",
+        "category": "UNSUPPORTED_PROFILE",
+        "document": "request",
+        "path": "/profile"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "fir-zero-fractional",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-zero-fractional.input",
+          "sha256": "2b5ebf3d85fc7e2070a6515cd3140cea85f4a3a9adcd5ecaf63e68be5729f7f4"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "bioir-mutated-old-digest",
+      "operation": "design",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/bioir-mutated-old-digest.input",
+          "sha256": "94bee695d70850f0b5af834123c7a667eacd140bb0f6dde725749ace7c8bddd3"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "DIGEST",
+        "document": "primary",
+        "path": "/digest"
+      },
+      "reference": "ADR-P01: strict raw tokens, immutable revisions, exact references and role-scoped units."
+    },
+    {
+      "id": "dependency-design-digest",
+      "operation": "experiment",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        },
+        "design": {
+          "path": "conformance/bioir/inputs/design-digest.input",
+          "sha256": "7bf87a0327a45bbcae40d9b228bee19aabe98713fdc143a0161552ee1a3b59e1"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "DIGEST",
+        "document": "design",
+        "path": "/digest"
+      },
+      "reference": "ADR-P01: strict raw tokens, immutable revisions, exact references and role-scoped units."
+    },
+    {
+      "id": "dependency-experiment-digest",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "spec/fir/proposals/examples/production-decay.json",
+          "sha256": "e266d5ede3440a42347badaec911c87fcc2f720d294d499d9cf771b33381dd6d"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "conformance/bioir/inputs/experiment-digest.input",
+          "sha256": "41decbf883ce8c9ee639dd6d7e961e01cf73ce3298d2408123d5d41ac89036d4"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "DIGEST",
+        "document": "experiment",
+        "path": "/digest"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "dependency-previous-digest",
+      "operation": "revision",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "previous": {
+          "path": "conformance/bioir/inputs/design-digest.input",
+          "sha256": "7bf87a0327a45bbcae40d9b228bee19aabe98713fdc143a0161552ee1a3b59e1"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "semantic",
+        "category": "DIGEST",
+        "document": "previous",
+        "path": "/digest"
+      },
+      "reference": "ADR-P01: strict raw tokens, immutable revisions, exact references and role-scoped units."
+    },
+    {
+      "id": "integer-policy-P01",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/large-rounding.input",
+          "sha256": "a1c367c29158357e62a3ff5d3e800fb7698a22396439dbc0a9d4929322afd35d"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "parse",
+        "category": "INTEGER_RANGE",
+        "document": "primary",
+        "path": ""
+      },
+      "reference": "ADR-P01: strict raw tokens, immutable revisions, exact references and role-scoped units."
+    },
+    {
+      "id": "integer-policy-P03",
+      "operation": "parse",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/canonicalization/inputs/large-rounding.input",
+          "sha256": "a1c367c29158357e62a3ff5d3e800fb7698a22396439dbc0a9d4929322afd35d"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "nested-number_range",
+      "operation": "parse",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/nested-number_range.input",
+          "sha256": "1a3487af5a26144eeb4735b92f35600934e0c88b7d758a33371799321634a4ee"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "parse",
+        "category": "NUMBER_RANGE",
+        "document": "primary",
+        "path": "/a~1b~0/1"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "nested-number_underflow",
+      "operation": "parse",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/nested-number_underflow.input",
+          "sha256": "e5d89cc5f31afb38002a8a50d90cc2fd84ba92f6a9f35a09f6e22a4d5d017b5a"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "parse",
+        "category": "NUMBER_UNDERFLOW",
+        "document": "primary",
+        "path": "/a~1b~0/1"
+      },
+      "reference": "ADR-P02: M0 structure, typed namespaces, exact role templates and separate source correspondence; ADR-P03: validate before normalization."
+    },
+    {
+      "id": "nested-integer_range",
+      "operation": "parse",
+      "contract": "P01",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/nested-integer_range.input",
+          "sha256": "907c3610b8168ee18c1ce286fea160256789c66b034257f2d5f12c8c0bbfd91d"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "parse",
+        "category": "INTEGER_RANGE",
+        "document": "primary",
+        "path": "/a~1b~0/1"
+      },
+      "reference": "ADR-P01: strict raw tokens, immutable revisions, exact references and role-scoped units."
+    },
+    {
+      "id": "fir-equations-unsupported-unit",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-equations-unsupported-unit.input",
+          "sha256": "022558a79719d58280dfbe7f7696e16cba3461a902ed34aa369fdd9418bfe820"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/equations/0/unit"
+      },
+      "reference": "ADR-P02: explicit units, exact M0 role coverage and complete producer maps; ADR-P03: accept declaration permutations without rewriting inputs."
+    },
+    {
+      "id": "fir-observables-unsupported-unit",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-observables-unsupported-unit.input",
+          "sha256": "4d43a2e285746a46c5484d182a6461bf823253223068603daca4b8142a79b681"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/observables/0/unit"
+      },
+      "reference": "ADR-P02: explicit units, exact M0 role coverage and complete producer maps; ADR-P03: accept declaration permutations without rewriting inputs."
+    },
+    {
+      "id": "fir-missing-parameters",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-missing-parameters.input",
+          "sha256": "f05197d1cb3b0abbbfbe4a5d4f59b8a1de07deb4c3e44b35425c1f2f0ed1ad9b"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/parameters"
+      },
+      "reference": "ADR-P02: explicit units, exact M0 role coverage and complete producer maps; ADR-P03: accept declaration permutations without rewriting inputs."
+    },
+    {
+      "id": "fir-missing-reactions",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-missing-reactions.input",
+          "sha256": "8b2923514cbd6f0c1f0652be5904d5f0d26718e53d0a15422744928fff2774b3"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/reactions"
+      },
+      "reference": "ADR-P02: explicit units, exact M0 role coverage and complete producer maps; ADR-P03: accept declaration permutations without rewriting inputs."
+    },
+    {
+      "id": "fir-missing-equations",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-missing-equations.input",
+          "sha256": "a24359a6fbd41a6116e6dc63b38db328c4bb2b50a592ece8a30cb2f8e6f7bee5"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/equations"
+      },
+      "reference": "ADR-P02: explicit units, exact M0 role coverage and complete producer maps; ADR-P03: accept declaration permutations without rewriting inputs."
+    },
+    {
+      "id": "fir-misplaced-solver",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-misplaced-solver.input",
+          "sha256": "c4a8eb5a4c4d380916a1452ae88f6e7d7f4ee0af2b331fb53ba020c42bc16116"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/solver"
+      },
+      "reference": "ADR-P02: explicit units, exact M0 role coverage and complete producer maps; ADR-P03: accept declaration permutations without rewriting inputs."
+    },
+    {
+      "id": "fir-misplaced-time_grid",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-misplaced-time_grid.input",
+          "sha256": "f3bcf66eab4c1853e5bb6e775e7d267535f75474c103bc0bc2ea0b3dfb9f41d3"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/time_grid"
+      },
+      "reference": "ADR-P02: explicit units, exact M0 role coverage and complete producer maps; ADR-P03: accept declaration permutations without rewriting inputs."
+    },
+    {
+      "id": "producer-map-states-incomplete",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/producer-map-states-incomplete.input",
+          "sha256": "4c5ff4019afd78cd061ced0ed483530bb19b9fb5f6f6e707f091d9a9b635246e"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/provenance/symbol_map/states"
+      },
+      "reference": "ADR-P02: explicit units, exact M0 role coverage and complete producer maps; ADR-P03: accept declaration permutations without rewriting inputs."
+    },
+    {
+      "id": "producer-map-parameters-incomplete",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/producer-map-parameters-incomplete.input",
+          "sha256": "33a8c53d1a786e2f4b3311b9d21593ffcc950a6688a31a9acdaa67c5cf665ac1"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/provenance/symbol_map/parameters"
+      },
+      "reference": "ADR-P02: explicit units, exact M0 role coverage and complete producer maps; ADR-P03: accept declaration permutations without rewriting inputs."
+    },
+    {
+      "id": "producer-map-parameters-duplicate",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/producer-map-parameters-duplicate.input",
+          "sha256": "f3fce07df33fe71b34553fd3a1f9e1671a71e40602ecaaaea71ffdae33cb0562"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/provenance/symbol_map/parameters"
+      },
+      "reference": "ADR-P02: explicit units, exact M0 role coverage and complete producer maps; ADR-P03: accept declaration permutations without rewriting inputs."
+    },
+    {
+      "id": "producer-permuted",
+      "operation": "producer",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/producer-permuted.input",
+          "sha256": "62a66c39ac92f11baac096477031b01a08caf313311a6f49d7d8b42934ec6bbc"
+        },
+        "design": {
+          "path": "spec/bioir/proposals/examples/design.json",
+          "sha256": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f"
+        },
+        "experiment": {
+          "path": "spec/bioir/proposals/examples/experiment.json",
+          "sha256": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906"
+        }
+      },
+      "expected": {
+        "outcome": "accept"
+      },
+      "reference": "ADR-P02: explicit units, exact M0 role coverage and complete producer maps; ADR-P03: accept declaration permutations without rewriting inputs."
+    },
+    {
+      "id": "fir-required-states",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-required-states.input",
+          "sha256": "3fcb7d7098f6eb998442fccb682e908bdd41ec1e4d6d4a20f4d24df55dff764e"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/states"
+      },
+      "reference": "ADR-P02: explicit units, exact M0 role coverage and complete producer maps; ADR-P03: accept declaration permutations without rewriting inputs."
+    },
+    {
+      "id": "fir-required-parameters",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-required-parameters.input",
+          "sha256": "eb62b15b62619c883ec94004a5d83161eeb53add916e04ff230043a671cd3a1f"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/parameters"
+      },
+      "reference": "ADR-P02: explicit units, exact M0 role coverage and complete producer maps; ADR-P03: accept declaration permutations without rewriting inputs."
+    },
+    {
+      "id": "fir-required-equations",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-required-equations.input",
+          "sha256": "2843d67650bb1511691ff0757a0d7d47ac3be9ae16566748894b1d34b2b70fc4"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/equations"
+      },
+      "reference": "ADR-P02: explicit units, exact M0 role coverage and complete producer maps; ADR-P03: accept declaration permutations without rewriting inputs."
+    },
+    {
+      "id": "fir-required-reactions",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-required-reactions.input",
+          "sha256": "c012ccb08cb3325526ee0ce7bcc1b202eb4eda0806ed73e3e8f1f3632f11fe84"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/reactions"
+      },
+      "reference": "ADR-P02: explicit units, exact M0 role coverage and complete producer maps; ADR-P03: accept declaration permutations without rewriting inputs."
+    },
+    {
+      "id": "fir-required-observables",
+      "operation": "model",
+      "contract": "P03",
+      "inputs": {
+        "primary": {
+          "path": "conformance/rejections/inputs/fir-required-observables.input",
+          "sha256": "8b4f74114ec22f00206bcff7337def9311c7fcbbc705f316f3491451a34469b8"
+        }
+      },
+      "expected": {
+        "outcome": "reject",
+        "stage": "structure",
+        "category": "SCHEMA",
+        "document": "primary",
+        "path": "/model/observables"
+      },
+      "reference": "ADR-P02: explicit units, exact M0 role coverage and complete producer maps; ADR-P03: accept declaration permutations without rewriting inputs."
+    }
+  ],
+  "coverage": {
+    "duplicate-ids-keys": [
+      "p01-duplicate-root",
+      "p01-duplicate-escaped",
+      "p01-duplicate-nested",
+      "p01-duplicate-pointer",
+      "p01-duplicate-function-id",
+      "p01-duplicate-parameter-id",
+      "p01-duplicate-assignment",
+      "p01-duplicate-observable-id",
+      "p01-duplicate-function-role",
+      "p03-duplicate-key",
+      "p03-fir-duplicate-id",
+      "fir-duplicate-states",
+      "fir-duplicate-parameters",
+      "fir-duplicate-reactions",
+      "fir-duplicate-equations",
+      "fir-duplicate-observables"
+    ],
+    "broken-revision-digest": [
+      "p01-design-digest",
+      "p01-experiment-digest",
+      "bioir-mutated-old-digest",
+      "p01-design-reference-id",
+      "p01-design-reference-revision",
+      "p01-design-reference-digest",
+      "dependency-design-digest",
+      "dependency-experiment-digest",
+      "dependency-previous-digest"
+    ],
+    "invalid-unit": [
+      "p01-invalid-unit",
+      "p01-wrong-assignment-unit",
+      "p01-wrong-function-unit",
+      "fir-state-unit",
+      "fir-state-role-unit",
+      "fir-rate-unit",
+      "fir-rate-role-unit",
+      "fir-equation-unit",
+      "fir-observable-unit",
+      "fir-equations-unsupported-unit",
+      "fir-observables-unsupported-unit"
+    ],
+    "missing-port-reference": [
+      "p01-missing-function-port",
+      "p01-observable-port",
+      "fir-map-port",
+      "fir-map-species",
+      "fir-map-compartment",
+      "fir-typed-reference",
+      "fir-equation-reference",
+      "p02-invalid-reference"
+    ],
+    "unsupported-profile": [
+      "p01-execution-profile",
+      "p03-fir-execution-field",
+      "p02-invalid-ssa",
+      "fir-ode-declaration",
+      "request-ssa",
+      "request-ode",
+      "fir-misplaced-solver",
+      "fir-misplaced-time_grid"
+    ],
+    "invalid-event": [
+      "p01-invalid-event",
+      "fir-event",
+      "fir-intervention"
+    ],
+    "p03-contract-only": [
+      "p03-duplicate-key",
+      "p03-invalid-utf8",
+      "p03-bom",
+      "p03-trailing-comma",
+      "p03-overflow",
+      "p03-underflow",
+      "p03-nan-literal",
+      "p03-infinity-literal",
+      "p03-fir-invalid-reference",
+      "p03-fir-invalid-equation",
+      "p03-fir-invalid-ssa",
+      "p03-fir-invalid-production-role",
+      "p03-fir-duplicate-id",
+      "p03-fir-unsupported-version",
+      "p03-fir-execution-field",
+      "p03-exact-zero-exponent",
+      "p03-subnormal-input"
+    ],
+    "p02-examples": [
+      "p02-display-label-a",
+      "p02-display-label-b",
+      "p02-invalid-decay-sign",
+      "p02-invalid-equation-missing-decay",
+      "p02-invalid-equation",
+      "p02-invalid-initial-count",
+      "p02-invalid-observable-invented",
+      "p02-invalid-observable-missing",
+      "p02-invalid-observable-renamed",
+      "p02-invalid-observable-target",
+      "p02-invalid-parameter-map-reference",
+      "p02-invalid-parameter-map-role",
+      "p02-invalid-production-role",
+      "p02-invalid-production-sign",
+      "p02-invalid-rate-references",
+      "p02-invalid-reference",
+      "p02-invalid-ssa",
+      "p02-observable-renamed",
+      "p02-production-decay-gfp",
+      "p02-production-decay-initial-five",
+      "p02-production-decay-laci",
+      "p02-production-decay-no-observables",
+      "p02-production-decay-renamed-parameters",
+      "p02-production-decay"
+    ],
+    "positive-controls": [
+      "p01-null",
+      "p01-bool",
+      "p01-integer",
+      "p01-negative-zero",
+      "p01-integer-negative-zero",
+      "p01-zero-tiny-exponent",
+      "p01-whitespace",
+      "p01-unicode-literal",
+      "p01-unicode-escaped",
+      "p01-escaped-backslash",
+      "p01-unicode-preserved",
+      "p01-nested",
+      "p01-one-decimal",
+      "p01-decimal-rounding",
+      "p01-round-to-even",
+      "p01-min-subnormal",
+      "p01-negative-subnormal",
+      "p01-max-finite",
+      "p01-integer-limit",
+      "p01-negative-integer-limit",
+      "p01-binary64-exponent-boundary",
+      "p01-design-valid",
+      "p01-experiment-valid",
+      "p01-metadata-variant",
+      "p01-zero-rates-fractional-count",
+      "p01-design-revision-advance",
+      "p01-revision-advance",
+      "p01-revision-metadata",
+      "p01-canonical-numbers",
+      "p01-canonical-order",
+      "p01-canonical-array",
+      "p01-canonical-unicode",
+      "p01-canonical-controls",
+      "p01-reordered-functions",
+      "p03-fir-base",
+      "p03-fir-permuted",
+      "p03-fir-labels",
+      "p03-fir-standalone",
+      "p03-fir-initial-five",
+      "p03-fir-rate-change",
+      "p03-fir-observable-rename",
+      "p03-fir-two-observables",
+      "p03-fir-observables-permuted",
+      "p03-fir-negative-zero",
+      "p03-fir-large-a",
+      "p03-fir-large-b",
+      "p03-fir-numeric-spelling",
+      "p03-exact-zero-exponent",
+      "p03-subnormal-input",
+      "p02-display-label-a",
+      "p02-display-label-b",
+      "p02-observable-renamed",
+      "p02-production-decay-gfp",
+      "p02-production-decay-initial-five",
+      "p02-production-decay-laci",
+      "p02-production-decay-no-observables",
+      "p02-production-decay-renamed-parameters",
+      "p02-production-decay",
+      "request-ode",
+      "fir-zero-fractional",
+      "integer-policy-P03",
+      "producer-permuted"
+    ],
+    "numeric-policy": [
+      "integer-policy-P01",
+      "integer-policy-P03",
+      "nested-number_range",
+      "nested-number_underflow",
+      "nested-integer_range",
+      "p03-exact-zero-exponent",
+      "p03-subnormal-input"
+    ]
+  }
+}

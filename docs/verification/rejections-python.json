@@ -1,0 +1,2072 @@
+{
+  "cases": [
+    {
+      "id": "p01-null",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-bool",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-integer",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-negative-zero",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-integer-negative-zero",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-zero-tiny-exponent",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-whitespace",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-unicode-literal",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-unicode-escaped",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-escaped-backslash",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-unicode-preserved",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-nested",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-one-decimal",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-decimal-rounding",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-round-to-even",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-min-subnormal",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-negative-subnormal",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-max-finite",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-integer-limit",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-negative-integer-limit",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-binary64-exponent-boundary",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-duplicate-root",
+      "observed": {
+        "category": "DUPLICATE_KEY",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/x",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-duplicate-escaped",
+      "observed": {
+        "category": "DUPLICATE_KEY",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/x",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-duplicate-nested",
+      "observed": {
+        "category": "DUPLICATE_KEY",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/a/0/x",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-duplicate-pointer",
+      "observed": {
+        "category": "DUPLICATE_KEY",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/a~1b~0",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-lone-high",
+      "observed": {
+        "category": "INVALID_UNICODE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-lone-low",
+      "observed": {
+        "category": "INVALID_UNICODE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-bad-surrogate-pair",
+      "observed": {
+        "category": "INVALID_UNICODE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-invalid-utf8",
+      "observed": {
+        "category": "INVALID_UNICODE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-utf8-surrogate",
+      "observed": {
+        "category": "INVALID_UNICODE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-integer-outside",
+      "observed": {
+        "category": "INTEGER_RANGE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-negative-integer-outside",
+      "observed": {
+        "category": "INTEGER_RANGE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-integer-rounding-forbidden",
+      "observed": {
+        "category": "INTEGER_RANGE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-overflow",
+      "observed": {
+        "category": "NUMBER_RANGE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-negative-overflow",
+      "observed": {
+        "category": "NUMBER_RANGE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-underflow",
+      "observed": {
+        "category": "NUMBER_UNDERFLOW",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-negative-underflow",
+      "observed": {
+        "category": "NUMBER_UNDERFLOW",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-round-to-zero",
+      "observed": {
+        "category": "NUMBER_UNDERFLOW",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-nan",
+      "observed": {
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-infinity",
+      "observed": {
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-negative-infinity",
+      "observed": {
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-leading-zero",
+      "observed": {
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-trailing-data",
+      "observed": {
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-trailing-comma",
+      "observed": {
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-bad-number",
+      "observed": {
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-bad-escape",
+      "observed": {
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-raw-control",
+      "observed": {
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-truncated",
+      "observed": {
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-unclosed-string",
+      "observed": {
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-design-valid",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-experiment-valid",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-metadata-variant",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-zero-rates-fractional-count",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-design-digest",
+      "observed": {
+        "category": "DIGEST",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/digest",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-experiment-digest",
+      "observed": {
+        "category": "DIGEST",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/digest",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-design-reference-id",
+      "observed": {
+        "category": "DESIGN_REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/design/id",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-design-reference-revision",
+      "observed": {
+        "category": "DESIGN_REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/design/revision",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-design-reference-digest",
+      "observed": {
+        "category": "DESIGN_REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/design/digest",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-missing-compartment",
+      "observed": {
+        "category": "REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/species/0/compartment",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-missing-function-port",
+      "observed": {
+        "category": "REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/functions/0/target/port",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-missing-function-species",
+      "observed": {
+        "category": "REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/functions/0/target/species",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-missing-function-parameter",
+      "observed": {
+        "category": "REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/functions/0/parameter",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-wrong-function-unit",
+      "observed": {
+        "category": "UNIT",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/functions/0/parameter",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-duplicate-function-id",
+      "observed": {
+        "category": "DUPLICATE_ID",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/functions/1/id",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-duplicate-parameter-id",
+      "observed": {
+        "category": "DUPLICATE_ID",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/parameters/1/id",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-duplicate-assignment",
+      "observed": {
+        "category": "DUPLICATE_ID",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/parameters/1/parameter",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-wrong-assignment-unit",
+      "observed": {
+        "category": "UNIT",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/parameters/0/quantity/unit",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-unknown-assignment",
+      "observed": {
+        "category": "REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/parameters/0/parameter",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-unknown-initial-species",
+      "observed": {
+        "category": "REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/initial_counts",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-observable-port",
+      "observed": {
+        "category": "REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/observables/0/target/port",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-duplicate-observable-id",
+      "observed": {
+        "category": "DUPLICATE_ID",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/observables/1/id",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-execution-profile",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/profile",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-invalid-event",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/interventions",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-invalid-unit",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/parameters/0/quantity/unit",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-negative-rate",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/parameters/0/quantity/value",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-boolean-count",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/initial_counts/0/quantity/value",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-unknown-field",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/unknown",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-unsupported-version",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/schema_version",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-extra-species",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/species",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-extra-compartments",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/compartments",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-design-revision-advance",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-revision-advance",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-revision-metadata",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-revision-replace",
+      "observed": {
+        "category": "IMMUTABLE_REVISION",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/revision",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-revision-rollback",
+      "observed": {
+        "category": "IMMUTABLE_REVISION",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/revision",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-canonical-numbers",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-canonical-order",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-canonical-array",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-canonical-unicode",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-canonical-controls",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-duplicate-function-role",
+      "observed": {
+        "category": "FUNCTION_ROLE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/content/functions/1",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p01-reordered-functions",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-base",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-permuted",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-labels",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-standalone",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-initial-five",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-rate-change",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-observable-rename",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-two-observables",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-observables-permuted",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-negative-zero",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-large-a",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-large-b",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-numeric-spelling",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-duplicate-key",
+      "observed": {
+        "category": "DUPLICATE_KEY",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/x",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-invalid-utf8",
+      "observed": {
+        "category": "INVALID_UNICODE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-bom",
+      "observed": {
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-trailing-comma",
+      "observed": {
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-overflow",
+      "observed": {
+        "category": "NUMBER_RANGE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-underflow",
+      "observed": {
+        "category": "NUMBER_UNDERFLOW",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-nan-literal",
+      "observed": {
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-infinity-literal",
+      "observed": {
+        "category": "JSON_SYNTAX",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-invalid-reference",
+      "observed": {
+        "category": "REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/equations/0/rhs/right/right/id",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-invalid-equation",
+      "observed": {
+        "category": "TEMPLATE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/equations/0/rhs",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-invalid-ssa",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/capabilities/ssa",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-invalid-production-role",
+      "observed": {
+        "category": "TEMPLATE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/reactions/0/flux",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-duplicate-id",
+      "observed": {
+        "category": "DUPLICATE_ID",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/parameters/1/id",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-unsupported-version",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/schema_version",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-fir-execution-field",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/solver",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-exact-zero-exponent",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p03-subnormal-input",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-display-label-a",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-display-label-b",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-invalid-decay-sign",
+      "observed": {
+        "category": "STOICHIOMETRY",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/reactions/1/stoichiometry/x",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-invalid-equation-missing-decay",
+      "observed": {
+        "category": "TEMPLATE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/equations/0/rhs",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-invalid-equation",
+      "observed": {
+        "category": "TEMPLATE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/equations/0/rhs",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-invalid-initial-count",
+      "observed": {
+        "category": "SOURCE_VALUE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/states/0/initial",
+        "stage": "producer"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-invalid-observable-invented",
+      "observed": {
+        "category": "SOURCE_OBSERVABLE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/observables/0/id",
+        "stage": "producer"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-invalid-observable-missing",
+      "observed": {
+        "category": "SOURCE_OBSERVABLE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/observables",
+        "stage": "producer"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-invalid-observable-renamed",
+      "observed": {
+        "category": "SOURCE_OBSERVABLE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/observables/0/id",
+        "stage": "producer"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-invalid-observable-target",
+      "observed": {
+        "category": "REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/observables/0/state",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-invalid-parameter-map-reference",
+      "observed": {
+        "category": "REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/provenance/symbol_map/parameters/0/bioir_parameter_id",
+        "stage": "producer"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-invalid-parameter-map-role",
+      "observed": {
+        "category": "SOURCE_ROLE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/provenance/symbol_map/parameters/0/bioir_function_id",
+        "stage": "producer"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-invalid-production-role",
+      "observed": {
+        "category": "TEMPLATE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/reactions/0/flux",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-invalid-production-sign",
+      "observed": {
+        "category": "STOICHIOMETRY",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/reactions/0/stoichiometry/x",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-invalid-rate-references",
+      "observed": {
+        "category": "TEMPLATE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/reactions/0/flux",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-invalid-reference",
+      "observed": {
+        "category": "REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/equations/0/rhs/right/right/id",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-invalid-ssa",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/capabilities/ssa",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-observable-renamed",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-production-decay-gfp",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-production-decay-initial-five",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-production-decay-laci",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-production-decay-no-observables",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-production-decay-renamed-parameters",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "p02-production-decay",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-duplicate-states",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/states",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-duplicate-parameters",
+      "observed": {
+        "category": "DUPLICATE_ID",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/parameters/1/id",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-duplicate-reactions",
+      "observed": {
+        "category": "DUPLICATE_ID",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/reactions/1/id",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-duplicate-equations",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/equations",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-duplicate-observables",
+      "observed": {
+        "category": "DUPLICATE_ID",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/observables/1/id",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-state-unit",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/states/0/unit",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-state-role-unit",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/states/0/unit",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-rate-unit",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/parameters/0/unit",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-rate-role-unit",
+      "observed": {
+        "category": "UNIT",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/parameters/0/unit",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-equation-unit",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/equations/0/unit",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-observable-unit",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/observables/0/unit",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-equation-reference",
+      "observed": {
+        "category": "REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/equations/0/state",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-typed-reference",
+      "observed": {
+        "category": "REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/reactions/0/flux/id",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-unknown-parameter",
+      "observed": {
+        "category": "REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/reactions/0/flux/id",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-missing-expression-member",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/reactions/1/flux/right",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-unknown-expression-member",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/reactions/0/flux/a~0b~1c",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-event",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/events",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-intervention",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/interventions",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-ode-declaration",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/capabilities/ode",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-negative-initial",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/states/0/initial",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-boolean-rate",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/parameters/0/value",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-assumption",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/assumptions",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-map-port",
+      "observed": {
+        "category": "REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/provenance/symbol_map/states/0/bioir_port_id",
+        "stage": "producer"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-map-species",
+      "observed": {
+        "category": "REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/provenance/symbol_map/states/0/bioir_species_id",
+        "stage": "producer"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-map-compartment",
+      "observed": {
+        "category": "REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/provenance/symbol_map/states/0/bioir_compartment_id",
+        "stage": "producer"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-map-role",
+      "observed": {
+        "category": "SOURCE_ROLE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/provenance/symbol_map/parameters/0/bioir_function_kind",
+        "stage": "producer"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-source-rate",
+      "observed": {
+        "category": "SOURCE_VALUE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/parameters/0/value",
+        "stage": "producer"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-source-design-digest",
+      "observed": {
+        "category": "SOURCE_DIGEST",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/provenance/design_digest",
+        "stage": "producer"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-source-experiment-digest",
+      "observed": {
+        "category": "SOURCE_DIGEST",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/provenance/experiment_digest",
+        "stage": "producer"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-label-reference",
+      "observed": {
+        "category": "REFERENCE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/provenance/display_labels/observables/missing",
+        "stage": "producer"
+      },
+      "passed": true
+    },
+    {
+      "id": "producer-missing-provenance",
+      "observed": {
+        "category": "SOURCE_REQUIRED",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/provenance",
+        "stage": "producer"
+      },
+      "passed": true
+    },
+    {
+      "id": "producer-missing-symbol_map",
+      "observed": {
+        "category": "SOURCE_REQUIRED",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/provenance/symbol_map",
+        "stage": "producer"
+      },
+      "passed": true
+    },
+    {
+      "id": "producer-missing-experiment_digest",
+      "observed": {
+        "category": "SOURCE_REQUIRED",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/provenance/experiment_digest",
+        "stage": "producer"
+      },
+      "passed": true
+    },
+    {
+      "id": "request-ode",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "request-ssa",
+      "observed": {
+        "category": "UNSUPPORTED_PROFILE",
+        "document": "request",
+        "outcome": "reject",
+        "path": "/profile",
+        "stage": "capability"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-zero-fractional",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "bioir-mutated-old-digest",
+      "observed": {
+        "category": "DIGEST",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/digest",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "dependency-design-digest",
+      "observed": {
+        "category": "DIGEST",
+        "document": "design",
+        "outcome": "reject",
+        "path": "/digest",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "dependency-experiment-digest",
+      "observed": {
+        "category": "DIGEST",
+        "document": "experiment",
+        "outcome": "reject",
+        "path": "/digest",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "dependency-previous-digest",
+      "observed": {
+        "category": "DIGEST",
+        "document": "previous",
+        "outcome": "reject",
+        "path": "/digest",
+        "stage": "semantic"
+      },
+      "passed": true
+    },
+    {
+      "id": "integer-policy-P01",
+      "observed": {
+        "category": "INTEGER_RANGE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "integer-policy-P03",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "nested-number_range",
+      "observed": {
+        "category": "NUMBER_RANGE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/a~1b~0/1",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "nested-number_underflow",
+      "observed": {
+        "category": "NUMBER_UNDERFLOW",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/a~1b~0/1",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "nested-integer_range",
+      "observed": {
+        "category": "INTEGER_RANGE",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/a~1b~0/1",
+        "stage": "parse"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-equations-unsupported-unit",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/equations/0/unit",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-observables-unsupported-unit",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/observables/0/unit",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-missing-parameters",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/parameters",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-missing-reactions",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/reactions",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-missing-equations",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/equations",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-misplaced-solver",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/solver",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-misplaced-time_grid",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/time_grid",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "producer-map-states-incomplete",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/provenance/symbol_map/states",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "producer-map-parameters-incomplete",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/provenance/symbol_map/parameters",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "producer-map-parameters-duplicate",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/provenance/symbol_map/parameters",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "producer-permuted",
+      "observed": {
+        "outcome": "accept"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-required-states",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/states",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-required-parameters",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/parameters",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-required-equations",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/equations",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-required-reactions",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/reactions",
+        "stage": "structure"
+      },
+      "passed": true
+    },
+    {
+      "id": "fir-required-observables",
+      "observed": {
+        "category": "SCHEMA",
+        "document": "primary",
+        "outcome": "reject",
+        "path": "/model/observables",
+        "stage": "structure"
+      },
+      "passed": true
+    }
+  ],
+  "catalog_schema_sha256": "268c37976902079a7ccbd7f365bbbc00a96cb6c9c02902f425b834665f99d5a6",
+  "catalog_sha256": "5117b37ec7d4d45e111943e925dcfc27a3ac280ddeabfb456ff37b93a9750088",
+  "catalog_version": "1.0.0",
+  "contract_fingerprints": {
+    "spec/bioir/proposals/ADR-P01.md": "04465d06f33970d20ed8974607da716fcef7f16fcaa8fcfc3684ecc8ad7edc51",
+    "spec/canonicalization/proposals/ADR-P03.md": "ab473b60da4d0df7949f1e3c4e6fd2940b04fcb83845440d3457701d54f22001",
+    "spec/fir/proposals/ADR-P02.md": "3aa6f6796adeb77f52849f213b7642968e2d4f01b327e74823d872cf5745c7d1"
+  },
+  "dependency_fingerprints": {
+    "conformance/julia/Manifest.toml": "0c0f75a2b4e54b792e911c5884f79ce46b43f3cc48a90ff5e61c3aabffda33b7",
+    "conformance/julia/Project.toml": "bcbe015fc7687abaeaf1048c6544843dfcbcf7f66f80aff16b176bf5dfe53185",
+    "packages/python/pyproject.toml": "d26711d3f928785d77d3db9bd234e66f4f215c6c2942d410a0209ebc39231e27",
+    "packages/python/uv.lock": "9807538872947718dc333eeef95ed10ac5f9dae037ac1807abb72398b06b40ba"
+  },
+  "evaluator_fingerprints": {
+    "conformance/python/p01.py": "0005f54f605259b886412ef5c75d3c64c4467c7541f3c887ddd6777d7df8968e",
+    "conformance/rejections/reference.py": "1664291207392b5da2f1dfb7979079201fd0c3c6f406918ccb59acb1dfb1d124",
+    "conformance/rejections/review.py": "87fee105d6229b105293d77a6f9a3dd55a96d2e229edaef1df86dd79697040a0"
+  },
+  "fixture_status": "APPROVED",
+  "historical_catalog_fingerprints": {
+    "conformance/bioir/catalog.json": "6576accde94a567cee90094f33913ffbddbfec30abfb1047521539a787ff9390",
+    "conformance/canonicalization/catalog.json": "07858e1595f51a630427ed2a12ef8bfbf9c0df241688bffd5041e9ed424aa970"
+  },
+  "implementation": "independent-python-rejection-reference",
+  "passed": true,
+  "report_version": 1,
+  "runtime": {
+    "dependencies": {
+      "jsonschema": "4.26.0",
+      "rfc8785": "0.1.4"
+    },
+    "name": "CPython",
+    "version": "3.12.13"
+  },
+  "schema_fingerprints": {
+    "spec/bioir/proposals/bioir-m0.schema.json": "8d0f34aa5edb188ca8142f9ea3e4ec1ff46336140cf61b9df4a053ef1dbf923a",
+    "spec/fir/proposals/fir-m0.schema.json": "b0a3f9e42b745731b7db5ee3efd90a0f571339f5bc9ef13ae975100093a47df8"
+  }
+}

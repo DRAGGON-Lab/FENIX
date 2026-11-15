@@ -63,6 +63,15 @@ jobs:
         with:
           name: p01-python
           path: artifacts/p01-python.json
+      - name: Test rejection diagnostics, catalog integrity and report failure detection
+        run: uv run --project packages/python --locked --offline python -m unittest discover -s conformance/rejections/tests -v
+      - name: Produce independent Python rejection report
+        run: uv run --project packages/python --locked --offline python conformance/rejections/review.py --report artifacts/rejections-python.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rejections-python
+          path: artifacts/rejections-python.json
       - name: Build Python distributions
         run: uv build --project packages/python
       - name: Test wheel in a clean environment without development dependencies
@@ -109,6 +118,21 @@ jobs:
         with:
           name: p01-julia
           path: artifacts/p01-julia.json
+      - name: Test native Julia rejection diagnostics and harness boundaries
+        env:
+          JULIA_PKG_OFFLINE: "true"
+        run: |
+          julia --project=conformance/julia conformance/rejections/tests/test_reference.jl
+          julia --project=conformance/julia conformance/rejections/tests/test_harness.jl
+      - name: Produce independent Julia rejection report
+        env:
+          JULIA_PKG_OFFLINE: "true"
+        run: julia --project=conformance/julia conformance/rejections/review.jl --report artifacts/rejections-julia.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rejections-julia
+          path: artifacts/rejections-julia.json
       - name: Check tracked environment files were not rewritten
         run: git diff --exit-code -- conformance/julia/Project.toml conformance/julia/Manifest.toml
 
@@ -181,3 +205,29 @@ jobs:
         with:
           name: p03-node
           path: artifacts/p03-node.json
+
+  rejections:
+    name: Candidate BioIR/FIR rejection reference agreement
+    needs: [python, julia]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9
+        with:
+          version: "0.11.29"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: uv sync --project packages/python --locked
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: rejections-*
+          path: artifacts
+          merge-multiple: true
+      - name: Compare native rejection reports with fixed catalog diagnostics
+        run: uv run --project packages/python --locked --offline python conformance/rejections/review.py --compare artifacts/rejections-python.json artifacts/rejections-julia.json
+      - name: Independently check BioIR mutation digests
+        run: node conformance/rejections/audit_inputs.cjs

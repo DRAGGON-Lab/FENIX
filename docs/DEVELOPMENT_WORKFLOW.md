@@ -91,3 +91,8 @@ No secrets, tokens or private experimental datasets in prompts, logs or reposito
 ## Continuous improvement
 
 When agents repeat the same avoidable failure, add the smallest high-value scoped instruction **or** a deterministic test. Prefer tests and linters for mechanical rules. Retire stale instructions instead of accumulating contradictory prompts. Add a repository-local skill only when a repeated workflow has shown that the automation is genuinely useful.
+
+For issue #17 rejection validation, run both native suites/reports, comparison
+and independent digest audit from the [rejection-suite commands](../conformance/rejections/README.md#run-and-compare).
+The bounded suite has human PI acceptance; negative capability fixtures are not
+exhaustive, and native package implementation approval remains separate.

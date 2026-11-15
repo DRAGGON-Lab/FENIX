@@ -12,7 +12,10 @@ pointer(parent, key) = parent * "/" * replace(string(key), "~" => "~0", "/" => "
 mutable struct Cursor
     bytes::Vector{UInt8}
     i::Int
+    numeric_policy::Symbol
+    detailed::Bool
 end
+Cursor(bytes, i) = Cursor(bytes, i, :p01, false)
 peek(c) = c.i <= length(c.bytes) ? c.bytes[c.i] : 0x00
 function spaces!(c)
     while peek(c) in (0x20, 0x09, 0x0a, 0x0d)
@@ -73,7 +76,7 @@ function number!(c)
     end
     raw = String(c.bytes[start:c.i-1])
     occursin(r"^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$", raw) || reject("JSON_SYNTAX")
-    if !occursin(r"[.eE]", raw)
+    if c.numeric_policy == :p01 && !occursin(r"[.eE]", raw)
         digits = startswith(raw, "-") ? raw[2:end] : raw
         (length(digits) > 16 || (length(digits) == 16 && digits > "9007199254740991")) && reject("INTEGER_RANGE")
         return parse(Int64, raw)
@@ -136,7 +139,12 @@ function value!(c, path="")
         take!(c, 0x5d)
         return out
     elseif b == 0x2d || b in 0x30:0x39
-        return number!(c)
+        return try
+            number!(c)
+        catch error
+            error isa Rejection || rethrow()
+            reject(error.category, c.detailed ? path : "")
+        end
     else
         for (word, value) in (("true", true), ("false", false), ("null", nothing))
             bytes = codeunits(word)
@@ -149,9 +157,10 @@ function value!(c, path="")
         reject("JSON_SYNTAX")
     end
 end
-function strict_parse(raw::Vector{UInt8})
+function strict_parse(raw::Vector{UInt8}; numeric_policy=:p01, detailed=false)
+    numeric_policy in (:p01, :p03) || error("Unknown numeric policy")
     isvalid(String(copy(raw))) || reject("INVALID_UNICODE")
-    c = Cursor(raw, 1)
+    c = Cursor(raw, 1, numeric_policy, detailed)
     value = value!(c)
     spaces!(c)
     c.i == length(raw) + 1 || reject("JSON_SYNTAX")

@@ -1,6 +1,6 @@
 # FENIX architecture — approved v0.1 design baseline
 
-**Status:** Architectural intent approved; ADR-P01, ADR-P02 and ADR-P03 ratify the M0 BioIR, mathematical FIR/capability and canonicalization contracts. Scientific implementation and remaining fixture gates are pending; the bounded canonicalization references have [human PI acceptance](docs/verification/ep01-canonicalization-vectors.md#human-pi-acceptance-recorded). Neither Python, Julia nor historical LOICA 2 code is normative. Ratified mathematical specifications, ADRs and independently reviewed oracles control scientific behavior.
+**Status:** Architectural intent approved; ADR-P01, ADR-P02 and ADR-P03 ratify the M0 BioIR, mathematical FIR/capability and canonicalization contracts. Scientific implementation and remaining fixture gates are pending; the bounded canonicalization references have [human PI acceptance](docs/verification/ep01-canonicalization-vectors.md#human-pi-acceptance-recorded). The bounded [BioIR/FIR rejection reference suite](docs/verification/ep01-rejections.md#human-pi-acceptance-recorded) is also accepted; negative capability fixtures are not exhaustive and native implementation approval remains separate. Neither Python, Julia nor historical LOICA 2 code is normative. Ratified mathematical specifications, ADRs and independently reviewed oracles control scientific behavior.
 
 ## Information and runtime boundaries
 

@@ -29,9 +29,15 @@ def pointer(parent, key):
     return parent + '/' + str(key).replace('~', '~0').replace('/', '~1')
 
 
-def strict_parse(raw: bytes):
+def strict_parse(raw: bytes, *, numeric_policy="p01", detailed=False):
+    if numeric_policy not in ("p01", "p03"):
+        raise ValueError("Unknown numeric policy")
+
+    class NumericToken(str):
+        pass
+
     def number(token):
-        if re.fullmatch(r'-?(0|[1-9][0-9]*)', token):
+        if numeric_policy == 'p01' and re.fullmatch(r'-?(0|[1-9][0-9]*)', token):
             # Lexical range check avoids constructing an arbitrarily large integer.
             digits = token.lstrip('-')
             if len(digits) > 16 or (len(digits) == 16 and digits > '9007199254740991'):
@@ -48,6 +54,11 @@ def strict_parse(raw: bytes):
         raise Rejection('JSON_SYNTAX')
 
     def visit(value, path=''):
+        if isinstance(value, NumericToken):
+            try:
+                return number(value)
+            except Rejection as error:
+                raise Rejection(error.category, path if detailed else '') from None
         if isinstance(value, str):
             try:
                 value.encode('utf-8', errors='strict')
@@ -71,8 +82,8 @@ def strict_parse(raw: bytes):
     except UnicodeDecodeError:
         raise Rejection('INVALID_UNICODE') from None
     try:
-        parsed = json.loads(text, object_pairs_hook=Pairs, parse_int=number,
-                            parse_float=number, parse_constant=constant)
+        parsed = json.loads(text, object_pairs_hook=Pairs, parse_int=NumericToken,
+                            parse_float=NumericToken, parse_constant=constant)
     except json.JSONDecodeError:
         raise Rejection('JSON_SYNTAX') from None
     return visit(parsed)
