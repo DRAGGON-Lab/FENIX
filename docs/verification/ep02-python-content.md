@@ -124,3 +124,61 @@ parent epic closure is authorized by these results. Hosted CI is **NOT RUN
 locally**; its actual statuses are available on the PR. Native raw parsing,
 canonical bytes/digests, full committed-document conformance, compilers, solvers
 and empirical biological validity are outside this delivery and remain unclaimed.
+
+## Review concern follow-up — 2026-11-15
+
+This documentation follow-up is based on implementation commit
+`15c2a066e8cc3bcf71eea63394f01be9782c21b0` on the same PR branch. The execution
+receipts, source fingerprints, artifact hashes and broad verification outcomes
+above describe that implementation revision and remain historical evidence.
+The original machine-readable receipt is unchanged; it does not claim verification
+of these later documentation edits.
+
+The three review concerns are recorded as accepted boundaries:
+
+- The public API remains **uncommitted content authoring**. Construction and
+  ordinary JSON serialization do not establish committed document validity. A
+  syntactically valid but incorrect Design digest can remain in content; the
+  existing regression demonstrating that behavior is preserved.
+- Tuple-only collections, exact typed nested values and subclass rejection are
+  deliberate M0 reproducibility constraints. An ergonomic builder remains future
+  work; no public API or runtime behavior changes in this follow-up.
+- Evidence consists of fixed approved projections and hand-authored behavioral
+  regressions. Systematic generated-input/property-based and metamorphic testing
+  has not been performed. This limitation does not block #18.
+
+[Issue #19](https://github.com/DRAGGON-Lab/FENIX/issues/19) now has a high-priority
+acceptance gate requiring verified Design scientific-content digests under P01
+and exact ID/revision/digest correspondence before committed Experiment acceptance.
+Verification may use a previously verified immutable Design whose digest remains
+tied to its exact content; unchecked digest strings and ID/revision matches alone
+are insufficient. Committed envelope self-consistency is checked before local
+reference resolution. Required regressions cover a valid pair, an incorrect
+reference digest, content changed with its old digest, a self-consistent replacement
+that differs from the exact reference, and missing/stale references. Offline
+resolution, rejection without substitution, and the distinction between
+self-consistency and trust in an expected reference remain required by P01.
+
+The separate [generated-input conformance issue #59](https://github.com/DRAGGON-Lab/FENIX/issues/59)
+references epic #4 and depends on #19; it adds no acceptance blocker for #18.
+It records valid committed round trips, identity-preserving metadata/object-order/
+whitespace changes, identity-changing content/array-order changes, invalid inputs
+and stale references, and reproducible minimized failures. Approved fixed references
+remain required. No testing framework or dependency is selected here.
+
+Follow-up checks ran with `UV_CACHE_DIR=/private/tmp/fenix-uv-cache` and the
+unchanged locked Python environment described above. All listed commands exited 0.
+
+| Exact command | Follow-up outcome |
+|---|---|
+| `uv run --project packages/python --locked --offline python scripts/check_repo.py` | PASS, repository and local links |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v` | PASS, 11 methods |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_content -v` | PASS, 29 projections across 2 methods |
+| `git diff --exit-code 15c2a06 -- . ':(exclude)packages/python/README.md' ':(exclude)docs/verification/ep02-python-content.md'` | PASS, all other tracked files unchanged |
+| `git diff --check` and `git diff --cached --check` | PASS, working and staged whitespace |
+
+Production code, tests, dependency locks, scientific contracts, catalogs, fixture
+bytes and original machine-readable receipts are unchanged. Broad reference,
+Julia and wheel suites were **NOT RUN again locally** for this documentation-only
+follow-up; their implementation-revision outcomes are retained above. Human
+implementation approval and merging remain pending.

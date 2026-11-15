@@ -9,6 +9,9 @@ package governance ADR-P06. Python 3.12+; no runtime dependencies or Julia requi
 native values and local references. `to_dict()` returns fresh dictionaries/lists;
 `to_json()` emits ordinary JSON with `allow_nan=False`, preserving declaration
 order and accepted numeric values without sorting or normalization.
+Successful construction or serialization does not establish committed document
+validity. In particular, an Experiment can carry a syntactically valid but
+incorrect Design digest until committed identity handling is available in #19.
 
 ```python
 from fenix.bioir import (
@@ -47,6 +50,8 @@ content_json = experiment.to_json()
 All IDs, revisions, quantities and collections are explicit. Only fixed `kind`
 and `schema_version` tokens have defaults. Collections require tuples of exact
 native value types; lists, mappings and subclasses are rejected as nested values.
+These strict boundaries are deliberate M0 reproducibility constraints. An
+ergonomic builder layer remains future work and is outside this delivery.
 `Quantity` accepts built-in `int`/`float` only, excluding booleans, nonfinite values
 and integers outside `[-(2^53-1), 2^53-1]`. Quantities are nonnegative; compartment
 volume must be positive. Exact units are `L`, `molecule`, `molecule/s`, `1/s`,
@@ -58,6 +63,8 @@ The reference ID/revision must match it; digest syntax is checked, but **digest
 correspondence and trusted revision identity remain unverified**. Rebuilding an
 Experiment (including `dataclasses.replace`) requires supplying `source_design`
 again. Frozen content does not establish an archive of immutable committed revisions.
+Issue #19 now makes verified Design content digests and exact ID/revision/digest
+correspondence a high-priority gate before accepting committed Experiments.
 
 Failures raise `BioIRValidationError(ValueError)` with `category`, `path` and a
 readable message. Paths are JSON Pointers relative to the constructor that failed:
@@ -103,3 +110,10 @@ Metadata variants exercise content only. This is not full native 92-case
 conformance, biological validation or implementation approval. Both original
 catalogs and fixture bytes remain unchanged. The package tests run against an
 editable install and a clean wheel without development dependencies in CI.
+
+This evidence consists of approved fixed fixture projections and hand-authored
+behavioral regressions. Systematic generated-input/property-based and metamorphic
+validation has not been performed. It is tracked in
+[#59](https://github.com/DRAGGON-Lab/FENIX/issues/59) after #19 supplies raw parsing
+and committed identity, without adding an acceptance blocker for #18 or selecting
+a testing framework in this delivery.
