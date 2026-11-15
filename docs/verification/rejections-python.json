@@ -2041,8 +2041,8 @@
   "dependency_fingerprints": {
     "conformance/julia/Manifest.toml": "0c0f75a2b4e54b792e911c5884f79ce46b43f3cc48a90ff5e61c3aabffda33b7",
     "conformance/julia/Project.toml": "bcbe015fc7687abaeaf1048c6544843dfcbcf7f66f80aff16b176bf5dfe53185",
-    "packages/python/pyproject.toml": "9b006f263ed7e7c936233bec47dc47f5e6f591b12844bd275e462d40831b7786",
-    "packages/python/uv.lock": "2e0b9f22e4c2669fd5f424205ba832568ff95ef7f66f4e7d187e89a154ea2cda"
+    "packages/python/pyproject.toml": "f9b560d8af2fefcd341750704110b9c91bc333d2e4e27ed60bc824a4ee6f9605",
+    "packages/python/uv.lock": "c3133f4f9d83b64f6a6f48fdac15d2ace3cec6cc143192acae32cffa4599c80b"
   },
   "evaluator_fingerprints": {
     "conformance/python/p01.py": "0005f54f605259b886412ef5c75d3c64c4467c7541f3c887ddd6777d7df8968e",

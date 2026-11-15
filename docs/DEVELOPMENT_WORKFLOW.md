@@ -67,6 +67,8 @@ The repository checker and harness tests check repository-document consistency, 
 
 Do not claim that a check passed unless it actually ran. A locally unavailable runtime is `NOT RUN`, not `PASS`.
 
+For Python BioIR changes, run the native document suite (`python -m unittest discover -s packages/python/tests_native_documents -v` through the locked uv environment), covering 92 original P01 cases and the 97-case P01 rejection subset. Do not report the other 110 P03/FIR cases as native document conformance. Wheel checks install exported locked runtime requirements before the wheel, without development dependencies.
+
 For Python content changes, also run the native-content projections, Ruff and strict mypy commands in the [Python package instructions](../packages/python/README.md#development-checks). CI additionally builds and tests a clean wheel without development dependencies.
 
 For P01 reference validation, also execute the independent catalog runners and

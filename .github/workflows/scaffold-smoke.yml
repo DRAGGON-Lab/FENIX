@@ -45,11 +45,13 @@ jobs:
         run: uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v
       - name: Check Python content style and types
         run: |
-          uv run --project packages/python --locked --offline ruff check packages/python/src/fenix/bioir packages/python/tests/test_bioir.py packages/python/tests_native_content
-          uv run --project packages/python --locked --offline ruff format --check packages/python/src/fenix/bioir packages/python/tests/test_bioir.py packages/python/tests_native_content
+          uv run --project packages/python --locked --offline ruff check packages/python/src/fenix/bioir packages/python/tests/test_bioir.py packages/python/tests/test_json.py packages/python/tests/test_documents.py packages/python/tests_native_content packages/python/tests_native_documents
+          uv run --project packages/python --locked --offline ruff format --check packages/python/src/fenix/bioir packages/python/tests/test_bioir.py packages/python/tests/test_json.py packages/python/tests/test_documents.py packages/python/tests_native_content packages/python/tests_native_documents
           uv run --project packages/python --locked --offline mypy --config-file packages/python/pyproject.toml
       - name: Test 29 approved P01 native-content projections
         run: uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_content -v
+      - name: Test native P01 documents and raw inputs
+        run: uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_documents -v
       - name: Test candidate P01 catalog and report failure detection
         run: uv run --project packages/python --locked --offline python -m unittest discover -s conformance/python/tests -v
       - name: Independently validate candidate P01 fixtures in Python
@@ -84,6 +86,8 @@ jobs:
       - name: Test wheel in a clean environment without development dependencies
         run: |
           uv venv --python 3.12 /tmp/fenix-wheel
+          uv export --project packages/python --locked --no-dev --no-emit-project -o /tmp/fenix-runtime.txt
+          uv pip install --python /tmp/fenix-wheel/bin/python --require-hashes -r /tmp/fenix-runtime.txt
           uv pip install --python /tmp/fenix-wheel/bin/python --no-deps packages/python/dist/*.whl
           /tmp/fenix-wheel/bin/python -m unittest discover -s packages/python/tests -v
 

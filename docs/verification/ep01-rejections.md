@@ -327,3 +327,11 @@ retained rejection reports change only the Python manifest/lock fingerprints;
 all 207 observed case rows and every other field remain identical to `972f23b`.
 The older hashes above identify earlier evidence revisions. This refresh changes
 no scientific contract, approved expectation, catalog or raw fixture byte.
+
+## EP-02 committed-document tooling provenance refresh
+
+Issue #19 promotes the existing locked rfc8785 0.1.4 tool to a runtime dependency.
+The [committed-document evidence](ep02-python-documents.md) records new native
+checks and regenerated reference reports. Both retained rejection reports change
+only the Python manifest/lock fingerprints; every other field and all 207 observed
+rows match `91dd4c2`. Previous artifact hashes remain historical identities.
