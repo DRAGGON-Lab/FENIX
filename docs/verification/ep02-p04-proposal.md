@@ -98,3 +98,16 @@ checked equations, units, binary64 inputs and Radau's Jacobian against P02.
 Native configuration/errors, overflow/underflow boundary behavior and negative
 output diagnostics remain NOT RUN; this proposal does not imply those production
 paths exist. Human scientific ratification remains pending.
+
+
+## Human PI ratification, 2026-11-16
+
+The PI explicitly accepted ADR-P04 at reviewed revision `67820ae` on PR #62.
+See the [decision and concerns](../../spec/execution/proposals/ADR-P04.md#human-pi-ratification-record).
+All results and pending statuses above describe the original proposal execution;
+this appendix does not rewrite those historical receipts. Approval consciously
+accepts possible rejection of mathematically well-posed simulations due to tiny
+negative sampled values. API documentation and future result manifests must
+retain bounded-agreement language. Historical run #43853787258 is existing
+infrastructure evidence, not native solver testing. Every requested native case
+remains an implementation obligation. No trial/report/fixture bytes were changed.

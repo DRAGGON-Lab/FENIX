@@ -1,16 +1,16 @@
-# ADR-P04 — proposed M0 ODE sampling, accuracy and failure contract
+# ADR-P04 — M0 ODE sampling, accuracy and failure contract
 
-**Status: PROPOSED. Human PI ratification: PENDING.**
+**Status: RATIFIED by the human PI on 2026-11-16.**
 
 Issue [#21](https://github.com/DRAGGON-Lab/FENIX/issues/21); prerequisites #15
 (approved analytical oracle) and #20 (merged native compiler). Architectural
 basis: D06/D08/D09/D15/D23/D26–D29 in the
 [approved decisions](../../../docs/approved-decisions.md).
-The user approved preparing this proposal before implementation, selected SciPy
-in the standard Python installation, both DOP853 and Radau, and rejection of
-negative sampled counts. Those choices are proposal inputs, not ratification
-of this complete contract. A generic instruction to implement the staged plan
-is not recorded as scientific ratification.
+The human PI accepted reviewed revision `67820aec4f47b69434390b5b346726f00de608f6`
+on [PR #62](https://github.com/DRAGGON-Lab/FENIX/pull/62). The acceptance explicitly
+endorses conservative negative-output rejection and retains bounded numerical
+agreement and separate native implementation testing. See the ratification record
+below. Implementation approval remains separate.
 
 ## Scope and mathematical authority
 
@@ -29,7 +29,7 @@ empirical prediction, results serialization and RunManifest/P07 remain excluded.
 The independent dual-language ODE gate stays under #29; this Python proposal
 and its two SciPy methods do not substitute for that gate.
 
-## Proposed language-neutral decision
+## Ratified language-neutral decision
 
 ### Sampling and settings
 
@@ -61,7 +61,7 @@ For each published acceptance sample require
 `abs(x_num - x_ref) <= A + R*abs(x_ref)`
 
 with **A = 1e-9 molecule per representative cell** and **R = 1e-8**.
-These are proposed global sampled-output acceptance thresholds, separate from
+These are ratified global sampled-output acceptance thresholds, separate from
 backend-local `atol` and `rtol`. They apply to the declared reference matrix,
 not as a certified bound for arbitrary valid inputs or arbitrary settings.
 Near zero the absolute term governs. Pointwise acceptance measures integration
@@ -113,7 +113,7 @@ These conservative rules may reject mathematically admissible simulations,
 including tiny negative interpolation excursions within a solver's local error
 estimate. That explicit failure is preferred to silently repairing counts.
 
-## Python backend appendix (proposed for #21)
+## Python backend appendix (ratified for #21)
 
 Use [SciPy solve_ivp](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html)
 with explicit DOP853 or Radau, `t_span=(0, last_requested_time)`, `t_eval` equal
@@ -145,7 +145,7 @@ ODETrajectory carries samples/units, FIR digest, settings and evaluation counts;
 no portable result wire format, checksum or authenticated provenance is defined
 here. #22/P07 retains Design/Experiment result provenance and serialization.
 
-Proposed standard-install dependencies: `scipy>=1.18.1,<1.19` and
+Standard-install dependency policy: `scipy>=1.18.1,<1.19` and
 `numpy>=2.0,<2.8`; development-only `scipy-stubs>=1.18.1.1,<1.19`, uv-generated
 lock. Verify independently installed wheels without development dependencies.
 No dependency manifest or runtime package changes occur in this proposal.
@@ -168,8 +168,31 @@ the same output bound with budget 100000; DOP853 is deliberately stopped at a
 adapter tests, not implied by this experiment.
 
 See the [execution/review record](../../../docs/verification/ep02-p04-proposal.md).
-Human PI ratification must identify the reviewed revision and explicitly approve
-P04's sampling, thresholds, failure/underflow/negative policies and scope.
-Until that decision, production implementation and implementation approval are
-PENDING. Ratification does not itself approve #21's implementation, complete #29,
-merge a PR, close an epic or start #22.
+## Human PI ratification record
+
+- Decision: **RATIFIED** for this P04 contract; implementation review remains separate.
+- Ratifying human PI: approving repository user in this Codex conversation.
+- Date: **2026-11-16**.
+- Reviewed revision: `67820aec4f47b69434390b5b346726f00de608f6`, PR #62.
+- Approval source: explicit instruction in this conversation:
+
+> I accept ADR-P04, also address this concerns:
+
+The PI found no confirmed mathematical error and consciously accepted rejection
+of mathematically well-posed simulations when numerical interpolation returns even
+tiny negative sampled counts. No clipping is permitted. Bounded numerical agreement
+must remain explicit in the execution API and future result manifests, including
+possible process-to-process DOP853 bit differences on the same host.
+
+The PI also distinguished the separately executed SciPy experiment from native
+production testing: the seven passing jobs in historical Actions run #43853787258
+validate the existing repository/reference/compiler infrastructure, not a FENIX
+ODE executor. Native tests must cover zero-only grids, late first samples,
+malformed grids, unsupported profiles, invalid settings, budget exhaustion,
+nonfinite arithmetic, negative output, failed integration status and unchanged
+FIR identity. These concerns clarify the acceptance boundaries without changing
+mathematics, thresholds, approved references or the strict rejection policy.
+
+Ratification authorizes implementation under this contract. It does not approve
+that implementation, complete #29, merge a PR, close an epic or start #22. The
+full future result/manifest contract must retain the bounded-agreement distinction.
