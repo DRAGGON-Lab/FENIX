@@ -26,3 +26,7 @@ implementation approval remains separate. See the
 The [P04 M0 ODE execution contract](execution/README.md) is **RATIFIED** by the
 human PI on 2026-11-16 at reviewed revision `67820ae`. It establishes sampling,
 accuracy and failure policies; native solver implementation approval is separate.
+
+The [P07 M0 result/manifest proposal](results/README.md) is **PROPOSED** for #22.
+Its exact-byte artifact checksums and verified source-context requirements need
+explicit human-PI ratification before native implementation.

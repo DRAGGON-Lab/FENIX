@@ -1,0 +1,13 @@
+{
+  "status": "PROPOSED",
+  "algorithm": "sha256",
+  "artifacts": {
+    "empty-observables.manifest.json": "f2234cd9edffc2112855bf8a37e6d917386e7bd1c63b77bfaba319d8205412eb",
+    "empty-observables.result.json": "64a80ee09c914567bd9a207c8731e02ea4ed5812dfcae16d6438803d2e5b2711",
+    "late-first.manifest.json": "a4c74f18184b4da23518b13c63d579dd3437e94dffca55f03af057842d176c9b",
+    "late-first.result.json": "318f9ceba3f7b2a8cf5872ef64762340b85c9b0265ba4d68ad0a056753487ca1",
+    "numeric-tokens.json": "f4932f2b2eaeb2768a3bacfc4a2fa7895f7067ed8db94a5c27eb534dbd793757",
+    "zero-only.manifest.json": "b98e32f5abd82e6d8725ba2150de43ee685270461018d25c05e51456680af719",
+    "zero-only.result.json": "13a2de6b42ae7dff4f78bbce9a2fc24df2ba8ceeb23b3f6c52f9553feb0a0c69"
+  }
+}

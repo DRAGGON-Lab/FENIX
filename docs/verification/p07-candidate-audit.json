@@ -1,0 +1,36 @@
+{
+  "status": "PROPOSED",
+  "outcome": "PASS",
+  "python": "3.12.13",
+  "jsonschema": "4.26.0",
+  "rfc8785": "0.1.4",
+  "example_pairs": 3,
+  "analytical_reference_samples": 3,
+  "binary64_transport_probes": 8,
+  "structural_rejection_mutations": 99,
+  "native_readback_execution_tests": "NOT RUN",
+  "human_pi_ratification": "PENDING",
+  "input_sha256": {
+    "spec/results/proposals/ADR-P07.md": "40654af9298341b58e8e4029c811a5b51e23ed914011fa3626a4e6f67acd3fba",
+    "spec/results/proposals/run-manifest-m0.schema.json": "5952c87219f65bf1cab9e0d9c565838b446a50b8ea10e6bae05055c02c76a10a",
+    "spec/results/proposals/ode-result-m0.schema.json": "9676e0f74ccd22ad79828227f5dc704001e39f020062e4fea58bfd1601c3f534",
+    "spec/results/proposals/review_p07.js": "616513961648cfad737948c2f62fd7ffbe0672d8bcb1fdb6a7c2b8335f8efe1f",
+    "spec/results/proposals/review_p07.py": "9cc886f909d215f4275ebc87918a570eb15122e2aa08669071203cbbdb0edd31",
+    "spec/results/proposals/examples/checksums.json": "d9da3f82e6a998db221fd82edf6152e3a5a5ba840c871c72e74c47e345d5a73e",
+    "spec/bioir/proposals/examples/design.json": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f",
+    "spec/bioir/proposals/examples/experiment.json": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906",
+    "spec/fir/proposals/examples/sources/no-observables-experiment.json": "f43aa8c9fe3d3417d57865a7cd6c44a714f90fefeb5fdf17b24a027783731a54",
+    "spec/fir/proposals/examples/production-decay-no-observables.json": "7feab8838696317bd971e1349828ffee7ab886758425e918a9be727f9ccaa51c",
+    "conformance/canonicalization/expected/fir-base.canonical": "cf4011a6c97891192c0b84951dd53ae38bd1fc629e05c885a8dff30bd5e53a50",
+    "conformance/production_decay/catalog.json": "468c05a59fc23106dfc2e9e3454e9709ef0b61c9e130885180ecd4e67a07406d"
+  },
+  "candidate_sha256": {
+    "empty-observables.manifest.json": "f2234cd9edffc2112855bf8a37e6d917386e7bd1c63b77bfaba319d8205412eb",
+    "empty-observables.result.json": "64a80ee09c914567bd9a207c8731e02ea4ed5812dfcae16d6438803d2e5b2711",
+    "late-first.manifest.json": "a4c74f18184b4da23518b13c63d579dd3437e94dffca55f03af057842d176c9b",
+    "late-first.result.json": "318f9ceba3f7b2a8cf5872ef64762340b85c9b0265ba4d68ad0a056753487ca1",
+    "numeric-tokens.json": "f4932f2b2eaeb2768a3bacfc4a2fa7895f7067ed8db94a5c27eb534dbd793757",
+    "zero-only.manifest.json": "b98e32f5abd82e6d8725ba2150de43ee685270461018d25c05e51456680af719",
+    "zero-only.result.json": "13a2de6b42ae7dff4f78bbce9a2fc24df2ba8ceeb23b3f6c52f9553feb0a0c69"
+  }
+}

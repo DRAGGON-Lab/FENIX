@@ -1,0 +1,14 @@
+{
+  "kind": "ODEResult",
+  "schema_version": "0.1.0",
+  "fir_digest": "817e3383baa507ed0b727c8fa563d6040b965829c0f940a21a612a3b847627cb",
+  "time_unit": "s",
+  "times": [0.0],
+  "state_ids": ["x"],
+  "state_units": ["molecule"],
+  "state_values": [[0.0]],
+  "observable_ids": [],
+  "observable_state_ids": [],
+  "observable_units": [],
+  "observable_values": [[]]
+}
