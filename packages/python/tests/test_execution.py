@@ -290,6 +290,27 @@ class TestExecution(unittest.TestCase):
                 math.copysign(1.0, value),
             )
 
+    def test_sampled_outputs_require_float64_without_coercion(self):
+        for method in ("DOP853", "Radau"):
+            for dtype in (np.float32, np.float64):
+                # Exactly representable in both types: only the dtype differs.
+                values = np.array([[0.5, 1.0]], dtype=dtype)
+                with (
+                    self.subTest(method=method, dtype=dtype),
+                    patch(
+                        "fenix.execution.solve_ivp",
+                        return_value=backend_result(y=values),
+                    ),
+                ):
+                    if dtype is np.float32:
+                        with self.assertRaises(ODEExecutionError) as caught:
+                            solve_ode(resolved(), settings(method=method))
+                        self.assertEqual(caught.exception.category, "INVALID_OUTPUT")
+                    else:
+                        result = solve_ode(resolved(), settings(method=method))
+                        self.assertEqual(result.state_values, ((0.5,), (1.0,)))
+                self.assertEqual(values.dtype, np.dtype(dtype))
+
     def test_nonfinite_sampled_outputs_fail(self):
         for value in (float("nan"), float("inf"), -float("inf")):
             with (

@@ -198,7 +198,7 @@ def solve_ode(model: FIRModel, spec: ODEExecutionSpec) -> ODETrajectory:
             or not np.array_equal(times, spec.time_grid)
         ):
             fail("INVALID_OUTPUT", "incomplete or misaligned sampled output")
-        if values.dtype.kind != "f":
+        if values.dtype != np.dtype(np.float64):
             fail("INVALID_OUTPUT", "expected real binary64 sampled output")
         if not np.isfinite(values).all():
             fail("NONFINITE", "nonfinite sampled output")

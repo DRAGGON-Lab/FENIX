@@ -101,3 +101,47 @@ compiler/P04 receipts and approved scientific fixtures remain unchanged.
 **NOT RUN:** Julia ODE execution, independent cross-language #29, systematic
 #59 generated-input investigation, #22/P07 results/manifests and human
 implementation approval. New hosted CI is observed separately after push.
+
+
+## Float64 output-boundary hardening follow-up
+
+The user approved enforcing the existing binary64 output boundary on PR #63.
+This follow-up starts from `1c08673390030c4bdb4c77dd83fec884647113a4` with only
+execution.py, its native tests and this appended record changed. The original
+receipt and all earlier results above remain historical and unchanged.
+
+The output validator now requires `values.dtype == np.dtype(np.float64)` before
+conversion to Python floats. Other floating dtypes fail with INVALID_OUTPUT;
+there is no dtype coercion. A mocked backend regression uses exactly representable
+0.5/1.0 values to isolate dtype behavior: float32 is rejected and float64 succeeds
+for both DOP853 and Radau. Shapes, time alignment and numerical checks are retained.
+No mathematics, tolerances, dependencies, approved fixtures or report bytes change.
+
+Executed 2026-11-16 UTC with Python 3.12.13, NumPy 2.5.5, SciPy 1.18.1 and
+uv 0.11.29. All uv commands below use UV_CACHE_DIR=/private/tmp/fenix-uv-cache.
+
+| Exact command | Fresh outcome |
+|---|---|
+| `uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -p test_execution.py -k float64 -v` before production edit | FAIL (exit 1), expected red; float32 was accepted for both methods |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -p test_execution.py -v` | PASS (exit 0); 23 native execution methods including dtype negative/positive controls |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v` | PASS (exit 0); 69 package tests |
+| `uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v` | PASS (exit 0); 6 harness tests |
+| `uv run --project packages/python --locked --offline ruff check packages/python/src/fenix/execution.py packages/python/tests/test_execution.py` | PASS (exit 0) |
+| `uv run --project packages/python --locked --offline ruff format --check packages/python/src/fenix/execution.py packages/python/tests/test_execution.py` | PASS (exit 0); 2 files |
+| `uv run --project packages/python --locked --offline mypy --config-file packages/python/pyproject.toml` | PASS (exit 0); 13 production modules |
+| `uv run --project packages/python --locked --offline python scripts/check_repo.py` | PASS (exit 0); repository/local links |
+| `git diff --check && git diff --cached --check` | PASS (exit 0) |
+| `git diff --exit-code 1c08673 -- . ':(exclude)packages/python/src/fenix/execution.py' ':(exclude)packages/python/tests/test_execution.py' ':(exclude)docs/verification/ep02-python-ode.md'` | PASS (exit 0); all other tracked files unchanged |
+
+Fresh wheel build/install/tests, Julia execution and broad reference reruns:
+**NOT RUN** in this narrow follow-up; the earlier wheel results are historical.
+Hosted CI for the new commit is observed separately. This remains bounded testing
+and conveys no additional scientific approval or byte-identical replay promise.
+
+Follow-up dirty-state fingerprint (sorted path + NUL + bytes + NUL over the two
+changed code/test files, excluding this self-referential evidence record):
+`ef7ef50924e0668258dc75b343119a0869495fc22ef80870c87bd9af88af6ca9`.
+
+`packages/python/src/fenix/execution.py` SHA-256: `103f464fa0be14a02b7ce6968e17f4cdfe9c12e5ecd273d14f4633c45604593e`.
+
+`packages/python/tests/test_execution.py` SHA-256: `df9c3f64c5bc8714a5862a3ef8d6f88223c4f1e54953f06c60143a1170c56311`.
