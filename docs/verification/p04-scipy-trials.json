@@ -1,0 +1,2523 @@
+{
+  "status": "PROPOSED_NOT_RATIFIED",
+  "scope": "isolated SciPy trials; no FENIX executor",
+  "runtime": {
+    "python": "3.12.13",
+    "numpy": "2.5.5",
+    "scipy": "1.18.1"
+  },
+  "source_sha256": "559cefebf03952df99ffba17476f4b7a3b68a5099a847fa96a46febb167f1f0f",
+  "catalog_sha256": "468c05a59fc23106dfc2e9e3454e9709ef0b61c9e130885180ecd4e67a07406d",
+  "thresholds": {
+    "absolute": "1E-9",
+    "relative": "1E-8"
+  },
+  "configurations": {
+    "coarse": [
+      1e-09,
+      1e-11,
+      2.0
+    ],
+    "nominal": [
+      1e-10,
+      1e-12,
+      1.0
+    ],
+    "fine": [
+      1e-11,
+      1e-13,
+      0.5
+    ]
+  },
+  "summaries": [
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "samples": 40,
+      "nfev": 2684,
+      "max_absolute_error": "3.8160701291983155285686927885119905439888E-9",
+      "max_bound_fraction": "0.07868903827175793239329337143944794460213598507965290590640483187319589575127226313858664898442270228",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "samples": 40,
+      "nfev": 4496,
+      "max_absolute_error": "6.3445604062079789152101399001431560835495E-10",
+      "max_bound_fraction": "0.009721791571059820137390644743132447439130312260143061752495534481517858865850325068272533111497107000",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "samples": 40,
+      "nfev": 8252,
+      "max_absolute_error": "1.71356288885458823040801137988557783638E-11",
+      "max_bound_fraction": "0.0005783540453307048455228059844550528708716675558390291319481376575121723988653001610501648228250643444",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "samples": 40,
+      "nfev": 8223,
+      "max_absolute_error": "4.657797927046769644420946110100650847219E-9",
+      "max_bound_fraction": "0.007356889398229211429679903046508576105577916926282119255831087016087686917271116467533356490436715462",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "samples": 40,
+      "nfev": 14395,
+      "max_absolute_error": "4.78165287057774720069373119683170378469E-10",
+      "max_bound_fraction": "0.0007715754964998827359797806541705815973842413945730343317142038663831691782958174822115719029081524420",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "samples": 40,
+      "nfev": 25473,
+      "max_absolute_error": "1.2531253442661148711031325635338609852E-11",
+      "max_bound_fraction": "0.00005404748913763516358174451835963868005122675230287727232836932587600112878506037374119729084021992642",
+      "passed": true
+    }
+  ],
+  "samples": [
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "baseline-zero",
+      "time_bits": "0000000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "baseline-zero",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "40230852fe8ba216",
+      "absolute_error": "7.1557983549254802590635436854493764484E-12",
+      "bound_fraction": "0.00007441354224038368161739692523803887369196705695064807984501406717117086584797481227416495108370050142",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "baseline-zero",
+      "time_bits": "4024000000000000",
+      "actual_bits": "404f9b24a5acbf06",
+      "absolute_error": "6.9279469135952069136893283515071809031E-11",
+      "bound_fraction": "0.0001094253980065623094348768803521947643320150848146251358003279724619384361337088994275932250954768517",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "baseline-zero",
+      "time_bits": "4059000000000000",
+      "actual_bits": "4058ffb59de3a923",
+      "absolute_error": "3.6785163885720453031738836172747358E-14",
+      "bound_fraction": "3.675008225461896135118745999276685757286292326642645477338429464487506678728958433289028439303282798E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "baseline-five",
+      "time_bits": "0000000000000000",
+      "actual_bits": "4014000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "baseline-five",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "402c14b53e9e2470",
+      "absolute_error": "1.9505505946274383181192978208067567110E-11",
+      "bound_fraction": "0.0001379412426621444539328653993037098584061983209252532761827308490448021800885845960181620716044016261",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "baseline-five",
+      "time_bits": "4024000000000000",
+      "actual_bits": "4050434b01e570d9",
+      "absolute_error": "1.07758190889229775621479399976158922352E-10",
+      "bound_fraction": "0.0001653964505480816506629650259326059904470825687116744830950129109713798401103175370626509458961656190",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "baseline-five",
+      "time_bits": "4059000000000000",
+      "actual_bits": "4058ffb955fead7d",
+      "absolute_error": "4.115024898605667936886550989504863E-15",
+      "bound_fraction": "4.111091118572724298807767650943903815271013606291697500276606684208408350996658122628608197859996430E-9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "decreasing",
+      "time_bits": "0000000000000000",
+      "actual_bits": "4020000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "decreasing",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4019b4597e795a46",
+      "absolute_error": "3.8160701291983155285686927885119905439888E-9",
+      "bound_fraction": "0.05847377287213302882916782576841443748682050850181145589928418475492672562397117034958335301587506359",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "decreasing",
+      "time_bits": "4000000000000000",
+      "actual_bits": "4015e2d58da9d316",
+      "absolute_error": "1.7806272509571833579483487966809888743104E-9",
+      "bound_fraction": "0.03195946465868640754147898182027856198935841160656969001117741577542942305434042827788826209025624239",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "decreasing",
+      "time_bits": "4034000000000000",
+      "actual_bits": "4010002f9af3e772",
+      "absolute_error": "2.83444614727325100085254386265532104570E-11",
+      "bound_fraction": "0.0006912977092203601748143055490359758369333642282475398645033627386673870613246011090438337913426936455",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "equilibrium",
+      "time_bits": "0000000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "equilibrium",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "equilibrium",
+      "time_bits": "4000000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "equilibrium",
+      "time_bits": "4034000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "fractional-decay",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "fractional-decay",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "3fd368b2fc9db3e2",
+      "absolute_error": "1.6777113065128452634937971644482004602594125E-10",
+      "bound_fraction": "0.04160316254091600641259394689334389259034502338780754833691661642422850006254225495081755303779411204",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "fractional-decay",
+      "time_bits": "4000000000000000",
+      "actual_bits": "3fc78b5635b21a52",
+      "absolute_error": "2.23429435400420660701242166718415666834239375E-10",
+      "bound_fraction": "0.07868903827175793239329337143944794460213598507965290590640483187319589575127226313858664898442270228",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "fractional-decay",
+      "time_bits": "4034000000000000",
+      "actual_bits": "3ef7cd79b838102d",
+      "absolute_error": "1.6066624752230015524185991600755940065617741925048828125E-13",
+      "bound_fraction": "0.0001606297846176031439800438262968942532400380160730310168086066883358845301463906308403483211976561006",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "zero-solution",
+      "time_bits": "0000000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "zero-solution",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "zero-solution",
+      "time_bits": "4000000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "zero-solution",
+      "time_bits": "4034000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "linear-production",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "linear-production",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3ff8000000000001",
+      "absolute_error": "2.220446049250313080847263336181640625E-16",
+      "bound_fraction": "1.387778780781445675529539585113525390625E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "linear-production",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4003fffffffffffb",
+      "absolute_error": "2.220446049250313080847263336181640625E-15",
+      "bound_fraction": "8.540177112501204157104858985314002403846153846153846153846153846153846153846153846153846153846153846E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "linear-production",
+      "time_bits": "4024000000000000",
+      "actual_bits": "4034800000000002",
+      "absolute_error": "7.105427357601001858711242675781250E-15",
+      "bound_fraction": "3.449236581359709640151088677563713592233009708737864077669902912621359223300970873786407766990291262E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "constant",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "constant",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "constant",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "constant",
+      "time_bits": "4024000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "small-decay-20",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "small-decay-20",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3ff7ffff800001a9",
+      "absolute_error": "3.700607890160706591904635784638613375E-16",
+      "bound_fraction": "2.312880620642443676305631440312379690410421799629294187920545131789485072049085045539432393955376958E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "small-decay-20",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4003ffff400004a4",
+      "absolute_error": "2.9604501720751053080310220826216866E-15",
+      "bound_fraction": "1.138635308040528755999002586115573902064522090163384623000961272648128043796332807705559261465436480E-7",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "small-decay-20",
+      "time_bits": "4024000000000000",
+      "actual_bits": "40347ff970016655",
+      "absolute_error": "3.89157850738592292944996240641276E-16",
+      "bound_fraction": "1.889124963217919440947026494224093517037785826557341546830968955037847623564794832115061568665771418E-9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "small-decay-40",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "small-decay-40",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3ff7fffffffff802",
+      "absolute_error": "4.44089209763897969028524039380731225E-16",
+      "bound_fraction": "2.775557561025151167333343273510636669832374525860876495899245212388574959060341687571343472737978469E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "small-decay-40",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4003fffffffff3fe",
+      "absolute_error": "8.8817842018264725632804609208355695E-16",
+      "bound_fraction": "3.416070846858128042609464197641089261850622542023507832130233838382103497825485940634088768838343379E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "coarse",
+      "case": "small-decay-40",
+      "time_bits": "4024000000000000",
+      "actual_bits": "40347fffffff9702",
+      "absolute_error": "7.105427061194615694565949199340928E-15",
+      "bound_fraction": "3.449236437489104295315029563290313826460015228564479153052342414256693734362862080939943405362576950E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "baseline-zero",
+      "time_bits": "0000000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "baseline-zero",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "40230852fe8bb089",
+      "absolute_error": "5.850544059839537902203220210206655109E-13",
+      "bound_fraction": "0.000006084013074885326031481726937334236123287966092772444857060647817131308263116293973902521509774504487",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "baseline-zero",
+      "time_bits": "4024000000000000",
+      "actual_bits": "404f9b24a5ace4fa",
+      "absolute_error": "2.43136929500735077654849677181184031E-13",
+      "bound_fraction": "3.840294334314516880448062396382656524501826463313746916607135175466114746852397108247400342004502331E-7",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "baseline-zero",
+      "time_bits": "4059000000000000",
+      "actual_bits": "4058ffb59de3a925",
+      "absolute_error": "8.363454455316445596893865469622358E-15",
+      "bound_fraction": "8.355478315129954970737781001192820348943937232074490203945341800847554162881418568405757991819037441E-9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "baseline-five",
+      "time_bits": "0000000000000000",
+      "actual_bits": "4014000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "baseline-five",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "402c14b53e9e4fc8",
+      "absolute_error": "2.04949543710795974872008974549620390E-13",
+      "bound_fraction": "0.000001449385359209641201735899289008546535474689121160161380520315053950258258727095694842671291987875106",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "baseline-five",
+      "time_bits": "4024000000000000",
+      "actual_bits": "4050434b01e5533f",
+      "absolute_error": "6.8333857428991450851805982018297352E-14",
+      "bound_fraction": "1.048846252683653524020407579512784547206862067295046810855327370815444428036751634090938798746214380E-7",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "baseline-five",
+      "time_bits": "4059000000000000",
+      "actual_bits": "4058ffb955fead7d",
+      "absolute_error": "4.115024898605667936886550989504863E-15",
+      "bound_fraction": "4.111091118572724298807767650943903815271013606291697500276606684208408350996658122628608197859996430E-9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "decreasing",
+      "time_bits": "0000000000000000",
+      "actual_bits": "4020000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "decreasing",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4019b4597e2ce4a7",
+      "absolute_error": "6.3445604062079789152101399001431560835495E-10",
+      "bound_fraction": "0.009721791571059820137390644743132447439130312260143061752495534481517858865850325068272533111497107000",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "decreasing",
+      "time_bits": "4000000000000000",
+      "actual_bits": "4015e2d58d8c6b36",
+      "absolute_error": "6.89866439299628181996801260266919993104E-11",
+      "bound_fraction": "0.001238201991694692714566144271193127933362666698843102907492960117236224348958511713848871105704363884",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "decreasing",
+      "time_bits": "4034000000000000",
+      "actual_bits": "4010002f9af36c40",
+      "absolute_error": "3.330904722299604310210421879545776445E-13",
+      "bound_fraction": "0.000008123798035013479562050011994318934578835797478979064982080631675320106324196809488621042783643429567",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "equilibrium",
+      "time_bits": "0000000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "equilibrium",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "equilibrium",
+      "time_bits": "4000000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "equilibrium",
+      "time_bits": "4034000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "fractional-decay",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "fractional-decay",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "3fd368b2fc6f7eb6",
+      "absolute_error": "3.3151226549415096839979476848256627874625E-13",
+      "bound_fraction": "0.00008220698407479479236336744643782224782296826082009573952835143548892931456268398859765954617628810915",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "fractional-decay",
+      "time_bits": "4000000000000000",
+      "actual_bits": "3fc78b5636327f0e",
+      "absolute_error": "1.0116969037424806626618948618002485021229375E-11",
+      "bound_fraction": "0.003563069308004937004144277476143968963136318148860148086369507478018058837877257259970543240072347146",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "fractional-decay",
+      "time_bits": "4034000000000000",
+      "actual_bits": "3ef7cd79b5b0770f",
+      "absolute_error": "1.687058014593900265227877773508068979616345745849609375E-14",
+      "bound_fraction": "0.00001686675139929475627717060352302847129103306057748803426844047123611892103250593381262154131011281202",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "zero-solution",
+      "time_bits": "0000000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "zero-solution",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "zero-solution",
+      "time_bits": "4000000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "zero-solution",
+      "time_bits": "4034000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "linear-production",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "linear-production",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3ff7fffffffffffc",
+      "absolute_error": "8.8817841970012523233890533447265625E-16",
+      "bound_fraction": "5.5511151231257827021181583404541015625E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "linear-production",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4004000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "linear-production",
+      "time_bits": "4024000000000000",
+      "actual_bits": "4034800000000002",
+      "absolute_error": "7.105427357601001858711242675781250E-15",
+      "bound_fraction": "3.449236581359709640151088677563713592233009708737864077669902912621359223300970873786407766990291262E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "constant",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "constant",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "constant",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "constant",
+      "time_bits": "4024000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "small-decay-20",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "small-decay-20",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3ff7ffff8000019c",
+      "absolute_error": "3.25664065304147766429190591549999415E-15",
+      "bound_fraction": "2.035401014747575317743440883830332746241357841591655595644529203607741519808506119205799208114434123E-7",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "small-decay-20",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4003ffff400004a6",
+      "absolute_error": "2.07227175237498007569211674814903035E-15",
+      "bound_fraction": "7.970280355893491221621173244876777218506560274303824756264400333286451503878363888992597717480583739E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "small-decay-20",
+      "time_bits": "4024000000000000",
+      "actual_bits": "40347ff970016656",
+      "absolute_error": "3.163555828061908636410625097249349E-15",
+      "bound_fraction": "1.535714177674334790871698545072969396153330658096312641066057418559976924005033740731246008701767189E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "small-decay-40",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "small-decay-40",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3ff7fffffffff802",
+      "absolute_error": "4.44089209763897969028524039380731225E-16",
+      "bound_fraction": "2.775557561025151167333343273510636669832374525860876495899245212388574959060341687571343472737978469E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "small-decay-40",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4003fffffffff408",
+      "absolute_error": "3.5527136783179789053664805802797243E-15",
+      "bound_fraction": "1.366428337815324247833412715576552389264319379303191673140345340749583631983577503383769525231173216E-7",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "nominal",
+      "case": "small-decay-40",
+      "time_bits": "4024000000000000",
+      "actual_bits": "40347fffffff9701",
+      "absolute_error": "3.552713382394114765210327861450303E-15",
+      "bound_fraction": "1.724618146801254534667377285386687423924338110684271506069920509726212961552811746561842240043276468E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "baseline-zero",
+      "time_bits": "0000000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "baseline-zero",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "40230852fe8bb1ce",
+      "absolute_error": "7.7384331788723892000335536134389484E-15",
+      "bound_fraction": "8.047239394805499460082954676137664509907597955006546503986887956362612873429385290082115521220413445E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "baseline-zero",
+      "time_bits": "4024000000000000",
+      "actual_bits": "404f9b24a5ace51a",
+      "absolute_error": "1.5763254057503018176089911556184031E-14",
+      "bound_fraction": "2.489771314118949703012670365619402238162800765440882551442365688167339429323095095065692160670333664E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "baseline-zero",
+      "time_bits": "4059000000000000",
+      "actual_bits": "4058ffb59de3a926",
+      "absolute_error": "5.847400259885558120528619881940142E-15",
+      "bound_fraction": "5.841823654614548219487058494594198263015555785101492080774134621166202149322664313836505208787857826E-9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "baseline-five",
+      "time_bits": "0000000000000000",
+      "actual_bits": "4014000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "baseline-five",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "402c14b53e9e4f52",
+      "absolute_error": "4.660563338433579959972684385926485E-15",
+      "bound_fraction": "3.295909884008691883754638816708177951426322071770322226119516267310040430307550397983768978699522011E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "baseline-five",
+      "time_bits": "4024000000000000",
+      "actual_bits": "4050434b01e5533a",
+      "absolute_error": "2.720416147018567735306444739515148E-15",
+      "bound_fraction": "4.175526435786986810523893127274403548225037995320456426955635994661875266735143993414599946103685754E-9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "baseline-five",
+      "time_bits": "4059000000000000",
+      "actual_bits": "4058ffb955fead7f",
+      "absolute_error": "2.4306684531798339497958419713620137E-14",
+      "bound_fraction": "2.428344842688178185181440027082090968908202940207323856950550537490246995059646089860884796130315772E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "decreasing",
+      "time_bits": "0000000000000000",
+      "actual_bits": "4020000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "decreasing",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4019b4597e381662",
+      "absolute_error": "1.71356288885458823040801137988557783638E-11",
+      "bound_fraction": "0.0002625698264776102029868185970921905407502394276515180703013300174930131854244941826276360958176769857",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "decreasing",
+      "time_bits": "4000000000000000",
+      "actual_bits": "4015e2d58d8b6cf4",
+      "absolute_error": "1.11751105916816668267407778058668039979E-11",
+      "bound_fraction": "0.0002005756970302317122893165869663941155601021491465980658114071708993828890235050774966240618089243452",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "decreasing",
+      "time_bits": "4034000000000000",
+      "actual_bits": "4010002f9af36aca",
+      "absolute_error": "9.117432621135941262915928618042070E-16",
+      "bound_fraction": "2.223665561974298952342277326561219058690303077557271811463801639965984153617127333632060845525083817E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "equilibrium",
+      "time_bits": "0000000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "equilibrium",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "equilibrium",
+      "time_bits": "4000000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "equilibrium",
+      "time_bits": "4034000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "fractional-decay",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "fractional-decay",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "3fd368b2fc703a29",
+      "absolute_error": "2.332301348640218376865645874351143438050625E-12",
+      "bound_fraction": "0.0005783540453307048455228059844550528708716675558390291319481376575121723988653001610501648228250643444",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "fractional-decay",
+      "time_bits": "4000000000000000",
+      "actual_bits": "3fc78b56362d0ca2",
+      "absolute_error": "2.09005698762522112916332522459577306385625E-13",
+      "bound_fraction": "0.00007360917955803350512401358451150044498927769246984248274583187885662790479568104276924227649011892912",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "fractional-decay",
+      "time_bits": "4034000000000000",
+      "actual_bits": "3ef7cd79b5656d62",
+      "absolute_error": "2.088423741202589381648137743816512161034522705078125E-16",
+      "bound_fraction": "2.087949777336396040321474796865050226298767090991176161857292518126161765084381079921170733776600673E-7",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "zero-solution",
+      "time_bits": "0000000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "zero-solution",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "zero-solution",
+      "time_bits": "4000000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "zero-solution",
+      "time_bits": "4034000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "linear-production",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "linear-production",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3ff8000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "linear-production",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4004000000000002",
+      "absolute_error": "8.8817841970012523233890533447265625E-16",
+      "bound_fraction": "3.416070845000481662841943594125600961538461538461538461538461538461538461538461538461538461538461538E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "linear-production",
+      "time_bits": "4024000000000000",
+      "actual_bits": "4034800000000001",
+      "absolute_error": "3.552713678800500929355621337890625E-15",
+      "bound_fraction": "1.724618290679854820075544338781856796116504854368932038834951456310679611650485436893203883495145631E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "constant",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "constant",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "constant",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "constant",
+      "time_bits": "4024000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "small-decay-20",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "small-decay-20",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3ff7ffff800001a7",
+      "absolute_error": "8.141499988661332753599162457001894625E-16",
+      "bound_fraction": "5.088439009386029753402366424618679347641676663673488306155121578603012783746927529619210807369063769E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "small-decay-20",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4003ffff400004b0",
+      "absolute_error": "2.3686203461256460860024099242142509E-15",
+      "bound_fraction": "9.110083266665490470223089836518031792186742862346282612461661632687693166546457051322376768388321571E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "small-decay-20",
+      "time_bits": "4024000000000000",
+      "actual_bits": "40347ff970016656",
+      "absolute_error": "3.163555828061908636410625097249349E-15",
+      "bound_fraction": "1.535714177674334790871698545072969396153330658096312641066057418559976924005033740731246008701767189E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "small-decay-40",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "small-decay-40",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3ff7fffffffff802",
+      "absolute_error": "4.44089209763897969028524039380731225E-16",
+      "bound_fraction": "2.775557561025151167333343273510636669832374525860876495899245212388574959060341687571343472737978469E-8",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "small-decay-40",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4003fffffffff400",
+      "absolute_error": "4.825220239891407576109007E-25",
+      "bound_fraction": "1.855853938420745926959766630951859275012422919423496389206515534293233745739731964608328271464139221E-17",
+      "passed": true
+    },
+    {
+      "method": "DOP853",
+      "configuration": "fine",
+      "case": "small-decay-40",
+      "time_bits": "4024000000000000",
+      "actual_bits": "40347fffffff9702",
+      "absolute_error": "7.105427061194615694565949199340928E-15",
+      "bound_fraction": "3.449236437489104295315029563290313826460015228564479153052342414256693734362862080939943405362576950E-8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "baseline-zero",
+      "time_bits": "0000000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "baseline-zero",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "40230852fe868fe8",
+      "absolute_error": "5.974995722201683181872990745387208608234E-10",
+      "bound_fraction": "0.006213431045805328397835169704926164048536356616604944180976809597748457248763998283698715983800954425",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "baseline-zero",
+      "time_bits": "4024000000000000",
+      "actual_bits": "404f9b24a5b6e5c3",
+      "absolute_error": "4.657797927046769644420946110100650847219E-9",
+      "bound_fraction": "0.007356889398229211429679903046508576105577916926282119255831087016087686917271116467533356490436715462",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "baseline-zero",
+      "time_bits": "4059000000000000",
+      "actual_bits": "4058ffb59de381c5",
+      "absolute_error": "1.43253778983691513917215546209219622358E-10",
+      "bound_fraction": "0.0001431171593333397221124371198985343404289006335503659759201762676756995111811800368715704188201093233",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "baseline-five",
+      "time_bits": "0000000000000000",
+      "actual_bits": "4014000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "baseline-five",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "402c14b53ea32b32",
+      "absolute_error": "5.65644200520562122388324634249207823515E-10",
+      "bound_fraction": "0.004000186621118880463000174774581236948716774483633961798412669832801812880833184002321860671501191883",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "baseline-five",
+      "time_bits": "4024000000000000",
+      "actual_bits": "4050434b01e4c19b",
+      "absolute_error": "5.29769173344162515149528137865637952648E-10",
+      "bound_fraction": "0.0008131348546022547976878500494046016750848966834573465807220377676175737281446319050756161384473084814",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "baseline-five",
+      "time_bits": "4059000000000000",
+      "actual_bits": "4058ffb955fe863b",
+      "absolute_error": "1.42823204912678743028032864334192629863E-10",
+      "bound_fraction": "0.0001426866723070274661311752015745191317631893121306400954481553897037163718738564197398408458079927096",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "decreasing",
+      "time_bits": "0000000000000000",
+      "actual_bits": "4020000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "decreasing",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4019b4597e314ab3",
+      "absolute_error": "3.7842262393068219104514242705655193647995E-10",
+      "bound_fraction": "0.005798582786016030896591259494007379875935109692711426962121125503384739358966186949284968617477369245",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "decreasing",
+      "time_bits": "4000000000000000",
+      "actual_bits": "4015e2d58d87a6bf",
+      "absolute_error": "2.0851493334272460926705511777061024678335E-10",
+      "bound_fraction": "0.003742515812555876206779220067908369797477945766092006575225471608075442710507359210337020953715627423",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "decreasing",
+      "time_bits": "4034000000000000",
+      "actual_bits": "4010002f9af381d6",
+      "absolute_error": "5.2411644194928524649258330662504760820E-12",
+      "bound_fraction": "0.0001278276167048792236791140013941602701870266817591194346362947518870698048888563998032289966341511185",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "equilibrium",
+      "time_bits": "0000000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "equilibrium",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "equilibrium",
+      "time_bits": "4000000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "equilibrium",
+      "time_bits": "4034000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "fractional-decay",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "fractional-decay",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "3fd368b2fc6bde3a",
+      "absolute_error": "1.352606882395428638871848769107472936468375E-11",
+      "bound_fraction": "0.003354136302462108438318320561568780063747393137001993106544202509605208066477252694665775284119261569",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "fractional-decay",
+      "time_bits": "4000000000000000",
+      "actual_bits": "3fc78b563632a023",
+      "absolute_error": "1.03520310073135678951401420329290139518934375E-11",
+      "bound_fraction": "0.003645855178683356672166426593997008909911379738074903019969590702050470787756429489118705610960197988",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "fractional-decay",
+      "time_bits": "4034000000000000",
+      "actual_bits": "3ef7cd79b57ea617",
+      "absolute_error": "5.80914300642720435237199146580521822805585247802734375E-15",
+      "bound_fraction": "0.000005807824632275313709105334951696698627958202556889812886756560023429707844721054066219742438181317803",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "zero-solution",
+      "time_bits": "0000000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "zero-solution",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "zero-solution",
+      "time_bits": "4000000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "zero-solution",
+      "time_bits": "4034000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "linear-production",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "linear-production",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3ff8000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "linear-production",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4003fffffffffffe",
+      "absolute_error": "8.8817841970012523233890533447265625E-16",
+      "bound_fraction": "3.416070845000481662841943594125600961538461538461538461538461538461538461538461538461538461538461538E-8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "linear-production",
+      "time_bits": "4024000000000000",
+      "actual_bits": "4034800000000000",
+      "absolute_error": "0E-48",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "constant",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "constant",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "constant",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "constant",
+      "time_bits": "4024000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "small-decay-20",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "small-decay-20",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3ff7ffff800001ab",
+      "absolute_error": "7.40284208339919569789890887724667875E-17",
+      "bound_fraction": "4.626777681011424007911035439939199668208330644148999303140313150240426396487574385403460194583098531E-9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "small-decay-20",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4003ffff400004a8",
+      "absolute_error": "1.1840933326748548433532114136763741E-15",
+      "bound_fraction": "4.554207631381694883252320628597815416367899646973803282519187940091622569793399700929602820306802677E-8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "small-decay-20",
+      "time_bits": "4024000000000000",
+      "actual_bits": "40347ff970016654",
+      "absolute_error": "3.941871529539093222300617578531901E-15",
+      "bound_fraction": "1.913539170317918679061103843917788099560887823407780950432251209567546448717992707154258322434921472E-8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "small-decay-40",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "small-decay-40",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3ff7fffffffff7fe",
+      "absolute_error": "4.44089209936227263310381295091925025E-16",
+      "bound_fraction": "2.775557562102209256595257240026124544443645980424244383622071660021939124167470092896626146301212262E-8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "small-decay-40",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4003fffffffff3fb",
+      "absolute_error": "2.220446049732835104836404093792541325E-15",
+      "bound_fraction": "8.540177114361539198892541603663073208198767442540135201190340012145485443123864232975623975183366041E-8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "coarse",
+      "case": "small-decay-40",
+      "time_bits": "4024000000000000",
+      "actual_bits": "40347fffffff9700",
+      "absolute_error": "2.96406386164145293476440322E-22",
+      "bound_fraction": "1.438865952259802749925169389786113390071959361409125013948042678112572385878162589252760240141245685E-15",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "baseline-zero",
+      "time_bits": "0000000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "baseline-zero",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "40230852fe8c3b1d",
+      "absolute_error": "6.24329808285793316946896892704832407391E-11",
+      "bound_fraction": "0.0006492440152233627579820158602256281111020322359277725745624136709187182037348401253881169301162321641",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "baseline-zero",
+      "time_bits": "4024000000000000",
+      "actual_bits": "404f9b24a5adebfc",
+      "absolute_error": "4.78165287057774720069373119683170378469E-10",
+      "bound_fraction": "0.0007552515557897983395937793549376393234886680617949221180467672964377746683001256916117382590575801291",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "baseline-zero",
+      "time_bits": "4059000000000000",
+      "actual_bits": "4058ffb59de3a716",
+      "absolute_error": "7.497483889366772404678543645743059858E-12",
+      "bound_fraction": "0.000007490333616370483136219228195280951628851596757283817154251109416202097130694433097510078464711652843",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "baseline-five",
+      "time_bits": "0000000000000000",
+      "actual_bits": "4014000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "baseline-five",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "402c14b53e9efeff",
+      "absolute_error": "7.98834355750090305679952065300916125775E-11",
+      "bound_fraction": "0.0005649287130356550212722605251340323437289446661968518288192037113814142652944756475862294541522574384",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "baseline-five",
+      "time_bits": "4024000000000000",
+      "actual_bits": "4050434b01e53524",
+      "absolute_error": "1.09454723432632851199323288622473890148E-10",
+      "bound_fraction": "0.0001680004332115120503098451124145300972809791064121159622806640455225828742309267726668174769157910843",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "baseline-five",
+      "time_bits": "4059000000000000",
+      "actual_bits": "4058ffb955feab67",
+      "absolute_error": "7.592711442816475653040493728723879863E-12",
+      "bound_fraction": "0.000007585453149754925866514926602762149109477533496839729628132100526466812914876359436793029402694422153",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "decreasing",
+      "time_bits": "0000000000000000",
+      "actual_bits": "4020000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "decreasing",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4019b4597e370e5a",
+      "absolute_error": "4.28981268558249824001711755688200028862E-11",
+      "bound_fraction": "0.0006573294623740132944673284041665741044115202263435110649165472760323653293926643772493098686313153213",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "decreasing",
+      "time_bits": "4000000000000000",
+      "actual_bits": "4015e2d58d8b3a78",
+      "absolute_error": "3.037073045227516760072347368578053771E-13",
+      "bound_fraction": "0.000005451069481421291143249413816311489928918349244516215551204448066008707661085885296684292704897449360",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "decreasing",
+      "time_bits": "4034000000000000",
+      "actual_bits": "4010002f9af36c49",
+      "absolute_error": "3.4108407800726155811209233596483155075E-13",
+      "bound_fraction": "0.000008318755394410655041068031521028773887643925955005352229074465747326213325116450515192065509784321568",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "equilibrium",
+      "time_bits": "0000000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "equilibrium",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "equilibrium",
+      "time_bits": "4000000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "equilibrium",
+      "time_bits": "4034000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "fractional-decay",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "fractional-decay",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "3fd368b2fc7047d2",
+      "absolute_error": "2.52642384449592699795871787151682336969125E-12",
+      "bound_fraction": "0.0006264917059436006763454860538036761290473222425428647473346648911009537915728597203332715354430177387",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "fractional-decay",
+      "time_bits": "4000000000000000",
+      "actual_bits": "3fc78b56362e238c",
+      "absolute_error": "2.19080930886965779539953623158509610521375E-12",
+      "bound_fraction": "0.0007715754964998827359797806541705815973842413945730343317142038663831691782958174822115719029081524420",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "fractional-decay",
+      "time_bits": "4034000000000000",
+      "actual_bits": "3ef7cd79b5661085",
+      "absolute_error": "3.5034092202498431840685518476518676514806134033203125E-16",
+      "bound_fraction": "3.502614128072845212604000346505847166128939279802125571808606501314940145000393077277724741692879336E-7",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "zero-solution",
+      "time_bits": "0000000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "zero-solution",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "zero-solution",
+      "time_bits": "4000000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "zero-solution",
+      "time_bits": "4034000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "linear-production",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "linear-production",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3ff7fffffffffffe",
+      "absolute_error": "4.44089209850062616169452667236328125E-16",
+      "bound_fraction": "2.77555756156289135105907917022705078125E-8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "linear-production",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4004000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "linear-production",
+      "time_bits": "4024000000000000",
+      "actual_bits": "4034800000000000",
+      "absolute_error": "0E-48",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "constant",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "constant",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "constant",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "constant",
+      "time_bits": "4024000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "small-decay-20",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "small-decay-20",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3ff7ffff800001a5",
+      "absolute_error": "1.2582392087161958915293689129365175875E-15",
+      "bound_fraction": "7.863997398129615830499101408924979004872931527717682424389698025416540495444770013698989220782750581E-8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "small-decay-20",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4003ffff400004aa",
+      "absolute_error": "2.9591491297472961101430607920371785E-16",
+      "bound_fraction": "1.138134906869898544883468012318853614229239019643781808773975546896793635708435512866607923133021615E-8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "small-decay-20",
+      "time_bits": "4024000000000000",
+      "actual_bits": "40347ff970016655",
+      "absolute_error": "3.89157850738592292944996240641276E-16",
+      "bound_fraction": "1.889124963217919440947026494224093517037785826557341546830968955037847623564794832115061568665771418E-9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "small-decay-40",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "small-decay-40",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3ff7fffffffff7fe",
+      "absolute_error": "4.44089209936227263310381295091925025E-16",
+      "bound_fraction": "2.775557562102209256595257240026124544443645980424244383622071660021939124167470092896626146301212262E-8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "small-decay-40",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4003fffffffff401",
+      "absolute_error": "4.44089209367540592180311909625427425E-16",
+      "bound_fraction": "1.708035420645283113673613208380894684497522358493119536929872335381278447472892351707446437506679282E-8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "nominal",
+      "case": "small-decay-40",
+      "time_bits": "4024000000000000",
+      "actual_bits": "40347fffffff9700",
+      "absolute_error": "2.96406386164145293476440322E-22",
+      "bound_fraction": "1.438865952259802749925169389786113390071959361409125013948042678112572385878162589252760240141245685E-15",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "baseline-zero",
+      "time_bits": "0000000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "baseline-zero",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "40230852fe8babd3",
+      "absolute_error": "2.7273407543006558506217616877687123859E-12",
+      "bound_fraction": "0.00002836176710937870717141514925435229314081350909752995115483621519776707642946919288445036959470414826",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "baseline-zero",
+      "time_bits": "4024000000000000",
+      "actual_bits": "404f9b24a5acead4",
+      "absolute_error": "1.0400793252185565706694591851139128469E-11",
+      "bound_fraction": "0.00001642782422265644712882987953852246253013403137673408991731248058483080241366567036078077567409432636",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "baseline-zero",
+      "time_bits": "4059000000000000",
+      "actual_bits": "4058ffb59de3a90d",
+      "absolute_error": "3.49423967620164534815033513907122358E-13",
+      "bound_fraction": "3.490907255889980315361339289000812670359717696442980650372127759291777056557794077422200748063845239E-7",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "baseline-five",
+      "time_bits": "0000000000000000",
+      "actual_bits": "4014000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "baseline-five",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "402c14b53e9e6023",
+      "absolute_error": "7.6425556302796446704780022454236438275E-12",
+      "bound_fraction": "0.00005404748913763516358174451835963868005122675230287727232836932587600112878506037374119729084021992642",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "baseline-five",
+      "time_bits": "4024000000000000",
+      "actual_bits": "4050434b01e556ac",
+      "absolute_error": "1.2531253442661148711031325635338609852E-11",
+      "bound_fraction": "0.00001923403523417668565028588055712944979508771853146383380077599337464813263235364308180908124042980815",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "baseline-five",
+      "time_bits": "4059000000000000",
+      "actual_bits": "4058ffb955fead65",
+      "absolute_error": "3.45175538063453757155026199427004863E-13",
+      "bound_fraction": "3.448455656640267981062737827121216658675075297066709303376619513935389479701140863774780821078178462E-7",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "decreasing",
+      "time_bits": "0000000000000000",
+      "actual_bits": "4020000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "decreasing",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4019b4597e37c483",
+      "absolute_error": "1.47970260994904244051100310635662397995E-12",
+      "bound_fraction": "0.00002267353360999153809410025424202723943003812868772053256633908824432863449580446597665006924455567147",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "decreasing",
+      "time_bits": "4000000000000000",
+      "actual_bits": "4015e2d58d8b3d0d",
+      "absolute_error": "2.8337863089903110256878168922862040415E-13",
+      "bound_fraction": "0.000005086201693462849623457962113537504595086800046456125827678736717040181646289124484062908032771709273",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "decreasing",
+      "time_bits": "4034000000000000",
+      "actual_bits": "4010002f9af36ae0",
+      "absolute_error": "2.04516684955163492377475102202026445E-14",
+      "bound_fraction": "4.987990897017274937896927274452193898956615277287193218773435257479213993397382271765983834663201752E-7",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "equilibrium",
+      "time_bits": "0000000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "equilibrium",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "equilibrium",
+      "time_bits": "4000000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "equilibrium",
+      "time_bits": "4034000000000000",
+      "actual_bits": "4010000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "fractional-decay",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "fractional-decay",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "3fd368b2fc6f9732",
+      "absolute_error": "1.643163042337309136897139629709680719125E-14",
+      "bound_fraction": "0.000004074644956269281870707095934831621849609255982775760970005070125735189152209725324706160054576024453",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "fractional-decay",
+      "time_bits": "4000000000000000",
+      "actual_bits": "3fc78b56362ceacf",
+      "absolute_error": "3.13298304932086491718731428903830207628125E-14",
+      "bound_fraction": "0.00001103397243209943919099281665622572092467416737318065694517303753216121717902108643065593693742864921",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "fractional-decay",
+      "time_bits": "4034000000000000",
+      "actual_bits": "3ef7cd79b5649473",
+      "absolute_error": "2.068247521718866084417661408067555065335614013671875E-17",
+      "bound_fraction": "2.067778136807988662029953677219891901311399448183419430117540736564443758011464877415805024802250388E-8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "zero-solution",
+      "time_bits": "0000000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "zero-solution",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "zero-solution",
+      "time_bits": "4000000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "zero-solution",
+      "time_bits": "4034000000000000",
+      "actual_bits": "0000000000000000",
+      "absolute_error": "0",
+      "bound_fraction": "0E+9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "linear-production",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "linear-production",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3ff7ffffffffffff",
+      "absolute_error": "2.220446049250313080847263336181640625E-16",
+      "bound_fraction": "1.387778780781445675529539585113525390625E-8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "linear-production",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4004000000000000",
+      "absolute_error": "0E-49",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "linear-production",
+      "time_bits": "4024000000000000",
+      "actual_bits": "4034800000000000",
+      "absolute_error": "0E-48",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "constant",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "constant",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "constant",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "constant",
+      "time_bits": "4024000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "small-decay-20",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "small-decay-20",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3ff7ffff800001aa",
+      "absolute_error": "1.48016184091039351105737244845697275E-16",
+      "bound_fraction": "9.251014262706506377572639481592298617947943676071971288032569083827212162001638034995431872485335526E-9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "small-decay-20",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4003ffff400004aa",
+      "absolute_error": "2.9591491297472961101430607920371785E-16",
+      "bound_fraction": "1.138134906869898544883468012318853614229239019643781808773975546896793635708435512866607923133021615E-8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "small-decay-20",
+      "time_bits": "4024000000000000",
+      "actual_bits": "40347ff970016655",
+      "absolute_error": "3.89157850738592292944996240641276E-16",
+      "bound_fraction": "1.889124963217919440947026494224093517037785826557341546830968955037847623564794832115061568665771418E-9",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "small-decay-40",
+      "time_bits": "0000000000000000",
+      "actual_bits": "3fe0000000000000",
+      "absolute_error": "0E-50",
+      "bound_fraction": "0E+8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "small-decay-40",
+      "time_bits": "3fe0000000000000",
+      "actual_bits": "3ff7fffffffff7ff",
+      "absolute_error": "2.220446050111959552256549614737609625E-16",
+      "bound_fraction": "1.387778781320369150613107111641934240874640853852964163741742441919310603360517147779633741541414579E-8",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "small-decay-40",
+      "time_bits": "3ff0000000000000",
+      "actual_bits": "4003fffffffff400",
+      "absolute_error": "4.825220239891407576109007E-25",
+      "bound_fraction": "1.855853938420745926959766630951859275012422919423496389206515534293233745739731964608328271464139221E-17",
+      "passed": true
+    },
+    {
+      "method": "Radau",
+      "configuration": "fine",
+      "case": "small-decay-40",
+      "time_bits": "4024000000000000",
+      "actual_bits": "40347fffffff96ff",
+      "absolute_error": "3.552713975206887093500914814330947E-15",
+      "bound_fraction": "1.724618434574444986627927270420565381147016125076143787894923299334748584067288922194360090595324496E-8",
+      "passed": true
+    }
+  ],
+  "stiff_radau": {
+    "nfev": 3228,
+    "samples": [
+      {
+        "time_bits": "0000000000000000",
+        "absolute_error": "0",
+        "bound_fraction": "0E+9"
+      },
+      {
+        "time_bits": "3eb0c6f7a0b5ed8d",
+        "absolute_error": "8.906221758999987738877770972404150907183408674032826306787132583965676125126314651935474E-12",
+        "bound_fraction": "0.0002780033468082015269485342304421667170910630592472430466253247506121573179471837778489486348726262589"
+      },
+      {
+        "time_bits": "3f1a36e2eb1c432d",
+        "absolute_error": "3.108624468950438313186168670765899154280624544071294139403499095654282082811270811190E-15",
+        "bound_fraction": "1.480297366166875387231508890840904359181249704222254315273780048139728108287977800305473768158474404E-7"
+      },
+      {
+        "time_bits": "3ff0000000000000",
+        "absolute_error": "0E-99",
+        "bound_fraction": "0E+8"
+      }
+    ]
+  },
+  "stiff_dop853": "RHS budget 2000 exhausted",
+  "not_run": [
+    "Native FENIX execution and error diagnostics",
+    "Julia ODE execution",
+    "Cross-language ODE gate #29",
+    "Human PI ratification",
+    "Clean-wheel executor tests"
+  ]
+}

@@ -107,3 +107,13 @@ coverage of unsupported capabilities or malformed inputs, approve native package
 APIs or change P01/P02/P03 scientific rules. See the
 [acceptance record](verification/ep01-rejections.md#human-pi-acceptance-recorded)
 for the explicit approval, reviewed artifact identity and refreshed evidence.
+
+
+**Ratified contract, 2026-11-16:** [ADR-P04 — M0 ODE execution](../spec/execution/proposals/ADR-P04.md).
+The human PI explicitly accepted reviewed revision `67820aec4f47b69434390b5b346726f00de608f6`
+on PR #62, including strict negative sampled-count rejection even for mathematically
+well-posed simulations, bounded numerical agreement instead of byte-identical
+trajectories, and required native sampling/failure/identity tests. The historical
+SciPy experiment and seven existing CI jobs do not establish native executor
+correctness. Implementation review, #29 and #22/P07 retain separate gates. See the
+[ratification record](../spec/execution/proposals/ADR-P04.md#human-pi-ratification-record).

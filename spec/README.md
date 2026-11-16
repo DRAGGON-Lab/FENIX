@@ -22,3 +22,7 @@ catalog is APPROVED. Negative capability fixtures are not exhaustive. The ratifi
 schemas and accepted canonicalization artifacts are unchanged; package
 implementation approval remains separate. See the
 [acceptance record](../docs/verification/ep01-rejections.md#human-pi-acceptance-recorded).
+
+The [P04 M0 ODE execution contract](execution/README.md) is **RATIFIED** by the
+human PI on 2026-11-16 at reviewed revision `67820ae`. It establishes sampling,
+accuracy and failure policies; native solver implementation approval is separate.
