@@ -1,0 +1,1117 @@
+{
+  "issue": 22,
+  "scope": "Native P07 source-linked Python ODE capture and verified typed results; human implementation review pending",
+  "recorded_at_utc": "2026-11-16T20:21:17.581144+00:00",
+  "base_revision": "da66b3cea2c997a28f2b79d45e5e05e4362d8d97",
+  "branch": "feat/22-python-results",
+  "dirty": true,
+  "source_fingerprint_policy": "SHA-256 over sorted path + NUL + exact bytes + NUL for source_file_sha256 keys; excludes this evidence pair to avoid self-reference",
+  "source_fingerprint_sha256": "c7815d854de24318bdf5e349556d90f4ac0a47194ecb1a6e8e3390b2c5ae7e9e",
+  "source_file_sha256": {
+    ".github/workflows/scaffold-smoke.yml": "adabc51f2003bc540e4784f9e918519a469e9848656a9f7eb6f21bf9d02c2132",
+    "PRODUCT.md": "ad56d6e60f726819e119d8c5e748dc67779391e2db70a16ee900a3f68e401afc",
+    "packages/python/README.md": "b9886d612f040c2ef0d1269114520f8a0ab0a3ca4731b4cdd1e65adbaab24ee1",
+    "packages/python/src/fenix/results.py": "be5b5cb8eb84aafce6da5e967e1b786838a69bea04687f9d4730cc596e8bd3e6",
+    "packages/python/tests/test_results.py": "595456737a1e2ecf7de93ef235cdb686997df0197a2336bda8707b8a4c83a0f9"
+  },
+  "environment": {
+    "python": "3.12.13 (main, Jun 23 2026, 15:54:40) [Clang 22.1.3 ]",
+    "platform": "macOS-15.7.9-x86_64-i386-64bit",
+    "uv": "uv 0.11.29 (901092ee1 2026-07-15 x86_64-apple-darwin)",
+    "julia": "1.10.13",
+    "distributions": {
+      "fenix-bio": "0.0.0",
+      "numpy": "2.5.5",
+      "scipy": "1.18.1",
+      "rfc8785": "0.1.4",
+      "ruff": "0.17.5",
+      "mypy": "2.4.1",
+      "jsonschema": "4.26.0",
+      "scipy-stubs": "1.18.1.1"
+    }
+  },
+  "baseline": {
+    "command": "uv sync --project packages/python --locked && uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -q",
+    "outcome": "PASS",
+    "exit_code": 0,
+    "tests": 69
+  },
+  "initial_red": {
+    "command": "packages/python/.venv/bin/python -m unittest discover -s packages/python/tests -p test_results.py -q",
+    "outcome": "FAIL",
+    "exit_code": 1,
+    "reason": "Expected ModuleNotFoundError: fenix.results before implementation"
+  },
+  "checks": [
+    {
+      "name": "artifact-audit",
+      "command": "python3 /tmp/fenix-22-artifact-audit.py",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.141,
+      "log_sha256": "1696fabf9e83cf3691a570e93bd99463b6a918b06fb64cf2f3a120cf4e257f4e",
+      "log_path": "/tmp/fenix-22-verification/artifact-audit.log",
+      "receipt_key": "artifact-audit",
+      "argv": [
+        "python3",
+        "/tmp/fenix-22-artifact-audit.py"
+      ],
+      "excerpt": "69bea04687f9d4730cc596e8bd3e6\",\n    \"sdist:tests/test_results.py\": \"595456737a1e2ecf7de93ef235cdb686997df0197a2336bda8707b8a4c83a0f9\",\n    \"sdist:README.md\": \"b9886d612f040c2ef0d1269114520f8a0ab0a3ca4731b4cdd1e65adbaab24ee1\",\n    \"sdist:pyproject.toml\": \"550e402647d5f8b56276c0c3602f318ed69e8a5e5ff06e511d5aca81ffa3c9b8\",\n    \"wheel:fenix/results.py\": \"be5b5cb8eb84aafce6da5e967e1b786838a69bea04687f9d4730cc596e8bd3e6\"\n  },\n  \"artifact_sha256\": {\n    \"packages/python/dist/fenix_bio-0.0.0.tar.gz\": \"dc1b46ff0aec1a50fe26b419d3a349fc09d3bce3ffdd23176d003f3e11049b34\",\n    \"packages/python/dist/fenix_bio-0.0.0-py3-none-any.whl\": \"625f618157026734eaaa7e217096219793dbe212dd37f54fc892c187cdfe62aa\"\n  }\n}\n"
+    },
+    {
+      "name": "build-final",
+      "command": "uv build --project packages/python --offline",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 2.453,
+      "log_sha256": "8c1e70ef6265c2538c92b96045e0c3106e4ec8a3823e98907ad710dc7a593474",
+      "log_path": "/tmp/fenix-22-verification/build-final.log",
+      "receipt_key": "build-final",
+      "argv": [
+        "uv",
+        "build",
+        "--project",
+        "packages/python",
+        "--offline"
+      ],
+      "excerpt": "ng 'fenix/results.py'\nadding 'fenix/bioir/__init__.py'\nadding 'fenix/bioir/_content.py'\nadding 'fenix/bioir/_decode.py'\nadding 'fenix/bioir/_documents.py'\nadding 'fenix/bioir/_json.py'\nadding 'fenix/fir/__init__.py'\nadding 'fenix/fir/_document.py'\nadding 'fenix/fir/_errors.py'\nadding 'fenix/fir/_model.py'\nadding 'fenix/fir/_validation.py'\nadding 'fenix_bio-0.0.0.dist-info/METADATA'\nadding 'fenix_bio-0.0.0.dist-info/WHEEL'\nadding 'fenix_bio-0.0.0.dist-info/top_level.txt'\nadding 'fenix_bio-0.0.0.dist-info/RECORD'\nremoving build/bdist.macosx-10.15-x86_64/wheel\nSuccessfully built packages/python/dist/fenix_bio-0.0.0.tar.gz\nSuccessfully built packages/python/dist/fenix_bio-0.0.0-py3-none-any.whl\n"
+    },
+    {
+      "name": "build",
+      "command": "uv build --project packages/python --offline",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 2.015,
+      "log_sha256": "f494405975ecd8f6bf856031a57444efce12209aa1a034a4d7414598bb9e8772",
+      "log_path": "/tmp/fenix-22-verification/build.log",
+      "receipt_key": "build",
+      "argv": [
+        "uv",
+        "build",
+        "--project",
+        "packages/python",
+        "--offline"
+      ],
+      "excerpt": "ng 'fenix/results.py'\nadding 'fenix/bioir/__init__.py'\nadding 'fenix/bioir/_content.py'\nadding 'fenix/bioir/_decode.py'\nadding 'fenix/bioir/_documents.py'\nadding 'fenix/bioir/_json.py'\nadding 'fenix/fir/__init__.py'\nadding 'fenix/fir/_document.py'\nadding 'fenix/fir/_errors.py'\nadding 'fenix/fir/_model.py'\nadding 'fenix/fir/_validation.py'\nadding 'fenix_bio-0.0.0.dist-info/METADATA'\nadding 'fenix_bio-0.0.0.dist-info/WHEEL'\nadding 'fenix_bio-0.0.0.dist-info/top_level.txt'\nadding 'fenix_bio-0.0.0.dist-info/RECORD'\nremoving build/bdist.macosx-10.15-x86_64/wheel\nSuccessfully built packages/python/dist/fenix_bio-0.0.0.tar.gz\nSuccessfully built packages/python/dist/fenix_bio-0.0.0-py3-none-any.whl\n"
+    },
+    {
+      "name": "diff-check",
+      "command": "git diff --check",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.04,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "log_path": "/tmp/fenix-22-verification/diff-check.log",
+      "receipt_key": "diff-check",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "excerpt": ""
+    },
+    {
+      "name": "harness",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache"
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.427,
+      "log_sha256": "cff226988ab974ec340d5bfa5d9ccca3c7f325e0c4c2aae5367ed17d7cdad873",
+      "log_path": "/tmp/fenix-22-verification/harness.log",
+      "receipt_key": "harness-launcher-env",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts/tests",
+        "-v"
+      ],
+      "excerpt": "import_requirements (test_check_repo.TestRepositoryHarness.test_claude_import_requirements) ... ok\ntest_duplicate_legacy_agent (test_check_repo.TestRepositoryHarness.test_duplicate_legacy_agent) ... ok\ntest_ignores_links_inside_code_fences (test_check_repo.TestRepositoryHarness.test_ignores_links_inside_code_fences) ... ok\ntest_missing_required_file (test_check_repo.TestRepositoryHarness.test_missing_required_file) ... ok\ntest_relative_links (test_check_repo.TestRepositoryHarness.test_relative_links) ... ok\ntest_valid_structure (test_check_repo.TestRepositoryHarness.test_valid_structure) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.052s\n\nOK\n"
+    },
+    {
+      "name": "harness",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.226,
+      "log_sha256": "65f961e748d7169fbdd575670e29e656ea415da69b0f00bb9e2079831ebea347",
+      "log_path": "/tmp/fenix-22-verification/harness.log",
+      "receipt_key": "harness",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts/tests",
+        "-v"
+      ],
+      "excerpt": "import_requirements (test_check_repo.TestRepositoryHarness.test_claude_import_requirements) ... ok\ntest_duplicate_legacy_agent (test_check_repo.TestRepositoryHarness.test_duplicate_legacy_agent) ... ok\ntest_ignores_links_inside_code_fences (test_check_repo.TestRepositoryHarness.test_ignores_links_inside_code_fences) ... ok\ntest_missing_required_file (test_check_repo.TestRepositoryHarness.test_missing_required_file) ... ok\ntest_relative_links (test_check_repo.TestRepositoryHarness.test_relative_links) ... ok\ntest_valid_structure (test_check_repo.TestRepositoryHarness.test_valid_structure) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.058s\n\nOK\n"
+    },
+    {
+      "name": "julia-package",
+      "command": "/tmp/julia-1.10.13/bin/julia --project=packages/julia -e \"using Pkg; Pkg.instantiate(); Pkg.test()\"",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 16.039,
+      "log_sha256": "e2e78de5341dfc3869726b44990e6033e6606f8e4f775644f028305def944000",
+      "log_path": "/tmp/fenix-22-verification/julia-package.log",
+      "receipt_key": "julia-package",
+      "argv": [
+        "/tmp/julia-1.10.13/bin/julia",
+        "--project=packages/julia",
+        "-e",
+        "using Pkg; Pkg.instantiate(); Pkg.test()"
+      ],
+      "excerpt": "f55250] Fenix v0.0.0 `~/Gonzalo/DRAGGONLab/FENIX/packages/julia`\n  [8dfed614] Test\n      Status `/private/var/folders/65/dt4l3nw13q57n8x9nlly46640000gn/T/jl_uXbGgx/Manifest.toml`\n  [b4f55250] Fenix v0.0.0 `~/Gonzalo/DRAGGONLab/FENIX/packages/julia`\n  [2a0f44e3] Base64\n  [b77e0a4c] InteractiveUtils\n  [56ddb016] Logging\n  [d6f4376e] Markdown\n  [9a3f8284] Random\n  [ea8e919c] SHA v0.7.0\n  [9e88b42a] Serialization\n  [8dfed614] Test\nPrecompiling packages...\n    958.5 ms  \u2713 Fenix\n  1 dependency successfully precompiled in 2 seconds. 1 already precompiled.\n     Testing Running tests...\nTest Summary:        | Pass  Total  Time\nFENIX Julia scaffold |    2      2  0.0s\n     Testing Fenix tests passed \n"
+    },
+    {
+      "name": "mypy",
+      "command": "uv run --project packages/python --locked --offline mypy --config-file packages/python/pyproject.toml",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache"
+      },
+      "exit_code": 1,
+      "outcome": "FAIL",
+      "elapsed_seconds": 0.318,
+      "log_sha256": "259f588b15850a63c74994102300a064fc52bd30ca4772889da5dc4dae2e0e7a",
+      "log_path": "/tmp/fenix-22-verification/mypy.log",
+      "receipt_key": "mypy-launcher-env",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "mypy",
+        "--config-file",
+        "packages/python/pyproject.toml"
+      ],
+      "excerpt": "Could not find platform dependent libraries <exec_prefix>\nTraceback (most recent call last):\n  File \"/Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/packages/python/.venv/bin/mypy\", line 4, in <module>\n    from mypy.__main__ import console_entry\nModuleNotFoundError: No module named 'mypy'\n"
+    },
+    {
+      "name": "mypy",
+      "command": "uv run --project packages/python --locked --offline mypy --config-file packages/python/pyproject.toml",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.742,
+      "log_sha256": "fe22d95914d7fdd98483ace256b7f2708db4be1255737e5d7cca4d16703ca242",
+      "log_path": "/tmp/fenix-22-verification/mypy.log",
+      "receipt_key": "mypy",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "mypy",
+        "--config-file",
+        "packages/python/pyproject.toml"
+      ],
+      "excerpt": "Success: no issues found in 14 source files\n"
+    },
+    {
+      "name": "native-content",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_content -v",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache"
+      },
+      "exit_code": 1,
+      "outcome": "FAIL",
+      "elapsed_seconds": 0.397,
+      "log_sha256": "1065238e2b145e3186bf7b379c2f3559977564ee449aea343b714e44d18dfc92",
+      "log_path": "/tmp/fenix-22-verification/native-content.log",
+      "receipt_key": "native-content-launcher-env",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "packages/python/tests_native_content",
+        "-v"
+      ],
+      "excerpt": "^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/gonzalovidal/.local/share/uv/python/cpython-3.12.13-macos-x86_64-none/lib/python3.12/unittest/loader.py\", line 339, in _get_module_from_name\n    __import__(name)\n  File \"/Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/packages/python/tests_native_content/test_projections.py\", line 8, in <module>\n    from adapter import ProjectionError, construct\n  File \"/Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/packages/python/tests_native_content/adapter.py\", line 9, in <module>\n    from fenix.bioir import (\nModuleNotFoundError: No module named 'fenix'\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (errors=1)\n"
+    },
+    {
+      "name": "native-content",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_content -v",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.287,
+      "log_sha256": "cb2820df846c7783443facf9ddd0b204c6fb6460c14cdf344accb927fb7a943f",
+      "log_path": "/tmp/fenix-22-verification/native-content.log",
+      "receipt_key": "native-content",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "packages/python/tests_native_content",
+        "-v"
+      ],
+      "excerpt": "test_approved_projections (test_projections.TestNativeProjections.test_approved_projections) ... ok\ntest_coverage_partition (test_projections.TestNativeProjections.test_coverage_partition) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.032s\n\nOK\n"
+    },
+    {
+      "name": "native-documents",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_documents -v",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache"
+      },
+      "exit_code": 1,
+      "outcome": "FAIL",
+      "elapsed_seconds": 0.394,
+      "log_sha256": "904320bc929ae91a2145e39febf1d1dbf6dcc5a2c588b92971fe15f34adf141e",
+      "log_path": "/tmp/fenix-22-verification/native-documents.log",
+      "receipt_key": "native-documents-launcher-env",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "packages/python/tests_native_documents",
+        "-v"
+      ],
+      "excerpt": ".12.13-macos-x86_64-none/lib/python3.12/unittest/loader.py\", line 396, in _find_test_path\n    module = self._get_module_from_name(name)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/gonzalovidal/.local/share/uv/python/cpython-3.12.13-macos-x86_64-none/lib/python3.12/unittest/loader.py\", line 339, in _get_module_from_name\n    __import__(name)\n  File \"/Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/packages/python/tests_native_documents/test_conformance.py\", line 13, in <module>\n    from jsonschema import Draft7Validator\nModuleNotFoundError: No module named 'jsonschema'\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (errors=1)\n"
+    },
+    {
+      "name": "native-documents",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_documents -v",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.376,
+      "log_sha256": "e6aa4300509e3c0cdb588d42729fc7f587eb3b7ab94cbafda2a821e4cdca2d01",
+      "log_path": "/tmp/fenix-22-verification/native-documents.log",
+      "receipt_key": "native-documents",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "packages/python/tests_native_documents",
+        "-v"
+      ],
+      "excerpt": "test_original_92 (test_conformance.TestNativeConformance.test_original_92) ... ok\ntest_rejection_catalog_97_p01 (test_conformance.TestNativeConformance.test_rejection_catalog_97_p01) ... ok\ntest_serialized_envelopes_match_schema (test_conformance.TestNativeConformance.test_serialized_envelopes_match_schema) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.114s\n\nOK\n"
+    },
+    {
+      "name": "native-fir",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_fir -v",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache"
+      },
+      "exit_code": 1,
+      "outcome": "FAIL",
+      "elapsed_seconds": 0.394,
+      "log_sha256": "038359c07e97146160a09f1c14b62fec0b16734bfa06ff8cc49e30420f281faf",
+      "log_path": "/tmp/fenix-22-verification/native-fir.log",
+      "receipt_key": "native-fir-launcher-env",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "packages/python/tests_native_fir",
+        "-v"
+      ],
+      "excerpt": "-3.12.13-macos-x86_64-none/lib/python3.12/unittest/loader.py\", line 396, in _find_test_path\n    module = self._get_module_from_name(name)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/gonzalovidal/.local/share/uv/python/cpython-3.12.13-macos-x86_64-none/lib/python3.12/unittest/loader.py\", line 339, in _get_module_from_name\n    __import__(name)\n  File \"/Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/packages/python/tests_native_fir/test_fir_conformance.py\", line 13, in <module>\n    from jsonschema import Draft7Validator\nModuleNotFoundError: No module named 'jsonschema'\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (errors=1)\n"
+    },
+    {
+      "name": "native-fir",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_fir -v",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.661,
+      "log_sha256": "f3cbc6808be7bbe99765c57d37c06e8a80b0b3cf593ee741335d0c4d082a05d6",
+      "log_path": "/tmp/fenix-22-verification/native-fir.log",
+      "receipt_key": "native-fir",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "packages/python/tests_native_fir",
+        "-v"
+      ],
+      "excerpt": "test_all_207_rejection_cases (test_fir_conformance.TestNativeFIR.test_all_207_rejection_cases) ... ok\ntest_canonical_catalog (test_fir_conformance.TestNativeFIR.test_canonical_catalog) ... ok\ntest_compiler_producer_controls (test_fir_conformance.TestNativeFIR.test_compiler_producer_controls) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.381s\n\nOK\n"
+    },
+    {
+      "name": "observed-captures",
+      "command": "packages/python/.venv/bin/python /tmp/fenix-22-capture.py",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.656,
+      "log_sha256": "cb4a7db7ead71bb955f956455437b99df3b6dbc73d3fc8849c77aca864d150d9",
+      "log_path": "/tmp/fenix-22-verification/observed-captures.log",
+      "receipt_key": "observed-captures",
+      "argv": [
+        "packages/python/.venv/bin/python",
+        "/tmp/fenix-22-capture.py"
+      ],
+      "excerpt": "10.0\n        ],\n        \"state_ids\": [\n          \"x\"\n        ],\n        \"state_units\": [\n          \"molecule\"\n        ],\n        \"state_values\": [\n          [\n            0.0\n          ],\n          [\n            9.516258196466476\n          ],\n          [\n            63.21205588285552\n          ]\n        ],\n        \"observable_ids\": [\n          \"amount_x\"\n        ],\n        \"observable_state_ids\": [\n          \"x\"\n        ],\n        \"observable_units\": [\n          \"molecule\"\n        ],\n        \"observable_values\": [\n          [\n            0.0\n          ],\n          [\n            9.516258196466476\n          ],\n          [\n            63.21205588285552\n          ]\n        ]\n      }\n    }\n  ]\n}\n"
+    },
+    {
+      "name": "p07-reference-audit",
+      "command": "uv run --project packages/python --locked --offline python spec/results/proposals/review_p07.py",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.278,
+      "log_sha256": "3808ed847d06971191cc9adf90552b82929ffb02d949edbca689e3a6011aba8d",
+      "log_path": "/tmp/fenix-22-verification/p07-reference-audit.log",
+      "receipt_key": "p07-reference-audit",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "python",
+        "spec/results/proposals/review_p07.py"
+      ],
+      "excerpt": "les.experiment.json\": \"32ba821287777f12dc2a1ddef7eef4103ad5872c7098e39e60c7a21490cb6622\",\n    \"multi-observables.fir.json\": \"184b1eb97ee1c8342f7238015780dd5d34ff4365f8356280348a295304da1e4d\",\n    \"multi-observables.manifest.json\": \"821b2685abad693a77c6ad1d9933c5602aaf818d79355c995f5d5c39a1329543\",\n    \"multi-observables.result.json\": \"cc6882d6240bdc5bbd436dacb7be80722edc4ee852822d182282116574b1199b\",\n    \"numeric-tokens.json\": \"f4932f2b2eaeb2768a3bacfc4a2fa7895f7067ed8db94a5c27eb534dbd793757\",\n    \"zero-only.manifest.json\": \"5f7d08715dac20e4577e4333b102b979138d8721b55e4767ae463032505bce3b\",\n    \"zero-only.result.json\": \"13a2de6b42ae7dff4f78bbce9a2fc24df2ba8ceeb23b3f6c52f9553feb0a0c69\"\n  }\n}\n"
+    },
+    {
+      "name": "package",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache"
+      },
+      "exit_code": 1,
+      "outcome": "FAIL",
+      "elapsed_seconds": 0.45,
+      "log_sha256": "a980c202b915c9aa6bab11cc7bebe76ef1282d7a6e866ad8921659e2d8bdca4d",
+      "log_path": "/tmp/fenix-22-verification/package.log",
+      "receipt_key": "package-launcher-env",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "packages/python/tests",
+        "-v"
+      ],
+      "excerpt": " \"/Users/gonzalovidal/.local/share/uv/python/cpython-3.12.13-macos-x86_64-none/lib/python3.12/unittest/loader.py\", line 396, in _find_test_path\n    module = self._get_module_from_name(name)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/gonzalovidal/.local/share/uv/python/cpython-3.12.13-macos-x86_64-none/lib/python3.12/unittest/loader.py\", line 339, in _get_module_from_name\n    __import__(name)\n  File \"/Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/packages/python/tests/test_smoke.py\", line 5, in <module>\n    import fenix\nModuleNotFoundError: No module named 'fenix'\n\n\n----------------------------------------------------------------------\nRan 9 tests in 0.001s\n\nFAILED (errors=9)\n"
+    },
+    {
+      "name": "package",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 4.09,
+      "log_sha256": "33a3f453cf087bed5c740d68efe63191a203deb9b5b807e361dd807695e4db3f",
+      "log_path": "/tmp/fenix-22-verification/package.log",
+      "receipt_key": "package",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "packages/python/tests",
+        "-v"
+      ],
+      "excerpt": "t_results.TestResults.test_source_and_fir_references_all_fields_and_same_fir_context) ... ok\ntest_strict_raw_json_both_artifacts (test_results.TestResults.test_strict_raw_json_both_artifacts) ... ok\ntest_zero_capture_avoids_solver_and_clock_adjustments (test_results.TestResults.test_zero_capture_avoids_solver_and_clock_adjustments) ... ok\ntest_zero_counters_and_initial_zero_sign (test_results.TestResults.test_zero_counters_and_initial_zero_sign) ... ok\ntest_content_api_boundary (test_smoke.TestScaffold.test_content_api_boundary) ... ok\ntest_version (test_smoke.TestScaffold.test_version) ... ok\n\n----------------------------------------------------------------------\nRan 88 tests in 3.096s\n\nOK\n"
+    },
+    {
+      "name": "protected-inputs",
+      "command": "python3 /tmp/fenix-22-protected.py",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 5.655,
+      "log_sha256": "aa86c0c036fa7ff5013ba997b7d4b6143abfc8eb93157970d00a344a5b1c0fd2",
+      "log_path": "/tmp/fenix-22-verification/protected-inputs.log",
+      "receipt_key": "protected-inputs",
+      "argv": [
+        "python3",
+        "/tmp/fenix-22-protected.py"
+      ],
+      "excerpt": ".json\": \"13a2de6b42ae7dff4f78bbce9a2fc24df2ba8ceeb23b3f6c52f9553feb0a0c69\",\n    \"spec/results/proposals/ode-result-m0.schema.json\": \"9676e0f74ccd22ad79828227f5dc704001e39f020062e4fea58bfd1601c3f534\",\n    \"spec/results/proposals/review_p07.js\": \"616513961648cfad737948c2f62fd7ffbe0672d8bcb1fdb6a7c2b8335f8efe1f\",\n    \"spec/results/proposals/review_p07.py\": \"724f6bd6e181ac4bbf9bb507cca66f37a7e02b2b0fce3fd6adf685f14884405c\",\n    \"spec/results/proposals/review_p07_refinements.js\": \"5c7282b37822bd5b58ff85783eb5bc1885cd2b261b65e74f96eeede8ed7d4510\",\n    \"spec/results/proposals/run-manifest-m0.schema.json\": \"8e1c9236f33801ff81a12900d386c531295830ebca22ad2f09b9deb007d6264d\"\n  },\n  \"outcome\": \"PASS\"\n}\n"
+    },
+    {
+      "name": "repository-final",
+      "command": "uv run --project packages/python --locked --offline python scripts/check_repo.py",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.584,
+      "log_sha256": "8e8c8f9c13bdb5c2b4d3f55f913fc3adac04cb5fc5d4b3b77e976b236487fb49",
+      "log_path": "/tmp/fenix-22-verification/repository-final.log",
+      "receipt_key": "repository-final",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "python",
+        "scripts/check_repo.py"
+      ],
+      "excerpt": "Repository harness checks passed (not scientific conformance).\n"
+    },
+    {
+      "name": "repository",
+      "command": "uv run --project packages/python --locked --offline python scripts/check_repo.py",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache"
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.581,
+      "log_sha256": "e6c1b3de362e32d11a83cf3c0590796367ee3166da0e905b7ea27133bcbe78cc",
+      "log_path": "/tmp/fenix-22-verification/repository.log",
+      "receipt_key": "repository-launcher-env",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "python",
+        "scripts/check_repo.py"
+      ],
+      "excerpt": "Could not find platform dependent libraries <exec_prefix>\nRepository harness checks passed (not scientific conformance).\n"
+    },
+    {
+      "name": "repository",
+      "command": "uv run --project packages/python --locked --offline python scripts/check_repo.py",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.318,
+      "log_sha256": "8e8c8f9c13bdb5c2b4d3f55f913fc3adac04cb5fc5d4b3b77e976b236487fb49",
+      "log_path": "/tmp/fenix-22-verification/repository.log",
+      "receipt_key": "repository",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "python",
+        "scripts/check_repo.py"
+      ],
+      "excerpt": "Repository harness checks passed (not scientific conformance).\n"
+    },
+    {
+      "name": "ruff-check",
+      "command": "uv run --project packages/python --locked --offline ruff check packages/python/src/fenix/bioir packages/python/src/fenix/fir packages/python/src/fenix/compiler.py packages/python/src/fenix/execution.py packages/python/src/fenix/results.py packages/python/tests/test_results.py packages/python/tests/test_execution.py packages/python/tests/test_fir.py packages/python/tests/test_fir_validation.py packages/python/tests/test_compiler.py packages/python/tests/test_bioir.py packages/python/tests/test_json.py packages/python/tests/test_documents.py packages/python/tests_native_content packages/python/tests_native_documents packages/python/tests_native_fir",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.121,
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "log_path": "/tmp/fenix-22-verification/ruff-check.log",
+      "receipt_key": "ruff-check",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "ruff",
+        "check",
+        "packages/python/src/fenix/bioir",
+        "packages/python/src/fenix/fir",
+        "packages/python/src/fenix/compiler.py",
+        "packages/python/src/fenix/execution.py",
+        "packages/python/src/fenix/results.py",
+        "packages/python/tests/test_results.py",
+        "packages/python/tests/test_execution.py",
+        "packages/python/tests/test_fir.py",
+        "packages/python/tests/test_fir_validation.py",
+        "packages/python/tests/test_compiler.py",
+        "packages/python/tests/test_bioir.py",
+        "packages/python/tests/test_json.py",
+        "packages/python/tests/test_documents.py",
+        "packages/python/tests_native_content",
+        "packages/python/tests_native_documents",
+        "packages/python/tests_native_fir"
+      ],
+      "excerpt": "All checks passed!\n"
+    },
+    {
+      "name": "ruff-format-final",
+      "command": "uv run --project packages/python --locked --offline ruff format --check packages/python/src/fenix/bioir packages/python/src/fenix/fir packages/python/src/fenix/compiler.py packages/python/src/fenix/execution.py packages/python/src/fenix/results.py packages/python/tests/test_results.py packages/python/tests/test_execution.py packages/python/tests/test_fir.py packages/python/tests/test_fir_validation.py packages/python/tests/test_compiler.py packages/python/tests/test_bioir.py packages/python/tests/test_json.py packages/python/tests/test_documents.py packages/python/tests_native_content packages/python/tests_native_documents packages/python/tests_native_fir",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.273,
+      "log_sha256": "7715b02781372f8741fb309aee97a6483e689c9039f0d78081dd910f70b0256e",
+      "log_path": "/tmp/fenix-22-verification/ruff-format-final.log",
+      "receipt_key": "ruff-format-final",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "ruff",
+        "format",
+        "--check",
+        "packages/python/src/fenix/bioir",
+        "packages/python/src/fenix/fir",
+        "packages/python/src/fenix/compiler.py",
+        "packages/python/src/fenix/execution.py",
+        "packages/python/src/fenix/results.py",
+        "packages/python/tests/test_results.py",
+        "packages/python/tests/test_execution.py",
+        "packages/python/tests/test_fir.py",
+        "packages/python/tests/test_fir_validation.py",
+        "packages/python/tests/test_compiler.py",
+        "packages/python/tests/test_bioir.py",
+        "packages/python/tests/test_json.py",
+        "packages/python/tests/test_documents.py",
+        "packages/python/tests_native_content",
+        "packages/python/tests_native_documents",
+        "packages/python/tests_native_fir"
+      ],
+      "excerpt": "25 files already formatted\n"
+    },
+    {
+      "name": "ruff-format",
+      "command": "uv run --project packages/python --locked --offline ruff format --check packages/python/src/fenix/bioir packages/python/src/fenix/fir packages/python/src/fenix/compiler.py packages/python/src/fenix/execution.py packages/python/src/fenix/results.py packages/python/tests/test_results.py packages/python/tests/test_execution.py packages/python/tests/test_fir.py packages/python/tests/test_fir_validation.py packages/python/tests/test_compiler.py packages/python/tests/test_bioir.py packages/python/tests/test_json.py packages/python/tests/test_documents.py packages/python/tests_native_content packages/python/tests_native_documents packages/python/tests_native_fir",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 1,
+      "outcome": "FAIL",
+      "elapsed_seconds": 0.111,
+      "log_sha256": "40bc5d53abb3d8a4f6cec77e7c12abf96396141d023e4b36ed2dfe47950b1118",
+      "log_path": "/tmp/fenix-22-verification/ruff-format.log",
+      "receipt_key": "ruff-format",
+      "argv": [
+        "uv",
+        "run",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "ruff",
+        "format",
+        "--check",
+        "packages/python/src/fenix/bioir",
+        "packages/python/src/fenix/fir",
+        "packages/python/src/fenix/compiler.py",
+        "packages/python/src/fenix/execution.py",
+        "packages/python/src/fenix/results.py",
+        "packages/python/tests/test_results.py",
+        "packages/python/tests/test_execution.py",
+        "packages/python/tests/test_fir.py",
+        "packages/python/tests/test_fir_validation.py",
+        "packages/python/tests/test_compiler.py",
+        "packages/python/tests/test_bioir.py",
+        "packages/python/tests/test_json.py",
+        "packages/python/tests/test_documents.py",
+        "packages/python/tests_native_content",
+        "packages/python/tests_native_documents",
+        "packages/python/tests_native_fir"
+      ],
+      "excerpt": "unformatted: File would be reformatted\n  --> packages/python/tests/test_results.py:62:36\n   |\n61 |     def load(self, m, r, e=None, **kwargs):\n   -         return RunRecord.from_json(m, r, experiment=example()[0] if e is None else e, **kwargs)\n62 +         return RunRecord.from_json(\n63 +             m, r, experiment=example()[0] if e is None else e, **kwargs\n64 +         )\n65 |\n   |\n\n1 file would be reformatted, 24 files already formatted\n"
+    },
+    {
+      "name": "wheel-install-final",
+      "command": "uv pip install --python /tmp/fenix-22-wheel/bin/python --offline --no-deps --reinstall packages/python/dist/fenix_bio-0.0.0-py3-none-any.whl",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.133,
+      "log_sha256": "eb8888e6801b241e376453290078d462e7e01d27a98b649eafb02d1bca8f0809",
+      "log_path": "/tmp/fenix-22-verification/wheel-install-final.log",
+      "receipt_key": "wheel-install-final",
+      "argv": [
+        "uv",
+        "pip",
+        "install",
+        "--python",
+        "/tmp/fenix-22-wheel/bin/python",
+        "--offline",
+        "--no-deps",
+        "--reinstall",
+        "packages/python/dist/fenix_bio-0.0.0-py3-none-any.whl"
+      ],
+      "excerpt": "Using Python 3.12.13 environment at: /tmp/fenix-22-wheel\nResolved 1 package in 5ms\nPrepared 1 package in 13ms\nUninstalled 1 package in 7ms\nInstalled 1 package in 2ms\n ~ fenix-bio==0.0.0 (from file:///Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/packages/python/dist/fenix_bio-0.0.0-py3-none-any.whl)\n"
+    },
+    {
+      "name": "wheel-install",
+      "command": "uv pip install --python /tmp/fenix-22-wheel/bin/python --offline --no-deps packages/python/dist/fenix_bio-0.0.0-py3-none-any.whl",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.052,
+      "log_sha256": "1c48ce7e08e7dcff38eeb01d4933add7e0347afed4d65523c2d0b43138a7aa40",
+      "log_path": "/tmp/fenix-22-verification/wheel-install.log",
+      "receipt_key": "wheel-install",
+      "argv": [
+        "uv",
+        "pip",
+        "install",
+        "--python",
+        "/tmp/fenix-22-wheel/bin/python",
+        "--offline",
+        "--no-deps",
+        "packages/python/dist/fenix_bio-0.0.0-py3-none-any.whl"
+      ],
+      "excerpt": "Using Python 3.12.13 environment at: /tmp/fenix-22-wheel\nResolved 1 package in 7ms\nPrepared 1 package in 14ms\nInstalled 1 package in 2ms\n + fenix-bio==0.0.0 (from file:///Users/gonzalovidal/Gonzalo/DRAGGONLab/FENIX/packages/python/dist/fenix_bio-0.0.0-py3-none-any.whl)\n"
+    },
+    {
+      "name": "wheel-package-final",
+      "command": "/tmp/fenix-22-wheel/bin/python -m unittest discover -s packages/python/tests -v",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 3.767,
+      "log_sha256": "2772d44ee937fc0b998b276cb16308def0326ee6d234077e77ab79f8f8bd2971",
+      "log_path": "/tmp/fenix-22-verification/wheel-package-final.log",
+      "receipt_key": "wheel-package-final",
+      "argv": [
+        "/tmp/fenix-22-wheel/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "packages/python/tests",
+        "-v"
+      ],
+      "excerpt": "t_results.TestResults.test_source_and_fir_references_all_fields_and_same_fir_context) ... ok\ntest_strict_raw_json_both_artifacts (test_results.TestResults.test_strict_raw_json_both_artifacts) ... ok\ntest_zero_capture_avoids_solver_and_clock_adjustments (test_results.TestResults.test_zero_capture_avoids_solver_and_clock_adjustments) ... ok\ntest_zero_counters_and_initial_zero_sign (test_results.TestResults.test_zero_counters_and_initial_zero_sign) ... ok\ntest_content_api_boundary (test_smoke.TestScaffold.test_content_api_boundary) ... ok\ntest_version (test_smoke.TestScaffold.test_version) ... ok\n\n----------------------------------------------------------------------\nRan 88 tests in 3.133s\n\nOK\n"
+    },
+    {
+      "name": "wheel-package",
+      "command": "/tmp/fenix-22-wheel/bin/python -m unittest discover -s packages/python/tests -v",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 4.512,
+      "log_sha256": "8e1755c6a27d6f1d90a074fc291e9c8ef18bcdbc74e420ca8b34a05722d3dfb8",
+      "log_path": "/tmp/fenix-22-verification/wheel-package.log",
+      "receipt_key": "wheel-package",
+      "argv": [
+        "/tmp/fenix-22-wheel/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "packages/python/tests",
+        "-v"
+      ],
+      "excerpt": "t_results.TestResults.test_source_and_fir_references_all_fields_and_same_fir_context) ... ok\ntest_strict_raw_json_both_artifacts (test_results.TestResults.test_strict_raw_json_both_artifacts) ... ok\ntest_zero_capture_avoids_solver_and_clock_adjustments (test_results.TestResults.test_zero_capture_avoids_solver_and_clock_adjustments) ... ok\ntest_zero_counters_and_initial_zero_sign (test_results.TestResults.test_zero_counters_and_initial_zero_sign) ... ok\ntest_content_api_boundary (test_smoke.TestScaffold.test_content_api_boundary) ... ok\ntest_version (test_smoke.TestScaffold.test_version) ... ok\n\n----------------------------------------------------------------------\nRan 88 tests in 3.277s\n\nOK\n"
+    },
+    {
+      "name": "wheel-provenance-final",
+      "command": "/tmp/fenix-22-wheel/bin/python /tmp/fenix-22-wheel-provenance.py",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 1.184,
+      "log_sha256": "119c39e5c50d470ae3cf8e57018c91c87204ec258dde7eb05a2c0a9e481377f4",
+      "log_path": "/tmp/fenix-22-verification/wheel-provenance-final.log",
+      "receipt_key": "wheel-provenance-final",
+      "argv": [
+        "/tmp/fenix-22-wheel/bin/python",
+        "/tmp/fenix-22-wheel-provenance.py"
+      ],
+      "excerpt": "{\n  \"python\": \"3.12.13 (main, Jun 23 2026, 15:54:40) [Clang 22.1.3 ]\",\n  \"installed_results_path\": \"/private/tmp/fenix-22-wheel/lib/python3.12/site-packages/fenix/results.py\",\n  \"source_sha256\": \"be5b5cb8eb84aafce6da5e967e1b786838a69bea04687f9d4730cc596e8bd3e6\",\n  \"installed_sha256\": \"be5b5cb8eb84aafce6da5e967e1b786838a69bea04687f9d4730cc596e8bd3e6\",\n  \"distributions\": [\n    [\n      \"fenix-bio\",\n      \"0.0.0\"\n    ],\n    [\n      \"numpy\",\n      \"2.5.5\"\n    ],\n    [\n      \"rfc8785\",\n      \"0.1.4\"\n    ],\n    [\n      \"scipy\",\n      \"1.18.1\"\n    ]\n  ],\n  \"development_dependencies_absent\": true\n}\n"
+    },
+    {
+      "name": "wheel-provenance",
+      "command": "/tmp/fenix-22-wheel/bin/python /tmp/fenix-22-wheel-provenance.py",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 18.593,
+      "log_sha256": "119c39e5c50d470ae3cf8e57018c91c87204ec258dde7eb05a2c0a9e481377f4",
+      "log_path": "/tmp/fenix-22-verification/wheel-provenance.log",
+      "receipt_key": "wheel-provenance",
+      "argv": [
+        "/tmp/fenix-22-wheel/bin/python",
+        "/tmp/fenix-22-wheel-provenance.py"
+      ],
+      "excerpt": "{\n  \"python\": \"3.12.13 (main, Jun 23 2026, 15:54:40) [Clang 22.1.3 ]\",\n  \"installed_results_path\": \"/private/tmp/fenix-22-wheel/lib/python3.12/site-packages/fenix/results.py\",\n  \"source_sha256\": \"be5b5cb8eb84aafce6da5e967e1b786838a69bea04687f9d4730cc596e8bd3e6\",\n  \"installed_sha256\": \"be5b5cb8eb84aafce6da5e967e1b786838a69bea04687f9d4730cc596e8bd3e6\",\n  \"distributions\": [\n    [\n      \"fenix-bio\",\n      \"0.0.0\"\n    ],\n    [\n      \"numpy\",\n      \"2.5.5\"\n    ],\n    [\n      \"rfc8785\",\n      \"0.1.4\"\n    ],\n    [\n      \"scipy\",\n      \"1.18.1\"\n    ]\n  ],\n  \"development_dependencies_absent\": true\n}\n"
+    },
+    {
+      "name": "wheel-runtime-export",
+      "command": "uv export --project packages/python --locked --offline --no-dev --no-emit-project -o /tmp/fenix-22-runtime.txt",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.031,
+      "log_sha256": "ed8fd68737535c907b14428492a76337c028d4e6a1e83f957ca35174c9b9cfda",
+      "log_path": "/tmp/fenix-22-verification/wheel-runtime-export.log",
+      "receipt_key": "wheel-runtime-export",
+      "argv": [
+        "uv",
+        "export",
+        "--project",
+        "packages/python",
+        "--locked",
+        "--offline",
+        "--no-dev",
+        "--no-emit-project",
+        "-o",
+        "/tmp/fenix-22-runtime.txt"
+      ],
+      "excerpt": "\\\n    --hash=sha256:e6fb6a55cc0ba97b59a1f288fb86dc6fce8bdfc0fffcbfd015e3a954bf2a2d93 \\\n    --hash=sha256:e708533e8b2ae2497d65346538a7dcc92814410b25b81432eac66de0f2af8265 \\\n    --hash=sha256:ea324d9dd34c38bfb9bec8ca4d1b407db97dbb74029f566b8e322b1b6fe56fe6 \\\n    --hash=sha256:eb0dfcf4e28a99c12c999744a2ff67c9b06200e20401c7c88186e33552a46331 \\\n    --hash=sha256:eda632a7981f69730d6281f451db9c1c370993a2c0d7ddb43e2a809a2862b83a \\\n    --hash=sha256:f29633129f9fa7e88a3f0fca835de2d030bfc9643f7799e1a0c46cee24d38fc7 \\\n    --hash=sha256:f55fa87b6c612ecd6b058f167c53231b1d14e412efe361d3d6e38b3631c73218 \\\n    --hash=sha256:fdaf5ea890a6183d0565f51a61799d67081bd5b1cf03c5f4b3fd3732108625c9\n    # via fenix-bio\n"
+    },
+    {
+      "name": "wheel-runtime-install",
+      "command": "uv pip install --python /tmp/fenix-22-wheel/bin/python --offline --require-hashes -r /tmp/fenix-22-runtime.txt",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.168,
+      "log_sha256": "c59d09e4d3b42fe05c7ea89d7f8040c55e0ad409ded67f6b0ab51bbc518d494e",
+      "log_path": "/tmp/fenix-22-verification/wheel-runtime-install.log",
+      "receipt_key": "wheel-runtime-install",
+      "argv": [
+        "uv",
+        "pip",
+        "install",
+        "--python",
+        "/tmp/fenix-22-wheel/bin/python",
+        "--offline",
+        "--require-hashes",
+        "-r",
+        "/tmp/fenix-22-runtime.txt"
+      ],
+      "excerpt": "Using Python 3.12.13 environment at: /tmp/fenix-22-wheel\nResolved 3 packages in 7ms\nInstalled 3 packages in 69ms\n + numpy==2.5.5\n + rfc8785==0.1.4\n + scipy==1.18.1\n"
+    },
+    {
+      "name": "wheel-venv",
+      "command": "uv venv --python 3.12 --offline /tmp/fenix-22-wheel",
+      "environment_overrides": {
+        "UV_CACHE_DIR": "/tmp/fenix-uv-cache",
+        "__PYVENV_LAUNCHER__": null
+      },
+      "exit_code": 0,
+      "outcome": "PASS",
+      "elapsed_seconds": 0.025,
+      "log_sha256": "1f6b94e0483d682cdebc45894390e51f30ee3b5a477b109af0da8b93dbddffed",
+      "log_path": "/tmp/fenix-22-verification/wheel-venv.log",
+      "receipt_key": "wheel-venv",
+      "argv": [
+        "uv",
+        "venv",
+        "--python",
+        "3.12",
+        "--offline",
+        "/tmp/fenix-22-wheel"
+      ],
+      "excerpt": "Using CPython 3.12.13\nCreating virtual environment at: /tmp/fenix-22-wheel\nActivate with: source /tmp/fenix-22-wheel/bin/activate\n"
+    }
+  ],
+  "input_sha256": {
+    "packages/python/pyproject.toml": "550e402647d5f8b56276c0c3602f318ed69e8a5e5ff06e511d5aca81ffa3c9b8",
+    "packages/python/src/fenix/execution.py": "103f464fa0be14a02b7ce6968e17f4cdfe9c12e5ecd273d14f4633c45604593e",
+    "packages/python/uv.lock": "0a02d80325600c4610e8541b3255f5ab7b283438e6bb04c02348a9d2ca00cfb8",
+    "spec/bioir/proposals/examples/design.json": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f",
+    "spec/bioir/proposals/examples/experiment.json": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906",
+    "spec/fir/proposals/examples/sources/no-observables-experiment.json": "f43aa8c9fe3d3417d57865a7cd6c44a714f90fefeb5fdf17b24a027783731a54",
+    "spec/results/README.md": "2dc08e993dbd4c52e13a0803a9b9774811b8f722dbae4d31e839e9c92f905460",
+    "spec/results/proposals/ADR-P07.md": "22f23142ee64d2444f938fa7d5cf98b6a69ec611fa82faddb13dbe619438434a",
+    "spec/results/proposals/examples/README.md": "2690167d0f43fe29db26093be536cb3a0dedbb623b1c265b78cf2dd94257fe1f",
+    "spec/results/proposals/examples/checksums.json": "f41aed4b09f515ddb099c427be3dcdefa8cba24aa534211ac82f15139dfdd59a",
+    "spec/results/proposals/examples/empty-observables.manifest.json": "bafb373e4a6a009d30ea97f0b5b5aa352dfa495498069b673e969066086f3be1",
+    "spec/results/proposals/examples/empty-observables.result.json": "64a80ee09c914567bd9a207c8731e02ea4ed5812dfcae16d6438803d2e5b2711",
+    "spec/results/proposals/examples/late-first.manifest.json": "bef9f40b4adf9db8bee0672881863f3674be6f83e62893a3ec6e062fe4314bfa",
+    "spec/results/proposals/examples/late-first.result.json": "318f9ceba3f7b2a8cf5872ef64762340b85c9b0265ba4d68ad0a056753487ca1",
+    "spec/results/proposals/examples/multi-observables.experiment.json": "32ba821287777f12dc2a1ddef7eef4103ad5872c7098e39e60c7a21490cb6622",
+    "spec/results/proposals/examples/multi-observables.fir.json": "184b1eb97ee1c8342f7238015780dd5d34ff4365f8356280348a295304da1e4d",
+    "spec/results/proposals/examples/multi-observables.manifest.json": "821b2685abad693a77c6ad1d9933c5602aaf818d79355c995f5d5c39a1329543",
+    "spec/results/proposals/examples/multi-observables.result.json": "cc6882d6240bdc5bbd436dacb7be80722edc4ee852822d182282116574b1199b",
+    "spec/results/proposals/examples/numeric-tokens.json": "f4932f2b2eaeb2768a3bacfc4a2fa7895f7067ed8db94a5c27eb534dbd793757",
+    "spec/results/proposals/examples/zero-only.manifest.json": "5f7d08715dac20e4577e4333b102b979138d8721b55e4767ae463032505bce3b",
+    "spec/results/proposals/examples/zero-only.result.json": "13a2de6b42ae7dff4f78bbce9a2fc24df2ba8ceeb23b3f6c52f9553feb0a0c69",
+    "spec/results/proposals/ode-result-m0.schema.json": "9676e0f74ccd22ad79828227f5dc704001e39f020062e4fea58bfd1601c3f534",
+    "spec/results/proposals/review_p07.js": "616513961648cfad737948c2f62fd7ffbe0672d8bcb1fdb6a7c2b8335f8efe1f",
+    "spec/results/proposals/review_p07.py": "724f6bd6e181ac4bbf9bb507cca66f37a7e02b2b0fce3fd6adf685f14884405c",
+    "spec/results/proposals/review_p07_refinements.js": "5c7282b37822bd5b58ff85783eb5bc1885cd2b261b65e74f96eeede8ed7d4510",
+    "spec/results/proposals/run-manifest-m0.schema.json": "8e1c9236f33801ff81a12900d386c531295830ebca22ad2f09b9deb007d6264d"
+  },
+  "protected_inputs": {
+    "outcome": "PASS",
+    "base": "da66b3cea2c997a28f2b79d45e5e05e4362d8d97",
+    "existing_files_checked": 524,
+    "exception_paths": [
+      ".github/workflows/scaffold-smoke.yml",
+      "PRODUCT.md",
+      "packages/python/README.md"
+    ],
+    "hash_catalog_sha256": "1f905aec7e92b4c3c0dbd63e1789373ad28d0b56015ed21a2a0fe3f59c11f931",
+    "full_audit_log_sha256": "aa86c0c036fa7ff5013ba997b7d4b6143abfc8eb93157970d00a344a5b1c0fd2"
+  },
+  "artifact_sha256": {
+    "packages/python/dist/fenix_bio-0.0.0.tar.gz": "dc1b46ff0aec1a50fe26b419d3a349fc09d3bce3ffdd23176d003f3e11049b34",
+    "packages/python/dist/fenix_bio-0.0.0-py3-none-any.whl": "625f618157026734eaaa7e217096219793dbe212dd37f54fc892c187cdfe62aa"
+  },
+  "runtime_export_sha256": "aae37121254a3269faa28af5dbf478b989fb4f62217bd002b1afdf182381eba8",
+  "wheel_provenance": {
+    "python": "3.12.13 (main, Jun 23 2026, 15:54:40) [Clang 22.1.3 ]",
+    "installed_results_path": "/private/tmp/fenix-22-wheel/lib/python3.12/site-packages/fenix/results.py",
+    "source_sha256": "be5b5cb8eb84aafce6da5e967e1b786838a69bea04687f9d4730cc596e8bd3e6",
+    "installed_sha256": "be5b5cb8eb84aafce6da5e967e1b786838a69bea04687f9d4730cc596e8bd3e6",
+    "distributions": [
+      [
+        "fenix-bio",
+        "0.0.0"
+      ],
+      [
+        "numpy",
+        "2.5.5"
+      ],
+      [
+        "rfc8785",
+        "0.1.4"
+      ],
+      [
+        "scipy",
+        "1.18.1"
+      ]
+    ],
+    "development_dependencies_absent": true
+  },
+  "distribution_member_audit": {
+    "outcome": "PASS",
+    "member_sha256": {
+      "sdist:src/fenix/results.py": "be5b5cb8eb84aafce6da5e967e1b786838a69bea04687f9d4730cc596e8bd3e6",
+      "sdist:tests/test_results.py": "595456737a1e2ecf7de93ef235cdb686997df0197a2336bda8707b8a4c83a0f9",
+      "sdist:README.md": "b9886d612f040c2ef0d1269114520f8a0ab0a3ca4731b4cdd1e65adbaab24ee1",
+      "sdist:pyproject.toml": "550e402647d5f8b56276c0c3602f318ed69e8a5e5ff06e511d5aca81ffa3c9b8",
+      "wheel:fenix/results.py": "be5b5cb8eb84aafce6da5e967e1b786838a69bea04687f9d4730cc596e8bd3e6"
+    },
+    "artifact_sha256": {
+      "packages/python/dist/fenix_bio-0.0.0.tar.gz": "dc1b46ff0aec1a50fe26b419d3a349fc09d3bce3ffdd23176d003f3e11049b34",
+      "packages/python/dist/fenix_bio-0.0.0-py3-none-any.whl": "625f618157026734eaaa7e217096219793dbe212dd37f54fc892c187cdfe62aa"
+    }
+  },
+  "observed_captures": [
+    {
+      "status": "Observed execution receipt, not a golden expectation or authenticated attestation",
+      "method": "DOP853",
+      "manifest_sha256": "1d96b526f62d563781d790f65e6d53caac32222039e481ccb50f202504553160",
+      "result_sha256": "ba34e212a7c5dbc99bb60697c35ea84eb6be47d870e58f8039840c33a4cd5192",
+      "manifest_text": "{\"kind\":\"RunManifest\",\"schema_version\":\"0.1.0\",\"status\":\"success\",\"repeatability\":\"bounded_numerical_agreement\",\"sources\":{\"design\":{\"schema_version\":\"0.1.0\",\"id\":\"production_decay\",\"revision\":1,\"digest\":\"06b07d41b4974df77c7a992ca46c6a281099d0bd435a3ce05a54c022e91a394e\"},\"experiment\":{\"schema_version\":\"0.1.0\",\"id\":\"baseline\",\"revision\":1,\"digest\":\"226387b2feefb26979cdebaba61e179b4a7e258ec0c6dd10bf4180f1c97e53ae\"}},\"fir\":{\"schema_version\":\"0.1.0\",\"canonicalization_version\":\"0.1.0\",\"digest\":\"cf4011a6c97891192c0b84951dd53ae38bd1fc629e05c885a8dff30bd5e53a50\"},\"execution\":{\"profile\":\"ode\",\"time_grid\":[-0.0,1.0,10.0],\"rtol\":1e-10,\"atol\":1e-12,\"max_step\":1.0,\"max_nfev\":100000},\"randomness\":{\"rng\":\"none\",\"seed\":null},\"evaluations\":{\"nfev\":191},\"timing\":{\"started_at_utc\":\"2026-11-16T20:18:03.795956Z\",\"finished_at_utc\":\"2026-11-16T20:18:03.801229Z\",\"elapsed_seconds\":0.00526566},\"integration\":\"performed\",\"output\":{\"schema_version\":\"0.1.0\",\"media_type\":\"application/json\",\"encoding\":\"utf-8\",\"sha256\":\"ba34e212a7c5dbc99bb60697c35ea84eb6be47d870e58f8039840c33a4cd5192\"},\"producer\":{\"name\":\"fenix-bio\",\"version\":\"0.0.0\",\"build_id\":null},\"backend\":{\"profile\":\"python-scipy-ode/0.1.0\",\"solver\":{\"name\":\"scipy.integrate.solve_ivp\",\"method\":\"DOP853\",\"options\":{\"first_step\":null,\"vectorized\":false,\"dense_output\":false,\"events\":null,\"jacobian\":\"not_supplied\"}},\"environment\":{\"python_implementation\":\"CPython\",\"python_version\":\"3.12.13\",\"rfc8785_version\":\"0.1.4\",\"numpy_version\":\"2.5.5\",\"scipy_version\":\"1.18.1\"},\"evaluations\":{\"njev\":0,\"nlu\":0}}}",
+      "result_text": "{\"kind\":\"ODEResult\",\"schema_version\":\"0.1.0\",\"fir_digest\":\"cf4011a6c97891192c0b84951dd53ae38bd1fc629e05c885a8dff30bd5e53a50\",\"time_unit\":\"s\",\"times\":[-0.0,1.0,10.0],\"state_ids\":[\"x\"],\"state_units\":[\"molecule\"],\"state_values\":[[0.0],[9.516258196403458],[63.21205588285576]],\"observable_ids\":[\"amount_x\"],\"observable_state_ids\":[\"x\"],\"observable_units\":[\"molecule\"],\"observable_values\":[[0.0],[9.516258196403458],[63.21205588285576]]}"
+    },
+    {
+      "status": "Observed execution receipt, not a golden expectation or authenticated attestation",
+      "method": "Radau",
+      "manifest_sha256": "ef670a30d8b8de5da736f5f52312d26e05d3feecb90d2594547d62ffa6728663",
+      "result_sha256": "15fca35045c2c9fafa5726c97b9e5c3292cef034a139e6f88e84bb96a6a4c7de",
+      "manifest_text": "{\"kind\":\"RunManifest\",\"schema_version\":\"0.1.0\",\"status\":\"success\",\"repeatability\":\"bounded_numerical_agreement\",\"sources\":{\"design\":{\"schema_version\":\"0.1.0\",\"id\":\"production_decay\",\"revision\":1,\"digest\":\"06b07d41b4974df77c7a992ca46c6a281099d0bd435a3ce05a54c022e91a394e\"},\"experiment\":{\"schema_version\":\"0.1.0\",\"id\":\"baseline\",\"revision\":1,\"digest\":\"226387b2feefb26979cdebaba61e179b4a7e258ec0c6dd10bf4180f1c97e53ae\"}},\"fir\":{\"schema_version\":\"0.1.0\",\"canonicalization_version\":\"0.1.0\",\"digest\":\"cf4011a6c97891192c0b84951dd53ae38bd1fc629e05c885a8dff30bd5e53a50\"},\"execution\":{\"profile\":\"ode\",\"time_grid\":[-0.0,1.0,10.0],\"rtol\":1e-10,\"atol\":1e-12,\"max_step\":1.0,\"max_nfev\":100000},\"randomness\":{\"rng\":\"none\",\"seed\":null},\"evaluations\":{\"nfev\":988},\"timing\":{\"started_at_utc\":\"2026-11-16T20:18:03.819172Z\",\"finished_at_utc\":\"2026-11-16T20:18:03.862546Z\",\"elapsed_seconds\":0.043374902},\"integration\":\"performed\",\"output\":{\"schema_version\":\"0.1.0\",\"media_type\":\"application/json\",\"encoding\":\"utf-8\",\"sha256\":\"15fca35045c2c9fafa5726c97b9e5c3292cef034a139e6f88e84bb96a6a4c7de\"},\"producer\":{\"name\":\"fenix-bio\",\"version\":\"0.0.0\",\"build_id\":null},\"backend\":{\"profile\":\"python-scipy-ode/0.1.0\",\"solver\":{\"name\":\"scipy.integrate.solve_ivp\",\"method\":\"Radau\",\"options\":{\"first_step\":null,\"vectorized\":false,\"dense_output\":false,\"events\":null,\"jacobian\":\"constant_exact\"}},\"environment\":{\"python_implementation\":\"CPython\",\"python_version\":\"3.12.13\",\"rfc8785_version\":\"0.1.4\",\"numpy_version\":\"2.5.5\",\"scipy_version\":\"1.18.1\"},\"evaluations\":{\"njev\":0,\"nlu\":30}}}",
+      "result_text": "{\"kind\":\"ODEResult\",\"schema_version\":\"0.1.0\",\"fir_digest\":\"cf4011a6c97891192c0b84951dd53ae38bd1fc629e05c885a8dff30bd5e53a50\",\"time_unit\":\"s\",\"times\":[-0.0,1.0,10.0],\"state_ids\":[\"x\"],\"state_units\":[\"molecule\"],\"state_values\":[[0.0],[9.516258196466476],[63.21205588285552]],\"observable_ids\":[\"amount_x\"],\"observable_state_ids\":[\"x\"],\"observable_units\":[\"molecule\"],\"observable_values\":[[0.0],[9.516258196466476],[63.21205588285552]]}"
+    }
+  ],
+  "independent_reviews": [
+    {
+      "role": "engineering",
+      "source_sha256": "be5b5cb8eb84aafce6da5e967e1b786838a69bea04687f9d4730cc596e8bd3e6",
+      "tests_sha256": "595456737a1e2ecf7de93ef235cdb686997df0197a2336bda8707b8a4c83a0f9",
+      "command": "packages/python/.venv/bin/python -m unittest discover -s packages/python/tests -p test_results.py -v",
+      "outcome": "PASS",
+      "tests": 19,
+      "remaining_findings": [],
+      "resolved_finding": "Extreme-exponent numeric tokens leaked Decimal InvalidOperation; lexical significand inspection and public regression tests now verify signed zero, underflow and ties-even",
+      "not_run": [
+        "full package suite",
+        "wheel",
+        "native suites",
+        "protected GitHub checks"
+      ]
+    },
+    {
+      "role": "scientific",
+      "source_sha256": "be5b5cb8eb84aafce6da5e967e1b786838a69bea04687f9d4730cc596e8bd3e6",
+      "tests_sha256": "595456737a1e2ecf7de93ef235cdb686997df0197a2336bda8707b8a4c83a0f9",
+      "command": "packages/python/.venv/bin/python -m unittest discover -s packages/python/tests -p test_results.py -v",
+      "outcome": "PASS",
+      "tests": 19,
+      "remaining_findings": [],
+      "resolved_finding": "Same huge-exponent defect; verified exact zero versus underflow, source/clock/serialization boundaries and non-executing readback",
+      "not_run": [
+        "full package suite",
+        "wheel",
+        "native suites",
+        "protected GitHub checks"
+      ]
+    }
+  ],
+  "not_run": [
+    "human implementation approval",
+    "Julia results or ODE implementation",
+    "independent cross-language ODE gate #29",
+    "broader provenance #42",
+    "systematic generated-input investigation #59",
+    "hosted CI for implementation branch (observe after push)"
+  ],
+  "failure_history": "Five wrapper-driven import/type checks failed because macOS __PYVENV_LAUNCHER__ inherited a system Python prefix; failed attempts are retained with -launcher-env receipt keys. Clearing the launcher variable fixed replay without package changes. Ruff format initially failed on a newly edited test helper; final format passes. Initial test fixture helpers omitted an InitVar and used a falsey context default; corrected without weakening contract expectations. Four initial unused mypy ignore annotations were removed. Both independent reviewers reproduced the same extreme-exponent defect, now fixed and tested. No golden values or scientific assertions were weakened."
+}
