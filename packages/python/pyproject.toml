@@ -5,13 +5,15 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "fenix-bio"
 version = "0.0.0"
-description = "FENIX native Python M0 BioIR and FIR compiler (implementation review pending)"
+description = "FENIX native Python M0 BioIR, FIR compiler and ODE execution (implementation review pending)"
 readme = "README.md"
 requires-python = ">=3.12"
 license = {text = "MIT"}
 authors = [{name = "DRAGGON Lab"}]
 dependencies = [
     "rfc8785>=0.1.4,<0.2",
+    "numpy>=2.0,<2.8",
+    "scipy>=1.18.1,<1.19",
 ]
 
 [tool.setuptools.packages.find]
@@ -36,4 +38,5 @@ dev = [
     "jsonschema>=4,<5",
     "mypy>=1.18,<3",
     "ruff>=0.14,<1",
+    "scipy-stubs>=1.18.1.1,<1.19",
 ]

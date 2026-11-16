@@ -346,10 +346,10 @@ reference implementations are unchanged. The [native compiler evidence](ep02-pyt
 records new native validation/normalization/compiler results separately from
 historical reference results and NOT_RUN rows.
 
-Current retained-report hashes for the #20 compiler configuration refresh match
+Historical retained-report hashes for the #20 compiler configuration refresh match
 the artifact entries in the original [compiler receipt](ep02-python-compiler.json):
 
-| Retained report | Current SHA-256 |
+| Retained report | Historical #20 SHA-256 |
 |---|---|
 | [Python](rejections-python.json) | `cbbe0f306cefa8b67dc81cac9878fdd205bf042c5b5412e7280a8efed10d82a4` |
 | [Julia](rejections-julia.json) | `c18ec0cbe51259c4eecdc027623354039a3dd3b9e5eaa35b2f21a240ca97893e` |
@@ -360,3 +360,20 @@ labels and identify their original evidence revisions. This documentation
 correction regenerates no report and rewrites no earlier execution evidence;
 the [review follow-up](ep02-python-compiler.md#review-follow-up-limits-and-retained-report-hashes)
 records its verification separately.
+
+## EP-02 ODE runtime dependency provenance refresh
+
+Issue #21 adds ratified SciPy/NumPy runtime dependencies and development typing
+stubs. Both retained reports were freshly generated independently; only their
+Python manifest/lock fingerprints change from `147f216`. All 207 observed rows
+and every other field are unchanged. Original receipts retain their historical
+identities. The [native execution receipt](ep02-python-ode.json) identifies these
+current artifacts and records new native outcomes separately.
+
+| Retained report | Current SHA-256 |
+|---|---|
+| [Python](rejections-python.json) | `469c5ba7165b09964ea941285b99de39a5e15533582abc00bc781bb195b0084e` |
+| [Julia](rejections-julia.json) | `2cd915e60c14ee209a84dd9ba2f3b347b886c2f73a22b6bdd6e65914b39c02e3` |
+
+Future regeneration must refresh the current declarations against artifact bytes;
+earlier hashes retain their historical labels. No approved expectation changes.

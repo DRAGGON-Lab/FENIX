@@ -287,3 +287,62 @@ uv run --project packages/python --locked --offline python -m unittest discover 
   under [#59](https://github.com/DRAGGON-Lab/FENIX/issues/59), with #20 as the
   prerequisite for its FIR/compiler portion. This follow-up does not retroactively
   block #20's bounded milestone or select a testing framework or dependency.
+
+## M0 ODE execution
+
+The ratified [P04 contract](../../spec/execution/proposals/ADR-P04.md) governs
+`fenix.execution`. SciPy and NumPy are standard runtime dependencies; Julia is
+not required. Execution accepts a validated `FIRModel`, including standalone
+models. Compiler source verification remains separate.
+
+```python
+from fenix.execution import ODEExecutionSpec, solve_ode
+
+settings = ODEExecutionSpec(
+    time_grid=(0.0, 1.0, 10.0), method="DOP853",
+    rtol=1e-10, atol=1e-12, max_step=1.0, max_nfev=100000,
+)
+trajectory = solve_ode(fir.model, settings)
+assert trajectory.fir_digest == fir.digest
+# Sample-major rows; columns align with state_ids and observable_ids.
+counts = trajectory.state_values
+```
+
+Methods are exactly `DOP853` and `Radau`; Radau uses the analytical constant M0
+Jacobian. Settings are explicit, frozen and keyword-only. Times must be a nonempty
+tuple of finite nonnegative built-in floats in strictly increasing order; -0 and
++0 together are duplicates. Initial conditions apply at zero even if the first
+requested sample is later. A zero-only grid returns the initial state after all
+configuration/capability checks, without calling SciPy. Numerical settings require
+positive finite built-in floats, `rtol >= 100*2**-52`, and a positive non-boolean
+integer `max_nfev`. The budget counts RHS calls, not elapsed time or memory.
+No numerical defaults, arbitrary solver kwargs, callback execution, method
+switching or analytical fallback are exposed.
+
+`ODETrajectory` is frozen with tuple-backed times, sample-major states and named
+observables, units, settings, FIR digest, evaluation counts and NumPy/SciPy
+versions. Empty observables have an empty row for every requested time. Backend
+initial step selection is explicitly `None` (automatic). This in-memory output
+defines no portable results format, checksum, archive or RunManifest; #22/P07
+must preserve the accuracy/reproducibility distinction in future manifests.
+
+**Numerical agreement is bounded; trajectories are not promised byte-identical.**
+DOP853 showed small process-to-process bit differences even on the same host.
+Local `rtol`/`atol` control estimates, not certified global error. The native tests
+compare the approved 40-sample oracle at P04's absolute/relative acceptance bound
+for both methods and two settings. This bounded corpus does not certify arbitrary
+finite inputs, biological validity or the independent dual-language #29 gate.
+
+**Every negative sampled count fails, however small.** The PI consciously accepted
+that interpolation can cause rejection of a mathematically well-posed simulation.
+There is no clipping. Ordinary binary64 underflow, including rounding to zero,
+is allowed without a floor. Overflow, nonfinite output and failed/incomplete
+integration fail explicitly; no successful partial trajectory is returned.
+
+Invalid settings raise `ExecutionValidationError(ValueError)` with `category` and
+field-relative `path`. Unsupported profiles use `FIRValidationError` with
+`UNSUPPORTED_PROFILE` at `/profile`. Runtime `ODEExecutionError(RuntimeError)`
+contains `category`, the frozen `spec` and actual `nfev`; categories distinguish
+`WORK_LIMIT`, `NONFINITE`, `NEGATIVE_STATE`, `SOLVER_FAILURE` and `INVALID_OUTPUT`.
+Programming errors are not caught by a blanket exception handler. The FIR's
+mathematics, provenance, canonical bytes and digest remain unchanged by execution.
