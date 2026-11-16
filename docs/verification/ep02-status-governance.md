@@ -45,6 +45,11 @@ The original PR description was snapshotted before editing. Its risky clause was
 
 The [new maintenance receipt](ep02-status-governance.json) lists every PATCH/POST target, purpose, resulting URL and before/after body hashes. #4/#30/#40 remain open, #18–#22 remain closed, #29/#42 are reopened. No parent closure, merge, release, protection or CODEOWNERS action was taken. Existing historical comments and numerical verification receipts were preserved.
 
+These GitHub metadata changes were applied directly before this documentation
+PR merges. Rejecting or closing PR #66 would not automatically revert them.
+Any reversal would require a separate, explicit GitHub metadata action and an
+updated audit record.
+
 ## Governance proposal and outstanding human decisions
 
 All seven hosted jobs passed, but none was configured as a required branch check. The only recorded PR review on #65 was an automated Codex summary, not a formal approving scientific review; PI-directed implementation closure is separately recorded in #22. Repository permissions do not designate scientific expertise or authority. No repository team or CODEOWNERS scientific mapping was configured.
@@ -83,3 +88,20 @@ the repository checker, six harness tests, whitespace check and historical P07
 prefix comparison successfully. Live GitHub state was assessed by the owner;
 the reviewer checked those claims against the new audit receipt. Agent review
 does not supply final human scientific or release approval.
+
+## PR #66 review follow-up
+
+The reusable PR template and workflow now use `Refs #<issue-number>` and tell
+contributors to replace the placeholder with the relevant issue number. Concrete
+references above remain historical metadata evidence. Ruleset activation is
+explicitly deferred until an eligible independent human reviewer is available;
+the disabled ruleset payload is unchanged. The operational note above clarifies
+that rejecting this PR does not roll back already-applied GitHub metadata.
+
+Fresh checks for this documentation-only follow-up: **PASS** for
+`UV_CACHE_DIR=/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python scripts/check_repo.py`,
+`UV_CACHE_DIR=/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v`
+(six tests), and `git diff --check`. Production, numerical, wheel and lint/type
+suites: **NOT RUN** for this follow-up. Existing machine-readable receipts,
+scientific contracts, production behavior and repository protection settings
+are unchanged.

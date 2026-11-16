@@ -112,8 +112,9 @@ locked-runtime clean-wheel validation. No solver or empirical validity follows.
 
 ## Issue references and closure
 
-Use `Refs #29 and #42` for non-closing references in PR descriptions and commit
-messages. GitHub interprets closing keywords mechanically: negating a sentence
+Reference related issues using `Refs #<issue-number>` in PR descriptions and
+commit messages. Replace the placeholder with the relevant issue number.
+GitHub interprets closing keywords mechanically: negating a sentence
 is not a reliable safeguard. Reserve closing keywords for work that satisfies
 that issue's acceptance criteria and required approval. Scientific/release parent
 closure needs explicit PI acceptance. ADR approval, CI, an agent review and a
@@ -177,6 +178,8 @@ Administrative actions requiring explicit human authorization:
 
 1. Approve the proposed review/check requirements and confirm eligible human
    reviewers can approve changes independently of their author/latest pusher.
+   Keep enforcement disabled until an eligible human reviewer is available;
+   a sole active maintainer cannot independently approve their own latest push.
 2. The PI designates qualified human scientific owners, with verified write
    access, for `/spec/`, `/conformance/`, `/docs/scientific-evidence/`,
    `/docs/approved-decisions.md`, `/ARCHITECTURE.md` and CODEOWNERS itself.
