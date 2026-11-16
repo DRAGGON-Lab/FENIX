@@ -322,9 +322,8 @@ switching or analytical fallback are exposed.
 `ODETrajectory` is frozen with tuple-backed times, sample-major states and named
 observables, units, settings, FIR digest, evaluation counts and NumPy/SciPy
 versions. Empty observables have an empty row for every requested time. Backend
-initial step selection is explicitly `None` (automatic). This in-memory output
-defines no portable results format, checksum, archive or RunManifest; #22/P07
-must preserve the accuracy/reproducibility distinction in future manifests.
+initial step selection is explicitly `None` (automatic). This standalone
+in-memory output remains separate from the source-linked P07 capture API below.
 
 **Numerical agreement is bounded; trajectories are not promised byte-identical.**
 DOP853 showed small process-to-process bit differences even on the same host.
@@ -346,3 +345,61 @@ contains `category`, the frozen `spec` and actual `nfev`; categories distinguish
 `WORK_LIMIT`, `NONFINITE`, `NEGATIVE_STATE`, `SOLVER_FAILURE` and `INVALID_OUTPUT`.
 Programming errors are not caught by a blanket exception handler. The FIR's
 mathematics, provenance, canonical bytes and digest remain unchanged by execution.
+
+## Source-linked results and run manifests
+
+The ratified [P07 contract](../../spec/results/proposals/ADR-P07.md) governs
+`fenix.results`. Native implementation review remains pending under
+[#22](https://github.com/DRAGGON-Lab/FENIX/issues/22).
+
+```python
+from fenix.results import RunRecord, run_experiment
+
+record = run_experiment(experiment_document, settings)
+manifest_json = record.manifest.to_json()
+result_bytes = record.result_bytes
+
+loaded = RunRecord.from_json(
+    manifest_json, result_bytes, experiment=experiment_document,
+    # Optional: expected_manifest_sha256=independently_trusted_sha256,
+)
+counts = loaded.result.state_values
+```
+
+Capture revalidates the exact committed Design and Experiment, compiles and
+executes a normalized FIR copy, and records actual diagnostics, explicit solver
+options, installed package/backend versions and UTC/monotonic timing. Failed
+execution propagates the existing compiler/execution exception without a success
+record. Zero-only grids skip integration after validation. `solve_ode` retains
+its existing behavior and public trajectory type.
+
+`RunRecord`, `RunManifest` and `ODEResult` are immutable validated values; use
+capture or `RunRecord.from_json` to construct them. Typed result attributes use
+tuples, including sample-major `state_values`/`observable_values`, named columns,
+mapped `observable_state_ids`, units and times. Columns follow P03 normalized FIR
+order. `manifest.to_dict()` and `result.to_dict()` return fresh dictionaries.
+Callers own storage; no archives or filesystem helpers are provided.
+
+Readback verifies strict JSON, field-specific numeric tokens, exact result-byte
+SHA-256, full source references, recompiled FIR identity, settings, dimensions,
+ordering, units and bitwise grid/observable correspondence. It never executes
+the solver or replaces recorded environment observations. Original manifest text
+and result bytes are retained, including formatting and final newlines. Use
+`manifest.to_json()` for transport: signed-zero/subnormal binary64 values and
+exact integer budgets/counters are preserved, including integers beyond Python's
+decimal-string conversion limit. Generic JSON encoders may impose their own
+integer limits.
+
+`ResultValidationError(ValueError)` exposes `category` and a JSON Pointer `path`
+prefixed with `/manifest` or `/result`. Invalid source context also rejects on
+readback; capture preserves existing compiler and execution exceptions.
+
+**Checksums establish consistency against supplied expectations.** A trusted
+external manifest checksum detects alteration against that expectation. Without
+it, plausible modified positive-time samples with recomputed checksums can pass.
+Readback does not establish solver execution, numerical correctness, authorship
+or biological validity. Repeatability remains bounded numerical agreement.
+Capture records `producer.build_id = null` because this package has no reliable
+embedded build identifier; readback preserves non-null recorded IDs. Build-ID
+generation, Julia results, broader provenance (#42) and independent ODE evidence
+(#29) retain separate gates.
