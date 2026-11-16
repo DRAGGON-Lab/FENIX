@@ -125,3 +125,39 @@ independent cross-language #29 evidence, broader #42 provenance and systematic
 #59 generated-input investigation. Hosted CI for this implementation branch is
 observed separately after push. Scientific references remain bounded; package
 and readback checks do not establish biological validity or identical rerun bytes.
+
+## Non-blocking review disposition
+
+The user-supplied review found no confirmed correctness defect that should block
+PR #65 within the approved M0 scope. The following engineering observations are
+recorded for human implementation review; they do not constitute merge approval.
+
+**Maintainability:** `results.py` currently keeps strict transport parsing,
+semantic validation, immutable value construction and execution capture in one
+cohesive module, separated by functions. Reconsider extracting the strict JSON
+decoder when another results profile is added. Extraction is deferred from this
+PR to avoid unnecessary churn within its bounded M0 scope.
+
+**Numerical and provenance guarantees:** P07 establishes artifact consistency.
+Plausible altered positive-time samples with recomputed internal checksums can
+pass readback. The existing
+[native regression](../../packages/python/tests/test_results.py),
+`test_plausible_altered_positive_samples_pass_only_internal_checks`, demonstrates
+this behavior and rejection against an external trusted manifest checksum.
+That external expectation detects alteration against the trusted artifact; it
+does not prove solver execution or numerical correctness. This is the ratified
+trust boundary, and requires no behavior change in this PR.
+
+Independent Python–Julia numerical conformance remains
+[#29](https://github.com/DRAGGON-Lab/FENIX/issues/29); stronger provenance remains
+[#42](https://github.com/DRAGGON-Lab/FENIX/issues/42); generated-input investigation
+remains [#59](https://github.com/DRAGGON-Lab/FENIX/issues/59). These observations
+do not expand PR #65 or close those follow-ups. The original machine-readable
+receipt and its source/artifact hashes remain unchanged.
+
+Follow-up verification: **PASS** for
+`UV_CACHE_DIR=/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python scripts/check_repo.py`,
+`UV_CACHE_DIR=/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v`
+(six tests), and `git diff --check`. Package, numerical and wheel suites were
+**NOT RUN** for this documentation-only disposition; their earlier executed
+outcomes above remain historical.
