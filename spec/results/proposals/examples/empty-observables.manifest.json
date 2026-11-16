@@ -27,7 +27,6 @@
     "time_grid": [
       0.0
     ],
-    "method": "Radau",
     "rtol": 1e-10,
     "atol": 1e-12,
     "max_step": 1.0,
@@ -37,29 +36,8 @@
     "rng": "none",
     "seed": null
   },
-  "solver": {
-    "name": "scipy.integrate.solve_ivp",
-    "method": "Radau",
-    "options": {
-      "first_step": null,
-      "vectorized": false,
-      "dense_output": false,
-      "events": null,
-      "jacobian": "constant_exact"
-    }
-  },
   "evaluations": {
-    "nfev": 0,
-    "njev": 0,
-    "nlu": 0
-  },
-  "environment": {
-    "python_implementation": "CPython",
-    "python_version": "3.12.13",
-    "fenix_bio_version": "0.0.0",
-    "rfc8785_version": "0.1.4",
-    "numpy_version": "2.5.5",
-    "scipy_version": "1.18.1"
+    "nfev": 0
   },
   "timing": {
     "started_at_utc": "2026-11-16T12:00:00.000000Z",
@@ -72,5 +50,35 @@
     "media_type": "application/json",
     "encoding": "utf-8",
     "sha256": "64a80ee09c914567bd9a207c8731e02ea4ed5812dfcae16d6438803d2e5b2711"
+  },
+  "producer": {
+    "name": "fenix-bio",
+    "version": "0.0.0",
+    "build_id": null
+  },
+  "backend": {
+    "profile": "python-scipy-ode/0.1.0",
+    "solver": {
+      "name": "scipy.integrate.solve_ivp",
+      "method": "Radau",
+      "options": {
+        "first_step": null,
+        "vectorized": false,
+        "dense_output": false,
+        "events": null,
+        "jacobian": "constant_exact"
+      }
+    },
+    "environment": {
+      "python_implementation": "CPython",
+      "python_version": "3.12.13",
+      "rfc8785_version": "0.1.4",
+      "numpy_version": "2.5.5",
+      "scipy_version": "1.18.1"
+    },
+    "evaluations": {
+      "njev": 0,
+      "nlu": 0
+    }
   }
 }

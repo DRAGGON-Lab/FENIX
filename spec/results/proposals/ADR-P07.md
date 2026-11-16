@@ -33,6 +33,9 @@ authenticated provenance, researcher authorization, SSA, new biological rules,
 new runtime dependencies and package/version governance under P06. Preserve
 `solve_ode`, P04 failure/sampling behavior and every existing BioIR/FIR identity.
 All examples, schemas and expectations here remain PROPOSED until accepted.
+The PI requested the refinements below and another scientific review before
+ratification; the initial statement of approval is not recorded as ratification
+of this revised contract. This PR remains contract/evidence-only.
 
 ## Proposed artifacts and identities
 
@@ -41,6 +44,33 @@ Use two UTF-8 JSON artifacts, each schema version `0.1.0`:
 [ODEResult](ode-result-m0.schema.json). Every schema member is required;
 unknown members and unsupported schema versions are rejected at every level.
 There are no inferred defaults, optional metadata or executable values.
+
+### Language-neutral core and explicit backend profiles
+
+The core contract is language-neutral: source/FIR references, successful-run
+status, execution profile `ode`, grid and numerical controls, no-RNG declaration,
+producer identification, RHS evaluation count, timing observations, exact-byte
+output identity and the complete ODEResult layout. These rules describe data and
+represented mathematical values, not Python types or a particular solver API.
+JSON integer/binary64 validation below applies independently in every language.
+
+Backend-specific data lives exclusively under `backend`, selected by its
+required, versioned `profile` discriminator. This proposal defines exactly one
+profile: **`python-scipy-ode/0.1.0`**. Its closed payload contains `solver`,
+`environment` and backend `evaluations` (`njev`, `nlu`). The core
+`evaluations.nfev` remains the P04 RHS work count. SciPy method names/options,
+Python/NumPy/SciPy version fields and SciPy's tolerance floor are requirements of
+this profile, not requirements of every future backend.
+
+A future reviewed Julia/SciML profile can reuse the same core and ODEResult
+contracts while declaring its own solver methods, options, environment and
+backend diagnostics. It must specify their relationship to the existing core
+controls and P04 work-count rules, with independent conformance evidence. Adding
+a profile requires a reviewed schema/profile revision; existing core meanings
+and supported profile payloads must not be silently redefined. Unknown profiles
+are rejected today. No Julia profile, functionality, dependency, algorithm
+equivalence or compatibility policy is defined by this PR. A reader that does
+not support a declared profile rejects it rather than interpreting it as SciPy.
 
 The manifest records exact Design and Experiment `schema_version`, `id`,
 `revision`, `digest` references, plus FIR `schema_version`,
@@ -103,25 +133,60 @@ their represented values follow binary64 rules regardless of spelling.
 - `kind = RunManifest`, `schema_version = 0.1.0`, `status = success` and
   `repeatability = bounded_numerical_agreement` identify the only supported case.
 - `sources` and `fir` contain the exact references above.
-- `execution` contains `profile = ode`, ordered `time_grid`, explicit `method`
-  (`DOP853` or `Radau`), `rtol`, `atol`, `max_step` and exact `max_nfev`.
-  Apply all P04 settings validation, including the relative-tolerance floor.
+- `execution` contains `profile = ode`, ordered `time_grid`, `rtol`, `atol`,
+  `max_step` and exact `max_nfev`. Explicit method selection lives in
+  `backend.solver`, rather than a core method name. Core tolerances and maximum
+  step are positive finite binary64; the supported backend adds P04's
+  admissibility checks.
 - `randomness` is exactly `{"rng":"none","seed":null}`. Deterministic M0 ODE
   uses no RNG; a seed is not applicable. Reject any fabricated seed, generator,
   replicate or stochastic setting, rather than silently ignoring it.
-- `solver` records `name = scipy.integrate.solve_ivp`, the method and fixed
-  options `first_step = null` (automatic selection), `vectorized = false`,
+- `evaluations` records actual `nfev` (P04 RHS calls, including initialization
+  and interpolation). `nfev <= max_nfev`. Counters are observations,
+  not reconstructed from timings or method names.
+- `producer` contains nonempty `name` and `version` strings and required nullable
+  `build_id`. For #22, capture records package name `fenix-bio` and its installed
+  version. A non-null build ID is a nonempty, opaque, Unicode-scalar string
+  identifying the installed producer build/source snapshot, only when reliably
+  supplied by installed build metadata (for example a build-system artifact ID
+  or a full source revision embedded when building that exact snapshot).
+  Otherwise record JSON null. Do not infer an ID from version `0.0.0`, the
+  reader's checkout, timestamps, or an unrelated repository. Never call Git,
+  inspect a VCS checkout or perform a network lookup at runtime. A revision
+  label must not claim an unmodified snapshot for a dirty build. A known dirty
+  build needs an identifier covering its actual snapshot or null; a bare clean
+  commit ID is insufficient. Readback preserves the recorded ID without querying
+  or interpreting it, and rejects empty/non-string non-null values.
+  Editable installations whose active source cannot be identified reliably from
+  installed metadata record null; stale metadata is not reliable identification.
+
+### Python/SciPy backend profile `python-scipy-ode/0.1.0`
+
+- `backend.solver` records `name = scipy.integrate.solve_ivp`, method `DOP853` or
+  `Radau` (the `ODEExecutionSpec.method` selected at capture) and fixed options
+  `first_step = null` (automatic selection), `vectorized = false`,
   `dense_output = false`, `events = null`. `jacobian` is `constant_exact` for
   Radau and `not_supplied` for DOP853. No callback or arbitrary keyword forwarding.
-  Solver and execution method must agree. The backend version is in environment.
-- `evaluations` records actual `nfev` (P04 RHS calls, including initialization
-  and interpolation), `njev` and `nlu`. `nfev <= max_nfev`. Counters are observations,
-  not reconstructed from timings or method names.
-- `environment` records nonempty version strings for `python_implementation`,
-  `python_version`, `fenix_bio_version`, `rfc8785_version`, `numpy_version` and
-  `scipy_version`. These report the producer environment. Readback preserves
-  them verbatim and does not replace them with the reader's installed versions
-  or require a version match. This introduces no P06 compatibility policy.
+- Require `execution.rtol >= 100 * 2^-52`, preserving P04's SciPy floor. This
+  profile changes no ODEExecutionSpec, solver default or execution behavior.
+- `backend.evaluations` records actual nonnegative integer `njev` and `nlu`.
+- `backend.environment` records nonempty `python_implementation`,
+  `python_version`, `rfc8785_version`, `numpy_version` and `scipy_version` strings.
+  Package name/version occur once, in core `producer`, rather than a second
+  profile-specific `fenix_bio_version`. These report the producing environment.
+  Readback preserves producer/backend observations verbatim and does not replace
+  them with the reader's installed versions or require a version match.
+
+The nullable build ID improves identification when reliable installed metadata
+exists without adding Git or any new runtime dependency. It is not a source hash
+standard, execution attestation or promise of byte-identical rebuilds. Null plus
+version `0.0.0` cannot distinguish development builds; even a supplied opaque ID
+does not authenticate them. Generating/embedding build IDs, distribution/version
+governance, signatures and stronger provenance remain P06/#42 work. This bounded
+field preserves available evidence now without claiming those broader guarantees.
+
+### Common timing and successful-run observations
+
 - `timing` records `started_at_utc` and `finished_at_utc` in fixed
   `YYYY-MM-DDTHH:MM:SS.ffffffZ` form, with valid Gregorian dates and seconds
   00–59, plus finite nonnegative binary64 `elapsed_seconds`. Observe wall and
@@ -131,7 +196,8 @@ their represented values follow binary64 rules regardless of spelling.
   clocks can adjust: finish need not be later than start, and wall subtraction
   need not equal elapsed duration. Do not serialize absolute monotonic readings.
 - `integration` is `skipped_zero_grid` exactly when the sole requested time is
-  numerically zero (including negative zero). Then all three counters are zero
+  numerically zero (including negative zero). Then core `nfev` and this backend's
+  `njev`/`nlu` are zero
   and initial state is returned after normal validation, without a solver call.
   Otherwise it is `performed` and `nfev > 0`. Failed execution produces no
   successful run record, partial artifact or substitute analytical solution.
@@ -168,8 +234,8 @@ Design. Revalidate both committed content digests and the Experiment's full
 Design reference under P01, compile under P02/P03, and check all manifest source
 schema versions, IDs, revisions and digests against those exact documents.
 Check the FIR version pair and mathematical digest in the manifest and result
-against the compilation. Check settings, solver/options/randomness, counters,
-grid, dimensions, IDs, units and complete direct observable correspondence.
+against the compilation. Check settings, backend profile/solver/options/randomness,
+counters, grid, dimensions, IDs, units and complete direct observable correspondence.
 Verify the result byte checksum and, when supplied, the external manifest byte
 checksum. Any mismatch rejects the record; nothing is repaired. These checks
 perform no network lookup and never execute the ODE.
@@ -230,5 +296,28 @@ and complete clean-wheel package suite with locked runtime dependencies only;
 extend CI's explicit lint targets and ordinary package discovery. Record exact
 commands, versions, input/artifact hashes and PASS/FAIL/NOT RUN outcomes in new
 evidence; preserve original receipts and accepted fixtures.
+
+The following acceptance boundaries are mandatory in the later implementation
+PR and are not satisfied by this contract's candidate audit:
+
+1. Reject a different supplied source pair even when its complete normalized
+   FIR is identical; check every source schema/ID/revision/digest reference.
+2. Round-trip original manifest UTF-8 and result bytes exactly, including
+   noncanonical key order, formatting and final newline; do not reconstruct hash
+   material through serialization. Trusted manifest hashes use those raw bytes.
+3. Preserve binary64 values/signs (including negative zero and subnormals) and
+   exact large integer budgets/counters; do not apply one numeric policy to both.
+4. Trap solver entry points during verified readback: source recompilation is
+   allowed, ODE execution and network resolution are forbidden.
+5. Propagate solver failure without returning any successful RunRecord,
+   RunManifest or partial result. No fallback, clipping or fabricated record.
+6. Capture complete multi-observable columns in P03-normalized ID order, with
+   exact mapped-state values and units, regardless of source declaration order.
+   Keep `solve_ode` and its existing trajectory behavior unchanged.
+
+The [refinement evidence](../../../docs/verification/ep02-p07-refinements.md)
+records independent checks for the revised candidate contract. Initial proposal
+receipts remain historical at revision `908997e`; they are not rewritten as
+evidence for changed schemas or examples.
 
 **Human PI ratification: PENDING. Native implementation and its tests: NOT RUN.**

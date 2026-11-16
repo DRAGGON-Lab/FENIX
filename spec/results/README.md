@@ -11,3 +11,8 @@ binary64, source correspondence and cross-artifact checks. The
 [independent audit](proposals/review_p07.py) are review evidence, not execution
 receipts or approved golden fixtures. See the
 [verification record](../../docs/verification/ep02-p07-proposal.md).
+
+The [refinement record](../../docs/verification/ep02-p07-refinements.md) covers
+the revised language-neutral core/backend boundary, nullable producer build ID
+and multi-observable column-order candidate. Ratification of the revised
+contract remains pending; no native runtime implementation is included.

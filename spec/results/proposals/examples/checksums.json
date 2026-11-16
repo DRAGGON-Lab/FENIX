@@ -2,12 +2,16 @@
   "status": "PROPOSED",
   "algorithm": "sha256",
   "artifacts": {
-    "empty-observables.manifest.json": "f2234cd9edffc2112855bf8a37e6d917386e7bd1c63b77bfaba319d8205412eb",
+    "empty-observables.manifest.json": "bafb373e4a6a009d30ea97f0b5b5aa352dfa495498069b673e969066086f3be1",
     "empty-observables.result.json": "64a80ee09c914567bd9a207c8731e02ea4ed5812dfcae16d6438803d2e5b2711",
-    "late-first.manifest.json": "a4c74f18184b4da23518b13c63d579dd3437e94dffca55f03af057842d176c9b",
+    "late-first.manifest.json": "bef9f40b4adf9db8bee0672881863f3674be6f83e62893a3ec6e062fe4314bfa",
     "late-first.result.json": "318f9ceba3f7b2a8cf5872ef64762340b85c9b0265ba4d68ad0a056753487ca1",
+    "multi-observables.experiment.json": "32ba821287777f12dc2a1ddef7eef4103ad5872c7098e39e60c7a21490cb6622",
+    "multi-observables.fir.json": "184b1eb97ee1c8342f7238015780dd5d34ff4365f8356280348a295304da1e4d",
+    "multi-observables.manifest.json": "821b2685abad693a77c6ad1d9933c5602aaf818d79355c995f5d5c39a1329543",
+    "multi-observables.result.json": "cc6882d6240bdc5bbd436dacb7be80722edc4ee852822d182282116574b1199b",
     "numeric-tokens.json": "f4932f2b2eaeb2768a3bacfc4a2fa7895f7067ed8db94a5c27eb534dbd793757",
-    "zero-only.manifest.json": "b98e32f5abd82e6d8725ba2150de43ee685270461018d25c05e51456680af719",
+    "zero-only.manifest.json": "5f7d08715dac20e4577e4333b102b979138d8721b55e4767ae463032505bce3b",
     "zero-only.result.json": "13a2de6b42ae7dff4f78bbce9a2fc24df2ba8ceeb23b3f6c52f9553feb0a0c69"
   }
 }

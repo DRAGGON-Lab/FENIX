@@ -39,6 +39,24 @@ def bits(value: float) -> str:
     return struct.pack(">d", value).hex()
 
 
+def fixture_identity(model: dict[str, Any]) -> str:
+    """External JCS of these fixed ASCII-ID fixtures under unchanged P03 rules."""
+    expected = copy.deepcopy(model)
+    for collection in ("states", "parameters", "reactions", "observables"):
+        expected[collection].sort(key=lambda item: item["id"])
+    expected["equations"].sort(key=lambda item: item["state"])
+    expected["assumptions"].sort()
+    return hashlib.sha256(
+        rfc8785.dumps(
+            {
+                "domain": "fenix.fir",
+                "canonicalization_version": "0.1.0",
+                "model": expected,
+            }
+        )
+    ).hexdigest()
+
+
 def binary_fraction(word: int) -> Fraction:
     """Exact positive finite IEEE binary64 value from exponent/significand bits."""
     exponent = (word >> 52) & 0x7FF
@@ -100,9 +118,16 @@ def main() -> None:
     empty_experiment = (
         ROOT / "spec/fir/proposals/examples/sources/no-observables-experiment.json"
     )
+    multi_experiment = EXAMPLES / "multi-observables.experiment.json"
+    multi_fir = EXAMPLES / "multi-observables.fir.json"
     # External JCS only; these inputs already exist independently of production
     # parsers/compilers. This is a bounded fixture relation, not a source resolver.
-    for path in (baseline_design, baseline_experiment, empty_experiment):
+    for path in (
+        baseline_design,
+        baseline_experiment,
+        empty_experiment,
+        multi_experiment,
+    ):
         document = load(path)
         assert (
             hashlib.sha256(rfc8785.dumps(document["content"])).hexdigest()
@@ -116,22 +141,35 @@ def main() -> None:
     empty_model = load(
         ROOT / "spec/fir/proposals/examples/production-decay-no-observables.json"
     )["model"]
-    for collection in ("states", "parameters", "reactions", "observables"):
-        empty_model[collection].sort(key=lambda item: item["id"])
-    empty_model["equations"].sort(key=lambda item: item["state"])
-    empty_model["assumptions"].sort()
-    empty_digest = hashlib.sha256(
-        rfc8785.dumps(
-            {
-                "domain": "fenix.fir",
-                "canonicalization_version": "0.1.0",
-                "model": empty_model,
-            }
-        )
-    ).hexdigest()
+    empty_digest = fixture_identity(empty_model)
+    multi_model = load(multi_fir)["model"]
+    baseline_model = load(ROOT / "spec/fir/proposals/examples/production-decay.json")[
+        "model"
+    ]
+    # Hand-prepared model differs only in the explicitly declared observables.
+    expected_multi = copy.deepcopy(baseline_model)
+    expected_multi["observables"] = [
+        {"id": name, "state": "x", "unit": "molecule"}
+        for name in ("z_amount", "a_amount", "m_amount")
+    ]
+    assert multi_model == expected_multi
+    multi_source = load(multi_experiment)["content"]
+    expected_source = copy.deepcopy(load(baseline_experiment)["content"])
+    expected_source["id"] = "multiple_observables"
+    expected_source["observables"] = [
+        {"id": name, "target": {"species": "x", "port": "amount"}}
+        for name in ("z_amount", "a_amount", "m_amount")
+    ]
+    assert multi_source == expected_source
+    Draft7Validator(load(ROOT / "spec/bioir/proposals/bioir-m0.schema.json")).validate(
+        load(multi_experiment)
+    )
+    Draft7Validator(load(ROOT / "spec/fir/proposals/fir-m0.schema.json")).validate(
+        load(multi_fir)
+    )
 
     pairs = {}
-    for name in ("late-first", "zero-only", "empty-observables"):
+    for name in ("late-first", "zero-only", "empty-observables", "multi-observables"):
         manifest = load(EXAMPLES / f"{name}.manifest.json")
         result_path = EXAMPLES / f"{name}.result.json"
         result = load(result_path)
@@ -139,11 +177,17 @@ def main() -> None:
         validators["ode-result"].validate(result)
         assert manifest["output"]["sha256"] == sha(result_path)
         assert result["fir_digest"] == manifest["fir"]["digest"]
-        assert result["fir_digest"] == (
-            empty_digest if name == "empty-observables" else named_digest
-        )
+        expected_digest = {
+            "empty-observables": empty_digest,
+            "multi-observables": fixture_identity(multi_model),
+        }.get(name, named_digest)
+        assert result["fir_digest"] == expected_digest
         experiment_path = (
-            empty_experiment if name == "empty-observables" else baseline_experiment
+            empty_experiment
+            if name == "empty-observables"
+            else multi_experiment
+            if name == "multi-observables"
+            else baseline_experiment
         )
         for field, path in (
             ("design", baseline_design),
@@ -167,23 +211,70 @@ def main() -> None:
                 assert result[field] == []
             assert result["observable_values"] == [[]]
         else:
-            assert result["observable_ids"] == ["amount_x"]
-            assert result["observable_state_ids"] == ["x"]
-            assert result["observable_units"] == ["molecule"]
-            assert [list(map(bits, row)) for row in result["state_values"]] == [
-                list(map(bits, row)) for row in result["observable_values"]
-            ]
+            ordered = sorted(
+                multi_model["observables"]
+                if name == "multi-observables"
+                else baseline_model["observables"],
+                key=lambda item: item["id"],
+            )
+            assert result["observable_ids"] == [o["id"] for o in ordered]
+            assert result["observable_state_ids"] == [o["state"] for o in ordered]
+            assert result["observable_units"] == [o["unit"] for o in ordered]
+            for state_row, observable_row in zip(
+                result["state_values"], result["observable_values"], strict=True
+            ):
+                assert len(observable_row) == len(ordered)
+                for column, observable in enumerate(ordered):
+                    state_index = result["state_ids"].index(observable["state"])
+                    assert bits(observable_row[column]) == bits(state_row[state_index])
         assert manifest["randomness"] == {"rng": "none", "seed": None}
-        method = manifest["execution"]["method"]
-        assert manifest["solver"]["method"] == method
-        assert manifest["solver"]["options"]["jacobian"] == (
+        assert manifest["backend"]["profile"] == "python-scipy-ode/0.1.0"
+        method = manifest["backend"]["solver"]["method"]
+        assert manifest["backend"]["solver"]["options"]["jacobian"] == (
             "constant_exact" if method == "Radau" else "not_supplied"
         )
-        if name != "late-first":
+        if name in ("zero-only", "empty-observables"):
             assert manifest["integration"] == "skipped_zero_grid"
-            assert manifest["evaluations"] == {"nfev": 0, "njev": 0, "nlu": 0}
+            assert manifest["evaluations"] == {"nfev": 0}
+            assert manifest["backend"]["evaluations"] == {"njev": 0, "nlu": 0}
             assert result["state_values"] == [[0.0]]
+        # Transport evidence only: no native RunRecord loader is invoked.
+        for artifact in (EXAMPLES / f"{name}.manifest.json", result_path):
+            raw = artifact.read_bytes()
+            assert raw.decode("utf-8", errors="strict").encode("utf-8") == raw
+            assert json.loads(raw) == json.loads(raw + b" ")
+            assert hashlib.sha256(raw).digest() != hashlib.sha256(raw + b" ").digest()
         pairs[name] = manifest, result
+
+    multi_result = pairs["multi-observables"][1]
+    assert [o["id"] for o in multi_source["observables"]] == [
+        "z_amount",
+        "a_amount",
+        "m_amount",
+    ]
+    assert multi_result["observable_ids"] == ["a_amount", "m_amount", "z_amount"]
+    assert multi_result["observable_ids"] != [
+        o["id"] for o in multi_source["observables"]
+    ]
+    assert pairs["multi-observables"][0]["producer"]["build_id"] == (
+        "candidate:p07-multi-observable-v1"
+    )
+    assert pairs["late-first"][0]["producer"]["build_id"] is None
+
+    # Fixed wrong-source/same-FIR counterexamples, not native rejection tests.
+    for suffix in ("gfp", "laci"):
+        alternate = load(
+            ROOT / f"spec/fir/proposals/examples/production-decay-{suffix}.json"
+        )
+        assert fixture_identity(alternate["model"]) == named_digest
+        for kind in ("design", "experiment"):
+            alternate_source = load(
+                ROOT / f"spec/fir/proposals/examples/sources/{suffix}-{kind}.json"
+            )
+            assert (
+                alternate_source["digest"]
+                != pairs["late-first"][0]["sources"][kind]["digest"]
+            )
 
     # Reference values come from the already accepted analytical catalog, not a
     # solver. Audit nearest binary64 to each published decimal with rational math.
@@ -194,6 +285,8 @@ def main() -> None:
     for index, sample in enumerate(case["samples"][1:]):
         assert bits(late_result["times"][index]) == sample["time_bits"]
         check_nearest(sample["expected"], bits(late_result["state_values"][index][0]))
+    assert multi_result["times"] == late_result["times"][:2]
+    assert multi_result["state_values"] == late_result["state_values"][:2]
 
     probes = load(EXAMPLES / "numeric-tokens.json")
     for probe in probes["binary64"]:
@@ -246,10 +339,22 @@ def main() -> None:
                 bad = copy.deepcopy(original)
                 bad["randomness"][field] = value
                 mutations.append(bad)
-            for field, value in (("nfev", -1), ("njev", True), ("nlu", 1.5)):
+            for field, value in (("nfev", -1), ("nfev", True), ("nfev", 1.5)):
                 bad = copy.deepcopy(original)
                 bad["evaluations"][field] = value
                 mutations.append(bad)
+            bad_id: object
+            for bad_id in ("", 123, True, []):
+                bad = copy.deepcopy(original)
+                bad["producer"]["build_id"] = bad_id
+                mutations.append(bad)
+            for bad_profile in ("unknown", "julia-sciml-ode/0.1.0"):
+                bad = copy.deepcopy(original)
+                bad["backend"]["profile"] = bad_profile
+                mutations.append(bad)
+            bad = copy.deepcopy(original)
+            bad["execution"]["rtol"] = 1e-15
+            mutations.append(bad)
         else:
             for field, value in (
                 ("time_unit", "min"),
@@ -276,16 +381,29 @@ def main() -> None:
         HERE / "ADR-P07.md",
         HERE / "run-manifest-m0.schema.json",
         HERE / "ode-result-m0.schema.json",
-        HERE / "review_p07.js",
+        HERE / "review_p07_refinements.js",
         Path(__file__),
         EXAMPLES / "checksums.json",
         baseline_design,
         baseline_experiment,
         empty_experiment,
+        multi_experiment,
+        multi_fir,
+        ROOT / "spec/bioir/proposals/bioir-m0.schema.json",
+        ROOT / "spec/fir/proposals/fir-m0.schema.json",
+        ROOT / "spec/fir/proposals/examples/production-decay.json",
         ROOT / "spec/fir/proposals/examples/production-decay-no-observables.json",
         fir_base,
         oracle_path,
     ]
+    for suffix in ("gfp", "laci"):
+        inputs.append(
+            ROOT / f"spec/fir/proposals/examples/production-decay-{suffix}.json"
+        )
+        inputs.extend(
+            ROOT / f"spec/fir/proposals/examples/sources/{suffix}-{kind}.json"
+            for kind in ("design", "experiment")
+        )
     print(
         json.dumps(
             {
@@ -295,6 +413,8 @@ def main() -> None:
                 "jsonschema": version("jsonschema"),
                 "rfc8785": version("rfc8785"),
                 "example_pairs": len(pairs),
+                "multi_observable_columns": 3,
+                "wrong_source_same_fir_counterexamples": 2,
                 "analytical_reference_samples": 3,
                 "binary64_transport_probes": len(probes["binary64"]),
                 "structural_rejection_mutations": structural_rejections,

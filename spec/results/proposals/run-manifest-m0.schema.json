@@ -70,15 +70,9 @@
           },
           "minItems": 1
         },
-        "method": {
-          "enum": [
-            "DOP853",
-            "Radau"
-          ]
-        },
         "rtol": {
           "type": "number",
-          "minimum": 2.220446049250313e-14
+          "exclusiveMinimum": 0
         },
         "atol": {
           "type": "number",
@@ -96,7 +90,6 @@
       "required": [
         "profile",
         "time_grid",
-        "method",
         "rtol",
         "atol",
         "max_step",
@@ -120,115 +113,16 @@
       ],
       "additionalProperties": false
     },
-    "solver": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "const": "scipy.integrate.solve_ivp"
-        },
-        "method": {
-          "enum": [
-            "DOP853",
-            "Radau"
-          ]
-        },
-        "options": {
-          "type": "object",
-          "properties": {
-            "first_step": {
-              "type": "null"
-            },
-            "vectorized": {
-              "const": false
-            },
-            "dense_output": {
-              "const": false
-            },
-            "events": {
-              "type": "null"
-            },
-            "jacobian": {
-              "enum": [
-                "constant_exact",
-                "not_supplied"
-              ]
-            }
-          },
-          "required": [
-            "first_step",
-            "vectorized",
-            "dense_output",
-            "events",
-            "jacobian"
-          ],
-          "additionalProperties": false
-        }
-      },
-      "required": [
-        "name",
-        "method",
-        "options"
-      ],
-      "additionalProperties": false
-    },
     "evaluations": {
       "type": "object",
       "properties": {
         "nfev": {
           "type": "integer",
           "minimum": 0
-        },
-        "njev": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "nlu": {
-          "type": "integer",
-          "minimum": 0
         }
       },
       "required": [
-        "nfev",
-        "njev",
-        "nlu"
-      ],
-      "additionalProperties": false
-    },
-    "environment": {
-      "type": "object",
-      "properties": {
-        "python_implementation": {
-          "type": "string",
-          "minLength": 1
-        },
-        "python_version": {
-          "type": "string",
-          "minLength": 1
-        },
-        "fenix_bio_version": {
-          "type": "string",
-          "minLength": 1
-        },
-        "rfc8785_version": {
-          "type": "string",
-          "minLength": 1
-        },
-        "numpy_version": {
-          "type": "string",
-          "minLength": 1
-        },
-        "scipy_version": {
-          "type": "string",
-          "minLength": 1
-        }
-      },
-      "required": [
-        "python_implementation",
-        "python_version",
-        "fenix_bio_version",
-        "rfc8785_version",
-        "numpy_version",
-        "scipy_version"
+        "nfev"
       ],
       "additionalProperties": false
     },
@@ -291,6 +185,39 @@
         "sha256"
       ],
       "additionalProperties": false
+    },
+    "producer": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "build_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "required": [
+        "name",
+        "version",
+        "build_id"
+      ],
+      "additionalProperties": false
+    },
+    "backend": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/pythonScipyODE"
+        }
+      ]
     }
   },
   "required": [
@@ -302,12 +229,12 @@
     "fir",
     "execution",
     "randomness",
-    "solver",
     "evaluations",
-    "environment",
     "timing",
     "integration",
-    "output"
+    "output",
+    "producer",
+    "backend"
   ],
   "additionalProperties": false,
   "definitions": {
@@ -344,6 +271,149 @@
         "digest"
       ],
       "additionalProperties": false
+    },
+    "pythonScipyODE": {
+      "type": "object",
+      "properties": {
+        "profile": {
+          "const": "python-scipy-ode/0.1.0"
+        },
+        "solver": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "const": "scipy.integrate.solve_ivp"
+            },
+            "method": {
+              "enum": [
+                "DOP853",
+                "Radau"
+              ]
+            },
+            "options": {
+              "type": "object",
+              "properties": {
+                "first_step": {
+                  "type": "null"
+                },
+                "vectorized": {
+                  "const": false
+                },
+                "dense_output": {
+                  "const": false
+                },
+                "events": {
+                  "type": "null"
+                },
+                "jacobian": {
+                  "enum": [
+                    "constant_exact",
+                    "not_supplied"
+                  ]
+                }
+              },
+              "required": [
+                "first_step",
+                "vectorized",
+                "dense_output",
+                "events",
+                "jacobian"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "name",
+            "method",
+            "options"
+          ],
+          "additionalProperties": false
+        },
+        "environment": {
+          "type": "object",
+          "properties": {
+            "python_implementation": {
+              "type": "string",
+              "minLength": 1
+            },
+            "python_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rfc8785_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "numpy_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "scipy_version": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "python_implementation",
+            "python_version",
+            "rfc8785_version",
+            "numpy_version",
+            "scipy_version"
+          ],
+          "additionalProperties": false
+        },
+        "evaluations": {
+          "type": "object",
+          "properties": {
+            "njev": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "nlu": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "njev",
+            "nlu"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "profile",
+        "solver",
+        "environment",
+        "evaluations"
+      ],
+      "additionalProperties": false
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "backend": {
+            "properties": {
+              "profile": {
+                "const": "python-scipy-ode/0.1.0"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "execution": {
+            "properties": {
+              "rtol": {
+                "minimum": 2.220446049250313e-14
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }
