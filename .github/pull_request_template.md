@@ -1,6 +1,6 @@
 ## Objective and linked issue
 
-One issue; describe expected behavior and explicit non-goals.
+One issue; describe expected behavior and explicit non-goals. Use `Refs #29 and #42` for non-closing references. Reserve closing keywords for work satisfying the referenced issue’s acceptance criteria; avoid closing-keyword phrases even in negated sentences. Parent scientific/release closure requires explicit human PI acceptance.
 
 ## Scientific contract review
 

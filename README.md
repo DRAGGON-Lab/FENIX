@@ -1,8 +1,8 @@
 # FENIX
 
-**Biomolecular and collective computation** — independently implemented native Python and Julia scientific libraries governed by shared language-neutral biological and mathematical contracts.
+**Biomolecular and collective computation** — targeting independent native Python and Julia scientific libraries governed by shared language-neutral biological and mathematical contracts.
 
-**Status:** Architecture v0.1 approved (29 decisions); package scaffold with the [ratified ADR-P01 M0-compatible BioIR subset](spec/bioir/README.md), the [ratified ADR-P02 M0 FIR subset](spec/fir/README.md), the [ratified ADR-P03 canonicalization contract](spec/canonicalization/README.md) and [independent P01 reference validators/candidate fixtures](conformance/bioir/README.md) for review. **Python now provides an uncommitted M0 BioIR content API** with typed construction, validation and ordinary JSON serialization; see the [Python package](packages/python/README.md). Python also provides committed envelopes, strict parsing and exact local Design references, pending implementation review. Python now also compiles verified M0 BioIR into validated immutable FIR with P03 normalization and byte/digest conformance, pending implementation review. Python now provides P04 M0 ODE execution via SciPy, pending implementation review. The bounded reference catalogs are PI-approved; native implementation approval remains separate.
+**Current implementation status:** Python implements the ratified M0 production–degradation path: typed content authoring, verified committed Design/Experiment documents, native FIR compilation and P03 identity, SciPy DOP853/Radau execution, and P07 source-linked results/manifests. All five EP-02 child implementation issues (#18–#22) are closed, and PR #65 merged at `32acf4f4b51e257c7efed65203360e5e9ee83598`; [post-merge CI](https://github.com/DRAGGON-Lab/FENIX/actions/runs/43960747581) passed seven jobs. Julia remains an independently installable scaffold. Independent native Python–Julia conformance (#28/#29), final EP-02 PI acceptance and applicable release signoff remain outstanding. P06 version governance, stronger provenance/archive work (#42) and generated-input investigation (#59) retain separate scopes. Implementation completion and passing CI do not establish complete M0 or stable-core acceptance, biological validity or authenticated execution. See the [maintenance audit](docs/verification/ep02-status-governance.md) and [Python usage](packages/python/README.md).
 
 ## Concept
 
@@ -16,7 +16,7 @@ Read [PRODUCT.md](PRODUCT.md), [ARCHITECTURE.md](ARCHITECTURE.md), [AGENTS.md](A
 
 ## Repository map
 
-`packages/python`: native M0 content API; `packages/julia`: independently installable scaffold; `spec/`: ratified BioIR/FIR subsets and FIR canonicalization contract; `conformance/`: independent scientific fixtures; `examples/`: verified examples; `.github/`: independent package smoke CI.
+`packages/python`: native M0 documents, FIR compiler, ODE execution and source-linked results; `packages/julia`: independently installable scaffold; `spec/`: ratified BioIR/FIR subsets and FIR canonicalization contract; `conformance/`: independent scientific fixtures; `examples/`: verified examples; `.github/`: independent package smoke CI.
 
 ## Development and smoke tests
 

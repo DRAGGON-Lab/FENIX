@@ -1,0 +1,315 @@
+{
+  "audit_base": "32acf4f4b51e257c7efed65203360e5e9ee83598",
+  "post_action_main": "32acf4f4b51e257c7efed65203360e5e9ee83598",
+  "main_tree": "1295e0609cf0962d789ab37bd54283ecf752e500",
+  "historical_ci_run": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/43960747581",
+  "historical_jobs": [
+    {
+      "name": "Julia-only package",
+      "conclusion": "success",
+      "url": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/43960747581/job/133627165080"
+    },
+    {
+      "name": "Repository harness",
+      "conclusion": "success",
+      "url": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/43960747581/job/133627165631"
+    },
+    {
+      "name": "Candidate P03 serialization evidence",
+      "conclusion": "success",
+      "url": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/43960747581/job/133627165666"
+    },
+    {
+      "name": "Python-only package",
+      "conclusion": "success",
+      "url": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/43960747581/job/133627165769"
+    },
+    {
+      "name": "Candidate P01 reference conformance",
+      "conclusion": "success",
+      "url": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/43960747581/job/133627998536"
+    },
+    {
+      "name": "Candidate BioIR/FIR rejection reference agreement",
+      "conclusion": "success",
+      "url": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/43960747581/job/133627998660"
+    },
+    {
+      "name": "Candidate production-decay reference agreement",
+      "conclusion": "success",
+      "url": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/43960747581/job/133627998765"
+    }
+  ],
+  "issue_states_before": {
+    "4": "open",
+    "22": "closed",
+    "29": "closed",
+    "42": "closed",
+    "30": "open",
+    "40": "open"
+  },
+  "issue_states_after": {
+    "4": "open",
+    "18": "closed",
+    "19": "closed",
+    "20": "closed",
+    "21": "closed",
+    "22": "closed",
+    "29": "open",
+    "42": "open",
+    "30": "open",
+    "40": "open"
+  },
+  "actions": [
+    {
+      "path": "/pulls/65",
+      "purpose": "Remove negated closing-keyword reference; preserve other PR history",
+      "url": "https://github.com/DRAGGON-Lab/FENIX/pull/65",
+      "state": "closed",
+      "before_body_sha256": "a41b1f06a3fd40bbb53242c724ba89f1facf36cf7db36ff5cbb6b03d6b8fcea0",
+      "after_body_sha256": "7ddf054bac7c56994ace3e0e94709057735df88e8644c4ec81bd6d65778e395c",
+      "method": "PATCH"
+    },
+    {
+      "path": "/issues/4",
+      "purpose": "Correct parent integration status; retain final PI gate",
+      "url": "https://github.com/DRAGGON-Lab/FENIX/issues/4",
+      "state": "open",
+      "before_body_sha256": "fbecd7e413a695063ff26d88219ef671785b1d66403eef3ce5f105e5d2851f07",
+      "after_body_sha256": "ec7249a0bc6d495667334e087cd8c45c47b1000a6cd4c828ad909e81ae8afb8f",
+      "method": "PATCH"
+    },
+    {
+      "path": "/issues/22",
+      "purpose": "Update integration evidence; preserve issue state",
+      "url": "https://github.com/DRAGGON-Lab/FENIX/issues/22",
+      "state": "closed",
+      "before_body_sha256": "d98b8376060d22b51f6f2b7fb5562c7bec036fead683b61f99869e7336e5bd29",
+      "after_body_sha256": "dd3bdd365498f31f2d215336cda143c73c1a960c14a5bb5e83c77eb8d0de507e",
+      "method": "PATCH"
+    },
+    {
+      "path": "/issues/42",
+      "purpose": "Update integration evidence; reopen unmet broader gate",
+      "url": "https://github.com/DRAGGON-Lab/FENIX/issues/42",
+      "state": "open",
+      "before_body_sha256": "c182d2dc54ca1c316762f7cb22d4aa4766897ff1de3199fd273b8c3413cfddd4",
+      "after_body_sha256": "c5654fbd79ae03dfd203d6d49540a50c88c61a08ab62bb43e721cab832146a7b",
+      "method": "PATCH"
+    },
+    {
+      "path": "/issues/30",
+      "purpose": "Update integration evidence; preserve issue state",
+      "url": "https://github.com/DRAGGON-Lab/FENIX/issues/30",
+      "state": "open",
+      "before_body_sha256": "03ddf0b9e734fd1a931d37ac6472967f67bfa95a412a2b1cde4bd5506c5c6ed8",
+      "after_body_sha256": "7841d141dfabc6f19e0b58936c210ec7057a7d4a326fafe9b9d711635f89de2a",
+      "method": "PATCH"
+    },
+    {
+      "path": "/issues/40",
+      "purpose": "Update integration evidence; preserve issue state",
+      "url": "https://github.com/DRAGGON-Lab/FENIX/issues/40",
+      "state": "open",
+      "before_body_sha256": "e30187cc93a58b7774b177637c98e604ccec128002b53c667832e9f48f15afdb",
+      "after_body_sha256": "afebe6fbaa08ebdcbe19d79582f01c9fcdf839e8a83baea1ae14124f5e375b13",
+      "method": "PATCH"
+    },
+    {
+      "path": "/issues/29",
+      "purpose": "Reopen unmet independent Python\u2013Julia scientific gate",
+      "url": "https://github.com/DRAGGON-Lab/FENIX/issues/29",
+      "state": "open",
+      "before_body_sha256": "3e1d65ecc6afc9261b27cf31e01cb093db808462c2171a015a44fe1732d61c61",
+      "after_body_sha256": "3e1d65ecc6afc9261b27cf31e01cb093db808462c2171a015a44fe1732d61c61",
+      "method": "PATCH"
+    },
+    {
+      "path": "/issues/22/comments",
+      "purpose": "Record evidence-based maintenance disposition",
+      "url": "https://github.com/DRAGGON-Lab/FENIX/issues/22#issuecomment-6930689401",
+      "state": null,
+      "before_body_sha256": null,
+      "after_body_sha256": "0255acb0068a26b85c15661e29c96bd314139c753db4bd4148225accd9df9f80",
+      "method": "POST"
+    },
+    {
+      "path": "/issues/29/comments",
+      "purpose": "Record evidence-based maintenance disposition",
+      "url": "https://github.com/DRAGGON-Lab/FENIX/issues/29#issuecomment-6930689700",
+      "state": null,
+      "before_body_sha256": null,
+      "after_body_sha256": "d544b1c27dde2b56e62577756bfdf802d1880a99f256d5cc133edf3e72568997",
+      "method": "POST"
+    },
+    {
+      "path": "/issues/42/comments",
+      "purpose": "Record evidence-based maintenance disposition",
+      "url": "https://github.com/DRAGGON-Lab/FENIX/issues/42#issuecomment-6930689964",
+      "state": null,
+      "before_body_sha256": null,
+      "after_body_sha256": "a1f2224e6b37cf4f99c5dc2ef2450b11193358c685cc368d670ebbe7f855d391",
+      "method": "POST"
+    }
+  ],
+  "closure_attribution_before": {
+    "data": {
+      "repository": {
+        "pullRequest": {
+          "url": "https://github.com/DRAGGON-Lab/FENIX/pull/65",
+          "mergedAt": "2026-11-16T21:30:16Z",
+          "closingIssuesReferences": {
+            "nodes": [
+              {
+                "number": 29,
+                "url": "https://github.com/DRAGGON-Lab/FENIX/issues/29",
+                "state": "CLOSED"
+              },
+              {
+                "number": 42,
+                "url": "https://github.com/DRAGGON-Lab/FENIX/issues/42",
+                "state": "CLOSED"
+              }
+            ]
+          }
+        },
+        "i29": {
+          "timelineItems": {
+            "nodes": [
+              {
+                "createdAt": "2026-11-16T21:30:20Z",
+                "actor": {
+                  "login": "Gonza10V"
+                },
+                "closer": {
+                  "__typename": "PullRequest",
+                  "number": 65,
+                  "url": "https://github.com/DRAGGON-Lab/FENIX/pull/65",
+                  "mergedAt": "2026-11-16T21:30:16Z",
+                  "mergeCommit": {
+                    "oid": "32acf4f4b51e257c7efed65203360e5e9ee83598"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "i42": {
+          "timelineItems": {
+            "nodes": [
+              {
+                "createdAt": "2026-11-16T21:30:22Z",
+                "actor": {
+                  "login": "Gonza10V"
+                },
+                "closer": {
+                  "__typename": "PullRequest",
+                  "number": 65,
+                  "url": "https://github.com/DRAGGON-Lab/FENIX/pull/65",
+                  "mergedAt": "2026-11-16T21:30:16Z",
+                  "mergeCommit": {
+                    "oid": "32acf4f4b51e257c7efed65203360e5e9ee83598"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "closing_references_after": {
+    "data": {
+      "repository": {
+        "pullRequest": {
+          "closingIssuesReferences": {
+            "nodes": []
+          }
+        }
+      }
+    }
+  },
+  "governance": {
+    "protected": false,
+    "rulesets": [],
+    "effective_rules": [],
+    "changes_applied": false,
+    "codeowners_changed": false
+  },
+  "preservation": {
+    "base": "32acf4f4b51e257c7efed65203360e5e9ee83598",
+    "outcome": "PASS",
+    "protected_files": 521,
+    "protected_catalog_sha256": "859fdb153f5422f03f299aa4d271479f902c958a287dd11f33d8e90ac73bb240",
+    "results_record_original_prefix_sha256": "4857997f0cb2955ee1fc19b322ded601bfffad0481585b283c3e49c4aef04ecb",
+    "ratification_records_preserved": true
+  },
+  "verification": {
+    "cache_override": "UV_CACHE_DIR=/tmp/fenix-uv-cache",
+    "commands": [
+      {
+        "command": "uv run --project packages/python --locked --offline python scripts/check_repo.py",
+        "outcome": "PASS",
+        "exit_code": 0
+      },
+      {
+        "command": "uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v",
+        "outcome": "PASS",
+        "exit_code": 0,
+        "tests": 6
+      },
+      {
+        "command": "git diff --check",
+        "outcome": "PASS",
+        "exit_code": 0
+      },
+      {
+        "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v",
+        "outcome": "PASS",
+        "exit_code": 0,
+        "tests": 88,
+        "scope": "read-only audit, pre-edit tree identical to main"
+      },
+      {
+        "command": "python3 /tmp/fenix-ep02-verify.py verify",
+        "outcome": "PASS",
+        "exit_code": 0
+      },
+      {
+        "command": "python3 /tmp/fenix-ep02-preserve.py",
+        "outcome": "PASS",
+        "exit_code": 0
+      }
+    ],
+    "not_run": [
+      "fresh wheel",
+      "fresh numerical reference suites",
+      "fresh Julia suite",
+      "Ruff",
+      "mypy",
+      "human final EP-02 acceptance"
+    ]
+  },
+  "failure_history": [
+    {
+      "command": "uv run --project packages/python --locked --offline python scripts/check_repo.py",
+      "outcome": "FAIL",
+      "exit_code": 1,
+      "reason": "Initial link check ran before the new companion maintenance JSON existed; generated it and reran successfully."
+    }
+  ],
+  "independent_documentation_review": {
+    "remaining_blocking_findings": [],
+    "executed_pass": [
+      "repository checker",
+      "six harness tests",
+      "git diff --check",
+      "historical P07 prefix comparison"
+    ],
+    "not_independently_queried": [
+      "live GitHub states/protection",
+      "remote CI"
+    ],
+    "human_acceptance_supplied": false
+  }
+}

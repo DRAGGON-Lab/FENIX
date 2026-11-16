@@ -32,7 +32,7 @@ Agents are tools and not independent authorities. A PR author and a reviewer can
 4. **Implement:** Prefer red/green/refactor for nontrivial logic; keep each change small. Do not edit unrelated files or silently expand scope.
 5. **Verify:** Run focused tests, the offline repository checker, and the applicable native package tests. Record actual output and explicitly label checks that did not run.
 6. **Review:** Open a focused PR with the approved ADR/decision references, scientific assumptions, evidence and failure cases. Human approval is mandatory for contract changes.
-7. **Land and hand off:** Merge only after required status checks and reviews. Update release and scientific evidence records when applicable; close this issue without automatically starting dependent work.
+7. **Land and hand off:** Merge only after required status checks and reviews. Update release and scientific evidence records when applicable; close an issue only after its own acceptance criteria are satisfied and its required acceptance is recorded, without automatically starting dependent work. Parent scientific/release milestones require explicit human PI acceptance; ADR ratification, CI, agent review and a merge do not substitute for it.
 
 ### Copyable issue handoff
 
@@ -109,3 +109,86 @@ bytes and compiler-source controls. Sets overlap. Legacy reference reports retai
 historical NOT_RUN rows; new native outcomes must be recorded separately. Expand
 Ruff/strict mypy to include the new FIR/compiler modules and tests, and continue
 locked-runtime clean-wheel validation. No solver or empirical validity follows.
+
+## Issue references and closure
+
+Use `Refs #29 and #42` for non-closing references in PR descriptions and commit
+messages. GitHub interprets closing keywords mechanically: negating a sentence
+is not a reliable safeguard. Reserve closing keywords for work that satisfies
+that issue's acceptance criteria and required approval. Scientific/release parent
+closure needs explicit PI acceptance. ADR approval, CI, an agent review and a
+merge each provide different evidence; none alone supplies scientific signoff.
+See [GitHub's linking rules](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue).
+
+## Proposed main protection — NOT APPLIED
+
+The [EP-02 audit](verification/ep02-status-governance.md) observed no branch
+protection, repository/inherited rulesets, effective main rules or CODEOWNERS.
+The following is a reviewable draft, not activated repository configuration.
+The disabled enforcement value makes the administrative activation step explicit.
+
+```json
+{
+  "name": "FENIX main review and CI",
+  "target": "branch",
+  "enforcement": "disabled",
+  "bypass_actors": [],
+  "conditions": {"ref_name": {"include": ["refs/heads/main"], "exclude": []}},
+  "rules": [
+    {"type": "deletion"},
+    {"type": "non_fast_forward"},
+    {
+      "type": "pull_request",
+      "parameters": {
+        "allowed_merge_methods": ["merge", "squash", "rebase"],
+        "required_approving_review_count": 1,
+        "dismiss_stale_reviews_on_push": true,
+        "require_last_push_approval": true,
+        "required_review_thread_resolution": true,
+        "require_code_owner_review": false
+      }
+    },
+    {
+      "type": "required_status_checks",
+      "parameters": {
+        "strict_required_status_checks_policy": true,
+        "required_status_checks": [
+          {"context": "Repository harness", "integration_id": 15368},
+          {"context": "Python-only package", "integration_id": 15368},
+          {"context": "Julia-only package", "integration_id": 15368},
+          {"context": "Candidate P01 reference conformance", "integration_id": 15368},
+          {"context": "Candidate production-decay reference agreement", "integration_id": 15368},
+          {"context": "Candidate P03 serialization evidence", "integration_id": 15368},
+          {"context": "Candidate BioIR/FIR rejection reference agreement", "integration_id": 15368}
+        ]
+      }
+    }
+  ]
+}
+```
+
+These names and GitHub Actions integration ID were observed on the audited main
+commit. Administrators must recheck them before activation. Candidate reference
+checks do not provide native Julia compiler/ODE conformance.
+[API field definitions](https://docs.github.com/en/rest/repos/rules) describe the
+ruleset payload; no API write to protection settings is authorized by this draft.
+
+Administrative actions requiring explicit human authorization:
+
+1. Approve the proposed review/check requirements and confirm eligible human
+   reviewers can approve changes independently of their author/latest pusher.
+2. The PI designates qualified human scientific owners, with verified write
+   access, for `/spec/`, `/conformance/`, `/docs/scientific-evidence/`,
+   `/docs/approved-decisions.md`, `/ARCHITECTURE.md` and CODEOWNERS itself.
+   No identity is inferred from maintainer permissions or agent review.
+3. Separately authorize and review CODEOWNERS creation, then enable required
+   code-owner review. The draft's `false` records the present ownership gap;
+   general PR review alone does not enforce qualified scientific approval.
+4. An authorized administrator imports/activates the approved ruleset and
+   verifies effective main rules, required checks, review behavior and force-push
+   restrictions. No bypass is proposed. No settings are changed by this document.
+
+Until ownership enforcement is configured, human PI approval of normative
+specifications and approved golden expectations remains an explicit review gate
+under AGENTS.md. [GitHub code-owner requirements](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)
+require actual eligible identities; placeholder owners provide no enforcement.
