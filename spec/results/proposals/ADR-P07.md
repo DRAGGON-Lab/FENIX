@@ -1,7 +1,8 @@
 # ADR-P07 — M0 source-linked ODE results and run manifests
 
-**Status: PROPOSED. Not ratified; native implementation is blocked on explicit
-human-PI acceptance of a reviewed revision.**
+**Status: RATIFIED by the human PI on 2026-11-16 at reviewed revision `bc662d3`.
+The revised schemas and bounded candidate reference expectations are accepted;
+native implementation approval remains separate.**
 
 Issue [#22](https://github.com/DRAGGON-Lab/FENIX/issues/22); prerequisites #20
 ([merged #61](https://github.com/DRAGGON-Lab/FENIX/pull/61)) and #21
@@ -32,10 +33,10 @@ Non-goals: archives, filesystem storage helpers, network resolution, signatures,
 authenticated provenance, researcher authorization, SSA, new biological rules,
 new runtime dependencies and package/version governance under P06. Preserve
 `solve_ode`, P04 failure/sampling behavior and every existing BioIR/FIR identity.
-All examples, schemas and expectations here remain PROPOSED until accepted.
-The PI requested the refinements below and another scientific review before
-ratification; the initial statement of approval is not recorded as ratification
-of this revised contract. This PR remains contract/evidence-only.
+The PI accepted the revised schemas and bounded candidate reference expectations
+at `bc662d3` after the requested refinements and independent reviews. See the
+[ratification record](#human-pi-ratification-record). This PR remains
+contract/evidence-only; native implementation approval is separate.
 
 ## Proposed artifacts and identities
 
@@ -320,4 +321,39 @@ records independent checks for the revised candidate contract. Initial proposal
 receipts remain historical at revision `908997e`; they are not rewritten as
 evidence for changed schemas or examples.
 
-**Human PI ratification: PENDING. Native implementation and its tests: NOT RUN.**
+**Human PI ratification: RECORDED below. Native implementation and its tests:
+NOT RUN; implementation approval remains PENDING.**
+
+## Human PI ratification record
+
+The approving human PI explicitly accepted the revised P07 proposal, schemas
+and bounded candidate reference expectations at reviewed revision
+[`bc662d3e9778dc7977de39041f8a44cba314851e`](https://github.com/DRAGGON-Lab/FENIX/commit/bc662d3e9778dc7977de39041f8a44cba314851e)
+on [PR #64](https://github.com/DRAGGON-Lab/FENIX/pull/64), on **2026-11-16**.
+The approval was given in this Codex conversation; no separate approval URL or
+personal name was supplied. The user explicitly identified:
+
+| Reviewed artifact at `bc662d3` | Reviewed SHA-256 |
+|---|---|
+| ADR-P07 | `cb45714cc685bdd182655d14794dfc9f5ba2dc1cc6ffde7c2ac022af018facef` |
+| RunManifest schema | `8e1c9236f33801ff81a12900d386c531295830ebca22ad2f09b9deb007d6264d` |
+
+The human noted that these hashes came from the refinement receipt and that
+they had not independently recomputed every hash from raw bytes. Agent checks
+recomputed both reviewed Git-blob hashes and replayed the bounded audits against
+that exact snapshot. These mechanical checks do not enlarge the approval.
+
+The accepted scope includes the language-neutral core and closed Python/SciPy
+backend profile, nullable producer identification, both versioned schemas and
+the bounded candidate expectations/catalog at that revision. It does not approve
+a native implementation, exhaustive validation, Julia functionality, execution
+authenticity, biological validity or #29/#42. All required native acceptance
+boundaries above remain binding. Issue #22 stays open pending implementation
+and its separate human review; this record does not merge PR #64.
+
+The reviewed ADR hash identifies the document **at `bc662d3`**, before this
+status/ratification annotation. Schema, candidate artifact and historical receipt
+bytes are preserved, including drafting-era PROPOSED/PENDING labels. The
+[new ratification evidence](../../../docs/verification/ep02-p07-ratification.md)
+records the human instruction, exact checks and the scope of acceptance without
+rewriting historical evidence or changing the contract's normative rules.

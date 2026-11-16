@@ -1,6 +1,10 @@
-# Proposed P07 examples — not execution receipts
+# Accepted bounded P07 examples — not execution receipts
 
-**PROPOSED; reference acceptance and human-PI ratification are pending.**
+**Bounded reference expectations ACCEPTED by the human PI at `bc662d3` on
+2026-11-16; native implementation approval remains pending.**
+The [ratification record](../../../../docs/verification/ep02-p07-ratification.md)
+identifies the reviewed revision and scope. Candidate JSON/catalog bytes retain
+their drafting-era labels and hashes; they are not rewritten by this decision.
 All JSON files include their final newline in their checksum. Results were
 written by hand, without `fenix`, NumPy, SciPy or a production serializer.
 
