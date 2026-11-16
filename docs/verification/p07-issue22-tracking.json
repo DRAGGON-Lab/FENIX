@@ -1,0 +1,10 @@
+{
+  "issue_url": "https://github.com/DRAGGON-Lab/FENIX/issues/22",
+  "issue_state": "open",
+  "issue21_state": "closed",
+  "issue21_state_reason": "completed",
+  "pr63_merged_at": "2026-11-16T13:35:18Z",
+  "pr63_merge_commit": "b6beb5e8dfef5d44b333f674424be6e941613b4e",
+  "updated_paragraph": "**Dependency update (2026-11-16):** [#20](https://github.com/DRAGGON-Lab/FENIX/issues/20) is **completed** through merged [PR #61](https://github.com/DRAGGON-Lab/FENIX/pull/61), supplying verified immutable FIR and P03 mathematical digest. [#21](https://github.com/DRAGGON-Lab/FENIX/issues/21) is **completed** through merged [PR #63](https://github.com/DRAGGON-Lab/FENIX/pull/63), supplying the P04 native Python ODE executor. **#22 remains open**: source-linked run manifests, typed result serialization and verified readback still require P07 ratification and their separate implementation/verification review. [PR #64](https://github.com/DRAGGON-Lab/FENIX/pull/64) remains contract/evidence-only; #29 and #42 retain separate gates.",
+  "unrelated_body_text_preserved": true
+}

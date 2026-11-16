@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:fenix:proposed:ode-result:m0:0.1.0",
+  "title": "PROPOSED ADR-P07 M0 ode-result 0.1.0",
+  "$comment": "PROPOSED; human-PI ratification pending. Structure only: ADR-P07 additionally requires strict raw decoding, field-specific numeric validation, verified sources and cross-artifact semantic checks.",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "const": "ODEResult"
+    },
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "fir_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "minLength": 64,
+      "maxLength": 64
+    },
+    "time_unit": {
+      "const": "s"
+    },
+    "times": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0
+      },
+      "minItems": 1
+    },
+    "state_ids": {
+      "type": "array",
+      "items": {
+        "const": "x"
+      },
+      "minItems": 1,
+      "maxItems": 1
+    },
+    "state_units": {
+      "type": "array",
+      "items": {
+        "const": "molecule"
+      },
+      "minItems": 1,
+      "maxItems": 1
+    },
+    "state_values": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "minimum": 0
+        },
+        "minItems": 1,
+        "maxItems": 1
+      },
+      "minItems": 1
+    },
+    "observable_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+        "maxLength": 64,
+        "not": {
+          "pattern": "[^A-Za-z0-9_-]"
+        }
+      },
+      "uniqueItems": true
+    },
+    "observable_state_ids": {
+      "type": "array",
+      "items": {
+        "const": "x"
+      }
+    },
+    "observable_units": {
+      "type": "array",
+      "items": {
+        "const": "molecule"
+      }
+    },
+    "observable_values": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "kind",
+    "schema_version",
+    "fir_digest",
+    "time_unit",
+    "times",
+    "state_ids",
+    "state_units",
+    "state_values",
+    "observable_ids",
+    "observable_state_ids",
+    "observable_units",
+    "observable_values"
+  ],
+  "additionalProperties": false
+}

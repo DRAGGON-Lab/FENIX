@@ -1,0 +1,17 @@
+{
+  "kind": "ODEResult",
+  "schema_version": "0.1.0",
+  "fir_digest": "07c998a3dc972bd7df415200d0b7f0ea565aca821f278dcf95598e486e1fd2e5",
+  "time_unit": "s",
+  "times": [1.0, 10.0],
+  "state_ids": ["x"],
+  "state_units": ["molecule"],
+  "state_values": [[9.516258196404042], [63.212055882855765]],
+  "observable_ids": ["a_amount", "m_amount", "z_amount"],
+  "observable_state_ids": ["x", "x", "x"],
+  "observable_units": ["molecule", "molecule", "molecule"],
+  "observable_values": [
+    [9.516258196404042, 9.516258196404042, 9.516258196404042],
+    [63.212055882855765, 63.212055882855765, 63.212055882855765]
+  ]
+}

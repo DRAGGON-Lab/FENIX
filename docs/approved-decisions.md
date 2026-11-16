@@ -34,7 +34,7 @@
 | D28 | FIR digest covers only canonical mathematical semantics, not provenance. |
 | D29 | RFC 8785/JCS with versioned FENIX semantic normalization and reference vectors. |
 
-**Remaining engineering gates:** ADR-P01, ADR-P02 and ADR-P03 are ratified for the M0 BioIR, mathematical FIR and canonicalization contracts; independent fixture and implementation acceptance gates remain open. P04 ODE tolerance is ratified below; P05 SSA math/stats, P06 package/version governance, P07 run provenance/results remain to be ratified for their release gates.
+**Remaining engineering gates:** ADR-P01, ADR-P02 and ADR-P03 are ratified for the M0 BioIR, mathematical FIR and canonicalization contracts; independent fixture and implementation acceptance gates remain open. P04 ODE tolerance and P07 M0 source-linked results/manifests are ratified below; P05 SSA math/stats and P06 package/version governance remain to be ratified for their release gates. Native P07 implementation approval remains separate.
 
 **Scientific source of truth:** ratified ADR/specification and independent reference evidence, not the current source code or test behavior. Human scientific approval is required for revisions.
 
@@ -117,3 +117,19 @@ trajectories, and required native sampling/failure/identity tests. The historica
 SciPy experiment and seven existing CI jobs do not establish native executor
 correctness. Implementation review, #29 and #22/P07 retain separate gates. See the
 [ratification record](../spec/execution/proposals/ADR-P04.md#human-pi-ratification-record).
+
+**Ratified contract and accepted bounded expectations, 2026-11-16:**
+[ADR-P07 — M0 source-linked ODE results and run manifests](../spec/results/proposals/ADR-P07.md).
+The human PI explicitly accepted the revised proposal, schemas and bounded
+candidate reference expectations at reviewed revision
+`bc662d3e9778dc7977de39041f8a44cba314851e` on PR #64. Reviewed ADR SHA-256:
+`cb45714cc685bdd182655d14794dfc9f5ba2dc1cc6ffde7c2ac022af018facef`;
+reviewed RunManifest schema SHA-256:
+`8e1c9236f33801ff81a12900d386c531295830ebca22ad2f09b9deb007d6264d`.
+The human did not claim to have independently recomputed every raw-byte hash;
+agent verification confirmed the reviewed identities. This accepts the revised
+language-neutral core, Python/SciPy backend profile, producer identification and
+bounded candidate expectations, without approving a native implementation,
+exhaustive validation, Julia functionality, execution authenticity or biological
+validity. #22 implementation review, #29 and #42 retain separate gates. See the
+[explicit ratification evidence](verification/ep02-p07-ratification.md).

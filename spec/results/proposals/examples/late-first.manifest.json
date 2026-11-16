@@ -1,0 +1,86 @@
+{
+  "kind": "RunManifest",
+  "schema_version": "0.1.0",
+  "status": "success",
+  "repeatability": "bounded_numerical_agreement",
+  "sources": {
+    "design": {
+      "schema_version": "0.1.0",
+      "id": "production_decay",
+      "revision": 1,
+      "digest": "06b07d41b4974df77c7a992ca46c6a281099d0bd435a3ce05a54c022e91a394e"
+    },
+    "experiment": {
+      "schema_version": "0.1.0",
+      "id": "baseline",
+      "revision": 1,
+      "digest": "226387b2feefb26979cdebaba61e179b4a7e258ec0c6dd10bf4180f1c97e53ae"
+    }
+  },
+  "fir": {
+    "schema_version": "0.1.0",
+    "canonicalization_version": "0.1.0",
+    "digest": "cf4011a6c97891192c0b84951dd53ae38bd1fc629e05c885a8dff30bd5e53a50"
+  },
+  "execution": {
+    "profile": "ode",
+    "time_grid": [
+      1.0,
+      10.0,
+      100.0
+    ],
+    "rtol": 1e-10,
+    "atol": 1e-12,
+    "max_step": 1.0,
+    "max_nfev": 100000
+  },
+  "randomness": {
+    "rng": "none",
+    "seed": null
+  },
+  "evaluations": {
+    "nfev": 2000
+  },
+  "timing": {
+    "started_at_utc": "2026-11-16T12:00:00.000000Z",
+    "finished_at_utc": "2026-11-16T12:00:00.125000Z",
+    "elapsed_seconds": 0.125
+  },
+  "integration": "performed",
+  "output": {
+    "schema_version": "0.1.0",
+    "media_type": "application/json",
+    "encoding": "utf-8",
+    "sha256": "318f9ceba3f7b2a8cf5872ef64762340b85c9b0265ba4d68ad0a056753487ca1"
+  },
+  "producer": {
+    "name": "fenix-bio",
+    "version": "0.0.0",
+    "build_id": null
+  },
+  "backend": {
+    "profile": "python-scipy-ode/0.1.0",
+    "solver": {
+      "name": "scipy.integrate.solve_ivp",
+      "method": "DOP853",
+      "options": {
+        "first_step": null,
+        "vectorized": false,
+        "dense_output": false,
+        "events": null,
+        "jacobian": "not_supplied"
+      }
+    },
+    "environment": {
+      "python_implementation": "CPython",
+      "python_version": "3.12.13",
+      "rfc8785_version": "0.1.4",
+      "numpy_version": "2.5.5",
+      "scipy_version": "1.18.1"
+    },
+    "evaluations": {
+      "njev": 0,
+      "nlu": 0
+    }
+  }
+}

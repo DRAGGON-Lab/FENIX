@@ -1,0 +1,28 @@
+{
+  "decision": "RATIFIED",
+  "recorded_date_utc": "2026-11-16",
+  "reviewed_revision": "bc662d3e9778dc7977de39041f8a44cba314851e",
+  "approval_source": "Explicit human-PI instruction in this Codex conversation",
+  "approved_scope": "Revised P07 contract, schemas and bounded candidate reference expectations at the reviewed revision",
+  "human_hash_review_limitation": "Human explicitly did not claim independently recomputing every hash from raw bytes",
+  "reviewed_artifacts": [
+    {
+      "path": "spec/results/proposals/ADR-P07.md",
+      "reviewed_sha256": "cb45714cc685bdd182655d14794dfc9f5ba2dc1cc6ffde7c2ac022af018facef",
+      "recomputed_sha256": "cb45714cc685bdd182655d14794dfc9f5ba2dc1cc6ffde7c2ac022af018facef",
+      "outcome": "PASS"
+    },
+    {
+      "path": "spec/results/proposals/run-manifest-m0.schema.json",
+      "reviewed_sha256": "8e1c9236f33801ff81a12900d386c531295830ebca22ad2f09b9deb007d6264d",
+      "recomputed_sha256": "8e1c9236f33801ff81a12900d386c531295830ebca22ad2f09b9deb007d6264d",
+      "outcome": "PASS"
+    }
+  ],
+  "snapshot_audit_replay": "PASS; exact match to original p07-refinement-audit.json",
+  "snapshot_system_checksums": "PASS; all 18 entries",
+  "snapshot_ecmascript_crosscheck": "PASS; 11 candidate hashes, 4 result/FIR identities and mappings, 8 binary64 probes",
+  "native_implementation_approved": false,
+  "native_p07_implementation_tests": "NOT RUN",
+  "historical_receipts_modified": false
+}
