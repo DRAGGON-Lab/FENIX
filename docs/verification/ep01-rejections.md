@@ -308,9 +308,9 @@ Both retained rejection reports are refreshed solely in that historical P01
 catalog fingerprint. Their 207 case rows and all other report fields are unchanged
 from `eb750ff`; native generation and current comparison pass.
 
-Current [Python report](rejections-python.json) SHA-256:
+Historical P01-refresh [Python report](rejections-python.json) SHA-256:
 `08828c81c0ec4e3777a256ebda8621c7bd4d2f4254accdcf3583fbb1d0e9b349`.
-Current [Julia report](rejections-julia.json) SHA-256:
+Historical P01-refresh [Julia report](rejections-julia.json) SHA-256:
 `041b2527927d762c6ad89e5ff6dc03071039eca5e6e90effad1e4501f8e19a06`.
 Earlier hashes above identify the prior evidence revisions. The P01 record retains
 current source identity, commands and unchanged-artifact checks. This provenance
@@ -335,3 +335,28 @@ The [committed-document evidence](ep02-python-documents.md) records new native
 checks and regenerated reference reports. Both retained rejection reports change
 only the Python manifest/lock fingerprints; every other field and all 207 observed
 rows match `91dd4c2`. Previous artifact hashes remain historical identities.
+
+## EP-02 compiler configuration provenance refresh
+
+Issue #20 expands Python's strict type-check scope to the full native package and
+updates its package description. Both retained rejection reports are regenerated;
+only the Python project configuration fingerprint changes. Every case row and
+all other fields match `e182455`. The lockfile, fixtures, catalogs and independent
+reference implementations are unchanged. The [native compiler evidence](ep02-python-compiler.md)
+records new native validation/normalization/compiler results separately from
+historical reference results and NOT_RUN rows.
+
+Current retained-report hashes for the #20 compiler configuration refresh match
+the artifact entries in the original [compiler receipt](ep02-python-compiler.json):
+
+| Retained report | Current SHA-256 |
+|---|---|
+| [Python](rejections-python.json) | `cbbe0f306cefa8b67dc81cac9878fdd205bf042c5b5412e7280a8efed10d82a4` |
+| [Julia](rejections-julia.json) | `c18ec0cbe51259c4eecdc027623354039a3dd3b9e5eaa35b2f21a240ca97893e` |
+
+Future report regeneration must refresh these current declarations and verify
+them against the actual artifact bytes. Earlier hashes retain explicit historical
+labels and identify their original evidence revisions. This documentation
+correction regenerates no report and rewrites no earlier execution evidence;
+the [review follow-up](ep02-python-compiler.md#review-follow-up-limits-and-retained-report-hashes)
+records its verification separately.

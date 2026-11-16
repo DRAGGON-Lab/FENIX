@@ -100,3 +100,12 @@ For issue #17 rejection validation, run both native suites/reports, comparison
 and independent digest audit from the [rejection-suite commands](../conformance/rejections/README.md#run-and-compare).
 The bounded suite has human PI acceptance; negative capability fixtures are not
 exhaustive, and native package implementation approval remains separate.
+
+For native Python FIR/compiler changes, also run `python -m unittest discover -s
+packages/python/tests_native_fir -v` through the locked uv environment. This suite
+checks the 207-case rejection catalog and 84-case canonicalization catalog through
+native APIs, including exact approved normalized objects/model bytes/identity
+bytes and compiler-source controls. Sets overlap. Legacy reference reports retain
+historical NOT_RUN rows; new native outcomes must be recorded separately. Expand
+Ruff/strict mypy to include the new FIR/compiler modules and tests, and continue
+locked-runtime clean-wheel validation. No solver or empirical validity follows.

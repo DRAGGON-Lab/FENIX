@@ -196,3 +196,94 @@ uv run --project packages/python --locked --offline python -m unittest discover 
   and [executed Julia/Node comparisons and audits](../../docs/verification/ep02-python-documents.md#executed-outcomes)
   supply additional bounded evidence for this milestone, without establishing
   exhaustive serializer correctness or biological validity.
+
+## M0 BioIR-to-FIR compiler
+
+```python
+from fenix.compiler import compile_experiment
+from fenix.fir import FIRDocument, FIRModel, FIRValidationError
+
+fir = compile_experiment(loaded)  # verified ExperimentDocument from above
+assert fir.model.to_dict()["capabilities"] == {"ode": True, "ssa": False}
+model_bytes = fir.model.canonical_model_bytes()
+identity_bytes = fir.model.identity_bytes()
+model_digest = fir.digest
+standalone = FIRDocument.from_json(fir.to_json())
+standalone.validate_sources(committed_design, loaded)
+assert FIRModel.from_json(model_bytes).digest == model_digest
+```
+
+The compiler accepts an exact native `ExperimentDocument`, using its verified local
+Design context. It binds the one species to FIR `x` and binds production/decay
+function roles to `alpha`/`beta`, independently of source names and declaration
+order. It emits precisely `alpha - beta*x`, the two reaction templates and signed
+stoichiometry, resolved values/units, initial count, exact observable IDs, fixed
+assumptions and `{ode: true, ssa: false}`. Empty observables stay empty. Volume
+introduces no multiplier. Missing assignments fail BioIR validation; inputs are
+never repaired or supplied with biological defaults. No solver or SSA eligibility
+is implemented. An ODE capability declaration does not assert numerical solvability.
+
+`FIRModel` and `FIRDocument` are immutable, with validated factory construction.
+`from_json(str | bytes)` uses P03 binary64 parsing for every number token, including
+large integer spellings; BioIR continues to use P01's safe-integer-token rule.
+`from_dict` accepts explicit wire-shaped dictionaries, copies them into immutable
+storage, and requires finite built-in floats for mathematical numeric fields
+(including stoichiometry), excluding booleans and implicit int/Decimal conversions.
+Compiler conversion of already validated BioIR quantities to binary64 is explicit.
+All returned dictionaries are fresh. Malformed/unknown fields, duplicate IDs,
+invalid roles/units/references/templates, reaction/equation disagreement and
+unsupported capability declarations fail `FIRValidationError` with category and
+FIR-envelope paths such as `/model/parameters/0/unit` or `/provenance/symbol_map`.
+No general algebraic equivalence is inferred or executed.
+
+`model.normalized()` returns an independently validated immutable model, sorting
+only the six declaration collections specified by P03, using UTF-16 ordering.
+Original declarations and expression operand order are preserved; normalization
+is idempotent. `canonical_model_bytes()` is `JCS(N(model))`; `identity_bytes()` is
+JCS of exactly `{domain: "fenix.fir", canonicalization_version: "0.1.0", model: N(model)}`.
+The lowercase SHA-256 `digest` hashes identity bytes, not bare model bytes.
+Canonical model bytes read back under P03 with identical bytes and identity.
+
+Compiler envelopes include both source digests and complete state/parameter symbol
+maps, plus compiler name/version. These records and optional observable display
+labels are provenance and never enter FIR identity. Author metadata and execution
+settings are not copied into the model. Observable IDs, initial values, rates,
+units, assumptions and capabilities are semantic and do affect identity.
+Standalone envelopes may omit provenance. To verify producer/source correspondence,
+use `validate_sources(design, experiment)` or supply both `design=` and `experiment=`
+to `FIRDocument.from_json`/`from_dict`; one context alone is rejected. A mathematical
+model digest alone is not source agreement, provenance authentication, empirical
+validation or proof that a solver exists.
+
+The native FIR suite exercises all 207 approved rejection cases with categories,
+paths and supplied-input identities, all 84 canonicalization catalog cases
+(including 13 exact normalization/identity vectors), and accepted compiler/source
+controls. These sets overlap; they do not establish exhaustive generated-input or
+cross-language compiler parity. The Python reference shares rfc8785; approved fixed
+bytes and independent Julia/Node evidence remain necessary. Original catalog rows,
+including historical NOT_RUN statuses, remain unchanged; new native results are
+recorded separately.
+
+```sh
+uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_fir -v
+```
+
+### Compiler guarantees and evidence limits
+
+- **Compiler correctness and solver correctness have separate gates.** #20 emits
+  validated mathematics; it does not execute the ODE or compare library-produced
+  trajectories against the analytical oracle. Existing production-decay oracle
+  checks validate reference evidence. Numerical execution remains
+  [#21](https://github.com/DRAGGON-Lab/FENIX/issues/21) under P04, followed by the
+  independent scientific gate in [#29](https://github.com/DRAGGON-Lab/FENIX/issues/29).
+- **FIR identity describes the resolved mathematical model.** Matching FIR means
+  matching the complete resolved M0 mathematical model and its named observable
+  interface. It does not establish identical experimental biological behavior.
+  P01 BioIR declaration order remains identity-significant; P03 sorts only FIR
+  `states`, `parameters`, `reactions`, `observables`, `equations` and `assumptions`.
+- **Fixed conformance remains bounded.** The fixed tests do not exhaust
+  interactions among numeric boundaries, declaration permutations and source
+  mappings. Generated-input and metamorphic investigation remains outstanding
+  under [#59](https://github.com/DRAGGON-Lab/FENIX/issues/59), with #20 as the
+  prerequisite for its FIR/compiler portion. This follow-up does not retroactively
+  block #20's bounded milestone or select a testing framework or dependency.
