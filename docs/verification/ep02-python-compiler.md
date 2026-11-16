@@ -114,3 +114,125 @@ mathematics, roles, normalization and identity boundaries. These bounded agent
 reviews are not human PI approval or exhaustive generated-input validation.
 Hosted CI is observed separately on the PR. No automatic merge, package release,
 parent epic closure or subsequent delivery is included.
+
+## Review follow-up: limits and retained-report hashes
+
+This documentation/tracking follow-up starts from `d64d019` on PR #61. It changes
+only this record, the [Python README](../../packages/python/README.md#compiler-guarantees-and-evidence-limits)
+and the [rejection verification page](ep01-rejections.md#ep-02-compiler-configuration-provenance-refresh).
+Production code, public APIs, tests, dependencies, scientific contracts, approved
+fixtures, retained report bytes and original execution receipts remain unchanged.
+No solver work, report regeneration, implementation approval, merge, parent epic
+closure or start of #21 is included.
+
+- **Compiler correctness versus solver correctness:** #20 emits validated
+  mathematics but does not execute the ODE or compare library-produced
+  trajectories against the analytical oracle. The earlier production-decay oracle
+  checks validate reference evidence. Numerical execution remains
+  [#21](https://github.com/DRAGGON-Lab/FENIX/issues/21)/P04, followed by the
+  independent scientific gate in [#29](https://github.com/DRAGGON-Lab/FENIX/issues/29).
+- **FIR identity versus biological equivalence:** matching FIR means matching
+  the complete resolved M0 mathematical model and named observable interface.
+  It does not establish identical experimental biological behavior. BioIR array
+  order remains identity-significant under P01; P03 normalizes only the six FIR
+  collections `states`, `parameters`, `reactions`, `observables`, `equations` and
+  `assumptions`. Reordering BioIR declarations can change source digests/maps
+  while preserving the compiled FIR identity; source agreement remains a separate
+  check.
+- **Bounded conformance:** fixed cases do not exhaust interactions among numeric
+  boundaries, declaration permutations and source mappings. Generated-input and
+  metamorphic investigation remains outstanding under
+  [#59](https://github.com/DRAGGON-Lab/FENIX/issues/59), with #20 as the prerequisite
+  for FIR normalization/compiler-source interactions. Its existing BioIR,
+  replay/minimization and independent-reference obligations remain in force.
+  This work does not retroactively block #20 or select a framework/dependency.
+
+The rejection page now labels the P01-refresh hashes as historical and declares
+the current #20 report hashes beside direct artifact links. Both current hashes
+agree with artifact bytes and the original [compiler receipt](ep02-python-compiler.json).
+Earlier execution evidence and receipt contents are preserved. Future regeneration
+must update the current declarations and verify them against artifact bytes.
+
+Tracking updates were applied and read back through the GitHub API:
+[#59](https://github.com/DRAGGON-Lab/FENIX/issues/59) retains its original BioIR
+acceptance notes and adds the FIR/compiler interaction requirements above;
+[PR #61](https://github.com/DRAGGON-Lab/FENIX/pull/61) records all three limits,
+the corrected artifact references and #59 linkage. Both remain open; the PR is
+unmerged and human implementation approval remains separate.
+
+### Follow-up verification, separate from original execution
+
+Executed on **2026-11-16 UTC**, with HEAD
+`d64d0192aeecbf52f42d55133c802bcf94f56e07` and the three Markdown files dirty.
+Runtime: Python 3.12.13 and uv 0.11.29. All uv commands below use
+`UV_CACHE_DIR=/private/tmp/fenix-uv-cache` and locked offline dependencies.
+The sorted path + NUL + bytes + NUL SHA-256 over **488 tracked files**, excluding
+`docs/verification/ep02-python-compiler.md`, is
+`a9d448623472f58d254724c96dc4a92f2f0e240f5a736b0ee4d0539c0dbb2954`.
+This fingerprints the follow-up source state without self-reference; it does not
+replace the original receipt's source identity. No new regression test is added
+for this prose correction; the existing positive/negative suites are retained.
+
+| Exact command | Fresh outcome |
+|---|---|
+| `UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv sync --project packages/python --locked --offline` | PASS (exit 0); 14 packages checked, no dependency change |
+| `python3 /private/tmp/fenix-20-followup-audit.py` (complete source below) | PASS (exit 0); both current declarations equal report SHA-256 and original receipt entries; exactly three Markdown changes; all protected tracked files unchanged from `d64d019`; original compiler evidence preserved byte-for-byte as a prefix |
+| `UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python conformance/rejections/review.py --compare docs/verification/rejections-python.json docs/verification/rejections-julia.json` | PASS (exit 0); 207 fixed expectations, APPROVED; compares retained bytes without report generation |
+| `UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python scripts/check_repo.py` | PASS (exit 0); repository consistency and local links, not scientific conformance |
+| `UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v` | PASS (exit 0); 46 tests |
+| `UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_fir -v` | PASS (exit 0); 3 methods covering the overlapping 207 rejection, 84 canonicalization and 9 producer/source controls |
+| `UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v` | PASS (exit 0); 6 harness tests |
+| `git diff --check && git diff --cached --check` | PASS (exit 0); working and staged whitespace |
+
+Fresh wheel build/install/tests, numerical solver execution, systematic generated
+inputs and broad Python/Julia reference execution: **NOT RUN** in this follow-up.
+The historical results above remain historical. No check in this follow-up
+establishes solver correctness, biological equivalence or exhaustive conformance.
+Hosted checks for the new commit are observed separately on PR #61.
+
+Reproduce the hash and unchanged-file audit from the repository root by saving
+this exact source to `/private/tmp/fenix-20-followup-audit.py` and running the
+command above (valid before or after the follow-up commit):
+
+```python
+import hashlib
+import json
+import re
+import subprocess
+from pathlib import Path
+
+baseline = "d64d019"
+allowed = {
+    "packages/python/README.md",
+    "docs/verification/ep01-rejections.md",
+    "docs/verification/ep02-python-compiler.md",
+}
+changed = set(subprocess.check_output(
+    ["git", "diff", "--name-only", baseline], text=True
+).splitlines())
+assert changed == allowed, changed
+assert not subprocess.check_output(
+    ["git", "ls-files", "--others", "--exclude-standard"], text=True
+).strip(), "Unexpected untracked files"
+subprocess.run([
+    "git", "diff", "--exit-code", baseline, "--", ".",
+    *[":(exclude)" + path for path in sorted(allowed)],
+], check=True)
+record_path = "docs/verification/ep02-python-compiler.md"
+original = subprocess.check_output(["git", "show", baseline + ":" + record_path])
+assert Path(record_path).read_bytes().startswith(original), "Earlier evidence rewritten"
+page = Path("docs/verification/ep01-rejections.md").read_text()
+current = page.split("## EP-02 compiler configuration provenance refresh", 1)[1]
+receipt = json.loads(Path("docs/verification/ep02-python-compiler.json").read_bytes())
+for label, language in (("Python", "python"), ("Julia", "julia")):
+    path = "docs/verification/rejections-" + language + ".json"
+    pattern = (r"\| \[" + label + r"\]\(rejections-" + language
+               + r"\.json\) \| `([0-9a-f]{64})` \|")
+    declarations = re.findall(pattern, current)
+    actual = hashlib.sha256(Path(path).read_bytes()).hexdigest()
+    assert declarations == [actual], (path, declarations, actual)
+    assert receipt["artifacts"][path] == actual, path
+    print("PASS:", path, actual, "matches current declaration and receipt")
+print("PASS: exactly three Markdown files changed; all protected tracked files unchanged")
+print("PASS: original compiler evidence preserved as an exact byte prefix")
+```

@@ -267,3 +267,23 @@ recorded separately.
 ```sh
 uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_fir -v
 ```
+
+### Compiler guarantees and evidence limits
+
+- **Compiler correctness and solver correctness have separate gates.** #20 emits
+  validated mathematics; it does not execute the ODE or compare library-produced
+  trajectories against the analytical oracle. Existing production-decay oracle
+  checks validate reference evidence. Numerical execution remains
+  [#21](https://github.com/DRAGGON-Lab/FENIX/issues/21) under P04, followed by the
+  independent scientific gate in [#29](https://github.com/DRAGGON-Lab/FENIX/issues/29).
+- **FIR identity describes the resolved mathematical model.** Matching FIR means
+  matching the complete resolved M0 mathematical model and its named observable
+  interface. It does not establish identical experimental biological behavior.
+  P01 BioIR declaration order remains identity-significant; P03 sorts only FIR
+  `states`, `parameters`, `reactions`, `observables`, `equations` and `assumptions`.
+- **Fixed conformance remains bounded.** The fixed tests do not exhaust
+  interactions among numeric boundaries, declaration permutations and source
+  mappings. Generated-input and metamorphic investigation remains outstanding
+  under [#59](https://github.com/DRAGGON-Lab/FENIX/issues/59), with #20 as the
+  prerequisite for its FIR/compiler portion. This follow-up does not retroactively
+  block #20's bounded milestone or select a testing framework or dependency.
