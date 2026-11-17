@@ -1,4 +1,6 @@
 module Fenix
 include("BioIR.jl")
-export BioIR
+include("FIR.jl")
+include("Compiler.jl")
+export BioIR, FIR, compile_experiment
 end # module Fenix

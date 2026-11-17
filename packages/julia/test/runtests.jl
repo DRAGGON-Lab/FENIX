@@ -174,3 +174,5 @@ end
 
 include("test_json.jl")
 include("test_documents.jl")
+include("test_fir.jl")
+include("test_compiler.jl")
