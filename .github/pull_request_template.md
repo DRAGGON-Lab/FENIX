@@ -1,6 +1,12 @@
 ## Objective and linked issue
 
 One issue; describe expected behavior and explicit non-goals.
+Reference related issues using `Refs #<issue-number>`.
+Replace the placeholder with the relevant issue number.
+Use closing keywords only when the PR satisfies the referenced issue's
+acceptance criteria and required approval; avoid closing-keyword phrases even
+in negated sentences. Parent scientific/release closure requires explicit
+human PI acceptance.
 
 ## Scientific contract review
 

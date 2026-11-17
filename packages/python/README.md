@@ -63,8 +63,8 @@ The reference ID/revision must match it; digest syntax is checked, but **digest
 correspondence and trusted revision identity remain unverified**. Rebuilding an
 Experiment (including `dataclasses.replace`) requires supplying `source_design`
 again. Frozen content does not establish an archive of immutable committed revisions.
-Issue #19 now makes verified Design content digests and exact ID/revision/digest
-correspondence a high-priority gate before accepting committed Experiments.
+The committed document API delivered in #19 verifies Design content digests and
+exact ID/revision/digest correspondence before accepting committed Experiments.
 
 Failures raise `BioIRValidationError(ValueError)` with `category`, `path` and a
 readable message. Paths are JSON Pointers relative to the constructor that failed:
@@ -80,8 +80,10 @@ Raw JSON parsing, duplicate keys, malformed Unicode, token overflow/underflow,
 canonical bytes/digests, envelopes and exact committed Design references are
 handled by the committed document API delivered in [#19](https://github.com/DRAGGON-Lab/FENIX/issues/19). Python literals have already
 lost raw-token information; e.g. an underflowed literal is indistinguishable from
-zero at this boundary. No FIR, compiler, execution, results or wider BioIR support
-is supplied. Accepted fractional counts do not establish SSA eligibility.
+zero at this boundary. These content constructors do not compile or execute
+models; the FIR, compiler, execution and results APIs are documented below.
+Wider BioIR support is outside M0. Accepted fractional counts do not establish
+SSA eligibility.
 
 ## Development checks
 
@@ -220,8 +222,10 @@ order. It emits precisely `alpha - beta*x`, the two reaction templates and signe
 stoichiometry, resolved values/units, initial count, exact observable IDs, fixed
 assumptions and `{ode: true, ssa: false}`. Empty observables stay empty. Volume
 introduces no multiplier. Missing assignments fail BioIR validation; inputs are
-never repaired or supplied with biological defaults. No solver or SSA eligibility
-is implemented. An ODE capability declaration does not assert numerical solvability.
+never repaired or supplied with biological defaults. The compiler does not run a
+solver or establish SSA eligibility; P04 execution is supplied separately by
+`fenix.execution`. An ODE capability declaration does not assert numerical
+solvability.
 
 `FIRModel` and `FIRDocument` are immutable, with validated factory construction.
 `from_json(str | bytes)` uses P03 binary64 parsing for every number token, including
@@ -273,7 +277,7 @@ uv run --project packages/python --locked --offline python -m unittest discover 
 - **Compiler correctness and solver correctness have separate gates.** #20 emits
   validated mathematics; it does not execute the ODE or compare library-produced
   trajectories against the analytical oracle. Existing production-decay oracle
-  checks validate reference evidence. Numerical execution remains
+  checks validate reference evidence. Numerical execution was delivered in
   [#21](https://github.com/DRAGGON-Lab/FENIX/issues/21) under P04, followed by the
   independent scientific gate in [#29](https://github.com/DRAGGON-Lab/FENIX/issues/29).
 - **FIR identity describes the resolved mathematical model.** Matching FIR means
@@ -349,8 +353,12 @@ mathematics, provenance, canonical bytes and digest remain unchanged by executio
 ## Source-linked results and run manifests
 
 The ratified [P07 contract](../../spec/results/proposals/ADR-P07.md) governs
-`fenix.results`. Native implementation review remains pending under
-[#22](https://github.com/DRAGGON-Lab/FENIX/issues/22).
+`fenix.results`. [#22](https://github.com/DRAGGON-Lab/FENIX/issues/22) was closed
+following PI-directed implementation review. PR #65 is merged on main at
+`32acf4f4b51e257c7efed65203360e5e9ee83598`, with seven successful post-merge CI
+jobs. This completes the bounded Python implementation milestone; independent
+scientific acceptance and applicable release signoff remain separate. Julia is
+still a scaffold. See the [integration audit](../../docs/verification/ep02-status-governance.md).
 
 ```python
 from fenix.results import RunRecord, run_experiment

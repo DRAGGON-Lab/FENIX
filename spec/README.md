@@ -7,7 +7,11 @@ is ratified under ADR-P03. Independent P01 reference validators and the
 [approved 92-case catalog](../conformance/bioir/README.md) provide bounded
 reference expectations. Native implementations, exhaustive validation, compiler
 correctness, solver correctness and future BioIR semantics are not approved by
-that acceptance; native compilers and modeling-package validators remain absent.
+that reference acceptance. Native Python document validation, FIR compilation,
+ODE execution and P07 results are now implemented on main; Julia remains a
+scaffold. Independent native cross-language conformance and final scientific/
+release acceptance remain separate; see the
+[current audit](../docs/verification/ep02-status-governance.md).
 
 New or changed normative rules require human PI approval. Independent references
 and reviewed positive/negative fixtures remain mandatory. In particular,

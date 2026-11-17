@@ -161,3 +161,10 @@ Follow-up verification: **PASS** for
 (six tests), and `git diff --check`. Package, numerical and wheel suites were
 **NOT RUN** for this documentation-only disposition; their earlier executed
 outcomes above remain historical.
+
+## Current integration addendum — 2026-11-16
+
+All preceding receipt and review statements describe their recorded revisions.
+The [PI-directed #22 closure](https://github.com/DRAGGON-Lab/FENIX/issues/22#issuecomment-6929801138) occurred at 21:23:45 UTC while PR #65 was unmerged. PR #65 then merged at 21:30:16 UTC as `32acf4f4b51e257c7efed65203360e5e9ee83598`. [Post-merge CI](https://github.com/DRAGGON-Lab/FENIX/actions/runs/43960747581) passed all seven jobs. The Python M0 path is implemented on main, including P07 capture/readback.
+
+This supersedes earlier availability/pending-review status, without changing the original machine-readable receipt, source/artifact hashes or scientific claims. Julia remains a scaffold. Independent Python–Julia scientific conformance (#29), stronger provenance/archive demonstration (#42), generated-input investigation (#59), P06 governance and final EP-02 PI/release acceptance retain separate scopes. P07 establishes bounded artifact consistency, not execution authenticity, authorship, biological validity or guaranteed exact numerical replay. See the [maintenance audit and action log](ep02-status-governance.md).

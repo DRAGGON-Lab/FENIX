@@ -34,7 +34,7 @@
 | D28 | FIR digest covers only canonical mathematical semantics, not provenance. |
 | D29 | RFC 8785/JCS with versioned FENIX semantic normalization and reference vectors. |
 
-**Remaining engineering gates:** ADR-P01, ADR-P02 and ADR-P03 are ratified for the M0 BioIR, mathematical FIR and canonicalization contracts; independent fixture and implementation acceptance gates remain open. P04 ODE tolerance and P07 M0 source-linked results/manifests are ratified below; P05 SSA math/stats and P06 package/version governance remain to be ratified for their release gates. Native P07 implementation approval remains separate.
+**Current implementation and remaining gates:** Python’s supported M0 path is implemented on main through merged PRs #58/#60/#61/#63/#65; #18–#22 are closed. This is separate from the historical contract/reference approvals below. Julia remains a scaffold; independent cross-language conformance, final EP-02 PI acceptance and applicable release signoff remain outstanding. P05 SSA, P06 package/version governance and #42 broader provenance retain separate gates. See the [current integration audit](verification/ep02-status-governance.md).
 
 **Scientific source of truth:** ratified ADR/specification and independent reference evidence, not the current source code or test behavior. Human scientific approval is required for revisions.
 
@@ -133,3 +133,7 @@ bounded candidate expectations, without approving a native implementation,
 exhaustive validation, Julia functionality, execution authenticity or biological
 validity. #22 implementation review, #29 and #42 retain separate gates. See the
 [explicit ratification evidence](verification/ep02-p07-ratification.md).
+
+## Current integration addendum — 2026-11-16
+
+The [PI-directed #22 closure](https://github.com/DRAGGON-Lab/FENIX/issues/22#issuecomment-6929801138) followed bounded implementation review while PR #65 was unmerged. PR #65 subsequently merged as `32acf4f4b51e257c7efed65203360e5e9ee83598`, with [seven successful post-merge jobs](https://github.com/DRAGGON-Lab/FENIX/actions/runs/43960747581). This updates implementation availability; it does not enlarge any historical ratification or supply independent scientific/release acceptance. P07 hashes and exact source links establish bounded consistency, not execution authenticity, authorship, biological validity or exact numerical replay.
