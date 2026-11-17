@@ -1,0 +1,396 @@
+{
+  "scope": "Native Julia typed results/capture/readback; Refs #27; no automatic merge/closure",
+  "base_revision": "82a9b64b45576c298096d48a532a9ea2bdc55c42",
+  "branch": "feat/27-julia-results",
+  "platform": "macOS-10.16-x86_64-i386-64bit",
+  "runtime": {
+    "Fenix": "0.0.0",
+    "JSON": "1.13.4",
+    "OrdinaryDiffEqRosenbrock": "2.7.5",
+    "OrdinaryDiffEqTsit5": "2.1.5",
+    "SciMLBase": "3.58.0",
+    "julia": "1.10.13"
+  },
+  "uv": "0.11.29",
+  "human_pi_contract_ratification": {
+    "status": "APPROVED",
+    "reviewed_revision": "0156143b7555405d8bf00ea9917f4badddf1ceeb",
+    "merged_revision": "82a9b64b45576c298096d48a532a9ea2bdc55c42",
+    "pr": "https://github.com/DRAGGON-Lab/FENIX/pull/71",
+    "instruction": "ok Iapproved and  merged the proposal, continue with the code implementation",
+    "reviewed_artifact_sha256": {
+      "spec/results/proposals/ADR-P07-Julia.md": "5af54ef839d7d4d00d943b0289da499e58d9b9aa472398088f40a9967137756e",
+      "spec/results/proposals/run-manifest-julia-sciml-m0.schema.json": "e3aa4237f0e92f37eec9a7f64b53de4859efbee04578bb381133bdd3e8d5f763",
+      "spec/results/proposals/julia-examples/checksums.json": "7443383d52131d1ba773db18de7dfaf71844d321fcf0381e661a7e482e55b51a"
+    },
+    "limits": "Authorizes implementation; separate human implementation acceptance remains pending"
+  },
+  "human_implementation_acceptance": "PENDING",
+  "dirty_snapshot_sha256": "c44adfd7aebfb4ec1d72e9deba6221c1a9a6b0608b70bcfa2b11e7a8be6214af",
+  "changed_files_sha256": {
+    ".github/workflows/scaffold-smoke.yml": "0316787284f2ec0c6e734a08452ffc376aa0fa1c2da5624333f742ba172e13bb",
+    "ARCHITECTURE.md": "f22493729f774f9a69d5a2b217d010e59558e96d49d0f2cef643fa1ce0f06cad",
+    "PRODUCT.md": "4a4c7a65270cdeafbaa8258fb6a32f7181596d0bf6dca562a9e91d37df1b504d",
+    "conformance/julia_ode/Manifest.toml": "4624b98301546ce12f4b583e7954d3845a70b2b200b0bd11ec70d26059944855",
+    "docs/DEVELOPMENT_WORKFLOW.md": "c1d16293b5e6b4129ebd926a4ea6e18066657422beb14294e76904c9c283e09d",
+    "docs/approved-decisions.md": "e40b565beff88200fbc9c977e605589bfb2c523a0437e10774c0226c83f47ff5",
+    "docs/verification/ep03-julia-results.md": "188d5ec2287c31583e2cbc391ea31aced1905a34cb6c0bbbc149020976131a59",
+    "packages/julia/Project.toml": "2dd46fb97bde44c80a54c65dbf5aa9e52103a16ac34cd4dd451bc48e11bb85ce",
+    "packages/julia/README.md": "d35df4b1d3b32db30a03c0f6d98e71b34b0af3c47bde71b5fa89d74ba38a3a5f",
+    "packages/julia/src/Fenix.jl": "d1c2082e27a642d61647c678d8b0b2fe8b2936344d3c830171c726d2d8b77ba9",
+    "packages/julia/src/PortableJSON.jl": "571e7932fdc23b9cb4fd2cb309b154aa1138cc700cf4b74a17e981e551088e91",
+    "packages/julia/src/Results.jl": "1b53ebc34a9e77be0e9493047a6f393d541624fd0edba6d6e1bc871544b68b13",
+    "packages/julia/test/runtests.jl": "f53ce87168e8db2570e4e13338029b058377a0d896ed42ae397fa245ad59408f",
+    "packages/julia/test/test_json.jl": "15c909d3e6ca2a1fd6e989b846717445d54dd8708da50b2a7a117e44bceb1be3",
+    "packages/julia/test/test_results.jl": "036bc3a343be957eaf39133ef9a34a4461a4f0ede24e07e71958e3db96401e66",
+    "packages/julia/test_native_results/README.md": "208e7a027d5c7e5f6390c87917403f1c42cd3726adc17f1db7c2a586b51adce4",
+    "packages/julia/test_native_results/fixtures.jl": "ac672808e16a09b0f124339d12803d4285796a14192dce7ac3988674ddcfccfb",
+    "packages/julia/test_native_results/readback_trap.jl": "691d929ce82644ad4e0fe0171556641f50bc9b146990e99ee5a7016a9dbbd630",
+    "packages/julia/test_native_results/runtests.jl": "5cd74ffaab35f2992cc62e05f7f9dea8a1c888d09918bde1aa096ccb79c84472",
+    "spec/results/README.md": "9247936a83485d8f89d80e5cd8d95f79f0a063d134f83da5fb2b6e4e76c81782",
+    "spec/results/proposals/ADR-P07-Julia.md": "d43a1f2e3de4629d41b5ac0de78bc04fb475670242b37b37c8cb9bbf2b18cdd4",
+    "spec/results/proposals/julia-examples/README.md": "c1daf20ad6a2eb7adab62a9c3e5517f121d762321a639a50621ad537f2336b89"
+  },
+  "native_source_sha256": {
+    "packages/julia/src/BioIR.jl": "156116022d706cc4e4973c608249fc8c512a7cf1df3fdc63840a7cfec4b242a9",
+    "packages/julia/src/Compiler.jl": "86b476b0f121a106c6a5984398ecd17139b757fc6c6594757f410eec12971e0c",
+    "packages/julia/src/Documents.jl": "3ae48458f6876bb60b4262e8191a5c4a54ea20ca26b7cff7ae25afcf1751dd24",
+    "packages/julia/src/Execution.jl": "7ccdd94d76c895f88e61a3dc4ac0560a5cf1a661672a403c875260cae4740f3e",
+    "packages/julia/src/FIR.jl": "e79b985c52d6050a7c82d8d4b9e075acebe30130a357d3bb0e5b61bfb7875df4",
+    "packages/julia/src/Fenix.jl": "d1c2082e27a642d61647c678d8b0b2fe8b2936344d3c830171c726d2d8b77ba9",
+    "packages/julia/src/PortableJSON.jl": "571e7932fdc23b9cb4fd2cb309b154aa1138cc700cf4b74a17e981e551088e91",
+    "packages/julia/src/Results.jl": "1b53ebc34a9e77be0e9493047a6f393d541624fd0edba6d6e1bc871544b68b13"
+  },
+  "lock_sha256": {
+    "packages/python/uv.lock": "0a02d80325600c4610e8541b3255f5ab7b283438e6bb04c02348a9d2ca00cfb8",
+    "conformance/julia/Project.toml": "bcbe015fc7687abaeaf1048c6544843dfcbcf7f66f80aff16b176bf5dfe53185",
+    "conformance/julia/Manifest.toml": "0c0f75a2b4e54b792e911c5884f79ce46b43f3cc48a90ff5e61c3aabffda33b7",
+    "conformance/julia_ode/Project.toml": "bc8f951f11988d9443d3960ed02500d4227428f100cf86591d2a11ee56d616ca",
+    "conformance/julia_ode/Manifest.toml": "4624b98301546ce12f4b583e7954d3845a70b2b200b0bd11ec70d26059944855",
+    "packages/julia/Project.toml": "2dd46fb97bde44c80a54c65dbf5aa9e52103a16ac34cd4dd451bc48e11bb85ce"
+  },
+  "schema_contract_sha256": {
+    "spec/results/proposals/ADR-P07.md": "22f23142ee64d2444f938fa7d5cf98b6a69ec611fa82faddb13dbe619438434a",
+    "spec/results/proposals/ADR-P07-Julia.md": "d43a1f2e3de4629d41b5ac0de78bc04fb475670242b37b37c8cb9bbf2b18cdd4",
+    "spec/results/proposals/run-manifest-m0.schema.json": "8e1c9236f33801ff81a12900d386c531295830ebca22ad2f09b9deb007d6264d",
+    "spec/results/proposals/run-manifest-julia-sciml-m0.schema.json": "e3aa4237f0e92f37eec9a7f64b53de4859efbee04578bb381133bdd3e8d5f763",
+    "spec/results/proposals/ode-result-m0.schema.json": "9676e0f74ccd22ad79828227f5dc704001e39f020062e4fea58bfd1601c3f534",
+    "spec/execution/proposals/ADR-P04.md": "5489301befbc7d42b5429aedb8162a4d6143707f94f84e22b4a9fdceca5ff3f5"
+  },
+  "catalog_sha256": {
+    "spec/results/proposals/examples/checksums.json": "f41aed4b09f515ddb099c427be3dcdefa8cba24aa534211ac82f15139dfdd59a",
+    "spec/results/proposals/julia-examples/checksums.json": "7443383d52131d1ba773db18de7dfaf71844d321fcf0381e661a7e482e55b51a",
+    "conformance/production_decay/catalog.json": "468c05a59fc23106dfc2e9e3454e9709ef0b61c9e130885180ecd4e67a07406d",
+    "conformance/bioir/catalog.json": "ffd8b03732094543baff2464ab8c83f672dab6ebb22f2237621a1df8e493fcbc",
+    "conformance/canonicalization/catalog.json": "07858e1595f51a630427ed2a12ef8bfbf9c0df241688bffd5041e9ed424aa970",
+    "conformance/rejections/catalog.json": "5117b37ec7d4d45e111943e925dcfc27a3ac280ddeabfb456ff37b93a9750088"
+  },
+  "dependency_changes": "Only required stdlib Dates added; Pkg.resolve refreshed native test manifest Fenix deps list only. Independent reference lock and all package versions unchanged.",
+  "checks": [
+    {
+      "id": "python-package",
+      "command": "UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-python-package.log",
+      "log_sha256": "f9dec014bfe14d94dfd91f8172d9e67f5479410ec97da233d01045ff5943b099"
+    },
+    {
+      "id": "harness",
+      "command": "UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-harness.log",
+      "log_sha256": "1e45bffd4d866b307492dcddfa99bb18641102f00d73e9d5e247f334bd59a1be"
+    },
+    {
+      "id": "julia-package",
+      "command": "JULIA_DEPOT_PATH=/private/tmp/fenix-julia-depot JULIA_PKG_OFFLINE=true /private/tmp/julia-1.10.13/bin/julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-julia-package.log",
+      "log_sha256": "00a611934aa588e78a56f565f49a124ab271e490d0906e877e8c9f73759852f0"
+    },
+    {
+      "id": "native-content",
+      "command": "JULIA_DEPOT_PATH=/private/tmp/fenix-julia-depot JULIA_PKG_OFFLINE=true /private/tmp/julia-1.10.13/bin/julia --project=conformance/julia -e 'push!(LOAD_PATH, abspath(\"packages/julia\")); include(\"packages/julia/test_native_content/runtests.jl\")'",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-native-content.log",
+      "log_sha256": "52d090a1991dd20fdcd608cb9a75a1b0b857f9c87e04a5bf44286bb5fc0a4053"
+    },
+    {
+      "id": "native-documents",
+      "command": "JULIA_DEPOT_PATH=/private/tmp/fenix-julia-depot JULIA_PKG_OFFLINE=true /private/tmp/julia-1.10.13/bin/julia --project=conformance/julia packages/julia/test_native_documents/runtests.jl --report artifacts/julia-native-documents.json",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-native-documents.log",
+      "log_sha256": "a1f1b8f010d83692e823987de35163509371d84114278e7d8d4475f26d8ed42b"
+    },
+    {
+      "id": "native-fir",
+      "command": "JULIA_DEPOT_PATH=/private/tmp/fenix-julia-depot JULIA_PKG_OFFLINE=true /private/tmp/julia-1.10.13/bin/julia --project=conformance/julia packages/julia/test_native_fir/runtests.jl --report artifacts/julia-native-fir.json",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-native-fir.log",
+      "log_sha256": "592cade91ff3d3ac8f8bdd63242c69ac819e2b7b2f968932455a9adb654d9169"
+    },
+    {
+      "id": "native-ode",
+      "command": "JULIA_DEPOT_PATH=/private/tmp/fenix-julia-depot JULIA_PKG_OFFLINE=true /private/tmp/julia-1.10.13/bin/julia --project=conformance/julia_ode packages/julia/test_native_ode/runtests.jl --report artifacts/julia-native-ode.json",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-native-ode.log",
+      "log_sha256": "3c837a253b132581d56efbfc83d1d53e302e33edd9b17aec1c060ed9327a7564"
+    },
+    {
+      "id": "oracle-python",
+      "command": "UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python conformance/production_decay/review_oracle.py --report artifacts/production-decay-python.json",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-oracle-python.log",
+      "log_sha256": "12309edba44f0bcca41a40d4a06fd53577cf5127b006847e3a0ba3458b931b9f"
+    },
+    {
+      "id": "oracle-julia",
+      "command": "JULIA_DEPOT_PATH=/private/tmp/fenix-julia-depot JULIA_PKG_OFFLINE=true /private/tmp/julia-1.10.13/bin/julia --project=conformance/julia conformance/production_decay/review_oracle.jl --report artifacts/production-decay-julia.json",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-oracle-julia.log",
+      "log_sha256": "12309edba44f0bcca41a40d4a06fd53577cf5127b006847e3a0ba3458b931b9f"
+    },
+    {
+      "id": "oracle-rational",
+      "command": "UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python conformance/production_decay/audit_rational.py",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-oracle-rational.log",
+      "log_sha256": "e36aef0eee1c42c206525cec265a8529211b15aa7b7be34984572f11890091ac"
+    },
+    {
+      "id": "rejections-python",
+      "command": "UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python conformance/rejections/review.py --report artifacts/rejections-python.json",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-rejections-python.log",
+      "log_sha256": "447516ba9ba41afd36d0b35f351894d95b1cda6aa4bbfa6315aa9f4b70fedc35"
+    },
+    {
+      "id": "rejections-julia",
+      "command": "JULIA_DEPOT_PATH=/private/tmp/fenix-julia-depot JULIA_PKG_OFFLINE=true /private/tmp/julia-1.10.13/bin/julia --project=conformance/julia conformance/rejections/review.jl --report artifacts/rejections-julia.json",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-rejections-julia.log",
+      "log_sha256": "16ca1ea7f5374bfe1aa446dea65280aabbf97eef04d8040e7e09b4eabf45be60"
+    },
+    {
+      "id": "profile-python",
+      "command": "UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python spec/results/proposals/review_p07_julia.py",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-profile-python.log",
+      "log_sha256": "0fbb7a7a413df0132e5631d2eec654f42b80af986415a8de2a48dee46cd8c41b"
+    },
+    {
+      "id": "profile-julia",
+      "command": "JULIA_DEPOT_PATH=/private/tmp/fenix-julia-depot JULIA_PKG_OFFLINE=true /private/tmp/julia-1.10.13/bin/julia --project=conformance/julia spec/results/proposals/review_p07_julia.jl",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-profile-julia.log",
+      "log_sha256": "5ff2b708c4f2301a492fa0c0bea6975216d0f659576d28ca90c79231923d22b0"
+    },
+    {
+      "id": "original-p07",
+      "command": "UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python spec/results/proposals/review_p07.py",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-original-p07.log",
+      "log_sha256": "3808ed847d06971191cc9adf90552b82929ffb02d949edbca689e3a6011aba8d"
+    },
+    {
+      "id": "oracle-compare",
+      "command": "UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python conformance/production_decay/review_oracle.py --compare artifacts/production-decay-python.json artifacts/production-decay-julia.json",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-oracle-compare.log",
+      "log_sha256": "7b112e597ea510701e61b9c18bf395ba49c3a95725889f6164b9e92047b97272"
+    },
+    {
+      "id": "rejections-compare",
+      "command": "UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python conformance/rejections/review.py --compare artifacts/rejections-python.json artifacts/rejections-julia.json",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-rejections-compare.log",
+      "log_sha256": "554e2a3fc76293144c552f19738a04bed8b72bfe6a45c4d853f70a355811b672"
+    },
+    {
+      "id": "native-results",
+      "command": "JULIA_DEPOT_PATH=/private/tmp/fenix-julia-depot JULIA_PKG_OFFLINE=true /private/tmp/julia-1.10.13/bin/julia --project=conformance/julia_ode packages/julia/test_native_results/runtests.jl --report artifacts/julia-native-results.json",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-native-results.log",
+      "log_sha256": "9115f8044009e6c17878809ade046b6f438146889ef6627e3d73e187b4ef86fa"
+    },
+    {
+      "id": "standalone",
+      "command": "JULIA_DEPOT_PATH=/private/tmp/fenix-julia-depot JULIA_PKG_OFFLINE=true PATH=/nonexistent /private/tmp/julia-1.10.13/bin/julia --project=/private/tmp/fenix27-standalone -e 'using Pkg; @assert Sys.which(\"python\") === nothing; @assert Sys.which(\"python3\") === nothing; Pkg.instantiate(); Pkg.test()'",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-standalone.log",
+      "log_sha256": "c7b45b142c0d42e554edfd3a6ec5d3d9d309a8a69f47b74890f1826d72e5ef5d"
+    },
+    {
+      "id": "rejections-digest-audit",
+      "command": "node conformance/rejections/audit_inputs.cjs",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-rejections-digest-audit.log",
+      "log_sha256": "9668f4e624448995d6a69c7377501161cd85d9f42f6567d4b06839072f855a68"
+    },
+    {
+      "id": "repo",
+      "command": "UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python scripts/check_repo.py",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-repo.log",
+      "log_sha256": "8e8c8f9c13bdb5c2b4d3f55f913fc3adac04cb5fc5d4b3b77e976b236487fb49"
+    },
+    {
+      "id": "diff",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-diff.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "preserved",
+      "command": "git diff --exit-code origin/main -- packages/julia/src/Execution.jl conformance/julia/Project.toml conformance/julia/Manifest.toml spec/results/proposals/run-manifest-m0.schema.json spec/results/proposals/run-manifest-julia-sciml-m0.schema.json spec/results/proposals/ode-result-m0.schema.json spec/results/proposals/examples/*.json spec/results/proposals/julia-examples/*.json",
+      "exit_code": 0,
+      "outcome": "PASS",
+      "log_path": "/private/tmp/fenix27-preserved.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "native_results_report": {
+    "path": "artifacts/julia-native-results.json",
+    "sha256": "0e58d44a593da80ea5b21743ad47b3719e025d3d4a873462fe96464f9dc8f14f",
+    "sample_method_setting_comparisons": 160,
+    "example_pairs": 8,
+    "maximum_bound_fraction": {
+      "Tsit5/baseline": "0.0002715112451344779274220033163058107163524196755223328048518709327646567911551264",
+      "Tsit5/refined": "0.0000393106216379325089775708456998202106081724144397132701484024578681204185368263",
+      "Rodas5P/baseline": "0.0003983489345881510472210031206363948957094769874439009768216880758621565355087126",
+      "Rodas5P/refined": "0.00004561313096911229524550506097417807973160690758191719296414959325646414409231233"
+    },
+    "native_assertions": {
+      "example_transport": 88,
+      "closed_and_cross_artifact_rejections": 732,
+      "matrix": 962,
+      "interfaces": 40,
+      "isolated_solver_trap": 8
+    },
+    "ci_artifact": "julia-native-results"
+  },
+  "native_ode_report": {
+    "path": "artifacts/julia-native-ode.json",
+    "sha256": "16b5385932a00f36e1cb394f9807c0d487110baf20f883a5320a908f49ce0cd9",
+    "scope": "240 sample/method/setting comparisons including coarse and stiff exploratory control"
+  },
+  "package_results_assertions": 395,
+  "additional_parser_assertions": 77,
+  "standalone_without_python": {
+    "status": "PASS",
+    "directory": "/private/tmp/fenix27-standalone",
+    "environment": "PATH=/nonexistent; assert Sys.which python and python3 are nothing before Pkg.instantiate/Pkg.test",
+    "source_and_test_snapshot_matches": {
+      "Project.toml": "2dd46fb97bde44c80a54c65dbf5aa9e52103a16ac34cd4dd451bc48e11bb85ce",
+      "src/BioIR.jl": "156116022d706cc4e4973c608249fc8c512a7cf1df3fdc63840a7cfec4b242a9",
+      "src/Compiler.jl": "86b476b0f121a106c6a5984398ecd17139b757fc6c6594757f410eec12971e0c",
+      "src/Documents.jl": "3ae48458f6876bb60b4262e8191a5c4a54ea20ca26b7cff7ae25afcf1751dd24",
+      "src/Execution.jl": "7ccdd94d76c895f88e61a3dc4ac0560a5cf1a661672a403c875260cae4740f3e",
+      "src/FIR.jl": "e79b985c52d6050a7c82d8d4b9e075acebe30130a357d3bb0e5b61bfb7875df4",
+      "src/Fenix.jl": "d1c2082e27a642d61647c678d8b0b2fe8b2936344d3c830171c726d2d8b77ba9",
+      "src/PortableJSON.jl": "571e7932fdc23b9cb4fd2cb309b154aa1138cc700cf4b74a17e981e551088e91",
+      "src/Results.jl": "1b53ebc34a9e77be0e9493047a6f393d541624fd0edba6d6e1bc871544b68b13",
+      "test/runtests.jl": "f53ce87168e8db2570e4e13338029b058377a0d896ed42ae397fa245ad59408f",
+      "test/test_compiler.jl": "fa3b979d6d2deaf5c03eda8ba02ff99056449c5aea7bce183638a62b7b950ccc",
+      "test/test_documents.jl": "257badd47c91a0eabac37d580619caa36ecd41166b0775472c45746ea18f10cf",
+      "test/test_execution.jl": "b59ef3064de17a8bc6dd6613514144e08991f7b69086778b115efbbb79f7d75e",
+      "test/test_fir.jl": "36ae7d5a2e36dd15decd779afb236783c5896c05fa645868d9d920f080090fc9",
+      "test/test_json.jl": "15c909d3e6ca2a1fd6e989b846717445d54dd8708da50b2a7a117e44bceb1be3",
+      "test/test_results.jl": "036bc3a343be957eaf39133ef9a34a4461a4f0ede24e07e71958e3db96401e66"
+    }
+  },
+  "independent_reviews": {
+    "engineering": {
+      "outcome": "No blocking production findings",
+      "reviewed_results_sha256": "1b53ebc34a9e77be0e9493047a6f393d541624fd0edba6d6e1bc871544b68b13",
+      "reviewed_parser_sha256": "571e7932fdc23b9cb4fd2cb309b154aa1138cc700cf4b74a17e981e551088e91",
+      "native_replay": "PASS; eight pairs, 654 pre-expansion rejection assertions and 160 analytical comparisons; final root suite additionally exercises every result field",
+      "unit_test_findings": "Checksum mutation helper repaired deleted fields; nested-BigInt assertion saw Pair wrappers. Both corrected; final package PASS."
+    },
+    "numerical": {
+      "outcome": "No blocking numerical/scientific findings",
+      "method": "180-digit Decimal reconstruction from all160 captured binary64 words against fixed approved references, full coverage verified",
+      "max_bound_fractions": {
+        "Tsit5/baseline": "0.0002715112451344779274220033163058107163524196755223328048518709327646567911551264",
+        "Tsit5/refined": "0.0000393106216379325089775708456998202106081724144397132701484024578681204185368263",
+        "Rodas5P/baseline": "0.0003983489345881510472210031206363948957094769874439009768216880758621565355087126",
+        "Rodas5P/refined": "0.00004561313096911229524550506097417807973160690758191719296414959325646414409231233"
+      }
+    },
+    "authority": "Agent evidence; not human acceptance or empirical biological validation"
+  },
+  "initial_failures": [
+    {
+      "check": "native-content",
+      "outcome": "FAIL",
+      "exit_code": 1,
+      "reason": "started before package instantiation completed",
+      "log_sha256": "1a33f75e8913c2604afdda2671b247fd09454195d9bfc75d04043b663c906c5f",
+      "resolution": "Rerun after instantiation PASS"
+    },
+    {
+      "check": "native-documents",
+      "outcome": "FAIL",
+      "exit_code": 1,
+      "reason": "started before package instantiation completed",
+      "log_sha256": "6f5b12300cadcfba5e30e4a916365fc69cdfe12cbccf199a48e41a8155574236",
+      "resolution": "Rerun after instantiation PASS"
+    },
+    {
+      "check": "native-fir",
+      "outcome": "FAIL",
+      "exit_code": 1,
+      "reason": "started before package instantiation completed",
+      "log_sha256": "5b364869957a900840a4fc8e4cbf3f3d0ddcf20f598422c0a72f8b41ea7a4c7e",
+      "resolution": "Rerun after instantiation PASS"
+    },
+    {
+      "check": "private parser red regression",
+      "outcome": "FAIL as expected",
+      "reason": "_parse_json_tokens missing before implementation",
+      "resolution": "187 focused parser assertions PASS; public P01/P03 unchanged"
+    },
+    {
+      "check": "first native suite",
+      "outcome": "FAIL",
+      "reason": "test used nonexistent BioIR.from_dict factory",
+      "resolution": "typed constructor used; final native suite PASS"
+    },
+    {
+      "check": "first results unit controls",
+      "outcome": "FAIL",
+      "reason": "test helper repaired deleted checksum fields and failed accessing deleted output",
+      "resolution": "call public readback directly; no production semantics changed"
+    }
+  ],
+  "not_run": {
+    "hosted_ci": "Not pushed at receipt time; CI outcomes recorded separately after publication",
+    "human_implementation_acceptance": "PENDING; separate review required",
+    "cross_language_29_acceptance": "Outside scope",
+    "release_authorization": "Outside scope"
+  },
+  "limits": "Checksums are not execution authenticity. Positive-time samples are not recomputed by loading. Bounded consistency/analytical agreement is not biological validity or exhaustive native reliability. Historical receipts and approved JSON bytes unchanged."
+}

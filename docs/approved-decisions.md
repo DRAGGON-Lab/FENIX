@@ -34,7 +34,7 @@
 | D28 | FIR digest covers only canonical mathematical semantics, not provenance. |
 | D29 | RFC 8785/JCS with versioned FENIX semantic normalization and reference vectors. |
 
-**Current implementation and remaining gates:** Python’s supported M0 path is implemented on main through merged PRs #58/#60/#61/#63/#65; #18–#22 are closed. This is separate from the historical contract/reference approvals below. [EP-02](https://github.com/DRAGGON-Lab/FENIX/issues/4), the bounded native Python M0 implementation milestone, was completed following explicit PI approval on 17 November 2026. Julia M0 content builders, strict committed Design/Experiment documents, canonical content digests, exact local references and native BioIR-to-FIR compilation with P03 identity are implemented; the human PI accepted the bounded issue #25 implementation at `da13860` on 17 November 2026 (see the [acceptance record](verification/ep03-julia-compiler.md#human-pi-implementation-acceptance--2026-11-17)). Native Julia SciML ODE execution is implemented under P04 with explicit Tsit5/Rodas5P methods; the human PI approved the bounded issue #26 implementation at `34a092e` on 17 November 2026 (see the [approval record](verification/ep03-julia-ode.md#human-pi-implementation-approval--2026-11-17)). Julia results/manifests, independent cross-language scientific conformance (#28/#29), and broader whole-project release authorization remain separate gates. P05 SSA, P06 package/version governance and #42 broader provenance retain separate gates. See the [current integration audit](verification/ep02-status-governance.md).
+**Current implementation and remaining gates:** Python’s supported M0 path is implemented on main through merged PRs #58/#60/#61/#63/#65; #18–#22 are closed. This is separate from the historical contract/reference approvals below. [EP-02](https://github.com/DRAGGON-Lab/FENIX/issues/4), the bounded native Python M0 implementation milestone, was completed following explicit PI approval on 17 November 2026. Julia M0 content builders, strict committed Design/Experiment documents, canonical content digests, exact local references and native BioIR-to-FIR compilation with P03 identity are implemented; the human PI accepted the bounded issue #25 implementation at `da13860` on 17 November 2026 (see the [acceptance record](verification/ep03-julia-compiler.md#human-pi-implementation-acceptance--2026-11-17)). Native Julia SciML ODE execution is implemented under P04 with explicit Tsit5/Rodas5P methods; the human PI approved the bounded issue #26 implementation at `34a092e` on 17 November 2026 (see the [approval record](verification/ep03-julia-ode.md#human-pi-implementation-approval--2026-11-17)). Julia source-linked results/manifests are implemented under P07 and its PI-ratified Julia/SciML supplement; [separate human implementation acceptance](verification/ep03-julia-results.md) remains pending. Independent cross-language scientific conformance (#28/#29) and broader whole-project release authorization remain separate gates. P05 SSA, P06 package/version governance and #42 broader provenance retain separate gates. See the [current integration audit](verification/ep02-status-governance.md).
 
 **Scientific source of truth:** ratified ADR/specification and independent reference evidence, not the current source code or test behavior. Human scientific approval is required for revisions.
 
@@ -247,3 +247,13 @@ changes are separate actions. The approval source is the explicit human
 instruction above, not an inferred GitHub review submission or CI result.
 Historical verification receipts retain their original source identities and
 pending-acceptance observations.
+
+
+**Accepted Julia/SciML P07 supplement:** The human PI explicitly approved the
+[Julia profile supplement](../spec/results/proposals/ADR-P07-Julia.md#human-pi-ratification-record),
+its additive schema and bounded expectations at reviewed revision `0156143` on
+[PR #71](https://github.com/DRAGGON-Lab/FENIX/pull/71), then instructed continuation
+with native implementation. Merge `82a9b64` contains that exact reviewed proposal.
+This authorizes the separate issue #27 implementation PR; implementation
+acceptance, #29, parent epic acceptance and release authorization remain separate.
+Original schema/example bytes and historical proposal receipts are preserved.

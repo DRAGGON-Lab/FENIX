@@ -2,6 +2,12 @@
 # included inside BioIR; it does not load schemas, fixtures or reference tools.
 export parse_json, canonical_bytes
 
+# P07 uses field-specific numeric rules, so its private path retains lexemes.
+# Strings keep the token immutable until the consuming validator decodes it.
+struct _JSONNumberToken
+    raw::String
+end
+
 _json_error(category, path, message) = throw(BioIRValidationError(category, path, message))
 _json_pointer(path, key) = path * "/" * replace(string(key), "~" => "~0", "/" => "~1")
 mutable struct _JSONCursor
@@ -93,6 +99,7 @@ function _json_number!(c, path)
     end
     raw = String(c.bytes[start:c.index-1])
     occursin(r"\A-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?\z", raw) || _json_syntax()
+    c.numeric_policy === :tokens && return _JSONNumberToken(raw)
     if c.numeric_policy === :p01 && !occursin(r"[.eE]", raw)
         digits = startswith(raw, "-") ? raw[2:end] : raw
         if length(digits) > 16 || (length(digits) == 16 && digits > "9007199254740991")
@@ -100,6 +107,11 @@ function _json_number!(c, path)
         end
         return parse(Int64, raw)
     end
+    _json_binary64(raw, path)
+end
+# Decode a grammar-checked numeric token directly, without an intermediate
+# integer/BigFloat conversion that could lose signed zero or double-round.
+function _json_binary64(raw::String, path::String)
     value = tryparse(Float64, raw)
     mantissa, exponent = let pieces = split(lowercase(raw), 'e')
         (pieces[1], length(pieces) == 2 ? parse(BigInt, pieces[2]) : big(0))
@@ -186,6 +198,13 @@ reject nonzero tokens that round to zero and preserve exact signed zero.
 """
 function parse_json(raw::Union{String,Vector{UInt8}}; numeric_policy=:p01)
     numeric_policy in (:p01, :p03) || throw(ArgumentError("numeric_policy must be :p01 or :p03"))
+    _parse_json_with_policy(raw, numeric_policy)
+end
+
+# Internal only: results validators must still reject numeric types/token forms
+# at each field. Neither public P01/P03 behavior nor their accepted policies grow.
+_parse_json_tokens(raw::Union{String,Vector{UInt8}}) = _parse_json_with_policy(raw, :tokens)
+function _parse_json_with_policy(raw::Union{String,Vector{UInt8}}, numeric_policy::Symbol)
     bytes = raw isa String ? Vector{UInt8}(codeunits(raw)) : copy(raw)
     isvalid(String(copy(bytes))) || _json_error("INVALID_UNICODE", "", "input is not strict UTF-8")
     cursor = _JSONCursor(bytes, 1, numeric_policy)

@@ -19,9 +19,12 @@ and multi-observable column-order candidate. The
 [ratification record](../../docs/verification/ep02-p07-ratification.md) accepts
 the reviewed contract, schemas and bounded expectations. Reviewed artifact and
 historical receipt bytes retain their drafting-era labels; those labels do not
-override this recorded decision. No native runtime implementation is included.
+override this recorded decision. The original contract PR included no native
+runtime implementation.
 
 The additive [Julia/SciML supplement](proposals/ADR-P07-Julia.md) for #27 is
-**PROPOSED; PI ratification PENDING**. Its separate closed manifest schema reuses
-P07's unchanged core and ODEResult layout. Native Julia results implementation
-is gated on review and explicit acceptance of the proposal and bounded evidence.
+**RATIFIED at reviewed revision `0156143` following explicit PI approval**.
+Its separate closed manifest schema reuses P07's unchanged core and ODEResult
+layout. See its ratification record and the separate
+[native Julia implementation evidence](../../docs/verification/ep03-julia-results.md).
+Human implementation acceptance remains separate.
