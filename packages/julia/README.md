@@ -1,7 +1,7 @@
-# Native Julia M0 BioIR content
+# Native Julia M0 BioIR content and committed documents
 
 Provisional package/module name `Fenix` and version `0.0.0` remain subject to
-ADR-P06. The package implements uncommitted, immutable M0 content under ratified
+ADR-P06. The package implements immutable M0 content and committed documents under ratified
 ADR-P01. It runs independently of Python, without SciML or Catalyst.
 
 ```julia
@@ -35,8 +35,8 @@ content = to_dict(design)
 
 The zero digest above is an unverified claim, accepted only as uncommitted data.
 `source_design` checks ID/revision and local biological references; it is not
-stored or serialized. Digest integrity, committed envelopes, canonical JSON,
-revision replacement and exact trusted Design resolution belong to #24.
+stored or serialized. Use the committed document APIs below to establish content
+integrity and exact Design correspondence.
 Compiler, solver and result APIs are not implemented.
 
 Constructors accept vectors or tuples and snapshot them into typed immutable
@@ -49,7 +49,8 @@ Quantities accept finite `Float64` and built-in fixed-width integers within
 `[-(2^53-1), 2^53-1]`, normalized to `Int64`; quantities must be nonnegative and
 volumes positive. `Bool`, `Float32`, arbitrary precision and other numeric types
 are rejected. Fractional expected counts, subnormals and negative zero are
-supported. Raw lexical underflow and integer-token checks belong to #24 parsing.
+supported. Strict document parsing additionally checks raw lexical underflow, integer-token
+limits, duplicate decoded keys and invalid Unicode.
 
 `BioIRValidationError` exposes `category`, constructor-relative JSON Pointer
 `path` (zero-based array indices), and a readable message. Categories follow
@@ -69,6 +70,51 @@ JULIA_PKG_OFFLINE=true julia --project=conformance/julia -e 'push!(LOAD_PATH, ab
 
 Package unit tests need no repository fixtures. The separate projection suite
 checks 29 approved P01 content cases (6 accepts, 23 rejects), with 63 explicitly
-deferred cases; this is not full native document conformance. JSONSchema remains
+deferred cases in that original builder-only registry. The separate document
+suite now checks all 92 original P01 and the overlapping 97 P01 rejection cases. JSONSchema remains
 in the pinned reference environment. The library uses JSON.jl for ordinary JSON
 serialization and keeps its generated Manifest untracked.
+
+## Committed documents
+
+```julia
+committed_design = DesignDocument(content=design, metadata=Metadata(name="Example"))
+verified = from_json(DesignDocument, to_json(committed_design);
+                     expected_digest=committed_design.digest)
+exact_reference = reference(verified)
+```
+
+Construct `ExperimentContent` with `design=exact_reference` and
+`source_design=verified.content`, then commit it with
+`ExperimentDocument(content=content, source_design=verified)`. Read a committed
+Experiment with `from_json(ExperimentDocument, raw; designs=[verified])`.
+Only supplied verified immutable Designs are eligible; no network lookup,
+newer-revision substitution or repair occurs. The Experiment envelope is verified
+before reference resolution, and all three reference fields must match.
+
+`canonical_content_bytes(document)` returns fresh direct RFC 8785/JCS bytes of
+scientific content, excluding metadata and envelope digest. BioIR arrays retain
+declaration order; FIR normalization is not applied. `to_json(document)` emits
+transport JSON, retaining floating-point spellings needed by P01's raw integer
+range rule. Canonical bytes are for identity and are not a transport envelope.
+
+`with_metadata(document, Metadata(...))` creates a fresh envelope with the same
+scientific identity. `replace_content(document, new_content)` requires the same
+logical ID and a strictly increased revision when content changes. Deserialization
+accepts an optional verified `previous` document for the same predecessor check.
+No storage/history service is provided; callers retain historical revisions.
+
+Digest self-consistency is separate from trust: `expected_digest` can check a
+caller-supplied trusted expectation. Hashes establish no authorship, origin,
+authenticated execution or biological validity. Metadata amendments are new
+envelopes, not an authenticated archival record.
+
+Native conformance command (pinned reference environment, no Python needed):
+
+```sh
+JULIA_PKG_OFFLINE=true julia --project=conformance/julia packages/julia/test_native_documents/runtests.jl --report artifacts/julia-native-documents.json
+```
+
+The document adapter only dispatches operations and labels supplied inputs.
+Schema/canonical/numeric expectations come from unchanged approved references.
+The 110 remaining rejection cases concern FIR/P03 and are outside this suite.

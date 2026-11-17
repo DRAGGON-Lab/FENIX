@@ -171,3 +171,6 @@ end
     checkerror("SCHEMA", "/id", () -> Port(id=String(UInt8[0xff])))
     checkerror("SCHEMA", "/digest", () -> DesignReference(id="design", revision=1, digest=String(UInt8[0xff])))
 end
+
+include("test_json.jl")
+include("test_documents.jl")

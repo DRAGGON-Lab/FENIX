@@ -202,6 +202,15 @@ For Julia BioIR content changes, additionally run the 29 approved content projec
 JULIA_PKG_OFFLINE=true julia --project=conformance/julia -e 'push!(LOAD_PATH, abspath("packages/julia")); include("packages/julia/test_native_content/runtests.jl")'
 ```
 
-These projections account for 29 of the 92 P01 cases; 63 parser, identity and
-revision cases remain deferred to #24. They do not establish committed-document,
+These builder projections account for 29 of the 92 P01 cases; the remaining 63
+parser, identity and revision cases are covered by the committed-document suite below. They do not establish committed-document,
 compiler or solver conformance. Native package tests require no repository fixtures.
+
+For Julia committed-document changes, also execute:
+
+```sh
+JULIA_PKG_OFFLINE=true julia --project=conformance/julia packages/julia/test_native_documents/runtests.jl --report artifacts/julia-native-documents.json
+```
+
+This checks all 92 original P01 cases and the overlapping 97-case P01 rejection
+subset via native APIs. It does not establish FIR/compiler/solver conformance.
