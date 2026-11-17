@@ -131,6 +131,19 @@ jobs:
         with:
           name: julia-native-fir
           path: artifacts/julia-native-fir.json
+      - name: Install locked native SciML conformance environment
+        run: julia --project=conformance/julia_ode -e 'using Pkg; Pkg.instantiate()'
+      - name: Test native Julia ODE sampling and analytical accuracy
+        env:
+          JULIA_PKG_OFFLINE: "true"
+        run: julia --project=conformance/julia_ode packages/julia/test_native_ode/runtests.jl --report artifacts/julia-native-ode.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: julia-native-ode
+          path: artifacts/julia-native-ode.json
+      - name: Check locked native SciML environment
+        run: git diff --exit-code -- conformance/julia_ode/Project.toml conformance/julia_ode/Manifest.toml
       - name: Independently validate candidate P01 fixtures in Julia
         env:
           JULIA_PKG_OFFLINE: "true"

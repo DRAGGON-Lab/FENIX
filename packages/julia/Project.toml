@@ -4,11 +4,18 @@ authors = ["DRAGGON Lab"]
 version = "0.0.0"
 
 [deps]
-SHA = "ea8e919c-243c-51af-8825-aaa63cd721ce"
 JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+OrdinaryDiffEqRosenbrock = "43230ef6-c299-4910-a778-202eb28ce4ce"
+OrdinaryDiffEqTsit5 = "b1df2697-797e-41e3-8120-5422d3b24e4a"
+SHA = "ea8e919c-243c-51af-8825-aaa63cd721ce"
+SciMLBase = "0bca4576-84f4-4d90-8ffe-ffa030f20462"
 
 [compat]
 JSON = "1"
+OrdinaryDiffEqRosenbrock = "~2.7.5"
+OrdinaryDiffEqTsit5 = "~2.1.5"
+SciMLBase = "~3.58.0"
 julia = "1.10"
 
 [extras]

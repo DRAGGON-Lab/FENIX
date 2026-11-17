@@ -16,6 +16,7 @@ htmlcov/
 .julia/
 Manifest.toml
 !conformance/julia/Manifest.toml
+!conformance/julia_ode/Manifest.toml
 
 # Local
 .DS_Store

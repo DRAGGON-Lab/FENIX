@@ -229,3 +229,19 @@ triples to the unchanged independent Julia oracle's 40 samples at 512/1024 bits.
 It does not execute Python's compiler or a native solver. Package tests retain
 standalone fixture independence; historical reference receipts retain their
 `NOT_RUN` rows. Human implementation acceptance is a separate gate.
+
+
+For Julia ODE execution changes, also run the pinned native SciML matrix:
+
+```sh
+julia --project=conformance/julia_ode -e 'using Pkg; Pkg.instantiate()'
+JULIA_PKG_OFFLINE=true julia --project=conformance/julia_ode packages/julia/test_native_ode/runtests.jl --report artifacts/julia-native-ode.json
+```
+
+Keep this native environment separate from independent reference tooling. It
+pins the solver graph and local Fenix path through a Pkg-generated manifest;
+the library remains independently resolvable. Check both methods against all
+40 approved samples at P04 baseline/refined settings and report the coarse
+study. Preserve failures, counts and the fixed global acceptance threshold.
+The solver matrix does not establish #29 cross-language acceptance or empirical
+validity. Package failure regressions require no repository fixtures.

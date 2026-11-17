@@ -1,8 +1,8 @@
-# Native Julia M0 BioIR documents and FIR compilation
+# Native Julia M0 documents, FIR compilation and ODE execution
 
 Provisional package/module name `Fenix` and version `0.0.0` remain subject to
 ADR-P06. The package implements immutable M0 content and committed documents under ratified
-ADR-P01. It runs independently of Python, without SciML or Catalyst.
+ADR-P01. It runs independently of Python and uses direct SciML solver packages for ODE execution, without Catalyst.
 
 ```julia
 using Fenix.BioIR
@@ -37,7 +37,7 @@ The zero digest above is an unverified claim, accepted only as uncommitted data.
 `source_design` checks ID/revision and local biological references; it is not
 stored or serialized. Use the committed document APIs below to establish content
 integrity and exact Design correspondence.
-FIR compilation is available below; solver and result APIs are not implemented.
+FIR compilation and native ODE execution are available below; portable result APIs remain separate work.
 
 Constructors accept vectors or tuples and snapshot them into typed immutable
 tuples. Nested values must use the native constructors. Exported dictionaries
@@ -172,3 +172,65 @@ actual runtime, sources and catalogs; historical reference reports remain intact
 The human PI accepted the bounded issue #25 implementation at `da13860`; see the
 [acceptance record](../../docs/verification/ep03-julia-compiler.md#human-pi-implementation-acceptance--2026-11-17).
 Later numerical/cross-language and release gates remain separate.
+
+
+## Native ODE execution
+
+```julia
+using Fenix.Execution
+spec = ODEExecutionSpec(time_grid=(0.0, 1.0, 10.0), method="Tsit5",
+    rtol=1e-10, atol=1e-12, max_step=1.0, max_nfev=100000)
+trajectory = solve_ode(fir.model, spec)
+trajectory.state_values       # sample-major immutable tuples
+trajectory.observable_values  # direct counts, aligned with observable_ids
+trajectory.backend_versions
+```
+
+Explicit methods are `"Tsit5"` and `"Rodas5P"`. The direct SciML adapter solves
+`x′ = alpha - beta*x` from t=0 with exact analytic Jacobian/time derivative for
+the stiff method, requested-time `saveat`, automatic initial step, adaptive
+stepping and no method switching or callbacks. `max_step` is seconds, `atol` is
+molecules per representative cell and `rtol` is dimensionless. Every numerical
+setting is required. There is no implicit volume/concentration conversion.
+
+Times must be a nonempty tuple/vector of finite nonnegative `Float64` values,
+strictly increasing numerically; vectors are snapshotted. All tolerance/step
+fields require positive finite `Float64`; the RHS budget requires positive
+native `Int`. Booleans, integers in float fields and arbitrary-precision values
+are rejected. Local tolerances have no hidden floor or silent adjustment; extreme
+settings can fail numerically. A late first sample still integrates from zero;
+a zero-only grid returns the initial count after configuration/capability checks.
+
+RHS evaluations include initialization and interpolation. The next evaluation is
+rejected once `max_nfev` calls have been used. Failed/partial/misaligned/nonfinite
+output and every negative sampled state produce `ODEExecutionError` with category,
+settings, call count, reason and an optional underlying numerical exception. No clipping, analytical replacement or relaxed
+retry occurs; intermediate stages may be negative. Ordinary underflow is allowed.
+Unsupported profiles fail before execution, including on zero-only grids.
+
+`ODETrajectory` retains immutable state/observable IDs, units, aligned rows,
+FIR digest, execution settings, RHS/Jacobian/W-matrix counts and backend versions.
+It promises bounded numerical agreement, not identical sample bits across runs,
+versions or platforms. Execution settings never change FIR/source identity.
+Portable results/manifests, native cross-language acceptance and release approval
+remain separate gates; no solver success implies empirical biological validity.
+
+The library has Pkg compatibility bounds for SciMLBase 3.58.x,
+OrdinaryDiffEqTsit5 2.1.x and OrdinaryDiffEqRosenbrock 2.7.x. The generated library
+Manifest stays ignored. A separate pinned native execution environment captures
+the tested transitive graph; independent reference tooling remains unchanged:
+
+```sh
+julia --project=conformance/julia_ode -e 'using Pkg; Pkg.instantiate()'
+JULIA_PKG_OFFLINE=true julia --project=conformance/julia_ode packages/julia/test_native_ode/runtests.jl --report artifacts/julia-native-ode.json
+```
+
+The matrix checks 40 unchanged approved samples with both methods at coarse,
+baseline and refined settings under P04's fixed `1e-9 + 1e-8*abs(reference)`
+sampled-output bound. The report records individual errors/work and runtime,
+source, contract and catalog identities. Refinement is an observation, not a
+claim of method order or monotonic individual error reduction. Package tests use
+local exact limiting cases and explicit failure controls, without repository
+fixtures or Python.
+
+Executed results and limits are recorded in the [issue #26 verification record](../../docs/verification/ep03-julia-ode.md).
