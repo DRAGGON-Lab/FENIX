@@ -1,0 +1,212 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:fenix:proposed:run-manifest:julia-sciml-ode:0.1.0",
+  "title": "PROPOSED P07 Julia/SciML manifest 0.1.0",
+  "$comment": "PROPOSED; PI ratification pending. Core references are local/offline. Raw-token and cross-artifact checks additionally required by ADR-P07-Julia.",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "$ref": "urn:fenix:proposed:run-manifest:m0:0.1.0#/properties/kind"
+    },
+    "schema_version": {
+      "$ref": "urn:fenix:proposed:run-manifest:m0:0.1.0#/properties/schema_version"
+    },
+    "status": {
+      "$ref": "urn:fenix:proposed:run-manifest:m0:0.1.0#/properties/status"
+    },
+    "repeatability": {
+      "$ref": "urn:fenix:proposed:run-manifest:m0:0.1.0#/properties/repeatability"
+    },
+    "sources": {
+      "$ref": "urn:fenix:proposed:run-manifest:m0:0.1.0#/properties/sources"
+    },
+    "fir": {
+      "$ref": "urn:fenix:proposed:run-manifest:m0:0.1.0#/properties/fir"
+    },
+    "execution": {
+      "$ref": "urn:fenix:proposed:run-manifest:m0:0.1.0#/properties/execution"
+    },
+    "randomness": {
+      "$ref": "urn:fenix:proposed:run-manifest:m0:0.1.0#/properties/randomness"
+    },
+    "evaluations": {
+      "$ref": "urn:fenix:proposed:run-manifest:m0:0.1.0#/properties/evaluations"
+    },
+    "timing": {
+      "$ref": "urn:fenix:proposed:run-manifest:m0:0.1.0#/properties/timing"
+    },
+    "integration": {
+      "$ref": "urn:fenix:proposed:run-manifest:m0:0.1.0#/properties/integration"
+    },
+    "output": {
+      "$ref": "urn:fenix:proposed:run-manifest:m0:0.1.0#/properties/output"
+    },
+    "producer": {
+      "$ref": "urn:fenix:proposed:run-manifest:m0:0.1.0#/properties/producer"
+    },
+    "backend": {
+      "type": "object",
+      "properties": {
+        "profile": {
+          "const": "julia-sciml-ode/0.1.0"
+        },
+        "solver": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "const": "SciMLBase.solve"
+            },
+            "method": {
+              "enum": [
+                "Tsit5",
+                "Rodas5P"
+              ]
+            },
+            "options": {
+              "type": "object",
+              "properties": {
+                "dt": {
+                  "type": "null"
+                },
+                "adaptive": {
+                  "const": true
+                },
+                "saveat": {
+                  "const": "requested_grid"
+                },
+                "save_start": {
+                  "type": "boolean"
+                },
+                "save_end": {
+                  "const": true
+                },
+                "save_everystep": {
+                  "const": false
+                },
+                "dense": {
+                  "const": false
+                },
+                "callback": {
+                  "type": "null"
+                },
+                "force_dtmin": {
+                  "const": false
+                },
+                "dtmin": {
+                  "const": "backend_default"
+                },
+                "maxiters": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "jacobian": {
+                  "const": "exact_inplace"
+                },
+                "time_derivative": {
+                  "const": "autonomous_zero_inplace"
+                }
+              },
+              "required": [
+                "dt",
+                "adaptive",
+                "saveat",
+                "save_start",
+                "save_end",
+                "save_everystep",
+                "dense",
+                "callback",
+                "force_dtmin",
+                "dtmin",
+                "maxiters",
+                "jacobian",
+                "time_derivative"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "name",
+            "method",
+            "options"
+          ],
+          "additionalProperties": false
+        },
+        "environment": {
+          "type": "object",
+          "properties": {
+            "julia_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "scimlbase_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "ordinarydiffeqtsit5_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "ordinarydiffeqrosenbrock_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "json_version": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "julia_version",
+            "scimlbase_version",
+            "ordinarydiffeqtsit5_version",
+            "ordinarydiffeqrosenbrock_version",
+            "json_version"
+          ],
+          "additionalProperties": false
+        },
+        "evaluations": {
+          "type": "object",
+          "properties": {
+            "njev": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "nw": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "njev",
+            "nw"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "profile",
+        "solver",
+        "environment",
+        "evaluations"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "kind",
+    "schema_version",
+    "status",
+    "repeatability",
+    "sources",
+    "fir",
+    "execution",
+    "randomness",
+    "evaluations",
+    "timing",
+    "integration",
+    "output",
+    "producer",
+    "backend"
+  ],
+  "additionalProperties": false
+}
