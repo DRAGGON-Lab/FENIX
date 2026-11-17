@@ -256,4 +256,7 @@ encode(value::Union{String,Int64,Float64}) = value
 to_dict(value::Union{DesignContent,ExperimentContent}) = encode(value)
 """Ordinary JSON content, without canonicalization, envelopes or digests."""
 to_json(value::Union{DesignContent,ExperimentContent}) = JSON.json(to_dict(value))
+
+include("PortableJSON.jl")
+include("Documents.jl")
 end

@@ -4,6 +4,7 @@ authors = ["DRAGGON Lab"]
 version = "0.0.0"
 
 [deps]
+SHA = "ea8e919c-243c-51af-8825-aaa63cd721ce"
 JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 
 [compat]

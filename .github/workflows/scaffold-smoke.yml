@@ -113,6 +113,15 @@ jobs:
         env:
           JULIA_PKG_OFFLINE: "true"
         run: julia --project=conformance/julia -e 'push!(LOAD_PATH, abspath("packages/julia")); include("packages/julia/test_native_content/runtests.jl")'
+      - name: Test native Julia P01 committed documents and raw inputs
+        env:
+          JULIA_PKG_OFFLINE: "true"
+        run: julia --project=conformance/julia packages/julia/test_native_documents/runtests.jl --report artifacts/julia-native-documents.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: julia-native-documents
+          path: artifacts/julia-native-documents.json
       - name: Independently validate candidate P01 fixtures in Julia
         env:
           JULIA_PKG_OFFLINE: "true"

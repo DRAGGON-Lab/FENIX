@@ -1,0 +1,93 @@
+{
+  "recorded_utc": "2026-11-17T10:11:56.418596+00:00",
+  "base": "7391ddc236e13440d1334ec88e59453c043828a1",
+  "state": "dirty implementation source; this evidence pair excluded from fingerprint",
+  "source_fingerprint_sha256": "df454975a8805586110b68ce3c0dc914511a11e5e5ca2532ce72e36e1903d1f6",
+  "files_sha256": {
+    ".github/workflows/scaffold-smoke.yml": "9d5fd085a6a1a172e6bf3e7d9e2d120c2b9e1ec3e542dc93abd0e33aefc27e91",
+    "ARCHITECTURE.md": "82f312288862d330b2ae45db56efa135d96abf0af6d357753e5be104f9e322c9",
+    "PRODUCT.md": "ea21e94e3b263f493ec65d0c0679468b515241d02a2640de49a5b607ef3d47ce",
+    "README.md": "934e35eb262978f67b3990554e2f07fc9fbc889f94ca9b5c0ad35b316cec30da",
+    "docs/DEVELOPMENT_WORKFLOW.md": "951af0126ec70a791420a23c9c6fd4248497431183e0efcc6da433129d7cea52",
+    "docs/approved-decisions.md": "2b2b2123982cda3260e9085bfbdf2385c031692069972656f19a3b2b005e834c",
+    "packages/julia/Project.toml": "e8c56de6d8e9f2d59c301087332dda6ecc12835190653347e2bcdd7d6c3e8cef",
+    "packages/julia/README.md": "09c80bec6453a58d05015827b446b1fdacd8c3b96f3451cfa417bd8ac463b459",
+    "packages/julia/src/BioIR.jl": "156116022d706cc4e4973c608249fc8c512a7cf1df3fdc63840a7cfec4b242a9",
+    "packages/julia/src/Documents.jl": "3ae48458f6876bb60b4262e8191a5c4a54ea20ca26b7cff7ae25afcf1751dd24",
+    "packages/julia/src/PortableJSON.jl": "aa431b9446d4717f5b1b08a0ecf583ba3b3b12adee4b4a24d1993f8fba0fb039",
+    "packages/julia/test/runtests.jl": "298c038218f5794aa7c8690d3c630ea32953ba7cebcb3ac43141c050346677a5",
+    "packages/julia/test/test_documents.jl": "257badd47c91a0eabac37d580619caa36ecd41166b0775472c45746ea18f10cf",
+    "packages/julia/test/test_json.jl": "1194bc934c6d07d43dcd9ec229c556ad636042468844842904b0ec245479b8d9",
+    "packages/julia/test_native_documents/README.md": "22a6f3681497c30cdf68c524ea9ac53be12a481a22080bd7ce5d60502304104d",
+    "packages/julia/test_native_documents/runtests.jl": "d6ab311b4abebdd31caa748c441a66f570ab31269cbb42450bb610493161b4d4",
+    "spec/README.md": "e645540947cd90d69b2c1f6ff57740ed8878ca2bdaeb6bfd0185e9ad09fc0d70"
+  },
+  "checks": [
+    {
+      "name": "native-package",
+      "command": "/private/tmp/julia-1.10.13/bin/julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'",
+      "exit_code": 0,
+      "status": "PASS",
+      "log_sha256": "fcce9f9658746bcdff34522f3cf04b4c6b4c7a1cd59da13b3fba695fc7895648",
+      "output_tail": "0] JSON v1.13.4\n  [69de0a69] Parsers v3.0.6\n\u2305 [aea7be01] PrecompileTools v1.2.1\n  [21216c6a] Preferences v1.6.1\n  [ec057cc2] StructUtils v2.12.1\n  [2a0f44e3] Base64\n  [ade2ca70] Dates\n  [b77e0a4c] InteractiveUtils\n  [56ddb016] Logging\n  [d6f4376e] Markdown\n  [de0858da] Printf\n  [9a3f8284] Random\n  [ea8e919c] SHA v0.7.0\n  [9e88b42a] Serialization\n  [fa267f1f] TOML v1.0.3\n  [8dfed614] Test\n  [cf7118a7] UUIDs\n  [4ec0a83e] Unicode\n        Info Packages marked with \u2305 have new versions available but compatibility constraints restrict them from upgrading.\n     Testing Running tests...\nTest Summary:                                | Pass  Total  Time\nNative immutable authoring and ordinary JSON |   31     31  1.0s\nTest Summary:                  | Pass  Total  Time\nNative numbers and identifiers |  160    160  1.0s\nTest Summary:                        | Pass  Total  Time\nUnits, typed values and M0 structure |  124    124  2.0s\nTest Summary:                    | Pass  Total  Time\nReferences, roles and uniqueness |   68     68  1.0s\nTest Summary:                                       | Pass  Total  Time\nNo unchecked constructor path or executable content |   11     11  0.4s\nTest Summary:                  | Pass  Total  Time\nInvalid native string encoding |    8      8  0.0s\nTest Summary:          | Pass  Total  Time\nNative strict P01 JSON |   63     63  0.0s\nTest Summary:         | Pass  Total  Time\nDirect RFC 8785 bytes |   14     14  0.2s\nTest Summary:                                      | Pass  Total  Time\nCommitted content identity and immutable snapshots |   28     28  0.8s\nTest Summary:                            | Pass  Total  Time\nDocument transport and trusted integrity |   38     38  1.6s\nTest Summary:                     | Pass  Total  Time\nExact local Design correspondence |   27     27  0.4s\nTest Summary:                 | Pass  Total  Time\nVerified context revalidation |    4      4  0.3s\nTest Summary:                                | Pass  Total  Time\nMetadata amendments and revision replacement |   47     47  0.6s\nTest Summary:                       | Pass  Total  Time\nStrict committed envelope structure |   37     37  0.7s\n     Testing Fenix tests passed \n"
+    },
+    {
+      "name": "native-documents",
+      "command": "/private/tmp/julia-1.10.13/bin/julia --project=conformance/julia packages/julia/test_native_documents/runtests.jl --report artifacts/julia-native-documents.json",
+      "exit_code": 0,
+      "status": "PASS",
+      "log_sha256": "b19d5eaf2b43e050cef668c8551ce57718fab182473e119bdbfde6460cc7a3b1",
+      "output_tail": "Test Summary:              | Pass  Total  Time\nNative Julia P01 documents |  743    743  7.6s\nTest Summary:                            | Pass  Total  Time\nApproved binary64 JCS serialization only |   53     53  0.1s\n"
+    },
+    {
+      "name": "native-builders",
+      "command": "/private/tmp/julia-1.10.13/bin/julia --project=conformance/julia packages/julia/test_native_content/runtests.jl",
+      "exit_code": 0,
+      "status": "PASS",
+      "log_sha256": "315e696f4b3755dc445e33872245ecb5e4507de4102f061603484a13090fb4d3",
+      "output_tail": "Test Summary:                                      | Pass  Total  Time\nNative Julia uncommitted BioIR content projections |  193    193  6.0s\n"
+    },
+    {
+      "name": "standalone",
+      "command": "PATH=/nonexistent JULIA_DEPOT_PATH=/private/tmp/fenix-julia-depot JULIA_PKG_OFFLINE=true /private/tmp/julia-1.10.13/bin/julia --startup-file=no --project=/private/tmp/fenix24-standalone -e 'using Fenix; @assert Sys.which(\"python\") === nothing; @assert Sys.which(\"python3\") === nothing; include(\"/private/tmp/fenix24-standalone/test/runtests.jl\")'",
+      "exit_code": 0,
+      "status": "PASS",
+      "log_sha256": "c6746aa4dabad6bef8f419badb3846878fddb8ce3c49dfbbd3ce0210847ff9f1",
+      "output_tail": "Test Summary:                                | Pass  Total  Time\nNative immutable authoring and ordinary JSON |   31     31  1.1s\nTest Summary:                  | Pass  Total  Time\nNative numbers and identifiers |  160    160  1.1s\nTest Summary:                        | Pass  Total  Time\nUnits, typed values and M0 structure |  124    124  2.2s\nTest Summary:                    | Pass  Total  Time\nReferences, roles and uniqueness |   68     68  1.0s\nTest Summary:                                       | Pass  Total  Time\nNo unchecked constructor path or executable content |   11     11  0.4s\nTest Summary:                  | Pass  Total  Time\nInvalid native string encoding |    8      8  0.0s\nTest Summary:          | Pass  Total  Time\nNative strict P01 JSON |   63     63  0.0s\nTest Summary:         | Pass  Total  Time\nDirect RFC 8785 bytes |   14     14  0.2s\nTest Summary:                                      | Pass  Total  Time\nCommitted content identity and immutable snapshots |   28     28  0.7s\nTest Summary:                            | Pass  Total  Time\nDocument transport and trusted integrity |   38     38  1.7s\nTest Summary:                     | Pass  Total  Time\nExact local Design correspondence |   27     27  0.5s\nTest Summary:                 | Pass  Total  Time\nVerified context revalidation |    4      4  0.3s\nTest Summary:                                | Pass  Total  Time\nMetadata amendments and revision replacement |   47     47  0.6s\nTest Summary:                       | Pass  Total  Time\nStrict committed envelope structure |   37     37  0.7s\n"
+    },
+    {
+      "name": "python-documents",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_documents -v",
+      "exit_code": 0,
+      "status": "PASS",
+      "log_sha256": "d71426f83afb39f9822526772a31792cbf77c7302d486611bc173b4ce6331174",
+      "output_tail": "test_original_92 (test_conformance.TestNativeConformance.test_original_92) ... ok\ntest_rejection_catalog_97_p01 (test_conformance.TestNativeConformance.test_rejection_catalog_97_p01) ... ok\ntest_serialized_envelopes_match_schema (test_conformance.TestNativeConformance.test_serialized_envelopes_match_schema) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.093s\n\nOK\n"
+    },
+    {
+      "name": "python-package",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v",
+      "exit_code": 0,
+      "status": "PASS",
+      "log_sha256": "1e461292b7ff726e8359acfd1ab2e6c6abc35732c65e01c385921c31135ed241",
+      "output_tail": "ries) ... ok\ntest_exact_large_integers_including_6000_digits_and_capture_emission (test_results.TestResults.test_exact_large_integers_including_6000_digits_and_capture_emission) ... ok\ntest_immutable_no_unchecked_construction_fresh_dicts (test_results.TestResults.test_immutable_no_unchecked_construction_fresh_dicts) ... ok\ntest_integer_field_token_rejection (test_results.TestResults.test_integer_field_token_rejection) ... ok\ntest_large_exponents_exact_zero_underflow_and_rounding_ties (test_results.TestResults.test_large_exponents_exact_zero_underflow_and_rounding_ties) ... ok\ntest_manifest_closed_structure_and_observation_failures (test_results.TestResults.test_manifest_closed_structure_and_observation_failures) ... ok\ntest_missing_members_and_invalid_native_inputs (test_results.TestResults.test_missing_members_and_invalid_native_inputs) ... ok\ntest_plausible_altered_positive_samples_pass_only_internal_checks (test_results.TestResults.test_plausible_altered_positive_samples_pass_only_internal_checks) ... ok\ntest_preserve_environment_build_id_formatting_and_trust (test_results.TestResults.test_preserve_environment_build_id_formatting_and_trust) ... ok\ntest_result_mismatches_dimensions_order_units_grid_mapping_samples (test_results.TestResults.test_result_mismatches_dimensions_order_units_grid_mapping_samples) ... ok\ntest_solver_failure_propagates (test_results.TestResults.test_solver_failure_propagates) ... ok\ntest_source_and_fir_references_all_fields_and_same_fir_context (test_results.TestResults.test_source_and_fir_references_all_fields_and_same_fir_context) ... ok\ntest_strict_raw_json_both_artifacts (test_results.TestResults.test_strict_raw_json_both_artifacts) ... ok\ntest_zero_capture_avoids_solver_and_clock_adjustments (test_results.TestResults.test_zero_capture_avoids_solver_and_clock_adjustments) ... ok\ntest_zero_counters_and_initial_zero_sign (test_results.TestResults.test_zero_counters_and_initial_zero_sign) ... ok\ntest_content_api_boundary (test_smoke.TestScaffold.test_content_api_boundary) ... ok\ntest_version (test_smoke.TestScaffold.test_version) ... ok\n\n----------------------------------------------------------------------\nRan 88 tests in 3.278s\n\nOK\n"
+    }
+  ],
+  "native_report": {
+    "sha256": "3843c2925e3e5b79aa201401eb48c81230d1b29175a9c4c9297ad5ca3bee6d06",
+    "case_rows": 189,
+    "passed": true,
+    "catalogs": {
+      "conformance/bioir/catalog.json": "ffd8b03732094543baff2464ab8c83f672dab6ebb22f2237621a1df8e493fcbc",
+      "conformance/canonicalization/catalog.json": "07858e1595f51a630427ed2a12ef8bfbf9c0df241688bffd5041e9ed424aa970",
+      "conformance/rejections/catalog.json": "5117b37ec7d4d45e111943e925dcfc27a3ac280ddeabfb456ff37b93a9750088"
+    }
+  },
+  "environment": {
+    "julia": "1.10.13",
+    "python": "3.12.13",
+    "uv": "0.11.29",
+    "JULIA_DEPOT_PATH": "/private/tmp/fenix-julia-depot",
+    "JULIA_PKG_OFFLINE": "true",
+    "UV_CACHE_DIR": "/private/tmp/fenix-uv-cache"
+  }
+}
