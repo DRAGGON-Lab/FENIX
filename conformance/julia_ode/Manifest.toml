@@ -400,7 +400,7 @@ version = "1.5.1"
     Tracker = "9f7883ad-71c0-57eb-9f7f-b5c9e6d3789c"
 
 [[deps.Fenix]]
-deps = ["JSON", "LinearAlgebra", "OrdinaryDiffEqRosenbrock", "OrdinaryDiffEqTsit5", "SHA", "SciMLBase"]
+deps = ["Dates", "JSON", "LinearAlgebra", "OrdinaryDiffEqRosenbrock", "OrdinaryDiffEqTsit5", "SHA", "SciMLBase"]
 path = "../../packages/julia"
 uuid = "b4f55250-ad5c-424b-a32f-effb8741a28b"
 version = "0.0.0"

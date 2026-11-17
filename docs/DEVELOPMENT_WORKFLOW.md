@@ -245,3 +245,19 @@ the library remains independently resolvable. Check both methods against all
 study. Preserve failures, counts and the fixed global acceptance threshold.
 The solver matrix does not establish #29 cross-language acceptance or empirical
 validity. Package failure regressions require no repository fixtures.
+
+
+For Julia results changes, additionally execute the pinned native results suite:
+
+```sh
+JULIA_PKG_OFFLINE=true julia --project=conformance/julia_ode packages/julia/test_native_results/runtests.jl --report artifacts/julia-native-results.json
+```
+
+Keep the active pinned environment intact; do not override LOAD_PATH. This
+checks both approved backend profiles, exact transport/source relations and
+160 sample/method/setting comparisons with unchanged analytical references.
+Native package tests remain fixture-independent; standalone copied-package tests
+must run without Python. Preserve independent reference locks and historical
+receipts, and refresh only native test locks through Pkg when dependencies change.
+Capture/readback correctness, #29 and human implementation acceptance are
+distinct gates.

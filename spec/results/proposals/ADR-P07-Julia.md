@@ -1,7 +1,8 @@
 # ADR-P07 supplement — Julia/SciML ODE manifests
 
-**Status: PROPOSED. Human PI ratification and bounded expectation acceptance
-PENDING. No native result implementation is authorized by this supplement.**
+**Status: RATIFIED by the human PI in this conversation following review of
+revision `0156143`; proposal merged in PR #71 at `82a9b64`. Native implementation
+and its separate human acceptance remain pending.**
 
 Refs [#27](https://github.com/DRAGGON-Lab/FENIX/issues/27). Baseline `56ad188`
 contains merged #25/#26. Ratified [P07](ADR-P07.md) covers the language-neutral
@@ -161,3 +162,21 @@ lock through Pkg and preserve the independent reference lock/historical receipts
 of the exact proposal/schema/bounded expectations → separate native implementation
 PR → separate human implementation acceptance.** Both PRs use `Refs #27`; neither
 auto-merges nor closes the parent epic. This document records no approval.
+
+## Human PI ratification record
+
+After the contract-only PR was supplied at reviewed revision
+[`0156143b7555405d8bf00ea9917f4badddf1ceeb`](https://github.com/DRAGGON-Lab/FENIX/commit/0156143b7555405d8bf00ea9917f4badddf1ceeb),
+the human PI stated in this conversation:
+
+> ok Iapproved and  merged the proposal, continue with the code implementation
+
+This explicitly approves the reviewed supplement, additive Julia/SciML manifest
+schema and bounded expectations, and authorizes the separate implementation PR.
+PR [#71](https://github.com/DRAGGON-Lab/FENIX/pull/71) merged at
+`82a9b64` (see the full merge identity in the implementation evidence).
+The approval is recorded from the explicit instruction, not inferred from merge
+or CI. Reviewed schema/example bytes and historical receipts remain unchanged.
+Native implementation acceptance, #29, parent epic and release authorization
+remain separate gates. Drafting-era PROPOSED/PENDING wording above and in retained
+artifacts describes the proposal history; this record governs its accepted scope.

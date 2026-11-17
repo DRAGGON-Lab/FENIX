@@ -1,4 +1,4 @@
-# Native Julia M0 documents, FIR compilation and ODE execution
+# Native Julia M0 documents, FIR compilation, execution and results
 
 Provisional package/module name `Fenix` and version `0.0.0` remain subject to
 ADR-P06. The package implements immutable M0 content and committed documents under ratified
@@ -37,7 +37,7 @@ The zero digest above is an unverified claim, accepted only as uncommitted data.
 `source_design` checks ID/revision and local biological references; it is not
 stored or serialized. Use the committed document APIs below to establish content
 integrity and exact Design correspondence.
-FIR compilation and native ODE execution are available below; portable result APIs remain separate work.
+FIR compilation, native ODE execution and source-linked portable results are available below.
 
 Constructors accept vectors or tuples and snapshot them into typed immutable
 tuples. Nested values must use the native constructors. Exported dictionaries
@@ -239,3 +239,64 @@ The human PI approved the bounded issue #26 implementation at `34a092e` on
 17 November 2026; see the [approval record](../../docs/verification/ep03-julia-ode.md#human-pi-implementation-approval--2026-11-17).
 Results/manifests, independent cross-language acceptance and release gates remain
 separate.
+
+## Source-linked ODE results
+
+```julia
+using Fenix.Results: RunRecord, run_experiment
+record = run_experiment(committed_experiment, spec)
+manifest_text = Fenix.Results.to_json(record.manifest)
+result_bytes = record.result_bytes
+loaded = Fenix.Results.from_json(RunRecord, manifest_text, result_bytes;
+    experiment=committed_experiment)
+Fenix.Results.to_dict(loaded.result)
+```
+
+Capture reverifies the exact committed source pair, compiles and executes a
+normalized FIR copy once, then records the actual SciML settings, versions,
+RHS/Jacobian/W-matrix counts, timing and exact result-byte SHA-256. `build_id`
+is null because no reliable installed build identifier is available. Wall-clock
+observations have millisecond precision, padded to six fractional digits;
+elapsed seconds use the monotonic clock and remain valid when wall time moves
+backward. Compiler and solver failures propagate without a successful record.
+
+Verified loading accepts the ratified `python-scipy-ode/0.1.0` and
+`julia-sciml-ode/0.1.0` profiles. It recompiles only the supplied local source pair
+and checks full source references, FIR identity, settings, counters, dimensions,
+units, normalized observable order, zero-time values, bit-identical grids and
+direct observable copies. It never executes an ODE, queries Git or resolves a
+source over the network. The SciPy tolerance floor applies only to Python records.
+
+Records are immutable and constructed only through validated capture/readback.
+There is no public API for attaching arbitrary caller trajectories. `to_dict`
+returns fresh nested values and fresh BigInts, `to_json(record.manifest)` retains
+original manifest text, and each `record.result_bytes` access returns a fresh
+vector of the original result bytes. Loading snapshots input byte vectors.
+Integer-form budgets/counters preserve exact values beyond the reader's native
+Int; native capture keeps the existing Int budget constraint. Binary64 decoding
+preserves signed zero/subnormals and rejects overflow or lexical nonzero
+underflow. P01/P03 public parsing policies remain unchanged.
+
+Pass `expected_manifest_sha256=trusted_hash` to verify an independently trusted
+manifest byte checksum. The result hash always covers the original bytes,
+including formatting and final newlines. Neither checksum authenticates an
+execution; plausible positive-time samples with recomputed untrusted hashes
+can pass. Readback does not certify solver accuracy or biological validity.
+`ResultValidationError` exposes `category`, artifact-prefixed JSON Pointer `path`
+and a readable message. Use qualified Results serialization names alongside
+BioIR/FIR, which expose their own serialization functions.
+
+Package tests remain independent of repository fixtures. Run the separate native
+results suite in the pinned SciML environment, without changing LOAD_PATH:
+
+```sh
+JULIA_PKG_OFFLINE=true julia --project=conformance/julia_ode packages/julia/test_native_results/runtests.jl --report artifacts/julia-native-results.json
+```
+
+It checks all eight approved profile/example pairs, isolated solver traps during
+readback and 160 analytical sample/method/setting comparisons against the 40
+unchanged approved samples at P04 baseline/refined settings. Capture's own sample
+bits must survive transport; separate solver reruns need not be bit-identical.
+See the [implementation evidence](../../docs/verification/ep03-julia-results.md).
+Human implementation acceptance, #29, parent epic acceptance and release
+authorization remain separate gates.
