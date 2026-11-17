@@ -214,3 +214,18 @@ JULIA_PKG_OFFLINE=true julia --project=conformance/julia packages/julia/test_nat
 
 This checks all 92 original P01 cases and the overlapping 97-case P01 rejection
 subset via native APIs. It does not establish FIR/compiler/solver conformance.
+
+
+For Julia FIR/compiler changes, additionally run:
+
+```sh
+julia --project=conformance/julia packages/julia/test_native_fir/runtests.jl --report artifacts/julia-native-fir.json
+```
+
+This native suite checks all 207 rejection cases and 84 P03 cases, including
+normalized objects, model/identity bytes, hashes, idempotence and round trips.
+It compiles nine approved producer controls and bridges ten compiled parameter
+triples to the unchanged independent Julia oracle's 40 samples at 512/1024 bits.
+It does not execute Python's compiler or a native solver. Package tests retain
+standalone fixture independence; historical reference receipts retain their
+`NOT_RUN` rows. Human implementation acceptance is a separate gate.

@@ -42,6 +42,37 @@ using Fenix.BioIR
     @test String(bytes) == "{\"x\":1}"
 end
 
+@testset "Explicit P03 numeric input policy" begin
+    @test parse_json("12"; numeric_policy=:p03) === 12.0
+    @test parse_json("-0"; numeric_policy=:p03) === -0.0
+    tree = parse_json("{\"n\":[1,true,null]}"; numeric_policy=:p03)
+    @test tree["n"][1] === 1.0
+    @test tree["n"][2] === true
+    @test tree["n"][3] === nothing
+    @test parse_json("9007199254740993"; numeric_policy=:p03) === 9007199254740992.0
+    @test parse_json("1000000000000000128"; numeric_policy=:p03) === 1000000000000000128.0
+    @test String(canonical_bytes(parse_json("1000000000000000128"; numeric_policy=:p03))) == "1000000000000000100"
+    @test reinterpret(UInt64, parse_json("5e-324"; numeric_policy=:p03)) == 0x0000000000000001
+    @test parse_json("0e999999999999999999999999"; numeric_policy=:p03) === 0.0
+    @test parse_json("-0e-999999999999999999999999"; numeric_policy=:p03) === -0.0
+    @test parse_json("1.7976931348623157e308"; numeric_policy=:p03) === floatmax(Float64)
+    for (raw, category, path) in (
+        ("{\"n\":[1e400]}", "NUMBER_RANGE", "/n/0"),
+        ("1e-400", "NUMBER_UNDERFLOW", ""),
+        ("2e-324", "NUMBER_UNDERFLOW", ""),
+        (repeat("9", 400), "NUMBER_RANGE", ""),
+        ("{\"x\":1,\"\\u0078\":2}", "DUPLICATE_KEY", "/x"),
+        ("NaN", "JSON_SYNTAX", ""))
+        caught = try parse_json(raw; numeric_policy=:p03); nothing catch error; error end
+        @test caught isa BioIRValidationError
+        @test caught.category == category
+        @test caught.path == path
+    end
+    @test_throws ArgumentError parse_json("1"; numeric_policy=:unknown)
+    @test parse_json("1") === Int64(1)
+    @test_throws BioIRValidationError parse_json("9007199254740993")
+end
+
 @testset "Direct RFC 8785 bytes" begin
     @test String(canonical_bytes(parse_json("{\"z\":-0.0,\"a\":1.0}"))) == "{\"a\":1,\"z\":0}"
     @test String(canonical_bytes(Dict("\ue000" => 1, "😀" => 2))) == "{\"😀\":2,\"\ue000\":1}"

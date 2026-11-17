@@ -1,4 +1,4 @@
-# Native P01 wire parsing and direct RFC 8785/JCS serialization. This file is
+# Native P01/P03 wire parsing and direct RFC 8785/JCS serialization. This file is
 # included inside BioIR; it does not load schemas, fixtures or reference tools.
 export parse_json, canonical_bytes
 
@@ -7,6 +7,7 @@ _json_pointer(path, key) = path * "/" * replace(string(key), "~" => "~0", "/" =>
 mutable struct _JSONCursor
     bytes::Vector{UInt8}
     index::Int
+    numeric_policy::Symbol
 end
 _json_peek(c) = c.index <= length(c.bytes) ? c.bytes[c.index] : 0x00
 function _json_space!(c)
@@ -92,7 +93,7 @@ function _json_number!(c, path)
     end
     raw = String(c.bytes[start:c.index-1])
     occursin(r"\A-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?\z", raw) || _json_syntax()
-    if !occursin(r"[.eE]", raw)
+    if c.numeric_policy === :p01 && !occursin(r"[.eE]", raw)
         digits = startswith(raw, "-") ? raw[2:end] : raw
         if length(digits) > 16 || (length(digits) == 16 && digits > "9007199254740991")
             _json_error("INTEGER_RANGE", path, "integer token exceeds P01 exact range")
@@ -174,15 +175,20 @@ function _json_value!(c, path)
     end
     _json_syntax()
 end
-"""Parse original strict UTF-8 JSON under P01 token and Unicode rules.
+"""Parse original strict UTF-8 JSON with an explicit numeric policy.
 
 Object keys and number tokens are checked before dictionary insertion or numeric
 rounding. Returned objects are ordinary fresh Julia JSON trees, not documents.
+The default `numeric_policy=:p01` retains safe integer tokens as `Int64`.
+`numeric_policy=:p03` parses every numeric token directly as finite `Float64`,
+including integer-form tokens outside P01's exact integer range. Both policies
+reject nonzero tokens that round to zero and preserve exact signed zero.
 """
-function parse_json(raw::Union{String,Vector{UInt8}})
+function parse_json(raw::Union{String,Vector{UInt8}}; numeric_policy=:p01)
+    numeric_policy in (:p01, :p03) || throw(ArgumentError("numeric_policy must be :p01 or :p03"))
     bytes = raw isa String ? Vector{UInt8}(codeunits(raw)) : copy(raw)
     isvalid(String(copy(bytes))) || _json_error("INVALID_UNICODE", "", "input is not strict UTF-8")
-    cursor = _JSONCursor(bytes, 1)
+    cursor = _JSONCursor(bytes, 1, numeric_policy)
     value = _json_value!(cursor, "")
     _json_space!(cursor)
     cursor.index == length(bytes) + 1 || _json_syntax()
