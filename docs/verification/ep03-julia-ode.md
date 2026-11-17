@@ -49,7 +49,9 @@ Julia 1.10.13, SciMLBase 3.58.0, OrdinaryDiffEqTsit5 2.1.5 and
 OrdinaryDiffEqRosenbrock 2.7.5. Direct compatibility bounds allow these patch
 series; the separate Pkg-generated [native test environment](../../conformance/julia_ode/README.md)
 pins the complete tested dependency graph. The library Manifest stays ignored;
-the independent reference environment remains unchanged.
+the independent reference environment remains unchanged. The native ODE runner
+uses that active pinned environment directly, without prepending the library
+environment, and checks that the loaded Fenix source is the repository package.
 
 The native runner decodes exact approved binary64 parameter/time bits, authors
 and compiles sources, then executes both methods on all 40 fixed samples at

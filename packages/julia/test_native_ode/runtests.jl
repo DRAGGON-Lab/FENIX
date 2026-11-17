@@ -1,8 +1,8 @@
 # Fixed approved references, independent BigFloat comparisons, native APIs only.
 using Test, JSON, SHA
-pushfirst!(LOAD_PATH,normpath(joinpath(@__DIR__,"..")))
 using Fenix
 using Fenix.Execution
+@test realpath(pathof(Fenix)) == realpath(joinpath(@__DIR__,"../src/Fenix.jl"))
 const B = Fenix.BioIR
 const F = Fenix.FIR
 const ROOT = normpath(joinpath(@__DIR__,"../../.."))

@@ -1,12 +1,12 @@
 {
   "scope": "#26 native direct SciML M0 ODE adapter; human implementation acceptance pending",
-  "recorded_utc": "2026-11-17T16:31:41.375089+00:00",
+  "recorded_utc": "2026-11-17T16:35:55.643565+00:00",
   "source": {
     "base_revision": "ab6930cad7a7524e076aea425180757972f5692e",
     "branch": "feat/26-julia-ode",
     "dirty_during_verification": true,
     "fingerprint_algorithm": "SHA-256 sorted relative path + NUL + bytes + NUL; evidence pair excluded",
-    "sha256": "f7114909aa04c65727dcd831115c220741510a9c56c465279ce6421dd52a9212",
+    "sha256": "ee8f5b32f935e0eb4c4e26cbbd6c66624aaaf4fd548dc4d60b546e69839c73d8",
     "files": {
       ".github/workflows/scaffold-smoke.yml": "223c3a7245494a3de6a595ca650c83e881b754a996603d6711545106b94fa145",
       ".gitignore": "2b167c81dd0349c7c3c43b8fb0f5442afe850b28d29c05bd62c4c6edf703c7ac",
@@ -30,7 +30,7 @@
       "packages/julia/test/runtests.jl": "3fdd859a4bb7f73ac44cb3d185c46c8c081b4e79f89c53fab53e501660c9a659",
       "packages/julia/test/test_execution.jl": "b59ef3064de17a8bc6dd6613514144e08991f7b69086778b115efbbb79f7d75e",
       "packages/julia/test_native_ode/README.md": "73e57cf5181d4e14d9958f7c39acf0c2e97002b6cf2eab588a13d905bffd404e",
-      "packages/julia/test_native_ode/runtests.jl": "84fd01f5c03c8b2d08c4e9c8c4a11ed12a643afd9bbb2ec6ed5c623c3fd1e440"
+      "packages/julia/test_native_ode/runtests.jl": "fb00c96e87f1cd8cf0fa4d093ce83c5d47cf1de00c2406000f129c1d386a3483"
     }
   },
   "runtime": {
@@ -46,7 +46,7 @@
   },
   "native_report": {
     "path": "artifacts/julia-native-ode.json",
-    "sha256": "eeb749b2d374762b98cce89bb10491158838b716039767868183f9da4d09485c",
+    "sha256": "c1a11c38861bf3dedf1593d0ded86d8af22fca1f0d30b8d74ced244bac3f1ec5",
     "sample_method_setting_rows": 240,
     "catalog_fingerprints": {
       "conformance/production_decay/catalog.json": "468c05a59fc23106dfc2e9e3454e9709ef0b61c9e130885180ecd4e67a07406d"
@@ -65,7 +65,7 @@
     "evaluator_fingerprints": {
       "conformance/production_decay/review_oracle.jl": "a9318f987f156343a43680ed3b0bc9186b3220cb3f86ca6bcad74460e1cb55ba",
       "packages/julia/test_native_fir/report_paths.jl": "a3367bc35f4a8b5d056a94e215e31331f8c3d16a10e9fdfb0b399d72b1dd405d",
-      "packages/julia/test_native_ode/runtests.jl": "84fd01f5c03c8b2d08c4e9c8c4a11ed12a643afd9bbb2ec6ed5c623c3fd1e440"
+      "packages/julia/test_native_ode/runtests.jl": "fb00c96e87f1cd8cf0fa4d093ce83c5d47cf1de00c2406000f129c1d386a3483"
     },
     "contract_fingerprints": {
       "spec/execution/proposals/ADR-P04.md": "5489301befbc7d42b5429aedb8162a4d6143707f94f84e22b4a9fdceca5ff3f5",
@@ -235,8 +235,8 @@
       "command": "JULIA_DEPOT_PATH=/private/tmp/fenix-julia-depot JULIA_PKG_OFFLINE=true /private/tmp/julia-1.10.13/bin/julia --project=conformance/julia_ode packages/julia/test_native_ode/runtests.jl --report artifacts/julia-native-ode.json",
       "status": "PASS",
       "exit_code": 0,
-      "log_sha256": "2e499a77aa3901be8188f02814103f46bec8f1757ee21c0393ef3f3f4fef468b",
-      "output_tail": "Test Summary:                                             | Pass  Total   Time\nNative SciML P04 approved reference and refinement matrix |  603    603  29.5s\nTest Summary:                                                   | Pass  Total  Time\nStiff exploratory control, independent law not a golden fixture |    7      7  0.1s\n"
+      "log_sha256": "751884adf61bb37282284717a572190ec2093a733e51698a1bd1f3960f41757c",
+      "output_tail": "Test Summary:                                             | Pass  Total   Time\nNative SciML P04 approved reference and refinement matrix |  603    603  15.9s\nTest Summary:                                                   | Pass  Total  Time\nStiff exploratory control, independent law not a golden fixture |    7      7  0.0s\n"
     },
     {
       "name": "julia-native-fir",
