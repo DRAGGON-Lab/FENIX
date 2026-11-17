@@ -1,8 +1,9 @@
 # EP-03 / #26 — native Julia direct SciML ODE execution
 
 Refs [#26](https://github.com/DRAGGON-Lab/FENIX/issues/26). Base: merged #25,
-`ab6930cad7a7`, branch `feat/26-julia-ode`. Human implementation acceptance
-remains pending. Authority is ratified [P04](../../spec/execution/proposals/ADR-P04.md),
+`ab6930cad7a7`, branch `feat/26-julia-ode`. The human PI approved the bounded
+implementation at `34a092ee1c559b8325cd45e2139789126c06bfb0` on 17 November
+2026; see the [approval record below](#human-pi-implementation-approval--2026-11-17). Authority is ratified [P04](../../spec/execution/proposals/ADR-P04.md),
 [P02](../../spec/fir/proposals/ADR-P02.md) and the approved independent
 [production-decay references](../../conformance/production_decay/README.md).
 No scientific contract, golden fixture, Python implementation or package version
@@ -116,3 +117,35 @@ biological validity or complete M0/release acceptance.
 
 Backend API sources: [SciML solver options](https://docs.sciml.ai/DiffEqDocs/stable/basics/common_solver_opts/)
 and [SciML solution/return-code interface](https://docs.sciml.ai/SciMLBase/stable/interfaces/Solutions/).
+
+
+## Human PI implementation approval — 2026-11-17
+
+The human PI approved reviewed implementation revision
+[`34a092ee1c559b8325cd45e2139789126c06bfb0`](https://github.com/DRAGGON-Lab/FENIX/commit/34a092ee1c559b8325cd45e2139789126c06bfb0)
+on [PR #70](https://github.com/DRAGGON-Lab/FENIX/pull/70), following the completed
+implementation and reported verification, instructing in this conversation:
+
+> I approve this to be implemented
+
+Decision: **APPROVED** for the bounded issue #26 native Julia M0 direct SciML
+ODE implementation described above. The implementation was already supplied on
+PR #70 when this approval was given. The reviewed [hosted CI run](https://github.com/DRAGGON-Lab/FENIX/actions/runs/44127661293)
+passed all seven jobs, including native numerical conformance, locked-environment
+integrity and report upload. Approval derives from the explicit human instruction;
+it does not imply a separate GitHub review submission or independent human
+recomputation of the numerical matrix.
+
+The adjacent JSON receipt remains unchanged as historical execution evidence:
+its source fingerprint, pending-acceptance state and pre-push hosted-CI
+`NOT RUN` entry describe the time it was recorded. This addendum records the
+later approval without rewriting those observations.
+
+This changes no scientific contract, fixture, mathematical semantics, package
+version or implementation API. Results/manifests, independent #29 cross-language
+acceptance, SSA, parent EP-03 acceptance and release authorization remain separate
+gates. Merge and issue-state changes remain separate actions.
+
+Documentation-only recording checks: repository checker, six harness unit tests
+and `git diff --check` **PASS**. Scientific suites were not rerun for this
+addendum; the source-linked implementation results above remain the evidence.

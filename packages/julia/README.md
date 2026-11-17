@@ -234,3 +234,8 @@ local exact limiting cases and explicit failure controls, without repository
 fixtures or Python.
 
 Executed results and limits are recorded in the [issue #26 verification record](../../docs/verification/ep03-julia-ode.md).
+
+The human PI approved the bounded issue #26 implementation at `34a092e` on
+17 November 2026; see the [approval record](../../docs/verification/ep03-julia-ode.md#human-pi-implementation-approval--2026-11-17).
+Results/manifests, independent cross-language acceptance and release gates remain
+separate.
