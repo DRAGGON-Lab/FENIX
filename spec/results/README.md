@@ -20,3 +20,8 @@ and multi-observable column-order candidate. The
 the reviewed contract, schemas and bounded expectations. Reviewed artifact and
 historical receipt bytes retain their drafting-era labels; those labels do not
 override this recorded decision. No native runtime implementation is included.
+
+The additive [Julia/SciML supplement](proposals/ADR-P07-Julia.md) for #27 is
+**PROPOSED; PI ratification PENDING**. Its separate closed manifest schema reuses
+P07's unchanged core and ODEResult layout. Native Julia results implementation
+is gated on review and explicit acceptance of the proposal and bounded evidence.

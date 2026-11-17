@@ -1,0 +1,283 @@
+{
+  "status": "PROPOSED",
+  "human_pi_ratification": "PENDING",
+  "base_revision": "56ad188fddf381ff787d3947ddf8ec02c9322507",
+  "branch": "proposal/27-julia-results-profile",
+  "platform": "macOS-10.16-x86_64-i386-64bit",
+  "uv": "0.11.29",
+  "scope": "Contract and bounded evidence only; Refs #27",
+  "changed_source_sha256": {
+    ".github/workflows/scaffold-smoke.yml": "b20ce733aeee5c66d72e2b042bbd31b1bdbafe549f4f7fb048478e04404f10cd",
+    "docs/verification/ep03-julia-results-profile.md": "9ce9300349e0b3feb4925617a892df58e7ac540532492f2f60e34cc5e8ff91fd",
+    "spec/results/README.md": "119920a0bfadc8e6aa256820e353c4e31694fc99e064947eb6251b77314feaec",
+    "spec/results/proposals/ADR-P07-Julia.md": "5af54ef839d7d4d00d943b0289da499e58d9b9aa472398088f40a9967137756e",
+    "spec/results/proposals/julia-examples/README.md": "556c4f5d1a936ac3a0bf40d45956c952d09f2fbfeb645e90c7b7cd0abf5f4cd2",
+    "spec/results/proposals/julia-examples/checksums.json": "7443383d52131d1ba773db18de7dfaf71844d321fcf0381e661a7e482e55b51a",
+    "spec/results/proposals/julia-examples/empty-observables.manifest.json": "2bed76f97019aca9127926df884f37f3b865cbe3b356394fefe8832b0600055c",
+    "spec/results/proposals/julia-examples/late-first.manifest.json": "6bbb78b0c69baa4d8f88713bbb140cb92e4747e7396097e7ee7daa54ba818010",
+    "spec/results/proposals/julia-examples/multi-observables.manifest.json": "cdab1e770eeab707644eab40a15a4b762443e3c714d886dc78c8b67fc84d816b",
+    "spec/results/proposals/julia-examples/zero-only.manifest.json": "316610936929601c0565bab8da54c6094789893ed36020eb50c3fc266531635b",
+    "spec/results/proposals/review_p07_julia.jl": "dffac68855026d93387e20d98ddc0368ec7df3d0002f170e4b9d535f46b48ab0",
+    "spec/results/proposals/review_p07_julia.py": "e3a297037e16cc5d56286ec266d7738b2a630492e141d6917542566a1702f7d1",
+    "spec/results/proposals/run-manifest-julia-sciml-m0.schema.json": "e3aa4237f0e92f37eec9a7f64b53de4859efbee04578bb381133bdd3e8d5f763"
+  },
+  "dirty_snapshot_sha256": "8441b7d0a77657d6e6c8f33797ff4896993e7aa2285fb0f72844180fa46a103e",
+  "unchanged_lock_sha256": {
+    "packages/python/uv.lock": "0a02d80325600c4610e8541b3255f5ab7b283438e6bb04c02348a9d2ca00cfb8",
+    "conformance/julia/Project.toml": "bcbe015fc7687abaeaf1048c6544843dfcbcf7f66f80aff16b176bf5dfe53185",
+    "conformance/julia/Manifest.toml": "0c0f75a2b4e54b792e911c5884f79ce46b43f3cc48a90ff5e61c3aabffda33b7",
+    "conformance/julia_ode/Project.toml": "bc8f951f11988d9443d3960ed02500d4227428f100cf86591d2a11ee56d616ca",
+    "conformance/julia_ode/Manifest.toml": "90afe00537b6ec261840951d219c956fa5a594a890f242d3f96996a40209c653"
+  },
+  "independent_audits": {
+    "python": {
+      "outcome": "PASS",
+      "status": "PROPOSED",
+      "implementation": "independent-python-profile-audit",
+      "runtime": "3.12.13",
+      "jsonschema": "4.26.0",
+      "rfc8785": "0.1.4",
+      "pairs": 4,
+      "structural_rejections": 103,
+      "semantic_rejections": 5,
+      "numeric_rejections": 22,
+      "binary64_probes": 10,
+      "native_capture_readback": "NOT RUN \u2014 gated on PI ratification",
+      "human_pi_ratification": "PENDING",
+      "input_sha256": {
+        "spec/fir/proposals/examples/production-decay-no-observables.json": "7feab8838696317bd971e1349828ffee7ab886758425e918a9be727f9ccaa51c",
+        "spec/fir/proposals/examples/production-decay.json": "e266d5ede3440a42347badaec911c87fcc2f720d294d499d9cf771b33381dd6d",
+        "spec/results/proposals/ADR-P07-Julia.md": "5af54ef839d7d4d00d943b0289da499e58d9b9aa472398088f40a9967137756e",
+        "spec/results/proposals/examples/empty-observables.manifest.json": "bafb373e4a6a009d30ea97f0b5b5aa352dfa495498069b673e969066086f3be1",
+        "spec/results/proposals/examples/empty-observables.result.json": "64a80ee09c914567bd9a207c8731e02ea4ed5812dfcae16d6438803d2e5b2711",
+        "spec/results/proposals/examples/late-first.manifest.json": "bef9f40b4adf9db8bee0672881863f3674be6f83e62893a3ec6e062fe4314bfa",
+        "spec/results/proposals/examples/late-first.result.json": "318f9ceba3f7b2a8cf5872ef64762340b85c9b0265ba4d68ad0a056753487ca1",
+        "spec/results/proposals/examples/multi-observables.fir.json": "184b1eb97ee1c8342f7238015780dd5d34ff4365f8356280348a295304da1e4d",
+        "spec/results/proposals/examples/multi-observables.manifest.json": "821b2685abad693a77c6ad1d9933c5602aaf818d79355c995f5d5c39a1329543",
+        "spec/results/proposals/examples/multi-observables.result.json": "cc6882d6240bdc5bbd436dacb7be80722edc4ee852822d182282116574b1199b",
+        "spec/results/proposals/examples/numeric-tokens.json": "f4932f2b2eaeb2768a3bacfc4a2fa7895f7067ed8db94a5c27eb534dbd793757",
+        "spec/results/proposals/examples/zero-only.manifest.json": "5f7d08715dac20e4577e4333b102b979138d8721b55e4767ae463032505bce3b",
+        "spec/results/proposals/examples/zero-only.result.json": "13a2de6b42ae7dff4f78bbce9a2fc24df2ba8ceeb23b3f6c52f9553feb0a0c69",
+        "spec/results/proposals/julia-examples/README.md": "556c4f5d1a936ac3a0bf40d45956c952d09f2fbfeb645e90c7b7cd0abf5f4cd2",
+        "spec/results/proposals/julia-examples/checksums.json": "7443383d52131d1ba773db18de7dfaf71844d321fcf0381e661a7e482e55b51a",
+        "spec/results/proposals/julia-examples/empty-observables.manifest.json": "2bed76f97019aca9127926df884f37f3b865cbe3b356394fefe8832b0600055c",
+        "spec/results/proposals/julia-examples/late-first.manifest.json": "6bbb78b0c69baa4d8f88713bbb140cb92e4747e7396097e7ee7daa54ba818010",
+        "spec/results/proposals/julia-examples/multi-observables.manifest.json": "cdab1e770eeab707644eab40a15a4b762443e3c714d886dc78c8b67fc84d816b",
+        "spec/results/proposals/julia-examples/zero-only.manifest.json": "316610936929601c0565bab8da54c6094789893ed36020eb50c3fc266531635b",
+        "spec/results/proposals/ode-result-m0.schema.json": "9676e0f74ccd22ad79828227f5dc704001e39f020062e4fea58bfd1601c3f534",
+        "spec/results/proposals/review_p07.py": "724f6bd6e181ac4bbf9bb507cca66f37a7e02b2b0fce3fd6adf685f14884405c",
+        "spec/results/proposals/review_p07_julia.py": "e3a297037e16cc5d56286ec266d7738b2a630492e141d6917542566a1702f7d1",
+        "spec/results/proposals/run-manifest-julia-sciml-m0.schema.json": "e3aa4237f0e92f37eec9a7f64b53de4859efbee04578bb381133bdd3e8d5f763",
+        "spec/results/proposals/run-manifest-m0.schema.json": "8e1c9236f33801ff81a12900d386c531295830ebca22ad2f09b9deb007d6264d"
+      }
+    },
+    "julia": {
+      "analytical_reference_samples": 3,
+      "binary64_transport_probes": 10,
+      "example_pairs": 4,
+      "human_pi_ratification": "PENDING",
+      "implementation": "independent-julia-reference",
+      "input_sha256": {
+        "conformance/julia/Manifest.toml": "0c0f75a2b4e54b792e911c5884f79ce46b43f3cc48a90ff5e61c3aabffda33b7",
+        "conformance/julia/Project.toml": "bcbe015fc7687abaeaf1048c6544843dfcbcf7f66f80aff16b176bf5dfe53185",
+        "conformance/julia/p01.jl": "111b1d6fe19fcd9cc279992e05bdf8046662d4ca1a98e417057bffb3e7961bd6",
+        "conformance/production_decay/catalog.json": "468c05a59fc23106dfc2e9e3454e9709ef0b61c9e130885180ecd4e67a07406d",
+        "spec/bioir/proposals/examples/design.json": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f",
+        "spec/bioir/proposals/examples/experiment.json": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906",
+        "spec/fir/proposals/examples/production-decay-no-observables.json": "7feab8838696317bd971e1349828ffee7ab886758425e918a9be727f9ccaa51c",
+        "spec/fir/proposals/examples/production-decay.json": "e266d5ede3440a42347badaec911c87fcc2f720d294d499d9cf771b33381dd6d",
+        "spec/fir/proposals/examples/sources/no-observables-experiment.json": "f43aa8c9fe3d3417d57865a7cd6c44a714f90fefeb5fdf17b24a027783731a54",
+        "spec/results/proposals/ADR-P07-Julia.md": "5af54ef839d7d4d00d943b0289da499e58d9b9aa472398088f40a9967137756e",
+        "spec/results/proposals/examples/empty-observables.manifest.json": "bafb373e4a6a009d30ea97f0b5b5aa352dfa495498069b673e969066086f3be1",
+        "spec/results/proposals/examples/empty-observables.result.json": "64a80ee09c914567bd9a207c8731e02ea4ed5812dfcae16d6438803d2e5b2711",
+        "spec/results/proposals/examples/late-first.manifest.json": "bef9f40b4adf9db8bee0672881863f3674be6f83e62893a3ec6e062fe4314bfa",
+        "spec/results/proposals/examples/late-first.result.json": "318f9ceba3f7b2a8cf5872ef64762340b85c9b0265ba4d68ad0a056753487ca1",
+        "spec/results/proposals/examples/multi-observables.experiment.json": "32ba821287777f12dc2a1ddef7eef4103ad5872c7098e39e60c7a21490cb6622",
+        "spec/results/proposals/examples/multi-observables.fir.json": "184b1eb97ee1c8342f7238015780dd5d34ff4365f8356280348a295304da1e4d",
+        "spec/results/proposals/examples/multi-observables.manifest.json": "821b2685abad693a77c6ad1d9933c5602aaf818d79355c995f5d5c39a1329543",
+        "spec/results/proposals/examples/multi-observables.result.json": "cc6882d6240bdc5bbd436dacb7be80722edc4ee852822d182282116574b1199b",
+        "spec/results/proposals/examples/numeric-tokens.json": "f4932f2b2eaeb2768a3bacfc4a2fa7895f7067ed8db94a5c27eb534dbd793757",
+        "spec/results/proposals/examples/zero-only.manifest.json": "5f7d08715dac20e4577e4333b102b979138d8721b55e4767ae463032505bce3b",
+        "spec/results/proposals/examples/zero-only.result.json": "13a2de6b42ae7dff4f78bbce9a2fc24df2ba8ceeb23b3f6c52f9553feb0a0c69",
+        "spec/results/proposals/julia-examples/checksums.json": "7443383d52131d1ba773db18de7dfaf71844d321fcf0381e661a7e482e55b51a",
+        "spec/results/proposals/julia-examples/empty-observables.manifest.json": "2bed76f97019aca9127926df884f37f3b865cbe3b356394fefe8832b0600055c",
+        "spec/results/proposals/julia-examples/late-first.manifest.json": "6bbb78b0c69baa4d8f88713bbb140cb92e4747e7396097e7ee7daa54ba818010",
+        "spec/results/proposals/julia-examples/multi-observables.manifest.json": "cdab1e770eeab707644eab40a15a4b762443e3c714d886dc78c8b67fc84d816b",
+        "spec/results/proposals/julia-examples/zero-only.manifest.json": "316610936929601c0565bab8da54c6094789893ed36020eb50c3fc266531635b",
+        "spec/results/proposals/ode-result-m0.schema.json": "9676e0f74ccd22ad79828227f5dc704001e39f020062e4fea58bfd1601c3f534",
+        "spec/results/proposals/review_p07_julia.jl": "dffac68855026d93387e20d98ddc0368ec7df3d0002f170e4b9d535f46b48ab0",
+        "spec/results/proposals/run-manifest-julia-sciml-m0.schema.json": "e3aa4237f0e92f37eec9a7f64b53de4859efbee04578bb381133bdd3e8d5f763",
+        "spec/results/proposals/run-manifest-m0.schema.json": "8e1c9236f33801ff81a12900d386c531295830ebca22ad2f09b9deb007d6264d"
+      },
+      "limits": "Bounded fixtures and scoped numeric converters; not a general raw JSON reader, compiler or solver audit.",
+      "native_results_implementation": "NOT RUN",
+      "numeric_rejections": 18,
+      "outcome": "PASS",
+      "runtime": {
+        "JSON": "1.13.4",
+        "JSONSchema": "1.6.0",
+        "julia": "1.10.13"
+      },
+      "semantic_rejections": 5,
+      "status": "PROPOSED",
+      "structural_rejections": 97
+    },
+    "original_p07": {
+      "status": "PROPOSED",
+      "outcome": "PASS",
+      "python": "3.12.13",
+      "jsonschema": "4.26.0",
+      "rfc8785": "0.1.4",
+      "example_pairs": 4,
+      "multi_observable_columns": 3,
+      "wrong_source_same_fir_counterexamples": 2,
+      "analytical_reference_samples": 3,
+      "binary64_transport_probes": 8,
+      "structural_rejection_mutations": 114,
+      "native_readback_execution_tests": "NOT RUN",
+      "human_pi_ratification": "PENDING",
+      "input_sha256": {
+        "spec/results/proposals/ADR-P07.md": "22f23142ee64d2444f938fa7d5cf98b6a69ec611fa82faddb13dbe619438434a",
+        "spec/results/proposals/run-manifest-m0.schema.json": "8e1c9236f33801ff81a12900d386c531295830ebca22ad2f09b9deb007d6264d",
+        "spec/results/proposals/ode-result-m0.schema.json": "9676e0f74ccd22ad79828227f5dc704001e39f020062e4fea58bfd1601c3f534",
+        "spec/results/proposals/review_p07_refinements.js": "5c7282b37822bd5b58ff85783eb5bc1885cd2b261b65e74f96eeede8ed7d4510",
+        "spec/results/proposals/review_p07.py": "724f6bd6e181ac4bbf9bb507cca66f37a7e02b2b0fce3fd6adf685f14884405c",
+        "spec/results/proposals/examples/checksums.json": "f41aed4b09f515ddb099c427be3dcdefa8cba24aa534211ac82f15139dfdd59a",
+        "spec/bioir/proposals/examples/design.json": "54427292a4f78cf9e2b81e2bd423f3464c6bc037f1ec796dc7970b96ef3e9e1f",
+        "spec/bioir/proposals/examples/experiment.json": "bdf3b8b292a503fb352efe25f76ea8fdfe24bb392ecf08baa96c9ba3221e1906",
+        "spec/fir/proposals/examples/sources/no-observables-experiment.json": "f43aa8c9fe3d3417d57865a7cd6c44a714f90fefeb5fdf17b24a027783731a54",
+        "spec/results/proposals/examples/multi-observables.experiment.json": "32ba821287777f12dc2a1ddef7eef4103ad5872c7098e39e60c7a21490cb6622",
+        "spec/results/proposals/examples/multi-observables.fir.json": "184b1eb97ee1c8342f7238015780dd5d34ff4365f8356280348a295304da1e4d",
+        "spec/bioir/proposals/bioir-m0.schema.json": "8d0f34aa5edb188ca8142f9ea3e4ec1ff46336140cf61b9df4a053ef1dbf923a",
+        "spec/fir/proposals/fir-m0.schema.json": "b0a3f9e42b745731b7db5ee3efd90a0f571339f5bc9ef13ae975100093a47df8",
+        "spec/fir/proposals/examples/production-decay.json": "e266d5ede3440a42347badaec911c87fcc2f720d294d499d9cf771b33381dd6d",
+        "spec/fir/proposals/examples/production-decay-no-observables.json": "7feab8838696317bd971e1349828ffee7ab886758425e918a9be727f9ccaa51c",
+        "conformance/canonicalization/expected/fir-base.canonical": "cf4011a6c97891192c0b84951dd53ae38bd1fc629e05c885a8dff30bd5e53a50",
+        "conformance/production_decay/catalog.json": "468c05a59fc23106dfc2e9e3454e9709ef0b61c9e130885180ecd4e67a07406d",
+        "spec/fir/proposals/examples/production-decay-gfp.json": "27d613b8695e7571b9f69e91fb880651011526313348deaeb2e9033c41b53055",
+        "spec/fir/proposals/examples/sources/gfp-design.json": "d0b585787aa3079c0e88161c5245e75b025fc62cb5bb723ba09989b2d3265e57",
+        "spec/fir/proposals/examples/sources/gfp-experiment.json": "1be28ac7589ab1c11ac4c104ec14625b669eb0e25b80da23f6712ff225aa7d74",
+        "spec/fir/proposals/examples/production-decay-laci.json": "f6792823b5ec3bd095fc93426b64c68697d3e87ee351b1a60f37cf4c3355c202",
+        "spec/fir/proposals/examples/sources/laci-design.json": "7bff2dc988a417c6d22cccf3e76648e06cd92595351a7b65a4dd596eb2d1fd3d",
+        "spec/fir/proposals/examples/sources/laci-experiment.json": "f80ad2cb9381f3c5685f8a50b5e6d179cc614ee0d0a86573c3ddff0ab9c21070"
+      },
+      "candidate_sha256": {
+        "empty-observables.manifest.json": "bafb373e4a6a009d30ea97f0b5b5aa352dfa495498069b673e969066086f3be1",
+        "empty-observables.result.json": "64a80ee09c914567bd9a207c8731e02ea4ed5812dfcae16d6438803d2e5b2711",
+        "late-first.manifest.json": "bef9f40b4adf9db8bee0672881863f3674be6f83e62893a3ec6e062fe4314bfa",
+        "late-first.result.json": "318f9ceba3f7b2a8cf5872ef64762340b85c9b0265ba4d68ad0a056753487ca1",
+        "multi-observables.experiment.json": "32ba821287777f12dc2a1ddef7eef4103ad5872c7098e39e60c7a21490cb6622",
+        "multi-observables.fir.json": "184b1eb97ee1c8342f7238015780dd5d34ff4365f8356280348a295304da1e4d",
+        "multi-observables.manifest.json": "821b2685abad693a77c6ad1d9933c5602aaf818d79355c995f5d5c39a1329543",
+        "multi-observables.result.json": "cc6882d6240bdc5bbd436dacb7be80722edc4ee852822d182282116574b1199b",
+        "numeric-tokens.json": "f4932f2b2eaeb2768a3bacfc4a2fa7895f7067ed8db94a5c27eb534dbd793757",
+        "zero-only.manifest.json": "5f7d08715dac20e4577e4333b102b979138d8721b55e4767ae463032505bce3b",
+        "zero-only.result.json": "13a2de6b42ae7dff4f78bbce9a2fc24df2ba8ceeb23b3f6c52f9553feb0a0c69"
+      }
+    }
+  },
+  "reviews": {
+    "engineering": "No remaining blocking findings; URN resolver defect corrected and independently rechecked; both audits independently replayed.",
+    "scientific": "No blocking scientific findings; original P07 audit also replayed. Julia audit not run by scientific reviewer.",
+    "authority": "Agent reviews; not human ratification or implementation acceptance"
+  },
+  "checks": [
+    {
+      "command": "uv sync --project packages/python --locked",
+      "outcome": "PASS",
+      "exit_code": 0
+    },
+    {
+      "command": "UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python spec/results/proposals/review_p07_julia.py",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "log_sha256": "9121714f736546dd4b1dc971e7d9c9fe11b544301625fb999f27a1eb4271e8a2",
+      "log_path": "/private/tmp/fenix27-python-profile.json"
+    },
+    {
+      "command": "UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python spec/results/proposals/review_p07.py",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "log_sha256": "3808ed847d06971191cc9adf90552b82929ffb02d949edbca689e3a6011aba8d",
+      "log_path": "/private/tmp/fenix27-python-p07.json"
+    },
+    {
+      "command": "JULIA_DEPOT_PATH=/private/tmp/fenix-julia-depot JULIA_PKG_OFFLINE=true /private/tmp/julia-1.10.13/bin/julia --project=conformance/julia spec/results/proposals/review_p07_julia.jl",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "log_sha256": "95a57d62d2b87901424fca790b10ed8db6221fd71d3fd782bf7161a12c11ebce",
+      "log_path": "/private/tmp/fenix27-julia-audit.json"
+    },
+    {
+      "command": "UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "log_sha256": "c184d38a2356182b048053d1819b45d1ca1254d9a5d7e6f5637ec09dc1be4daf",
+      "log_path": "/private/tmp/fenix27-python-package.log"
+    },
+    {
+      "command": "JULIA_DEPOT_PATH=/private/tmp/fenix-julia-depot JULIA_PKG_OFFLINE=true /private/tmp/julia-1.10.13/bin/julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "log_sha256": "cd97ab507c5d387fc796a2c35486f1c03c421ccb165127c73c85d34480d8be2f",
+      "log_path": "/private/tmp/fenix27-julia-package.log"
+    },
+    {
+      "command": "shasum -a 256 spec/results/proposals/run-manifest-m0.schema.json spec/results/proposals/ode-result-m0.schema.json spec/results/proposals/julia-examples/*.json spec/results/proposals/examples/*.result.json",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "log_sha256": "6bc134d3e2757517f5da3f6e66e675d3a567a962127401da6ecaa2c4f01db95b",
+      "log_path": "/private/tmp/fenix27-system-sha256.txt"
+    },
+    {
+      "command": "UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python scripts/check_repo.py",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "log_sha256": "8e8c8f9c13bdb5c2b4d3f55f913fc3adac04cb5fc5d4b3b77e976b236487fb49",
+      "log_path": "/private/tmp/fenix27-repo.log",
+      "output": "Repository harness checks passed (not scientific conformance).\n"
+    },
+    {
+      "command": "UV_CACHE_DIR=/private/tmp/fenix-uv-cache uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "log_sha256": "c877cf430b50422c622c4809e8075afb0577055e4b34af0f27dd72b9b41f7470",
+      "log_path": "/private/tmp/fenix27-harness.log",
+      "output": "test_claude_import_requirements (test_check_repo.TestRepositoryHarness.test_claude_import_requirements) ... ok\ntest_duplicate_legacy_agent (test_check_repo.TestRepositoryHarness.test_duplicate_legacy_agent) ... ok\ntest_ignores_links_inside_code_fences (test_check_repo.TestRepositoryHarness.test_ignores_links_inside_code_fences) ... ok\ntest_missing_required_file (test_check_repo.TestRepositoryHarness.test_missing_required_file) ... ok\ntest_relative_links (test_check_repo.TestRepositoryHarness.test_relative_links) ... ok\ntest_valid_structure (test_check_repo.TestRepositoryHarness.test_valid_structure) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.054s\n\nOK\n"
+    },
+    {
+      "command": "git diff --check",
+      "outcome": "PASS",
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "log_path": "/private/tmp/fenix27-diff.log",
+      "output": ""
+    }
+  ],
+  "earlier_failures": [
+    {
+      "check": "initial sandboxed locked sync",
+      "outcome": "FAIL",
+      "reason": "setuptools fetch blocked by DNS/network; permitted locked sync subsequently PASS"
+    },
+    {
+      "check": "repository link checks during authoring",
+      "outcome": "FAIL",
+      "reason": "Julia audit/report targets not yet created; final complete-tree outcome recorded separately"
+    },
+    {
+      "check": "initial Julia audit authoring",
+      "outcome": "FAIL",
+      "reason": "syntax error; corrected before successful audit; no expectation changed"
+    }
+  ],
+  "not_run": {
+    "native_results_implementation_and_capture_matrix": "Gated on explicit PI ratification; separate PR",
+    "standalone_results_tests_without_python": "Later native implementation scope",
+    "hosted_ci": "Not yet pushed at receipt time",
+    "human_pi_ratification": "Explicit approval of exact reviewed revision required",
+    "human_implementation_acceptance": "Separate future gate"
+  },
+  "unchanged_contract_artifacts": "",
+  "unchanged_contract_artifacts_outcome": "PASS \u2014 no diff against origin/main"
+}
