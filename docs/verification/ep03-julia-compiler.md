@@ -1,8 +1,9 @@
 # EP-03 / #25 — native Julia M0 BioIR-to-FIR compiler
 
 Refs [#25](https://github.com/DRAGGON-Lab/FENIX/issues/25). Base: merged #24,
-`79b75a21149c`, on `feat/25-julia-compiler`. Implementation acceptance by the
-human PI remains pending. No contract, approved fixture, Python implementation,
+`79b75a21149c`, on `feat/25-julia-compiler`. The human PI accepted the bounded implementation at reviewed revision
+`da13860b78e08928276009fb7e386e98ef271be0` on 17 November 2026; see the
+[acceptance record below](#human-pi-implementation-acceptance--2026-11-17). No contract, approved fixture, Python implementation,
 package version or historical verification receipt changes are included.
 
 ## Behavior and scope
@@ -79,3 +80,34 @@ implemented the parser policy, so the independent scientific review excludes the
 parser implementation; engineering review includes it. Agent reviews do not
 substitute for human PI acceptance. Hosted CI status is recorded separately in
 the PR; this local receipt does not assert hosted execution or merge approval.
+
+
+## Human PI implementation acceptance — 2026-11-17
+
+The human PI approved reviewed implementation revision
+[`da13860b78e08928276009fb7e386e98ef271be0`](https://github.com/DRAGGON-Lab/FENIX/commit/da13860b78e08928276009fb7e386e98ef271be0)
+on [PR #69](https://github.com/DRAGGON-Lab/FENIX/pull/69), following the reported
+verification and review disposition, instructing in this conversation:
+
+> I approve this, record this desicion and push it to the PR
+
+Decision: **ACCEPTED** for the bounded issue #25 native Julia M0 FIR/compiler
+implementation described above. The reviewed [hosted CI run](https://github.com/DRAGGON-Lab/FENIX/actions/runs/44098146298)
+passed all seven jobs, including native FIR/compiler conformance and artifact
+upload. Approval is the explicit human instruction, separate from those checks
+and agent reviews; no independent GitHub review submission is inferred.
+
+The adjacent JSON receipt remains unchanged as historical execution evidence:
+its source fingerprint, pending-acceptance state and pre-push hosted-CI
+`NOT RUN` entry describe the time it was recorded. This addendum records the
+later human decision without rewriting those observations.
+
+Acceptance changes no scientific contract, approved fixture, implementation API,
+package version or mathematical semantics. Native numerical execution, SSA,
+independent cross-language acceptance, parent EP-03 and broader release gates
+remain separate. This instruction authorizes recording and pushing the decision;
+merge and issue-state changes remain separate actions.
+
+Documentation-only recording checks: repository checker, harness unit tests and
+`git diff --check` **PASS**. Scientific suites were not rerun for this acceptance
+addendum; the source-linked implementation results above remain the evidence.

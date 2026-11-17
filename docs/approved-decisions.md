@@ -34,7 +34,7 @@
 | D28 | FIR digest covers only canonical mathematical semantics, not provenance. |
 | D29 | RFC 8785/JCS with versioned FENIX semantic normalization and reference vectors. |
 
-**Current implementation and remaining gates:** Python’s supported M0 path is implemented on main through merged PRs #58/#60/#61/#63/#65; #18–#22 are closed. This is separate from the historical contract/reference approvals below. [EP-02](https://github.com/DRAGGON-Lab/FENIX/issues/4), the bounded native Python M0 implementation milestone, was completed following explicit PI approval on 17 November 2026. Julia M0 content builders, strict committed Design/Experiment documents, canonical content digests, exact local references and native BioIR-to-FIR compilation with P03 identity are implemented; human acceptance of issue #25, native numerical execution, independent cross-language scientific conformance (#28/#29), and broader whole-project release authorization remain separate gates. P05 SSA, P06 package/version governance and #42 broader provenance retain separate gates. See the [current integration audit](verification/ep02-status-governance.md).
+**Current implementation and remaining gates:** Python’s supported M0 path is implemented on main through merged PRs #58/#60/#61/#63/#65; #18–#22 are closed. This is separate from the historical contract/reference approvals below. [EP-02](https://github.com/DRAGGON-Lab/FENIX/issues/4), the bounded native Python M0 implementation milestone, was completed following explicit PI approval on 17 November 2026. Julia M0 content builders, strict committed Design/Experiment documents, canonical content digests, exact local references and native BioIR-to-FIR compilation with P03 identity are implemented; the human PI accepted the bounded issue #25 implementation at `da13860` on 17 November 2026 (see the [acceptance record](verification/ep03-julia-compiler.md#human-pi-implementation-acceptance--2026-11-17)). Native numerical execution, independent cross-language scientific conformance (#28/#29), and broader whole-project release authorization remain separate gates. P05 SSA, P06 package/version governance and #42 broader provenance retain separate gates. See the [current integration audit](verification/ep02-status-governance.md).
 
 **Scientific source of truth:** ratified ADR/specification and independent reference evidence, not the current source code or test behavior. Human scientific approval is required for revisions.
 
@@ -185,3 +185,33 @@ stronger provenance, EP-03 acceptance and broader release authorization retain
 separate gates. Merge and issue-state changes are separate actions. The approval
 source is the PI instruction above, not an inferred GitHub review or CI result.
 Historical verification receipts are unchanged.
+
+
+## Accepted Julia FIR/compiler implementation — 2026-11-17
+
+The human PI explicitly accepted the bounded [issue #25](https://github.com/DRAGGON-Lab/FENIX/issues/25)
+implementation at reviewed revision
+[`da13860b78e08928276009fb7e386e98ef271be0`](https://github.com/DRAGGON-Lab/FENIX/commit/da13860b78e08928276009fb7e386e98ef271be0)
+on [PR #69](https://github.com/DRAGGON-Lab/FENIX/pull/69), instructing in this conversation:
+
+> I approve this, record this desicion and push it to the PR
+
+Decision: accept native Julia M0 BioIR-to-FIR compilation, immutable validated
+FIR values, exact P02 template/unit/capability and source-correspondence checks,
+P03 binary64 parsing, normalization and wrapped canonical identity within the
+reviewed scope. The [implementation evidence](verification/ep03-julia-compiler.md)
+records 207 rejection cases, 84 canonicalization cases, nine approved producer
+controls, ten compiler/oracle input triples and 40 fixed samples at 512/1024 bits,
+standalone operation without Python and regression/reference checks. Catalog
+sets overlap. [Hosted CI](https://github.com/DRAGGON-Lab/FENIX/actions/runs/44098146298)
+passed all seven jobs for the reviewed implementation. These are bounded
+results, not exhaustive input validation or empirical biological validation.
+
+This records human implementation acceptance under unchanged ADR-P01/P02/P03;
+it changes no scientific contract, fixture, API or package version. Native
+numerical execution, SSA, independent cross-language scientific acceptance,
+stronger provenance, parent EP-03 acceptance and broader release authorization
+retain separate gates. Merge and issue-state changes are separate actions.
+The approval source is the explicit PI instruction above, not an inferred GitHub
+review or CI result. Historical verification receipts retain their reviewed
+source identities and original pending-acceptance observations.

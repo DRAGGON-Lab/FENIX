@@ -169,5 +169,6 @@ controls and ten compiled binary64 triples linked to 40 fixed mathematical
 samples at 512/1024-bit precision. Cases overlap across catalogs. Package tests
 remain independent of repository fixtures and Python. The report fingerprints
 actual runtime, sources and catalogs; historical reference reports remain intact.
-Human implementation acceptance and later numerical/cross-language gates remain
-separate from these bounded checks.
+The human PI accepted the bounded issue #25 implementation at `da13860`; see the
+[acceptance record](../../docs/verification/ep03-julia-compiler.md#human-pi-implementation-acceptance--2026-11-17).
+Later numerical/cross-language and release gates remain separate.
