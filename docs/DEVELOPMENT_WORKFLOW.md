@@ -63,7 +63,7 @@ julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'
 
 Commit uv-generated `packages/python/uv.lock`; do not hand-edit it. Keep reference tools in the development group rather than runtime dependencies. The separate [Julia reference environment](../conformance/julia/README.md) commits its Pkg-generated manifest; the library manifest remains ignored. Dependency installation can require network access; subsequent offline checks must not fetch resources.
 
-The repository checker and harness tests check repository-document consistency, **not science**. Python package tests now cover typed M0 content construction and serialization as well as packaging; Julia smoke tests check packaging only. When M0/M1 scientific conformance suites exist, an agent must additionally execute the relevant mathematical and cross-language checks.
+The repository checker and harness tests check repository-document consistency, **not science**. Python package tests now cover typed M0 content construction and serialization as well as packaging; Julia package tests cover native uncommitted M0 BioIR authoring and packaging. When M0/M1 scientific conformance suites exist, an agent must additionally execute the relevant mathematical and cross-language checks.
 
 Do not claim that a check passed unless it actually ran. A locally unavailable runtime is `NOT RUN`, not `PASS`.
 
@@ -195,3 +195,13 @@ Until ownership enforcement is configured, human PI approval of normative
 specifications and approved golden expectations remains an explicit review gate
 under AGENTS.md. [GitHub code-owner requirements](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)
 require actual eligible identities; placeholder owners provide no enforcement.
+
+For Julia BioIR content changes, additionally run the 29 approved content projections:
+
+```sh
+JULIA_PKG_OFFLINE=true julia --project=conformance/julia -e 'push!(LOAD_PATH, abspath("packages/julia")); include("packages/julia/test_native_content/runtests.jl")'
+```
+
+These projections account for 29 of the 92 P01 cases; 63 parser, identity and
+revision cases remain deferred to #24. They do not establish committed-document,
+compiler or solver conformance. Native package tests require no repository fixtures.

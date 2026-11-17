@@ -3,7 +3,11 @@ uuid = "b4f55250-ad5c-424b-a32f-effb8741a28b"
 authors = ["DRAGGON Lab"]
 version = "0.0.0"
 
+[deps]
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+
 [compat]
+JSON = "1"
 julia = "1.10"
 
 [extras]

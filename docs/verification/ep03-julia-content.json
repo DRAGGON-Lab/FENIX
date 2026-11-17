@@ -1,0 +1,40 @@
+{
+  "recorded_utc": "2026-11-17T08:51:45.629049+00:00",
+  "base": "b7850cb0cf630edec4f3247837a4dd8b716acdb2",
+  "state": "dirty implementation source; evidence files excluded from fingerprint",
+  "files_sha256": {
+    ".github/workflows/scaffold-smoke.yml": "46a6206276bffc1c187017d9ef324412f1f4c490140a7ec644fdb7a80fcff8ed",
+    "ARCHITECTURE.md": "0dada716caa9df4dfd08e84920e48b5f7b89c7384182b79a1484c5627c353f1f",
+    "PRODUCT.md": "f57bd8ea160103228fc4fe436553302558b377c3bd2d90a449366e7c8e793bd3",
+    "README.md": "f2253d611b5e76257fd5fbd7e1398f2a4cb0098cd7397ef82ca17feb9f65bc20",
+    "docs/DEVELOPMENT_WORKFLOW.md": "9d8b278faa7761444d6ffd6bc278a9979e75f79c1d0d28c3aacd037229cb0e86",
+    "packages/julia/Project.toml": "ebac208a4d05f8ba89abee9411f4a496c02dad46181b86efff8a4f37b36ec9d6",
+    "packages/julia/README.md": "9c458e6bbea9f4baf10a4d1965cba243c4c85b464769bf979f3495400796c3b2",
+    "packages/julia/src/BioIR.jl": "040cf7791d3ba79fd066095ae0ee5a0052dbd54ffd9ebe661dae5e821bfe4d49",
+    "packages/julia/src/Fenix.jl": "a7511e298c4982abf6cab89418e416d3a6ddeba3c226511b267300510bc8db42",
+    "packages/julia/test/runtests.jl": "c9af28f3d5130b0dca753df574fb4b571ab20f6d0b31d0b05584aa44d3160805",
+    "packages/julia/test_native_content/README.md": "f0cbe497695e6df9dd09277980ee1de360d120f54e55917e0bcdd198552e0b40",
+    "packages/julia/test_native_content/adapter.jl": "24124439fdb7bd3ab59a76239c991235d87b037a68a95b0ca6d1839a696c4bc0",
+    "packages/julia/test_native_content/coverage.json": "6faa68504238c7a968b6af9b1f60baa63e2d9165d08719cdf1a23bbdad8318c4",
+    "packages/julia/test_native_content/runtests.jl": "dc17ee7cc5371893235f31ac9a18507964b5ae65ac713e6e5a98fff4992bb5b6",
+    "spec/README.md": "c04883817af5f646d0bb08bcdbe5803a920bb695df54f5dff47b349fb25605c5"
+  },
+  "logs": {
+    "fenix23-julia-final.log": {
+      "sha256": "e4e1921f0d66e2f75b47f73529bc5867ae4f65d02a7419002dbbf3814cc73f29",
+      "tail": "fed614] Test\n      Status `/private/var/folders/65/dt4l3nw13q57n8x9nlly46640000gn/T/jl_iH3447/Manifest.toml`\n  [b4f55250] Fenix v0.0.0 `/private/tmp/fenix-23/packages/julia`\n  [682c06a0] JSON v1.13.4\n  [69de0a69] Parsers v3.0.6\n\u2305 [aea7be01] PrecompileTools v1.2.1\n  [21216c6a] Preferences v1.6.1\n  [ec057cc2] StructUtils v2.12.1\n  [2a0f44e3] Base64\n  [ade2ca70] Dates\n  [b77e0a4c] InteractiveUtils\n  [56ddb016] Logging\n  [d6f4376e] Markdown\n  [de0858da] Printf\n  [9a3f8284] Random\n  [ea8e919c] SHA v0.7.0\n  [9e88b42a] Serialization\n  [fa267f1f] TOML v1.0.3\n  [8dfed614] Test\n  [cf7118a7] UUIDs\n  [4ec0a83e] Unicode\n        Info Packages marked with \u2305 have new versions available but compatibility constraints restrict them from upgrading.\n     Testing Running tests...\nTest Summary:                                | Pass  Total  Time\nNative immutable authoring and ordinary JSON |   31     31  1.0s\nTest Summary:                  | Pass  Total  Time\nNative numbers and identifiers |  160    160  1.1s\nTest Summary:                        | Pass  Total  Time\nUnits, typed values and M0 structure |  124    124  2.0s\nTest Summary:                    | Pass  Total  Time\nReferences, roles and uniqueness |   68     68  0.9s\nTest Summary:                                       | Pass  Total  Time\nNo unchecked constructor path or executable content |   11     11  0.4s\nTest Summary:                  | Pass  Total  Time\nInvalid native string encoding |    8      8  0.1s\n     Testing Fenix tests passed \n"
+    },
+    "fenix23-projections-final.log": {
+      "sha256": "4b88af91928d40695fc2c22b7abff8732494526b1cc721473056293946bc0a17",
+      "tail": "Test Summary:                                      | Pass  Total  Time\nNative Julia uncommitted BioIR content projections |  193    193  5.5s\n"
+    },
+    "fenix23-standalone.log": {
+      "sha256": "a54e2913b140de4eb4c8ab2b028ef33a996a15f19bb2046c4d5fdc1c1a4f8305",
+      "tail": "Test Summary:                                | Pass  Total  Time\nNative immutable authoring and ordinary JSON |   31     31  1.0s\nTest Summary:                  | Pass  Total  Time\nNative numbers and identifiers |  160    160  1.0s\nTest Summary:                        | Pass  Total  Time\nUnits, typed values and M0 structure |  124    124  1.9s\nTest Summary:                    | Pass  Total  Time\nReferences, roles and uniqueness |   68     68  0.9s\nTest Summary:                                       | Pass  Total  Time\nNo unchecked constructor path or executable content |   11     11  0.4s\nTest Summary:                  | Pass  Total  Time\nInvalid native string encoding |    8      8  0.0s\n"
+    },
+    "fenix23-python.log": {
+      "sha256": "c0f8efd29ef86d61c0da2f99cfdc2e3c6c2054336c95ec823fef54ff61153fd9",
+      "tail": "observation_failures) ... ok\ntest_missing_members_and_invalid_native_inputs (test_results.TestResults.test_missing_members_and_invalid_native_inputs) ... ok\ntest_plausible_altered_positive_samples_pass_only_internal_checks (test_results.TestResults.test_plausible_altered_positive_samples_pass_only_internal_checks) ... ok\ntest_preserve_environment_build_id_formatting_and_trust (test_results.TestResults.test_preserve_environment_build_id_formatting_and_trust) ... ok\ntest_result_mismatches_dimensions_order_units_grid_mapping_samples (test_results.TestResults.test_result_mismatches_dimensions_order_units_grid_mapping_samples) ... ok\ntest_solver_failure_propagates (test_results.TestResults.test_solver_failure_propagates) ... ok\ntest_source_and_fir_references_all_fields_and_same_fir_context (test_results.TestResults.test_source_and_fir_references_all_fields_and_same_fir_context) ... ok\ntest_strict_raw_json_both_artifacts (test_results.TestResults.test_strict_raw_json_both_artifacts) ... ok\ntest_zero_capture_avoids_solver_and_clock_adjustments (test_results.TestResults.test_zero_capture_avoids_solver_and_clock_adjustments) ... ok\ntest_zero_counters_and_initial_zero_sign (test_results.TestResults.test_zero_counters_and_initial_zero_sign) ... ok\ntest_content_api_boundary (test_smoke.TestScaffold.test_content_api_boundary) ... ok\ntest_version (test_smoke.TestScaffold.test_version) ... ok\n\n----------------------------------------------------------------------\nRan 88 tests in 3.091s\n\nOK\n"
+    }
+  }
+}

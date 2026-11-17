@@ -8,8 +8,8 @@ is ratified under ADR-P03. Independent P01 reference validators and the
 reference expectations. Native implementations, exhaustive validation, compiler
 correctness, solver correctness and future BioIR semantics are not approved by
 that reference acceptance. Native Python document validation, FIR compilation,
-ODE execution and P07 results are now implemented on main; Julia remains a
-scaffold. Independent native cross-language conformance and final scientific/
+ODE execution and P07 results are now implemented on main; Julia provides native uncommitted M0 content builders; committed identities,
+compilation and execution remain pending. Independent native cross-language conformance and final scientific/
 release acceptance remain separate; see the
 [current audit](../docs/verification/ep02-status-governance.md).
 
