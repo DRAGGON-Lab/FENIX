@@ -34,7 +34,7 @@
 | D28 | FIR digest covers only canonical mathematical semantics, not provenance. |
 | D29 | RFC 8785/JCS with versioned FENIX semantic normalization and reference vectors. |
 
-**Current implementation and remaining gates:** Python’s supported M0 path is implemented on main through merged PRs #58/#60/#61/#63/#65; #18–#22 are closed. This is separate from the historical contract/reference approvals below. [EP-02](https://github.com/DRAGGON-Lab/FENIX/issues/4), the bounded native Python M0 implementation milestone, was completed following explicit PI approval on 17 November 2026. Julia M0 content builders, strict committed Design/Experiment documents, canonical content digests, exact local references and native BioIR-to-FIR compilation with P03 identity are implemented; the human PI accepted the bounded issue #25 implementation at `da13860` on 17 November 2026 (see the [acceptance record](verification/ep03-julia-compiler.md#human-pi-implementation-acceptance--2026-11-17)). Native numerical execution, independent cross-language scientific conformance (#28/#29), and broader whole-project release authorization remain separate gates. P05 SSA, P06 package/version governance and #42 broader provenance retain separate gates. See the [current integration audit](verification/ep02-status-governance.md).
+**Current implementation and remaining gates:** Python’s supported M0 path is implemented on main through merged PRs #58/#60/#61/#63/#65; #18–#22 are closed. This is separate from the historical contract/reference approvals below. [EP-02](https://github.com/DRAGGON-Lab/FENIX/issues/4), the bounded native Python M0 implementation milestone, was completed following explicit PI approval on 17 November 2026. Julia M0 content builders, strict committed Design/Experiment documents, canonical content digests, exact local references and native BioIR-to-FIR compilation with P03 identity are implemented; the human PI accepted the bounded issue #25 implementation at `da13860` on 17 November 2026 (see the [acceptance record](verification/ep03-julia-compiler.md#human-pi-implementation-acceptance--2026-11-17)). Native Julia SciML ODE execution is implemented under P04 with explicit Tsit5/Rodas5P methods; the human PI approved the bounded issue #26 implementation at `34a092e` on 17 November 2026 (see the [approval record](verification/ep03-julia-ode.md#human-pi-implementation-approval--2026-11-17)). Julia results/manifests, independent cross-language scientific conformance (#28/#29), and broader whole-project release authorization remain separate gates. P05 SSA, P06 package/version governance and #42 broader provenance retain separate gates. See the [current integration audit](verification/ep02-status-governance.md).
 
 **Scientific source of truth:** ratified ADR/specification and independent reference evidence, not the current source code or test behavior. Human scientific approval is required for revisions.
 
@@ -215,3 +215,35 @@ retain separate gates. Merge and issue-state changes are separate actions.
 The approval source is the explicit PI instruction above, not an inferred GitHub
 review or CI result. Historical verification receipts retain their reviewed
 source identities and original pending-acceptance observations.
+
+
+## Approved Julia ODE implementation — 2026-11-17
+
+The human PI approved the bounded [issue #26](https://github.com/DRAGGON-Lab/FENIX/issues/26)
+implementation at reviewed revision
+[`34a092ee1c559b8325cd45e2139789126c06bfb0`](https://github.com/DRAGGON-Lab/FENIX/commit/34a092ee1c559b8325cd45e2139789126c06bfb0)
+on [PR #70](https://github.com/DRAGGON-Lab/FENIX/pull/70), instructing in this conversation:
+
+> I approve this to be implemented
+
+Decision: approve the completed native Julia M0 direct SciML ODE adapter,
+immutable explicit execution settings/trajectories, requested-time sampling,
+RHS budgets, capability checks and strict numerical failure handling within the
+reviewed P02/P04 scope. The [implementation evidence](verification/ep03-julia-ode.md)
+records 212 execution assertions, both Tsit5/Rodas5P methods on all 40 approved
+samples at three predeclared settings (240 comparisons), stiff/failure controls,
+standalone operation without Python and regression/reference checks.
+[Hosted CI](https://github.com/DRAGGON-Lab/FENIX/actions/runs/44127661293) passed
+all seven jobs for the reviewed revision, including the locked native numerical
+matrix, environment-integrity check and uploaded report.
+
+This approval applies to the bounded implementation already supplied on PR #70;
+it does not claim independent human recomputation, exhaustive validation or
+empirical biological validity. It changes no scientific contract, fixture,
+mathematical semantics, package version or API. Portable results/manifests,
+independent cross-language acceptance (#29), SSA, parent EP-03 acceptance and
+broader release authorization retain separate gates. Merge and issue-state
+changes are separate actions. The approval source is the explicit human
+instruction above, not an inferred GitHub review submission or CI result.
+Historical verification receipts retain their original source identities and
+pending-acceptance observations.
