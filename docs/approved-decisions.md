@@ -158,3 +158,30 @@ This approval covers the documentation correction. It changes no scientific
 contract, API, approved fixture or historical verification record, and does not
 authorize a merge, issue closure or release. The source is the explicit user
 instruction above; no independent GitHub review is inferred from this record.
+
+## Accepted Julia committed-document implementation — 2026-11-17
+
+The human PI explicitly accepted the bounded [issue #24](https://github.com/DRAGGON-Lab/FENIX/issues/24)
+implementation at reviewed revision
+[`bdedab963342c0e666bbe00b1e341e4c20ccb0a2`](https://github.com/DRAGGON-Lab/FENIX/commit/bdedab963342c0e666bbe00b1e341e4c20ccb0a2)
+on [PR #68](https://github.com/DRAGGON-Lab/FENIX/pull/68), instructing in this conversation:
+
+> I approve this, please record the desicion and update the PR
+
+Decision: accept native Julia strict P01 parsing, direct JCS content digests,
+immutable committed Design/Experiment documents, exact local verified Design
+references, trusted expected-digest checks, predecessor-relative revision checks
+and metadata amendments within the reviewed M0 scope. The accompanying
+[implementation evidence](verification/ep03-julia-documents.md) records 660 native
+assertions, all 92 original P01 cases, the overlapping 97-case P01 rejection
+subset, 27 binary64 JCS vectors, standalone operation without Python and Python
+regression/reference checks. Those executed results retain their original source
+identity; this approval does not assert exhaustive validation.
+
+This records explicit human implementation acceptance under unchanged ADR-P01;
+it introduces no scientific rule, fixture or API change. Julia FIR compilation,
+native numerical execution, independent cross-language scientific conformance,
+stronger provenance, EP-03 acceptance and broader release authorization retain
+separate gates. Merge and issue-state changes are separate actions. The approval
+source is the PI instruction above, not an inferred GitHub review or CI result.
+Historical verification receipts are unchanged.
