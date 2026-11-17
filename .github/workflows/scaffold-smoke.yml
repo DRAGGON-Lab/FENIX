@@ -101,7 +101,7 @@ jobs:
       - uses: julia-actions/setup-julia@v2
         with:
           version: "1.10.13"
-      - name: Julia smoke checks (no Python dependency)
+      - name: Julia native content and package checks (no Python dependency)
         run: julia --project=packages/julia -e 'using Pkg; Pkg.instantiate(); Pkg.test()'
       - name: Install pinned reference tools
         run: julia --project=conformance/julia -e 'using Pkg; Pkg.instantiate()'
@@ -109,6 +109,10 @@ jobs:
         env:
           JULIA_PKG_OFFLINE: "true"
         run: julia --project=conformance/julia -e 'using JSON, JSONSchema, SHA, Test'
+      - name: Test 29 approved Julia native-content projections
+        env:
+          JULIA_PKG_OFFLINE: "true"
+        run: julia --project=conformance/julia -e 'push!(LOAD_PATH, abspath("packages/julia")); include("packages/julia/test_native_content/runtests.jl")'
       - name: Independently validate candidate P01 fixtures in Julia
         env:
           JULIA_PKG_OFFLINE: "true"

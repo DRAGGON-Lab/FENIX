@@ -34,7 +34,7 @@
 | D28 | FIR digest covers only canonical mathematical semantics, not provenance. |
 | D29 | RFC 8785/JCS with versioned FENIX semantic normalization and reference vectors. |
 
-**Current implementation and remaining gates:** Python’s supported M0 path is implemented on main through merged PRs #58/#60/#61/#63/#65; #18–#22 are closed. This is separate from the historical contract/reference approvals below. Julia remains a scaffold; independent cross-language conformance, final EP-02 PI acceptance and applicable release signoff remain outstanding. P05 SSA, P06 package/version governance and #42 broader provenance retain separate gates. See the [current integration audit](verification/ep02-status-governance.md).
+**Current implementation and remaining gates:** Python’s supported M0 path is implemented on main through merged PRs #58/#60/#61/#63/#65; #18–#22 are closed. This is separate from the historical contract/reference approvals below. [EP-02](https://github.com/DRAGGON-Lab/FENIX/issues/4), the bounded native Python M0 implementation milestone, was completed following explicit PI approval on 17 November 2026. Julia M0 uncommitted content builders and validation are now available; Julia committed-document integrity, compilation and native numerical execution, independent cross-language scientific conformance (#28/#29), and broader whole-project release authorization remain separate gates. P05 SSA, P06 package/version governance and #42 broader provenance retain separate gates. See the [current integration audit](verification/ep02-status-governance.md).
 
 **Scientific source of truth:** ratified ADR/specification and independent reference evidence, not the current source code or test behavior. Human scientific approval is required for revisions.
 
@@ -137,3 +137,24 @@ validity. #22 implementation review, #29 and #42 retain separate gates. See the
 ## Current integration addendum — 2026-11-16
 
 The [PI-directed #22 closure](https://github.com/DRAGGON-Lab/FENIX/issues/22#issuecomment-6929801138) followed bounded implementation review while PR #65 was unmerged. PR #65 subsequently merged as `32acf4f4b51e257c7efed65203360e5e9ee83598`, with [seven successful post-merge jobs](https://github.com/DRAGGON-Lab/FENIX/actions/runs/43960747581). This updates implementation availability; it does not enlarge any historical ratification or supply independent scientific/release acceptance. P07 hashes and exact source links establish bounded consistency, not execution authenticity, authorship, biological validity or exact numerical replay.
+
+## Approved live-status correction — 2026-11-17
+
+The repository user explicitly approved the documentation correction at reviewed
+revision `e9b227a5ed55559d5082ac114a84d4804f4c0ee7` on
+[PR #67](https://github.com/DRAGGON-Lab/FENIX/pull/67), instructing in this conversation:
+
+> I approve this, please record the desicion and update the PR
+
+Decision: retain the corrected live status in README.md, ARCHITECTURE.md,
+PRODUCT.md and this decision register. [EP-02 #4](https://github.com/DRAGGON-Lab/FENIX/issues/4)
+records explicit PI acceptance on 17 November 2026 of the bounded native Python
+M0 implementation milestone. Julia uncommitted M0 content is available; Julia
+committed-document integrity, compilation and native numerical execution,
+independent cross-language scientific conformance and broader whole-project
+release authorization retain their separate gates.
+
+This approval covers the documentation correction. It changes no scientific
+contract, API, approved fixture or historical verification record, and does not
+authorize a merge, issue closure or release. The source is the explicit user
+instruction above; no independent GitHub review is inferred from this record.
