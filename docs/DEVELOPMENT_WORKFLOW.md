@@ -282,3 +282,19 @@ behavior. Add `Native ODE scientific gate` and `M0 alpha candidate` only as thei
 separate child PRs deliver those checks. No settings are changed by this file.
 Human scientific approvals remain explicit issue acceptance gates even though
 GitHub does not require a reviewer count in this proposal.
+
+## EP-04 ODE gate addendum (#29)
+
+The [native ODE gate](../conformance/native/ODE.md) validates identical committed
+sources and FIR mathematics before native execution, then independently checks
+P04 reference errors and same-study Python–Julia method pairs. Its stable context
+is `Native ODE scientific gate`. Keep all existing numerical regressions,
+including Julia's coarse-study checks. Record numerical and engineering reviews
+separately from explicit human PI acceptance.
+
+The PI's [2026-11-18 governance decision](https://github.com/DRAGGON-Lab/FENIX/issues/28)
+defers branch protection/required-check enforcement for this single-maintainer
+phase. It supersedes activation as a prerequisite in the historical drafts above.
+CI must fail on mismatches; the PI manually withholds merge on failure. No branch
+settings change or reviewer identity is inferred by #29. #28 is completed through
+merged PR #73; #29, #30 and final EP-04 acceptance retain their own evidence gates.

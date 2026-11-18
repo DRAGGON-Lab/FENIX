@@ -257,3 +257,21 @@ with native implementation. Merge `82a9b64` contains that exact reviewed proposa
 This authorizes the separate issue #27 implementation PR; implementation
 acceptance, #29, parent epic acceptance and release authorization remain separate.
 Original schema/example bytes and historical proposal receipts are preserved.
+
+
+**Accepted #29 native ODE scientific gate, 2026-11-18:** The human PI explicitly
+accepted [PR #74](https://github.com/DRAGGON-Lab/FENIX/pull/74) at reviewed revision
+`f35bd609cdcef46fc6d86d7cdecf352593abbba0`, instructing:
+
+> I accept this PR, please record the desicion and push it so I can merge it.
+
+The [acceptance record](verification/ep04-native-ode.md#human-pi-scientific-acceptance--2026-11-18)
+identifies the bounded ten-scenario/40-sample native Python/Julia evidence,
+unchanged P04 reference bound B and derived same-study pairwise bound 2B,
+independent reviews and all 14 passing hosted CI jobs on the reviewed revision.
+This accepts the bounded implementation and scientific gate without claiming
+independent human recomputation, exhaustive numerical coverage, biological
+validity or execution authenticity. No contract, fixture, tolerance, API or
+package version changes follow. The PI retains manual merge authority under
+the deferred branch-protection policy. Merge, issue closure, #30 alpha acceptance
+and final EP-04 acceptance remain separate; historical receipts are preserved.
