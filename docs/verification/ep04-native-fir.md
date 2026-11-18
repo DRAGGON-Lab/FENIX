@@ -53,7 +53,8 @@ local results on macOS 15.7.9 x86_64; CI status must be assessed separately on t
 | Julia production-decay oracle tests/report and Python–Julia oracle comparison | PASS |
 | Native Julia lockfile diff | PASS; unchanged |
 | Fresh wheel/archive alpha installation and benchmarks | NOT RUN; #30 scope |
-| Effective GitHub protection / administrator activation | NOT RUN; exact disabled proposal prepared for review |
+| Read-only effective GitHub protection audit | PASS; main is unprotected, no rulesets/effective rules; activation outstanding |
+| Administrator activation | NOT RUN; exact disabled proposal prepared for review |
 | Human acceptance and merge of #28; #29/#30/final EP-04 acceptance | NOT RUN; human gates outstanding |
 
 Earlier failures are retained: initial package installation could not reach
@@ -99,3 +100,13 @@ These ignored local artifacts live under `artifacts/native-fir-*.json`; CI
 uploads its own reports with CI source revisions. This receipt-only addendum
 changes no fingerprinted runner/package/catalog/schema/lock content. The focused
 review is [PR #73](https://github.com/DRAGGON-Lab/FENIX/pull/73).
+
+
+## Live protection audit — 2026-11-18
+
+Authenticated read-only GitHub API responses for main
+`1c11b814efc725af551c448064c8016c750d3e67` reported `protected: false`,
+no repository/inherited rulesets and no effective branch rules. The classic
+protection endpoint returned HTTP 404, `Branch not protected`. The proposed
+configuration remains disabled; hosted workflow success alone will not block
+merges. The local audit response is `artifacts/protection-audit.json`.
