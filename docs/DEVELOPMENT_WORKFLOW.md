@@ -261,3 +261,24 @@ must run without Python. Preserve independent reference locks and historical
 receipts, and refresh only native test locks through Pkg when dependencies change.
 Capture/readback correctness, #29 and human implementation acceptance are
 distinct gates.
+
+## EP-04 native FIR integration addendum (#28)
+
+Run the [native FIR producers and report comparator](../conformance/native/README.md)
+in addition to the package and reference checks. The stable CI context is
+`Native FIR conformance`. Each report is validated independently against approved
+references before pairwise model/identity byte comparison. Passing it does not
+supply #29 scientific acceptance or #30 alpha acceptance.
+
+The earlier main-protection draft remains historical. The EP-04 plan requests
+PRs and strict required checks with no reviewer-count requirement and no bypass.
+The [replacement proposal](verification/ep04-main-ruleset.proposed.json) expresses
+that #28-stage configuration with enforcement **disabled** for review. It does
+not create CODEOWNERS or infer scientific owner identities. Before activation,
+an administrator must review this exact payload, verify current context names
+and integration IDs, activate the reviewed ruleset, then read back effective
+main rules and confirm PR, strict checks, force-push/deletion and no-bypass
+behavior. Add `Native ODE scientific gate` and `M0 alpha candidate` only as their
+separate child PRs deliver those checks. No settings are changed by this file.
+Human scientific approvals remain explicit issue acceptance gates even though
+GitHub does not require a reviewer count in this proposal.
