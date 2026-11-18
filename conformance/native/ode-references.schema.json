@@ -1,0 +1,293 @@
+{
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "native-ode-references-v1"
+    },
+    "source_revision": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "fingerprints": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    },
+    "studies": {
+      "type": "object",
+      "properties": {
+        "baseline": {
+          "type": "object",
+          "properties": {
+            "rtol_bits": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{16}$"
+            },
+            "atol_bits": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{16}$"
+            },
+            "max_step_bits": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{16}$"
+            },
+            "max_nfev": {
+              "type": "integer",
+              "const": 100000
+            }
+          },
+          "required": [
+            "rtol_bits",
+            "atol_bits",
+            "max_step_bits",
+            "max_nfev"
+          ],
+          "additionalProperties": false
+        },
+        "refined": {
+          "type": "object",
+          "properties": {
+            "rtol_bits": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{16}$"
+            },
+            "atol_bits": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{16}$"
+            },
+            "max_step_bits": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{16}$"
+            },
+            "max_nfev": {
+              "type": "integer",
+              "const": 100000
+            }
+          },
+          "required": [
+            "rtol_bits",
+            "atol_bits",
+            "max_step_bits",
+            "max_nfev"
+          ],
+          "additionalProperties": false
+        },
+        "coarse": {
+          "type": "object",
+          "properties": {
+            "rtol_bits": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{16}$"
+            },
+            "atol_bits": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{16}$"
+            },
+            "max_step_bits": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{16}$"
+            },
+            "max_nfev": {
+              "type": "integer",
+              "const": 100000
+            }
+          },
+          "required": [
+            "rtol_bits",
+            "atol_bits",
+            "max_step_bits",
+            "max_nfev"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "baseline",
+        "refined",
+        "coarse"
+      ],
+      "additionalProperties": false
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "alpha": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{16}$"
+              },
+              "beta": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{16}$"
+              },
+              "x0": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{16}$"
+              }
+            },
+            "required": [
+              "alpha",
+              "beta",
+              "x0"
+            ],
+            "additionalProperties": false
+          },
+          "samples": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "time_bits": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{16}$"
+                },
+                "expected": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "time_bits",
+                "expected"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "experiment": {
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "object"
+              },
+              "digest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "required": [
+              "content",
+              "digest"
+            ],
+            "additionalProperties": false
+          },
+          "artifacts": {
+            "type": "object",
+            "properties": {
+              "design": {
+                "type": "object",
+                "properties": {
+                  "hex": {
+                    "type": "string",
+                    "pattern": "^(?:[0-9a-f]{2})*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "required": [
+                  "hex",
+                  "sha256"
+                ],
+                "additionalProperties": false
+              },
+              "experiment": {
+                "type": "object",
+                "properties": {
+                  "hex": {
+                    "type": "string",
+                    "pattern": "^(?:[0-9a-f]{2})*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "required": [
+                  "hex",
+                  "sha256"
+                ],
+                "additionalProperties": false
+              },
+              "model": {
+                "type": "object",
+                "properties": {
+                  "hex": {
+                    "type": "string",
+                    "pattern": "^(?:[0-9a-f]{2})*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "required": [
+                  "hex",
+                  "sha256"
+                ],
+                "additionalProperties": false
+              },
+              "identity": {
+                "type": "object",
+                "properties": {
+                  "hex": {
+                    "type": "string",
+                    "pattern": "^(?:[0-9a-f]{2})*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "required": [
+                  "hex",
+                  "sha256"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "design",
+              "experiment",
+              "model",
+              "identity"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "parameters",
+          "samples",
+          "experiment",
+          "artifacts"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 10,
+      "maxItems": 10
+    }
+  },
+  "required": [
+    "format",
+    "source_revision",
+    "fingerprints",
+    "studies",
+    "scenarios"
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -1,0 +1,545 @@
+{
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "native-ode-report-v1"
+    },
+    "implementation": {
+      "enum": [
+        "python",
+        "julia"
+      ]
+    },
+    "source_revision": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "fingerprints": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "enum": [
+            "CPython",
+            "Julia"
+          ]
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "os": {
+          "type": "string",
+          "minLength": 1
+        },
+        "arch": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dependencies": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "name",
+        "version",
+        "os",
+        "arch",
+        "dependencies"
+      ],
+      "additionalProperties": false
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "artifacts": {
+            "type": "object",
+            "properties": {
+              "design": {
+                "type": "object",
+                "properties": {
+                  "hex": {
+                    "type": "string",
+                    "pattern": "^(?:[0-9a-f]{2})*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "required": [
+                  "hex",
+                  "sha256"
+                ],
+                "additionalProperties": false
+              },
+              "experiment": {
+                "type": "object",
+                "properties": {
+                  "hex": {
+                    "type": "string",
+                    "pattern": "^(?:[0-9a-f]{2})*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "required": [
+                  "hex",
+                  "sha256"
+                ],
+                "additionalProperties": false
+              },
+              "model": {
+                "type": "object",
+                "properties": {
+                  "hex": {
+                    "type": "string",
+                    "pattern": "^(?:[0-9a-f]{2})*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "required": [
+                  "hex",
+                  "sha256"
+                ],
+                "additionalProperties": false
+              },
+              "identity": {
+                "type": "object",
+                "properties": {
+                  "hex": {
+                    "type": "string",
+                    "pattern": "^(?:[0-9a-f]{2})*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "required": [
+                  "hex",
+                  "sha256"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "design",
+              "experiment",
+              "model",
+              "identity"
+            ],
+            "additionalProperties": false
+          },
+          "after_artifacts": {
+            "type": "object",
+            "properties": {
+              "design": {
+                "type": "object",
+                "properties": {
+                  "hex": {
+                    "type": "string",
+                    "pattern": "^(?:[0-9a-f]{2})*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "required": [
+                  "hex",
+                  "sha256"
+                ],
+                "additionalProperties": false
+              },
+              "experiment": {
+                "type": "object",
+                "properties": {
+                  "hex": {
+                    "type": "string",
+                    "pattern": "^(?:[0-9a-f]{2})*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "required": [
+                  "hex",
+                  "sha256"
+                ],
+                "additionalProperties": false
+              },
+              "model": {
+                "type": "object",
+                "properties": {
+                  "hex": {
+                    "type": "string",
+                    "pattern": "^(?:[0-9a-f]{2})*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "required": [
+                  "hex",
+                  "sha256"
+                ],
+                "additionalProperties": false
+              },
+              "identity": {
+                "type": "object",
+                "properties": {
+                  "hex": {
+                    "type": "string",
+                    "pattern": "^(?:[0-9a-f]{2})*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "required": [
+                  "hex",
+                  "sha256"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "design",
+              "experiment",
+              "model",
+              "identity"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "artifacts",
+          "after_artifacts"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 10
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "method": {
+            "type": "string",
+            "minLength": 1
+          },
+          "study": {
+            "enum": [
+              "baseline",
+              "refined",
+              "coarse"
+            ]
+          },
+          "settings": {
+            "type": "object",
+            "properties": {
+              "rtol_bits": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{16}$"
+              },
+              "atol_bits": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{16}$"
+              },
+              "max_step_bits": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{16}$"
+              },
+              "max_nfev": {
+                "type": "integer",
+                "const": 100000
+              }
+            },
+            "required": [
+              "rtol_bits",
+              "atol_bits",
+              "max_step_bits",
+              "max_nfev"
+            ],
+            "additionalProperties": false
+          },
+          "samples": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "time_bits": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{16}$"
+                },
+                "state_bits": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{16}$"
+                },
+                "observable_bits": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{16}$"
+                }
+              },
+              "required": [
+                "time_bits",
+                "state_bits",
+                "observable_bits"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "diagnostics": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "nfev": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "njev": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "nlu": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                },
+                "required": [
+                  "nfev",
+                  "njev",
+                  "nlu"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "nfev": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "njev": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "nw": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                },
+                "required": [
+                  "nfev",
+                  "njev",
+                  "nw"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "fir_digest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "state_ids": {
+            "const": [
+              "x"
+            ]
+          },
+          "state_units": {
+            "const": [
+              "molecule"
+            ]
+          },
+          "observable_ids": {
+            "const": [
+              "amount"
+            ]
+          },
+          "observable_units": {
+            "const": [
+              "molecule"
+            ]
+          },
+          "time_unit": {
+            "const": "s"
+          }
+        },
+        "required": [
+          "case_id",
+          "method",
+          "study",
+          "settings",
+          "samples",
+          "diagnostics",
+          "fir_digest",
+          "state_ids",
+          "state_units",
+          "observable_ids",
+          "observable_units",
+          "time_unit"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 60
+    },
+    "controls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "method": {
+            "type": "string",
+            "minLength": 1
+          },
+          "outcome": {
+            "const": "reject"
+          },
+          "category": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string"
+          },
+          "nfev": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "id",
+          "method",
+          "outcome",
+          "category",
+          "path",
+          "nfev"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 6
+    },
+    "failures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "method": {
+            "type": "string",
+            "minLength": 1
+          },
+          "study": {
+            "type": "string",
+            "minLength": 1
+          },
+          "category": {
+            "type": "string",
+            "minLength": 1
+          },
+          "message": {
+            "type": "string"
+          },
+          "nfev": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "case_id",
+          "method",
+          "study",
+          "category",
+          "message",
+          "nfev"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "format",
+    "implementation",
+    "source_revision",
+    "fingerprints",
+    "runtime",
+    "scenarios",
+    "runs",
+    "controls",
+    "failures"
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "failures": {
+            "maxItems": 0
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "scenarios": {
+            "minItems": 10
+          },
+          "runs": {
+            "minItems": 60
+          },
+          "controls": {
+            "minItems": 6
+          }
+        }
+      }
+    }
+  ]
+}

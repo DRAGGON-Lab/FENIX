@@ -1,0 +1,449 @@
+{
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "native-ode-comparison-v1"
+    },
+    "source_revision": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "fingerprints": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    },
+    "passed": {
+      "type": "boolean"
+    },
+    "reference_comparisons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "study": {
+            "enum": [
+              "baseline",
+              "refined",
+              "coarse"
+            ]
+          },
+          "time_bits": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{16}$"
+          },
+          "reference": {
+            "type": "string",
+            "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+          },
+          "bound": {
+            "type": "string",
+            "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+          },
+          "within_bound": {
+            "type": "boolean"
+          },
+          "method": {
+            "type": "string",
+            "minLength": 1
+          },
+          "actual_bits": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{16}$"
+          },
+          "error": {
+            "type": "string",
+            "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+          }
+        },
+        "required": [
+          "case_id",
+          "study",
+          "time_bits",
+          "reference",
+          "bound",
+          "within_bound",
+          "method",
+          "actual_bits",
+          "error"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 480,
+      "maxItems": 480
+    },
+    "pairwise_comparisons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "study": {
+            "enum": [
+              "baseline",
+              "refined",
+              "coarse"
+            ]
+          },
+          "time_bits": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{16}$"
+          },
+          "reference": {
+            "type": "string",
+            "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+          },
+          "bound": {
+            "type": "string",
+            "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+          },
+          "within_bound": {
+            "type": "boolean"
+          },
+          "python_method": {
+            "type": "string",
+            "minLength": 1
+          },
+          "julia_method": {
+            "type": "string",
+            "minLength": 1
+          },
+          "python_bits": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{16}$"
+          },
+          "julia_bits": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{16}$"
+          },
+          "difference": {
+            "type": "string",
+            "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+          }
+        },
+        "required": [
+          "case_id",
+          "study",
+          "time_bits",
+          "reference",
+          "bound",
+          "within_bound",
+          "python_method",
+          "julia_method",
+          "python_bits",
+          "julia_bits",
+          "difference"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 480,
+      "maxItems": 480
+    },
+    "failures": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "case_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "study": {
+                "enum": [
+                  "baseline",
+                  "refined",
+                  "coarse"
+                ]
+              },
+              "time_bits": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{16}$"
+              },
+              "reference": {
+                "type": "string",
+                "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+              },
+              "bound": {
+                "type": "string",
+                "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+              },
+              "within_bound": {
+                "type": "boolean"
+              },
+              "method": {
+                "type": "string",
+                "minLength": 1
+              },
+              "actual_bits": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{16}$"
+              },
+              "error": {
+                "type": "string",
+                "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+              }
+            },
+            "required": [
+              "case_id",
+              "study",
+              "time_bits",
+              "reference",
+              "bound",
+              "within_bound",
+              "method",
+              "actual_bits",
+              "error"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "case_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "study": {
+                "enum": [
+                  "baseline",
+                  "refined",
+                  "coarse"
+                ]
+              },
+              "time_bits": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{16}$"
+              },
+              "reference": {
+                "type": "string",
+                "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+              },
+              "bound": {
+                "type": "string",
+                "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+              },
+              "within_bound": {
+                "type": "boolean"
+              },
+              "python_method": {
+                "type": "string",
+                "minLength": 1
+              },
+              "julia_method": {
+                "type": "string",
+                "minLength": 1
+              },
+              "python_bits": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{16}$"
+              },
+              "julia_bits": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{16}$"
+              },
+              "difference": {
+                "type": "string",
+                "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+              }
+            },
+            "required": [
+              "case_id",
+              "study",
+              "time_bits",
+              "reference",
+              "bound",
+              "within_bound",
+              "python_method",
+              "julia_method",
+              "python_bits",
+              "julia_bits",
+              "difference"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      }
+    },
+    "worst_cases": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "study",
+          "kind",
+          "max_fraction_of_bound",
+          "comparison"
+        ],
+        "properties": {
+          "study": {
+            "enum": [
+              "baseline",
+              "refined",
+              "coarse"
+            ]
+          },
+          "kind": {
+            "enum": [
+              "reference",
+              "pairwise"
+            ]
+          },
+          "max_fraction_of_bound": {
+            "type": "string",
+            "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+          },
+          "comparison": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "case_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "study": {
+                    "enum": [
+                      "baseline",
+                      "refined",
+                      "coarse"
+                    ]
+                  },
+                  "time_bits": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{16}$"
+                  },
+                  "reference": {
+                    "type": "string",
+                    "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+                  },
+                  "bound": {
+                    "type": "string",
+                    "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+                  },
+                  "within_bound": {
+                    "type": "boolean"
+                  },
+                  "method": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "actual_bits": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{16}$"
+                  },
+                  "error": {
+                    "type": "string",
+                    "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+                  }
+                },
+                "required": [
+                  "case_id",
+                  "study",
+                  "time_bits",
+                  "reference",
+                  "bound",
+                  "within_bound",
+                  "method",
+                  "actual_bits",
+                  "error"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "case_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "study": {
+                    "enum": [
+                      "baseline",
+                      "refined",
+                      "coarse"
+                    ]
+                  },
+                  "time_bits": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{16}$"
+                  },
+                  "reference": {
+                    "type": "string",
+                    "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+                  },
+                  "bound": {
+                    "type": "string",
+                    "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+                  },
+                  "within_bound": {
+                    "type": "boolean"
+                  },
+                  "python_method": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "julia_method": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "python_bits": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{16}$"
+                  },
+                  "julia_bits": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{16}$"
+                  },
+                  "difference": {
+                    "type": "string",
+                    "pattern": "^[0-9]+(?:\\.[0-9]+)?(?:E[+-]?[0-9]+)?$"
+                  }
+                },
+                "required": [
+                  "case_id",
+                  "study",
+                  "time_bits",
+                  "reference",
+                  "bound",
+                  "within_bound",
+                  "python_method",
+                  "julia_method",
+                  "python_bits",
+                  "julia_bits",
+                  "difference"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "format",
+    "source_revision",
+    "fingerprints",
+    "passed",
+    "reference_comparisons",
+    "pairwise_comparisons",
+    "failures",
+    "worst_cases"
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

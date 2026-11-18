@@ -1,0 +1,124 @@
+name: Native ODE evidence
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  references:
+    name: Independent ODE references
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9
+        with:
+          version: '0.11.29'
+      - run: uv sync --project packages/python --locked
+      - run: uv run --project packages/python --locked --offline python -m unittest discover -s conformance/native/tests -v
+      - run: uv run --project packages/python --locked --offline python conformance/native/prepare_ode.py --source-revision "$GITHUB_SHA" --report artifacts/ode-references.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ode-references
+          path: artifacts/ode-references.json
+          if-no-files-found: error
+  python:
+    name: Native ODE Python producer
+    needs: references
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9
+        with:
+          version: '0.11.29'
+      - run: uv sync --project packages/python --locked
+      - uses: actions/download-artifact@v4
+        with:
+          name: ode-references
+          path: artifacts
+      - run: uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v
+      - run: uv run --project packages/python --locked --offline python conformance/native/run_ode.py --references artifacts/ode-references.json --source-revision "$GITHUB_SHA" --report artifacts/ode-python.json
+      - name: Capture runner
+        if: always()
+        run: |
+          mkdir -p artifacts
+          { printf 'ImageOS=%s\nImageVersion=%s\n' "$ImageOS" "$ImageVersion"; uname -a; lscpu; } > artifacts/ode-python-environment.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ode-python
+          path: artifacts/ode-python*
+          if-no-files-found: error
+  julia:
+    name: Native ODE Julia producer
+    needs: references
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.10.13'
+      - uses: actions/download-artifact@v4
+        with:
+          name: ode-references
+          path: artifacts
+      - run: julia --project=conformance/julia_ode -e 'using Pkg; Pkg.instantiate()'
+      - name: Existing native regression and analytical tests
+        env:
+          JULIA_PKG_OFFLINE: 'true'
+        run: |
+          julia --project=conformance/julia_ode packages/julia/test/runtests.jl
+          julia --project=conformance/julia_ode packages/julia/test_native_ode/runtests.jl
+      - env:
+          JULIA_PKG_OFFLINE: 'true'
+        run: julia --project=conformance/julia_ode conformance/native/run_ode.jl --references artifacts/ode-references.json --source-revision "$GITHUB_SHA" --report artifacts/ode-julia.json
+      - run: git diff --exit-code -- conformance/julia_ode/Project.toml conformance/julia_ode/Manifest.toml
+      - name: Capture runner
+        if: always()
+        run: |
+          mkdir -p artifacts
+          { printf 'ImageOS=%s\nImageVersion=%s\n' "$ImageOS" "$ImageVersion"; uname -a; lscpu; } > artifacts/ode-julia-environment.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ode-julia
+          path: artifacts/ode-julia*
+          if-no-files-found: error
+  compare:
+    name: Native ODE scientific gate
+    needs: [references, python, julia]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9
+        with:
+          version: '0.11.29'
+      - run: uv sync --project packages/python --locked
+      - env:
+          REFERENCES_RESULT: ${{ needs.references.result }}
+          PYTHON_RESULT: ${{ needs.python.result }}
+          JULIA_RESULT: ${{ needs.julia.result }}
+        run: test "$REFERENCES_RESULT" = success && test "$PYTHON_RESULT" = success && test "$JULIA_RESULT" = success
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: ode-*
+          path: artifacts
+          merge-multiple: true
+      - run: uv run --project packages/python --locked --offline python conformance/native/compare_ode.py --references artifacts/ode-references.json --source-revision "$GITHUB_SHA" --report artifacts/ode-comparison.json artifacts/ode-python.json artifacts/ode-julia.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ode-comparison
+          path: artifacts/ode-comparison.json
+          if-no-files-found: error
