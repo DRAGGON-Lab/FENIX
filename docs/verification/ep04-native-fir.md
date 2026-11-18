@@ -34,7 +34,7 @@ CPython 3.12.13; Julia 1.10.13; uv 0.11.29; native Julia environment
 Julia used `JULIA_DEPOT_PATH=/private/tmp/fenix-julia-depot` and
 `JULIA_PKG_OFFLINE=true` after dependency installation. Python used the installed
 locked environment's `packages/python/.venv/bin/python` directly. These are
-local results; CI status must be assessed separately on the PR's actual head.
+local results on macOS 15.7.9 x86_64; CI status must be assessed separately on the PR's actual head.
 
 | Check | Result |
 |---|---|
@@ -83,3 +83,19 @@ remains unmodified. No claim of merge enforcement is made from YAML alone.
 #28 remains pending PR review, CI, applicable administration and human acceptance.
 The EP-04 plan requires each child to be merged and accepted separately; passing
 this local suite does not authorize an automatic merge or final epic closure.
+
+
+## Committed-source receipt
+
+Both native runners were rerun after committing implementation revision
+`deb0354a8893456e172831596b92bdc1d6720b3e`, with a clean worktree and that exact
+`--source-revision`. The comparator passed independently against references and
+then across native bytes. Local report SHA-256 identities:
+
+- Python: `cdba836f304b48a7a4782fa7fa24eaa4df8aa27926ed8d0fd6a71526cc1c1523`
+- Julia: `d5cd8d18a3f4644a7fde55b8c70522c86b9a46de010bb47917e0f8c4c336c410`
+
+These ignored local artifacts live under `artifacts/native-fir-*.json`; CI
+uploads its own reports with CI source revisions. This receipt-only addendum
+changes no fingerprinted runner/package/catalog/schema/lock content. The focused
+review is [PR #73](https://github.com/DRAGGON-Lab/FENIX/pull/73).
