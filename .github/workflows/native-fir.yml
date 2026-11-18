@@ -1,0 +1,84 @@
+name: Native FIR evidence
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  python-producer:
+    name: Native FIR Python producer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12.13"
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          version: "0.11.29"
+      - run: uv sync --project packages/python --locked
+      - name: Exercise report corruption controls
+        run: uv run --project packages/python --locked --offline python -m unittest discover -s conformance/native/tests -v
+      - name: Produce and independently validate Python bytes
+        run: uv run --project packages/python --locked --offline python conformance/native/run_fir.py --report artifacts/native-fir-python.json --source-revision "$GITHUB_SHA"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-fir-python
+          path: artifacts/native-fir-python.json
+          if-no-files-found: error
+
+  julia-producer:
+    name: Native FIR Julia producer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: "1.10.13"
+      - name: Install locked native package and dependencies
+        run: julia --project=conformance/julia_ode -e 'using Pkg; Pkg.instantiate()'
+      - name: Produce Julia bytes without LOAD_PATH overrides
+        env:
+          JULIA_PKG_OFFLINE: "true"
+        run: julia --project=conformance/julia_ode conformance/native/run_fir.jl --report artifacts/native-fir-julia.json --source-revision "$GITHUB_SHA"
+      - name: Check Pkg preserved committed dependency pins
+        run: git diff --exit-code -- conformance/julia_ode/Project.toml conformance/julia_ode/Manifest.toml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-fir-julia
+          path: artifacts/native-fir-julia.json
+          if-no-files-found: error
+
+  compare:
+    name: Native FIR conformance
+    needs: [python-producer, julia-producer]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12.13"
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+        with:
+          version: "0.11.29"
+      - run: uv sync --project packages/python --locked
+      - name: Require successful producer jobs
+        env:
+          PYTHON_RESULT: ${{ needs.python-producer.result }}
+          JULIA_RESULT: ${{ needs.julia-producer.result }}
+        run: test "$PYTHON_RESULT" = success && test "$JULIA_RESULT" = success
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: native-fir-*
+          path: artifacts
+          merge-multiple: true
+      - name: Validate each report against references before pairwise byte comparison
+        run: uv run --project packages/python --locked --offline python conformance/native/compare_fir.py --source-revision "$GITHUB_SHA" artifacts/native-fir-python.json artifacts/native-fir-julia.json
