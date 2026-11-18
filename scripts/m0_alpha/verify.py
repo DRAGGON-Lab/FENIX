@@ -236,6 +236,12 @@ def validate_example(directory, language, case, method, package_root, expected):
         "result checksum",
     )
     fir = read_report(directory / "fir.json")
+    for kind in ("design", "experiment"):
+        require(
+            fir["provenance"][kind + "_digest"]
+            == expected["artifacts"][kind]["sha256"],
+            "FIR provenance source digest",
+        )
     require(
         reference_model(fir["model"])["model"] == expected["artifacts"]["model"],
         "FIR transport model",

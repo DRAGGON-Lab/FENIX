@@ -61,17 +61,19 @@ no speed target and support no general Python-versus-Julia superiority claim.
 Local and CI results are separate observations. Raw JSON receipts are retained
 beside this document; full CI artifacts include emitted result/manifest pairs.
 
+See the executed [verification receipt](verification.md) and retained local/CI JSON reports.
+
 ## Manual release checklist
 
 - [ ] Record the exact final candidate commit and source/lock fingerprints.
-- [ ] Verify independent Python wheel installation and Julia source installation.
-- [ ] Execute both scenarios with both native methods per language offline.
-- [ ] Verify source/FIR identity against independent expectations and native parity.
-- [ ] Verify analytical bounds, result-byte checksums and native readback.
-- [ ] Retain local and CI raw benchmark receipts with hardware/settings.
+- [x] Verify independent Python wheel installation and Julia source installation.
+- [x] Execute both scenarios with both native methods per language offline.
+- [x] Verify source/FIR identity against independent expectations and native parity.
+- [x] Verify analytical bounds, result-byte checksums and native readback.
+- [x] Retain local and CI raw benchmark receipts with hardware/settings.
 - [ ] Pass repository/package/reference checks and existing native FIR/ODE gates on the candidate revision.
 - [ ] Inspect the final `M0 alpha candidate` CI status and downloadable artifacts.
-- [ ] Record independent engineering/numerical review and any remaining limitations.
+- [x] Record independent engineering/numerical review and any remaining limitations.
 - [ ] PI approves this bounded supported-profile inventory and candidate evidence at an exact reviewed revision.
 - [ ] Record PI alpha acceptance before closing #30; request EP-04 parent acceptance separately.
 

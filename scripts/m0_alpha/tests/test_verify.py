@@ -61,6 +61,17 @@ class TestAlphaVerifier(unittest.TestCase):
                 self.expected,
             )
 
+    def test_inconsistent_fir_provenance_with_recomputed_checksums(self):
+        fir = verify.read_report(self.directory / "fir.json")
+        fir["provenance"]["design_digest"] = "0" * 64
+        raw = json.dumps(fir).encode()
+        (self.directory / "fir.json").write_bytes(raw)
+        summary = verify.read_report(self.directory / "summary.json")
+        summary["checksums"]["fir.json"] = verify.sha(raw)
+        (self.directory / "summary.json").write_text(json.dumps(summary))
+        with self.assertRaisesRegex(ValueError, "FIR provenance"):
+            self.validate()
+
     def test_corrupted_result_bytes(self):
         with (self.directory / "result.json").open("ab") as stream:
             stream.write(b" ")
