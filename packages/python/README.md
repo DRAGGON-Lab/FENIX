@@ -356,9 +356,10 @@ The ratified [P07 contract](../../spec/results/proposals/ADR-P07.md) governs
 `fenix.results`. [#22](https://github.com/DRAGGON-Lab/FENIX/issues/22) was closed
 following PI-directed implementation review. PR #65 is merged on main at
 `32acf4f4b51e257c7efed65203360e5e9ee83598`, with seven successful post-merge CI
-jobs. This completes the bounded Python implementation milestone; independent
-scientific acceptance and applicable release signoff remain separate. Julia is
-still a scaffold. See the [integration audit](../../docs/verification/ep02-status-governance.md).
+jobs. Julia now implements its independently tested native M0 path. The
+PI-accepted cross-language FIR and ODE gates merged through PRs #73/#74.
+Alpha-profile/release acceptance remains separate; see the
+[alpha candidate](../../docs/verification/m0-alpha/README.md).
 
 ```python
 from fenix.results import RunRecord, run_experiment
@@ -409,5 +410,6 @@ Readback does not establish solver execution, numerical correctness, authorship
 or biological validity. Repeatability remains bounded numerical agreement.
 Capture records `producer.build_id = null` because this package has no reliable
 embedded build identifier; readback preserves non-null recorded IDs. Build-ID
-generation, Julia results, broader provenance (#42) and independent ODE evidence
-(#29) retain separate gates.
+generation and broader provenance (#42) retain separate gates. Julia results
+and the PI-accepted independent ODE evidence (#29) are now integrated; see the
+[alpha candidate](../../docs/verification/m0-alpha/README.md) for remaining release gates.

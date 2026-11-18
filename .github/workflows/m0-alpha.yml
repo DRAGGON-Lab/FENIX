@@ -1,0 +1,85 @@
+name: M0 alpha evidence
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  python:
+    name: M0 alpha Python wheel
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9
+        with:
+          version: '0.11.29'
+      - run: bash scripts/m0_alpha/install_python.sh "$GITHUB_SHA" "$GITHUB_WORKSPACE/artifacts/alpha"
+      - name: Capture actual runner image and CPU
+        if: always()
+        run: |
+          mkdir -p artifacts/alpha
+          { printf 'ImageOS=%s\nImageVersion=%s\n' "$ImageOS" "$ImageVersion"; uname -a; lscpu; } > artifacts/alpha/python-runner.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: alpha-python
+          path: artifacts/alpha
+          if-no-files-found: error
+  julia:
+    name: M0 alpha Julia archive
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.10.13'
+      - run: bash scripts/m0_alpha/install_julia.sh "$GITHUB_SHA" "$GITHUB_WORKSPACE/artifacts/alpha"
+      - name: Verify committed native lock unchanged
+        run: git diff --no-index conformance/julia_ode/Manifest.toml /tmp/fenix-alpha-julia/conformance/julia_ode/Manifest.toml
+      - name: Capture actual runner image and CPU
+        if: always()
+        run: |
+          mkdir -p artifacts/alpha
+          { printf 'ImageOS=%s\nImageVersion=%s\n' "$ImageOS" "$ImageVersion"; uname -a; lscpu; } > artifacts/alpha/julia-runner.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: alpha-julia
+          path: artifacts/alpha
+          if-no-files-found: error
+  candidate:
+    name: M0 alpha candidate
+    needs: [python, julia]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9
+        with:
+          version: '0.11.29'
+      - env:
+          PYTHON_RESULT: ${{ needs.python.result }}
+          JULIA_RESULT: ${{ needs.julia.result }}
+        run: test "$PYTHON_RESULT" = success && test "$JULIA_RESULT" = success
+      - run: uv sync --project packages/python --locked
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: alpha-*
+          path: artifacts/alpha
+          merge-multiple: true
+      - run: uv run --project packages/python --locked --offline python -m unittest discover -s scripts/m0_alpha/tests -v
+      - run: uv run --project packages/python --locked --offline python scripts/m0_alpha/verify.py --source-revision "$GITHUB_SHA" --artifacts artifacts/alpha --python-package-root /tmp/fenix-alpha-wheel --julia-package-root /tmp/fenix-alpha-julia/packages/julia --report artifacts/alpha-comparison.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: alpha-comparison
+          path: artifacts/alpha-comparison.json
+          if-no-files-found: error

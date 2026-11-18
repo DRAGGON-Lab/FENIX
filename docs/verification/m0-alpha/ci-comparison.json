@@ -1,0 +1,63 @@
+{
+  "format": "m0-alpha-comparison-v1",
+  "source_revision": "6029719fa498d408b500a57234e1b3e7da8e5b59",
+  "status": "PASS",
+  "rows": [
+    {
+      "language": "python",
+      "case": "baseline-five",
+      "method": "DOP853",
+      "fir_digest": "a4ee402b1e442491577d6b2b9a36a77ef0df43e11d8078fa57badbc8a8a3857e",
+      "status": "PASS"
+    },
+    {
+      "language": "python",
+      "case": "baseline-five",
+      "method": "Radau",
+      "fir_digest": "a4ee402b1e442491577d6b2b9a36a77ef0df43e11d8078fa57badbc8a8a3857e",
+      "status": "PASS"
+    },
+    {
+      "language": "python",
+      "case": "linear-production",
+      "method": "DOP853",
+      "fir_digest": "b80a1d36c2e4d69ebc9a3dfaab7b60fef3309d91732b40444a0b832ae18f266c",
+      "status": "PASS"
+    },
+    {
+      "language": "python",
+      "case": "linear-production",
+      "method": "Radau",
+      "fir_digest": "b80a1d36c2e4d69ebc9a3dfaab7b60fef3309d91732b40444a0b832ae18f266c",
+      "status": "PASS"
+    },
+    {
+      "language": "julia",
+      "case": "baseline-five",
+      "method": "Tsit5",
+      "fir_digest": "a4ee402b1e442491577d6b2b9a36a77ef0df43e11d8078fa57badbc8a8a3857e",
+      "status": "PASS"
+    },
+    {
+      "language": "julia",
+      "case": "baseline-five",
+      "method": "Rodas5P",
+      "fir_digest": "a4ee402b1e442491577d6b2b9a36a77ef0df43e11d8078fa57badbc8a8a3857e",
+      "status": "PASS"
+    },
+    {
+      "language": "julia",
+      "case": "linear-production",
+      "method": "Tsit5",
+      "fir_digest": "b80a1d36c2e4d69ebc9a3dfaab7b60fef3309d91732b40444a0b832ae18f266c",
+      "status": "PASS"
+    },
+    {
+      "language": "julia",
+      "case": "linear-production",
+      "method": "Rodas5P",
+      "fir_digest": "b80a1d36c2e4d69ebc9a3dfaab7b60fef3309d91732b40444a0b832ae18f266c",
+      "status": "PASS"
+    }
+  ]
+}
