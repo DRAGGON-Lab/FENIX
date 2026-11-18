@@ -56,3 +56,46 @@ protection for this single-maintainer phase on #28; CI must fail on mismatches a
 the PI manually withholds merge. No protection activation is attempted by #29.
 
 The final source-stable pipeline used base revision c248274 with dirty-source fingerprints identifying the implementation. Prior corruption-test failures during parallel edits also identified stale fingerprints; the source-stable rerun passed. CI will use its exact GITHUB_SHA.
+
+
+## Human PI scientific acceptance — 2026-11-18
+
+**Decision: ACCEPTED for the bounded #29 implementation and scientific gate in
+[PR #74](https://github.com/DRAGGON-Lab/FENIX/pull/74).**
+
+The human PI explicitly instructed in this conversation:
+
+> I accept this PR, please record the desicion and push it so I can merge it.
+
+Reviewed implementation revision: `f35bd609cdcef46fc6d86d7cdecf352593abbba0`.
+This acceptance is attributed to that reviewed revision; the subsequent
+acceptance-record commit changes documentation only. The instruction records
+human acceptance, rather than an inferred GitHub review or a decision by an agent.
+
+At acceptance readback, all **14 hosted CI jobs passed** on the reviewed revision:
+
+- [Native ODE evidence](https://github.com/DRAGGON-Lab/FENIX/actions/runs/44402920126):
+  four jobs, including independent references, both native producers and the
+  `Native ODE scientific gate`.
+- [Native FIR evidence](https://github.com/DRAGGON-Lab/FENIX/actions/runs/44402920034):
+  three jobs, including `Native FIR conformance`.
+- [Scaffold/package/reference checks](https://github.com/DRAGGON-Lab/FENIX/actions/runs/44402920004):
+  all seven jobs, including the Julia package and dependent reference comparisons
+  that were still running when the implementation was handed off.
+
+The accepted evidence covers the approved ten scenarios and 40 samples through
+native committed-source/compiler/solver paths: 320 required baseline/refined
+reference comparisons using unchanged P04 B, and 320 same-study cross-language
+method-pair comparisons using derived 2B, plus the reported coarse studies and
+failure controls. Independent engineering and numerical reviews and passing CI
+support this bounded decision; they do not imply that the human independently
+recomputed each sample or hash.
+
+This decision changes no scientific contract, approved fixture, tolerance,
+production API or package version. It does not establish exhaustive numerical
+coverage, biological validity, authenticated execution, #30 alpha acceptance or
+final EP-04 acceptance. The PI's deferred branch-protection policy remains in
+force. **Merge and issue closure remain separate actions:** the PI requested
+that the decision be pushed so they can merge; no merge or issue closure was
+performed by the agent. Historical pending-acceptance statements above remain
+unchanged as receipts of their original observation times.
