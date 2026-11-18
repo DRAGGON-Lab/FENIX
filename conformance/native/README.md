@@ -48,7 +48,8 @@ Reports establish bounded consistency, not authenticated execution. The CLI's
 
 [CI](../../.github/workflows/native-fir.yml) exchanges artifacts between separate
 Python and Julia jobs. The final stable context is **Native FIR conformance**.
-It fails if either producer fails, including when a report was written before
+Each producer artifact also records the actual runner image identifiers, kernel
+and CPU configuration. It fails if either producer fails, including when a report was written before
 validation failed. Protected-branch requirement activation is a separate
 administrator step; merely adding this workflow does not enforce main protection.
 
