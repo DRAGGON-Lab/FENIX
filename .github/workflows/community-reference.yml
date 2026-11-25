@@ -1,0 +1,28 @@
+name: Candidate community analytical references
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  reference:
+    name: Candidate community analytical references
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.10.13'
+      - run: python conformance/community/reference.py > community-reference.json
+      - run: julia --project=conformance/julia -e 'using Pkg; Pkg.instantiate()'
+      - run: julia --project=conformance/julia conformance/community/reference.jl community-reference.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: candidate-community-reference
+          path: community-reference.json
+          if-no-files-found: error
