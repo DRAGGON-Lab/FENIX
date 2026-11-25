@@ -53,6 +53,39 @@ def catalog():
     return json.loads(Path(__file__).with_name("cases.json").read_bytes())
 
 
+def validate_catalog_metadata(data):
+    """Check positional state and quantity metadata against ADR-P08."""
+    expected = {
+        "state_ids": [
+            "sender.signal",
+            "receiver.signal",
+            "env.signal",
+            "receiver.reporter",
+        ],
+        "time_unit": "s",
+        "volumes_unit": "L",
+        "state_unit": "molecule",
+        "parameter_units": {
+            "sender_production": "molecule/s",
+            "sender_decay": "1/s",
+            "receiver_decay": "1/s",
+            "env_decay": "1/s",
+            "reporter_decay": "1/s",
+            "reporter_basal": "molecule/s",
+            "reporter_induced": "molecule/s",
+            "sender_export": "1/s",
+            "sender_import": "1/s",
+            "receiver_export": "1/s",
+            "receiver_import": "1/s",
+            "threshold": "molecule/L",
+            "hill_n": "1",
+        },
+    }
+    for field, value in expected.items():
+        if data.get(field) != value:
+            raise ValueError(f"catalog metadata differs from ADR-P08: {field}")
+
+
 def rhs(case, values):
     s, r, e, y = values
     p = {k: Decimal(v) for k, v in case["parameters"].items()}
@@ -111,6 +144,7 @@ def verify_laws():
 
 
 def verify():
+    validate_catalog_metadata(catalog())
     verify_laws()
     low, high = rows(80), rows(160)
     max_error = Decimal(0)

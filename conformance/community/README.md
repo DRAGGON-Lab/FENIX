@@ -48,6 +48,14 @@ population scaling, zero/threshold Hill responses, increased signal and dilution
 Missing population multipliers and inverted environmental signs supply explicit
 nonconservative counterexamples.
 
+Both evaluators validate the top-level state ordering, time/volume/count units
+and the complete parameter-unit map against ADR-P08. Missing fields, extra or
+missing parameter-unit entries, and mismatched units fail validation. Python
+checks before analytical evaluation. Julia checks independently before accepting
+a report, including when the report contains a freshly recomputed catalog hash.
+Regression controls cover 25 metadata mutations in each language and accept
+valid metadata after object-member reordering or reserialization.
+
 Julia requires the complete ordered sample set and four finite nonnegative state
 entries in every row. It verifies the catalog fingerprint before comparison.
 Regression controls reject missing rows, truncated/empty rows, nonfinite/negative/
@@ -64,7 +72,7 @@ julia --project=conformance/julia conformance/community/test_reference.jl /tmp/c
 ```
 
 Use Python 3.12.13 and Julia 1.10.13. The scripts import no native FENIX modules.
-Python reference checks, its three regression tests and Ruff passed locally.
+Python reference checks, its five regression tests and Ruff passed locally.
 Julia execution is delegated to the pinned CI runtime because the previous local
 runtime is unavailable. Candidate CI retains the raw Python report and compares
 it with independently derived Julia values. Full numerical-stage feasibility,

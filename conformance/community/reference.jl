@@ -37,7 +37,24 @@ function samples(bits)
     end
 end
 
-function compare_report(report)
+function validate_catalog_metadata(data)
+    expected = Dict(
+        "state_ids" => ["sender.signal", "receiver.signal", "env.signal", "receiver.reporter"],
+        "time_unit" => "s", "volumes_unit" => "L", "state_unit" => "molecule",
+        "parameter_units" => Dict(
+            "sender_production" => "molecule/s", "sender_decay" => "1/s",
+            "receiver_decay" => "1/s", "env_decay" => "1/s", "reporter_decay" => "1/s",
+            "reporter_basal" => "molecule/s", "reporter_induced" => "molecule/s",
+            "sender_export" => "1/s", "sender_import" => "1/s",
+            "receiver_export" => "1/s", "receiver_import" => "1/s",
+            "threshold" => "molecule/L", "hill_n" => "1"))
+    for (field, value) in expected
+        @assert get(data, field, nothing) == value "catalog metadata differs from ADR-P08: $field"
+    end
+end
+
+function compare_report(report; catalog_path=joinpath(@__DIR__, "cases.json"))
+    validate_catalog_metadata(JSON.parsefile(catalog_path))
     low, high = samples(512), samples(1024)
     setprecision(BigFloat, 1024) do
         @assert length(low) == length(high) == 30
@@ -47,7 +64,7 @@ function compare_report(report)
         end
         @assert Set(keys(report)) == Set(["status", "samples", "max_refinement_error", "catalog_sha256"])
         @assert report["status"] == "PROPOSED"
-        @assert report["catalog_sha256"] == bytes2hex(sha256(read(joinpath(@__DIR__, "cases.json"))))
+        @assert report["catalog_sha256"] == bytes2hex(sha256(read(catalog_path)))
         refinement = parse(BigFloat, report["max_refinement_error"])
         @assert isfinite(refinement) && 0 <= refinement <= big"1e-70"
         @assert length(report["samples"]) == length(high)
