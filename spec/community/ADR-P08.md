@@ -1,6 +1,12 @@
 # ADR-P08 — Fixed-population two-strain community
 
-**PROPOSED for [#31](https://github.com/DRAGGON-Lab/FENIX/issues/31). PI ratification pending.**
+**PI approved the reviewed contract revision `186cfb3024d64f3d0a227f16dddc6fbc0095fe05`
+for [#31](https://github.com/DRAGGON-Lab/FENIX/issues/31), merged through PR #77.**
+
+The PI stated “I approved it annd merged it, please continue with the work”.
+The approved revision retains explicit follow-on gates for complete wire formats,
+independent identity/trajectory/rejection catalogs and numerical-domain evidence.
+Those gates apply before native M1 implementation.
 
 ## Design and Experiment
 
