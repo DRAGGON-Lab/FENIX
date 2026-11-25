@@ -1,0 +1,409 @@
+{
+  "status": "PROPOSED",
+  "state_ids": [
+    "sender.signal",
+    "receiver.signal",
+    "env.signal",
+    "receiver.reporter"
+  ],
+  "time_unit": "s",
+  "volumes_unit": "L",
+  "state_unit": "molecule",
+  "parameter_units": {
+    "sender_decay": "1/s",
+    "receiver_decay": "1/s",
+    "env_decay": "1/s",
+    "reporter_decay": "1/s",
+    "sender_export": "1/s",
+    "sender_import": "1/s",
+    "receiver_export": "1/s",
+    "receiver_import": "1/s",
+    "sender_production": "molecule/s",
+    "reporter_basal": "molecule/s",
+    "reporter_induced": "molecule/s",
+    "threshold": "molecule/L",
+    "hill_n": "1"
+  },
+  "cases": [
+    {
+      "id": "threshold-n1",
+      "initial": [
+        4,
+        12,
+        24,
+        0
+      ],
+      "populations": [
+        3,
+        5
+      ],
+      "volumes": [
+        2,
+        3,
+        12
+      ],
+      "parameters": {
+        "sender_production": 0,
+        "sender_decay": 0,
+        "receiver_decay": 0,
+        "env_decay": 0,
+        "reporter_decay": 0.5,
+        "reporter_basal": 0,
+        "reporter_induced": 4,
+        "sender_export": 1,
+        "sender_import": 1,
+        "receiver_export": 1,
+        "receiver_import": 2,
+        "threshold": 2,
+        "hill_n": 1
+      },
+      "times": [
+        0,
+        1,
+        4
+      ]
+    },
+    {
+      "id": "threshold-n2",
+      "initial": [
+        4,
+        12,
+        24,
+        0
+      ],
+      "populations": [
+        3,
+        5
+      ],
+      "volumes": [
+        2,
+        3,
+        12
+      ],
+      "parameters": {
+        "sender_production": 0,
+        "sender_decay": 0,
+        "receiver_decay": 0,
+        "env_decay": 0,
+        "reporter_decay": 0.5,
+        "reporter_basal": 0,
+        "reporter_induced": 4,
+        "sender_export": 1,
+        "sender_import": 1,
+        "receiver_export": 1,
+        "receiver_import": 2,
+        "threshold": 2,
+        "hill_n": 2
+      },
+      "times": [
+        0,
+        1,
+        4
+      ]
+    },
+    {
+      "id": "threshold-n3",
+      "initial": [
+        4,
+        12,
+        24,
+        0
+      ],
+      "populations": [
+        3,
+        5
+      ],
+      "volumes": [
+        2,
+        3,
+        12
+      ],
+      "parameters": {
+        "sender_production": 0,
+        "sender_decay": 0,
+        "receiver_decay": 0,
+        "env_decay": 0,
+        "reporter_decay": 0.5,
+        "reporter_basal": 0,
+        "reporter_induced": 4,
+        "sender_export": 1,
+        "sender_import": 1,
+        "receiver_export": 1,
+        "receiver_import": 2,
+        "threshold": 2,
+        "hill_n": 3
+      },
+      "times": [
+        0,
+        1,
+        4
+      ]
+    },
+    {
+      "id": "threshold-n4",
+      "initial": [
+        4,
+        12,
+        24,
+        0
+      ],
+      "populations": [
+        3,
+        5
+      ],
+      "volumes": [
+        2,
+        3,
+        12
+      ],
+      "parameters": {
+        "sender_production": 0,
+        "sender_decay": 0,
+        "receiver_decay": 0,
+        "env_decay": 0,
+        "reporter_decay": 0.5,
+        "reporter_basal": 0,
+        "reporter_induced": 4,
+        "sender_export": 1,
+        "sender_import": 1,
+        "receiver_export": 1,
+        "receiver_import": 2,
+        "threshold": 2,
+        "hill_n": 4
+      },
+      "times": [
+        0,
+        1,
+        4
+      ]
+    },
+    {
+      "id": "reversible-transient",
+      "initial": [
+        4,
+        2,
+        24,
+        0
+      ],
+      "populations": [
+        3,
+        5
+      ],
+      "volumes": [
+        2,
+        3,
+        12
+      ],
+      "parameters": {
+        "sender_production": 0,
+        "sender_decay": 0,
+        "receiver_decay": 0,
+        "env_decay": 0,
+        "reporter_decay": 0,
+        "reporter_basal": 0,
+        "reporter_induced": 0,
+        "sender_export": 2,
+        "sender_import": 1,
+        "receiver_export": 0,
+        "receiver_import": 0,
+        "threshold": 2,
+        "hill_n": 1
+      },
+      "times": [
+        0,
+        1,
+        4
+      ]
+    },
+    {
+      "id": "driven-n1",
+      "initial": [
+        0,
+        0,
+        48,
+        2
+      ],
+      "populations": [
+        3,
+        5
+      ],
+      "volumes": [
+        2,
+        3,
+        12
+      ],
+      "parameters": {
+        "sender_production": 0,
+        "sender_decay": 0,
+        "receiver_decay": 0,
+        "env_decay": 0.5,
+        "reporter_decay": 0.5,
+        "reporter_basal": 1,
+        "reporter_induced": 4,
+        "sender_export": 0,
+        "sender_import": 0,
+        "receiver_export": 0,
+        "receiver_import": 0,
+        "threshold": 2,
+        "hill_n": 1
+      },
+      "times": [
+        0,
+        1,
+        4
+      ]
+    },
+    {
+      "id": "driven-n2",
+      "initial": [
+        0,
+        0,
+        48,
+        2
+      ],
+      "populations": [
+        3,
+        5
+      ],
+      "volumes": [
+        2,
+        3,
+        12
+      ],
+      "parameters": {
+        "sender_production": 0,
+        "sender_decay": 0,
+        "receiver_decay": 0,
+        "env_decay": 0.5,
+        "reporter_decay": 1.0,
+        "reporter_basal": 1,
+        "reporter_induced": 4,
+        "sender_export": 0,
+        "sender_import": 0,
+        "receiver_export": 0,
+        "receiver_import": 0,
+        "threshold": 2,
+        "hill_n": 2
+      },
+      "times": [
+        0,
+        1,
+        4
+      ]
+    },
+    {
+      "id": "driven-n3",
+      "initial": [
+        0,
+        0,
+        48,
+        2
+      ],
+      "populations": [
+        3,
+        5
+      ],
+      "volumes": [
+        2,
+        3,
+        12
+      ],
+      "parameters": {
+        "sender_production": 0,
+        "sender_decay": 0,
+        "receiver_decay": 0,
+        "env_decay": 0.5,
+        "reporter_decay": 1.5,
+        "reporter_basal": 1,
+        "reporter_induced": 4,
+        "sender_export": 0,
+        "sender_import": 0,
+        "receiver_export": 0,
+        "receiver_import": 0,
+        "threshold": 2,
+        "hill_n": 3
+      },
+      "times": [
+        0,
+        1,
+        4
+      ]
+    },
+    {
+      "id": "driven-n4",
+      "initial": [
+        0,
+        0,
+        48,
+        2
+      ],
+      "populations": [
+        3,
+        5
+      ],
+      "volumes": [
+        2,
+        3,
+        12
+      ],
+      "parameters": {
+        "sender_production": 0,
+        "sender_decay": 0,
+        "receiver_decay": 0,
+        "env_decay": 0.5,
+        "reporter_decay": 2.0,
+        "reporter_basal": 1,
+        "reporter_induced": 4,
+        "sender_export": 0,
+        "sender_import": 0,
+        "receiver_export": 0,
+        "receiver_import": 0,
+        "threshold": 2,
+        "hill_n": 4
+      },
+      "times": [
+        0,
+        1,
+        4
+      ]
+    },
+    {
+      "id": "two-strain-transient",
+      "initial": [
+        8,
+        12,
+        24,
+        0
+      ],
+      "populations": [
+        3,
+        5
+      ],
+      "volumes": [
+        2,
+        3,
+        12
+      ],
+      "parameters": {
+        "sender_production": 0,
+        "sender_decay": 0,
+        "receiver_decay": 0,
+        "env_decay": 0,
+        "reporter_decay": 0,
+        "reporter_basal": 0,
+        "reporter_induced": 0,
+        "sender_export": 1,
+        "sender_import": 1,
+        "receiver_export": 1,
+        "receiver_import": 1,
+        "threshold": 2,
+        "hill_n": 1
+      },
+      "times": [
+        0,
+        1,
+        4
+      ]
+    }
+  ]
+}

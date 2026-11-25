@@ -1,35 +1,70 @@
 # Independent BigFloat analytical evaluator. No native FENIX imports.
-using JSON
+using JSON, SHA
+
 function samples(bits)
-    setprecision(BigFloat,bits) do
+    setprecision(BigFloat, bits) do
         output = Dict{String,Any}[]
-        for n in 1:4, time in (0,1,4)
-            # Solve y' = 2-y/2, y(0)=0 under constant threshold sensing.
-            y = 4*(-expm1(-BigFloat(time)/2))
-            push!(output,Dict("case"=>"threshold-n$n","time"=>time,
-                 "state"=>BigFloat[4,12,24,y]))
+        for n in 1:4, time in (0, 1, 4)
+            y = 4 * (-expm1(-BigFloat(time) / 2))
+            push!(output, Dict("case" => "threshold-n$n", "time" => time,
+                              "state" => BigFloat[4, 12, 24, y]))
         end
-        for time in (0,1,4)
-            # Derive extracellular relaxation first from E' = 72-(5/2)E.
-            e = BigFloat(24)+BigFloat(24)/5*(-expm1(-BigFloat(5)*time/2))
+        for time in (0, 1, 4)
+            # Derive E first from E' = 72-(5/2)E, then recover s from mass.
+            e = BigFloat(24) + BigFloat(24)/5 * (-expm1(-BigFloat(5)*time/2))
             s = (BigFloat(36)-e)/3
-            push!(output,Dict("case"=>"reversible-transient","time"=>time,
-                 "state"=>BigFloat[s,2,e,0]))
+            push!(output, Dict("case" => "reversible-transient", "time" => time,
+                              "state" => BigFloat[s, 2, e, 0]))
+        end
+        for n in 1:4, time in (0, 1, 4)
+            beta = BigFloat(n)/2
+            amplitude = BigFloat(2)^n
+            decay = exp(-beta*time)
+            # Integrating factor: beta*t+log1p(A*exp(-beta*t))-log1p(A).
+            integral = beta*time + log1p(amplitude*decay) - log1p(amplitude)
+            reporter = 2*decay - expm1(-beta*time)/beta + 4*amplitude*decay*integral/beta
+            push!(output, Dict("case" => "driven-n$n", "time" => time,
+                              "state" => BigFloat[0, 0, 48*exp(-BigFloat(time)/2), reporter]))
+        end
+        for time in (0, 1, 4)
+            # Environment approaches the common equilibrium density 36/11.
+            e = BigFloat(24) + BigFloat(168)/11 * (-expm1(-BigFloat(11)*time/4))
+            density = (108-e)/21
+            push!(output, Dict("case" => "two-strain-transient", "time" => time,
+                              "state" => BigFloat[2*density, 3*density, e, 0]))
         end
         output
     end
 end
-low,high=samples(512),samples(1024)
-setprecision(BigFloat,1024) do
-    for (a,b) in zip(low,high)
-        @assert all(abs(x-y)<=big"1e-140"*max(1,abs(y)) for (x,y) in zip(a["state"],b["state"]))
-    end
-    python=JSON.parsefile(ARGS[1])
-    @assert length(python["samples"])==length(high)==15
-    for (a,b) in zip(python["samples"],high)
-        @assert a["case"]==b["case"] && a["time"]==b["time"]
-        @assert all(abs(parse(BigFloat,x)-y)<=big"1e-150"*max(1,abs(y))
-                    for (x,y) in zip(a["state"],b["state"]))
+
+function compare_report(report)
+    low, high = samples(512), samples(1024)
+    setprecision(BigFloat, 1024) do
+        @assert length(low) == length(high) == 30
+        for (a, b) in zip(low, high)
+            @assert all(abs(x-y) <= big"1e-140"*max(1, abs(y))
+                        for (x, y) in zip(a["state"], b["state"]))
+        end
+        @assert Set(keys(report)) == Set(["status", "samples", "max_refinement_error", "catalog_sha256"])
+        @assert report["status"] == "PROPOSED"
+        @assert report["catalog_sha256"] == bytes2hex(sha256(read(joinpath(@__DIR__, "cases.json"))))
+        refinement = parse(BigFloat, report["max_refinement_error"])
+        @assert isfinite(refinement) && 0 <= refinement <= big"1e-70"
+        @assert length(report["samples"]) == length(high)
+        for (a, b) in zip(report["samples"], high)
+            @assert Set(keys(a)) == Set(["case", "time", "state"])
+            @assert a["case"] == b["case"]
+            @assert typeof(a["time"]) === Int && a["time"] == b["time"]
+            @assert length(a["state"]) == length(b["state"]) == 4
+            actual = parse.(BigFloat, a["state"])
+            @assert all(x -> isfinite(x) && x >= 0, actual)
+            @assert all(abs(x-y) <= big"1e-150"*max(1, abs(y))
+                        for (x,y) in zip(actual, b["state"]))
+        end
     end
 end
-println("PASS: 15 analytical samples, Julia 512/1024-bit refinement and Python agreement")
+
+if abspath(PROGRAM_FILE) == @__FILE__
+    compare_report(JSON.parsefile(ARGS[1]))
+    println("PASS: 30 analytical samples, Julia 512/1024-bit refinement and Python agreement")
+end
