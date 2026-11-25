@@ -1,0 +1,176 @@
+{
+  "package_path": "/tmp/fenix-alpha-wheel/lib/python3.12/site-packages/fenix/__init__.py",
+  "format": "m0-benchmark-v1",
+  "language": "python",
+  "case": "baseline-five",
+  "method": "Radau",
+  "source_revision": "6029719fa498d408b500a57234e1b3e7da8e5b59",
+  "settings": {
+    "time_grid": [
+      0.0,
+      1.0,
+      10.0,
+      100.0
+    ],
+    "rtol": 1e-10,
+    "atol": 1e-12,
+    "max_step": 1.0,
+    "max_nfev": 100000
+  },
+  "warmups": 3,
+  "repeats": 20,
+  "package_load_seconds": 0.2545001900000159,
+  "first_seconds": {
+    "compile": 0.0017168309999817666,
+    "solve": 0.06006934699999533,
+    "capture": 0.07147676100001377
+  },
+  "timings": {
+    "compile": {
+      "seconds": [
+        0.0011265359999867997,
+        0.0013444140000160587,
+        0.0011926110000217705,
+        0.001216023000012001,
+        0.0011898690000009537,
+        0.001225616999988688,
+        0.0011886789999948633,
+        0.0012018449999970926,
+        0.0012527139999747305,
+        0.0016184370000189574,
+        0.0015127359999951295,
+        0.001205962000000227,
+        0.0011048490000007405,
+        0.0011109550000014679,
+        0.001157426000020223,
+        0.0010941899999750149,
+        0.001104789000009987,
+        0.0011399429999983113,
+        0.0011802639999984876,
+        0.0016172260000075767
+      ],
+      "median": 0.001191240000011362,
+      "min": 0.0010941899999750149,
+      "max": 0.0016184370000189574
+    },
+    "solve": {
+      "seconds": [
+        0.05517987900000776,
+        0.0553720329999976,
+        0.05512889499999574,
+        0.05521401200002174,
+        0.05501818400000502,
+        0.054758609000003844,
+        0.05497111900001528,
+        0.055398314999990816,
+        0.055077706999981046,
+        0.054808868999998595,
+        0.05438395100000548,
+        0.055200499999983776,
+        0.05530773999998928,
+        0.05466583599999808,
+        0.05484357099999215,
+        0.05461279499999705,
+        0.05517233800000554,
+        0.054805452000010746,
+        0.05531152000000361,
+        0.05484070699998256
+      ],
+      "median": 0.055047945499993034,
+      "min": 0.05438395100000548,
+      "max": 0.055398314999990816
+    },
+    "capture": {
+      "seconds": [
+        0.05818153800001369,
+        0.057711700999988125,
+        0.05798783900002036,
+        0.058365618999999924,
+        0.058246359999998276,
+        0.059148596,
+        0.05824505999999019,
+        0.05793093299999441,
+        0.05767909700000473,
+        0.05807603299999187,
+        0.05890300100000445,
+        0.05794196100001159,
+        0.05845820900000831,
+        0.05880158599998708,
+        0.05821712399998091,
+        0.05796252500002197,
+        0.05846068899998613,
+        0.058346795000005613,
+        0.05831344399999239,
+        0.05812047300000245
+      ],
+      "median": 0.05823109199998555,
+      "min": 0.05767909700000473,
+      "max": 0.059148596
+    }
+  },
+  "runtime": {
+    "language_version": "3.12.13",
+    "dependencies": {
+      "fenix-bio": "0.0.0",
+      "numpy": "2.5.5",
+      "scipy": "1.18.1",
+      "rfc8785": "0.1.4"
+    }
+  },
+  "hardware": {
+    "os": "Linux-7.0.0-1014-aws-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "cpu": "processor\t: 0\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 173\nmodel name\t: Intel(R) Xeon(R) 6975P-C\nstepping\t: 1\nmicrocode\t: 0x1000434\ncpu MHz\t\t: 3878.903\ncache size\t: 491520 KB\nphysical id\t: 0\nsiblings\t: 4\ncore id\t\t: 0\ncpu cores\t: 2\napicid\t\t: 0\ninitial apicid\t: 0\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 36\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq monitor vmx ssse3 fma cx16 pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx_vnni avx512_bf16 wbnoinvd ida arat vnmi avx512vbmi umip pku ospke waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg tme avx512_vpopcntdq rdpid bus_lock_detect cldemote movdiri movdir64b md_clear serialize amx_bf16 avx512_fp16 amx_tile amx_int8 flush_l1d arch_capabilities\nvmx flags\t: vnmi preemption_timer posted_intr invvpid ept_x_only ept_ad ept_1gb ept_5level flexpriority apicv tsc_offset vtpr mtf vapic ept vpid unrestricted_guest vapic_reg vid shadow_vmcs pml tsc_scaling usr_wait_pause\nbugs\t\t: spectre_v1 spectre_v2 spec_store_bypass swapgs bhi spectre_v2_user\nbogomips\t: 5400.00\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 48 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 1\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 173\nmodel name\t: Intel(R) Xeon(R) 6975P-C\nstepping\t: 1\nmicrocode\t: 0x1000434\ncpu MHz\t\t: 3287.410\ncache size\t: 491520 KB\nphysical id\t: 0\nsiblings\t: 4\ncore id\t\t: 1\ncpu cores\t: 2\napicid\t\t: 2\ninitial apicid\t: 2\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 36\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq monitor vmx ssse3 fma cx16 pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx_vnni avx512_bf16 wbnoinvd ida arat vnmi avx512vbmi umip pku ospke waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg tme avx512_vpopcntdq rdpid bus_lock_detect cldemote movdiri movdir64b md_clear serialize amx_bf16 avx512_fp16 amx_tile amx_int8 flush_l1d arch_capabilities\nvmx flags\t: vnmi preemption_timer posted_intr invvpid ept_x_only ept_ad ept_1gb ept_5level flexpriority apicv tsc_offset vtpr mtf vapic ept vpid unrestricted_guest vapic_reg vid shadow_vmcs pml tsc_scaling usr_wait_pause\nbugs\t\t: spectre_v1 spectre_v2 spec_store_bypass swapgs bhi spectre_v2_user\nbogomips\t: 5400.00\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 48 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 2\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 173\nmodel name\t: Intel(R) Xeon(R) 6975P-C\nstepping\t: 1\nmicrocode\t: 0x1000434\ncpu MHz\t\t: 2700.000\ncache size\t: 491520 KB\nphysical id\t: 0\nsiblings\t: 4\ncore id\t\t: 0\ncpu cores\t: 2\napicid\t\t: 1\ninitial apicid\t: 1\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 36\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq monitor vmx ssse3 fma cx16 pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx_vnni avx512_bf16 wbnoinvd ida arat vnmi avx512vbmi umip pku ospke waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg tme avx512_vpopcntdq rdpid bus_lock_detect cldemote movdiri movdir64b md_clear serialize amx_bf16 avx512_fp16 amx_tile amx_int8 flush_l1d arch_capabilities\nvmx flags\t: vnmi preemption_timer posted_intr invvpid ept_x_only ept_ad ept_1gb ept_5level flexpriority apicv tsc_offset vtpr mtf vapic ept vpid unrestricted_guest vapic_reg vid shadow_vmcs pml tsc_scaling usr_wait_pause\nbugs\t\t: spectre_v1 spectre_v2 spec_store_bypass swapgs bhi spectre_v2_user\nbogomips\t: 5400.00\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 48 bits physical, 48 bits virtual\npower management:\n\nprocessor\t: 3\nvendor_id\t: GenuineIntel\ncpu family\t: 6\nmodel\t\t: 173\nmodel name\t: Intel(R) Xeon(R) 6975P-C\nstepping\t: 1\nmicrocode\t: 0x1000434\ncpu MHz\t\t: 2700.000\ncache size\t: 491520 KB\nphysical id\t: 0\nsiblings\t: 4\ncore id\t\t: 1\ncpu cores\t: 2\napicid\t\t: 3\ninitial apicid\t: 3\nfpu\t\t: yes\nfpu_exception\t: yes\ncpuid level\t: 36\nwp\t\t: yes\nflags\t\t: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq monitor vmx ssse3 fma cx16 pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx_vnni avx512_bf16 wbnoinvd ida arat vnmi avx512vbmi umip pku ospke waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg tme avx512_vpopcntdq rdpid bus_lock_detect cldemote movdiri movdir64b md_clear serialize amx_bf16 avx512_fp16 amx_tile amx_int8 flush_l1d arch_capabilities\nvmx flags\t: vnmi preemption_timer posted_intr invvpid ept_x_only ept_ad ept_1gb ept_5level flexpriority apicv tsc_offset vtpr mtf vapic ept vpid unrestricted_guest vapic_reg vid shadow_vmcs pml tsc_scaling usr_wait_pause\nbugs\t\t: spectre_v1 spectre_v2 spec_store_bypass swapgs bhi spectre_v2_user\nbogomips\t: 5400.00\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 48 bits physical, 48 bits virtual\npower management:\n\n",
+    "threads": {
+      "OMP_NUM_THREADS": "unset",
+      "OPENBLAS_NUM_THREADS": "unset",
+      "MKL_NUM_THREADS": "unset",
+      "JULIA_NUM_THREADS": "unset"
+    },
+    "logical_cpus": 4,
+    "runner_image": {
+      "ImageOS": "ubuntu24",
+      "ImageVersion": "20261111.127.1"
+    }
+  },
+  "fingerprints": {
+    "benchmarks/m0/run.jl": "ec90d0e1d8815d10d1ff5e14c987ff44d219f64f031cfbcda871326890453b24",
+    "benchmarks/m0/run.py": "82d96368bf1b357000d9f1db10a6047c2938aa69a0a9923a15876c227bd61829",
+    "benchmarks/m0/test_benchmarks.py": "f9ea0c489ac41c323e1a46c78601258977bedd9478df6f62334d52db45c0d8c7",
+    "benchmarks/m0/test_checks.jl": "7e180ac7e28f6bb7fa5c1062732a96ebe68d0697ccd08ae78e60c309b68b725b",
+    "conformance/julia_ode/Manifest.toml": "4624b98301546ce12f4b583e7954d3845a70b2b200b0bd11ec70d26059944855",
+    "conformance/julia_ode/Project.toml": "bc8f951f11988d9443d3960ed02500d4227428f100cf86591d2a11ee56d616ca",
+    "conformance/production_decay/catalog.json": "468c05a59fc23106dfc2e9e3454e9709ef0b61c9e130885180ecd4e67a07406d",
+    "examples/m0/production_decay.jl": "8748e45f154a815ebc5ecf3f0ef23a06c159b83723fcf87adab1a9753a6c3f87",
+    "examples/m0/production_decay.py": "1a6c6226df1a478f3fd320900ee5742f70a3943fd1697926f5ff5d282e6c72bd",
+    "packages/julia/src/BioIR.jl": "156116022d706cc4e4973c608249fc8c512a7cf1df3fdc63840a7cfec4b242a9",
+    "packages/julia/src/Compiler.jl": "86b476b0f121a106c6a5984398ecd17139b757fc6c6594757f410eec12971e0c",
+    "packages/julia/src/Documents.jl": "3ae48458f6876bb60b4262e8191a5c4a54ea20ca26b7cff7ae25afcf1751dd24",
+    "packages/julia/src/Execution.jl": "7ccdd94d76c895f88e61a3dc4ac0560a5cf1a661672a403c875260cae4740f3e",
+    "packages/julia/src/FIR.jl": "e79b985c52d6050a7c82d8d4b9e075acebe30130a357d3bb0e5b61bfb7875df4",
+    "packages/julia/src/Fenix.jl": "d1c2082e27a642d61647c678d8b0b2fe8b2936344d3c830171c726d2d8b77ba9",
+    "packages/julia/src/PortableJSON.jl": "571e7932fdc23b9cb4fd2cb309b154aa1138cc700cf4b74a17e981e551088e91",
+    "packages/julia/src/Results.jl": "1b53ebc34a9e77be0e9493047a6f393d541624fd0edba6d6e1bc871544b68b13",
+    "packages/python/src/fenix/__init__.py": "3578a75169a3473bee69d0027f10527b143a1e978c20b462489593ac6a3e1fc3",
+    "packages/python/src/fenix/bioir/__init__.py": "68cf1a67ab2a35fea229c8cca0c780afb9ad34568fe04953b27cec8606fc76bf",
+    "packages/python/src/fenix/bioir/_content.py": "9d23a909d724e774be203a31ddcf520e91e83710be593f26d8d7fafea8597287",
+    "packages/python/src/fenix/bioir/_decode.py": "9017abfda9701ef36e9914a64b26bc5ba1e41c12c61a3ada5990363b2e80cd5f",
+    "packages/python/src/fenix/bioir/_documents.py": "0690480606203951612f9263f1459048d74aa905a131a708dbd41910bcaa8e33",
+    "packages/python/src/fenix/bioir/_json.py": "0b6c37bf5abefa414254f427202d92b046b7f19f6b691d62a2df54a8a7090b52",
+    "packages/python/src/fenix/compiler.py": "6a6d73e030985c8ead85de8d6614412791c256e3f9d5b09b57a7f72276e49602",
+    "packages/python/src/fenix/execution.py": "103f464fa0be14a02b7ce6968e17f4cdfe9c12e5ecd273d14f4633c45604593e",
+    "packages/python/src/fenix/fir/__init__.py": "f244884f561f4044bd4db3978bb33859450ba1391cf0ccb44f3febe0097865ab",
+    "packages/python/src/fenix/fir/_document.py": "abee55028a123b5e4d0f294c8bce95e50e4a3730cd9e9c0263c847254ce66ee3",
+    "packages/python/src/fenix/fir/_errors.py": "14ac5c5a42b05614fbb4626613dbcf854a1d38a37aafe0bca0424500f2b2d1c4",
+    "packages/python/src/fenix/fir/_model.py": "48e36acf2c3d3b9fb010dd2208907c86a50ff6063b030090cd45501abcf6fd88",
+    "packages/python/src/fenix/fir/_validation.py": "d123e3f3c5a9bc6c5b75a6b2b268e9ed5b74f87bb72add40a0dcbb3258be8c67",
+    "packages/python/src/fenix/results.py": "be5b5cb8eb84aafce6da5e967e1b786838a69bea04687f9d4730cc596e8bd3e6",
+    "packages/python/uv.lock": "0a02d80325600c4610e8541b3255f5ab7b283438e6bb04c02348a9d2ca00cfb8"
+  },
+  "identities": {
+    "design": "7bf9885f6430e0d8a3670f5429e840533bb10a8c0898755ecb5153b207e6b24f",
+    "experiment": "c27ebb4dac9cbfcc309dbbf4a4d1cd8f9a75e7c332dda6f400124900f6cfba56",
+    "fir": "a4ee402b1e442491577d6b2b9a36a77ef0df43e11d8078fa57badbc8a8a3857e"
+  },
+  "validation": "PASS"
+}

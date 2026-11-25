@@ -298,3 +298,20 @@ phase. It supersedes activation as a prerequisite in the historical drafts above
 CI must fail on mismatches; the PI manually withholds merge on failure. No branch
 settings change or reviewer identity is inferred by #29. #28 is completed through
 merged PR #73; #29, #30 and final EP-04 acceptance retain their own evidence gates.
+
+
+## M0 repository alpha candidate (#30)
+
+Run the [alpha examples and release checklist](verification/m0-alpha/README.md),
+the independent installed-artifact checks and benchmark drivers in addition to
+all existing native FIR/ODE gates. The stable status is `M0 alpha candidate`.
+Python examples must load the fresh wheel; Julia examples must load an extracted
+source archive, without development checkout path injection. Installation may
+fetch dependencies; example and benchmark execution must run offline afterward.
+Timings are observations, not performance acceptance thresholds or biological evidence.
+
+#29's PI-accepted gate merged through PR #74 at
+`ba943e6882e7301f2356139df7010ff141494b7f`. A still-open issue status is a tracking
+discrepancy, not missing scientific evidence. #30's alpha-profile approval and
+final EP-04 acceptance remain separate human decisions. No registry publication,
+version-policy change or branch-protection activation follows from this candidate.
