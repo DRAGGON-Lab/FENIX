@@ -1,11 +1,11 @@
 # M0 repository alpha candidate — issue #30
 
-**Status: candidate; human PI alpha-profile and release acceptance PENDING.**
+**Status: bounded M0 repository alpha accepted by the human PI.**
 No registry release or package version change is proposed. Package identifiers
 remain provisional at `0.0.0` pending P06. This repository candidate is identified
 by its reviewed Git revision and artifact checksums, not a new version promise.
 
-## Supported-profile inventory for PI approval
+## Accepted supported-profile inventory
 
 This inventory summarizes existing ratified rules; it adds no capabilities.
 
@@ -79,6 +79,13 @@ and all four native methods.
 | Julia native Project.toml | `bc8f951f11988d9443d3960ed02500d4227428f100cf86591d2a11ee56d616ca` |
 | Julia native Manifest.toml | `4624b98301546ce12f4b583e7954d3845a70b2b200b0bd11ec70d26059944855` |
 
+## PI decision
+
+In response to the request for PI acceptance of the bounded M0 alpha profile
+and evidence at `566ba94bf1814fdf7bcae10db4ebcbf8688a3b53`, the PI stated
+“I accept tye bounded M0 alpha”. This covers the profile inventory and bounded
+candidate evidence identified above. EP-04 parent acceptance has its own gate.
+
 ## Manual release checklist
 
 - [x] Record the exact final candidate commit and source/lock fingerprints.
@@ -90,8 +97,8 @@ and all four native methods.
 - [x] Pass repository/package/reference checks and existing native FIR/ODE gates on the candidate revision.
 - [x] Inspect the final `M0 alpha candidate` CI status and downloadable artifacts.
 - [x] Record independent engineering/numerical review and any remaining limitations.
-- [ ] PI approves this bounded supported-profile inventory and candidate evidence at an exact reviewed revision.
-- [ ] Record PI alpha acceptance before closing #30; request EP-04 parent acceptance separately.
+- [x] PI approves this bounded supported-profile inventory and candidate evidence at an exact reviewed revision.
+- [x] Record PI alpha acceptance for #30.
 
 #28 merged in PR #73. The PI-accepted #29 scientific gate merged in PR #74 at
 `ba943e6882e7301f2356139df7010ff141494b7f`; issue tracking may lag this evidence.
