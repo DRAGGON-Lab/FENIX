@@ -126,6 +126,58 @@ def main():
         == expected["weighted_derivative"],
         "mass balance",
     )
+    # Cross-check both serialized mathematical representations at the fixture point.
+    fluxes = {}
+    bindings = {
+        "state": a,
+        "parameter": p,
+        "volume": volume,
+        "population": model["populations"],
+        "flux": fluxes,
+    }
+
+    def evaluate(expr):
+        if isinstance(expr, int):
+            return Fraction(expr)
+        op = expr["op"]
+        if op in bindings:
+            return bindings[op][expr["id"]]
+        if op == "hill":
+            c, k, exponent = (
+                evaluate(expr[key]) for key in ("density", "threshold", "exponent")
+            )
+            return c ** int(exponent) / (k ** int(exponent) + c ** int(exponent))
+        if op == "negate":
+            return -evaluate(expr["value"])
+        left, right = evaluate(expr["left"]), evaluate(expr["right"])
+        if op == "add":
+            return left + right
+        if op == "subtract":
+            return left - right
+        if op == "multiply":
+            return left * right
+        if op == "divide":
+            return left / right
+        raise ValueError(f"Unknown operation {op}")
+
+    accumulated = dict.fromkeys(a, Fraction(0))
+    for reaction in model["reactions"]:
+        rate = evaluate(reaction["flux"])
+        fluxes[reaction["id"]] = rate
+        for state, coefficient in reaction["stoichiometry"].items():
+            accumulated[state] += evaluate(coefficient) * rate
+    by_state = dict(
+        zip(
+            ("sender.signal", "receiver.signal", "env.signal", "receiver.reporter"),
+            slopes,
+            strict=True,
+        )
+    )
+    check(accumulated == by_state, "signed reaction updates")
+    check(
+        {eq["state"]: evaluate(eq["rhs"]) for eq in model["equations"]} == by_state,
+        "typed RHS",
+    )
     print(
         "PASS: three proposed documents, four invalid bindings and exact closed-transport example"
     )
