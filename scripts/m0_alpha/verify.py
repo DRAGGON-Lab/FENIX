@@ -10,6 +10,7 @@ import json
 import math
 import statistics
 import sys
+import tomllib
 from decimal import Decimal, localcontext
 from pathlib import Path
 
@@ -19,6 +20,8 @@ from referencing import Registry, Resource
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "conformance/native"))
+sys.path.insert(0, str(ROOT / "conformance/rejections"))
+import reference as fir_reference
 from common import locked_dependencies, read_report, reference_model
 from ode_common import METHODS, bits, make_references
 
@@ -211,8 +214,10 @@ def validate_example(directory, language, case, method, package_root, expected):
         == want_fir,
         "FIR digest",
     )
+    sources = {}
     for kind in ("design", "experiment"):
         source = read_report(directory / (kind + ".json"))
+        sources[kind] = source
         want_digest = expected["artifacts"][kind]["sha256"]
         require(
             rfc8785.dumps(source["content"])
@@ -236,12 +241,23 @@ def validate_example(directory, language, case, method, package_root, expected):
         "result checksum",
     )
     fir = read_report(directory / "fir.json")
-    for kind in ("design", "experiment"):
-        require(
-            fir["provenance"][kind + "_digest"]
-            == expected["artifacts"][kind]["sha256"],
-            "FIR provenance source digest",
-        )
+    try:
+        fir_reference.validate_model(fir)
+        fir_reference.validate_producer(fir, sources["design"], sources["experiment"])
+    except fir_reference.Rejection as error:
+        raise ValueError(f"FIR provenance or model: {error}") from error
+    if language == "python":
+        package = tomllib.loads((ROOT / "packages/python/pyproject.toml").read_text())[
+            "project"
+        ]
+    else:
+        package = tomllib.loads((ROOT / "packages/julia/Project.toml").read_text())
+    compiler = {key: package[key] for key in ("name", "version")}
+    require(
+        fir["provenance"].get("compiler") == compiler
+        and all(manifest["producer"][key] == value for key, value in compiler.items()),
+        "FIR provenance compiler differs from installed example producer",
+    )
     require(
         reference_model(fir["model"])["model"] == expected["artifacts"]["model"],
         "FIR transport model",

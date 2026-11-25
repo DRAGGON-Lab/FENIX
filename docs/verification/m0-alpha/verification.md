@@ -85,3 +85,18 @@ An initial manually copied revision argument was malformed and rejected;
 deriving it with `git rev-parse bd1b291` succeeded. Artifact download initially
 failed during its storage redirect; a fresh redirect without forwarding GitHub
 authentication retrieved all eight reports. No missing result was counted as PASS.
+
+## Follow-up review of the alpha verifier
+
+The PI approved PR #75 at revision `53415f1a21cf6117cbd64ad7f94f6884db7fbe23`
+in the working conversation. The subsequent verifier correction addresses the
+[provenance review finding](https://github.com/DRAGGON-Lab/FENIX/pull/75#discussion_r4622682981).
+The independent rejection reference checks the FIR envelope and its source
+mappings. The alpha verifier also matches the compiler and manifest producer to
+the native package metadata.
+
+Local regression verification passed all eight alpha verifier tests. Before
+the correction, all ten new corruption cases passed verification incorrectly
+after their artifact checksums were recomputed. The corrected verifier rejects
+all ten and accepts reordered parameter mappings and a valid observable label.
+The corrected candidate requires review against its own revision.

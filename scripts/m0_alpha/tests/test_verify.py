@@ -72,6 +72,58 @@ class TestAlphaVerifier(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "FIR provenance"):
             self.validate()
 
+    def test_fir_producer_provenance(self):
+        path = self.directory / "fir.json"
+        original = verify.read_report(path)
+        summary = verify.read_report(self.directory / "summary.json")
+
+        def check(fir):
+            raw = json.dumps(fir).encode()
+            path.write_bytes(raw)
+            summary["checksums"]["fir.json"] = verify.sha(raw)
+            (self.directory / "summary.json").write_text(json.dumps(summary))
+            self.validate()
+
+        for label, change in (
+            ("missing compiler", lambda p: p.pop("compiler")),
+            ("wrong compiler", lambda p: p["compiler"].update(name="Fenix")),
+            ("wrong version", lambda p: p["compiler"].update(version="9.9.9")),
+            ("extra field", lambda p: p.update(unknown=True)),
+            ("missing map", lambda p: p.pop("symbol_map")),
+            ("partial map", lambda p: p["symbol_map"]["parameters"].pop()),
+            (
+                "wrong port",
+                lambda p: p["symbol_map"]["states"][0].update(bioir_port_id="other"),
+            ),
+            (
+                "wrong function",
+                lambda p: p["symbol_map"]["parameters"][0].update(
+                    bioir_function_id=p["symbol_map"]["parameters"][1][
+                        "bioir_function_id"
+                    ]
+                ),
+            ),
+            (
+                "unknown observable",
+                lambda p: p.update(display_labels={"observables": {"other": "Label"}}),
+            ),
+            (
+                "invalid label",
+                lambda p: p.update(display_labels={"observables": {"amount": 5}}),
+            ),
+        ):
+            with self.subTest(label=label):
+                fir = copy.deepcopy(original)
+                change(fir["provenance"])
+                with self.assertRaisesRegex(ValueError, "FIR provenance"):
+                    check(fir)
+
+        original["provenance"]["symbol_map"]["parameters"].reverse()
+        original["provenance"]["display_labels"] = {
+            "observables": {"amount": "Molecules"}
+        }
+        check(original)
+
     def test_corrupted_result_bytes(self):
         with (self.directory / "result.json").open("ab") as stream:
             stream.write(b" ")
