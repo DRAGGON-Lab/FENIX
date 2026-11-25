@@ -1,0 +1,15 @@
+{
+  "status": "PROPOSED",
+  "closed_transport": {
+    "net_out_per_cell": [4, -10],
+    "derivative": [-4, 10, -38, 2],
+    "weighted_signal": 46,
+    "weighted_derivative": 0
+  },
+  "invalid_bindings": [
+    {"edge": 0, "target": {"owner": "receiver", "species": "a", "port": "in"}},
+    {"edge": 1, "source": {"owner": "env", "species": "a", "port": "in"}},
+    {"edge": 4, "source": {"owner": "env", "species": "a", "port": "out"}},
+    {"edge": 4, "target": {"port": "read"}}
+  ]
+}

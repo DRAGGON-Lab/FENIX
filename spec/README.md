@@ -35,3 +35,5 @@ The [P07 M0 result/manifest contract](results/README.md) is **RATIFIED** for #22
 at reviewed revision `bc662d3`, including its revised schemas and bounded
 candidate reference expectations. Native implementation approval remains
 separate; see the [ratification record](../docs/verification/ep02-p07-ratification.md).
+
+The [proposed M1 community contract](community/ADR-P08.md) is under review for #31.

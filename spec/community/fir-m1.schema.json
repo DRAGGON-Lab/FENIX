@@ -1,0 +1,560 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PROPOSED M1 fir-m1.schema.json",
+  "definitions": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+      "maxLength": 64,
+      "not": {
+        "pattern": "[^A-Za-z0-9_-]"
+      }
+    },
+    "rates": {
+      "type": "object",
+      "properties": {
+        "sender_production": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "molecule/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "sender_decay": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "1/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "receiver_decay": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "1/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "env_decay": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "1/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "reporter_decay": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "1/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "reporter_basal": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "molecule/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "reporter_induced": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "molecule/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "threshold": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "const": "molecule/L"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "hill_n": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            },
+            "unit": {
+              "const": "1"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "sender_import": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "1/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "sender_export": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "1/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "receiver_import": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "1/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "receiver_export": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "1/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "sender_production",
+        "sender_decay",
+        "receiver_decay",
+        "env_decay",
+        "reporter_decay",
+        "reporter_basal",
+        "reporter_induced",
+        "threshold",
+        "hill_n",
+        "sender_import",
+        "sender_export",
+        "receiver_import",
+        "receiver_export"
+      ],
+      "additionalProperties": false
+    },
+    "populations": {
+      "type": "object",
+      "properties": {
+        "sender": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "receiver": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "sender",
+        "receiver"
+      ],
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "properties": {
+        "sender.signal": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "molecule"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "receiver.signal": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "molecule"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "env.signal": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "molecule"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "receiver.reporter": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "molecule"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "sender.signal",
+        "receiver.signal",
+        "env.signal",
+        "receiver.reporter"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "model": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "0.2.0"
+        },
+        "template": {
+          "const": "community.exchange.hill.v1"
+        },
+        "time_unit": {
+          "const": "s"
+        },
+        "volumes": {
+          "type": "object",
+          "properties": {
+            "sender": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "unit": {
+                  "const": "L"
+                }
+              },
+              "required": [
+                "value",
+                "unit"
+              ],
+              "additionalProperties": false
+            },
+            "receiver": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "unit": {
+                  "const": "L"
+                }
+              },
+              "required": [
+                "value",
+                "unit"
+              ],
+              "additionalProperties": false
+            },
+            "env": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "unit": {
+                  "const": "L"
+                }
+              },
+              "required": [
+                "value",
+                "unit"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "sender",
+            "receiver",
+            "env"
+          ],
+          "additionalProperties": false
+        },
+        "populations": {
+          "$ref": "#/definitions/populations"
+        },
+        "initial_counts": {
+          "$ref": "#/definitions/counts"
+        },
+        "parameters": {
+          "$ref": "#/definitions/rates"
+        },
+        "observables": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "$ref": "#/definitions/id"
+              },
+              "state": {
+                "enum": [
+                  "sender.signal",
+                  "receiver.signal",
+                  "env.signal",
+                  "receiver.reporter"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "state"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "capabilities": {
+          "const": {
+            "ode": true,
+            "ssa": false
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "template",
+        "time_unit",
+        "volumes",
+        "populations",
+        "initial_counts",
+        "parameters",
+        "observables",
+        "capabilities"
+      ],
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "design_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "experiment_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "owners": {
+          "type": "object",
+          "properties": {
+            "sender": {
+              "$ref": "#/definitions/id"
+            },
+            "receiver": {
+              "$ref": "#/definitions/id"
+            },
+            "env": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "required": [
+            "sender",
+            "receiver",
+            "env"
+          ],
+          "additionalProperties": false
+        },
+        "species": {
+          "type": "object",
+          "properties": {
+            "sender.signal": {
+              "$ref": "#/definitions/id"
+            },
+            "receiver.signal": {
+              "$ref": "#/definitions/id"
+            },
+            "env.signal": {
+              "$ref": "#/definitions/id"
+            },
+            "receiver.reporter": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "required": [
+            "sender.signal",
+            "receiver.signal",
+            "env.signal",
+            "receiver.reporter"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "design_digest",
+        "experiment_digest",
+        "owners",
+        "species"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "model",
+    "provenance"
+  ],
+  "additionalProperties": false
+}

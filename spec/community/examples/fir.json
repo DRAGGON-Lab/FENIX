@@ -1,0 +1,122 @@
+{
+  "model": {
+    "schema_version": "0.2.0",
+    "template": "community.exchange.hill.v1",
+    "time_unit": "s",
+    "volumes": {
+      "sender": {
+        "value": 2,
+        "unit": "L"
+      },
+      "receiver": {
+        "value": 3,
+        "unit": "L"
+      },
+      "env": {
+        "value": 12,
+        "unit": "L"
+      }
+    },
+    "populations": {
+      "sender": 3,
+      "receiver": 5
+    },
+    "initial_counts": {
+      "sender.signal": {
+        "value": 4,
+        "unit": "molecule"
+      },
+      "receiver.signal": {
+        "value": 2,
+        "unit": "molecule"
+      },
+      "env.signal": {
+        "value": 24,
+        "unit": "molecule"
+      },
+      "receiver.reporter": {
+        "value": 0,
+        "unit": "molecule"
+      }
+    },
+    "parameters": {
+      "sender_production": {
+        "value": 0,
+        "unit": "molecule/s"
+      },
+      "sender_decay": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "receiver_decay": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "env_decay": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "reporter_decay": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "reporter_basal": {
+        "value": 0,
+        "unit": "molecule/s"
+      },
+      "reporter_induced": {
+        "value": 4,
+        "unit": "molecule/s"
+      },
+      "threshold": {
+        "value": 2,
+        "unit": "molecule/L"
+      },
+      "hill_n": {
+        "value": 2,
+        "unit": "1"
+      },
+      "sender_import": {
+        "value": 1,
+        "unit": "1/s"
+      },
+      "sender_export": {
+        "value": 2,
+        "unit": "1/s"
+      },
+      "receiver_import": {
+        "value": 2,
+        "unit": "1/s"
+      },
+      "receiver_export": {
+        "value": 1,
+        "unit": "1/s"
+      }
+    },
+    "observables": [
+      {
+        "id": "reporter",
+        "state": "receiver.reporter"
+      }
+    ],
+    "capabilities": {
+      "ode": true,
+      "ssa": false
+    }
+  },
+  "provenance": {
+    "design_digest": "8656153014ac7d8921522a055e7bdd08ff9a973e18e40f5585661b1fbb71be89",
+    "experiment_digest": "21cc1dfeed2981b09bc2fc2de23c40c841b03d6c88bfbd40c1f6c051fc34027f",
+    "owners": {
+      "sender": "sender",
+      "receiver": "receiver",
+      "env": "env"
+    },
+    "species": {
+      "sender.signal": "a",
+      "receiver.signal": "a",
+      "env.signal": "a",
+      "receiver.reporter": "b"
+    }
+  }
+}
