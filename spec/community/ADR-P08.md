@@ -67,16 +67,18 @@ Only this declared equation template is supported. Use declarative typed operati
 and reject executable expressions. The capability is deterministic ODE only.
 
 The proposed [BioIR schema](bioir-m1.schema.json) and [FIR producer schema](fir-m1.schema.json)
-encode this finite profile. In this draft the FIR names a closed mathematical template
-instead of repeating a reaction table and expression tree in each payload. Its
-identifier fixes the equations above and their state roles. This is a change from
-P02 requiring explicit PI review. An alternative is to encode signed stoichiometry
-and typed Hill operations in each FIR, with a corresponding reaction/equation
-consistency validator. Implementers must wait for the reviewed choice.
+encode this finite profile. FIR carries the typed flux AST, signed updates and
+equation AST explicitly. Export updates extracellular signal by +N_i per unit of
+per-cell export. Import updates it by −N_i. A reporter reaction has no signal
+update. A flux reference resolves by reaction ID. Positive transfer rates remain
+separate reactions even when the net rate is zero. The FIR schema enumerates the
+exact templates and requires complete unique declarations. The profile identifier
+and explicit payload must agree.
 
-For this template, role-indexed maps have fixed keys. Sort the unique observables
-array by observable ID in UTF-16 code-unit order. Apply P03 numeric/Unicode
-rules and the existing P03 domain/version wrapper to the normalized model. Carry the new
+For this profile, sort reactions and observables by unique ID, and equations by
+state ID in UTF-16 code-unit order. Role-indexed objects have fixed keys.
+Preserve AST operand order. Apply P03 numeric/Unicode rules and the existing
+P03 domain/version wrapper to the normalized model. Carry the new
 model schema version inside the identity preimage. Exclude display labels, source maps,
 producer, execution settings and results. Source renaming must preserve the mathematical
 identity when the resolved model and named observable interface remain identical.
@@ -113,8 +115,9 @@ represented initial-state discrepancy. Proposed values require independent evide
 
 ## Review questions for the PI
 
-1. Approve the proposed closed FIR template or retain explicit P02-style reaction
-   and equation payloads. The choice changes both validation and canonical bytes.
+1. Review the proposed population-valued signed update coefficients. They extend
+   P02's fixed M0 stoichiometry so that a per-cell transfer flux also updates the
+   total extracellular state in the same reaction.
 2. Review the binding and source profile: each owner role occurs once, owner IDs
    are unique, species IDs are unique within their owner, and ports are unique
    within their species. Every declared port has exactly the role implied by its
