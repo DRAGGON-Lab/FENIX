@@ -49,3 +49,10 @@ numerical-domain policy for one six-state intracellular oscillator and one
 exchange. Candidate parameters/thresholds, independent references, complete wire
 formats and native implementation remain separate gates; see the
 [ratification record](../docs/verification/p09-math-ratification.md).
+
+The [P10 oscillator wire design](oscillators/ADR-P10.md) is **PROPOSED** for #84.
+It makes version, role-binding, FIR identity and multi-state result choices
+reviewable without changing existing contracts or native capabilities. Its
+[review plan](oscillators/wire-review-plan.md) is not a frozen fixture catalog;
+complete schemas, independent identity/rejection evidence and PI ratification
+remain required before native implementation.
