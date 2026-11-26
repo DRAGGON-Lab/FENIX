@@ -1,0 +1,1187 @@
+{
+  "content": {
+    "kind": "Design",
+    "schema_version": "0.3.0",
+    "id": "three-strain",
+    "revision": 1,
+    "template": "repressilator.three_strain.v1",
+    "owners": [
+      {
+        "id": "strainA",
+        "role": "strain1",
+        "volume": {
+          "value": 1e-15,
+          "unit": "L"
+        },
+        "species": [
+          {
+            "id": "signal1",
+            "role": "a11",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              },
+              {
+                "id": "density",
+                "kind": "density_out"
+              },
+              {
+                "id": "out",
+                "kind": "transport_out"
+              },
+              {
+                "id": "in",
+                "kind": "transport_in"
+              }
+            ]
+          },
+          {
+            "id": "signal2",
+            "role": "a12",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              },
+              {
+                "id": "density",
+                "kind": "density_out"
+              },
+              {
+                "id": "out",
+                "kind": "transport_out"
+              },
+              {
+                "id": "in",
+                "kind": "transport_in"
+              }
+            ]
+          },
+          {
+            "id": "signal3",
+            "role": "a13",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              },
+              {
+                "id": "density",
+                "kind": "density_out"
+              },
+              {
+                "id": "out",
+                "kind": "transport_out"
+              },
+              {
+                "id": "in",
+                "kind": "transport_in"
+              }
+            ]
+          },
+          {
+            "id": "transcript",
+            "role": "m1",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              }
+            ]
+          },
+          {
+            "id": "synthase",
+            "role": "p1",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "strainB",
+        "role": "strain2",
+        "volume": {
+          "value": 1e-15,
+          "unit": "L"
+        },
+        "species": [
+          {
+            "id": "signal1",
+            "role": "a21",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              },
+              {
+                "id": "density",
+                "kind": "density_out"
+              },
+              {
+                "id": "out",
+                "kind": "transport_out"
+              },
+              {
+                "id": "in",
+                "kind": "transport_in"
+              }
+            ]
+          },
+          {
+            "id": "signal2",
+            "role": "a22",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              },
+              {
+                "id": "density",
+                "kind": "density_out"
+              },
+              {
+                "id": "out",
+                "kind": "transport_out"
+              },
+              {
+                "id": "in",
+                "kind": "transport_in"
+              }
+            ]
+          },
+          {
+            "id": "signal3",
+            "role": "a23",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              },
+              {
+                "id": "density",
+                "kind": "density_out"
+              },
+              {
+                "id": "out",
+                "kind": "transport_out"
+              },
+              {
+                "id": "in",
+                "kind": "transport_in"
+              }
+            ]
+          },
+          {
+            "id": "transcript",
+            "role": "m2",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              }
+            ]
+          },
+          {
+            "id": "synthase",
+            "role": "p2",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "strainC",
+        "role": "strain3",
+        "volume": {
+          "value": 1e-15,
+          "unit": "L"
+        },
+        "species": [
+          {
+            "id": "signal1",
+            "role": "a31",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              },
+              {
+                "id": "density",
+                "kind": "density_out"
+              },
+              {
+                "id": "out",
+                "kind": "transport_out"
+              },
+              {
+                "id": "in",
+                "kind": "transport_in"
+              }
+            ]
+          },
+          {
+            "id": "signal2",
+            "role": "a32",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              },
+              {
+                "id": "density",
+                "kind": "density_out"
+              },
+              {
+                "id": "out",
+                "kind": "transport_out"
+              },
+              {
+                "id": "in",
+                "kind": "transport_in"
+              }
+            ]
+          },
+          {
+            "id": "signal3",
+            "role": "a33",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              },
+              {
+                "id": "density",
+                "kind": "density_out"
+              },
+              {
+                "id": "out",
+                "kind": "transport_out"
+              },
+              {
+                "id": "in",
+                "kind": "transport_in"
+              }
+            ]
+          },
+          {
+            "id": "transcript",
+            "role": "m3",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              }
+            ]
+          },
+          {
+            "id": "synthase",
+            "role": "p3",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "bath",
+        "role": "medium",
+        "volume": {
+          "value": 1e-12,
+          "unit": "L"
+        },
+        "species": [
+          {
+            "id": "signal1",
+            "role": "e1",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              },
+              {
+                "id": "out",
+                "kind": "transport_out"
+              },
+              {
+                "id": "in",
+                "kind": "transport_in"
+              }
+            ]
+          },
+          {
+            "id": "signal2",
+            "role": "e2",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              },
+              {
+                "id": "out",
+                "kind": "transport_out"
+              },
+              {
+                "id": "in",
+                "kind": "transport_in"
+              }
+            ]
+          },
+          {
+            "id": "signal3",
+            "role": "e3",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              },
+              {
+                "id": "out",
+                "kind": "transport_out"
+              },
+              {
+                "id": "in",
+                "kind": "transport_in"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": [
+      {
+        "id": "par_K1",
+        "role": "K1",
+        "unit": "molecule/L",
+        "basis": "density"
+      },
+      {
+        "id": "par_K2",
+        "role": "K2",
+        "unit": "molecule/L",
+        "basis": "density"
+      },
+      {
+        "id": "par_K3",
+        "role": "K3",
+        "unit": "molecule/L",
+        "basis": "density"
+      },
+      {
+        "id": "par_b1",
+        "role": "b1",
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "par_b2",
+        "role": "b2",
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "par_b3",
+        "role": "b3",
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "par_beta1",
+        "role": "beta1",
+        "unit": "1/s",
+        "basis": "protein_per_transcript"
+      },
+      {
+        "id": "par_beta2",
+        "role": "beta2",
+        "unit": "1/s",
+        "basis": "protein_per_transcript"
+      },
+      {
+        "id": "par_beta3",
+        "role": "beta3",
+        "unit": "1/s",
+        "basis": "protein_per_transcript"
+      },
+      {
+        "id": "par_ga11",
+        "role": "ga11",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_ga12",
+        "role": "ga12",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_ga13",
+        "role": "ga13",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_ga21",
+        "role": "ga21",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_ga22",
+        "role": "ga22",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_ga23",
+        "role": "ga23",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_ga31",
+        "role": "ga31",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_ga32",
+        "role": "ga32",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_ga33",
+        "role": "ga33",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_ge1",
+        "role": "ge1",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_ge2",
+        "role": "ge2",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_ge3",
+        "role": "ge3",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_gm1",
+        "role": "gm1",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_gm2",
+        "role": "gm2",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_gm3",
+        "role": "gm3",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_gp1",
+        "role": "gp1",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_gp2",
+        "role": "gp2",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_gp3",
+        "role": "gp3",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_h1",
+        "role": "h1",
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "par_h2",
+        "role": "h2",
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "par_h3",
+        "role": "h3",
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "par_in11",
+        "role": "in11",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_in12",
+        "role": "in12",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_in13",
+        "role": "in13",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_in21",
+        "role": "in21",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_in22",
+        "role": "in22",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_in23",
+        "role": "in23",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_in31",
+        "role": "in31",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_in32",
+        "role": "in32",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_in33",
+        "role": "in33",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_n1",
+        "role": "n1",
+        "unit": "1",
+        "basis": "dimensionless"
+      },
+      {
+        "id": "par_n2",
+        "role": "n2",
+        "unit": "1",
+        "basis": "dimensionless"
+      },
+      {
+        "id": "par_n3",
+        "role": "n3",
+        "unit": "1",
+        "basis": "dimensionless"
+      },
+      {
+        "id": "par_out11",
+        "role": "out11",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_out12",
+        "role": "out12",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_out13",
+        "role": "out13",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_out21",
+        "role": "out21",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_out22",
+        "role": "out22",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_out23",
+        "role": "out23",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_out31",
+        "role": "out31",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_out32",
+        "role": "out32",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_out33",
+        "role": "out33",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_sigma1",
+        "role": "sigma1",
+        "unit": "1/s",
+        "basis": "signal_per_synthase"
+      },
+      {
+        "id": "par_sigma2",
+        "role": "sigma2",
+        "unit": "1/s",
+        "basis": "signal_per_synthase"
+      },
+      {
+        "id": "par_sigma3",
+        "role": "sigma3",
+        "unit": "1/s",
+        "basis": "signal_per_synthase"
+      }
+    ],
+    "gates": [
+      {
+        "id": "not1",
+        "role": "g1",
+        "transcript": {
+          "owner": "strainA",
+          "species": "transcript",
+          "port": "amount"
+        },
+        "protein": {
+          "owner": "strainA",
+          "species": "synthase",
+          "port": "amount"
+        },
+        "sensor": {
+          "owner": "strainA",
+          "species": "signal3",
+          "port": "density"
+        },
+        "parameters": {
+          "basal": "par_b1",
+          "induced": "par_h1",
+          "mrna_decay": "par_gm1",
+          "translation": "par_beta1",
+          "protein_decay": "par_gp1",
+          "threshold": "par_K1",
+          "hill_n": "par_n1"
+        }
+      },
+      {
+        "id": "not2",
+        "role": "g2",
+        "transcript": {
+          "owner": "strainB",
+          "species": "transcript",
+          "port": "amount"
+        },
+        "protein": {
+          "owner": "strainB",
+          "species": "synthase",
+          "port": "amount"
+        },
+        "sensor": {
+          "owner": "strainB",
+          "species": "signal1",
+          "port": "density"
+        },
+        "parameters": {
+          "basal": "par_b2",
+          "induced": "par_h2",
+          "mrna_decay": "par_gm2",
+          "translation": "par_beta2",
+          "protein_decay": "par_gp2",
+          "threshold": "par_K2",
+          "hill_n": "par_n2"
+        }
+      },
+      {
+        "id": "not3",
+        "role": "g3",
+        "transcript": {
+          "owner": "strainC",
+          "species": "transcript",
+          "port": "amount"
+        },
+        "protein": {
+          "owner": "strainC",
+          "species": "synthase",
+          "port": "amount"
+        },
+        "sensor": {
+          "owner": "strainC",
+          "species": "signal2",
+          "port": "density"
+        },
+        "parameters": {
+          "basal": "par_b3",
+          "induced": "par_h3",
+          "mrna_decay": "par_gm3",
+          "translation": "par_beta3",
+          "protein_decay": "par_gp3",
+          "threshold": "par_K3",
+          "hill_n": "par_n3"
+        }
+      }
+    ],
+    "signal_synthesis": [
+      {
+        "id": "synthesize1",
+        "catalyst": {
+          "owner": "strainA",
+          "species": "synthase",
+          "port": "amount"
+        },
+        "target": {
+          "owner": "strainA",
+          "species": "signal1",
+          "port": "amount"
+        },
+        "rate": "par_sigma1"
+      },
+      {
+        "id": "synthesize2",
+        "catalyst": {
+          "owner": "strainB",
+          "species": "synthase",
+          "port": "amount"
+        },
+        "target": {
+          "owner": "strainB",
+          "species": "signal2",
+          "port": "amount"
+        },
+        "rate": "par_sigma2"
+      },
+      {
+        "id": "synthesize3",
+        "catalyst": {
+          "owner": "strainC",
+          "species": "synthase",
+          "port": "amount"
+        },
+        "target": {
+          "owner": "strainC",
+          "species": "signal3",
+          "port": "amount"
+        },
+        "rate": "par_sigma3"
+      }
+    ],
+    "signal_losses": [
+      {
+        "id": "loss_a11",
+        "target": {
+          "owner": "strainA",
+          "species": "signal1",
+          "port": "amount"
+        },
+        "rate": "par_ga11"
+      },
+      {
+        "id": "loss_a21",
+        "target": {
+          "owner": "strainB",
+          "species": "signal1",
+          "port": "amount"
+        },
+        "rate": "par_ga21"
+      },
+      {
+        "id": "loss_a31",
+        "target": {
+          "owner": "strainC",
+          "species": "signal1",
+          "port": "amount"
+        },
+        "rate": "par_ga31"
+      },
+      {
+        "id": "loss_e1",
+        "target": {
+          "owner": "bath",
+          "species": "signal1",
+          "port": "amount"
+        },
+        "rate": "par_ge1"
+      },
+      {
+        "id": "loss_a12",
+        "target": {
+          "owner": "strainA",
+          "species": "signal2",
+          "port": "amount"
+        },
+        "rate": "par_ga12"
+      },
+      {
+        "id": "loss_a22",
+        "target": {
+          "owner": "strainB",
+          "species": "signal2",
+          "port": "amount"
+        },
+        "rate": "par_ga22"
+      },
+      {
+        "id": "loss_a32",
+        "target": {
+          "owner": "strainC",
+          "species": "signal2",
+          "port": "amount"
+        },
+        "rate": "par_ga32"
+      },
+      {
+        "id": "loss_e2",
+        "target": {
+          "owner": "bath",
+          "species": "signal2",
+          "port": "amount"
+        },
+        "rate": "par_ge2"
+      },
+      {
+        "id": "loss_a13",
+        "target": {
+          "owner": "strainA",
+          "species": "signal3",
+          "port": "amount"
+        },
+        "rate": "par_ga13"
+      },
+      {
+        "id": "loss_a23",
+        "target": {
+          "owner": "strainB",
+          "species": "signal3",
+          "port": "amount"
+        },
+        "rate": "par_ga23"
+      },
+      {
+        "id": "loss_a33",
+        "target": {
+          "owner": "strainC",
+          "species": "signal3",
+          "port": "amount"
+        },
+        "rate": "par_ga33"
+      },
+      {
+        "id": "loss_e3",
+        "target": {
+          "owner": "bath",
+          "species": "signal3",
+          "port": "amount"
+        },
+        "rate": "par_ge3"
+      }
+    ],
+    "transport": [
+      {
+        "id": "out_11",
+        "source": {
+          "owner": "strainA",
+          "species": "signal1",
+          "port": "out"
+        },
+        "target": {
+          "owner": "bath",
+          "species": "signal1",
+          "port": "in"
+        },
+        "rate": "par_out11"
+      },
+      {
+        "id": "in_11",
+        "source": {
+          "owner": "bath",
+          "species": "signal1",
+          "port": "out"
+        },
+        "target": {
+          "owner": "strainA",
+          "species": "signal1",
+          "port": "in"
+        },
+        "rate": "par_in11"
+      },
+      {
+        "id": "out_21",
+        "source": {
+          "owner": "strainB",
+          "species": "signal1",
+          "port": "out"
+        },
+        "target": {
+          "owner": "bath",
+          "species": "signal1",
+          "port": "in"
+        },
+        "rate": "par_out21"
+      },
+      {
+        "id": "in_21",
+        "source": {
+          "owner": "bath",
+          "species": "signal1",
+          "port": "out"
+        },
+        "target": {
+          "owner": "strainB",
+          "species": "signal1",
+          "port": "in"
+        },
+        "rate": "par_in21"
+      },
+      {
+        "id": "out_31",
+        "source": {
+          "owner": "strainC",
+          "species": "signal1",
+          "port": "out"
+        },
+        "target": {
+          "owner": "bath",
+          "species": "signal1",
+          "port": "in"
+        },
+        "rate": "par_out31"
+      },
+      {
+        "id": "in_31",
+        "source": {
+          "owner": "bath",
+          "species": "signal1",
+          "port": "out"
+        },
+        "target": {
+          "owner": "strainC",
+          "species": "signal1",
+          "port": "in"
+        },
+        "rate": "par_in31"
+      },
+      {
+        "id": "out_12",
+        "source": {
+          "owner": "strainA",
+          "species": "signal2",
+          "port": "out"
+        },
+        "target": {
+          "owner": "bath",
+          "species": "signal2",
+          "port": "in"
+        },
+        "rate": "par_out12"
+      },
+      {
+        "id": "in_12",
+        "source": {
+          "owner": "bath",
+          "species": "signal2",
+          "port": "out"
+        },
+        "target": {
+          "owner": "strainA",
+          "species": "signal2",
+          "port": "in"
+        },
+        "rate": "par_in12"
+      },
+      {
+        "id": "out_22",
+        "source": {
+          "owner": "strainB",
+          "species": "signal2",
+          "port": "out"
+        },
+        "target": {
+          "owner": "bath",
+          "species": "signal2",
+          "port": "in"
+        },
+        "rate": "par_out22"
+      },
+      {
+        "id": "in_22",
+        "source": {
+          "owner": "bath",
+          "species": "signal2",
+          "port": "out"
+        },
+        "target": {
+          "owner": "strainB",
+          "species": "signal2",
+          "port": "in"
+        },
+        "rate": "par_in22"
+      },
+      {
+        "id": "out_32",
+        "source": {
+          "owner": "strainC",
+          "species": "signal2",
+          "port": "out"
+        },
+        "target": {
+          "owner": "bath",
+          "species": "signal2",
+          "port": "in"
+        },
+        "rate": "par_out32"
+      },
+      {
+        "id": "in_32",
+        "source": {
+          "owner": "bath",
+          "species": "signal2",
+          "port": "out"
+        },
+        "target": {
+          "owner": "strainC",
+          "species": "signal2",
+          "port": "in"
+        },
+        "rate": "par_in32"
+      },
+      {
+        "id": "out_13",
+        "source": {
+          "owner": "strainA",
+          "species": "signal3",
+          "port": "out"
+        },
+        "target": {
+          "owner": "bath",
+          "species": "signal3",
+          "port": "in"
+        },
+        "rate": "par_out13"
+      },
+      {
+        "id": "in_13",
+        "source": {
+          "owner": "bath",
+          "species": "signal3",
+          "port": "out"
+        },
+        "target": {
+          "owner": "strainA",
+          "species": "signal3",
+          "port": "in"
+        },
+        "rate": "par_in13"
+      },
+      {
+        "id": "out_23",
+        "source": {
+          "owner": "strainB",
+          "species": "signal3",
+          "port": "out"
+        },
+        "target": {
+          "owner": "bath",
+          "species": "signal3",
+          "port": "in"
+        },
+        "rate": "par_out23"
+      },
+      {
+        "id": "in_23",
+        "source": {
+          "owner": "bath",
+          "species": "signal3",
+          "port": "out"
+        },
+        "target": {
+          "owner": "strainB",
+          "species": "signal3",
+          "port": "in"
+        },
+        "rate": "par_in23"
+      },
+      {
+        "id": "out_33",
+        "source": {
+          "owner": "strainC",
+          "species": "signal3",
+          "port": "out"
+        },
+        "target": {
+          "owner": "bath",
+          "species": "signal3",
+          "port": "in"
+        },
+        "rate": "par_out33"
+      },
+      {
+        "id": "in_33",
+        "source": {
+          "owner": "bath",
+          "species": "signal3",
+          "port": "out"
+        },
+        "target": {
+          "owner": "strainC",
+          "species": "signal3",
+          "port": "in"
+        },
+        "rate": "par_in33"
+      }
+    ]
+  },
+  "digest": "ebb9c7b1ac5a54171274d2a66b672537a02641879ec046495c5c042539589512",
+  "metadata": {
+    "status": "PROPOSED illustrative P10 candidate, not native execution"
+  }
+}

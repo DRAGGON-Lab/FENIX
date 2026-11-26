@@ -1,0 +1,2912 @@
+{
+  "canonicalization_version": "0.2.0",
+  "model": {
+    "schema_version": "0.3.0",
+    "template": "repressilator.three_strain.v1",
+    "time_unit": "s",
+    "geometry": {
+      "strain1": {
+        "value": 1e-15,
+        "unit": "L"
+      },
+      "strain2": {
+        "value": 1e-15,
+        "unit": "L"
+      },
+      "strain3": {
+        "value": 1e-15,
+        "unit": "L"
+      },
+      "medium": {
+        "value": 1e-12,
+        "unit": "L"
+      }
+    },
+    "populations": {
+      "strain1": 100.0,
+      "strain2": 100.0,
+      "strain3": 100.0
+    },
+    "states": [
+      {
+        "id": "a11",
+        "owner": "strain1",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 240.0
+      },
+      {
+        "id": "a12",
+        "owner": "strain1",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 100.0
+      },
+      {
+        "id": "a13",
+        "owner": "strain1",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 100.0
+      },
+      {
+        "id": "a21",
+        "owner": "strain2",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 100.0
+      },
+      {
+        "id": "a22",
+        "owner": "strain2",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 240.0
+      },
+      {
+        "id": "a23",
+        "owner": "strain2",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 100.0
+      },
+      {
+        "id": "a31",
+        "owner": "strain3",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 100.0
+      },
+      {
+        "id": "a32",
+        "owner": "strain3",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 100.0
+      },
+      {
+        "id": "a33",
+        "owner": "strain3",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 240.0
+      },
+      {
+        "id": "e1",
+        "owner": "medium",
+        "quantity": "molecular_count",
+        "scope": "environment_total",
+        "unit": "molecule",
+        "initial": 110000.0
+      },
+      {
+        "id": "e2",
+        "owner": "medium",
+        "quantity": "molecular_count",
+        "scope": "environment_total",
+        "unit": "molecule",
+        "initial": 110000.0
+      },
+      {
+        "id": "e3",
+        "owner": "medium",
+        "quantity": "molecular_count",
+        "scope": "environment_total",
+        "unit": "molecule",
+        "initial": 110000.0
+      },
+      {
+        "id": "m1",
+        "owner": "strain1",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 100.0
+      },
+      {
+        "id": "m2",
+        "owner": "strain2",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 100.0
+      },
+      {
+        "id": "m3",
+        "owner": "strain3",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 100.0
+      },
+      {
+        "id": "p1",
+        "owner": "strain1",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 110.0
+      },
+      {
+        "id": "p2",
+        "owner": "strain2",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 90.0
+      },
+      {
+        "id": "p3",
+        "owner": "strain3",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 100.0
+      }
+    ],
+    "parameters": [
+      {
+        "id": "K1",
+        "value": 1e+17,
+        "unit": "molecule/L",
+        "basis": "density"
+      },
+      {
+        "id": "K2",
+        "value": 1e+17,
+        "unit": "molecule/L",
+        "basis": "density"
+      },
+      {
+        "id": "K3",
+        "value": 1e+17,
+        "unit": "molecule/L",
+        "basis": "density"
+      },
+      {
+        "id": "b1",
+        "value": 0.01,
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "b2",
+        "value": 0.01,
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "b3",
+        "value": 0.01,
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "beta1",
+        "value": 0.05,
+        "unit": "1/s",
+        "basis": "protein_per_transcript"
+      },
+      {
+        "id": "beta2",
+        "value": 0.05,
+        "unit": "1/s",
+        "basis": "protein_per_transcript"
+      },
+      {
+        "id": "beta3",
+        "value": 0.05,
+        "unit": "1/s",
+        "basis": "protein_per_transcript"
+      },
+      {
+        "id": "ga11",
+        "value": 0.01,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "ga12",
+        "value": 0.01,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "ga13",
+        "value": 0.01,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "ga21",
+        "value": 0.01,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "ga22",
+        "value": 0.01,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "ga23",
+        "value": 0.01,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "ga31",
+        "value": 0.01,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "ga32",
+        "value": 0.01,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "ga33",
+        "value": 0.01,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "ge1",
+        "value": 0.01,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "ge2",
+        "value": 0.01,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "ge3",
+        "value": 0.01,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "gm1",
+        "value": 0.01,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "gm2",
+        "value": 0.01,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "gm3",
+        "value": 0.01,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "gp1",
+        "value": 0.05,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "gp2",
+        "value": 0.05,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "gp3",
+        "value": 0.05,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "h1",
+        "value": 216.0,
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "h2",
+        "value": 216.0,
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "h3",
+        "value": 216.0,
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "in11",
+        "value": 0.1,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "in12",
+        "value": 0.1,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "in13",
+        "value": 0.1,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "in21",
+        "value": 0.1,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "in22",
+        "value": 0.1,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "in23",
+        "value": 0.1,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "in31",
+        "value": 0.1,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "in32",
+        "value": 0.1,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "in33",
+        "value": 0.1,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "n1",
+        "value": 2.0,
+        "unit": "1",
+        "basis": "dimensionless"
+      },
+      {
+        "id": "n2",
+        "value": 2.0,
+        "unit": "1",
+        "basis": "dimensionless"
+      },
+      {
+        "id": "n3",
+        "value": 2.0,
+        "unit": "1",
+        "basis": "dimensionless"
+      },
+      {
+        "id": "out11",
+        "value": 0.1,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "out12",
+        "value": 0.1,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "out13",
+        "value": 0.1,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "out21",
+        "value": 0.1,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "out22",
+        "value": 0.1,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "out23",
+        "value": 0.1,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "out31",
+        "value": 0.1,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "out32",
+        "value": 0.1,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "out33",
+        "value": 0.1,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "sigma1",
+        "value": 0.154,
+        "unit": "1/s",
+        "basis": "signal_per_synthase"
+      },
+      {
+        "id": "sigma2",
+        "value": 0.154,
+        "unit": "1/s",
+        "basis": "signal_per_synthase"
+      },
+      {
+        "id": "sigma3",
+        "value": 0.154,
+        "unit": "1/s",
+        "basis": "signal_per_synthase"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "basal1",
+        "flux": {
+          "op": "parameter",
+          "id": "b1"
+        },
+        "stoichiometry": {
+          "m1": 1
+        }
+      },
+      {
+        "id": "basal2",
+        "flux": {
+          "op": "parameter",
+          "id": "b2"
+        },
+        "stoichiometry": {
+          "m2": 1
+        }
+      },
+      {
+        "id": "basal3",
+        "flux": {
+          "op": "parameter",
+          "id": "b3"
+        },
+        "stoichiometry": {
+          "m3": 1
+        }
+      },
+      {
+        "id": "export11",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "out11"
+          },
+          "right": {
+            "op": "state",
+            "id": "a11"
+          }
+        },
+        "stoichiometry": {
+          "a11": -1,
+          "e1": {
+            "op": "population",
+            "id": "strain1"
+          }
+        }
+      },
+      {
+        "id": "export12",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "out12"
+          },
+          "right": {
+            "op": "state",
+            "id": "a12"
+          }
+        },
+        "stoichiometry": {
+          "a12": -1,
+          "e2": {
+            "op": "population",
+            "id": "strain1"
+          }
+        }
+      },
+      {
+        "id": "export13",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "out13"
+          },
+          "right": {
+            "op": "state",
+            "id": "a13"
+          }
+        },
+        "stoichiometry": {
+          "a13": -1,
+          "e3": {
+            "op": "population",
+            "id": "strain1"
+          }
+        }
+      },
+      {
+        "id": "export21",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "out21"
+          },
+          "right": {
+            "op": "state",
+            "id": "a21"
+          }
+        },
+        "stoichiometry": {
+          "a21": -1,
+          "e1": {
+            "op": "population",
+            "id": "strain2"
+          }
+        }
+      },
+      {
+        "id": "export22",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "out22"
+          },
+          "right": {
+            "op": "state",
+            "id": "a22"
+          }
+        },
+        "stoichiometry": {
+          "a22": -1,
+          "e2": {
+            "op": "population",
+            "id": "strain2"
+          }
+        }
+      },
+      {
+        "id": "export23",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "out23"
+          },
+          "right": {
+            "op": "state",
+            "id": "a23"
+          }
+        },
+        "stoichiometry": {
+          "a23": -1,
+          "e3": {
+            "op": "population",
+            "id": "strain2"
+          }
+        }
+      },
+      {
+        "id": "export31",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "out31"
+          },
+          "right": {
+            "op": "state",
+            "id": "a31"
+          }
+        },
+        "stoichiometry": {
+          "a31": -1,
+          "e1": {
+            "op": "population",
+            "id": "strain3"
+          }
+        }
+      },
+      {
+        "id": "export32",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "out32"
+          },
+          "right": {
+            "op": "state",
+            "id": "a32"
+          }
+        },
+        "stoichiometry": {
+          "a32": -1,
+          "e2": {
+            "op": "population",
+            "id": "strain3"
+          }
+        }
+      },
+      {
+        "id": "export33",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "out33"
+          },
+          "right": {
+            "op": "state",
+            "id": "a33"
+          }
+        },
+        "stoichiometry": {
+          "a33": -1,
+          "e3": {
+            "op": "population",
+            "id": "strain3"
+          }
+        }
+      },
+      {
+        "id": "import11",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "in11"
+          },
+          "right": {
+            "op": "multiply",
+            "left": {
+              "op": "volume",
+              "id": "strain1"
+            },
+            "right": {
+              "op": "divide",
+              "left": {
+                "op": "state",
+                "id": "e1"
+              },
+              "right": {
+                "op": "volume",
+                "id": "medium"
+              }
+            }
+          }
+        },
+        "stoichiometry": {
+          "a11": 1,
+          "e1": {
+            "op": "negative_population",
+            "id": "strain1"
+          }
+        }
+      },
+      {
+        "id": "import12",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "in12"
+          },
+          "right": {
+            "op": "multiply",
+            "left": {
+              "op": "volume",
+              "id": "strain1"
+            },
+            "right": {
+              "op": "divide",
+              "left": {
+                "op": "state",
+                "id": "e2"
+              },
+              "right": {
+                "op": "volume",
+                "id": "medium"
+              }
+            }
+          }
+        },
+        "stoichiometry": {
+          "a12": 1,
+          "e2": {
+            "op": "negative_population",
+            "id": "strain1"
+          }
+        }
+      },
+      {
+        "id": "import13",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "in13"
+          },
+          "right": {
+            "op": "multiply",
+            "left": {
+              "op": "volume",
+              "id": "strain1"
+            },
+            "right": {
+              "op": "divide",
+              "left": {
+                "op": "state",
+                "id": "e3"
+              },
+              "right": {
+                "op": "volume",
+                "id": "medium"
+              }
+            }
+          }
+        },
+        "stoichiometry": {
+          "a13": 1,
+          "e3": {
+            "op": "negative_population",
+            "id": "strain1"
+          }
+        }
+      },
+      {
+        "id": "import21",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "in21"
+          },
+          "right": {
+            "op": "multiply",
+            "left": {
+              "op": "volume",
+              "id": "strain2"
+            },
+            "right": {
+              "op": "divide",
+              "left": {
+                "op": "state",
+                "id": "e1"
+              },
+              "right": {
+                "op": "volume",
+                "id": "medium"
+              }
+            }
+          }
+        },
+        "stoichiometry": {
+          "a21": 1,
+          "e1": {
+            "op": "negative_population",
+            "id": "strain2"
+          }
+        }
+      },
+      {
+        "id": "import22",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "in22"
+          },
+          "right": {
+            "op": "multiply",
+            "left": {
+              "op": "volume",
+              "id": "strain2"
+            },
+            "right": {
+              "op": "divide",
+              "left": {
+                "op": "state",
+                "id": "e2"
+              },
+              "right": {
+                "op": "volume",
+                "id": "medium"
+              }
+            }
+          }
+        },
+        "stoichiometry": {
+          "a22": 1,
+          "e2": {
+            "op": "negative_population",
+            "id": "strain2"
+          }
+        }
+      },
+      {
+        "id": "import23",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "in23"
+          },
+          "right": {
+            "op": "multiply",
+            "left": {
+              "op": "volume",
+              "id": "strain2"
+            },
+            "right": {
+              "op": "divide",
+              "left": {
+                "op": "state",
+                "id": "e3"
+              },
+              "right": {
+                "op": "volume",
+                "id": "medium"
+              }
+            }
+          }
+        },
+        "stoichiometry": {
+          "a23": 1,
+          "e3": {
+            "op": "negative_population",
+            "id": "strain2"
+          }
+        }
+      },
+      {
+        "id": "import31",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "in31"
+          },
+          "right": {
+            "op": "multiply",
+            "left": {
+              "op": "volume",
+              "id": "strain3"
+            },
+            "right": {
+              "op": "divide",
+              "left": {
+                "op": "state",
+                "id": "e1"
+              },
+              "right": {
+                "op": "volume",
+                "id": "medium"
+              }
+            }
+          }
+        },
+        "stoichiometry": {
+          "a31": 1,
+          "e1": {
+            "op": "negative_population",
+            "id": "strain3"
+          }
+        }
+      },
+      {
+        "id": "import32",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "in32"
+          },
+          "right": {
+            "op": "multiply",
+            "left": {
+              "op": "volume",
+              "id": "strain3"
+            },
+            "right": {
+              "op": "divide",
+              "left": {
+                "op": "state",
+                "id": "e2"
+              },
+              "right": {
+                "op": "volume",
+                "id": "medium"
+              }
+            }
+          }
+        },
+        "stoichiometry": {
+          "a32": 1,
+          "e2": {
+            "op": "negative_population",
+            "id": "strain3"
+          }
+        }
+      },
+      {
+        "id": "import33",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "in33"
+          },
+          "right": {
+            "op": "multiply",
+            "left": {
+              "op": "volume",
+              "id": "strain3"
+            },
+            "right": {
+              "op": "divide",
+              "left": {
+                "op": "state",
+                "id": "e3"
+              },
+              "right": {
+                "op": "volume",
+                "id": "medium"
+              }
+            }
+          }
+        },
+        "stoichiometry": {
+          "a33": 1,
+          "e3": {
+            "op": "negative_population",
+            "id": "strain3"
+          }
+        }
+      },
+      {
+        "id": "medium_decay1",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "ge1"
+          },
+          "right": {
+            "op": "state",
+            "id": "e1"
+          }
+        },
+        "stoichiometry": {
+          "e1": -1
+        }
+      },
+      {
+        "id": "medium_decay2",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "ge2"
+          },
+          "right": {
+            "op": "state",
+            "id": "e2"
+          }
+        },
+        "stoichiometry": {
+          "e2": -1
+        }
+      },
+      {
+        "id": "medium_decay3",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "ge3"
+          },
+          "right": {
+            "op": "state",
+            "id": "e3"
+          }
+        },
+        "stoichiometry": {
+          "e3": -1
+        }
+      },
+      {
+        "id": "mrna_decay1",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "gm1"
+          },
+          "right": {
+            "op": "state",
+            "id": "m1"
+          }
+        },
+        "stoichiometry": {
+          "m1": -1
+        }
+      },
+      {
+        "id": "mrna_decay2",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "gm2"
+          },
+          "right": {
+            "op": "state",
+            "id": "m2"
+          }
+        },
+        "stoichiometry": {
+          "m2": -1
+        }
+      },
+      {
+        "id": "mrna_decay3",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "gm3"
+          },
+          "right": {
+            "op": "state",
+            "id": "m3"
+          }
+        },
+        "stoichiometry": {
+          "m3": -1
+        }
+      },
+      {
+        "id": "protein_decay1",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "gp1"
+          },
+          "right": {
+            "op": "state",
+            "id": "p1"
+          }
+        },
+        "stoichiometry": {
+          "p1": -1
+        }
+      },
+      {
+        "id": "protein_decay2",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "gp2"
+          },
+          "right": {
+            "op": "state",
+            "id": "p2"
+          }
+        },
+        "stoichiometry": {
+          "p2": -1
+        }
+      },
+      {
+        "id": "protein_decay3",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "gp3"
+          },
+          "right": {
+            "op": "state",
+            "id": "p3"
+          }
+        },
+        "stoichiometry": {
+          "p3": -1
+        }
+      },
+      {
+        "id": "repressed1",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "h1"
+          },
+          "right": {
+            "op": "hill_repression",
+            "sensor": {
+              "op": "divide",
+              "left": {
+                "op": "state",
+                "id": "a13"
+              },
+              "right": {
+                "op": "volume",
+                "id": "strain1"
+              }
+            },
+            "threshold": {
+              "op": "parameter",
+              "id": "K1"
+            },
+            "exponent": {
+              "op": "parameter",
+              "id": "n1"
+            }
+          }
+        },
+        "stoichiometry": {
+          "m1": 1
+        }
+      },
+      {
+        "id": "repressed2",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "h2"
+          },
+          "right": {
+            "op": "hill_repression",
+            "sensor": {
+              "op": "divide",
+              "left": {
+                "op": "state",
+                "id": "a21"
+              },
+              "right": {
+                "op": "volume",
+                "id": "strain2"
+              }
+            },
+            "threshold": {
+              "op": "parameter",
+              "id": "K2"
+            },
+            "exponent": {
+              "op": "parameter",
+              "id": "n2"
+            }
+          }
+        },
+        "stoichiometry": {
+          "m2": 1
+        }
+      },
+      {
+        "id": "repressed3",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "h3"
+          },
+          "right": {
+            "op": "hill_repression",
+            "sensor": {
+              "op": "divide",
+              "left": {
+                "op": "state",
+                "id": "a32"
+              },
+              "right": {
+                "op": "volume",
+                "id": "strain3"
+              }
+            },
+            "threshold": {
+              "op": "parameter",
+              "id": "K3"
+            },
+            "exponent": {
+              "op": "parameter",
+              "id": "n3"
+            }
+          }
+        },
+        "stoichiometry": {
+          "m3": 1
+        }
+      },
+      {
+        "id": "signal_decay11",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "ga11"
+          },
+          "right": {
+            "op": "state",
+            "id": "a11"
+          }
+        },
+        "stoichiometry": {
+          "a11": -1
+        }
+      },
+      {
+        "id": "signal_decay12",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "ga12"
+          },
+          "right": {
+            "op": "state",
+            "id": "a12"
+          }
+        },
+        "stoichiometry": {
+          "a12": -1
+        }
+      },
+      {
+        "id": "signal_decay13",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "ga13"
+          },
+          "right": {
+            "op": "state",
+            "id": "a13"
+          }
+        },
+        "stoichiometry": {
+          "a13": -1
+        }
+      },
+      {
+        "id": "signal_decay21",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "ga21"
+          },
+          "right": {
+            "op": "state",
+            "id": "a21"
+          }
+        },
+        "stoichiometry": {
+          "a21": -1
+        }
+      },
+      {
+        "id": "signal_decay22",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "ga22"
+          },
+          "right": {
+            "op": "state",
+            "id": "a22"
+          }
+        },
+        "stoichiometry": {
+          "a22": -1
+        }
+      },
+      {
+        "id": "signal_decay23",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "ga23"
+          },
+          "right": {
+            "op": "state",
+            "id": "a23"
+          }
+        },
+        "stoichiometry": {
+          "a23": -1
+        }
+      },
+      {
+        "id": "signal_decay31",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "ga31"
+          },
+          "right": {
+            "op": "state",
+            "id": "a31"
+          }
+        },
+        "stoichiometry": {
+          "a31": -1
+        }
+      },
+      {
+        "id": "signal_decay32",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "ga32"
+          },
+          "right": {
+            "op": "state",
+            "id": "a32"
+          }
+        },
+        "stoichiometry": {
+          "a32": -1
+        }
+      },
+      {
+        "id": "signal_decay33",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "ga33"
+          },
+          "right": {
+            "op": "state",
+            "id": "a33"
+          }
+        },
+        "stoichiometry": {
+          "a33": -1
+        }
+      },
+      {
+        "id": "synthesis1",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "sigma1"
+          },
+          "right": {
+            "op": "state",
+            "id": "p1"
+          }
+        },
+        "stoichiometry": {
+          "a11": 1
+        }
+      },
+      {
+        "id": "synthesis2",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "sigma2"
+          },
+          "right": {
+            "op": "state",
+            "id": "p2"
+          }
+        },
+        "stoichiometry": {
+          "a22": 1
+        }
+      },
+      {
+        "id": "synthesis3",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "sigma3"
+          },
+          "right": {
+            "op": "state",
+            "id": "p3"
+          }
+        },
+        "stoichiometry": {
+          "a33": 1
+        }
+      },
+      {
+        "id": "translation1",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "beta1"
+          },
+          "right": {
+            "op": "state",
+            "id": "m1"
+          }
+        },
+        "stoichiometry": {
+          "p1": 1
+        }
+      },
+      {
+        "id": "translation2",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "beta2"
+          },
+          "right": {
+            "op": "state",
+            "id": "m2"
+          }
+        },
+        "stoichiometry": {
+          "p2": 1
+        }
+      },
+      {
+        "id": "translation3",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "beta3"
+          },
+          "right": {
+            "op": "state",
+            "id": "m3"
+          }
+        },
+        "stoichiometry": {
+          "p3": 1
+        }
+      }
+    ],
+    "equations": [
+      {
+        "state": "a11",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "add",
+            "left": {
+              "op": "flux",
+              "id": "synthesis1"
+            },
+            "right": {
+              "op": "flux",
+              "id": "import11"
+            }
+          },
+          "right": {
+            "op": "add",
+            "left": {
+              "op": "flux",
+              "id": "export11"
+            },
+            "right": {
+              "op": "flux",
+              "id": "signal_decay11"
+            }
+          }
+        }
+      },
+      {
+        "state": "a12",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "flux",
+            "id": "import12"
+          },
+          "right": {
+            "op": "add",
+            "left": {
+              "op": "flux",
+              "id": "export12"
+            },
+            "right": {
+              "op": "flux",
+              "id": "signal_decay12"
+            }
+          }
+        }
+      },
+      {
+        "state": "a13",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "flux",
+            "id": "import13"
+          },
+          "right": {
+            "op": "add",
+            "left": {
+              "op": "flux",
+              "id": "export13"
+            },
+            "right": {
+              "op": "flux",
+              "id": "signal_decay13"
+            }
+          }
+        }
+      },
+      {
+        "state": "a21",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "flux",
+            "id": "import21"
+          },
+          "right": {
+            "op": "add",
+            "left": {
+              "op": "flux",
+              "id": "export21"
+            },
+            "right": {
+              "op": "flux",
+              "id": "signal_decay21"
+            }
+          }
+        }
+      },
+      {
+        "state": "a22",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "add",
+            "left": {
+              "op": "flux",
+              "id": "synthesis2"
+            },
+            "right": {
+              "op": "flux",
+              "id": "import22"
+            }
+          },
+          "right": {
+            "op": "add",
+            "left": {
+              "op": "flux",
+              "id": "export22"
+            },
+            "right": {
+              "op": "flux",
+              "id": "signal_decay22"
+            }
+          }
+        }
+      },
+      {
+        "state": "a23",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "flux",
+            "id": "import23"
+          },
+          "right": {
+            "op": "add",
+            "left": {
+              "op": "flux",
+              "id": "export23"
+            },
+            "right": {
+              "op": "flux",
+              "id": "signal_decay23"
+            }
+          }
+        }
+      },
+      {
+        "state": "a31",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "flux",
+            "id": "import31"
+          },
+          "right": {
+            "op": "add",
+            "left": {
+              "op": "flux",
+              "id": "export31"
+            },
+            "right": {
+              "op": "flux",
+              "id": "signal_decay31"
+            }
+          }
+        }
+      },
+      {
+        "state": "a32",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "flux",
+            "id": "import32"
+          },
+          "right": {
+            "op": "add",
+            "left": {
+              "op": "flux",
+              "id": "export32"
+            },
+            "right": {
+              "op": "flux",
+              "id": "signal_decay32"
+            }
+          }
+        }
+      },
+      {
+        "state": "a33",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "add",
+            "left": {
+              "op": "flux",
+              "id": "synthesis3"
+            },
+            "right": {
+              "op": "flux",
+              "id": "import33"
+            }
+          },
+          "right": {
+            "op": "add",
+            "left": {
+              "op": "flux",
+              "id": "export33"
+            },
+            "right": {
+              "op": "flux",
+              "id": "signal_decay33"
+            }
+          }
+        }
+      },
+      {
+        "state": "e1",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "add",
+            "left": {
+              "op": "add",
+              "left": {
+                "op": "multiply",
+                "left": {
+                  "op": "population",
+                  "id": "strain1"
+                },
+                "right": {
+                  "op": "flux",
+                  "id": "export11"
+                }
+              },
+              "right": {
+                "op": "multiply",
+                "left": {
+                  "op": "population",
+                  "id": "strain2"
+                },
+                "right": {
+                  "op": "flux",
+                  "id": "export21"
+                }
+              }
+            },
+            "right": {
+              "op": "multiply",
+              "left": {
+                "op": "population",
+                "id": "strain3"
+              },
+              "right": {
+                "op": "flux",
+                "id": "export31"
+              }
+            }
+          },
+          "right": {
+            "op": "add",
+            "left": {
+              "op": "add",
+              "left": {
+                "op": "add",
+                "left": {
+                  "op": "multiply",
+                  "left": {
+                    "op": "population",
+                    "id": "strain1"
+                  },
+                  "right": {
+                    "op": "flux",
+                    "id": "import11"
+                  }
+                },
+                "right": {
+                  "op": "multiply",
+                  "left": {
+                    "op": "population",
+                    "id": "strain2"
+                  },
+                  "right": {
+                    "op": "flux",
+                    "id": "import21"
+                  }
+                }
+              },
+              "right": {
+                "op": "multiply",
+                "left": {
+                  "op": "population",
+                  "id": "strain3"
+                },
+                "right": {
+                  "op": "flux",
+                  "id": "import31"
+                }
+              }
+            },
+            "right": {
+              "op": "flux",
+              "id": "medium_decay1"
+            }
+          }
+        }
+      },
+      {
+        "state": "e2",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "add",
+            "left": {
+              "op": "add",
+              "left": {
+                "op": "multiply",
+                "left": {
+                  "op": "population",
+                  "id": "strain1"
+                },
+                "right": {
+                  "op": "flux",
+                  "id": "export12"
+                }
+              },
+              "right": {
+                "op": "multiply",
+                "left": {
+                  "op": "population",
+                  "id": "strain2"
+                },
+                "right": {
+                  "op": "flux",
+                  "id": "export22"
+                }
+              }
+            },
+            "right": {
+              "op": "multiply",
+              "left": {
+                "op": "population",
+                "id": "strain3"
+              },
+              "right": {
+                "op": "flux",
+                "id": "export32"
+              }
+            }
+          },
+          "right": {
+            "op": "add",
+            "left": {
+              "op": "add",
+              "left": {
+                "op": "add",
+                "left": {
+                  "op": "multiply",
+                  "left": {
+                    "op": "population",
+                    "id": "strain1"
+                  },
+                  "right": {
+                    "op": "flux",
+                    "id": "import12"
+                  }
+                },
+                "right": {
+                  "op": "multiply",
+                  "left": {
+                    "op": "population",
+                    "id": "strain2"
+                  },
+                  "right": {
+                    "op": "flux",
+                    "id": "import22"
+                  }
+                }
+              },
+              "right": {
+                "op": "multiply",
+                "left": {
+                  "op": "population",
+                  "id": "strain3"
+                },
+                "right": {
+                  "op": "flux",
+                  "id": "import32"
+                }
+              }
+            },
+            "right": {
+              "op": "flux",
+              "id": "medium_decay2"
+            }
+          }
+        }
+      },
+      {
+        "state": "e3",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "add",
+            "left": {
+              "op": "add",
+              "left": {
+                "op": "multiply",
+                "left": {
+                  "op": "population",
+                  "id": "strain1"
+                },
+                "right": {
+                  "op": "flux",
+                  "id": "export13"
+                }
+              },
+              "right": {
+                "op": "multiply",
+                "left": {
+                  "op": "population",
+                  "id": "strain2"
+                },
+                "right": {
+                  "op": "flux",
+                  "id": "export23"
+                }
+              }
+            },
+            "right": {
+              "op": "multiply",
+              "left": {
+                "op": "population",
+                "id": "strain3"
+              },
+              "right": {
+                "op": "flux",
+                "id": "export33"
+              }
+            }
+          },
+          "right": {
+            "op": "add",
+            "left": {
+              "op": "add",
+              "left": {
+                "op": "add",
+                "left": {
+                  "op": "multiply",
+                  "left": {
+                    "op": "population",
+                    "id": "strain1"
+                  },
+                  "right": {
+                    "op": "flux",
+                    "id": "import13"
+                  }
+                },
+                "right": {
+                  "op": "multiply",
+                  "left": {
+                    "op": "population",
+                    "id": "strain2"
+                  },
+                  "right": {
+                    "op": "flux",
+                    "id": "import23"
+                  }
+                }
+              },
+              "right": {
+                "op": "multiply",
+                "left": {
+                  "op": "population",
+                  "id": "strain3"
+                },
+                "right": {
+                  "op": "flux",
+                  "id": "import33"
+                }
+              }
+            },
+            "right": {
+              "op": "flux",
+              "id": "medium_decay3"
+            }
+          }
+        }
+      },
+      {
+        "state": "m1",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "add",
+            "left": {
+              "op": "flux",
+              "id": "basal1"
+            },
+            "right": {
+              "op": "flux",
+              "id": "repressed1"
+            }
+          },
+          "right": {
+            "op": "flux",
+            "id": "mrna_decay1"
+          }
+        }
+      },
+      {
+        "state": "m2",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "add",
+            "left": {
+              "op": "flux",
+              "id": "basal2"
+            },
+            "right": {
+              "op": "flux",
+              "id": "repressed2"
+            }
+          },
+          "right": {
+            "op": "flux",
+            "id": "mrna_decay2"
+          }
+        }
+      },
+      {
+        "state": "m3",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "add",
+            "left": {
+              "op": "flux",
+              "id": "basal3"
+            },
+            "right": {
+              "op": "flux",
+              "id": "repressed3"
+            }
+          },
+          "right": {
+            "op": "flux",
+            "id": "mrna_decay3"
+          }
+        }
+      },
+      {
+        "state": "p1",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "flux",
+            "id": "translation1"
+          },
+          "right": {
+            "op": "flux",
+            "id": "protein_decay1"
+          }
+        }
+      },
+      {
+        "state": "p2",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "flux",
+            "id": "translation2"
+          },
+          "right": {
+            "op": "flux",
+            "id": "protein_decay2"
+          }
+        }
+      },
+      {
+        "state": "p3",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "flux",
+            "id": "translation3"
+          },
+          "right": {
+            "op": "flux",
+            "id": "protein_decay3"
+          }
+        }
+      }
+    ],
+    "observables": [
+      {
+        "id": "observe_a13",
+        "state": "a13",
+        "owner": "strain1",
+        "scope": "representative_cell",
+        "unit": "molecule"
+      },
+      {
+        "id": "observe_e1",
+        "state": "e1",
+        "owner": "medium",
+        "scope": "environment_total",
+        "unit": "molecule"
+      },
+      {
+        "id": "observe_e2",
+        "state": "e2",
+        "owner": "medium",
+        "scope": "environment_total",
+        "unit": "molecule"
+      },
+      {
+        "id": "observe_e3",
+        "state": "e3",
+        "owner": "medium",
+        "scope": "environment_total",
+        "unit": "molecule"
+      },
+      {
+        "id": "observe_p1",
+        "state": "p1",
+        "owner": "strain1",
+        "scope": "representative_cell",
+        "unit": "molecule"
+      },
+      {
+        "id": "observe_p2",
+        "state": "p2",
+        "owner": "strain2",
+        "scope": "representative_cell",
+        "unit": "molecule"
+      },
+      {
+        "id": "observe_p3",
+        "state": "p3",
+        "owner": "strain3",
+        "scope": "representative_cell",
+        "unit": "molecule"
+      }
+    ],
+    "assumptions": [
+      "constant_rates",
+      "fixed_populations",
+      "fixed_volume",
+      "no_interventions",
+      "read_only_sensing",
+      "three_strain_ring",
+      "well_mixed"
+    ],
+    "capabilities": {
+      "ode": true,
+      "ssa": false
+    }
+  },
+  "provenance": {
+    "design": {
+      "schema_version": "0.3.0",
+      "id": "three-strain",
+      "revision": 1,
+      "digest": "ebb9c7b1ac5a54171274d2a66b672537a02641879ec046495c5c042539589512"
+    },
+    "experiment": {
+      "schema_version": "0.3.0",
+      "id": "scenario",
+      "revision": 1,
+      "digest": "8b7ce425d6cd5f04ae7059df2d32993f85d7c9834bfc200ba00edf467b8fb789"
+    },
+    "symbol_map": {
+      "owners": [
+        {
+          "fir_owner": "strain1",
+          "source_owner": "strainA"
+        },
+        {
+          "fir_owner": "strain2",
+          "source_owner": "strainB"
+        },
+        {
+          "fir_owner": "strain3",
+          "source_owner": "strainC"
+        },
+        {
+          "fir_owner": "medium",
+          "source_owner": "bath"
+        }
+      ],
+      "states": [
+        {
+          "fir_state": "a11",
+          "source_endpoint": {
+            "owner": "strainA",
+            "species": "signal1",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "a12",
+          "source_endpoint": {
+            "owner": "strainA",
+            "species": "signal2",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "a13",
+          "source_endpoint": {
+            "owner": "strainA",
+            "species": "signal3",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "a21",
+          "source_endpoint": {
+            "owner": "strainB",
+            "species": "signal1",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "a22",
+          "source_endpoint": {
+            "owner": "strainB",
+            "species": "signal2",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "a23",
+          "source_endpoint": {
+            "owner": "strainB",
+            "species": "signal3",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "a31",
+          "source_endpoint": {
+            "owner": "strainC",
+            "species": "signal1",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "a32",
+          "source_endpoint": {
+            "owner": "strainC",
+            "species": "signal2",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "a33",
+          "source_endpoint": {
+            "owner": "strainC",
+            "species": "signal3",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "e1",
+          "source_endpoint": {
+            "owner": "bath",
+            "species": "signal1",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "e2",
+          "source_endpoint": {
+            "owner": "bath",
+            "species": "signal2",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "e3",
+          "source_endpoint": {
+            "owner": "bath",
+            "species": "signal3",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "m1",
+          "source_endpoint": {
+            "owner": "strainA",
+            "species": "transcript",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "m2",
+          "source_endpoint": {
+            "owner": "strainB",
+            "species": "transcript",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "m3",
+          "source_endpoint": {
+            "owner": "strainC",
+            "species": "transcript",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "p1",
+          "source_endpoint": {
+            "owner": "strainA",
+            "species": "synthase",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "p2",
+          "source_endpoint": {
+            "owner": "strainB",
+            "species": "synthase",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "p3",
+          "source_endpoint": {
+            "owner": "strainC",
+            "species": "synthase",
+            "port": "amount"
+          }
+        }
+      ],
+      "parameters": [
+        {
+          "fir_parameter": "K1",
+          "source_parameter": "par_K1"
+        },
+        {
+          "fir_parameter": "K2",
+          "source_parameter": "par_K2"
+        },
+        {
+          "fir_parameter": "K3",
+          "source_parameter": "par_K3"
+        },
+        {
+          "fir_parameter": "b1",
+          "source_parameter": "par_b1"
+        },
+        {
+          "fir_parameter": "b2",
+          "source_parameter": "par_b2"
+        },
+        {
+          "fir_parameter": "b3",
+          "source_parameter": "par_b3"
+        },
+        {
+          "fir_parameter": "beta1",
+          "source_parameter": "par_beta1"
+        },
+        {
+          "fir_parameter": "beta2",
+          "source_parameter": "par_beta2"
+        },
+        {
+          "fir_parameter": "beta3",
+          "source_parameter": "par_beta3"
+        },
+        {
+          "fir_parameter": "ga11",
+          "source_parameter": "par_ga11"
+        },
+        {
+          "fir_parameter": "ga12",
+          "source_parameter": "par_ga12"
+        },
+        {
+          "fir_parameter": "ga13",
+          "source_parameter": "par_ga13"
+        },
+        {
+          "fir_parameter": "ga21",
+          "source_parameter": "par_ga21"
+        },
+        {
+          "fir_parameter": "ga22",
+          "source_parameter": "par_ga22"
+        },
+        {
+          "fir_parameter": "ga23",
+          "source_parameter": "par_ga23"
+        },
+        {
+          "fir_parameter": "ga31",
+          "source_parameter": "par_ga31"
+        },
+        {
+          "fir_parameter": "ga32",
+          "source_parameter": "par_ga32"
+        },
+        {
+          "fir_parameter": "ga33",
+          "source_parameter": "par_ga33"
+        },
+        {
+          "fir_parameter": "ge1",
+          "source_parameter": "par_ge1"
+        },
+        {
+          "fir_parameter": "ge2",
+          "source_parameter": "par_ge2"
+        },
+        {
+          "fir_parameter": "ge3",
+          "source_parameter": "par_ge3"
+        },
+        {
+          "fir_parameter": "gm1",
+          "source_parameter": "par_gm1"
+        },
+        {
+          "fir_parameter": "gm2",
+          "source_parameter": "par_gm2"
+        },
+        {
+          "fir_parameter": "gm3",
+          "source_parameter": "par_gm3"
+        },
+        {
+          "fir_parameter": "gp1",
+          "source_parameter": "par_gp1"
+        },
+        {
+          "fir_parameter": "gp2",
+          "source_parameter": "par_gp2"
+        },
+        {
+          "fir_parameter": "gp3",
+          "source_parameter": "par_gp3"
+        },
+        {
+          "fir_parameter": "h1",
+          "source_parameter": "par_h1"
+        },
+        {
+          "fir_parameter": "h2",
+          "source_parameter": "par_h2"
+        },
+        {
+          "fir_parameter": "h3",
+          "source_parameter": "par_h3"
+        },
+        {
+          "fir_parameter": "in11",
+          "source_parameter": "par_in11"
+        },
+        {
+          "fir_parameter": "in12",
+          "source_parameter": "par_in12"
+        },
+        {
+          "fir_parameter": "in13",
+          "source_parameter": "par_in13"
+        },
+        {
+          "fir_parameter": "in21",
+          "source_parameter": "par_in21"
+        },
+        {
+          "fir_parameter": "in22",
+          "source_parameter": "par_in22"
+        },
+        {
+          "fir_parameter": "in23",
+          "source_parameter": "par_in23"
+        },
+        {
+          "fir_parameter": "in31",
+          "source_parameter": "par_in31"
+        },
+        {
+          "fir_parameter": "in32",
+          "source_parameter": "par_in32"
+        },
+        {
+          "fir_parameter": "in33",
+          "source_parameter": "par_in33"
+        },
+        {
+          "fir_parameter": "n1",
+          "source_parameter": "par_n1"
+        },
+        {
+          "fir_parameter": "n2",
+          "source_parameter": "par_n2"
+        },
+        {
+          "fir_parameter": "n3",
+          "source_parameter": "par_n3"
+        },
+        {
+          "fir_parameter": "out11",
+          "source_parameter": "par_out11"
+        },
+        {
+          "fir_parameter": "out12",
+          "source_parameter": "par_out12"
+        },
+        {
+          "fir_parameter": "out13",
+          "source_parameter": "par_out13"
+        },
+        {
+          "fir_parameter": "out21",
+          "source_parameter": "par_out21"
+        },
+        {
+          "fir_parameter": "out22",
+          "source_parameter": "par_out22"
+        },
+        {
+          "fir_parameter": "out23",
+          "source_parameter": "par_out23"
+        },
+        {
+          "fir_parameter": "out31",
+          "source_parameter": "par_out31"
+        },
+        {
+          "fir_parameter": "out32",
+          "source_parameter": "par_out32"
+        },
+        {
+          "fir_parameter": "out33",
+          "source_parameter": "par_out33"
+        },
+        {
+          "fir_parameter": "sigma1",
+          "source_parameter": "par_sigma1"
+        },
+        {
+          "fir_parameter": "sigma2",
+          "source_parameter": "par_sigma2"
+        },
+        {
+          "fir_parameter": "sigma3",
+          "source_parameter": "par_sigma3"
+        }
+      ],
+      "reactions": [
+        {
+          "fir_reaction": "basal1",
+          "source_collection": "gates",
+          "source_function": "not1",
+          "source_role": "basal"
+        },
+        {
+          "fir_reaction": "basal2",
+          "source_collection": "gates",
+          "source_function": "not2",
+          "source_role": "basal"
+        },
+        {
+          "fir_reaction": "basal3",
+          "source_collection": "gates",
+          "source_function": "not3",
+          "source_role": "basal"
+        },
+        {
+          "fir_reaction": "export11",
+          "source_collection": "transport",
+          "source_function": "out_11",
+          "source_role": "export"
+        },
+        {
+          "fir_reaction": "export12",
+          "source_collection": "transport",
+          "source_function": "out_12",
+          "source_role": "export"
+        },
+        {
+          "fir_reaction": "export13",
+          "source_collection": "transport",
+          "source_function": "out_13",
+          "source_role": "export"
+        },
+        {
+          "fir_reaction": "export21",
+          "source_collection": "transport",
+          "source_function": "out_21",
+          "source_role": "export"
+        },
+        {
+          "fir_reaction": "export22",
+          "source_collection": "transport",
+          "source_function": "out_22",
+          "source_role": "export"
+        },
+        {
+          "fir_reaction": "export23",
+          "source_collection": "transport",
+          "source_function": "out_23",
+          "source_role": "export"
+        },
+        {
+          "fir_reaction": "export31",
+          "source_collection": "transport",
+          "source_function": "out_31",
+          "source_role": "export"
+        },
+        {
+          "fir_reaction": "export32",
+          "source_collection": "transport",
+          "source_function": "out_32",
+          "source_role": "export"
+        },
+        {
+          "fir_reaction": "export33",
+          "source_collection": "transport",
+          "source_function": "out_33",
+          "source_role": "export"
+        },
+        {
+          "fir_reaction": "import11",
+          "source_collection": "transport",
+          "source_function": "in_11",
+          "source_role": "import"
+        },
+        {
+          "fir_reaction": "import12",
+          "source_collection": "transport",
+          "source_function": "in_12",
+          "source_role": "import"
+        },
+        {
+          "fir_reaction": "import13",
+          "source_collection": "transport",
+          "source_function": "in_13",
+          "source_role": "import"
+        },
+        {
+          "fir_reaction": "import21",
+          "source_collection": "transport",
+          "source_function": "in_21",
+          "source_role": "import"
+        },
+        {
+          "fir_reaction": "import22",
+          "source_collection": "transport",
+          "source_function": "in_22",
+          "source_role": "import"
+        },
+        {
+          "fir_reaction": "import23",
+          "source_collection": "transport",
+          "source_function": "in_23",
+          "source_role": "import"
+        },
+        {
+          "fir_reaction": "import31",
+          "source_collection": "transport",
+          "source_function": "in_31",
+          "source_role": "import"
+        },
+        {
+          "fir_reaction": "import32",
+          "source_collection": "transport",
+          "source_function": "in_32",
+          "source_role": "import"
+        },
+        {
+          "fir_reaction": "import33",
+          "source_collection": "transport",
+          "source_function": "in_33",
+          "source_role": "import"
+        },
+        {
+          "fir_reaction": "medium_decay1",
+          "source_collection": "signal_losses",
+          "source_function": "loss_e1",
+          "source_role": "loss"
+        },
+        {
+          "fir_reaction": "medium_decay2",
+          "source_collection": "signal_losses",
+          "source_function": "loss_e2",
+          "source_role": "loss"
+        },
+        {
+          "fir_reaction": "medium_decay3",
+          "source_collection": "signal_losses",
+          "source_function": "loss_e3",
+          "source_role": "loss"
+        },
+        {
+          "fir_reaction": "mrna_decay1",
+          "source_collection": "gates",
+          "source_function": "not1",
+          "source_role": "mrna_decay"
+        },
+        {
+          "fir_reaction": "mrna_decay2",
+          "source_collection": "gates",
+          "source_function": "not2",
+          "source_role": "mrna_decay"
+        },
+        {
+          "fir_reaction": "mrna_decay3",
+          "source_collection": "gates",
+          "source_function": "not3",
+          "source_role": "mrna_decay"
+        },
+        {
+          "fir_reaction": "protein_decay1",
+          "source_collection": "gates",
+          "source_function": "not1",
+          "source_role": "protein_decay"
+        },
+        {
+          "fir_reaction": "protein_decay2",
+          "source_collection": "gates",
+          "source_function": "not2",
+          "source_role": "protein_decay"
+        },
+        {
+          "fir_reaction": "protein_decay3",
+          "source_collection": "gates",
+          "source_function": "not3",
+          "source_role": "protein_decay"
+        },
+        {
+          "fir_reaction": "repressed1",
+          "source_collection": "gates",
+          "source_function": "not1",
+          "source_role": "induced"
+        },
+        {
+          "fir_reaction": "repressed2",
+          "source_collection": "gates",
+          "source_function": "not2",
+          "source_role": "induced"
+        },
+        {
+          "fir_reaction": "repressed3",
+          "source_collection": "gates",
+          "source_function": "not3",
+          "source_role": "induced"
+        },
+        {
+          "fir_reaction": "signal_decay11",
+          "source_collection": "signal_losses",
+          "source_function": "loss_a11",
+          "source_role": "loss"
+        },
+        {
+          "fir_reaction": "signal_decay12",
+          "source_collection": "signal_losses",
+          "source_function": "loss_a12",
+          "source_role": "loss"
+        },
+        {
+          "fir_reaction": "signal_decay13",
+          "source_collection": "signal_losses",
+          "source_function": "loss_a13",
+          "source_role": "loss"
+        },
+        {
+          "fir_reaction": "signal_decay21",
+          "source_collection": "signal_losses",
+          "source_function": "loss_a21",
+          "source_role": "loss"
+        },
+        {
+          "fir_reaction": "signal_decay22",
+          "source_collection": "signal_losses",
+          "source_function": "loss_a22",
+          "source_role": "loss"
+        },
+        {
+          "fir_reaction": "signal_decay23",
+          "source_collection": "signal_losses",
+          "source_function": "loss_a23",
+          "source_role": "loss"
+        },
+        {
+          "fir_reaction": "signal_decay31",
+          "source_collection": "signal_losses",
+          "source_function": "loss_a31",
+          "source_role": "loss"
+        },
+        {
+          "fir_reaction": "signal_decay32",
+          "source_collection": "signal_losses",
+          "source_function": "loss_a32",
+          "source_role": "loss"
+        },
+        {
+          "fir_reaction": "signal_decay33",
+          "source_collection": "signal_losses",
+          "source_function": "loss_a33",
+          "source_role": "loss"
+        },
+        {
+          "fir_reaction": "synthesis1",
+          "source_collection": "signal_synthesis",
+          "source_function": "synthesize1",
+          "source_role": "synthesis"
+        },
+        {
+          "fir_reaction": "synthesis2",
+          "source_collection": "signal_synthesis",
+          "source_function": "synthesize2",
+          "source_role": "synthesis"
+        },
+        {
+          "fir_reaction": "synthesis3",
+          "source_collection": "signal_synthesis",
+          "source_function": "synthesize3",
+          "source_role": "synthesis"
+        },
+        {
+          "fir_reaction": "translation1",
+          "source_collection": "gates",
+          "source_function": "not1",
+          "source_role": "translation"
+        },
+        {
+          "fir_reaction": "translation2",
+          "source_collection": "gates",
+          "source_function": "not2",
+          "source_role": "translation"
+        },
+        {
+          "fir_reaction": "translation3",
+          "source_collection": "gates",
+          "source_function": "not3",
+          "source_role": "translation"
+        }
+      ]
+    }
+  }
+}
