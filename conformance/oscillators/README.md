@@ -75,6 +75,11 @@ integrations and unexpectedly oscillatory controls; orchestration stubs supply
 no new scientific reference values.
 Reports and plots are generated observations, never checked-in golden values.
 
+The separate [proposed density-coordinate RK4 study](nonlinear/README.md)
+adds an independently derived RHS and fixed-step refinement over the complete
+primary traces, checked against the analytical component laws. It supplies
+proposed nonlinear numerical evidence, retaining its own human acceptance gate.
+
 These two methods share SciPy and the same proposed RHS. Their agreement tests
 numerical feasibility, not independent implementation correctness or biological
 validity. No empirical calibration, stochastic simulation, growth, spatial

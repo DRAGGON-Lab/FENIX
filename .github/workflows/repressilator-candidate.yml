@@ -21,8 +21,10 @@ jobs:
       - run: uv sync --project conformance/oscillators --locked
       - run: uv run --project conformance/oscillators --locked --offline python -m unittest discover -s conformance/oscillators -v
       - run: uv run --project conformance/oscillators --locked --offline python -m unittest discover -s conformance/oscillators/references -v
+      - run: uv run --project conformance/oscillators --locked --offline python -m unittest discover -s conformance/oscillators/nonlinear -v
       - run: uv run --project conformance/oscillators --locked --offline python conformance/oscillators/study.py --output-dir artifacts/repressilator-study
       - run: uv run --project conformance/oscillators --locked --offline python conformance/oscillators/references/compare_study.py --output artifacts/repressilator-study/analytical-study-comparison.json
+      - run: uv run --project conformance/oscillators --locked --offline python conformance/oscillators/nonlinear/rk4.py --study-dir artifacts/repressilator-study --output-dir artifacts/repressilator-study/independent-rk4
       - uses: actions/upload-artifact@v4
         if: always()
         with:
