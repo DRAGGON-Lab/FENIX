@@ -5,6 +5,7 @@ builder from approved templates/catalogs, not from either native compiler.
 """
 
 import argparse
+import copy
 import hashlib
 import json
 import math
@@ -21,9 +22,9 @@ from referencing import Registry, Resource
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "conformance/native"))
 sys.path.insert(0, str(ROOT / "conformance/rejections"))
-import reference as fir_reference
-from common import locked_dependencies, read_report, reference_model
-from ode_common import METHODS, bits, make_references
+import reference as fir_reference  # noqa: E402 - repository-only tools need the local paths above
+from common import blob, locked_dependencies, read_report, reference_model  # noqa: E402 - repository-only tools need the local paths above
+from ode_common import METHODS, bits, make_references  # noqa: E402 - repository-only tools need the local paths above
 
 CASES = ("baseline-five", "linear-production")
 
@@ -310,9 +311,76 @@ def validate_example(directory, language, case, method, package_root, expected):
     return want_fir
 
 
+# Source changes below follow existing P01/P02 identity rules; the mathematical
+# model and all approved sample expectations remain exactly the original ones.
+def revision_expectation(expected):
+    revised = copy.deepcopy(expected)
+    design = json.loads(bytes.fromhex(expected["artifacts"]["design"]["hex"]))
+    design["revision"] = 2
+    design["compartments"][0]["volume"]["value"] = 2e-15
+    design["parameters"].reverse()
+    design["functions"].reverse()
+    design_bytes = rfc8785.dumps(design)
+    experiment = json.loads(bytes.fromhex(expected["artifacts"]["experiment"]["hex"]))
+    experiment["revision"] = 2
+    experiment["design"]["revision"] = 2
+    experiment["design"]["digest"] = sha(design_bytes)
+    experiment["parameters"].reverse()
+    experiment_bytes = rfc8785.dumps(experiment)
+    revised["artifacts"]["design"] = blob(design_bytes)
+    revised["artifacts"]["experiment"] = blob(experiment_bytes)
+    revised["experiment"] = {"content": experiment, "digest": sha(experiment_bytes)}
+    return revised
+
+
+def validate_revision_workflow(
+    directory, language, case, method, package_root, expected
+):
+    revised = revision_expectation(expected)
+    identity = validate_example(
+        directory / "original", language, case, method, package_root, expected
+    )
+    require(
+        validate_example(
+            directory / "revised", language, case, method, package_root, revised
+        )
+        == identity,
+        "source revision changed mathematical identity",
+    )
+    diagnostics = {
+        "same_revision_change": ("IMMUTABLE_REVISION", "/content/revision"),
+        "old_experiment_new_design": ("DESIGN_REFERENCE", "/content/design/revision"),
+        "old_fir_new_sources": ("SOURCE_DIGEST", "/provenance/design_digest"),
+        "old_record_new_sources": ("REFERENCE", "/manifest/sources/design/revision"),
+        "new_record_old_sources": ("REFERENCE", "/manifest/sources/design/revision"),
+        "result_transport_checksum": ("CHECKSUM", "/manifest/output/sha256"),
+        "manifest_transport_checksum": ("CHECKSUM", "/manifest"),
+    }
+    require(
+        read_report(directory / "summary.json")
+        == {
+            "format": "m0-source-revisions-v1",
+            "case": case,
+            "method": method,
+            "fir_digest": identity,
+            "original_design_digest": expected["artifacts"]["design"]["sha256"],
+            "original_experiment_digest": expected["artifacts"]["experiment"]["sha256"],
+            "revised_design_digest": revised["artifacts"]["design"]["sha256"],
+            "revised_experiment_digest": revised["artifacts"]["experiment"]["sha256"],
+            "rejections": {
+                name: {"category": category, "path": path}
+                for name, (category, path) in diagnostics.items()
+            },
+        },
+        "source revision workflow summary",
+    )
+    return identity
+
+
 def verify(root, revision, package_roots):
     references = {s["id"]: s for s in make_references(revision)["scenarios"]}
     rows = []
+    revision_rows = []
     for language in ("python", "julia"):
         for case in CASES:
             for method in METHODS[language]:
@@ -341,6 +409,24 @@ def verify(root, revision, package_roots):
                     .is_relative_to(Path(package_roots[language]).resolve()),
                     "benchmark import fallback",
                 )
+                revised_identity = validate_revision_workflow(
+                    root / "source-revisions" / language / case / method,
+                    language,
+                    case,
+                    method,
+                    package_roots[language],
+                    references[case],
+                )
+                require(revised_identity == identity, "workflow FIR identity")
+                revision_rows.append(
+                    {
+                        "language": language,
+                        "case": case,
+                        "method": method,
+                        "fir_digest": revised_identity,
+                        "status": "PASS",
+                    }
+                )
                 rows.append(
                     {
                         "language": language,
@@ -355,6 +441,7 @@ def verify(root, revision, package_roots):
         "source_revision": revision,
         "status": "PASS",
         "rows": rows,
+        "source_revision_rows": revision_rows,
     }
 
 
@@ -374,7 +461,7 @@ def main():
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report, indent=2) + "\n")
     print(
-        "PASS: eight installed example/benchmark combinations against independent references"
+        "PASS: eight installed example/benchmark combinations and eight source-revision workflows against independent references"
     )
 
 

@@ -44,6 +44,14 @@ It checks the two scenarios across all four methods, source/model identities,
 result checksums and P04 numerical bounds. The existing full FIR and ODE scientific
 gates remain required evidence; these two teaching scenarios do not replace them.
 
+The [source-revision workflows](../../../examples/README.md#source-revision-and-readback-workflow)
+add regression coverage across authoring, compiler provenance and result readback.
+They execute both approved teaching cases with all four methods after explicit
+source revisions that preserve M0 mathematics. Independent checks retain the
+unchanged model, samples and P04 bounds while requiring the new exact source
+identities. This follow-up does not extend the previously accepted profile or
+rewrite its historical evidence.
+
 ## Performance protocol
 
 Each case/method runs in a fresh process, recording package load and first calls
