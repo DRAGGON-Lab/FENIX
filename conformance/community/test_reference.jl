@@ -36,6 +36,76 @@ report = JSON.parsefile(ARGS[1])
     end
 end
 
+# Traverse the supplied fixture, not the validator's expected definitions.
+function catalog_mutations(value, path=Any[])
+    mutations = Function[]
+    at(c, p) = foldl((node, key) -> node[key], p; init=c)
+    if value isa AbstractDict
+        for (key, child) in value
+            push!(mutations, c -> delete!(at(c, path), key))
+            append!(mutations, catalog_mutations(child, [path; key]))
+        end
+        push!(mutations, c -> (at(c, path)["unknown"] = 0))
+    elseif value isa AbstractVector
+        push!(mutations, c -> pop!(at(c, path)))
+        push!(mutations, c -> push!(at(c, path), deepcopy(at(c, path)[1])))
+        push!(mutations, c -> reverse!(at(c, path)))
+        for (i, child) in enumerate(value)
+            append!(mutations, catalog_mutations(child, [path; i]))
+        end
+    else
+        replacements = value isa Real ? Any[value + 1, true] : Any["wrong"]
+        if value isa Real && (path[end] == "hill_n" || path[end-1] in ("populations", "times"))
+            push!(replacements, Float64(value))
+        end
+        for replacement in replacements
+            push!(mutations, c -> (at(c, path[1:end-1])[path[end]] = replacement))
+        end
+    end
+    mutations
+end
+
+@testset "Complete catalog remains fixed with freshly recomputed hashes" begin
+    original = JSON.parsefile(joinpath(@__DIR__, "cases.json"))
+    mutations = catalog_mutations(original)
+    append!(mutations, Function[
+        c -> (c["cases"][1]["populations"] = [4, 5]),
+        c -> foreach(key -> (c["cases"][1]["parameters"][key] *= 2),
+                     ("sender_export", "sender_import")),
+        c -> (c["cases"][6]["volumes"][1] *= 2),
+    ])
+    mktemp() do path, io
+        for mutation in mutations
+            candidate = deepcopy(original)
+            mutation(candidate)
+            # Some leaf replacements or reversals preserve a value.
+            JSON.json(candidate) == JSON.json(original) && continue
+            write(path, JSON.json(candidate))
+            current = deepcopy(report)
+            current["catalog_sha256"] = bytes2hex(sha256(read(path)))
+            @test_throws AssertionError compare_report(current; catalog_path=path)
+        end
+        # Object member order and equivalent real-number spellings are immaterial.
+        function reordered_json(value)
+            if value isa AbstractDict
+                members = [JSON.json(key) * ":" * reordered_json(value[key])
+                           for key in reverse(collect(keys(value)))]
+                return "{" * join(members, ",") * "}"
+            elseif value isa AbstractVector
+                return "[" * join(reordered_json.(value), ",") * "]"
+            end
+            JSON.json(value)
+        end
+        reordered = deepcopy(original)
+        reordered["cases"][1]["initial"][1] = 4.0
+        raw = reordered_json(reordered)
+        write(path, raw)
+        current = deepcopy(report)
+        current["catalog_sha256"] = bytes2hex(sha256(read(path)))
+        @test compare_report(current; catalog_path=path) === nothing
+    end
+end
+
 @testset "Independent report completeness and corruption" begin
     @test compare_report(report) === nothing
     for mutation in (
