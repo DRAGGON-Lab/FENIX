@@ -276,16 +276,6 @@ package version changes follow. The PI retains manual merge authority under
 the deferred branch-protection policy. Merge, issue closure, #30 alpha acceptance
 and final EP-04 acceptance remain separate; historical receipts are preserved.
 
-## M1 community contract approval
-
-The PI approved [PR #77](https://github.com/DRAGGON-Lab/FENIX/pull/77) at
-`186cfb3024d64f3d0a227f16dddc6fbc0095fe05`, merged as
-`9539c4ada8e79fa585e04cc56cc84105249b9518`. The instruction was
-“I approved it annd merged it, please continue with the work”.
-[ADR-P08](../spec/community/ADR-P08.md) records the fixed-population exchange,
-read-only sensing and signed-count contract. Its further reference, wire-format
-and numerical-evidence gates remain applicable.
-
 ## Repressilator mathematical contract approval — 2026-11-26
 
 The human PI explicitly stated “yes I approve ADR-P09” in response to the bounded
@@ -297,3 +287,13 @@ The [ratification record](verification/p09-math-ratification.md) preserves the
 approval source, reviewed ADR hash and scope. Candidate parameter/threshold and
 independent-reference acceptance, complete wire/identity/rejection catalogs,
 native implementation, merge, release and issue #84 completion remain separate.
+
+## M1 community contract approval
+
+The PI approved [PR #77](https://github.com/DRAGGON-Lab/FENIX/pull/77) at
+`186cfb3024d64f3d0a227f16dddc6fbc0095fe05`, merged as
+`9539c4ada8e79fa585e04cc56cc84105249b9518`. The instruction was
+“I approved it annd merged it, please continue with the work”.
+[ADR-P08](../spec/community/ADR-P08.md) records the fixed-population exchange,
+read-only sensing and signed-count contract. Its further reference, wire-format
+and numerical-evidence gates remain applicable.
