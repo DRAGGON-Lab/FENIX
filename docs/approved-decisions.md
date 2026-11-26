@@ -288,6 +288,18 @@ approval source, reviewed ADR hash and scope. Candidate parameter/threshold and
 independent-reference acceptance, complete wire/identity/rejection catalogs,
 native implementation, merge, release and issue #84 completion remain separate.
 
+## Repressilator component-reference acceptance — 2026-11-26
+
+The human PI selected “Accept the bounded component references” for
+[PR #87](https://github.com/DRAGGON-Lab/FENIX/pull/87) at reviewed commit
+`6ab3dd41a072af02ffef516139390e6d710cec2c`. The
+[acceptance record](verification/p09-component-reference-acceptance.md) identifies
+the exact 11 analytical component cases/33 samples, independently derived
+Decimal/BigFloat laws, reviewed artifact hashes and verification. Independent
+nonlinear-cycle references, feasibility parameters/thresholds, wire/identity/
+rejection catalogs and native implementation acceptance remain separate gates.
+No native capability, merge, release or issue #84 completion follows.
+
 ## M1 community contract approval
 
 The PI approved [PR #77](https://github.com/DRAGGON-Lab/FENIX/pull/77) at

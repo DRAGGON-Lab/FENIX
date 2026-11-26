@@ -51,3 +51,9 @@ Local checks for this documentation record: **PASS** raw reviewed-blob SHA-256,
 unchanged mathematical body/candidate source bytes, repository checker, six
 harness tests and `git diff --check`. Native oscillator execution remains
 **NOT RUN — unsupported profile**; no approval is inferred from that status.
+
+Subsequent decision: the PI accepted 11 analytical component-reference cases
+(33 samples) at reviewed commit `6ab3dd4`; see the
+[separate acceptance record](p09-component-reference-acceptance.md). This resolves
+only that component-reference gate. Independent nonlinear-cycle references and
+all wire/native implementation gates above remain pending.
