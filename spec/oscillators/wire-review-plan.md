@@ -77,8 +77,13 @@ must not be sourced solely from the proposal generator or Python/Julia parity.
 Schema success alone cannot establish raw-token policy, typed bindings,
 mathematical validity, exact source correspondence or numerical accuracy.
 
-This documentation change runs the repository checker, its harness tests and
-diff/link checks. Wire-schema validation, independent P10 identity/rejection
-reports, native oscillator execution/parity, installed native examples and human
-P10 ratification are **NOT RUN / pending**, because those artifacts and approvals
-have not yet been delivered. Existing nonlinear candidate CI is separate evidence.
+The [literal candidate audit](examples/README.md) now checks four closed structural
+schemas and twelve source/FIR/zero-grid artifacts. Its structural and bounded
+binding/identity/zero-grid checks and corruption controls are separate from a
+general parser or scientific conformance suite. Candidate writers share shape
+construction; reproduction alone is not independent mathematical evidence.
+
+Independent P10 raw-input/identity/rejection reports, independently checked
+equation/reference mapping, positive-time result examples, native oscillator
+execution/parity, installed native examples and human P10 ratification remain
+**NOT RUN / pending**. Existing nonlinear reference CI is separate evidence.

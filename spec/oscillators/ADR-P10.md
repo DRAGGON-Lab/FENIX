@@ -7,16 +7,21 @@ quantity bases and numerical-domain policy come from
 [ADR-P09](ADR-P09.md), ratified at `e84ff5b`. The PI subsequently accepted the
 11 analytical component cases/33 samples at `6ab3dd4`, recorded in
 [PR #89](https://github.com/DRAGGON-Lab/FENIX/pull/89).
-The [independent nonlinear numerical study](../../conformance/oscillators/nonlinear/README.md)
-is a separate proposed reference, not ratified by this document.
+The PI separately accepted the bounded
+[nonlinear numerical reference definitions](../../conformance/oscillators/nonlinear/README.md)
+at `0ee6b42`, recorded in [PR #92](https://github.com/DRAGGON-Lab/FENIX/pull/92).
+That decision does not ratify the P10 wire design or choose native tolerances.
 
 This ADR proposes the serialization and binding choices missing between that
 mathematics and native authoring/compilation/capture/readback. It changes no
 native package, accepted fixture, existing schema, version constant or digest.
 It deliberately exposes version, binding, normalization and profile choices for
-PI review before implementation. Machine-readable schemas, complete literal
-fixtures, independent identity vectors and rejection reports remain required
-follow-ups; this text is not a substitute for those artifacts.
+PI review before implementation. The accompanying
+[closed structural schemas](schemas/README.md) and
+[twelve literal source/FIR/zero-grid artifacts](examples/README.md) are proposed
+candidates. Complete raw/binding/identity/rejection catalogs, independent
+mathematical/byte evidence and explicit PI ratification remain required; passing
+the bounded example audit does not satisfy those gates.
 
 ## Scope, alternatives and compatibility
 
@@ -302,9 +307,21 @@ canonical role to the source owner ID; state entries bind canonical state ID to
 the full source amount endpoint; parameter entries bind canonical parameter ID
 to source parameter ID. Reaction entries bind canonical reaction ID to source
 collection, source function ID and its exact role within that function (e.g.
-`basal`, `induced`, `translation`, `decay`). Source collections are `gates`,
+`basal`, `induced`, `translation`, `mrna_decay`, `protein_decay`). Source collections are `gates`,
 `signal_synthesis`, `signal_losses`, `transport` only. These symbolic fields and
-the final JSON member names must be frozen in the follow-up schemas/fixtures.
+the exact proposed member names are encoded in the schema:
+
+| Map | Closed entry fields |
+|---|---|
+| `owners` | `fir_owner`, `source_owner` |
+| `states` | `fir_state`, `source_endpoint` |
+| `parameters` | `fir_parameter`, `source_parameter` |
+| `reactions` | `fir_reaction`, `source_collection`, `source_function`, `source_role` |
+
+Gate source roles are `basal`, `induced`, `mrna_decay`, `translation`,
+`protein_decay`; synthesis/loss roles are `synthesis`/`loss`; transport roles are
+`export`/`import`. These exact names remain proposed until reviewed schema and
+fixture acceptance.
 
 A producer revalidates both committed documents and exact Design linkage, then
 derives every state, value, geometry, population, role, reaction and observable
@@ -411,8 +428,9 @@ The [review plan](wire-review-plan.md) lists positive/negative obligations and
 cross-feature examples. It is a test plan, not a frozen fixture catalog or an
 executed native suite. Before implementation, provide and independently review:
 
-1. Complete closed machine-readable BioIR/FIR/result/backend schemas and exact
-   positive source/FIR/result examples, covering both templates and scope bases.
+1. Independently review the accompanying closed BioIR/FIR/result/backend schemas
+   and twelve source/FIR/zero-grid examples for both templates. Supply additional
+   positive-time reference/result examples and a complete literal case catalog.
 2. Language-neutral raw-input, binding, identity and rejection catalogs with
    literal witnesses, expected categories and JSON Pointer paths. Include numeric
    token/Unicode boundaries and no general error-precedence inference.

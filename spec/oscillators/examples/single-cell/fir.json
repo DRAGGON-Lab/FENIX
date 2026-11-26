@@ -1,0 +1,881 @@
+{
+  "canonicalization_version": "0.2.0",
+  "model": {
+    "schema_version": "0.3.0",
+    "template": "repressilator.single_cell.v1",
+    "time_unit": "s",
+    "geometry": {
+      "cell": {
+        "value": 1e-15,
+        "unit": "L"
+      }
+    },
+    "populations": {},
+    "states": [
+      {
+        "id": "m1",
+        "owner": "cell",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 100.0
+      },
+      {
+        "id": "m2",
+        "owner": "cell",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 100.0
+      },
+      {
+        "id": "m3",
+        "owner": "cell",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 100.0
+      },
+      {
+        "id": "p1",
+        "owner": "cell",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 110.0
+      },
+      {
+        "id": "p2",
+        "owner": "cell",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 90.0
+      },
+      {
+        "id": "p3",
+        "owner": "cell",
+        "quantity": "molecular_count",
+        "scope": "representative_cell",
+        "unit": "molecule",
+        "initial": 100.0
+      }
+    ],
+    "parameters": [
+      {
+        "id": "K1",
+        "value": 1e+17,
+        "unit": "molecule/L",
+        "basis": "density"
+      },
+      {
+        "id": "K2",
+        "value": 1e+17,
+        "unit": "molecule/L",
+        "basis": "density"
+      },
+      {
+        "id": "K3",
+        "value": 1e+17,
+        "unit": "molecule/L",
+        "basis": "density"
+      },
+      {
+        "id": "b1",
+        "value": 0.01,
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "b2",
+        "value": 0.01,
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "b3",
+        "value": 0.01,
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "beta1",
+        "value": 0.05,
+        "unit": "1/s",
+        "basis": "protein_per_transcript"
+      },
+      {
+        "id": "beta2",
+        "value": 0.05,
+        "unit": "1/s",
+        "basis": "protein_per_transcript"
+      },
+      {
+        "id": "beta3",
+        "value": 0.05,
+        "unit": "1/s",
+        "basis": "protein_per_transcript"
+      },
+      {
+        "id": "gm1",
+        "value": 0.01,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "gm2",
+        "value": 0.01,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "gm3",
+        "value": 0.01,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "gp1",
+        "value": 0.05,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "gp2",
+        "value": 0.05,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "gp3",
+        "value": 0.05,
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "h1",
+        "value": 216.0,
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "h2",
+        "value": 216.0,
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "h3",
+        "value": 216.0,
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "n1",
+        "value": 2.0,
+        "unit": "1",
+        "basis": "dimensionless"
+      },
+      {
+        "id": "n2",
+        "value": 2.0,
+        "unit": "1",
+        "basis": "dimensionless"
+      },
+      {
+        "id": "n3",
+        "value": 2.0,
+        "unit": "1",
+        "basis": "dimensionless"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "basal1",
+        "flux": {
+          "op": "parameter",
+          "id": "b1"
+        },
+        "stoichiometry": {
+          "m1": 1
+        }
+      },
+      {
+        "id": "basal2",
+        "flux": {
+          "op": "parameter",
+          "id": "b2"
+        },
+        "stoichiometry": {
+          "m2": 1
+        }
+      },
+      {
+        "id": "basal3",
+        "flux": {
+          "op": "parameter",
+          "id": "b3"
+        },
+        "stoichiometry": {
+          "m3": 1
+        }
+      },
+      {
+        "id": "mrna_decay1",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "gm1"
+          },
+          "right": {
+            "op": "state",
+            "id": "m1"
+          }
+        },
+        "stoichiometry": {
+          "m1": -1
+        }
+      },
+      {
+        "id": "mrna_decay2",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "gm2"
+          },
+          "right": {
+            "op": "state",
+            "id": "m2"
+          }
+        },
+        "stoichiometry": {
+          "m2": -1
+        }
+      },
+      {
+        "id": "mrna_decay3",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "gm3"
+          },
+          "right": {
+            "op": "state",
+            "id": "m3"
+          }
+        },
+        "stoichiometry": {
+          "m3": -1
+        }
+      },
+      {
+        "id": "protein_decay1",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "gp1"
+          },
+          "right": {
+            "op": "state",
+            "id": "p1"
+          }
+        },
+        "stoichiometry": {
+          "p1": -1
+        }
+      },
+      {
+        "id": "protein_decay2",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "gp2"
+          },
+          "right": {
+            "op": "state",
+            "id": "p2"
+          }
+        },
+        "stoichiometry": {
+          "p2": -1
+        }
+      },
+      {
+        "id": "protein_decay3",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "gp3"
+          },
+          "right": {
+            "op": "state",
+            "id": "p3"
+          }
+        },
+        "stoichiometry": {
+          "p3": -1
+        }
+      },
+      {
+        "id": "repressed1",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "h1"
+          },
+          "right": {
+            "op": "hill_repression",
+            "sensor": {
+              "op": "divide",
+              "left": {
+                "op": "state",
+                "id": "p3"
+              },
+              "right": {
+                "op": "volume",
+                "id": "cell"
+              }
+            },
+            "threshold": {
+              "op": "parameter",
+              "id": "K1"
+            },
+            "exponent": {
+              "op": "parameter",
+              "id": "n1"
+            }
+          }
+        },
+        "stoichiometry": {
+          "m1": 1
+        }
+      },
+      {
+        "id": "repressed2",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "h2"
+          },
+          "right": {
+            "op": "hill_repression",
+            "sensor": {
+              "op": "divide",
+              "left": {
+                "op": "state",
+                "id": "p1"
+              },
+              "right": {
+                "op": "volume",
+                "id": "cell"
+              }
+            },
+            "threshold": {
+              "op": "parameter",
+              "id": "K2"
+            },
+            "exponent": {
+              "op": "parameter",
+              "id": "n2"
+            }
+          }
+        },
+        "stoichiometry": {
+          "m2": 1
+        }
+      },
+      {
+        "id": "repressed3",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "h3"
+          },
+          "right": {
+            "op": "hill_repression",
+            "sensor": {
+              "op": "divide",
+              "left": {
+                "op": "state",
+                "id": "p2"
+              },
+              "right": {
+                "op": "volume",
+                "id": "cell"
+              }
+            },
+            "threshold": {
+              "op": "parameter",
+              "id": "K3"
+            },
+            "exponent": {
+              "op": "parameter",
+              "id": "n3"
+            }
+          }
+        },
+        "stoichiometry": {
+          "m3": 1
+        }
+      },
+      {
+        "id": "translation1",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "beta1"
+          },
+          "right": {
+            "op": "state",
+            "id": "m1"
+          }
+        },
+        "stoichiometry": {
+          "p1": 1
+        }
+      },
+      {
+        "id": "translation2",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "beta2"
+          },
+          "right": {
+            "op": "state",
+            "id": "m2"
+          }
+        },
+        "stoichiometry": {
+          "p2": 1
+        }
+      },
+      {
+        "id": "translation3",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "beta3"
+          },
+          "right": {
+            "op": "state",
+            "id": "m3"
+          }
+        },
+        "stoichiometry": {
+          "p3": 1
+        }
+      }
+    ],
+    "equations": [
+      {
+        "state": "m1",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "add",
+            "left": {
+              "op": "flux",
+              "id": "basal1"
+            },
+            "right": {
+              "op": "flux",
+              "id": "repressed1"
+            }
+          },
+          "right": {
+            "op": "flux",
+            "id": "mrna_decay1"
+          }
+        }
+      },
+      {
+        "state": "m2",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "add",
+            "left": {
+              "op": "flux",
+              "id": "basal2"
+            },
+            "right": {
+              "op": "flux",
+              "id": "repressed2"
+            }
+          },
+          "right": {
+            "op": "flux",
+            "id": "mrna_decay2"
+          }
+        }
+      },
+      {
+        "state": "m3",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "add",
+            "left": {
+              "op": "flux",
+              "id": "basal3"
+            },
+            "right": {
+              "op": "flux",
+              "id": "repressed3"
+            }
+          },
+          "right": {
+            "op": "flux",
+            "id": "mrna_decay3"
+          }
+        }
+      },
+      {
+        "state": "p1",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "flux",
+            "id": "translation1"
+          },
+          "right": {
+            "op": "flux",
+            "id": "protein_decay1"
+          }
+        }
+      },
+      {
+        "state": "p2",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "flux",
+            "id": "translation2"
+          },
+          "right": {
+            "op": "flux",
+            "id": "protein_decay2"
+          }
+        }
+      },
+      {
+        "state": "p3",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "flux",
+            "id": "translation3"
+          },
+          "right": {
+            "op": "flux",
+            "id": "protein_decay3"
+          }
+        }
+      }
+    ],
+    "observables": [
+      {
+        "id": "observe_p1",
+        "state": "p1",
+        "owner": "cell",
+        "scope": "representative_cell",
+        "unit": "molecule"
+      },
+      {
+        "id": "observe_p2",
+        "state": "p2",
+        "owner": "cell",
+        "scope": "representative_cell",
+        "unit": "molecule"
+      },
+      {
+        "id": "observe_p3",
+        "state": "p3",
+        "owner": "cell",
+        "scope": "representative_cell",
+        "unit": "molecule"
+      }
+    ],
+    "assumptions": [
+      "constant_rates",
+      "fixed_volume",
+      "no_interventions",
+      "read_only_sensing",
+      "single_representative_cell",
+      "well_mixed"
+    ],
+    "capabilities": {
+      "ode": true,
+      "ssa": false
+    }
+  },
+  "provenance": {
+    "design": {
+      "schema_version": "0.3.0",
+      "id": "single-cell",
+      "revision": 1,
+      "digest": "53b5896fbb554b9126600d3a61745ce4bc96cbee7e04c270708d09ccfd0c6ec7"
+    },
+    "experiment": {
+      "schema_version": "0.3.0",
+      "id": "scenario",
+      "revision": 1,
+      "digest": "ff178b86ec2e5925d094ee94a05c92ffd9087da6f2c5805482c863848b49a2b0"
+    },
+    "symbol_map": {
+      "owners": [
+        {
+          "fir_owner": "cell",
+          "source_owner": "cellA"
+        }
+      ],
+      "states": [
+        {
+          "fir_state": "m1",
+          "source_endpoint": {
+            "owner": "cellA",
+            "species": "mrna1",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "m2",
+          "source_endpoint": {
+            "owner": "cellA",
+            "species": "mrna2",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "m3",
+          "source_endpoint": {
+            "owner": "cellA",
+            "species": "mrna3",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "p1",
+          "source_endpoint": {
+            "owner": "cellA",
+            "species": "protein1",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "p2",
+          "source_endpoint": {
+            "owner": "cellA",
+            "species": "protein2",
+            "port": "amount"
+          }
+        },
+        {
+          "fir_state": "p3",
+          "source_endpoint": {
+            "owner": "cellA",
+            "species": "protein3",
+            "port": "amount"
+          }
+        }
+      ],
+      "parameters": [
+        {
+          "fir_parameter": "K1",
+          "source_parameter": "par_K1"
+        },
+        {
+          "fir_parameter": "K2",
+          "source_parameter": "par_K2"
+        },
+        {
+          "fir_parameter": "K3",
+          "source_parameter": "par_K3"
+        },
+        {
+          "fir_parameter": "b1",
+          "source_parameter": "par_b1"
+        },
+        {
+          "fir_parameter": "b2",
+          "source_parameter": "par_b2"
+        },
+        {
+          "fir_parameter": "b3",
+          "source_parameter": "par_b3"
+        },
+        {
+          "fir_parameter": "beta1",
+          "source_parameter": "par_beta1"
+        },
+        {
+          "fir_parameter": "beta2",
+          "source_parameter": "par_beta2"
+        },
+        {
+          "fir_parameter": "beta3",
+          "source_parameter": "par_beta3"
+        },
+        {
+          "fir_parameter": "gm1",
+          "source_parameter": "par_gm1"
+        },
+        {
+          "fir_parameter": "gm2",
+          "source_parameter": "par_gm2"
+        },
+        {
+          "fir_parameter": "gm3",
+          "source_parameter": "par_gm3"
+        },
+        {
+          "fir_parameter": "gp1",
+          "source_parameter": "par_gp1"
+        },
+        {
+          "fir_parameter": "gp2",
+          "source_parameter": "par_gp2"
+        },
+        {
+          "fir_parameter": "gp3",
+          "source_parameter": "par_gp3"
+        },
+        {
+          "fir_parameter": "h1",
+          "source_parameter": "par_h1"
+        },
+        {
+          "fir_parameter": "h2",
+          "source_parameter": "par_h2"
+        },
+        {
+          "fir_parameter": "h3",
+          "source_parameter": "par_h3"
+        },
+        {
+          "fir_parameter": "n1",
+          "source_parameter": "par_n1"
+        },
+        {
+          "fir_parameter": "n2",
+          "source_parameter": "par_n2"
+        },
+        {
+          "fir_parameter": "n3",
+          "source_parameter": "par_n3"
+        }
+      ],
+      "reactions": [
+        {
+          "fir_reaction": "basal1",
+          "source_collection": "gates",
+          "source_function": "not1",
+          "source_role": "basal"
+        },
+        {
+          "fir_reaction": "basal2",
+          "source_collection": "gates",
+          "source_function": "not2",
+          "source_role": "basal"
+        },
+        {
+          "fir_reaction": "basal3",
+          "source_collection": "gates",
+          "source_function": "not3",
+          "source_role": "basal"
+        },
+        {
+          "fir_reaction": "mrna_decay1",
+          "source_collection": "gates",
+          "source_function": "not1",
+          "source_role": "mrna_decay"
+        },
+        {
+          "fir_reaction": "mrna_decay2",
+          "source_collection": "gates",
+          "source_function": "not2",
+          "source_role": "mrna_decay"
+        },
+        {
+          "fir_reaction": "mrna_decay3",
+          "source_collection": "gates",
+          "source_function": "not3",
+          "source_role": "mrna_decay"
+        },
+        {
+          "fir_reaction": "protein_decay1",
+          "source_collection": "gates",
+          "source_function": "not1",
+          "source_role": "protein_decay"
+        },
+        {
+          "fir_reaction": "protein_decay2",
+          "source_collection": "gates",
+          "source_function": "not2",
+          "source_role": "protein_decay"
+        },
+        {
+          "fir_reaction": "protein_decay3",
+          "source_collection": "gates",
+          "source_function": "not3",
+          "source_role": "protein_decay"
+        },
+        {
+          "fir_reaction": "repressed1",
+          "source_collection": "gates",
+          "source_function": "not1",
+          "source_role": "induced"
+        },
+        {
+          "fir_reaction": "repressed2",
+          "source_collection": "gates",
+          "source_function": "not2",
+          "source_role": "induced"
+        },
+        {
+          "fir_reaction": "repressed3",
+          "source_collection": "gates",
+          "source_function": "not3",
+          "source_role": "induced"
+        },
+        {
+          "fir_reaction": "translation1",
+          "source_collection": "gates",
+          "source_function": "not1",
+          "source_role": "translation"
+        },
+        {
+          "fir_reaction": "translation2",
+          "source_collection": "gates",
+          "source_function": "not2",
+          "source_role": "translation"
+        },
+        {
+          "fir_reaction": "translation3",
+          "source_collection": "gates",
+          "source_function": "not3",
+          "source_role": "translation"
+        }
+      ]
+    }
+  }
+}

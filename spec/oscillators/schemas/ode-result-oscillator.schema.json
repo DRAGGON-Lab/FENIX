@@ -1,0 +1,403 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:fenix:proposed:p10:ode-result-oscillator",
+  "title": "PROPOSED P10 ode-result-oscillator",
+  "$comment": "Structural candidate only. Raw tokens, exact source correspondence and independent scientific approval remain separate.",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "const": "ODEResult"
+    },
+    "schema_version": {
+      "const": "0.2.0"
+    },
+    "fir_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "minLength": 64,
+      "maxLength": 64
+    },
+    "time_unit": {
+      "const": "s"
+    },
+    "times": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0
+      },
+      "minItems": 1
+    },
+    "state_ids": {
+      "oneOf": [
+        {
+          "const": [
+            "m1",
+            "m2",
+            "m3",
+            "p1",
+            "p2",
+            "p3"
+          ]
+        },
+        {
+          "const": [
+            "a11",
+            "a12",
+            "a13",
+            "a21",
+            "a22",
+            "a23",
+            "a31",
+            "a32",
+            "a33",
+            "e1",
+            "e2",
+            "e3",
+            "m1",
+            "m2",
+            "m3",
+            "p1",
+            "p2",
+            "p3"
+          ]
+        }
+      ]
+    },
+    "state_units": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "const": "molecule"
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        {
+          "type": "array",
+          "items": {
+            "const": "molecule"
+          },
+          "minItems": 18,
+          "maxItems": 18
+        }
+      ]
+    },
+    "state_values": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "minimum": 0
+            },
+            "minItems": 6,
+            "maxItems": 6
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "minimum": 0
+            },
+            "minItems": 18,
+            "maxItems": 18
+          }
+        ]
+      },
+      "minItems": 1
+    },
+    "observable_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+        "maxLength": 64,
+        "not": {
+          "pattern": "[^A-Za-z0-9_-]"
+        }
+      },
+      "uniqueItems": true
+    },
+    "observable_state_ids": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "a11",
+          "a12",
+          "a13",
+          "a21",
+          "a22",
+          "a23",
+          "a31",
+          "a32",
+          "a33",
+          "e1",
+          "e2",
+          "e3",
+          "m1",
+          "m2",
+          "m3",
+          "p1",
+          "p2",
+          "p3"
+        ]
+      }
+    },
+    "observable_units": {
+      "type": "array",
+      "items": {
+        "const": "molecule"
+      }
+    },
+    "observable_values": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "minItems": 1
+    },
+    "state_owners": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "cell",
+          "strain1",
+          "strain2",
+          "strain3",
+          "medium"
+        ]
+      }
+    },
+    "state_scopes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "representative_cell",
+          "environment_total"
+        ]
+      }
+    },
+    "observable_owners": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "cell",
+          "strain1",
+          "strain2",
+          "strain3",
+          "medium"
+        ]
+      }
+    },
+    "observable_scopes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "representative_cell",
+          "environment_total"
+        ]
+      }
+    }
+  },
+  "required": [
+    "kind",
+    "schema_version",
+    "fir_digest",
+    "time_unit",
+    "times",
+    "state_ids",
+    "state_units",
+    "state_values",
+    "observable_ids",
+    "observable_state_ids",
+    "observable_units",
+    "observable_values",
+    "state_owners",
+    "state_scopes",
+    "observable_owners",
+    "observable_scopes"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "state_ids": {
+            "const": [
+              "m1",
+              "m2",
+              "m3",
+              "p1",
+              "p2",
+              "p3"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "state_owners": {
+            "const": [
+              "cell",
+              "cell",
+              "cell",
+              "cell",
+              "cell",
+              "cell"
+            ]
+          },
+          "state_scopes": {
+            "const": [
+              "representative_cell",
+              "representative_cell",
+              "representative_cell",
+              "representative_cell",
+              "representative_cell",
+              "representative_cell"
+            ]
+          },
+          "state_units": {
+            "const": [
+              "molecule",
+              "molecule",
+              "molecule",
+              "molecule",
+              "molecule",
+              "molecule"
+            ]
+          },
+          "state_values": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "minimum": 0
+              },
+              "minItems": 6,
+              "maxItems": 6
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state_ids": {
+            "const": [
+              "a11",
+              "a12",
+              "a13",
+              "a21",
+              "a22",
+              "a23",
+              "a31",
+              "a32",
+              "a33",
+              "e1",
+              "e2",
+              "e3",
+              "m1",
+              "m2",
+              "m3",
+              "p1",
+              "p2",
+              "p3"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "state_owners": {
+            "const": [
+              "strain1",
+              "strain1",
+              "strain1",
+              "strain2",
+              "strain2",
+              "strain2",
+              "strain3",
+              "strain3",
+              "strain3",
+              "medium",
+              "medium",
+              "medium",
+              "strain1",
+              "strain2",
+              "strain3",
+              "strain1",
+              "strain2",
+              "strain3"
+            ]
+          },
+          "state_scopes": {
+            "const": [
+              "representative_cell",
+              "representative_cell",
+              "representative_cell",
+              "representative_cell",
+              "representative_cell",
+              "representative_cell",
+              "representative_cell",
+              "representative_cell",
+              "representative_cell",
+              "environment_total",
+              "environment_total",
+              "environment_total",
+              "representative_cell",
+              "representative_cell",
+              "representative_cell",
+              "representative_cell",
+              "representative_cell",
+              "representative_cell"
+            ]
+          },
+          "state_units": {
+            "const": [
+              "molecule",
+              "molecule",
+              "molecule",
+              "molecule",
+              "molecule",
+              "molecule",
+              "molecule",
+              "molecule",
+              "molecule",
+              "molecule",
+              "molecule",
+              "molecule",
+              "molecule",
+              "molecule",
+              "molecule",
+              "molecule",
+              "molecule",
+              "molecule"
+            ]
+          },
+          "state_values": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "minimum": 0
+              },
+              "minItems": 18,
+              "maxItems": 18
+            }
+          }
+        }
+      }
+    }
+  ]
+}

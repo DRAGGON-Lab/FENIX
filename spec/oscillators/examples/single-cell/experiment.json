@@ -1,0 +1,208 @@
+{
+  "content": {
+    "kind": "Experiment",
+    "schema_version": "0.3.0",
+    "id": "scenario",
+    "revision": 1,
+    "design": {
+      "id": "single-cell",
+      "revision": 1,
+      "digest": "53b5896fbb554b9126600d3a61745ce4bc96cbee7e04c270708d09ccfd0c6ec7"
+    },
+    "populations": [],
+    "parameters": [
+      {
+        "parameter": "par_K1",
+        "value": 1e+17,
+        "unit": "molecule/L"
+      },
+      {
+        "parameter": "par_K2",
+        "value": 1e+17,
+        "unit": "molecule/L"
+      },
+      {
+        "parameter": "par_K3",
+        "value": 1e+17,
+        "unit": "molecule/L"
+      },
+      {
+        "parameter": "par_b1",
+        "value": 0.01,
+        "unit": "molecule/s"
+      },
+      {
+        "parameter": "par_b2",
+        "value": 0.01,
+        "unit": "molecule/s"
+      },
+      {
+        "parameter": "par_b3",
+        "value": 0.01,
+        "unit": "molecule/s"
+      },
+      {
+        "parameter": "par_beta1",
+        "value": 0.05,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_beta2",
+        "value": 0.05,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_beta3",
+        "value": 0.05,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_gm1",
+        "value": 0.01,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_gm2",
+        "value": 0.01,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_gm3",
+        "value": 0.01,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_gp1",
+        "value": 0.05,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_gp2",
+        "value": 0.05,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_gp3",
+        "value": 0.05,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_h1",
+        "value": 216.0,
+        "unit": "molecule/s"
+      },
+      {
+        "parameter": "par_h2",
+        "value": 216.0,
+        "unit": "molecule/s"
+      },
+      {
+        "parameter": "par_h3",
+        "value": 216.0,
+        "unit": "molecule/s"
+      },
+      {
+        "parameter": "par_n1",
+        "value": 2.0,
+        "unit": "1"
+      },
+      {
+        "parameter": "par_n2",
+        "value": 2.0,
+        "unit": "1"
+      },
+      {
+        "parameter": "par_n3",
+        "value": 2.0,
+        "unit": "1"
+      }
+    ],
+    "initial_counts": [
+      {
+        "target": {
+          "owner": "cellA",
+          "species": "mrna1",
+          "port": "amount"
+        },
+        "value": 100.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "cellA",
+          "species": "mrna2",
+          "port": "amount"
+        },
+        "value": 100.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "cellA",
+          "species": "mrna3",
+          "port": "amount"
+        },
+        "value": 100.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "cellA",
+          "species": "protein1",
+          "port": "amount"
+        },
+        "value": 110.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "cellA",
+          "species": "protein2",
+          "port": "amount"
+        },
+        "value": 90.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "cellA",
+          "species": "protein3",
+          "port": "amount"
+        },
+        "value": 100.0,
+        "unit": "molecule"
+      }
+    ],
+    "observables": [
+      {
+        "id": "observe_p1",
+        "target": {
+          "owner": "cellA",
+          "species": "protein1",
+          "port": "amount"
+        }
+      },
+      {
+        "id": "observe_p2",
+        "target": {
+          "owner": "cellA",
+          "species": "protein2",
+          "port": "amount"
+        }
+      },
+      {
+        "id": "observe_p3",
+        "target": {
+          "owner": "cellA",
+          "species": "protein3",
+          "port": "amount"
+        }
+      }
+    ],
+    "interventions": []
+  },
+  "digest": "ff178b86ec2e5925d094ee94a05c92ffd9087da6f2c5805482c863848b49a2b0",
+  "metadata": {
+    "status": "PROPOSED illustrative P10 candidate, not native execution"
+  }
+}

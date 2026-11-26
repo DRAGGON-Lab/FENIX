@@ -1,0 +1,84 @@
+{
+  "kind": "RunManifest",
+  "schema_version": "0.2.0",
+  "status": "success",
+  "repeatability": "bounded_numerical_agreement",
+  "sources": {
+    "design": {
+      "schema_version": "0.3.0",
+      "id": "three-strain",
+      "revision": 1,
+      "digest": "ebb9c7b1ac5a54171274d2a66b672537a02641879ec046495c5c042539589512"
+    },
+    "experiment": {
+      "schema_version": "0.3.0",
+      "id": "scenario",
+      "revision": 1,
+      "digest": "8b7ce425d6cd5f04ae7059df2d32993f85d7c9834bfc200ba00edf467b8fb789"
+    }
+  },
+  "fir": {
+    "schema_version": "0.3.0",
+    "canonicalization_version": "0.2.0",
+    "digest": "0dff890e655b5015c0f4803af80ce659bd24d3ffa5f05226e2d98a63e145e39d"
+  },
+  "execution": {
+    "profile": "ode",
+    "time_grid": [
+      -0.0
+    ],
+    "rtol": 1e-10,
+    "atol": 1e-12,
+    "max_step": 1.0,
+    "max_nfev": 9007199254740993
+  },
+  "randomness": {
+    "rng": "none",
+    "seed": null
+  },
+  "evaluations": {
+    "nfev": 0
+  },
+  "timing": {
+    "started_at_utc": "2026-11-16T12:00:00.000000Z",
+    "finished_at_utc": "2026-11-16T12:00:00.125000Z",
+    "elapsed_seconds": 0.125
+  },
+  "integration": "skipped_zero_grid",
+  "output": {
+    "schema_version": "0.2.0",
+    "media_type": "application/json",
+    "encoding": "utf-8",
+    "sha256": "f2ce8b8d7463fcf6f5c343808f1d156f6f61919e202678390c47f8e512b0da3d"
+  },
+  "producer": {
+    "name": "P10-illustrative-not-executed",
+    "version": "not-executed",
+    "build_id": null
+  },
+  "backend": {
+    "profile": "python-scipy-oscillator-ode/0.1.0",
+    "solver": {
+      "name": "scipy.integrate.solve_ivp",
+      "method": "Radau",
+      "options": {
+        "first_step": null,
+        "vectorized": false,
+        "dense_output": false,
+        "events": null,
+        "jacobian": "state_dependent_exact"
+      }
+    },
+    "environment": {
+      "python_implementation": "illustrative_not_observed",
+      "python_version": "illustrative_not_observed",
+      "rfc8785_version": "illustrative_not_observed",
+      "numpy_version": "illustrative_not_observed",
+      "scipy_version": "illustrative_not_observed"
+    },
+    "evaluations": {
+      "njev": 0,
+      "nlu": 0
+    }
+  }
+}

@@ -53,6 +53,8 @@ formats and native implementation remain separate gates; see the
 The [P10 oscillator wire design](oscillators/ADR-P10.md) is **PROPOSED** for #84.
 It makes version, role-binding, FIR identity and multi-state result choices
 reviewable without changing existing contracts or native capabilities. Its
-[review plan](oscillators/wire-review-plan.md) is not a frozen fixture catalog;
-complete schemas, independent identity/rejection evidence and PI ratification
-remain required before native implementation.
+[review plan](oscillators/wire-review-plan.md) is not a frozen fixture catalog.
+The [candidate structural schemas and literal examples](oscillators/examples/README.md)
+are now reviewable; complete raw/binding/identity/rejection catalogs, independent
+mathematical/byte checks and PI ratification remain required before native
+implementation.
