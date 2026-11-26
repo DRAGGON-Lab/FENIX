@@ -1,0 +1,50 @@
+name: Generated M0 interactions
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  generated:
+    name: Generated M0 interactions
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9
+        with:
+          version: '0.11.29'
+      - run: uv sync --project packages/python --locked
+      - name: Check generator style and replay controls
+        run: |
+          uv run --project packages/python --locked --offline ruff check --config packages/python/pyproject.toml conformance/generated_m0
+          uv run --project packages/python --locked --offline ruff format --check --config packages/python/pyproject.toml conformance/generated_m0
+          uv run --project packages/python --locked --offline python -m unittest discover -s conformance/generated_m0 -v
+      - name: Retain approved native P01 and FIR regressions
+        run: |
+          uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_documents -v
+          uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_fir -v
+      - name: Check independent serializer against approved fixed vectors
+        run: |
+          node conformance/reference/check_p01.cjs
+          node --test conformance/canonicalization/tests/test_review.cjs
+          node conformance/canonicalization/review_p03.cjs --report artifacts/generated-oracle/p03-node.json
+      - name: Generate combined boundary scenarios
+        run: |
+          uv run --project packages/python --locked --offline python conformance/generated_m0/run.py --seed 5901 --cases 256 --save-examples --output-dir artifacts/generated-m0-5901
+          uv run --project packages/python --locked --offline python conformance/generated_m0/run.py --seed 5902 --cases 256 --output-dir artifacts/generated-m0-5902
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: generated-m0-evidence
+          path: |
+            artifacts/generated-m0-*/
+            artifacts/generated-oracle/
+          if-no-files-found: error
