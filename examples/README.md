@@ -73,7 +73,8 @@ Use a new output directory. The `original/` and `revised/` subdirectories each
 contain the same artifact inventory as the basic example. The top-level
 `summary.json` records both source identities, the shared FIR digest and seven
 required rejection controls. When both revision and digest differ, either of
-those exact source-field diagnostics is valid; no error-order guarantee is added:
+the mismatched revision/digest fields on either exact source is a valid diagnostic;
+no source- or field-order guarantee is added:
 
 
 - Changed content without a revision increase.

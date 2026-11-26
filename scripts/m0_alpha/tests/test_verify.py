@@ -331,8 +331,12 @@ class TestSourceRevisionWorkflow(unittest.TestCase):
     def test_example_accepts_either_actual_compound_source_diagnostic(self):
         from fenix.results import ResultValidationError
 
-        paths = ("/manifest/sources/design/revision", "/manifest/sources/design/digest")
-        for path in (*paths, "/manifest/fir/digest"):
+        paths = tuple(
+            f"/manifest/sources/{source}/{field}"
+            for source in ("design", "experiment")
+            for field in ("revision", "digest")
+        )
+        for path in (*paths, "/manifest/fir/digest", "/manifest/sources/design/id"):
 
             def action(path=path):
                 raise ResultValidationError("REFERENCE", path, "injected diagnostic")
@@ -353,6 +357,13 @@ class TestSourceRevisionWorkflow(unittest.TestCase):
     def test_compound_mismatch_diagnostic_stays_on_exact_source_fields(self):
         path = self.directory / "summary.json"
         summary = verify.read_report(path)
+        for source in ("design", "experiment"):
+            for field in ("revision", "digest"):
+                summary["rejections"]["old_record_new_sources"]["path"] = (
+                    f"/manifest/sources/{source}/{field}"
+                )
+                path.write_text(json.dumps(summary))
+                self.validate()
         summary["rejections"]["old_record_new_sources"]["path"] = "/manifest/fir/digest"
         path.write_text(json.dumps(summary))
         with self.assertRaisesRegex(ValueError, "source reference diagnostic"):

@@ -5,6 +5,11 @@ using Fenix.BioIR
 using SHA, JSON
 include("production_decay.jl")
 
+const SOURCE_MISMATCH_PATHS = (
+    "/manifest/sources/design/revision", "/manifest/sources/design/digest",
+    "/manifest/sources/experiment/revision", "/manifest/sources/experiment/digest",
+)
+
 require(condition, message) = condition || error(message)
 properties(value) = (; (key => getfield(value, key) for key in fieldnames(typeof(value)))...)
 
@@ -76,12 +81,12 @@ function run_workflow(case, method, output_dir)
         "old_record_new_sources" => expect_rejection(
             () -> Results.from_json(Results.RunRecord, manifest, first.result_bytes; experiment=revised),
             Results.ResultValidationError, "REFERENCE",
-            ("/manifest/sources/design/revision", "/manifest/sources/design/digest")),
+            SOURCE_MISMATCH_PATHS),
         "new_record_old_sources" => expect_rejection(
             () -> Results.from_json(Results.RunRecord, Results.to_json(second.manifest), second.result_bytes;
                                    experiment=original),
             Results.ResultValidationError, "REFERENCE",
-            ("/manifest/sources/design/revision", "/manifest/sources/design/digest")),
+            SOURCE_MISMATCH_PATHS),
         "result_transport_checksum" => expect_rejection(
             () -> Results.from_json(Results.RunRecord, manifest, vcat(first.result_bytes, UInt8[0x20]);
                                    experiment=original),

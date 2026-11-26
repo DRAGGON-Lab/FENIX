@@ -26,6 +26,13 @@ from production_decay import (
     save_run,
 )
 
+SOURCE_MISMATCH_PATHS = (
+    "/manifest/sources/design/revision",
+    "/manifest/sources/design/digest",
+    "/manifest/sources/experiment/revision",
+    "/manifest/sources/experiment/digest",
+)
+
 
 def require(condition, message):
     if not condition:
@@ -158,7 +165,7 @@ def run_workflow(case, method, output_dir):
             ),
             ResultValidationError,
             "REFERENCE",
-            ("/manifest/sources/design/revision", "/manifest/sources/design/digest"),
+            SOURCE_MISMATCH_PATHS,
         ),
         "new_record_old_sources": expect_rejection(
             lambda: RunRecord.from_json(
@@ -166,7 +173,7 @@ def run_workflow(case, method, output_dir):
             ),
             ResultValidationError,
             "REFERENCE",
-            ("/manifest/sources/design/revision", "/manifest/sources/design/digest"),
+            SOURCE_MISMATCH_PATHS,
         ),
         "result_transport_checksum": expect_rejection(
             lambda: RunRecord.from_json(

@@ -367,6 +367,8 @@ def validate_revision_workflow(
             in (
                 "/manifest/sources/design/revision",
                 "/manifest/sources/design/digest",
+                "/manifest/sources/experiment/revision",
+                "/manifest/sources/experiment/digest",
             ),
             "source reference diagnostic",
         )
