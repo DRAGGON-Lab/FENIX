@@ -42,7 +42,10 @@ The [M1 community contract](community/ADR-P08.md) has PI approval at reviewed
 revision `186cfb3` for #31. Its further independent reference, complete wire-format
 and numerical-evidence gates remain applicable before native M1 implementation.
 
-The [repressilator benchmark proposal](oscillators/ADR-P09.md) for #84 is
-**PROPOSED**: one six-state intracellular oscillator and one 18-state oscillator
-assembled from one NOT gate per strain with explicit signal exchange. Candidate
-feasibility studies do not approve native profiles or replace the existing gates.
+The [repressilator benchmark contract](oscillators/ADR-P09.md) for #84 has bounded
+PI ratification at reviewed revision `e84ff5b`: equations, units/bases and
+numerical-domain policy for one six-state intracellular oscillator and one
+18-state oscillator assembled from one NOT gate per strain with explicit signal
+exchange. Candidate parameters/thresholds, independent references, complete wire
+formats and native implementation remain separate gates; see the
+[ratification record](../docs/verification/p09-math-ratification.md).

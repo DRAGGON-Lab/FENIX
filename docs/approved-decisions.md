@@ -285,3 +285,15 @@ The PI approved [PR #77](https://github.com/DRAGGON-Lab/FENIX/pull/77) at
 [ADR-P08](../spec/community/ADR-P08.md) records the fixed-population exchange,
 read-only sensing and signed-count contract. Its further reference, wire-format
 and numerical-evidence gates remain applicable.
+
+## Repressilator mathematical contract approval — 2026-11-26
+
+The human PI explicitly stated “yes I approve ADR-P09” in response to the bounded
+ratification question for [PR #85](https://github.com/DRAGGON-Lab/FENIX/pull/85)
+at reviewed commit `e84ff5b0507f60ce68bedf99831e6a2fd4f108fd`. This ratifies
+equations, units/quantity bases and numerical-domain policy for the six-state
+single-cell and 18-state three-strain NOT-gate ring with explicit signal exchange.
+The [ratification record](verification/p09-math-ratification.md) preserves the
+approval source, reviewed ADR hash and scope. Candidate parameter/threshold and
+independent-reference acceptance, complete wire/identity/rejection catalogs,
+native implementation, merge, release and issue #84 completion remain separate.

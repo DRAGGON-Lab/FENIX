@@ -1,12 +1,18 @@
 # ADR-P09 — Candidate single-cell and three-strain repressilator benchmarks
 
-**Status: PROPOSED. No new native profile or golden reference is approved.**
+**Status: mathematical equations, units/bases and numerical-domain policy
+RATIFIED on 2026-11-26 at reviewed revision `e84ff5b`.** Candidate parameters,
+feasibility thresholds, independent references, wire formats and native
+implementation retain their separate gates. No new native profile or golden
+reference is approved. See the [bounded ratification record](../../docs/verification/p09-math-ratification.md).
 
 Requested in [#84](https://github.com/DRAGGON-Lab/FENIX/issues/84). The user selected
 mRNA/protein NOT gates and explicit intracellular signal pools in all three
 strains, exchanging with shared-medium pools. These selections establish the
 requested architecture; they do not ratify the equations, parameter choices,
-wire formats or numerical thresholds below. Root and scoped AGENTS.md gates apply.
+wire formats or numerical thresholds below. Subsequent explicit PI approval
+ratified the bounded mathematical scope stated above. Root and scoped AGENTS.md
+gates apply.
 
 The classical intracellular motif follows [Elowitz and Leibler (2000), Box 1](https://doi.org/10.1038/35002125):
 three transcriptional repressors form a negative ring with separate transcript
