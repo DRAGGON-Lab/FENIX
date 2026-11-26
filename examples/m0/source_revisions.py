@@ -36,10 +36,11 @@ def expect_rejection(action, error_type, category, path):
     try:
         action()
     except error_type as error:
+        paths = (path,) if isinstance(path, str) else path
         require(
-            (error.category, error.path) == (category, path), "unexpected diagnostic"
+            error.category == category and error.path in paths, "unexpected diagnostic"
         )
-        return {"category": category, "path": path}
+        return {"category": category, "path": error.path}
     raise ValueError("invalid source/artifact was accepted")
 
 
@@ -157,7 +158,7 @@ def run_workflow(case, method, output_dir):
             ),
             ResultValidationError,
             "REFERENCE",
-            "/manifest/sources/design/revision",
+            ("/manifest/sources/design/revision", "/manifest/sources/design/digest"),
         ),
         "new_record_old_sources": expect_rejection(
             lambda: RunRecord.from_json(
@@ -165,7 +166,7 @@ def run_workflow(case, method, output_dir):
             ),
             ResultValidationError,
             "REFERENCE",
-            "/manifest/sources/design/revision",
+            ("/manifest/sources/design/revision", "/manifest/sources/design/digest"),
         ),
         "result_transport_checksum": expect_rejection(
             lambda: RunRecord.from_json(

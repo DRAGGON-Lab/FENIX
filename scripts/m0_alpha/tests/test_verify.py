@@ -328,6 +328,28 @@ class TestSourceRevisionWorkflow(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "P04 oracle mismatch"):
             self.validate()
 
+    def test_example_accepts_either_actual_compound_source_diagnostic(self):
+        from fenix.results import ResultValidationError
+
+        paths = ("/manifest/sources/design/revision", "/manifest/sources/design/digest")
+        for path in (*paths, "/manifest/fir/digest"):
+
+            def action(path=path):
+                raise ResultValidationError("REFERENCE", path, "injected diagnostic")
+
+            if path in paths:
+                self.assertEqual(
+                    self.example.expect_rejection(
+                        action, ResultValidationError, "REFERENCE", paths
+                    ),
+                    {"category": "REFERENCE", "path": path},
+                )
+            else:
+                with self.assertRaisesRegex(ValueError, "unexpected diagnostic"):
+                    self.example.expect_rejection(
+                        action, ResultValidationError, "REFERENCE", paths
+                    )
+
     def test_compound_mismatch_diagnostic_stays_on_exact_source_fields(self):
         path = self.directory / "summary.json"
         summary = verify.read_report(path)
