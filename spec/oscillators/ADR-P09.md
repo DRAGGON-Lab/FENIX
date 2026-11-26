@@ -4,7 +4,11 @@
 RATIFIED on 2026-11-26 at reviewed revision `e84ff5b`.** Candidate parameters,
 feasibility thresholds, independent references, wire formats and native
 implementation retain their separate gates. No new native profile or golden
-reference is approved. See the [bounded ratification record](../../docs/verification/p09-math-ratification.md).
+reference is approved by that mathematical ratification. See the [bounded ratification record](../../docs/verification/p09-math-ratification.md).
+The PI subsequently accepted the exact 11 analytical component-reference cases
+(33 samples) at reviewed commit `6ab3dd4`; the
+[separate acceptance](../../docs/verification/p09-component-reference-acceptance.md)
+retains nonlinear-cycle references and all wire/native implementation gates.
 
 Requested in [#84](https://github.com/DRAGGON-Lab/FENIX/issues/84). The user selected
 mRNA/protein NOT gates and explicit intracellular signal pools in all three

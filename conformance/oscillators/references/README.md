@@ -1,9 +1,10 @@
 # Candidate independent ADR-P09 analytical references
 
-These **PROPOSED** fixtures support [issue #84](https://github.com/DRAGGON-Lab/FENIX/issues/84)
+These **PI-ACCEPTED component references** support [issue #84](https://github.com/DRAGGON-Lab/FENIX/issues/84)
 under the [ratified P09 mathematical scope](../../../spec/oscillators/ADR-P09.md).
-They are not accepted golden fixtures, new wire formats or native execution
-evidence. They complement the long-horizon feasibility study with independently
+The PI accepted the exact 11 cases/33 samples at reviewed commit `6ab3dd4`;
+see the [bounded acceptance record](../../../docs/verification/p09-component-reference-acceptance.md).
+They supply no new wire formats or native execution evidence. They complement the long-horizon feasibility study with independently
 derived laws, separately written Python Decimal and Julia BigFloat evaluators,
 and explicit failure controls. Neither analytical evaluator imports FENIX,
 SciPy, NumPy or the study evaluator.
@@ -106,7 +107,7 @@ connect every closed form to the component P09 RHS, with h=1e-35 / residual 1e-6
 for Python and h=1e-40 / residual 1e-75 for Julia. Exact initial states are checked.
 These thresholds concern reference calculations, not native ODE acceptance.
 
-The study comparison uses both DOP853/Radau at rtol=1e-12, atol=1e-13 and maximum
+The candidate study comparison uses both DOP853/Radau at rtol=1e-12, atol=1e-13 and maximum
 step 0.05 s. It checks 828 state/time samples against the candidate bound
 `1e-9 + 1e-8*abs(analytical)`. The report retains source/catalog hashes, versions,
 settings, work and maximum error/bound per run. It reports only candidate-study
@@ -117,7 +118,9 @@ weighted balances, incorrect Hill/translation/transport rules, read-only sensing
 plausible sample corruption and wrong-source rate comparisons. Julia checks the
 complete ordered sample set, state dimensions, nonfinite/negative values, invalid
 times, refinement metadata and catalog mutations with recomputed fingerprints.
-CI uploads the analytical report and candidate comparison separately.
+CI uploads the analytical report and candidate comparison separately. The raw
+catalog retains its historical PROPOSED status to preserve the reviewed byte
+pin; the subsequent human decision accepts only the component-reference scope.
 
 These analytical cases deliberately isolate components. They do not prove
 long-horizon nonlinear oscillation accuracy, full profile support or empirical
