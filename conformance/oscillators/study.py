@@ -523,6 +523,52 @@ def controls(cases):
     return output
 
 
+def save_trajectory(destination, case, method, refined, times, values):
+    path = destination / (
+        f"{case['id']}-{method}-{'refined' if refined else 'baseline'}.csv.gz"
+    )
+    np.savetxt(
+        path,
+        np.column_stack((times, values)),
+        delimiter=",",
+        header=",".join(["time_s", *labels(case)]),
+    )
+    return {
+        "path": path.name,
+        "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        "samples": len(times),
+        "columns": ["time_s", *labels(case)],
+    }
+
+
+def plot_controls(destination, trajectories, cases):
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    figure, axes = plt.subplots(
+        3, 1, figsize=(10, 8), sharex=True, constrained_layout=True
+    )
+    titles = (
+        "Single cell: Hill exponent one",
+        "Three strains: Hill exponent one",
+        "Three strains: signal 3 synthesis and all initial pools absent",
+    )
+    for axis, case, title in zip(axes, cases, titles, strict=True):
+        times, values = trajectories[case["id"]]
+        for i in range(3):
+            axis.plot(times, values[:, 3 + i], label=f"gate {i + 1}", linewidth=1.0)
+        axis.set_title(title)
+        axis.set_ylabel("protein count / cell")
+        axis.legend(ncol=3, loc="upper right")
+    axes[-1].set_xlabel("time (s)")
+    figure.suptitle("PROPOSED negative controls — Radau refined", fontsize=11)
+    figure.savefig(destination / "negative-controls.png", dpi=180)
+    figure.savefig(destination / "negative-controls.svg")
+    plt.close(figure)
+
+
 def plot_candidates(destination, studies, cases, protocol):
     import matplotlib
 
@@ -661,14 +707,10 @@ def main():
                             "refined": refined,
                             "work": work,
                             "metrics": metrics,
+                            "trajectory": save_trajectory(
+                                destination, case, method, refined, times, values
+                            ),
                         }
-                    )
-                    np.savetxt(
-                        args.output_dir
-                        / f"{case['id']}-{method}-{'refined' if refined else 'baseline'}.csv.gz",
-                        np.column_stack((times, values)),
-                        delimiter=",",
-                        header=",".join(["time_s", *labels(case)]),
                     )
                     if not metrics["sustained_candidate"]:
                         report["failures"].append(
@@ -747,11 +789,13 @@ def main():
             report["method_comparisons"].append(comparison)
             if not comparison["passed"]:
                 report["failures"].append(f"method/refinement metrics differ: {key}")
-    for control in controls(cases):
+    control_trajectories = {}
+    for control in report["controls"]:
         print(f"Running {control['id']} Radau refined", flush=True)
         try:
             times, values, work = simulate(control, protocol, "Radau", True)
             metrics = oscillation_metrics(control, protocol, times, values)
+            control_trajectories[control["id"]] = (times, values)
             report["runs"].append(
                 {
                     "case": control["id"],
@@ -759,6 +803,9 @@ def main():
                     "refined": True,
                     "work": work,
                     "metrics": metrics,
+                    "trajectory": save_trajectory(
+                        destination, control, "Radau", True, times, values
+                    ),
                 }
             )
             if metrics["sustained_candidate"]:
@@ -769,6 +816,8 @@ def main():
             report["failures"].append(control["id"] + ": " + str(error))
     if all((case["id"], "Radau", True) in studies for case in cases):
         plot_candidates(args.output_dir, studies, cases, protocol)
+    if len(control_trajectories) == len(report["controls"]):
+        plot_controls(destination, control_trajectories, report["controls"])
     report["feasibility_checks"] = "FAIL" if report["failures"] else "PASS"
     (args.output_dir / "report.json").write_text(
         json.dumps(report, indent=2, allow_nan=False) + "\n"

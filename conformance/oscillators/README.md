@@ -45,6 +45,11 @@ are explicit candidate choices in the catalog, not approved native tolerances.
 Three negative integrations use Hill exponent one in each model and remove an
 entire signal channel in the community. The latter sets its synthesis and every
 initial pool to zero, preventing residual medium signal from masking the break.
+Their complete trajectories are retained alongside the primary runs, including
+when a control unexpectedly meets the oscillation criteria (the study then fails).
+`negative-controls.png` and `.svg` show the three controls over the full horizon;
+the compressed CSVs include every expression and signal state, so reviewers can
+inspect residual transients and the exact absent-signal invariant directly.
 Unit tests independently check exact rational weighted-balance expressions,
 closed transport, analytical Jacobians against central differences, stable Hill
 limits, sensing dependencies, domain failures and classifier counterexamples.
@@ -58,6 +63,14 @@ gate; the long-horizon study is not promoted to an independent golden oracle.
 versions, input/evaluator/lock hashes, solver work and measured outcomes.
 Compressed CSVs retain every primary trajectory. Overview and detail PNG/SVG
 figures show intracellular proteins and extracellular signal densities.
+Every successful primary or control integration has a `trajectory` entry in
+`report.json` with its relative filename, SHA-256, sample count and ordered column
+labels. Check the file hash before interpreting a downloaded trace; this binds
+the trace to that report, without authenticating the report itself. Incomplete or
+invalid integrations fail the study and produce no successful run/trace entry.
+Failure-path tests inject incomplete grids, nonfinite/negative samples, failed
+integrations and unexpectedly oscillatory controls; orchestration stubs supply
+no new scientific reference values.
 Reports and plots are generated observations, never checked-in golden values.
 
 These two methods share SciPy and the same proposed RHS. Their agreement tests
