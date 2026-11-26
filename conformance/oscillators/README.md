@@ -49,6 +49,11 @@ Unit tests independently check exact rational weighted-balance expressions,
 closed transport, analytical Jacobians against central differences, stable Hill
 limits, sensing dependencies, domain failures and classifier counterexamples.
 
+The separate [candidate analytical references](references/README.md) derive
+11 component cases and 33 samples in independent Decimal/BigFloat evaluators.
+They check the study against closed forms while retaining their own acceptance
+gate; the long-horizon study is not promoted to an independent golden oracle.
+
 `report.json` contains all case/control definitions, the protocol, environment
 versions, input/evaluator/lock hashes, solver work and measured outcomes.
 Compressed CSVs retain every primary trajectory. Overview and detail PNG/SVG

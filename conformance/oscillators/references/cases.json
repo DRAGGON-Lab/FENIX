@@ -1,0 +1,1285 @@
+{
+  "format": "fenix.p09-analytical-candidates/1",
+  "status": "PROPOSED",
+  "units": {
+    "time": "s",
+    "volume": "L",
+    "state": "molecule",
+    "threshold_density": "molecule/L",
+    "basal": "molecule/s",
+    "induced": "molecule/s",
+    "first_order_rates": "1/s",
+    "hill_n": "1"
+  },
+  "bases": {
+    "intracellular": "expected count per representative cell",
+    "medium": "total count",
+    "translation": "protein molecules per transcript molecule per second",
+    "signal_synthesis": "signal molecules per synthase molecule per second"
+  },
+  "cases": [
+    {
+      "id": "single-driven-n1",
+      "model": "single_cell_mrna_protein",
+      "parameters": {
+        "basal": [
+          1,
+          0,
+          0
+        ],
+        "induced": [
+          4,
+          0,
+          0
+        ],
+        "mrna_decay": [
+          0.5,
+          0,
+          0
+        ],
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "protein_decay": [
+          0,
+          0,
+          0.5
+        ],
+        "threshold_density": [
+          2,
+          2,
+          2
+        ],
+        "hill_n": [
+          1,
+          1,
+          1
+        ]
+      },
+      "initial_counts": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        8
+      ],
+      "times": [
+        0,
+        1,
+        4
+      ],
+      "state_ids": [
+        "mRNA1",
+        "mRNA2",
+        "mRNA3",
+        "protein1",
+        "protein2",
+        "protein3"
+      ],
+      "cell_volume_L": 2
+    },
+    {
+      "id": "single-driven-n2",
+      "model": "single_cell_mrna_protein",
+      "parameters": {
+        "basal": [
+          1,
+          0,
+          0
+        ],
+        "induced": [
+          4,
+          0,
+          0
+        ],
+        "mrna_decay": [
+          1.0,
+          0,
+          0
+        ],
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "protein_decay": [
+          0,
+          0,
+          0.5
+        ],
+        "threshold_density": [
+          2,
+          2,
+          2
+        ],
+        "hill_n": [
+          2,
+          2,
+          2
+        ]
+      },
+      "initial_counts": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        8
+      ],
+      "times": [
+        0,
+        1,
+        4
+      ],
+      "state_ids": [
+        "mRNA1",
+        "mRNA2",
+        "mRNA3",
+        "protein1",
+        "protein2",
+        "protein3"
+      ],
+      "cell_volume_L": 2
+    },
+    {
+      "id": "single-driven-n3",
+      "model": "single_cell_mrna_protein",
+      "parameters": {
+        "basal": [
+          1,
+          0,
+          0
+        ],
+        "induced": [
+          4,
+          0,
+          0
+        ],
+        "mrna_decay": [
+          1.5,
+          0,
+          0
+        ],
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "protein_decay": [
+          0,
+          0,
+          0.5
+        ],
+        "threshold_density": [
+          2,
+          2,
+          2
+        ],
+        "hill_n": [
+          3,
+          3,
+          3
+        ]
+      },
+      "initial_counts": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        8
+      ],
+      "times": [
+        0,
+        1,
+        4
+      ],
+      "state_ids": [
+        "mRNA1",
+        "mRNA2",
+        "mRNA3",
+        "protein1",
+        "protein2",
+        "protein3"
+      ],
+      "cell_volume_L": 2
+    },
+    {
+      "id": "single-driven-n4",
+      "model": "single_cell_mrna_protein",
+      "parameters": {
+        "basal": [
+          1,
+          0,
+          0
+        ],
+        "induced": [
+          4,
+          0,
+          0
+        ],
+        "mrna_decay": [
+          2.0,
+          0,
+          0
+        ],
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "protein_decay": [
+          0,
+          0,
+          0.5
+        ],
+        "threshold_density": [
+          2,
+          2,
+          2
+        ],
+        "hill_n": [
+          4,
+          4,
+          4
+        ]
+      },
+      "initial_counts": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        8
+      ],
+      "times": [
+        0,
+        1,
+        4
+      ],
+      "state_ids": [
+        "mRNA1",
+        "mRNA2",
+        "mRNA3",
+        "protein1",
+        "protein2",
+        "protein3"
+      ],
+      "cell_volume_L": 2
+    },
+    {
+      "id": "community-driven-n1",
+      "model": "three_strain_mrna_protein_exchange",
+      "parameters": {
+        "basal": [
+          1,
+          0,
+          0
+        ],
+        "induced": [
+          4,
+          0,
+          0
+        ],
+        "mrna_decay": [
+          0.5,
+          0,
+          0
+        ],
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "protein_decay": [
+          0,
+          0,
+          0
+        ],
+        "threshold_density": [
+          2,
+          2,
+          2
+        ],
+        "hill_n": [
+          1,
+          1,
+          1
+        ],
+        "signal_synthesis": [
+          0,
+          0,
+          0
+        ],
+        "intracellular_signal_decay": [
+          [
+            0,
+            0,
+            0.5
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "medium_signal_decay": [
+          0,
+          0,
+          0
+        ],
+        "export": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "import": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "initial_counts": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        999
+      ],
+      "times": [
+        0,
+        1,
+        4
+      ],
+      "state_ids": [
+        "mRNA1",
+        "mRNA2",
+        "mRNA3",
+        "protein1",
+        "protein2",
+        "protein3",
+        "strain1.signal1",
+        "strain1.signal2",
+        "strain1.signal3",
+        "strain2.signal1",
+        "strain2.signal2",
+        "strain2.signal3",
+        "strain3.signal1",
+        "strain3.signal2",
+        "strain3.signal3",
+        "medium.signal1",
+        "medium.signal2",
+        "medium.signal3"
+      ],
+      "cell_volumes_L": [
+        2,
+        3,
+        5
+      ],
+      "populations": [
+        3,
+        5,
+        7
+      ],
+      "medium_volume_L": 12
+    },
+    {
+      "id": "community-driven-n2",
+      "model": "three_strain_mrna_protein_exchange",
+      "parameters": {
+        "basal": [
+          1,
+          0,
+          0
+        ],
+        "induced": [
+          4,
+          0,
+          0
+        ],
+        "mrna_decay": [
+          1.0,
+          0,
+          0
+        ],
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "protein_decay": [
+          0,
+          0,
+          0
+        ],
+        "threshold_density": [
+          2,
+          2,
+          2
+        ],
+        "hill_n": [
+          2,
+          2,
+          2
+        ],
+        "signal_synthesis": [
+          0,
+          0,
+          0
+        ],
+        "intracellular_signal_decay": [
+          [
+            0,
+            0,
+            0.5
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "medium_signal_decay": [
+          0,
+          0,
+          0
+        ],
+        "export": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "import": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "initial_counts": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        999
+      ],
+      "times": [
+        0,
+        1,
+        4
+      ],
+      "state_ids": [
+        "mRNA1",
+        "mRNA2",
+        "mRNA3",
+        "protein1",
+        "protein2",
+        "protein3",
+        "strain1.signal1",
+        "strain1.signal2",
+        "strain1.signal3",
+        "strain2.signal1",
+        "strain2.signal2",
+        "strain2.signal3",
+        "strain3.signal1",
+        "strain3.signal2",
+        "strain3.signal3",
+        "medium.signal1",
+        "medium.signal2",
+        "medium.signal3"
+      ],
+      "cell_volumes_L": [
+        2,
+        3,
+        5
+      ],
+      "populations": [
+        3,
+        5,
+        7
+      ],
+      "medium_volume_L": 12
+    },
+    {
+      "id": "community-driven-n3",
+      "model": "three_strain_mrna_protein_exchange",
+      "parameters": {
+        "basal": [
+          1,
+          0,
+          0
+        ],
+        "induced": [
+          4,
+          0,
+          0
+        ],
+        "mrna_decay": [
+          1.5,
+          0,
+          0
+        ],
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "protein_decay": [
+          0,
+          0,
+          0
+        ],
+        "threshold_density": [
+          2,
+          2,
+          2
+        ],
+        "hill_n": [
+          3,
+          3,
+          3
+        ],
+        "signal_synthesis": [
+          0,
+          0,
+          0
+        ],
+        "intracellular_signal_decay": [
+          [
+            0,
+            0,
+            0.5
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "medium_signal_decay": [
+          0,
+          0,
+          0
+        ],
+        "export": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "import": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "initial_counts": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        999
+      ],
+      "times": [
+        0,
+        1,
+        4
+      ],
+      "state_ids": [
+        "mRNA1",
+        "mRNA2",
+        "mRNA3",
+        "protein1",
+        "protein2",
+        "protein3",
+        "strain1.signal1",
+        "strain1.signal2",
+        "strain1.signal3",
+        "strain2.signal1",
+        "strain2.signal2",
+        "strain2.signal3",
+        "strain3.signal1",
+        "strain3.signal2",
+        "strain3.signal3",
+        "medium.signal1",
+        "medium.signal2",
+        "medium.signal3"
+      ],
+      "cell_volumes_L": [
+        2,
+        3,
+        5
+      ],
+      "populations": [
+        3,
+        5,
+        7
+      ],
+      "medium_volume_L": 12
+    },
+    {
+      "id": "community-driven-n4",
+      "model": "three_strain_mrna_protein_exchange",
+      "parameters": {
+        "basal": [
+          1,
+          0,
+          0
+        ],
+        "induced": [
+          4,
+          0,
+          0
+        ],
+        "mrna_decay": [
+          2.0,
+          0,
+          0
+        ],
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "protein_decay": [
+          0,
+          0,
+          0
+        ],
+        "threshold_density": [
+          2,
+          2,
+          2
+        ],
+        "hill_n": [
+          4,
+          4,
+          4
+        ],
+        "signal_synthesis": [
+          0,
+          0,
+          0
+        ],
+        "intracellular_signal_decay": [
+          [
+            0,
+            0,
+            0.5
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "medium_signal_decay": [
+          0,
+          0,
+          0
+        ],
+        "export": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "import": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "initial_counts": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        999
+      ],
+      "times": [
+        0,
+        1,
+        4
+      ],
+      "state_ids": [
+        "mRNA1",
+        "mRNA2",
+        "mRNA3",
+        "protein1",
+        "protein2",
+        "protein3",
+        "strain1.signal1",
+        "strain1.signal2",
+        "strain1.signal3",
+        "strain2.signal1",
+        "strain2.signal2",
+        "strain2.signal3",
+        "strain3.signal1",
+        "strain3.signal2",
+        "strain3.signal3",
+        "medium.signal1",
+        "medium.signal2",
+        "medium.signal3"
+      ],
+      "cell_volumes_L": [
+        2,
+        3,
+        5
+      ],
+      "populations": [
+        3,
+        5,
+        7
+      ],
+      "medium_volume_L": 12
+    },
+    {
+      "id": "single-translation-cascade",
+      "model": "single_cell_mrna_protein",
+      "parameters": {
+        "basal": [
+          0,
+          0,
+          0
+        ],
+        "induced": [
+          0,
+          0,
+          0
+        ],
+        "mrna_decay": [
+          1,
+          2,
+          3
+        ],
+        "translation": [
+          3,
+          4,
+          5
+        ],
+        "protein_decay": [
+          2,
+          3,
+          4
+        ],
+        "threshold_density": [
+          2,
+          2,
+          2
+        ],
+        "hill_n": [
+          1,
+          2,
+          4
+        ]
+      },
+      "initial_counts": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "times": [
+        0,
+        1,
+        4
+      ],
+      "state_ids": [
+        "mRNA1",
+        "mRNA2",
+        "mRNA3",
+        "protein1",
+        "protein2",
+        "protein3"
+      ],
+      "cell_volume_L": 2
+    },
+    {
+      "id": "community-threshold-equilibrium",
+      "model": "three_strain_mrna_protein_exchange",
+      "parameters": {
+        "basal": [
+          1,
+          1,
+          1
+        ],
+        "induced": [
+          2,
+          2,
+          2
+        ],
+        "mrna_decay": [
+          2,
+          2,
+          2
+        ],
+        "translation": [
+          3,
+          3,
+          3
+        ],
+        "protein_decay": [
+          3,
+          3,
+          3
+        ],
+        "threshold_density": [
+          1,
+          1,
+          1
+        ],
+        "hill_n": [
+          1,
+          2,
+          4
+        ],
+        "signal_synthesis": [
+          2,
+          3,
+          5
+        ],
+        "intracellular_signal_decay": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "medium_signal_decay": [
+          0,
+          0,
+          0
+        ],
+        "export": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "import": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ]
+      },
+      "initial_counts": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        3,
+        3,
+        3,
+        5,
+        5,
+        5,
+        12,
+        12,
+        12
+      ],
+      "times": [
+        0,
+        1,
+        4
+      ],
+      "state_ids": [
+        "mRNA1",
+        "mRNA2",
+        "mRNA3",
+        "protein1",
+        "protein2",
+        "protein3",
+        "strain1.signal1",
+        "strain1.signal2",
+        "strain1.signal3",
+        "strain2.signal1",
+        "strain2.signal2",
+        "strain2.signal3",
+        "strain3.signal1",
+        "strain3.signal2",
+        "strain3.signal3",
+        "medium.signal1",
+        "medium.signal2",
+        "medium.signal3"
+      ],
+      "cell_volumes_L": [
+        2,
+        3,
+        5
+      ],
+      "populations": [
+        3,
+        5,
+        7
+      ],
+      "medium_volume_L": 12
+    },
+    {
+      "id": "community-closed-transport",
+      "model": "three_strain_mrna_protein_exchange",
+      "parameters": {
+        "basal": [
+          0,
+          0,
+          0
+        ],
+        "induced": [
+          0,
+          0,
+          0
+        ],
+        "mrna_decay": [
+          0,
+          0,
+          0
+        ],
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "protein_decay": [
+          0,
+          0,
+          0
+        ],
+        "threshold_density": [
+          2,
+          2,
+          2
+        ],
+        "hill_n": [
+          1,
+          2,
+          4
+        ],
+        "signal_synthesis": [
+          0,
+          0,
+          0
+        ],
+        "intracellular_signal_decay": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "medium_signal_decay": [
+          0,
+          0,
+          0
+        ],
+        "export": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "import": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ]
+      },
+      "initial_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4,
+        6,
+        8,
+        6,
+        9,
+        12,
+        10,
+        15,
+        20,
+        72,
+        84,
+        96
+      ],
+      "times": [
+        0,
+        1,
+        4
+      ],
+      "state_ids": [
+        "mRNA1",
+        "mRNA2",
+        "mRNA3",
+        "protein1",
+        "protein2",
+        "protein3",
+        "strain1.signal1",
+        "strain1.signal2",
+        "strain1.signal3",
+        "strain2.signal1",
+        "strain2.signal2",
+        "strain2.signal3",
+        "strain3.signal1",
+        "strain3.signal2",
+        "strain3.signal3",
+        "medium.signal1",
+        "medium.signal2",
+        "medium.signal3"
+      ],
+      "cell_volumes_L": [
+        2,
+        3,
+        5
+      ],
+      "populations": [
+        3,
+        5,
+        7
+      ],
+      "medium_volume_L": 12
+    }
+  ]
+}
