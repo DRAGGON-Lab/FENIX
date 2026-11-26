@@ -140,3 +140,15 @@ The single-cell and distributed models have different mathematical identities.
 Plots alone, two solvers in one backend, or Python/Julia agreement alone do not
 satisfy independent scientific acceptance. This issue remains open until the
 requested native examples and their gates are delivered.
+
+## Subsequent bounded nonlinear-reference acceptance
+
+The PI accepted the exact two primary 80,000-second numerical reference
+definitions, independent density-coordinate RK4 calculation, four-step
+refinement protocol and 1e-5 peak-scaled investigation limit at reviewed commit
+`0ee6b42` on PR #90. The
+[separate decision](../../docs/verification/p09-nonlinear-reference-acceptance.md)
+records reviewed artifact hashes, evidence and convergence limitations. This
+acceptance supplies neither certified error bounds nor native tolerances;
+complete wire/identity/rejection contracts and native implementation acceptance
+remain pending. The ratified P09 mathematical body above is unchanged.

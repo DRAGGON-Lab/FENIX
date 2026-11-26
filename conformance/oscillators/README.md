@@ -2,12 +2,15 @@
 
 This separate development environment studies [issue #84](https://github.com/DRAGGON-Lab/FENIX/issues/84)
 and [ADR-P09](../../spec/oscillators/ADR-P09.md). It does **not** import
-FENIX, execute a native FENIX profile, or supply accepted golden fixtures.
+FENIX or execute a native FENIX profile. Bounded reference-definition acceptance
+is recorded separately below; generated traces are not certified error bounds
+or native execution evidence.
 The PI ratified equations, units/bases and numerical-domain policy at reviewed
 revision `e84ff5b`; see the [bounded decision](../../docs/verification/p09-math-ratification.md).
-Illustrative parameters, feasibility thresholds and reference acceptance remain
-proposed. Historical PROPOSED labels in the candidate catalog/reports identify
-study status; they do not constitute an approved golden reference.
+Feasibility classifier thresholds and native acceptance remain separate from
+the bounded reference decisions. Historical PROPOSED labels in the byte-pinned
+catalog/reports are preserved; the subsequent human decisions govern only their
+explicit scopes. The illustrative parameters are not biologically calibrated.
 
 `cases.json` specifies every parameter, initial count, unit, quantity basis and
 study setting. The single-cell example has three transcript/repressor pairs
@@ -73,10 +76,13 @@ integrations and unexpectedly oscillatory controls; orchestration stubs supply
 no new scientific reference values.
 Reports and plots are generated observations, never checked-in golden values.
 
-The separate [proposed density-coordinate RK4 study](nonlinear/README.md)
+The separate [density-coordinate RK4 reference study](nonlinear/README.md)
 adds an independently derived RHS and fixed-step refinement over the complete
-primary traces, checked against the analytical component laws. It supplies
-proposed nonlinear numerical evidence, retaining its own human acceptance gate.
+primary traces, checked against the analytical component laws. The PI accepted
+its bounded reference definitions and investigation limit at `0ee6b42`; see the
+[separate decision](../../docs/verification/p09-nonlinear-reference-acceptance.md).
+Certified error bounds, native tolerances and all wire/implementation gates
+remain separate.
 
 These two methods share SciPy and the same proposed RHS. Their agreement tests
 numerical feasibility, not independent implementation correctness or biological

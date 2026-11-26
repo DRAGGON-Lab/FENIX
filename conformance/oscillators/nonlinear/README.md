@@ -1,8 +1,10 @@
-# Proposed independent nonlinear-cycle numerical study
+# Accepted bounded nonlinear-cycle reference definitions
 
 This study advances [issue #84](https://github.com/DRAGGON-Lab/FENIX/issues/84)
 under the [ratified P09 equations](../../../spec/oscillators/ADR-P09.md).
-It is **PROPOSED numerical evidence**, requiring human review and acceptance.
+The PI **accepted the bounded numerical reference definitions** at reviewed
+commit `0ee6b42`; see the
+[explicit decision](../../../docs/verification/p09-nonlinear-reference-acceptance.md).
 It supplies neither certified error intervals nor accepted native tolerances.
 No native FENIX profile is executed.
 
@@ -70,8 +72,8 @@ observed refinement orders and comparisons with all eight adaptive traces.
 The candidate check requires successive maximum amplitude-scaled step differences
 to decrease and the final difference to be at most 1e-5. Each adaptive comparison
 must also be at most 1e-5, using max(1, peak absolute count) per state over the
-whole trace. These are explicit proposed investigation limits, not error proofs
-or accepted native thresholds. Observed orders are reported without assuming
+whole trace. These investigation limits are accepted for this bounded reference
+study; they are not error proofs or accepted native thresholds. Observed orders are reported without assuming
 every coarse step lies in an asymptotic fourth-order regime. A decreasing gap
 alone does not certify distance to the exact solution.
 
@@ -90,7 +92,9 @@ numeric-domain failures, exact weighted-balance derivatives, population/volume
 replication, read-only sensing, known fourth-order linear convergence and
 synthetic cycle/no-cycle traces.
 
-This candidate does not replace accepted component laws, M0 or M1 evidence.
-Acceptance of nonlinear reference definitions and final tolerances, complete
+This reference study does not replace accepted component laws, M0 or M1 evidence.
+The accepted scope includes the two primary definitions, four-step protocol and
+1e-5 investigation limit. Certified error bounds, native tolerances, complete
 wire/identity/rejection contracts, native Python/Julia implementation and its
-acceptance remain separate. No issue completion or release is implied.
+acceptance remain separate. Historical PROPOSED labels in the byte-pinned inputs
+and generated reports are preserved. No issue completion or release is implied.
