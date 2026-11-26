@@ -311,7 +311,9 @@ fetch dependencies; example and benchmark execution must run offline afterward.
 Timings are observations, not performance acceptance thresholds or biological evidence.
 
 #29's PI-accepted gate merged through PR #74 at
-`ba943e6882e7301f2356139df7010ff141494b7f`. A still-open issue status is a tracking
-discrepancy, not missing scientific evidence. #30's alpha-profile approval and
-final EP-04 acceptance remain separate human decisions. No registry publication,
-version-policy change or branch-protection activation follows from this candidate.
+`ba943e6882e7301f2356139df7010ff141494b7f`. #30's bounded repository alpha was
+accepted at reviewed candidate `566ba94`; both child issues are closed as
+completed. On 2026-11-26 the PI separately accepted the bounded EP-04 parent
+at baseline `0670cf3`; see the [parent decision](verification/ep04-m0-acceptance.md).
+Later follow-up PRs retain their own reviews. Registry publication, version
+policy and branch-protection activation remain separately governed.
