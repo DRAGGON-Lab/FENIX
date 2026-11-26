@@ -6,6 +6,24 @@ on:
 permissions:
   contents: read
 jobs:
+  equation-audit:
+    name: Candidate P10 equation audit (not native conformance)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - run: python -m unittest discover -s spec/oscillators -p test_equations.py -v
+      - run: mkdir -p artifacts/p10-equations
+      - run: python spec/oscillators/equation_audit.py --output artifacts/p10-equations/equation-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: proposed-p10-equation-audit
+          path: artifacts/p10-equations/
+          if-no-files-found: warn
   wire-structure:
     name: Candidate P10 wire structure (not native conformance)
     runs-on: ubuntu-24.04
