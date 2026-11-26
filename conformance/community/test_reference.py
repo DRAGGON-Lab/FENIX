@@ -1,6 +1,7 @@
 """Regression controls for independently specified analytical references."""
 
 import copy
+import json
 import unittest
 from unittest.mock import patch
 
@@ -60,6 +61,104 @@ class TestReferences(unittest.TestCase):
                 ):
                     reference.verify()
                 laws.assert_not_called()
+
+    def test_complete_catalog_corruption_is_detected_before_evaluation(self):
+        original = reference.catalog()
+
+        def mutations(value, path=()):
+            if isinstance(value, dict):
+                for key, child in value.items():
+                    yield path, "delete", key
+                    yield from mutations(child, (*path, key))
+                yield path, "extra", "unknown"
+            elif isinstance(value, list):
+                yield path, "truncate", None
+                yield path, "duplicate", None
+                yield path, "reverse", None
+                for index, child in enumerate(value):
+                    yield from mutations(child, (*path, index))
+            else:
+                alternatives = (
+                    (value + 1, True, float(value))
+                    if type(value) in (int, float)
+                    else ("wrong",)
+                )
+                for replacement in alternatives:
+                    if (
+                        type(replacement) is float
+                        and replacement == value
+                        and not (
+                            path[-1] == "hill_n" or path[-2] in ("populations", "times")
+                        )
+                    ):
+                        continue
+                    yield path, "replace", replacement
+
+        for path, operation, value in mutations(original):
+            candidate = copy.deepcopy(original)
+            target = candidate
+            for key in path[:-1] if operation == "replace" else path:
+                target = target[key]
+            if operation == "replace":
+                target[path[-1]] = value
+            elif operation == "delete":
+                del target[value]
+            elif operation == "extra":
+                target[value] = 0
+            elif operation == "truncate":
+                target.pop()
+            elif operation == "duplicate":
+                target.append(copy.deepcopy(target[0]))
+            else:
+                target.reverse()
+            if json.dumps(candidate) == json.dumps(original):
+                continue
+            with self.subTest(path=path, operation=operation, value=value):
+                with (
+                    patch.object(reference, "catalog", return_value=candidate),
+                    patch.object(reference, "verify_laws") as laws,
+                    patch.object(reference, "rows") as rows,
+                    self.assertRaisesRegex(ValueError, "catalog"),
+                ):
+                    reference.verify()
+                laws.assert_not_called()
+                rows.assert_not_called()
+
+    def test_trajectory_preserving_mutations_are_rejected(self):
+        original = reference.catalog()
+        candidates = []
+        candidate = copy.deepcopy(original)
+        candidate["cases"][0]["populations"] = [4, 5]
+        candidates.append(candidate)
+        candidate = copy.deepcopy(original)
+        for key in ("sender_export", "sender_import"):
+            candidate["cases"][0]["parameters"][key] *= 2
+        candidates.append(candidate)
+        candidate = copy.deepcopy(original)
+        candidate["cases"][5]["volumes"][0] *= 2
+        candidates.append(candidate)
+        for candidate in candidates:
+            with patch.object(reference, "catalog", return_value=candidate):
+                # These mutations pass the former trajectory-only gate.
+                reference.verify_laws()
+                with self.assertRaisesRegex(ValueError, "catalog definition"):
+                    reference.verify()
+
+    def test_object_order_and_numeric_spellings_preserve_definitions(self):
+        def reorder(value):
+            if isinstance(value, dict):
+                return {
+                    key: reorder(child) for key, child in reversed(list(value.items()))
+                }
+            if isinstance(value, list):
+                return [reorder(child) for child in value]
+            return value
+
+        candidate = json.loads(json.dumps(reorder(reference.catalog())))
+        candidate["cases"][0]["initial"][0] = 4.0
+        with patch.object(reference, "catalog", return_value=candidate):
+            rows, _ = reference.verify()
+        self.assertEqual(len(rows), 30)
 
     def test_analytical_catalog(self):
         rows, error = reference.verify()

@@ -53,8 +53,78 @@ function validate_catalog_metadata(data)
     end
 end
 
+function expected_cases()
+    # Independent declarations of the inputs used by the BigFloat solutions.
+    cases = Dict{String,Any}[]
+    ids = vcat(["threshold-n$n" for n in 1:4], ["reversible-transient"],
+               ["driven-n$n" for n in 1:4], ["two-strain-transient"])
+    for id in ids
+        parameters = Dict{String,Any}(
+            "sender_production" => 0, "sender_decay" => 0, "receiver_decay" => 0,
+            "env_decay" => 0, "reporter_decay" => 0, "reporter_basal" => 0,
+            "reporter_induced" => 0, "sender_export" => 1, "sender_import" => 1,
+            "receiver_export" => 1, "receiver_import" => 1, "threshold" => 2,
+            "hill_n" => 1)
+        initial = [8, 12, 24, 0]
+        if startswith(id, "threshold-n")
+            initial = [4, 12, 24, 0]
+            merge!(parameters, Dict("reporter_decay" => 0.5, "reporter_induced" => 4,
+                                    "receiver_import" => 2, "hill_n" => parse(Int, id[end:end])))
+        elseif id == "reversible-transient"
+            initial = [4, 2, 24, 0]
+            merge!(parameters, Dict("sender_export" => 2, "receiver_export" => 0,
+                                    "receiver_import" => 0))
+        elseif startswith(id, "driven-n")
+            n = parse(Int, id[end:end])
+            initial = [0, 0, 48, 2]
+            merge!(parameters, Dict("env_decay" => 0.5, "reporter_decay" => n/2,
+                                    "reporter_basal" => 1, "reporter_induced" => 4,
+                                    "sender_export" => 0, "sender_import" => 0,
+                                    "receiver_export" => 0, "receiver_import" => 0,
+                                    "hill_n" => n))
+        end
+        push!(cases, Dict("id" => id, "initial" => initial, "populations" => [3, 5],
+                          "volumes" => [2, 3, 12], "parameters" => parameters,
+                          "times" => [0, 1, 4]))
+    end
+    cases
+end
+
+function compare_catalog_value(actual, expected, path)
+    message = "catalog definition differs from reference: $path"
+    if expected isa AbstractDict
+        @assert actual isa AbstractDict message
+        @assert Set(keys(actual)) == Set(keys(expected)) message
+        for (key, value) in expected
+            compare_catalog_value(actual[key], value, "$path.$key")
+        end
+    elseif expected isa AbstractVector
+        @assert actual isa AbstractVector message
+        @assert length(actual) == length(expected) message
+        for i in eachindex(expected)
+            compare_catalog_value(actual[i], expected[i], "$path[$i]")
+        end
+    elseif expected isa Real
+        @assert actual isa Real && !(actual isa Bool) && actual == expected message
+        if occursin(".populations[", path) || occursin(".times[", path) || endswith(path, ".hill_n")
+            @assert actual isa Integer message
+        end
+    else
+        @assert actual isa typeof(expected) && actual == expected message
+    end
+    nothing
+end
+
+function validate_catalog(data)
+    validate_catalog_metadata(data)
+    @assert Set(keys(data)) == Set(["status", "state_ids", "time_unit", "volumes_unit",
+                                   "state_unit", "parameter_units", "cases"]) "catalog fields differ from reference"
+    @assert data["status"] == "PROPOSED" "catalog status differs from reference"
+    compare_catalog_value(data["cases"], expected_cases(), "cases")
+end
+
 function compare_report(report; catalog_path=joinpath(@__DIR__, "cases.json"))
-    validate_catalog_metadata(JSON.parsefile(catalog_path))
+    validate_catalog(JSON.parsefile(catalog_path))
     low, high = samples(512), samples(1024)
     setprecision(BigFloat, 1024) do
         @assert length(low) == length(high) == 30

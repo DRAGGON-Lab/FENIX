@@ -86,6 +86,110 @@ def validate_catalog_metadata(data):
             raise ValueError(f"catalog metadata differs from ADR-P08: {field}")
 
 
+def expected_cases():
+    """Fixed inputs underlying these analytical laws, independent of cases.json."""
+    cases = []
+    for case_id in (
+        *(f"threshold-n{n}" for n in range(1, 5)),
+        "reversible-transient",
+        *(f"driven-n{n}" for n in range(1, 5)),
+        "two-strain-transient",
+    ):
+        parameters = {
+            "sender_production": 0,
+            "sender_decay": 0,
+            "receiver_decay": 0,
+            "env_decay": 0,
+            "reporter_decay": 0,
+            "reporter_basal": 0,
+            "reporter_induced": 0,
+            "sender_export": 1,
+            "sender_import": 1,
+            "receiver_export": 1,
+            "receiver_import": 1,
+            "threshold": 2,
+            "hill_n": 1,
+        }
+        initial = [8, 12, 24, 0]
+        if case_id.startswith("threshold-n"):
+            initial = [4, 12, 24, 0]
+            parameters.update(
+                reporter_decay=0.5,
+                reporter_induced=4,
+                receiver_import=2,
+                hill_n=int(case_id[-1]),
+            )
+        elif case_id == "reversible-transient":
+            initial = [4, 2, 24, 0]
+            parameters.update(sender_export=2, receiver_export=0, receiver_import=0)
+        elif case_id.startswith("driven-n"):
+            n = int(case_id[-1])
+            initial = [0, 0, 48, 2]
+            parameters.update(
+                env_decay=0.5,
+                reporter_decay=n / 2,
+                reporter_basal=1,
+                reporter_induced=4,
+                sender_export=0,
+                sender_import=0,
+                receiver_export=0,
+                receiver_import=0,
+                hill_n=n,
+            )
+        cases.append(
+            {
+                "id": case_id,
+                "initial": initial,
+                "populations": [3, 5],
+                "volumes": [2, 3, 12],
+                "parameters": parameters,
+                "times": [0, 1, 4],
+            }
+        )
+    return cases
+
+
+def validate_catalog(data):
+    """Reject changed oracle inputs even when they leave sampled states unchanged."""
+    validate_catalog_metadata(data)
+    expected_fields = {
+        "status",
+        "state_ids",
+        "time_unit",
+        "volumes_unit",
+        "state_unit",
+        "parameter_units",
+        "cases",
+    }
+    if set(data) != expected_fields or data["status"] != "PROPOSED":
+        raise ValueError("catalog fields or status differ from reference")
+
+    def compare(actual, expected, path):
+        valid = True
+        if isinstance(expected, dict):
+            valid = isinstance(actual, dict) and actual.keys() == expected.keys()
+            if valid:
+                for key, value in expected.items():
+                    compare(actual[key], value, f"{path}.{key}")
+        elif isinstance(expected, list):
+            valid = isinstance(actual, list) and len(actual) == len(expected)
+            if valid:
+                for index, (value, target) in enumerate(
+                    zip(actual, expected, strict=True)
+                ):
+                    compare(value, target, f"{path}[{index}]")
+        elif isinstance(expected, (int, float)):
+            valid = type(actual) in (int, float) and actual == expected
+            if ".populations[" in path or ".times[" in path or path.endswith(".hill_n"):
+                valid = valid and type(actual) is int
+        else:
+            valid = type(actual) is type(expected) and actual == expected
+        if not valid:
+            raise ValueError(f"catalog definition differs from reference: {path}")
+
+    compare(data["cases"], expected_cases(), "cases")
+
+
 def rhs(case, values):
     s, r, e, y = values
     p = {k: Decimal(v) for k, v in case["parameters"].items()}
@@ -144,7 +248,7 @@ def verify_laws():
 
 
 def verify():
-    validate_catalog_metadata(catalog())
+    validate_catalog(catalog())
     verify_laws()
     low, high = rows(80), rows(160)
     max_error = Decimal(0)
