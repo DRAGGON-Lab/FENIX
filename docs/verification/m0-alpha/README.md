@@ -1,11 +1,11 @@
 # M0 repository alpha candidate — issue #30
 
-**Status: candidate; human PI alpha-profile and release acceptance PENDING.**
+**Status: bounded M0 repository alpha accepted by the human PI.**
 No registry release or package version change is proposed. Package identifiers
 remain provisional at `0.0.0` pending P06. This repository candidate is identified
 by its reviewed Git revision and artifact checksums, not a new version promise.
 
-## Supported-profile inventory for PI approval
+## Accepted supported-profile inventory
 
 This inventory summarizes existing ratified rules; it adds no capabilities.
 
@@ -63,19 +63,42 @@ beside this document; full CI artifacts include emitted result/manifest pairs.
 
 See the executed [verification receipt](verification.md) and retained local/CI JSON reports.
 
+## Merged alpha candidate evidence
+
+[PR #75](https://github.com/DRAGGON-Lab/FENIX/pull/75) merged reviewed head
+`566ba94bf1814fdf7bcae10db4ebcbf8688a3b53` at
+`ddb298ce85f81e69eb6c6f3b67b1dee9501fb0d5`. Both commits identify tree
+`d13d478a67f6050397461f13b70cad4a6fda5634`. All 17 [candidate checks](https://github.com/DRAGGON-Lab/FENIX/commit/566ba94bf1814fdf7bcae10db4ebcbf8688a3b53/checks)
+passed. The [alpha run](https://github.com/DRAGGON-Lab/FENIX/actions/runs/45690506447)
+published the Python, Julia and comparison artifacts covering both scenarios
+and all four native methods.
+
+| Dependency input | SHA-256 at the reviewed tree |
+| --- | --- |
+| Python uv.lock | `0a02d80325600c4610e8541b3255f5ab7b283438e6bb04c02348a9d2ca00cfb8` |
+| Julia native Project.toml | `bc8f951f11988d9443d3960ed02500d4227428f100cf86591d2a11ee56d616ca` |
+| Julia native Manifest.toml | `4624b98301546ce12f4b583e7954d3845a70b2b200b0bd11ec70d26059944855` |
+
+## PI decision
+
+In response to the request for PI acceptance of the bounded M0 alpha profile
+and evidence at `566ba94bf1814fdf7bcae10db4ebcbf8688a3b53`, the PI stated
+“I accept tye bounded M0 alpha”. This covers the profile inventory and bounded
+candidate evidence identified above. EP-04 parent acceptance has its own gate.
+
 ## Manual release checklist
 
-- [ ] Record the exact final candidate commit and source/lock fingerprints.
+- [x] Record the exact final candidate commit and source/lock fingerprints.
 - [x] Verify independent Python wheel installation and Julia source installation.
 - [x] Execute both scenarios with both native methods per language offline.
 - [x] Verify source/FIR identity against independent expectations and native parity.
 - [x] Verify analytical bounds, result-byte checksums and native readback.
 - [x] Retain local and CI raw benchmark receipts with hardware/settings.
-- [ ] Pass repository/package/reference checks and existing native FIR/ODE gates on the candidate revision.
-- [ ] Inspect the final `M0 alpha candidate` CI status and downloadable artifacts.
+- [x] Pass repository/package/reference checks and existing native FIR/ODE gates on the candidate revision.
+- [x] Inspect the final `M0 alpha candidate` CI status and downloadable artifacts.
 - [x] Record independent engineering/numerical review and any remaining limitations.
-- [ ] PI approves this bounded supported-profile inventory and candidate evidence at an exact reviewed revision.
-- [ ] Record PI alpha acceptance before closing #30; request EP-04 parent acceptance separately.
+- [x] PI approves this bounded supported-profile inventory and candidate evidence at an exact reviewed revision.
+- [x] Record PI alpha acceptance for #30.
 
 #28 merged in PR #73. The PI-accepted #29 scientific gate merged in PR #74 at
 `ba943e6882e7301f2356139df7010ff141494b7f`; issue tracking may lag this evidence.
