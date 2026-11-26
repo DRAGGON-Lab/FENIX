@@ -10,7 +10,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE))
-import verify
+import verify  # noqa: E402 - repository-only tools need the local paths above
 
 
 class TestAlphaVerifier(unittest.TestCase):
@@ -238,6 +238,144 @@ class TestAlphaVerifier(unittest.TestCase):
                 self.revision,
                 self.expected,
             )
+
+
+class TestSourceRevisionWorkflow(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        sys.path.insert(0, str(verify.ROOT / "examples/m0"))
+        import source_revisions
+
+        cls.example = source_revisions
+        cls.expected = next(
+            s
+            for s in verify.make_references("0670cf35d7791e610b4e7c3931a720e9109532ad")[
+                "scenarios"
+            ]
+            if s["id"] == "baseline-five"
+        )
+
+    def setUp(self):
+        self.temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temporary.cleanup)
+        self.directory = Path(self.temporary.name) / "workflow"
+        self.example.run_workflow("baseline-five", "DOP853", self.directory)
+        import fenix
+
+        self.package_root = str(Path(fenix.__file__).resolve().parent)
+
+    def validate(self):
+        return verify.validate_revision_workflow(
+            self.directory,
+            "python",
+            "baseline-five",
+            "DOP853",
+            self.package_root,
+            self.expected,
+        )
+
+    def test_independent_source_revisions_and_same_mathematics(self):
+        self.assertEqual(
+            self.validate(), self.expected["artifacts"]["identity"]["sha256"]
+        )
+        next_expected = verify.revision_expectation(self.expected)
+        self.assertNotEqual(
+            next_expected["artifacts"]["design"], self.expected["artifacts"]["design"]
+        )
+        self.assertNotEqual(
+            next_expected["artifacts"]["experiment"],
+            self.expected["artifacts"]["experiment"],
+        )
+        self.assertEqual(
+            next_expected["artifacts"]["model"], self.expected["artifacts"]["model"]
+        )
+
+    def test_old_artifacts_cannot_replace_revised_sources(self):
+        import shutil
+
+        shutil.copytree(
+            self.directory / "original", self.directory / "revised", dirs_exist_ok=True
+        )
+        with self.assertRaisesRegex(ValueError, "independent canonical bytes"):
+            self.validate()
+
+    def test_swapped_records_reject_despite_matching_fir(self):
+        import shutil
+
+        old, new = self.directory / "original", self.directory / "revised"
+        summary = verify.read_report(new / "summary.json")
+        for name in ("manifest.json", "result.json"):
+            shutil.copyfile(old / name, new / name)
+            summary["checksums"][name] = verify.sha((new / name).read_bytes())
+        (new / "summary.json").write_text(json.dumps(summary))
+        with self.assertRaisesRegex(ValueError, "source digest|source reference"):
+            self.validate()
+
+    def test_plausible_samples_still_require_independent_numerical_check(self):
+        directory = self.directory / "revised"
+        result = verify.read_report(directory / "result.json")
+        result["state_values"][1][0] += 1.0
+        result["observable_values"][1][0] = result["state_values"][1][0]
+        raw = json.dumps(result).encode()
+        (directory / "result.json").write_bytes(raw)
+        manifest = verify.read_report(directory / "manifest.json")
+        manifest["output"]["sha256"] = verify.sha(raw)
+        (directory / "manifest.json").write_text(json.dumps(manifest))
+        summary = verify.read_report(directory / "summary.json")
+        for name in ("manifest.json", "result.json"):
+            summary["checksums"][name] = verify.sha((directory / name).read_bytes())
+        (directory / "summary.json").write_text(json.dumps(summary))
+        with self.assertRaisesRegex(ValueError, "P04 oracle mismatch"):
+            self.validate()
+
+    def test_example_accepts_either_actual_compound_source_diagnostic(self):
+        from fenix.results import ResultValidationError
+
+        paths = tuple(
+            f"/manifest/sources/{source}/{field}"
+            for source in ("design", "experiment")
+            for field in ("revision", "digest")
+        )
+        for path in (*paths, "/manifest/fir/digest", "/manifest/sources/design/id"):
+
+            def action(path=path):
+                raise ResultValidationError("REFERENCE", path, "injected diagnostic")
+
+            if path in paths:
+                self.assertEqual(
+                    self.example.expect_rejection(
+                        action, ResultValidationError, "REFERENCE", paths
+                    ),
+                    {"category": "REFERENCE", "path": path},
+                )
+            else:
+                with self.assertRaisesRegex(ValueError, "unexpected diagnostic"):
+                    self.example.expect_rejection(
+                        action, ResultValidationError, "REFERENCE", paths
+                    )
+
+    def test_compound_mismatch_diagnostic_stays_on_exact_source_fields(self):
+        path = self.directory / "summary.json"
+        summary = verify.read_report(path)
+        for source in ("design", "experiment"):
+            for field in ("revision", "digest"):
+                summary["rejections"]["old_record_new_sources"]["path"] = (
+                    f"/manifest/sources/{source}/{field}"
+                )
+                path.write_text(json.dumps(summary))
+                self.validate()
+        summary["rejections"]["old_record_new_sources"]["path"] = "/manifest/fir/digest"
+        path.write_text(json.dumps(summary))
+        with self.assertRaisesRegex(ValueError, "source reference diagnostic"):
+            self.validate()
+
+    def test_missing_rejection_control_fails_summary_validation(self):
+        path = self.directory / "summary.json"
+        summary = verify.read_report(path)
+        summary["rejections"].pop("old_fir_new_sources")
+        path.write_text(json.dumps(summary))
+        with self.assertRaisesRegex(ValueError, "workflow summary"):
+            self.validate()
 
 
 if __name__ == "__main__":

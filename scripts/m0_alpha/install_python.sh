@@ -24,6 +24,7 @@ for case_id in baseline-five linear-production; do
   for method in DOP853 Radau; do
     directory="$output/python/$case_id/$method"
     "$wheel/bin/python" examples/m0/production_decay.py --case "$case_id" --method "$method" --output-dir "$directory"
+    "$wheel/bin/python" examples/m0/source_revisions.py --case "$case_id" --method "$method" --output-dir "$output/source-revisions/python/$case_id/$method"
     "$wheel/bin/python" benchmarks/m0/run.py --case "$case_id" --method "$method" --source-revision "$revision" --output "$directory/benchmark.json"
   done
 done

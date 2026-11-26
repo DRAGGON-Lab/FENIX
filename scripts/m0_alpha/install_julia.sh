@@ -24,6 +24,7 @@ for case_id in baseline-five linear-production; do
   for method in Tsit5 Rodas5P; do
     directory="$output/julia/$case_id/$method"
     julia --project=conformance/julia_ode examples/m0/production_decay.jl --case "$case_id" --method "$method" --output-dir "$directory"
+    julia --project=conformance/julia_ode examples/m0/source_revisions.jl --case "$case_id" --method "$method" --output-dir "$output/source-revisions/julia/$case_id/$method"
     julia --project=conformance/julia_ode benchmarks/m0/run.jl --case "$case_id" --method "$method" --source-revision "$revision" --output "$directory/benchmark.json"
   done
 done

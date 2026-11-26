@@ -48,3 +48,51 @@ The scripts can also be copied outside the checkout and run using an installed
 Python wheel or Julia package. They do not alter `sys.path` or `LOAD_PATH` to
 locate FENIX. Fresh-install proofs and performance receipts are part of #30's
 alpha evidence; package names and versions remain provisional under P06.
+
+## Source revision and readback workflow
+
+[source_revisions.py](m0/source_revisions.py) and
+[source_revisions.jl](m0/source_revisions.jl) reuse the paired example builders to
+show a distinction that matters when comparing runs: exact biological source
+identity and mathematical FIR identity have different boundaries.
+
+The workflow annotates sources without changing identity, advances both source
+revisions, reverses parameter/function declarations, and changes the explicitly
+represented M0 cell volume from 1e-15 to 2e-15 L. These source changes preserve
+this M0 count-space mathematics and all approved numerical expectations. Both
+originals remain immutable. Each source pair is compiled, executed, saved and
+reloaded independently. A shared FIR digest never permits substituting the
+other pair when checking a producer or reading its results.
+
+```sh
+uv run --project packages/python --locked --offline python examples/m0/source_revisions.py --case baseline-five --method DOP853 --output-dir artifacts/revisions-python
+JULIA_PKG_OFFLINE=true julia --project=conformance/julia_ode examples/m0/source_revisions.jl --case baseline-five --method Tsit5 --output-dir artifacts/revisions-julia
+```
+
+Use a new output directory. The `original/` and `revised/` subdirectories each
+contain the same artifact inventory as the basic example. The top-level
+`summary.json` records both source identities, the shared FIR digest and seven
+required rejection controls. When both revision and digest differ, either of
+the mismatched revision/digest fields on either exact source is a valid diagnostic;
+no source- or field-order guarantee is added:
+
+
+- Changed content without a revision increase.
+- An old Experiment resolved against the new Design.
+- Old FIR provenance checked against new sources.
+- Either run record read against the other source revision.
+- Changed result bytes with the original output checksum.
+- Changed manifest bytes with a caller-supplied trusted manifest checksum.
+
+The last two controls append JSON whitespace: valid JSON formatting still
+changes exact transport bytes. Without a trusted manifest checksum, harmless
+manifest formatting remains readable; source and result checks still apply.
+Metadata annotations remain compatible with records bound to the same content.
+
+Both existing cases and all four methods run from installed Python wheels and
+Julia source archives in CI. The independent alpha verifier checks every saved
+source/model identity, producer mapping, manifest/result and P04 sample bound;
+it never imports the native packages. This extends regression coverage without
+changing the previously accepted alpha revision or adding a supported profile.
+Copy each workflow with its companion `production_decay` file to run outside
+the checkout. These consistency checks do not establish authenticated execution.
