@@ -1,0 +1,232 @@
+{
+  "format": "fenix.repressilator-candidate/1",
+  "status": "PROPOSED",
+  "units": {
+    "time": "s",
+    "volume": "L",
+    "state": "molecule",
+    "threshold_density": "molecule/L",
+    "basal": "molecule/s",
+    "induced": "molecule/s",
+    "first_order_rates": "1/s",
+    "hill_n": "1"
+  },
+  "bases": {
+    "intracellular": "expected count per representative cell",
+    "medium": "total count",
+    "translation": "protein molecules per transcript molecule per second",
+    "signal_synthesis": "signal molecules per synthase molecule per second"
+  },
+  "protocol": {
+    "horizon_s": 40000.0,
+    "sample_step_s": 5.0,
+    "transient_s": 10000.0,
+    "methods": [
+      "DOP853",
+      "Radau"
+    ],
+    "rtol": 1e-08,
+    "atol": 1e-09,
+    "refined_rtol": 1e-10,
+    "refined_atol": 1e-11,
+    "max_step_s": 5.0,
+    "max_nfev": 2000000,
+    "min_peaks": 6,
+    "min_prominence_threshold_fraction": 0.1,
+    "max_period_cv": 0.02,
+    "max_amplitude_cv": 0.05,
+    "max_extension_period_drift": 0.02,
+    "max_extension_amplitude_drift": 0.05,
+    "min_peak_distance_s": 50.0,
+    "max_phase_spacing_error": 0.05,
+    "max_method_period_drift": 0.005,
+    "max_method_amplitude_drift": 0.01,
+    "max_extension_level_drift": 0.05,
+    "max_method_phase_drift_cycles": 0.01
+  },
+  "cases": [
+    {
+      "id": "single-cell",
+      "model": "single_cell_mrna_protein",
+      "cell_volume_L": 1e-15,
+      "parameters": {
+        "basal": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "induced": [
+          216.0,
+          216.0,
+          216.0
+        ],
+        "mrna_decay": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "translation": [
+          0.05,
+          0.05,
+          0.05
+        ],
+        "protein_decay": [
+          0.05,
+          0.05,
+          0.05
+        ],
+        "threshold_density": [
+          1e+17,
+          1e+17,
+          1e+17
+        ],
+        "hill_n": [
+          2,
+          2,
+          2
+        ]
+      },
+      "initial_counts": [
+        100.0,
+        100.0,
+        100.0,
+        110.0,
+        90.0,
+        100.0
+      ]
+    },
+    {
+      "id": "three-strain",
+      "model": "three_strain_mrna_protein_exchange",
+      "cell_volumes_L": [
+        1e-15,
+        1e-15,
+        1e-15
+      ],
+      "populations": [
+        100,
+        100,
+        100
+      ],
+      "medium_volume_L": 1e-12,
+      "parameters": {
+        "basal": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "induced": [
+          216.0,
+          216.0,
+          216.0
+        ],
+        "mrna_decay": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "translation": [
+          0.05,
+          0.05,
+          0.05
+        ],
+        "protein_decay": [
+          0.05,
+          0.05,
+          0.05
+        ],
+        "threshold_density": [
+          1e+17,
+          1e+17,
+          1e+17
+        ],
+        "hill_n": [
+          2,
+          2,
+          2
+        ],
+        "signal_synthesis": [
+          0.154,
+          0.154,
+          0.154
+        ],
+        "intracellular_signal_decay": [
+          [
+            0.01,
+            0.01,
+            0.01
+          ],
+          [
+            0.01,
+            0.01,
+            0.01
+          ],
+          [
+            0.01,
+            0.01,
+            0.01
+          ]
+        ],
+        "medium_signal_decay": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "export": [
+          [
+            0.1,
+            0.1,
+            0.1
+          ],
+          [
+            0.1,
+            0.1,
+            0.1
+          ],
+          [
+            0.1,
+            0.1,
+            0.1
+          ]
+        ],
+        "import": [
+          [
+            0.1,
+            0.1,
+            0.1
+          ],
+          [
+            0.1,
+            0.1,
+            0.1
+          ],
+          [
+            0.1,
+            0.1,
+            0.1
+          ]
+        ]
+      },
+      "initial_counts": [
+        100.0,
+        100.0,
+        100.0,
+        110.0,
+        90.0,
+        100.0,
+        240.0,
+        100.0,
+        100.0,
+        100.0,
+        240.0,
+        100.0,
+        100.0,
+        100.0,
+        240.0,
+        110000.0,
+        110000.0,
+        110000.0
+      ]
+    }
+  ]
+}

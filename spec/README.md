@@ -7,11 +7,13 @@ is ratified under ADR-P03. Independent P01 reference validators and the
 [approved 92-case catalog](../conformance/bioir/README.md) provide bounded
 reference expectations. Native implementations, exhaustive validation, compiler
 correctness, solver correctness and future BioIR semantics are not approved by
-that reference acceptance. Native Python document validation, FIR compilation,
-ODE execution and P07 results are now implemented on main; Julia provides native M0 content builders and verified committed documents;
-compilation and execution remain pending. Independent native cross-language conformance and final scientific/
-release acceptance remain separate; see the
-[current audit](../docs/verification/ep02-status-governance.md).
+that reference acceptance. Both native packages now implement the bounded M0 document, FIR compiler,
+ODE execution and P07 results path. The native FIR/ODE scientific gates and
+bounded M0 repository alpha have their own accepted evidence; see the
+[current architecture](../ARCHITECTURE.md) and
+[decision register](../docs/approved-decisions.md). The earlier
+[EP-02 audit](../docs/verification/ep02-status-governance.md) retains its historical
+observations rather than defining the current implementation state.
 
 New or changed normative rules require human PI approval. Independent references
 and reviewed positive/negative fixtures remain mandatory. In particular,
@@ -36,4 +38,11 @@ at reviewed revision `bc662d3`, including its revised schemas and bounded
 candidate reference expectations. Native implementation approval remains
 separate; see the [ratification record](../docs/verification/ep02-p07-ratification.md).
 
-The [proposed M1 community contract](community/ADR-P08.md) is under review for #31.
+The [M1 community contract](community/ADR-P08.md) has PI approval at reviewed
+revision `186cfb3` for #31. Its further independent reference, complete wire-format
+and numerical-evidence gates remain applicable before native M1 implementation.
+
+The [repressilator benchmark proposal](oscillators/ADR-P09.md) for #84 is
+**PROPOSED**: one six-state intracellular oscillator and one 18-state oscillator
+assembled from one NOT gate per strain with explicit signal exchange. Candidate
+feasibility studies do not approve native profiles or replace the existing gates.
