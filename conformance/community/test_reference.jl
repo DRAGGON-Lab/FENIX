@@ -70,10 +70,8 @@ end
     mutations = catalog_mutations(original)
     append!(mutations, Function[
         c -> (c["cases"][1]["populations"] = [4, 5]),
-        (c -> begin
-            c["cases"][1]["parameters"]["sender_export"] *= 2
-            c["cases"][1]["parameters"]["sender_import"] *= 2
-        end),
+        c -> foreach(key -> (c["cases"][1]["parameters"][key] *= 2),
+                     ("sender_export", "sender_import")),
         c -> (c["cases"][6]["volumes"][1] *= 2),
     ])
     mktemp() do path, io
