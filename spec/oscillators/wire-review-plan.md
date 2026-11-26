@@ -83,7 +83,13 @@ binding/identity/zero-grid checks and corruption controls are separate from a
 general parser or scientific conformance suite. Candidate writers share shape
 construction; reproduction alone is not independent mathematical evidence.
 
-Independent P10 raw-input/identity/rejection reports, independently checked
-equation/reference mapping, positive-time result examples, native oscillator
+The [independent equation audit](equation-audit.md) now checks fifteen mapped
+P09/proposed definitions at two precisions, reaction/RHS/reference agreement and
+exact transport cancellation. Its asymmetry controls expose wrong role bindings
+that symmetric primary values can hide. This is proposed evidence, requiring
+acceptance and further coverage rather than an exhaustive mathematical proof.
+
+Independent P10 raw-input/identity/rejection reports, accepted equation/reference
+mapping coverage, positive-time result examples, native oscillator
 execution/parity, installed native examples and human P10 ratification remain
 **NOT RUN / pending**. Existing nonlinear reference CI is separate evidence.

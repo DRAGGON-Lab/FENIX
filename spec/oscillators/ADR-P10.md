@@ -426,7 +426,11 @@ explicit human decision.
 
 The [review plan](wire-review-plan.md) lists positive/negative obligations and
 cross-feature examples. It is a test plan, not a frozen fixture catalog or an
-executed native suite. Before implementation, provide and independently review:
+executed native suite. The separate [equation audit](equation-audit.md) now
+supplies proposed P09-law, reaction/RHS, precision and exact weighted-transport
+evidence without importing the schema/example builders. Its finite-probe results
+require review and do not replace syntax, identity or native conformance checks.
+Before implementation, provide and independently review:
 
 1. Independently review the accompanying closed BioIR/FIR/result/backend schemas
    and twelve source/FIR/zero-grid examples for both templates. Supply additional

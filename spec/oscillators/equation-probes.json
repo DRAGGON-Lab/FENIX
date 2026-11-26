@@ -1,0 +1,47 @@
+{
+  "format": "fenix.p10-equation-probes/1",
+  "status": "PROPOSED",
+  "units": {
+    "time": "s", "volume": "L", "state": "molecule",
+    "threshold_density": "molecule/L", "basal": "molecule/s",
+    "induced": "molecule/s", "first_order_rates": "1/s", "hill_n": "1"
+  },
+  "bases": {
+    "intracellular": "expected count per representative cell",
+    "medium": "total count",
+    "translation": "protein molecules per transcript molecule per second",
+    "signal_synthesis": "signal molecules per synthase molecule per second"
+  },
+  "cases": [
+    {
+      "id": "asymmetric-single-cell",
+      "model": "single_cell_mrna_protein",
+      "cell_volume_L": 2,
+      "parameters": {
+        "basal": [1, 2, 3], "induced": [7, 11, 13],
+        "mrna_decay": [0.25, 0.5, 1], "translation": [0.125, 0.75, 1.25],
+        "protein_decay": [0.375, 0.625, 1.5],
+        "threshold_density": [2, 3, 5], "hill_n": [1, 3, 4]
+      },
+      "initial_counts": [2, 3, 5, 7, 11, 13]
+    },
+    {
+      "id": "asymmetric-three-strain",
+      "model": "three_strain_mrna_protein_exchange",
+      "cell_volumes_L": [2, 3, 5], "medium_volume_L": 11,
+      "populations": [3, 5, 7],
+      "parameters": {
+        "basal": [1, 2, 3], "induced": [7, 11, 13],
+        "mrna_decay": [0.25, 0.5, 1], "translation": [0.125, 0.75, 1.25],
+        "protein_decay": [0.375, 0.625, 1.5],
+        "threshold_density": [2, 3, 5], "hill_n": [1, 3, 4],
+        "signal_synthesis": [0.125, 0.375, 0.625],
+        "intracellular_signal_decay": [[0.0625, 0.125, 0.1875], [0.25, 0.3125, 0.375], [0.4375, 0.5, 0.5625]],
+        "medium_signal_decay": [0.125, 0.25, 0.375],
+        "export": [[0.25, 0.5, 0.75], [1, 1.25, 1.5], [1.75, 2, 2.25]],
+        "import": [[0.125, 0.375, 0.625], [0.875, 1.125, 1.375], [1.625, 1.875, 2.125]]
+      },
+      "initial_counts": [2, 3, 5, 7, 11, 13, 1, 2, 3, 4, 5, 6, 7, 8, 9, 16, 17, 18]
+    }
+  ]
+}

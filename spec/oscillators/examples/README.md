@@ -68,6 +68,11 @@ reproduction, structural/binding controls and the audit. Its receipt fingerprint
 all four schemas, twelve literal artifacts and review scripts. Existing package,
 mathematical, reference, installation and numerical jobs remain enabled.
 
+The separate [proposed independent equation audit](../equation-audit.md) evaluates
+the literal ASTs against the pinned P09 laws, without importing the builders or
+schemas. Its mathematical evidence and exact weighted-transport checks are
+distinct from structural/reproduction checks and retain human review gates.
+
 ## Evidence boundaries and remaining gates
 
 Tests include wrong owner/scope/order, catalytic sinks, population signs/weights,
@@ -84,8 +89,8 @@ not a general raw parser or portable RunRecord loader.
 
 Still required before native implementation: complete literal raw/binding/
 identity/rejection catalogs with expected categories/paths; independent
-Python–Julia/ECMAScript canonical byte/vector checks; independent validation of
-the proposed AST equations/source-to-reference mapping; positive-time numerical
+Python–Julia/ECMAScript canonical byte/vector checks; acceptance and further
+coverage of the independent equation/reference mapping audit; positive-time numerical
 result examples; agreed native accuracy/oscillation/balance criteria; and human
 PI ratification/fixture acceptance at exact reviewed revisions. Native oscillator
 execution remains **NOT RUN — unsupported profile**. No release or issue closure
