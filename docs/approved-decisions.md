@@ -276,6 +276,20 @@ package version changes follow. The PI retains manual merge authority under
 the deferred branch-protection policy. Merge, issue closure, #30 alpha acceptance
 and final EP-04 acceptance remain separate; historical receipts are preserved.
 
+## Repressilator nonlinear-reference acceptance — 2026-11-26
+
+The human PI selected “Accept bounded nonlinear references” for
+[PR #90](https://github.com/DRAGGON-Lab/FENIX/pull/90) at reviewed commit
+`0ee6b4253775aa5379db0c11ff3af566727799cf`. The
+[acceptance record](verification/p09-nonlinear-reference-acceptance.md) identifies
+the exact two primary 80,000-second case definitions, independent
+density-coordinate RK4 calculation, four-step refinement protocol and 1e-5
+peak-scaled investigation limit. It preserves reviewed source/catalog/lock
+hashes, hosted artifact checks and measured convergence limitations. Certified
+error bounds, native tolerances, P10 wire/identity/rejection contracts and native
+implementation approval remain separate. No merge, release or issue completion
+is recorded.
+
 ## Repressilator mathematical contract approval — 2026-11-26
 
 The human PI explicitly stated “yes I approve ADR-P09” in response to the bounded
