@@ -1,6 +1,9 @@
 # M0 repository alpha candidate — issue #30
 
 **Status: bounded M0 repository alpha accepted by the human PI.**
+The PI separately accepted the [EP-04 parent](../ep04-m0-acceptance.md) on
+2026-11-26, based on completed child issues #28–#30. The child evidence and
+its original acceptance scope below are retained.
 No registry release or package version change is proposed. Package identifiers
 remain provisional at `0.0.0` pending P06. This repository candidate is identified
 by its reviewed Git revision and artifact checksums, not a new version promise.

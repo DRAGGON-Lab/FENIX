@@ -285,3 +285,16 @@ The PI approved [PR #77](https://github.com/DRAGGON-Lab/FENIX/pull/77) at
 [ADR-P08](../spec/community/ADR-P08.md) records the fixed-population exchange,
 read-only sensing and signed-count contract. Its further reference, wire-format
 and numerical-evidence gates remain applicable.
+
+
+## Accepted EP-04 bounded M0 parent — 2026-11-26
+
+The human PI explicitly selected “Accept bounded M0 EP-04” after being asked
+about parent-level completion of [issue #6](https://github.com/DRAGGON-Lab/FENIX/issues/6)
+for the existing bounded M0 profile, based on completed child issues #28–#30.
+The [parent acceptance record](verification/ep04-m0-acceptance.md) identifies
+baseline `0670cf35d7791e610b4e7c3931a720e9109532ad`, retained child evidence and the
+explicit scope. This completes the M0 parent gate. PRs #81/#82 remain separate
+review items; M1/SSA, compatibility/version governance and broader release gates
+retain their own decisions. No scientific rule, fixture, tolerance, API, package
+version or historical acceptance receipt changes.
