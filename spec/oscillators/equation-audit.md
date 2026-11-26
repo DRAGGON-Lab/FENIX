@@ -49,7 +49,8 @@ Declaration permutations therefore do not change this mathematical comparison.
 
 ## Checks and proposed precision criterion
 
-Both Decimal precisions, 80 and 160 digits, check:
+Both Decimal precisions, 80 and 160 digits, explicitly use ROUND_HALF_EVEN,
+independent of a calling process's rounding mode. They check:
 
 1. Reaction-update sums versus the independent P09 RHS.
 2. Explicit FIR equation RHS versus P09 and versus reaction-update sums.
@@ -72,7 +73,7 @@ sensor stages; signed linear stages remain allowed under P09. No counts are clip
 
 ## Failure controls and limits
 
-Nine tests cover wrong ring direction/medium sensing, catalytic sinks, wrong
+Ten tests cover caller-rounding isolation, wrong ring direction/medium sensing, catalytic sinks, wrong
 synthesis target, swapped transport parameters, explicit-equation errors,
 unweighted/wrong-sign population updates, exact input projection, source pins,
 unknown operations/fields, forbidden flux recursion, stage domains and ID mapping.

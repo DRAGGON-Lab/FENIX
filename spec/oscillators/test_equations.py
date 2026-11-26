@@ -4,8 +4,8 @@ import copy
 import json
 import tempfile
 import unittest
+from decimal import ROUND_DOWN, localcontext
 from decimal import Decimal as D
-from decimal import localcontext
 from pathlib import Path
 from unittest.mock import patch
 
@@ -23,6 +23,15 @@ def find(rows, role, key="id"):
 
 
 class TestIndependentEquations(unittest.TestCase):
+    def test_report_arithmetic_does_not_inherit_callers_rounding(self):
+        primary, _, _ = audit.cases()
+        candidate = model("three-strain")
+        expected = audit.audit_case(candidate, primary[1])
+        with localcontext() as context:
+            context.rounding = ROUND_DOWN
+            actual = audit.audit_case(candidate, primary[1])
+        self.assertEqual(actual, expected)
+
     def test_all_cases_reaction_equation_reference_precision_and_exact_balance(self):
         report = audit.report()
         self.assertEqual(len(report["cases"]), 15)

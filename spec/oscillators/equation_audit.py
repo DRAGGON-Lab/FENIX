@@ -9,8 +9,8 @@ import importlib.util
 import json
 import math
 import platform
+from decimal import ROUND_HALF_EVEN, localcontext
 from decimal import Decimal as D
-from decimal import localcontext
 from fractions import Fraction
 from pathlib import Path
 
@@ -473,6 +473,7 @@ def audit_case(model, case, reference=None):
     for precision in PRECISIONS:
         with localcontext() as context:
             context.prec = precision
+            context.rounding = ROUND_HALF_EVEN
             for name, states in points(case, reference):
                 aggregate, rhs = evaluated(model, states)
                 expected = dict(
@@ -574,6 +575,7 @@ def report():
         "python": platform.python_version(),
         "python_implementation": platform.python_implementation(),
         "precision_digits": PRECISIONS,
+        "decimal_rounding": "ROUND_HALF_EVEN",
         "proposed_algebra_scaled_limit": str(ALGEBRA_LIMIT),
         "numeric_interpretation": "exact Decimal lift of represented binary64 inputs",
         "input_sha256": {str(path.relative_to(ROOT)): sha256(path) for path in inputs},
