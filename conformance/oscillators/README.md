@@ -1,10 +1,13 @@
 # Proposed repressilator feasibility studies
 
 This separate development environment studies [issue #84](https://github.com/DRAGGON-Lab/FENIX/issues/84)
-and [PROPOSED ADR-P09](../../spec/oscillators/ADR-P09.md). It does **not** import
+and [ADR-P09](../../spec/oscillators/ADR-P09.md). It does **not** import
 FENIX, execute a native FENIX profile, or supply accepted golden fixtures.
-The requested architecture is selected; equations, illustrative parameters,
-numerical policy and acceptance thresholds still require scientific review.
+The PI ratified equations, units/bases and numerical-domain policy at reviewed
+revision `e84ff5b`; see the [bounded decision](../../docs/verification/p09-math-ratification.md).
+Illustrative parameters, feasibility thresholds and reference acceptance remain
+proposed. Historical PROPOSED labels in the candidate catalog/reports identify
+study status; they do not constitute an approved golden reference.
 
 `cases.json` specifies every parameter, initial count, unit, quantity basis and
 study setting. The single-cell example has three transcript/repressor pairs
