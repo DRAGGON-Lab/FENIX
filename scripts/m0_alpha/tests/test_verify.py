@@ -328,6 +328,14 @@ class TestSourceRevisionWorkflow(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "P04 oracle mismatch"):
             self.validate()
 
+    def test_compound_mismatch_diagnostic_stays_on_exact_source_fields(self):
+        path = self.directory / "summary.json"
+        summary = verify.read_report(path)
+        summary["rejections"]["old_record_new_sources"]["path"] = "/manifest/fir/digest"
+        path.write_text(json.dumps(summary))
+        with self.assertRaisesRegex(ValueError, "source reference diagnostic"):
+            self.validate()
+
     def test_missing_rejection_control_fails_summary_validation(self):
         path = self.directory / "summary.json"
         summary = verify.read_report(path)

@@ -72,7 +72,9 @@ JULIA_PKG_OFFLINE=true julia --project=conformance/julia_ode examples/m0/source_
 Use a new output directory. The `original/` and `revised/` subdirectories each
 contain the same artifact inventory as the basic example. The top-level
 `summary.json` records both source identities, the shared FIR digest and seven
-required rejection controls:
+required rejection controls. When both revision and digest differ, either of
+those exact source-field diagnostics is valid; no error-order guarantee is added:
+
 
 - Changed content without a revision increase.
 - An old Experiment resolved against the new Design.

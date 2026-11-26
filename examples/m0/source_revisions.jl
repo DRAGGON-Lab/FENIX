@@ -13,8 +13,9 @@ function expect_rejection(action, error_type, category, path)
         action()
     catch failure
         failure isa error_type || rethrow()
-        require((failure.category, failure.path) == (category, path), "unexpected diagnostic")
-        return Dict("category" => category, "path" => path)
+        paths = path isa String ? (path,) : path
+        require(failure.category == category && failure.path in paths, "unexpected diagnostic")
+        return Dict("category" => category, "path" => failure.path)
     end
     error("invalid source/artifact was accepted")
 end
@@ -74,11 +75,13 @@ function run_workflow(case, method, output_dir)
             FIR.FIRValidationError, "SOURCE_DIGEST", "/provenance/design_digest"),
         "old_record_new_sources" => expect_rejection(
             () -> Results.from_json(Results.RunRecord, manifest, first.result_bytes; experiment=revised),
-            Results.ResultValidationError, "REFERENCE", "/manifest/sources/design/revision"),
+            Results.ResultValidationError, "REFERENCE",
+            ("/manifest/sources/design/revision", "/manifest/sources/design/digest")),
         "new_record_old_sources" => expect_rejection(
             () -> Results.from_json(Results.RunRecord, Results.to_json(second.manifest), second.result_bytes;
                                    experiment=original),
-            Results.ResultValidationError, "REFERENCE", "/manifest/sources/design/revision"),
+            Results.ResultValidationError, "REFERENCE",
+            ("/manifest/sources/design/revision", "/manifest/sources/design/digest")),
         "result_transport_checksum" => expect_rejection(
             () -> Results.from_json(Results.RunRecord, manifest, vcat(first.result_bytes, UInt8[0x20]);
                                    experiment=original),

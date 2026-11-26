@@ -356,8 +356,23 @@ def validate_revision_workflow(
         "result_transport_checksum": ("CHECKSUM", "/manifest/output/sha256"),
         "manifest_transport_checksum": ("CHECKSUM", "/manifest"),
     }
+    summary = read_report(directory / "summary.json")
+    # Both revision and digest differ in these compound failures. P07 requires
+    # rejection, but does not prescribe the order of source-member checks.
+    for name in ("old_record_new_sources", "new_record_old_sources"):
+        diagnostic = summary.get("rejections", {}).get(name, {})
+        require(
+            diagnostic.get("category") == "REFERENCE"
+            and diagnostic.get("path")
+            in (
+                "/manifest/sources/design/revision",
+                "/manifest/sources/design/digest",
+            ),
+            "source reference diagnostic",
+        )
+        diagnostics[name] = (diagnostic["category"], diagnostic["path"])
     require(
-        read_report(directory / "summary.json")
+        summary
         == {
             "format": "m0-source-revisions-v1",
             "case": case,
