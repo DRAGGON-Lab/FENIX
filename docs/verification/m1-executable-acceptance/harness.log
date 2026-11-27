@@ -6,6 +6,6 @@ test_relative_links (test_check_repo.TestRepositoryHarness.test_relative_links) 
 test_valid_structure (test_check_repo.TestRepositoryHarness.test_valid_structure) ... ok
 
 ----------------------------------------------------------------------
-Ran 6 tests in 0.410s
+Ran 6 tests in 0.380s
 
 OK

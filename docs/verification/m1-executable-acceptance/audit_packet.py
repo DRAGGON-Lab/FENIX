@@ -1,5 +1,6 @@
 """Verify retained commit/tree proof and packet bytes without ephemeral Git objects."""
 
+import base64
 import hashlib
 import json
 from pathlib import Path
@@ -46,7 +47,7 @@ def main():
         ("hosted-tested-merge", "35af5c3ad1bfe1c5208087ad2f96bf9a79fdb017"),
         ("landed-merge", "301dc0542a8bc08750de5796df3269881819b1ca"),
     ):
-        raw = (HERE / (name + ".commit")).read_bytes()
+        raw = base64.b64decode((HERE / (name + ".commit.b64")).read_bytes())
         assert object_id("commit", raw) == expected
         assert raw.startswith(b"tree ")
         trees.append(raw.splitlines()[0].split()[1].decode())

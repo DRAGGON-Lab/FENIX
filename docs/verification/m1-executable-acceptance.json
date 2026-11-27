@@ -342,55 +342,64 @@
       "command": "uv run --project packages/python --locked --offline python docs/verification/m1-executable-acceptance/audit_packet.py",
       "status": "PASS",
       "exit_code": 0,
-      "timestamp_utc": "2026-11-27T21:01:15.800902+00:00",
+      "timestamp_utc": "2026-11-27T21:01:58.972273+00:00",
       "log": "docs/verification/m1-executable-acceptance/offline-proof.log"
     },
     {
       "command": "uv run --project packages/python --locked --offline python scripts/check_repo.py",
       "status": "PASS",
       "exit_code": 0,
-      "timestamp_utc": "2026-11-27T21:01:16.628783+00:00",
+      "timestamp_utc": "2026-11-27T21:01:59.965096+00:00",
       "log": "docs/verification/m1-executable-acceptance/repo.log"
     },
     {
       "command": "uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v",
       "status": "PASS",
       "exit_code": 0,
-      "timestamp_utc": "2026-11-27T21:01:18.383048+00:00",
+      "timestamp_utc": "2026-11-27T21:02:02.037883+00:00",
       "log": "docs/verification/m1-executable-acceptance/harness.log"
     },
     {
       "command": "uv run --project packages/python --locked --offline ruff check docs/verification/m1-executable-acceptance/audit_packet.py",
       "status": "PASS",
       "exit_code": 0,
-      "timestamp_utc": "2026-11-27T21:01:19.249870+00:00",
+      "timestamp_utc": "2026-11-27T21:02:03.032348+00:00",
       "log": "docs/verification/m1-executable-acceptance/ruff.log"
     },
     {
       "command": "git diff --check",
       "status": "PASS",
       "exit_code": 0,
-      "timestamp_utc": "2026-11-27T21:01:19.347788+00:00",
+      "timestamp_utc": "2026-11-27T21:02:03.161730+00:00",
       "log": "docs/verification/m1-executable-acceptance/diff.log"
     },
     {
-      "command": "Export landed tree without .git; run retained audit; corrupt one object ID and require rejection",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s docs/verification/m1-executable-acceptance -p 'test_*.py' -v",
       "status": "PASS",
       "exit_code": 0,
-      "timestamp_utc": "2026-11-27T21:01:24.762661+00:00",
+      "timestamp_utc": "2026-11-27T21:02:40.664217+00:00",
       "log": "docs/verification/m1-executable-acceptance/export-controls.log"
+    },
+    {
+      "command": "uv run --project packages/python --locked --offline ruff check docs/verification/m1-executable-acceptance",
+      "status": "PASS",
+      "exit_code": 0,
+      "timestamp_utc": "2026-11-27T21:02:40.791855+00:00",
+      "log": "docs/verification/m1-executable-acceptance/ruff.log"
     }
   ],
   "recording_artifacts_sha256": {
-    "docs/verification/m1-executable-acceptance/audit_packet.py": "c6ea1c96ab6423f5faa6e1dd1241ab86c6b03cb8e46643bf1eb64828ee11794a",
+    "docs/verification/m1-executable-acceptance/audit_packet.py": "546d752f62b430c547558722eb8077dcbd84b88f66b19481bc601d6788d69e08",
     "docs/verification/m1-executable-acceptance/diff.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "docs/verification/m1-executable-acceptance/export-controls.log": "85efb695df11f10b4c036a77715e02e440ee6702d2d1510edf4bf35750189685",
-    "docs/verification/m1-executable-acceptance/harness.log": "052ac15b70fa36938064d5e52d82f532d7c12eb26239933d098869e7a49003a3",
-    "docs/verification/m1-executable-acceptance/hosted-tested-merge.commit": "eef59d59ad96a89b57f1050683c788ea6d56a089e7faa47706c41c9f0962d744",
-    "docs/verification/m1-executable-acceptance/landed-merge.commit": "97c6b4934537013c2f1618dea5c32d1672ee131b47c53604778ea7864125a84b",
+    "docs/verification/m1-executable-acceptance/export-controls.log": "45be3a77fb0ee0c580c2066f0bb1eb384a5a923de7485f118b14710da7e1a0c8",
+    "docs/verification/m1-executable-acceptance/harness.log": "b27d63b61f03757bbf8cba937f3894519bb9fc05f00d67055c001ce3ef93f468",
+    "docs/verification/m1-executable-acceptance/hosted-tested-merge.commit.b64": "337571c20515f3e452e71b768a2e301ab69b5e88581c412076c1ac9cbd0c5009",
+    "docs/verification/m1-executable-acceptance/landed-merge.commit.b64": "3a4d44a413421cd04e6b578ade9c75243d03388ecb4b4aa1535e673d2d1f5513",
     "docs/verification/m1-executable-acceptance/offline-proof.log": "ffd2ba8123fe5841ed60ab6cccf365e963d40c073200888c993256c68b0e2978",
     "docs/verification/m1-executable-acceptance/repo.log": "8e8c8f9c13bdb5c2b4d3f55f913fc3adac04cb5fc5d4b3b77e976b236487fb49",
     "docs/verification/m1-executable-acceptance/reviewed-tree.json": "8b0eae87757e30f062bd275bd057d0878187104417dd85af2fd8a271dc27a8dc",
-    "docs/verification/m1-executable-acceptance/ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    "docs/verification/m1-executable-acceptance/ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "docs/verification/m1-executable-acceptance/test_offline.py": "bab298d166229ac536aa649d2528897bf2957ece4e1d51c6a3da147d23f60630",
+    ".github/workflows/m1-acceptance-record.yml": "9171ab772f67ea950571a1e84778e20215927a286dff992fcf44eb6e254507df"
   }
 }

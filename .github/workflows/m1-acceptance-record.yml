@@ -1,0 +1,18 @@
+name: M1 acceptance record audit
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  offline-proof:
+    name: M1 retained offline tree proof
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - run: python docs/verification/m1-executable-acceptance/audit_packet.py
+      - run: python -m unittest discover -s docs/verification/m1-executable-acceptance -p 'test_*.py' -v

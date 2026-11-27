@@ -1,2 +1,6 @@
-PASS retained commit/tree proof and all 307 packet fingerprints (no Git or network)
-PASS corrupted inventory rejected; no .git in exported checkout
+test_export_without_git_and_corrupted_inventory (test_offline.OfflineProofTests.test_export_without_git_and_corrupted_inventory) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 2.599s
+
+OK
