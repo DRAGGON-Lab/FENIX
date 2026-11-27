@@ -72,6 +72,12 @@ class TransportReview(unittest.TestCase):
                     self.record(row["times"], row["manifest"])
                 self.assertEqual(caught.exception.category, "GRID")
 
+    def test_comparison_preserves_numeric_types(self):
+        self.assertFalse(wire.same_data(True, 1.0))
+        self.assertFalse(wire.same_data(9007199254740993, 9007199254740992))
+        self.assertFalse(wire.same_data(-0.0, 0.0))
+        self.assertTrue(wire.same_data(9007199254740993, 9007199254740993))
+
     def test_fingerprint_coverage(self):
         root = HERE.parents[1]
         manifest = json.loads((HERE / "review-manifest.json").read_bytes())

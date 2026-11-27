@@ -111,7 +111,7 @@ Julia successful tails are compared in all four columns with the existing
 analytical law and unchanged bounds, including precision refinement and explicit
 corrupted-success controls. Historical receipts remain unchanged and historical.
 
-PASS locally: 11 wire-review tests, independent ECMAScript audit, 88 package
+PASS locally: 12 wire-review tests, independent ECMAScript audit, 88 package
 regressions, eight community reference tests, nine retained SciPy feasibility
 tests, six harness tests, repository checker and Ruff. The original overflow
 control now expects the precise `/state_values/0/3` diagnostic. Only affected

@@ -364,7 +364,11 @@ def same_data(left, right):
         return len(left) == len(right) and all(
             same_data(a, b) for a, b in zip(left, right, strict=True)
         )
-    if isinstance(left, (int, float)) and isinstance(right, (int, float)):
+    if isinstance(left, bool) or isinstance(right, bool):
+        return type(left) is type(right) and left == right
+    if isinstance(left, int) and isinstance(right, int):
+        return left == right
+    if type(left) is float and type(right) is float:
         return same_float(left, right)
     return type(left) is type(right) and left == right
 
