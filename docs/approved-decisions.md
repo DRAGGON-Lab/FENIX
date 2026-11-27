@@ -336,3 +336,15 @@ explicit scope. This completes the M0 parent gate. PRs #81/#82 remain separate
 review items; M1/SSA, compatibility/version governance and broader release gates
 retain their own decisions. No scientific rule, fixture, tolerance, API, package
 version or historical acceptance receipt changes.
+
+## M1 bounded completion-scope approval — 2026-11-27
+
+The human PI approved the [P08 execution-feasibility proposal](../spec/community/execution-feasibility-proposal.md)
+on [PR #94](https://github.com/DRAGGON-Lab/FENIX/pull/94) at reviewed revision
+`6964014efd9e869bc98337eb3cece3c6ea837f1b`: “I approve this proposal please record
+the desicion and update the PR”. The [acceptance record](verification/m1-completion-scope-acceptance.md)
+identifies the exact artifacts and scope: alternative 1, retaining strict
+sensing-stage rejection and bounded completion claims. Valid mathematical
+requests may fail explicitly; clipping, signed continuation and a universal
+completion guarantee are not authorized. Complete wire/reference/numerical
+profile and native implementation acceptance remain separate gates.

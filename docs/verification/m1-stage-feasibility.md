@@ -69,12 +69,14 @@ It runs the new tests and emits its own receipt. Its success means bounded
 comparisons and predicted failure controls behave as recorded; it is not an M1
 scientific acceptance status.
 
-## Human gate
+## Recorded human decision and remaining gate
 
-Review the [completion-scope proposal](../../spec/community/execution-feasibility-proposal.md).
-The existing P08 domain rule is preserved. The PI must decide whether the
-executable profile accepts explicit failures for valid long-tail requests or
-requires a separately investigated completion guarantee. The remaining complete
+The PI approved the [completion-scope proposal](../../spec/community/execution-feasibility-proposal.md)
+at `6964014efd9e869bc98337eb3cece3c6ea837f1b` on 2026-11-27. The
+[acceptance record](m1-completion-scope-acceptance.md) preserves the instruction,
+reviewed artifacts and approval of alternative 1: retain strict stage-domain
+failure and bound success claims explicitly. The P08 domain rule is preserved.
+The remaining complete
 wire/identity/rejection/reference/method packet must still be prepared and
-accepted at an exact revision before #32/#33. No approval or issue closure is
-inferred from this candidate PR or its checks.
+accepted at an exact revision before #32/#33. Broader scientific approval and
+issue closure are not inferred from this scope decision or passing checks.

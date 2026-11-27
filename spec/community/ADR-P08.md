@@ -119,10 +119,13 @@ native results. The proposed per-state bound is 1e−9 + 1e−8 |reference|. Der
 the closed-balance bound by weighting individual errors and accounting for any
 represented initial-state discrepancy. Proposed values require independent evidence.
 
-The separate [execution-feasibility proposal](execution-feasibility-proposal.md)
-retains bounded SciPy comparisons and long-tail stage-domain failures for PI
-review. It changes no ratified equation or failure policy and does not complete
-the executable-profile gates above.
+The separate [execution-feasibility decision](execution-feasibility-proposal.md)
+retains bounded SciPy comparisons and long-tail stage-domain failures. The PI
+approved strict failure and bounded completion scope at reviewed revision
+`6964014efd9e869bc98337eb3cece3c6ea837f1b`; see the
+[acceptance record](../../docs/verification/m1-completion-scope-acceptance.md).
+It changes no ratified equation or failure policy and does not complete the
+executable-profile gates above.
 
 ## Review questions for the PI
 

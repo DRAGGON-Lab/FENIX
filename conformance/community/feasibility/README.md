@@ -1,8 +1,14 @@
-# Proposed P08 stage-domain investigation
+# P08 stage-domain investigation
 
 Refs #31 and #34. This is a pre-implementation numerical investigation, **not a
 native FENIX conformance gate or an accepted executable contract**. It imports
 no FENIX package and changes no existing reference, schema or scientific rule.
+
+The PI approved the recommended strict-failure completion scope at reviewed
+revision `6964014efd9e869bc98337eb3cece3c6ea837f1b`; see the
+[acceptance record](../../../docs/verification/m1-completion-scope-acceptance.md).
+The complete executable contract and native tolerances remain pending. Historical
+PROPOSED labels in the retained settings/receipt are preserved.
 
 [settings.json](settings.json) freezes the candidate controls before comparison:
 SciPy DOP853 and Radau, baseline `rtol=1e-9, atol=1e-11`, refined
@@ -67,7 +73,7 @@ tail predictions change. A changed prediction requires inspection; do not weaken
 it simply to make CI pass. A passing investigative job preserves the observed
 domain failures; it does not certify universal integration success.
 
-See the [PI decision proposal](../../../spec/community/execution-feasibility-proposal.md)
+See the [approved scope decision](../../../spec/community/execution-feasibility-proposal.md)
 and [local verification record](../../../docs/verification/m1-stage-feasibility.md).
 Julia Tsit5/Rodas5P stage feasibility remains **NOT RUN**. Existing independent
 BigFloat references remain separate evidence. Complete M1 wire/result schemas,

@@ -1,6 +1,10 @@
-# P08 execution feasibility — proposed PI decision
+# P08 execution feasibility — approved bounded completion scope
 
-**PROPOSED; no ratification or implementation authorization is recorded here.**
+**PI approved alternative 1 on 2026-11-27 at reviewed revision
+`6964014efd9e869bc98337eb3cece3c6ea837f1b`.** The
+[acceptance record](../../docs/verification/m1-completion-scope-acceptance.md)
+preserves the explicit instruction, artifact hashes and bounded scope.
+Complete executable-profile and native implementation approval remain separate.
 Refs #31 and #34, [ADR-P08](ADR-P08.md), and the approved delivery plan's
 instruction to return a documented proposal when feasibility raises a domain
 or bound question.
@@ -25,9 +29,9 @@ first offending state, time and work count. No accepted reference changes.
 
 This does not disprove P08's domain policy: rejecting the attempt is consistent
 with that policy. It does show that unrestricted completion of valid nonnegative
-mathematical inputs cannot be promised from these controls alone. Whether the
-bounded executable profile accepts those explicit failures is a human scientific
-scope decision. Julia stage feasibility remains unmeasured.
+mathematical inputs cannot be promised from these controls alone. The PI has
+accepted explicit stage-domain failures within this bounded completion scope.
+Julia stage feasibility remains unmeasured.
 
 ## Alternatives and impact
 
@@ -48,16 +52,16 @@ scope decision. Julia stage feasibility remains unmeasured.
    the evaluated equations. Neither is authorized here; either requires a
    PI-ratified ADR and independent edge/accuracy evidence.
 
-Proposed direction: retain strict failure (alternative 1) and record its bounded
+Approved direction: retain strict failure (alternative 1) and record its bounded
 completion scope. Do not silently change sensing or reject otherwise valid
 source documents to hide the integration boundary. If broader completion is
 required, investigate alternative 2 before implementation.
 
-## Required decision and remaining gate
+## Recorded decision and remaining gate
 
-The PI must choose the completion scope and accept the **exact reviewed
-revision** of executable contracts and bounded evidence. This proposal does
-not request or record approval of unfinished wire/identity/rejection artifacts.
+The PI has chosen alternative 1 at the exact reviewed revision above. Approval
+of unfinished wire/identity/rejection artifacts is not inferred. The complete
+executable contracts and bounded evidence still need exact-revision acceptance.
 The complete M1 review packet still requires:
 
 - Finished version-specific source/FIR normalization and result/backend schemas.
@@ -69,5 +73,6 @@ The complete M1 review packet still requires:
 
 Until those artifacts and decisions are accepted, native #32/#33, integration
 #35, epic #7 closure and downstream #84 native work remain gated. Passing this
-investigation is neither PI acceptance nor approval of a complete M1 packet.
+investigation alone supplies no PI acceptance; the recorded scope decision does
+not approve a complete M1 packet.
 M0 and accepted oscillator references retain their own identities and scope.
