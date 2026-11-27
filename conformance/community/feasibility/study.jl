@@ -166,6 +166,11 @@ function tail_comparisons(row, config)
             time = BigFloat(t)
             q = exp(-time/2)
             expected = BigFloat[0,0,48q,2q+2*(1-q)+16q*(time/2+log1p(2q)-log(BigFloat(3)))]
+            low = setprecision(BigFloat,512) do
+                t = BigFloat(time); decay = exp(-t/2)
+                BigFloat[0,0,48decay,2decay+2*(1-decay)+16decay*(t/2+log1p(2decay)-log(BigFloat(3)))]
+            end
+            @assert all(abs.(low.-expected) .<= big"1e-150".*max.(1,abs.(expected))) "tail reference refinement"
             bounds = BigFloat(config["state_bound"]["absolute"]) .+ BigFloat(config["state_bound"]["relative"]).*abs.(expected)
             ratios = abs.(BigFloat.(values).-expected)./bounds
             push!(result,Dict("time"=>t,"reference"=>string.(expected),"state_error_ratios"=>string.(ratios),"within_state_bound"=>all(<=(1),ratios)))

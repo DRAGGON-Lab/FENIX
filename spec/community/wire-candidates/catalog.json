@@ -517,7 +517,7 @@
       "base": "threshold-n1",
       "target": "manifest",
       "file": "reject/manifest-float-counter.json",
-      "category": "SCHEMA",
+      "category": "INTEGER_TOKEN",
       "path": "/evaluations/nfev"
     },
     {

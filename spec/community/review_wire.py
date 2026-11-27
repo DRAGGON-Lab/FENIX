@@ -70,14 +70,16 @@ def negative(row):
         decode_result(raw),
         read(folder / "zero.python.manifest.json", "transport"),
     )
-    candidate = read(
-        FIXTURES / row["file"],
-        row["target"]
-        if row["target"] in ("result", "manifest")
-        else "fir"
-        if row["target"] == "fir"
-        else "source",
-    )
+    try:
+        policy = (
+            row["target"]
+            if row["target"] in ("result", "manifest", "fir")
+            else "source"
+        )
+        candidate = read(FIXTURES / row["file"], policy)
+    except Rejection as error:
+        assert (error.category, error.path) == (row["category"], row["path"]), row["id"]
+        return {"id": row["id"], "category": error.category, "path": error.path}
     if row["target"] == "design":
         design = candidate
     elif row["target"] == "experiment":

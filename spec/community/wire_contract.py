@@ -134,6 +134,24 @@ def transport_fields(value, kind):
             return {k: convert(v, (*path, k)) for k, v in node.items()}
         if isinstance(node, list):
             return [convert(v, (*path, i)) for i, v in enumerate(node)]
+        integer_field = kind == "manifest" and (
+            path
+            in (
+                ("execution", "max_nfev"),
+                ("evaluations", "nfev"),
+                ("backend", "solver", "options", "maxiters"),
+                ("sources", "design", "revision"),
+                ("sources", "experiment", "revision"),
+            )
+            or path[:2] == ("backend", "evaluations")
+        )
+        if integer_field:
+            require(
+                isinstance(node, int) and not isinstance(node, bool),
+                "INTEGER_TOKEN",
+                pointer(path),
+            )
+            return int(node)
         scientific = (
             kind == "result"
             and path

@@ -55,17 +55,14 @@ class TransportReview(unittest.TestCase):
         )
 
     def test_collapsed_and_signed_grid_rejections(self):
-        for times, other in (
-            ([0, 2**53, 2**53 + 1], [0, 2**53, 2**53 + 1]),
-            ([-0.0], [0.0]),
-            ([0.0], [-0.0]),
-        ):
-            with self.assertRaises(wire.Rejection) as caught:
-                self.record(times, other)
-            self.assertEqual(caught.exception.category, "GRID")
-        self.record([-0.0], [-0.0])
-        self.record([0.0], [0.0])
-        self.record([0, 2**53, 2**53 + 2], [0, 2**53, 2**53 + 2])
+        vectors = json.loads((HERE / "wire-candidates/grid-vectors.json").read_bytes())
+        for row in vectors:
+            if row["accepted"]:
+                self.record(row["times"], row["manifest"])
+            else:
+                with self.assertRaises(wire.Rejection) as caught:
+                    self.record(row["times"], row["manifest"])
+                self.assertEqual(caught.exception.category, "GRID")
 
     def test_fingerprint_coverage(self):
         root = HERE.parents[1]

@@ -38,5 +38,48 @@
       "nfev"
     ],
     "decimal": "9007199254740993"
+  },
+  {
+    "id": "state",
+    "kind": "result",
+    "raw": "{\"state_values\":[[9007199254740993]]}",
+    "path": [
+      "state_values",
+      0,
+      0
+    ],
+    "bits": "4340000000000000"
+  },
+  {
+    "id": "observable",
+    "kind": "result",
+    "raw": "{\"observable_values\":[[9007199254740993]]}",
+    "path": [
+      "observable_values",
+      0,
+      0
+    ],
+    "bits": "4340000000000000"
+  },
+  {
+    "id": "manifest-grid",
+    "kind": "manifest",
+    "raw": "{\"execution\":{\"time_grid\":[9007199254740993]}}",
+    "path": [
+      "execution",
+      "time_grid",
+      0
+    ],
+    "bits": "4340000000000000"
+  },
+  {
+    "id": "elapsed",
+    "kind": "manifest",
+    "raw": "{\"timing\":{\"elapsed_seconds\":9007199254740993}}",
+    "path": [
+      "timing",
+      "elapsed_seconds"
+    ],
+    "bits": "4340000000000000"
   }
 ]
