@@ -1,0 +1,3 @@
+Bounded analytical matrix: PASS
+Tail domain controls: STAGE_DOMAIN, STAGE_DOMAIN, STAGE_DOMAIN, STAGE_DOMAIN
+PI executable-profile acceptance: PENDING; Julia/native execution: NOT RUN

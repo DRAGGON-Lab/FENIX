@@ -1,0 +1,579 @@
+{
+  "status": "PROPOSED",
+  "identities": {
+    "threshold-n1": "59fde299f0d40008aada523b25a44f4abf89e2438ffb16217e5607f6e11eb92c",
+    "threshold-n2": "20aa066a8269d72d8500dadbe7b853cd02f434b52487d468d1c0fc22a9a8fb75",
+    "threshold-n3": "499fde671184eb9e8d097db6009517969da86ac641837adab38f375ded068e61",
+    "threshold-n4": "1ff7a8295d39e15f53e4558ccc334a8676aa44aa3da3edb69e770cdd1924b7cd",
+    "reversible-transient": "74bab9866b3b01c4421a7db5d228837bf8d46299f93c95ca9557f71863eb485e",
+    "driven-n1": "a540a060300ac38056862badddfa2585a944efe4dfb86bff34cb1f09b915f909",
+    "driven-n2": "cbc9146c383ca5c7f7517fb193f81bd3225052ba4f60e9276ed7bb2083981c01",
+    "driven-n3": "dbe541eea6a7249e6d4be6996ae815811e96cc6d3abc7c1b93d24a97aecc5126",
+    "driven-n4": "23151aae83137dbd1ccbacb417ecffcfb7e05d28e991ddcc666163100a641117",
+    "two-strain-transient": "3b948262d51fefc9ba32c1e6a7f4811fff2bb7dead395ec83afedc006a343769",
+    "renamed": "59fde299f0d40008aada523b25a44f4abf89e2438ffb16217e5607f6e11eb92c",
+    "permuted": "59fde299f0d40008aada523b25a44f4abf89e2438ffb16217e5607f6e11eb92c",
+    "empty-observables": "2b99d2a775efaa2511457d8ab135634d735562dd24f7f2c7a9e4e087cbe9506f",
+    "late-first": "59fde299f0d40008aada523b25a44f4abf89e2438ffb16217e5607f6e11eb92c"
+  },
+  "rejections": [
+    {
+      "id": "stale-design-digest",
+      "category": "SOURCE_DIGEST",
+      "path": "/digest"
+    },
+    {
+      "id": "stale-experiment-digest",
+      "category": "SOURCE_DIGEST",
+      "path": "/digest"
+    },
+    {
+      "id": "wrong-design-link-id",
+      "category": "DESIGN_LINK",
+      "path": "/content/design"
+    },
+    {
+      "id": "wrong-design-link-revision",
+      "category": "DESIGN_LINK",
+      "path": "/content/design"
+    },
+    {
+      "id": "wrong-design-link-digest",
+      "category": "DESIGN_LINK",
+      "path": "/content/design"
+    },
+    {
+      "id": "duplicate-owner-id",
+      "category": "DUPLICATE_ID",
+      "path": "/content/owners"
+    },
+    {
+      "id": "duplicate-owner-role",
+      "category": "DUPLICATE_ID",
+      "path": "/content/owners"
+    },
+    {
+      "id": "duplicate-species-id",
+      "category": "DUPLICATE_ID",
+      "path": "/content/owners/1/species"
+    },
+    {
+      "id": "duplicate-species-role",
+      "category": "DUPLICATE_ID",
+      "path": "/content/owners/1/species"
+    },
+    {
+      "id": "duplicate-port-id",
+      "category": "DUPLICATE_ID",
+      "path": "/content/owners/0/species/0/ports"
+    },
+    {
+      "id": "wrong-port-kind",
+      "category": "PORT_KINDS",
+      "path": "/content/owners/0/species/0/ports"
+    },
+    {
+      "id": "alias-endpoint",
+      "category": "ENDPOINT",
+      "path": "/content/connections/0/source"
+    },
+    {
+      "id": "reversed-edge",
+      "category": "BINDINGS",
+      "path": "/content/connections"
+    },
+    {
+      "id": "duplicate-observable",
+      "category": "DUPLICATE_ID",
+      "path": "/content/observables"
+    },
+    {
+      "id": "source-version",
+      "category": "SCHEMA",
+      "path": "/content"
+    },
+    {
+      "id": "population-zero",
+      "category": "SCHEMA",
+      "path": "/content"
+    },
+    {
+      "id": "population-bool",
+      "category": "SCHEMA",
+      "path": "/content"
+    },
+    {
+      "id": "population-fraction",
+      "category": "SCHEMA",
+      "path": "/content"
+    },
+    {
+      "id": "negative-count",
+      "category": "SCHEMA",
+      "path": "/content"
+    },
+    {
+      "id": "count-unit",
+      "category": "SCHEMA",
+      "path": "/content"
+    },
+    {
+      "id": "threshold-zero",
+      "category": "SCHEMA",
+      "path": "/content"
+    },
+    {
+      "id": "hill-five",
+      "category": "SCHEMA",
+      "path": "/content"
+    },
+    {
+      "id": "hill-bool",
+      "category": "SCHEMA",
+      "path": "/content"
+    },
+    {
+      "id": "fir-source-population",
+      "category": "SOURCE_CORRESPONDENCE",
+      "path": "/model/populations"
+    },
+    {
+      "id": "fir-source-rate",
+      "category": "SOURCE_CORRESPONDENCE",
+      "path": "/model/parameters"
+    },
+    {
+      "id": "fir-source-initial",
+      "category": "SOURCE_CORRESPONDENCE",
+      "path": "/model/initial_counts"
+    },
+    {
+      "id": "fir-source-volume",
+      "category": "SOURCE_CORRESPONDENCE",
+      "path": "/model/volumes"
+    },
+    {
+      "id": "fir-source-observable",
+      "category": "SOURCE_CORRESPONDENCE",
+      "path": "/model/observables"
+    },
+    {
+      "id": "fir-source-owner",
+      "category": "SOURCE_CORRESPONDENCE",
+      "path": "/provenance/owners"
+    },
+    {
+      "id": "fir-source-species",
+      "category": "SOURCE_CORRESPONDENCE",
+      "path": "/provenance/species"
+    },
+    {
+      "id": "fir-stale-design",
+      "category": "SOURCE_CORRESPONDENCE",
+      "path": "/provenance/design_digest"
+    },
+    {
+      "id": "fir-wrong-version",
+      "category": "SCHEMA",
+      "path": "/model/schema_version"
+    },
+    {
+      "id": "fir-ssa",
+      "category": "SCHEMA",
+      "path": "/model/capabilities"
+    },
+    {
+      "id": "fir-unweighted-export",
+      "category": "SCHEMA",
+      "path": "/model/reactions/0"
+    },
+    {
+      "id": "fir-free-expression",
+      "category": "SCHEMA",
+      "path": "/model/reactions/0"
+    },
+    {
+      "id": "result-scope-swap",
+      "category": "SCOPE_ALIGNMENT",
+      "path": "/state_scopes"
+    },
+    {
+      "id": "result-owner-swap",
+      "category": "SCOPE_ALIGNMENT",
+      "path": "/state_owners"
+    },
+    {
+      "id": "result-column-order",
+      "category": "SCHEMA",
+      "path": "/state_ids"
+    },
+    {
+      "id": "result-short-row",
+      "category": "SCHEMA",
+      "path": "/state_values/0"
+    },
+    {
+      "id": "result-missing-row",
+      "category": "SCHEMA",
+      "path": "/state_values"
+    },
+    {
+      "id": "result-stale-fir",
+      "category": "FIR_LINK",
+      "path": "/fir_digest"
+    },
+    {
+      "id": "result-observable-scope",
+      "category": "OBSERVABLE_ALIGNMENT",
+      "path": "/observable_scopes"
+    },
+    {
+      "id": "result-observable-owner",
+      "category": "OBSERVABLE_ALIGNMENT",
+      "path": "/observable_owners"
+    },
+    {
+      "id": "result-signed-zero-copy",
+      "category": "OBSERVABLE_COPY",
+      "path": "/observable_values/0/1"
+    },
+    {
+      "id": "result-initial-sender",
+      "category": "INITIAL_SAMPLE",
+      "path": "/state_values/0"
+    },
+    {
+      "id": "manifest-source",
+      "category": "SOURCE_LINK",
+      "path": "/sources/experiment"
+    },
+    {
+      "id": "manifest-fir",
+      "category": "FIR_LINK",
+      "path": "/fir/digest"
+    },
+    {
+      "id": "manifest-result-checksum",
+      "category": "RESULT_CHECKSUM",
+      "path": "/output/sha256"
+    },
+    {
+      "id": "manifest-grid",
+      "category": "GRID",
+      "path": "/execution/time_grid"
+    },
+    {
+      "id": "manifest-zero-work",
+      "category": "WORK_COUNT",
+      "path": "/evaluations"
+    },
+    {
+      "id": "manifest-integration",
+      "category": "INTEGRATION",
+      "path": "/integration"
+    },
+    {
+      "id": "manifest-old-backend",
+      "category": "SCHEMA",
+      "path": "/backend"
+    },
+    {
+      "id": "manifest-wrong-jacobian",
+      "category": "SCHEMA",
+      "path": "/backend"
+    },
+    {
+      "id": "manifest-float-counter",
+      "category": "INTEGER_TOKEN",
+      "path": "/evaluations/nfev"
+    },
+    {
+      "id": "manifest-integral-float-counter",
+      "category": "INTEGER_TOKEN",
+      "path": "/evaluations/nfev"
+    },
+    {
+      "id": "manifest-invalid-calendar",
+      "category": "TIMESTAMP",
+      "path": "/timing/started_at_utc"
+    }
+  ],
+  "counts": {
+    "positive": 14,
+    "rejections": 56,
+    "raw_numbers": 17
+  },
+  "files_sha256": {
+    "wire-candidates/README.md": "540c47defa94129bdb5594a280dd9e05f380d1e6feb89c602fb9b860391f9034",
+    "wire-candidates/catalog.json": "c1c6ae9797eb00ebe55e5cb5396ae43c95f6224a8096d74a1f517c4a9d255752",
+    "wire-candidates/driven-n1/analytical.julia.manifest.json": "c64be0f532794a070dba6566bd0a0b49cc7d32d555406cad6297f2558112ffad",
+    "wire-candidates/driven-n1/analytical.python.manifest.json": "718bfc972301eb73811d89574bd78540777447f37a0858d121234bf0e538e491",
+    "wire-candidates/driven-n1/analytical.result.json": "b5b312709e067239a7a22ef37e99108f73664784a46075c9233109e25b25efa7",
+    "wire-candidates/driven-n1/design.json": "82d9f24ecfb93526553e7bbda98abc30e65b49f28b7bf683f233323e3d3f66f8",
+    "wire-candidates/driven-n1/digest.txt": "5fa83e47a9d4ec59bf7e6ef9e2a81c5f619ef96c33b1c4f7eb58c1d579da552c",
+    "wire-candidates/driven-n1/experiment.json": "6c08b52a6b0fb3c1d171eb07682cfd92cf4a5e3cb101375b614aee00a155a495",
+    "wire-candidates/driven-n1/fir.json": "e3c8ce165e35470b15b07ab0f7635fb3ccc8a9523be0faf0b6effd8adaae59ba",
+    "wire-candidates/driven-n1/identity.jcs": "a540a060300ac38056862badddfa2585a944efe4dfb86bff34cb1f09b915f909",
+    "wire-candidates/driven-n1/model.jcs": "b3b773980a705edd387122d4e42bb0c6f67592ed0c20e2ddb91a3f4922766ad9",
+    "wire-candidates/driven-n1/normalized.json": "456d6133bb913bb54348be19d0146bc51932c7297be2adb27ddfc279856d9ad4",
+    "wire-candidates/driven-n1/zero.julia.manifest.json": "fee3880e26f6f06d9111d3dbb5801dc0d35f44b4343dbebec5ad1f028f67f6bb",
+    "wire-candidates/driven-n1/zero.python.manifest.json": "57f213ca7ac1f02499d87f4f991451428888dd937e473b3f1ea38dacf9ee861d",
+    "wire-candidates/driven-n1/zero.result.json": "7ba564de276ed809a21770e1d88282986b6cc545e7f7a383fd4efc863a7e6dce",
+    "wire-candidates/driven-n2/analytical.julia.manifest.json": "4dce024b3a028f497ccd6aa3c8488e7f93273cf8aa6d0b746d739b5aa16cd3ae",
+    "wire-candidates/driven-n2/analytical.python.manifest.json": "7f1e24058a1c53e7c6e1e6d89bcadf013c19e012aa42799c7dec56eaa9387d95",
+    "wire-candidates/driven-n2/analytical.result.json": "e7092845b2d33fd1dbdd35e9afa9e5ef7da98c91e47dbd34ae66543f888844e2",
+    "wire-candidates/driven-n2/design.json": "d8ef668d914e3337b808679976e8949e028827ab7c2e500eed355902add6a8e9",
+    "wire-candidates/driven-n2/digest.txt": "7c74d50ff809b88ed672a249bd53ac197bc91a33dc7f0a3c276282d12b99eb59",
+    "wire-candidates/driven-n2/experiment.json": "088fe9054cf4cd5ef73de730987c1498e102677186308e3516abb233ec23bd16",
+    "wire-candidates/driven-n2/fir.json": "557d61140d620520bdcde87a9a94b5cdb113e9777bc836c35bd134908f0924a8",
+    "wire-candidates/driven-n2/identity.jcs": "cbc9146c383ca5c7f7517fb193f81bd3225052ba4f60e9276ed7bb2083981c01",
+    "wire-candidates/driven-n2/model.jcs": "7ca2e8a67015407a8d7fd28bc1d41af0037b18ecb78710ac8a43e2c3b2ba5152",
+    "wire-candidates/driven-n2/normalized.json": "86b90b0c4b27362fb1fd3907b10bc8966b9a6dc3b61f9f1d1d53c3c25d31f975",
+    "wire-candidates/driven-n2/zero.julia.manifest.json": "cf911b99447103c4749ffcb8c83d25c60a30e77341d0321817a282cd735ce71b",
+    "wire-candidates/driven-n2/zero.python.manifest.json": "6ecde308b4f91af826e11b533135158129dd4a125e71665b4de78bdb663ed0f6",
+    "wire-candidates/driven-n2/zero.result.json": "d695650ff46aee55c57cdf48367c423eee9aa5cf877159d14bc78bb4c8e07499",
+    "wire-candidates/driven-n3/analytical.julia.manifest.json": "804c1a9da390ac7feb83bbf6e2dae3fade0a0d74a11d7e576df8f22ca1738f46",
+    "wire-candidates/driven-n3/analytical.python.manifest.json": "1e12b93218acd2c120894b673dd48f4280d2da828de2fd9f1416ff5157e70072",
+    "wire-candidates/driven-n3/analytical.result.json": "19f425013668928b70a17e1b645a48df18948bdc2a14c22600bf2a91ab1978a0",
+    "wire-candidates/driven-n3/design.json": "c90bbb09644877ab2b0770a00819958174daaa26e3a025b485e76e64a9d98cf8",
+    "wire-candidates/driven-n3/digest.txt": "0527201ef370afd91825e318edb8362440ee06ceac3139353eaca888c8e1395f",
+    "wire-candidates/driven-n3/experiment.json": "26b9287dc84c61499770dd047a360ddb532e5cc030e57e740a003cdce54b3106",
+    "wire-candidates/driven-n3/fir.json": "49bcc7076ba75c60b46a4c5813a735c57dc50cee82bc98788e8c8e0c448b580d",
+    "wire-candidates/driven-n3/identity.jcs": "dbe541eea6a7249e6d4be6996ae815811e96cc6d3abc7c1b93d24a97aecc5126",
+    "wire-candidates/driven-n3/model.jcs": "035dc9f8de8fbc1d015ca505024d63f2fa269d2dd9f0794b8950c4b70a4fcabf",
+    "wire-candidates/driven-n3/normalized.json": "29b019837000c538e0098a089137d5dccfd7d9e81f072931d5d771e2581ab0d3",
+    "wire-candidates/driven-n3/zero.julia.manifest.json": "5c7797622d61a7f533d4a9ba8e6340cf3e0112ce49f380c6a157170c6735a05c",
+    "wire-candidates/driven-n3/zero.python.manifest.json": "490beafaebbecaae808ce428ca80eeefb051574e8a2f719665f5655b56739238",
+    "wire-candidates/driven-n3/zero.result.json": "0ff8db37a1c5c328bc2cd204f7b6e5bf9af5211b185e2094652066c2aa5b6dda",
+    "wire-candidates/driven-n4/analytical.julia.manifest.json": "ea3783d4887c7f95ff7348a8d0608c2d1be4d49df8b3c6ad31ec8bb585247c0a",
+    "wire-candidates/driven-n4/analytical.python.manifest.json": "e8d7541b39bf16b17aaad41f88200a3b2e7acbdfb962755a5e784ddd610dad1b",
+    "wire-candidates/driven-n4/analytical.result.json": "34f844667801d6e68fdfcabe790e6d007343ced4b3a06f1739d01e90f31bd10a",
+    "wire-candidates/driven-n4/design.json": "35a362d9e306a3a01fe60238d05eb219953f034844386e249965afecdddca9d7",
+    "wire-candidates/driven-n4/digest.txt": "0632a706d5dcc66e5d31c5ec930798fe2cb764195862fa47e10f60d1ca9e2159",
+    "wire-candidates/driven-n4/experiment.json": "c54431e6f9404d0b939a5a4b6f884f9f17856fdad17fa8040e20daa6a9bfb5b1",
+    "wire-candidates/driven-n4/fir.json": "33ce7824da25405fcc5c730f56db491836c71d8581180dd849dc2d6142ba0c78",
+    "wire-candidates/driven-n4/identity.jcs": "23151aae83137dbd1ccbacb417ecffcfb7e05d28e991ddcc666163100a641117",
+    "wire-candidates/driven-n4/model.jcs": "cbcf8c12f16726149ddecacd6c741c8ddc75389bdaa1e2f340b4a7a7bb1f3120",
+    "wire-candidates/driven-n4/normalized.json": "25aa54ff3fcd43ffbb33c4519e58aacb3fa40948b859ce3d4a58d808fe2b5fda",
+    "wire-candidates/driven-n4/zero.julia.manifest.json": "0f4052af8eb3dca61b74a2851e3ee0aeb1f165dd73714e3d0c8a3700bac27764",
+    "wire-candidates/driven-n4/zero.python.manifest.json": "b9e246e58f82233c5ad048952a911c8d2ee7b78d224ddd09d5abeefd8fadf55c",
+    "wire-candidates/driven-n4/zero.result.json": "1e2c2a77bc4c0be3060defba2bef981517296df1c48bd9daeaf982c9a31bcba9",
+    "wire-candidates/empty-observables/analytical.julia.manifest.json": "4ee3910a6a9e54848e35b3cfa01a6ff9d621a955a9392362bb021c5600dcd723",
+    "wire-candidates/empty-observables/analytical.python.manifest.json": "e4191cc6a5b67e14e1de20a12a25ff9b973e9805b451fd0a7ea28b4fb9c2b2fc",
+    "wire-candidates/empty-observables/analytical.result.json": "14f3b0dd4f7cc9cbd9a3e3bb13cc49e7556287aee99ab5428fc7af935e8eb444",
+    "wire-candidates/empty-observables/design.json": "441a257c216fe35be1f0cfc1eea0a229866b4b7229d6f7d3638e40cfd33fe5d4",
+    "wire-candidates/empty-observables/digest.txt": "248fb238dc04babcea6a0e4894ad5d41095bafe6040073c915eda35e0287f94d",
+    "wire-candidates/empty-observables/experiment.json": "efc2ad8f1aa990d64b80b13b1fe123d464cac45114c4b095ea8da962052f437c",
+    "wire-candidates/empty-observables/fir.json": "94f519e5d037470aff9a1d3f16b59aa9c6f61ed57c727964e40165efd187b47b",
+    "wire-candidates/empty-observables/identity.jcs": "2b99d2a775efaa2511457d8ab135634d735562dd24f7f2c7a9e4e087cbe9506f",
+    "wire-candidates/empty-observables/model.jcs": "dfa43c0e363d838b9e7d40de907aac831149e0cc65155a7a80799b462f2d5ee2",
+    "wire-candidates/empty-observables/normalized.json": "5072cd179123b44f967aadeb06e7cdbcea29188fdbbe561ba1ebef14bbd440af",
+    "wire-candidates/empty-observables/zero.julia.manifest.json": "7d5d1d78ee237fc58099dda78456748a8e0840030ae869e69bb1fec11a63b01b",
+    "wire-candidates/empty-observables/zero.python.manifest.json": "f40d58ff74f549dfa158845d1245c84360a355ac48f31e1e3a12f55e358854b8",
+    "wire-candidates/empty-observables/zero.result.json": "62c0ad762d8d48c88e55f6cd1aaacc1c3907a604711c1834f0acb393fd0976eb",
+    "wire-candidates/grid-vectors.json": "acea227e30b2447cb50c45c17e78c306d870c842ce2af7c7d1feceb3117322c9",
+    "wire-candidates/late-first/analytical.julia.manifest.json": "d05abc24f4530e5e5d4d1cd0919a652099867d25c2c0da3ae7123100c22078f0",
+    "wire-candidates/late-first/analytical.python.manifest.json": "ae757d993c8b27b7aa19afc2d0fac800a3bbc28f30cf0925f3c8c713276c35b5",
+    "wire-candidates/late-first/analytical.result.json": "f39e2b91e5441a6cc96276a3f0d507305734edc871840d9b3add29840bf59a97",
+    "wire-candidates/late-first/design.json": "441a257c216fe35be1f0cfc1eea0a229866b4b7229d6f7d3638e40cfd33fe5d4",
+    "wire-candidates/late-first/digest.txt": "6b9ef98077a8e7b4a8729cbbf9f636a367f02a1f18f3375e6207590cd719c6d5",
+    "wire-candidates/late-first/experiment.json": "8c6cbd9c59184a5dfb22697e86a64cac23d7e30c57027a24e86d22f01f540b1b",
+    "wire-candidates/late-first/fir.json": "e2bb2afb4efe6f0d5c95569d2f1da1bfbbd447aa1972d965ccf2d9b8e67f86ed",
+    "wire-candidates/late-first/identity.jcs": "59fde299f0d40008aada523b25a44f4abf89e2438ffb16217e5607f6e11eb92c",
+    "wire-candidates/late-first/model.jcs": "4d948230b87de416edc01f51cd9c33e8765f19b97c6e929380f10fa82af16eac",
+    "wire-candidates/late-first/normalized.json": "c5cd1686223d4c2ac3ff0872d97f685f23240230c6358c56195475cd438b79ce",
+    "wire-candidates/late-first/zero.julia.manifest.json": "29a8010ced2a1c2c73f7460f2337005b17ff5c1269866e3cbe67cbf87dc1a5ea",
+    "wire-candidates/late-first/zero.python.manifest.json": "99eb9e7ee5606aef508be9ecdf56bb460f8a4463191d70f14a021818052994e0",
+    "wire-candidates/late-first/zero.result.json": "1ad8dbcc2e37415a5c53b5b617c126627ea2bb5698ee19d1fc28f247cd4c3e63",
+    "wire-candidates/permuted/analytical.julia.manifest.json": "a4a68e616d30c9efd28c5832a85d1054f7081332147ca7031d3ec090584cae18",
+    "wire-candidates/permuted/analytical.python.manifest.json": "49e41711cccb313c372aeddfa60a15f27d970ad71d766d32bffb2e2f388d1523",
+    "wire-candidates/permuted/analytical.result.json": "9a4fe7df854009170d9be525920e35a46c5c975fd1796c4993451b2dc29c5492",
+    "wire-candidates/permuted/design.json": "02d6660ad648a92521f178fd3fdd1c3100b75773521ae3272281a7d80cd57137",
+    "wire-candidates/permuted/digest.txt": "6b9ef98077a8e7b4a8729cbbf9f636a367f02a1f18f3375e6207590cd719c6d5",
+    "wire-candidates/permuted/experiment.json": "408bdd88c50d6376daf78b126dc6be6aeef654fc85ca8602bbe0dfb73c97041d",
+    "wire-candidates/permuted/fir.json": "8b71bfd66d0fe1d7873c47cd5cdb349f4cbc79394bdb81ce60d1f51b56314297",
+    "wire-candidates/permuted/identity.jcs": "59fde299f0d40008aada523b25a44f4abf89e2438ffb16217e5607f6e11eb92c",
+    "wire-candidates/permuted/model.jcs": "4d948230b87de416edc01f51cd9c33e8765f19b97c6e929380f10fa82af16eac",
+    "wire-candidates/permuted/normalized.json": "c5cd1686223d4c2ac3ff0872d97f685f23240230c6358c56195475cd438b79ce",
+    "wire-candidates/permuted/zero.julia.manifest.json": "7fc170dd2a080869b89c5cdc3638d5e5100a0ed7f873cef1753b1aaab563f040",
+    "wire-candidates/permuted/zero.python.manifest.json": "b743b8b1021e03def560de7daa3a3208e1f56994cbe3655b75e5eb8bcf8c650e",
+    "wire-candidates/permuted/zero.result.json": "1ad8dbcc2e37415a5c53b5b617c126627ea2bb5698ee19d1fc28f247cd4c3e63",
+    "wire-candidates/raw/duplicate-key.json": "ef07538311c29ebdde0960d157b1222ff7f39622c0367ff23305a592d997dbda",
+    "wire-candidates/raw/escaped-duplicate.json": "42b79ce37eb426bbe0c4df1410b95fb4ddd05a8b0014f622fd363a66d9813fbc",
+    "wire-candidates/raw/explicit-zero.json": "01654e363b7ddca3f60c541ad82fa01b42ea0f4f1ac704ade3fb5a5cc1cdcf51",
+    "wire-candidates/raw/exponent-population-token.json": "79d3a58c0999a45016b249b48c25a9b0148ae9f80b373c4298f6d88c1dffbe18",
+    "wire-candidates/raw/fir-rounding-int.json": "16943e87887a1f1c481ac6bb576c4fa30b70320d4684fd5435adef62d2c5364e",
+    "wire-candidates/raw/fractional-population-token.json": "d99d13c71c6d557d8ffa7ba66dc8b4103b596876b5712987890553f4215d22c8",
+    "wire-candidates/raw/integer-negative-zero.json": "9c42950cfdae8b61c50c4abc09ce4eaf0ddf4b607f8324d8f1f07e8fd2c93b20",
+    "wire-candidates/raw/nan.json": "159f99e03ec6dfb7edcad87bac613ac97a235493ad8b79b33cfa4002fb4477f8",
+    "wire-candidates/raw/negative-zero.json": "c848a4efa987f46ba3bfd46242333afcb1c68c3240e0f35ae9d269b1c980648b",
+    "wire-candidates/raw/overflow.json": "c3481b4e0f5fa4a1c11f5d5f510a0a0da26a5b1bca5894159a6ce18f2c99331c",
+    "wire-candidates/raw/source-safe-max.json": "16c63bddb910905c4ee8abf36273baa20dba53020dbaf265da5936013ded185d",
+    "wire-candidates/raw/source-subnormal.json": "8f275eb622ce665f3cf21739b40600308dcea7c36627451f1c210a4152343c85",
+    "wire-candidates/raw/source-unsafe-int.json": "3b0d9a238f369ef1d4cb7182e6ca467e10b5501cbab84e9c80d1d91053253504",
+    "wire-candidates/raw/surrogate.json": "adfebe803c48e286a13ff4dc084eb4ade9ae1588174e39efc459232f8af380a2",
+    "wire-candidates/raw/transport-large-int.json": "16943e87887a1f1c481ac6bb576c4fa30b70320d4684fd5435adef62d2c5364e",
+    "wire-candidates/raw/underflow.json": "04dd22859b8a20c1a604ec39bd3a8068ed730c7e8a0eb1daf98b03a6f32f3ed0",
+    "wire-candidates/raw/utf8-bom.json": "ffaba41e351e8ddaee66b0b828ce0da505e79b4decb06251747ed4571f39fe6b",
+    "wire-candidates/reject/alias-endpoint.json": "dd679e4479864e0e26b0b8512cc287efabd840985d929557e05db7c7d532907e",
+    "wire-candidates/reject/count-unit.json": "ee6377719c258a5b68c812025d79942259b6d176836801073ab293b2171bc070",
+    "wire-candidates/reject/duplicate-observable.json": "e976903da8e249b8047eae8993c901e76e67a8d5b2bf5e28511bbf41cbca5a3d",
+    "wire-candidates/reject/duplicate-owner-id.json": "77a0ad321d386896247275349e738aad204d543115a50e50fe31e7ed1025026b",
+    "wire-candidates/reject/duplicate-owner-role.json": "c0f4525ec56a23c8642d0f21630aff1b8df7bd2d4da41dc1cc42a0fb841c010e",
+    "wire-candidates/reject/duplicate-port-id.json": "580dcf2231fe16cd8595f7943e9db24aaedda600c2edc8ee43b69a587c3ceddb",
+    "wire-candidates/reject/duplicate-species-id.json": "26a63bc66d0753f0cc639b9e05b6a33ffe5c9fc387b3aff5aac4dca358e4cc98",
+    "wire-candidates/reject/duplicate-species-role.json": "86e6dc5650f63bdb12341b2565216ead8e5af7eb1fbcd5c8ffd729d258357fc7",
+    "wire-candidates/reject/fir-free-expression.json": "dbb9db9737494c4b0bbcc298b9127ca4abeef88b36779ec79109804bf6e9664e",
+    "wire-candidates/reject/fir-source-initial.json": "c9455d1eba1a417029c48d04b45f7c0ddaf2dc6a28c247fee068b656b2cc8f8d",
+    "wire-candidates/reject/fir-source-observable.json": "38caa28493a3186f91e7b64e7e392fd113dd887ade1b62b36bd0dd4ab285eef6",
+    "wire-candidates/reject/fir-source-owner.json": "2fbef391cdd09c1a129eab8bfaf31b55404079787b239ac6b7f2fd20327074a3",
+    "wire-candidates/reject/fir-source-population.json": "02e4d1eedf7e2fcb1ae784d52c174adf699ab38f914b15b897f0a51a4f7b5239",
+    "wire-candidates/reject/fir-source-rate.json": "b448fcd89e5d1cacbb64669bd4b7a9c9092ccc8767643f2bab1eb8f0b9387737",
+    "wire-candidates/reject/fir-source-species.json": "8bdda07c94131d43ee1d698bf851e0157894e6de86ed3e21a9e9f591c226b7ee",
+    "wire-candidates/reject/fir-source-volume.json": "cabeb0e141e81577130532b079b158193e1322972d04677b623a518a07341ab6",
+    "wire-candidates/reject/fir-ssa.json": "1cd24809a742baef530ddffa8c7b0157087ccde7d588043ed47f7339b989e460",
+    "wire-candidates/reject/fir-stale-design.json": "6e59422336449b8b96bb2255e005d2dca12cf4f8c73e64a8b3007c22b13f0319",
+    "wire-candidates/reject/fir-unweighted-export.json": "9c445921fd8efb98e9f84b874570bc7deccc4fb3ec6320199fd607659bd87777",
+    "wire-candidates/reject/fir-wrong-version.json": "85742463be04f4e327d74db8b6ea8166ff971dc672e0b5650aff9ba1ff019253",
+    "wire-candidates/reject/hill-bool.json": "563145d9b64814bdf23c83609a613ea1c074fa0c1416d902d26c1a6c457dd7ad",
+    "wire-candidates/reject/hill-five.json": "3c682eef7f92ea81b1fcdb9216b861df52bb5c31180bade7fbef8c2d86918ada",
+    "wire-candidates/reject/manifest-fir.json": "93e6b2d5e3d5fd893bbebacd02cdf0f3c83c160c5ceca298f19e95c094370c7f",
+    "wire-candidates/reject/manifest-float-counter.json": "e28b6a521e8df22809d9f8025f878f5b31a93285738e30f183c66e1a1c535b15",
+    "wire-candidates/reject/manifest-grid.json": "95f498dbe1e06d3c57cf687846fa284c620d0b05c4a21a96a3494ca2f1fdf885",
+    "wire-candidates/reject/manifest-integral-float-counter.json": "c43648b1ee4943df9270dbd36fd4428b2c23a705231679ea1f9752ad26d66e45",
+    "wire-candidates/reject/manifest-integration.json": "8a847bf3bec2cb69c29721357323b9d9679f7aa8c90dba73f44cd2aba80a9018",
+    "wire-candidates/reject/manifest-invalid-calendar.json": "55902dbbd025075b3e782a52e8d5f9f21041bd996ef4aad38d39f5247a7d39be",
+    "wire-candidates/reject/manifest-old-backend.json": "f04808f261bb493ab46d437816be8abfe2093900a843b27e043e9a9f9adfecc8",
+    "wire-candidates/reject/manifest-result-checksum.json": "30fedffc71f04670e021b57c2dcbe7476fead4949e9d472c68d1257846a70ee1",
+    "wire-candidates/reject/manifest-source.json": "cd961caf3048e91458c726c4fde1981011ee9a5cb041acb903b29693c768e2d5",
+    "wire-candidates/reject/manifest-wrong-jacobian.json": "ef3565f69bbb0d123c44bf2d9df56fe0fd205ca249dcf8977161e786177d9758",
+    "wire-candidates/reject/manifest-zero-work.json": "1ce31d82456d18e439ad711c970ac24f60d22b2912df57a7a2cdfdb789d239d3",
+    "wire-candidates/reject/negative-count.json": "196ac26d7cc7df3f33f1493d65a170df7e3fd1c8d312c4e81f19ddbd4d55712a",
+    "wire-candidates/reject/population-bool.json": "e8574cddd3d8f7354177d71a7d062cec1dd66560dc124e326afe3c2d19caebbf",
+    "wire-candidates/reject/population-fraction.json": "f74589e9ee0683974f8790b4e797fadb5a40ee21e7566f064b9f987de3dd3405",
+    "wire-candidates/reject/population-zero.json": "e273421268ac9c25cdb31c5a49ffe24b5285fb7b24003430ab1892868b9baeea",
+    "wire-candidates/reject/result-column-order.json": "884bd3221cfa75e4b8d2d4150aa8f08a80052822af0a2a23665252863f8b9e54",
+    "wire-candidates/reject/result-column-order.manifest.json": "4e29f8a184a5d7196af8a27373e5ad53205eff52ef298b4d712e0e8d96e66b18",
+    "wire-candidates/reject/result-initial-sender.json": "6024f716d36a04e6b4cc4544354d6829c7bbb98934195caa03d8cf02fd0cca33",
+    "wire-candidates/reject/result-initial-sender.manifest.json": "b39145521cc046d5cc8e6fb60614af4e2f9568b503ae9fade966728e899132df",
+    "wire-candidates/reject/result-missing-row.json": "da09619e71d351e177620375893295cb466ea150af213b65424e7ce5143607c2",
+    "wire-candidates/reject/result-missing-row.manifest.json": "30200c201f24ddff53491779006191f1023c49ff0524066147a53bbb6bde2527",
+    "wire-candidates/reject/result-observable-owner.json": "23b0464d7b13c5c00efa4f98d7a868e7c40edea46a3a21ff0add86ccacc2bb97",
+    "wire-candidates/reject/result-observable-owner.manifest.json": "e5c3ba089dcbc1544610f83aa917989f94e22f7f2772a8cc58497a3ac3d60f5c",
+    "wire-candidates/reject/result-observable-scope.json": "5d24d827829c81a6797d40df2460f0709532a2d86bc4dca869690dd03b2bd4a9",
+    "wire-candidates/reject/result-observable-scope.manifest.json": "cb22c0e327759e44b253ff514978404dda47d666048507fb3191491150925c3b",
+    "wire-candidates/reject/result-owner-swap.json": "5fd0dd98191312e25196b88852a4053802d6ed0518fa026c64c5357324052d8a",
+    "wire-candidates/reject/result-owner-swap.manifest.json": "76dd3b09d2d7ffddd707c67b03ce965d3d7baa7d0b8366c0585fcdc05a103f20",
+    "wire-candidates/reject/result-scope-swap.json": "3d04782be4d212c5d5313639d76b7095d671b19ef423ebd4c851ff78f3992703",
+    "wire-candidates/reject/result-scope-swap.manifest.json": "c1ee636c7f3a02a513f4e4598492e2e504a8dabd51dbf5baa7c610a58700f765",
+    "wire-candidates/reject/result-short-row.json": "a4316bce85117843cb1732872b68ae53cf01b6972aaf8e64cce439ac26fd5cdc",
+    "wire-candidates/reject/result-short-row.manifest.json": "a479c80fc8f007129bdbdef78db7c81166a5a8a3d19ee007963020bb23e9402a",
+    "wire-candidates/reject/result-signed-zero-copy.json": "c57b0326ea38c5cb73d8dcd49aa7c024409c59e74f6c751500d211b5a1f9ca12",
+    "wire-candidates/reject/result-signed-zero-copy.manifest.json": "af2662c4c4c48da36a41ba9e173e9ae337d0e49b8994c6463466e50b5ccb0997",
+    "wire-candidates/reject/result-stale-fir.json": "5a002bbd2f9c3a96cf863d16265d3d2c62271b0a45e30637b6bef9bf46dc7755",
+    "wire-candidates/reject/result-stale-fir.manifest.json": "087ef1e8db90de8c11f29f73b4710053222f4f403382c6281e268c801c422b2f",
+    "wire-candidates/reject/reversed-edge.json": "03d09d2357af1bb39b50531c2b9673aa10571f97dd57abcceee11732bdaaf32a",
+    "wire-candidates/reject/source-version.json": "566a2d3c053213d58e7cd0546643f03da26dec31e1aa31e0c3ef1e317b0a6d6a",
+    "wire-candidates/reject/stale-design-digest.json": "379a8093dcf317b315d6bc51109ae7b33079680896eff24003f288337924bb52",
+    "wire-candidates/reject/stale-experiment-digest.json": "a6d70c9cd1087186fd2b76bed53b30225a417482e4a8c62741aacab09f9c349c",
+    "wire-candidates/reject/threshold-zero.json": "96bc990052dc7ba200a1462c91e1c91083a1169586d326543653964d958e4726",
+    "wire-candidates/reject/wrong-design-link-digest.json": "b0377f824ca7950ac5114c1c54a4976d382bdf8051ab87f7c3a7484990b17598",
+    "wire-candidates/reject/wrong-design-link-id.json": "2bbf6dd263b5f43ce46d1d593832bf6618ab30d35aacd30c4b1d797a2ddf501c",
+    "wire-candidates/reject/wrong-design-link-revision.json": "ff328c398fc3b08a36ec2d1b47c6eb713abcedfec7cb71d7364d133a540586b1",
+    "wire-candidates/reject/wrong-port-kind.json": "39254f8ba86ad0906ba9c536cac0e94fd7b9b36c4e923846fdc39f6dcad4518a",
+    "wire-candidates/renamed/analytical.julia.manifest.json": "c2723d42141396b023e6a67892d5d80639f60e39fd11d776c53c3dd5f3bd13ee",
+    "wire-candidates/renamed/analytical.python.manifest.json": "ceba4c5198cb5a3ae7a75b338ed27203998d8ad073e930e13a0c98f361da972f",
+    "wire-candidates/renamed/analytical.result.json": "9a4fe7df854009170d9be525920e35a46c5c975fd1796c4993451b2dc29c5492",
+    "wire-candidates/renamed/design.json": "e244942af4b370fa84819dfc60a8a3e67b2259ada3e078c97d7577fe6487896e",
+    "wire-candidates/renamed/digest.txt": "6b9ef98077a8e7b4a8729cbbf9f636a367f02a1f18f3375e6207590cd719c6d5",
+    "wire-candidates/renamed/experiment.json": "d2d0fac642da15f1d916fb45a50b86b69b3049a46f91ad833a8c43a3e80eed1f",
+    "wire-candidates/renamed/fir.json": "d2accc909ae2197df2bc71b4841dc896a55106aef66ecd10657cee34fe52490a",
+    "wire-candidates/renamed/identity.jcs": "59fde299f0d40008aada523b25a44f4abf89e2438ffb16217e5607f6e11eb92c",
+    "wire-candidates/renamed/model.jcs": "4d948230b87de416edc01f51cd9c33e8765f19b97c6e929380f10fa82af16eac",
+    "wire-candidates/renamed/normalized.json": "c5cd1686223d4c2ac3ff0872d97f685f23240230c6358c56195475cd438b79ce",
+    "wire-candidates/renamed/zero.julia.manifest.json": "652db74f65cd950845d5279b99d4898c020dc731b17733a8087ebcce0d14a1d2",
+    "wire-candidates/renamed/zero.python.manifest.json": "38cc97ac480508afee36fa1a153e45dbe72be6cfa368521973c7f42b19804004",
+    "wire-candidates/renamed/zero.result.json": "1ad8dbcc2e37415a5c53b5b617c126627ea2bb5698ee19d1fc28f247cd4c3e63",
+    "wire-candidates/reversible-transient/analytical.julia.manifest.json": "c2cae30c6e965e7f09f671fdc25af0405a080215ff4b2ca3f97d5d139810a821",
+    "wire-candidates/reversible-transient/analytical.python.manifest.json": "9911a22f63ca07ccc47af97c173a279c1ad74e64a744933592d2212e2eee1436",
+    "wire-candidates/reversible-transient/analytical.result.json": "1d36e85432b0b0506b54edddf810343fbc49e13b68ba0dabe113b27780504b80",
+    "wire-candidates/reversible-transient/design.json": "a3f69f8662329018e9f4186691212343127aa3627edaf06f9d65b8155675c26c",
+    "wire-candidates/reversible-transient/digest.txt": "61b538f7605c1e11a0ad10083d951f0a7e910b2b745e8a6d1cc9a1d019654fb9",
+    "wire-candidates/reversible-transient/experiment.json": "2851f81640b84ed68d89f991a7903de9bed87cd4220ed4c12059705b2925d45b",
+    "wire-candidates/reversible-transient/fir.json": "1c46fa4f79ba3d968fabdc3ff6baec86d7b287c196f519ed10c3897f7c804128",
+    "wire-candidates/reversible-transient/identity.jcs": "74bab9866b3b01c4421a7db5d228837bf8d46299f93c95ca9557f71863eb485e",
+    "wire-candidates/reversible-transient/model.jcs": "995640e78f3edfe22a9a090f43e8a2c83de679b7a1cf6d5fd5fd3f7a69a6bb82",
+    "wire-candidates/reversible-transient/normalized.json": "bfe7c772fd9a492a07cc22f9179dfe83bad728146ab4971641fe6aa81c32c6ca",
+    "wire-candidates/reversible-transient/zero.julia.manifest.json": "56f4b1b69ad1d8c2fda435d33b8d686f430e1be990def985f9818107f15d5e64",
+    "wire-candidates/reversible-transient/zero.python.manifest.json": "a01cf38929cdb8a97e85c7298ac45335946e5237afa45c4f8fa8174aeefa5b69",
+    "wire-candidates/reversible-transient/zero.result.json": "a21badd5c9aabec53f299ea95bb7ed3fc9a2d457f01fb51440ec212b8d5373d5",
+    "wire-candidates/threshold-n1/analytical.julia.manifest.json": "8e6b8885c77f1054ec046197ffc13d15b4091a86cf0f485bba029f67ecb07f7d",
+    "wire-candidates/threshold-n1/analytical.python.manifest.json": "766e762b664f082740c4d563f58de1a362c332670dcafd1f820aa2f8a532f0ec",
+    "wire-candidates/threshold-n1/analytical.result.json": "9a4fe7df854009170d9be525920e35a46c5c975fd1796c4993451b2dc29c5492",
+    "wire-candidates/threshold-n1/design.json": "441a257c216fe35be1f0cfc1eea0a229866b4b7229d6f7d3638e40cfd33fe5d4",
+    "wire-candidates/threshold-n1/digest.txt": "6b9ef98077a8e7b4a8729cbbf9f636a367f02a1f18f3375e6207590cd719c6d5",
+    "wire-candidates/threshold-n1/experiment.json": "8c6cbd9c59184a5dfb22697e86a64cac23d7e30c57027a24e86d22f01f540b1b",
+    "wire-candidates/threshold-n1/fir.json": "e2bb2afb4efe6f0d5c95569d2f1da1bfbbd447aa1972d965ccf2d9b8e67f86ed",
+    "wire-candidates/threshold-n1/identity.jcs": "59fde299f0d40008aada523b25a44f4abf89e2438ffb16217e5607f6e11eb92c",
+    "wire-candidates/threshold-n1/model.jcs": "4d948230b87de416edc01f51cd9c33e8765f19b97c6e929380f10fa82af16eac",
+    "wire-candidates/threshold-n1/normalized.json": "c5cd1686223d4c2ac3ff0872d97f685f23240230c6358c56195475cd438b79ce",
+    "wire-candidates/threshold-n1/zero.julia.manifest.json": "29a8010ced2a1c2c73f7460f2337005b17ff5c1269866e3cbe67cbf87dc1a5ea",
+    "wire-candidates/threshold-n1/zero.python.manifest.json": "99eb9e7ee5606aef508be9ecdf56bb460f8a4463191d70f14a021818052994e0",
+    "wire-candidates/threshold-n1/zero.result.json": "1ad8dbcc2e37415a5c53b5b617c126627ea2bb5698ee19d1fc28f247cd4c3e63",
+    "wire-candidates/threshold-n2/analytical.julia.manifest.json": "e4555df8671a6a7a8ebd268773156e87229f62cd50c9184e7422764d90469fc9",
+    "wire-candidates/threshold-n2/analytical.python.manifest.json": "fde94fd1810499637e4f0fdf6f3da4b2d726009b33f5f5ff58ec6d5f26ee0a31",
+    "wire-candidates/threshold-n2/analytical.result.json": "f5e0e87fad7af205acf629cca94cbe52a2b2ebf102685ba31ddc222adebf2938",
+    "wire-candidates/threshold-n2/design.json": "e6ba81b5add0c2a771daf815dfa4e01b581a3be9c96a410da5d3b4de19091565",
+    "wire-candidates/threshold-n2/digest.txt": "314ef8ebda9e03b7ec5756db799261634df74411d0c116e8ae3412e7352ef2d1",
+    "wire-candidates/threshold-n2/experiment.json": "a21b74941b8ba1167b4801203da3f129a9bcd6602a14f4392ef1de87b2ceecd1",
+    "wire-candidates/threshold-n2/fir.json": "549e82ba2a838b8a03a81524f41301d7cb257a621c58ae323b17a8f328aeede9",
+    "wire-candidates/threshold-n2/identity.jcs": "20aa066a8269d72d8500dadbe7b853cd02f434b52487d468d1c0fc22a9a8fb75",
+    "wire-candidates/threshold-n2/model.jcs": "a9361a59fdd4d876d2f682f994cae24661355362af232f8569252c71911dcdcc",
+    "wire-candidates/threshold-n2/normalized.json": "49deec888565f2a71db0e788d0449565df1d20d19bbd2275685f031d7ac21e44",
+    "wire-candidates/threshold-n2/zero.julia.manifest.json": "12c79f4a3f65148a36d385c67e09678c716e2991839644a38891ddabe923470b",
+    "wire-candidates/threshold-n2/zero.python.manifest.json": "55e8b1f28cf194c3afb40a34efbf22630a93dadc5da7b55fd438b49ce7732d8a",
+    "wire-candidates/threshold-n2/zero.result.json": "07f48c2a46a47e2024e67806947a41e0f8a5847d0becfd8e0a21bad90de97e73",
+    "wire-candidates/threshold-n3/analytical.julia.manifest.json": "b76735db47a60029c19bbfe530bf080881be6a9d279b0e9e4a9301f972f85c9d",
+    "wire-candidates/threshold-n3/analytical.python.manifest.json": "ff6dbd7eefd5b2baa1c4ab07c73e28f359ea68bb64cebf9ae373cb7d9ac481a5",
+    "wire-candidates/threshold-n3/analytical.result.json": "ff57ac33b930a5bf1684abe39f586a66ff48c47c62fab9f8228b68e31c5987f6",
+    "wire-candidates/threshold-n3/design.json": "b96e2b0d25bd33c818ade5443eda7876160d9669d57dabd6ce9b9d46c1f17144",
+    "wire-candidates/threshold-n3/digest.txt": "e2ebbd774aae252d7dd0562cb81df4cbbb44e1928d1e591e91f88ef1ee549891",
+    "wire-candidates/threshold-n3/experiment.json": "67ed53ac94b32474a00850f9579fb29f058442015b9b7154a9a13f0f91062877",
+    "wire-candidates/threshold-n3/fir.json": "a831e39029ec85b20326c4c16ca7a981f964346a35ba510393ae614c946d3bbe",
+    "wire-candidates/threshold-n3/identity.jcs": "499fde671184eb9e8d097db6009517969da86ac641837adab38f375ded068e61",
+    "wire-candidates/threshold-n3/model.jcs": "9436ed2f807fa49f1efc29048a498990b7af9095c1170441daed0ef739c527b7",
+    "wire-candidates/threshold-n3/normalized.json": "2dac48c524d954abccf48eeb1893341ef50ff23e3731aa77d25ff55e7cdc837c",
+    "wire-candidates/threshold-n3/zero.julia.manifest.json": "c8961102546ffb3927a70d684594a6afd3c2ae6efd4fc06bbe46a984c18fceef",
+    "wire-candidates/threshold-n3/zero.python.manifest.json": "5be8647952661910a634780b0235e2bac0a72f943627db7dbcabec0a04666a66",
+    "wire-candidates/threshold-n3/zero.result.json": "0a041703edd5848d7df6a8c89a37f297f4e37338b62f6263f40a4f0025a70230",
+    "wire-candidates/threshold-n4/analytical.julia.manifest.json": "6b9e0412069ce8914ab26059722f896a0abf0694bebb7caf1c80f65fe4039e26",
+    "wire-candidates/threshold-n4/analytical.python.manifest.json": "b956284aac0a32bcc3b6cea72772b1f7a28b1904f6f1adf71d22e09cc80e2bd0",
+    "wire-candidates/threshold-n4/analytical.result.json": "548220e77ea39e5eb73c14940b1320d93d14346f5be7f01eb38cab8811ead27d",
+    "wire-candidates/threshold-n4/design.json": "f394825dd3f94021335597cac93668bd8c42f018a5faa5896c68d1c80497a1ab",
+    "wire-candidates/threshold-n4/digest.txt": "53de61f5b40569fca065318d13997610a9cecca34b3b0664a0efeca0957ddf22",
+    "wire-candidates/threshold-n4/experiment.json": "c914868c1b3c2af75d479574e80b11ff1d4039c0f38d5e6ed401743859f0bf70",
+    "wire-candidates/threshold-n4/fir.json": "7924d9329d8b0b3d3f1351583b6a5174131abd73713b0011e2fa8a63e5545a82",
+    "wire-candidates/threshold-n4/identity.jcs": "1ff7a8295d39e15f53e4558ccc334a8676aa44aa3da3edb69e770cdd1924b7cd",
+    "wire-candidates/threshold-n4/model.jcs": "0384380712f16f7214957189c847a04c00f9a7c907a8aa630cea8c4d911819a3",
+    "wire-candidates/threshold-n4/normalized.json": "1c0872f634cbbf966bcd36c20238ad1339afbf7fe0bb37338162a52a29febd6c",
+    "wire-candidates/threshold-n4/zero.julia.manifest.json": "1741764f7d5fd63fb3d4594b23f39be6867851a167ff45f6311403ea816d2c36",
+    "wire-candidates/threshold-n4/zero.python.manifest.json": "cb3dbe1631be5ab9b6d5fa0eead29484659a7f2c2b84fe718a71ba42f33e738c",
+    "wire-candidates/threshold-n4/zero.result.json": "4f2b9f9b0d02fed2f647a19c2517680bc1df6a5fdbf079a30ca16739d4bb50f5",
+    "wire-candidates/transport-vectors.json": "3c7eac7e91b59d8fb9e9f965e5b57e9a586c50a86bc37f5dde44a72552940b8e",
+    "wire-candidates/two-strain-transient/analytical.julia.manifest.json": "255774ea7b010c305e617616015af60e0e13595a6b21f8fc68eea513a6e17622",
+    "wire-candidates/two-strain-transient/analytical.python.manifest.json": "9ed676d5b28e53e7d8384ca115120d01036823d6ec4efb1ca6695c708c66eb4b",
+    "wire-candidates/two-strain-transient/analytical.result.json": "a2ae321ad54d54f5336ea26260efe92a7b1e17ee22470e9df2333faad104330e",
+    "wire-candidates/two-strain-transient/design.json": "ceabbd7b555d8a46251cc7202f550ae4267719c1f940d63451b569c6d102cb9e",
+    "wire-candidates/two-strain-transient/digest.txt": "21be2f34e817d4493426b16437cabb1b9fca37f4ca2357998ff56b1c6bf04d46",
+    "wire-candidates/two-strain-transient/experiment.json": "8d221faa2c71e08198b02972629532efdbc4e4b6e130eccb4a322fc6b5ce73c9",
+    "wire-candidates/two-strain-transient/fir.json": "cd21e66c1dedcccfd5b84eb627462d8e3bc2096f926f3caaed55b61750f8ff80",
+    "wire-candidates/two-strain-transient/identity.jcs": "3b948262d51fefc9ba32c1e6a7f4811fff2bb7dead395ec83afedc006a343769",
+    "wire-candidates/two-strain-transient/model.jcs": "975a23cff0ea35de23023c9f0a477aaa98ccdef50ea04e2fa40b2e27866e51fa",
+    "wire-candidates/two-strain-transient/normalized.json": "80d14a770862bec210489814dd91ad51a866c075be146a2d3c38392852177f6c",
+    "wire-candidates/two-strain-transient/zero.julia.manifest.json": "9992c2675fb315f89132a5ce62696ce4e8e51e00ecc680f98d0a9d606d3f8578",
+    "wire-candidates/two-strain-transient/zero.python.manifest.json": "36e70139e4c9c8bbab237c114f484d2e370be8bed5869d0eaf898708392c9c66",
+    "wire-candidates/two-strain-transient/zero.result.json": "575057316964123faeaa442a0dd29680aefcb5c87fc4442284b4dbaa88b857cf"
+  },
+  "native_implementation": "NOT RUN",
+  "scientific_acceptance": "PENDING"
+}
