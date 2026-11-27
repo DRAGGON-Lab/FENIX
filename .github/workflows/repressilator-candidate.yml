@@ -1,0 +1,81 @@
+name: Proposed repressilator feasibility
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  wire-structure:
+    name: Candidate P10 wire structure (not native conformance)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.11.29'
+      - run: uv sync --project packages/python --locked
+      - run: uv run --project packages/python --locked --offline python spec/oscillators/candidate_schemas.py --check
+      - run: uv run --project packages/python --locked --offline python spec/oscillators/candidate_examples.py --check
+      - run: uv run --project packages/python --locked --offline python -m unittest discover -s spec/oscillators -p 'test_wire*.py' -v
+      - run: uv run --project packages/python --locked --offline ruff check spec/oscillators/*.py
+      - run: uv run --project packages/python --locked --offline ruff format --check spec/oscillators/*.py
+      - run: mkdir -p artifacts/p10-wire
+      - run: uv run --project packages/python --locked --offline python spec/oscillators/review_candidates.py --output artifacts/p10-wire/structure-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: proposed-p10-wire-structure
+          path: artifacts/p10-wire/
+          if-no-files-found: warn
+  candidate-study:
+    name: Proposed repressilator feasibility (not native conformance)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.11.29'
+      - run: uv sync --project conformance/oscillators --locked
+      - run: uv run --project conformance/oscillators --locked --offline python -m unittest discover -s conformance/oscillators -v
+      - run: uv run --project conformance/oscillators --locked --offline python -m unittest discover -s conformance/oscillators/references -v
+      - run: uv run --project conformance/oscillators --locked --offline python -m unittest discover -s conformance/oscillators/nonlinear -v
+      - run: uv run --project conformance/oscillators --locked --offline python conformance/oscillators/study.py --output-dir artifacts/repressilator-study
+      - run: uv run --project conformance/oscillators --locked --offline python conformance/oscillators/references/compare_study.py --output artifacts/repressilator-study/analytical-study-comparison.json
+      - run: uv run --project conformance/oscillators --locked --offline python conformance/oscillators/nonlinear/rk4.py --study-dir artifacts/repressilator-study --output-dir artifacts/repressilator-study/independent-rk4
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: proposed-repressilator-study
+          path: artifacts/repressilator-study/
+          if-no-files-found: warn
+  analytical-references:
+    name: Candidate P09 independent analytical agreement
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.10.13'
+      - run: python conformance/oscillators/references/reference.py > p09-analytical-reference.json
+      - run: julia --project=conformance/julia -e 'using Pkg; Pkg.instantiate()'
+      - run: julia --project=conformance/julia conformance/oscillators/references/reference.jl p09-analytical-reference.json
+      - run: julia --project=conformance/julia conformance/oscillators/references/test_reference.jl p09-analytical-reference.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: candidate-p09-analytical-reference
+          path: p09-analytical-reference.json
+          if-no-files-found: error

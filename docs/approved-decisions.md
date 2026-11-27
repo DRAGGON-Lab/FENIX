@@ -276,6 +276,44 @@ package version changes follow. The PI retains manual merge authority under
 the deferred branch-protection policy. Merge, issue closure, #30 alpha acceptance
 and final EP-04 acceptance remain separate; historical receipts are preserved.
 
+## Repressilator nonlinear-reference acceptance — 2026-11-26
+
+The human PI selected “Accept bounded nonlinear references” for
+[PR #90](https://github.com/DRAGGON-Lab/FENIX/pull/90) at reviewed commit
+`0ee6b4253775aa5379db0c11ff3af566727799cf`. The
+[acceptance record](verification/p09-nonlinear-reference-acceptance.md) identifies
+the exact two primary 80,000-second case definitions, independent
+density-coordinate RK4 calculation, four-step refinement protocol and 1e-5
+peak-scaled investigation limit. It preserves reviewed source/catalog/lock
+hashes, hosted artifact checks and measured convergence limitations. Certified
+error bounds, native tolerances, P10 wire/identity/rejection contracts and native
+implementation approval remain separate. No merge, release or issue completion
+is recorded.
+
+## Repressilator mathematical contract approval — 2026-11-26
+
+The human PI explicitly stated “yes I approve ADR-P09” in response to the bounded
+ratification question for [PR #85](https://github.com/DRAGGON-Lab/FENIX/pull/85)
+at reviewed commit `e84ff5b0507f60ce68bedf99831e6a2fd4f108fd`. This ratifies
+equations, units/quantity bases and numerical-domain policy for the six-state
+single-cell and 18-state three-strain NOT-gate ring with explicit signal exchange.
+The [ratification record](verification/p09-math-ratification.md) preserves the
+approval source, reviewed ADR hash and scope. Candidate parameter/threshold and
+independent-reference acceptance, complete wire/identity/rejection catalogs,
+native implementation, merge, release and issue #84 completion remain separate.
+
+## Repressilator component-reference acceptance — 2026-11-26
+
+The human PI selected “Accept the bounded component references” for
+[PR #87](https://github.com/DRAGGON-Lab/FENIX/pull/87) at reviewed commit
+`6ab3dd41a072af02ffef516139390e6d710cec2c`. The
+[acceptance record](verification/p09-component-reference-acceptance.md) identifies
+the exact 11 analytical component cases/33 samples, independently derived
+Decimal/BigFloat laws, reviewed artifact hashes and verification. Independent
+nonlinear-cycle references, feasibility parameters/thresholds, wire/identity/
+rejection catalogs and native implementation acceptance remain separate gates.
+No native capability, merge, release or issue #84 completion follows.
+
 ## M1 community contract approval
 
 The PI approved [PR #77](https://github.com/DRAGGON-Lab/FENIX/pull/77) at

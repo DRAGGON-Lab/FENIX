@@ -1,0 +1,83 @@
+{
+  "kind": "ODEResult",
+  "schema_version": "0.2.0",
+  "fir_digest": "e36b7d18c745b72f178ced8a037125d3643d97acca4ca65e55186077f76e1cb4",
+  "time_unit": "s",
+  "times": [
+    0.0
+  ],
+  "state_ids": [
+    "m1",
+    "m2",
+    "m3",
+    "p1",
+    "p2",
+    "p3"
+  ],
+  "state_units": [
+    "molecule",
+    "molecule",
+    "molecule",
+    "molecule",
+    "molecule",
+    "molecule"
+  ],
+  "state_owners": [
+    "cell",
+    "cell",
+    "cell",
+    "cell",
+    "cell",
+    "cell"
+  ],
+  "state_scopes": [
+    "representative_cell",
+    "representative_cell",
+    "representative_cell",
+    "representative_cell",
+    "representative_cell",
+    "representative_cell"
+  ],
+  "state_values": [
+    [
+      100.0,
+      100.0,
+      100.0,
+      110.0,
+      90.0,
+      100.0
+    ]
+  ],
+  "observable_ids": [
+    "observe_p1",
+    "observe_p2",
+    "observe_p3"
+  ],
+  "observable_state_ids": [
+    "p1",
+    "p2",
+    "p3"
+  ],
+  "observable_units": [
+    "molecule",
+    "molecule",
+    "molecule"
+  ],
+  "observable_owners": [
+    "cell",
+    "cell",
+    "cell"
+  ],
+  "observable_scopes": [
+    "representative_cell",
+    "representative_cell",
+    "representative_cell"
+  ],
+  "observable_values": [
+    [
+      110.0,
+      90.0,
+      100.0
+    ]
+  ]
+}

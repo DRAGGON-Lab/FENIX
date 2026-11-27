@@ -1,0 +1,314 @@
+{
+  "content": {
+    "kind": "Design",
+    "schema_version": "0.3.0",
+    "id": "single-cell",
+    "revision": 1,
+    "template": "repressilator.single_cell.v1",
+    "owners": [
+      {
+        "id": "cellA",
+        "role": "cell",
+        "volume": {
+          "value": 1e-15,
+          "unit": "L"
+        },
+        "species": [
+          {
+            "id": "mrna1",
+            "role": "m1",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              }
+            ]
+          },
+          {
+            "id": "mrna2",
+            "role": "m2",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              }
+            ]
+          },
+          {
+            "id": "mrna3",
+            "role": "m3",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              }
+            ]
+          },
+          {
+            "id": "protein1",
+            "role": "p1",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              },
+              {
+                "id": "density",
+                "kind": "density_out"
+              }
+            ]
+          },
+          {
+            "id": "protein2",
+            "role": "p2",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              },
+              {
+                "id": "density",
+                "kind": "density_out"
+              }
+            ]
+          },
+          {
+            "id": "protein3",
+            "role": "p3",
+            "ports": [
+              {
+                "id": "amount",
+                "kind": "molecular_count"
+              },
+              {
+                "id": "density",
+                "kind": "density_out"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": [
+      {
+        "id": "par_K1",
+        "role": "K1",
+        "unit": "molecule/L",
+        "basis": "density"
+      },
+      {
+        "id": "par_K2",
+        "role": "K2",
+        "unit": "molecule/L",
+        "basis": "density"
+      },
+      {
+        "id": "par_K3",
+        "role": "K3",
+        "unit": "molecule/L",
+        "basis": "density"
+      },
+      {
+        "id": "par_b1",
+        "role": "b1",
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "par_b2",
+        "role": "b2",
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "par_b3",
+        "role": "b3",
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "par_beta1",
+        "role": "beta1",
+        "unit": "1/s",
+        "basis": "protein_per_transcript"
+      },
+      {
+        "id": "par_beta2",
+        "role": "beta2",
+        "unit": "1/s",
+        "basis": "protein_per_transcript"
+      },
+      {
+        "id": "par_beta3",
+        "role": "beta3",
+        "unit": "1/s",
+        "basis": "protein_per_transcript"
+      },
+      {
+        "id": "par_gm1",
+        "role": "gm1",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_gm2",
+        "role": "gm2",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_gm3",
+        "role": "gm3",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_gp1",
+        "role": "gp1",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_gp2",
+        "role": "gp2",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_gp3",
+        "role": "gp3",
+        "unit": "1/s",
+        "basis": "first_order"
+      },
+      {
+        "id": "par_h1",
+        "role": "h1",
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "par_h2",
+        "role": "h2",
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "par_h3",
+        "role": "h3",
+        "unit": "molecule/s",
+        "basis": "per_representative_cell"
+      },
+      {
+        "id": "par_n1",
+        "role": "n1",
+        "unit": "1",
+        "basis": "dimensionless"
+      },
+      {
+        "id": "par_n2",
+        "role": "n2",
+        "unit": "1",
+        "basis": "dimensionless"
+      },
+      {
+        "id": "par_n3",
+        "role": "n3",
+        "unit": "1",
+        "basis": "dimensionless"
+      }
+    ],
+    "gates": [
+      {
+        "id": "not1",
+        "role": "g1",
+        "transcript": {
+          "owner": "cellA",
+          "species": "mrna1",
+          "port": "amount"
+        },
+        "protein": {
+          "owner": "cellA",
+          "species": "protein1",
+          "port": "amount"
+        },
+        "sensor": {
+          "owner": "cellA",
+          "species": "protein3",
+          "port": "density"
+        },
+        "parameters": {
+          "basal": "par_b1",
+          "induced": "par_h1",
+          "mrna_decay": "par_gm1",
+          "translation": "par_beta1",
+          "protein_decay": "par_gp1",
+          "threshold": "par_K1",
+          "hill_n": "par_n1"
+        }
+      },
+      {
+        "id": "not2",
+        "role": "g2",
+        "transcript": {
+          "owner": "cellA",
+          "species": "mrna2",
+          "port": "amount"
+        },
+        "protein": {
+          "owner": "cellA",
+          "species": "protein2",
+          "port": "amount"
+        },
+        "sensor": {
+          "owner": "cellA",
+          "species": "protein1",
+          "port": "density"
+        },
+        "parameters": {
+          "basal": "par_b2",
+          "induced": "par_h2",
+          "mrna_decay": "par_gm2",
+          "translation": "par_beta2",
+          "protein_decay": "par_gp2",
+          "threshold": "par_K2",
+          "hill_n": "par_n2"
+        }
+      },
+      {
+        "id": "not3",
+        "role": "g3",
+        "transcript": {
+          "owner": "cellA",
+          "species": "mrna3",
+          "port": "amount"
+        },
+        "protein": {
+          "owner": "cellA",
+          "species": "protein3",
+          "port": "amount"
+        },
+        "sensor": {
+          "owner": "cellA",
+          "species": "protein2",
+          "port": "density"
+        },
+        "parameters": {
+          "basal": "par_b3",
+          "induced": "par_h3",
+          "mrna_decay": "par_gm3",
+          "translation": "par_beta3",
+          "protein_decay": "par_gp3",
+          "threshold": "par_K3",
+          "hill_n": "par_n3"
+        }
+      }
+    ],
+    "signal_synthesis": [],
+    "signal_losses": [],
+    "transport": []
+  },
+  "digest": "53b5896fbb554b9126600d3a61745ce4bc96cbee7e04c270708d09ccfd0c6ec7",
+  "metadata": {
+    "status": "PROPOSED illustrative P10 candidate, not native execution"
+  }
+}

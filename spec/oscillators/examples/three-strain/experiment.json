@@ -1,0 +1,526 @@
+{
+  "content": {
+    "kind": "Experiment",
+    "schema_version": "0.3.0",
+    "id": "scenario",
+    "revision": 1,
+    "design": {
+      "id": "three-strain",
+      "revision": 1,
+      "digest": "ebb9c7b1ac5a54171274d2a66b672537a02641879ec046495c5c042539589512"
+    },
+    "populations": [
+      {
+        "owner": "strainA",
+        "value": 100
+      },
+      {
+        "owner": "strainB",
+        "value": 100
+      },
+      {
+        "owner": "strainC",
+        "value": 100
+      }
+    ],
+    "parameters": [
+      {
+        "parameter": "par_K1",
+        "value": 1e+17,
+        "unit": "molecule/L"
+      },
+      {
+        "parameter": "par_K2",
+        "value": 1e+17,
+        "unit": "molecule/L"
+      },
+      {
+        "parameter": "par_K3",
+        "value": 1e+17,
+        "unit": "molecule/L"
+      },
+      {
+        "parameter": "par_b1",
+        "value": 0.01,
+        "unit": "molecule/s"
+      },
+      {
+        "parameter": "par_b2",
+        "value": 0.01,
+        "unit": "molecule/s"
+      },
+      {
+        "parameter": "par_b3",
+        "value": 0.01,
+        "unit": "molecule/s"
+      },
+      {
+        "parameter": "par_beta1",
+        "value": 0.05,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_beta2",
+        "value": 0.05,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_beta3",
+        "value": 0.05,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_ga11",
+        "value": 0.01,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_ga12",
+        "value": 0.01,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_ga13",
+        "value": 0.01,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_ga21",
+        "value": 0.01,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_ga22",
+        "value": 0.01,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_ga23",
+        "value": 0.01,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_ga31",
+        "value": 0.01,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_ga32",
+        "value": 0.01,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_ga33",
+        "value": 0.01,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_ge1",
+        "value": 0.01,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_ge2",
+        "value": 0.01,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_ge3",
+        "value": 0.01,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_gm1",
+        "value": 0.01,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_gm2",
+        "value": 0.01,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_gm3",
+        "value": 0.01,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_gp1",
+        "value": 0.05,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_gp2",
+        "value": 0.05,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_gp3",
+        "value": 0.05,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_h1",
+        "value": 216.0,
+        "unit": "molecule/s"
+      },
+      {
+        "parameter": "par_h2",
+        "value": 216.0,
+        "unit": "molecule/s"
+      },
+      {
+        "parameter": "par_h3",
+        "value": 216.0,
+        "unit": "molecule/s"
+      },
+      {
+        "parameter": "par_in11",
+        "value": 0.1,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_in12",
+        "value": 0.1,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_in13",
+        "value": 0.1,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_in21",
+        "value": 0.1,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_in22",
+        "value": 0.1,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_in23",
+        "value": 0.1,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_in31",
+        "value": 0.1,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_in32",
+        "value": 0.1,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_in33",
+        "value": 0.1,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_n1",
+        "value": 2.0,
+        "unit": "1"
+      },
+      {
+        "parameter": "par_n2",
+        "value": 2.0,
+        "unit": "1"
+      },
+      {
+        "parameter": "par_n3",
+        "value": 2.0,
+        "unit": "1"
+      },
+      {
+        "parameter": "par_out11",
+        "value": 0.1,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_out12",
+        "value": 0.1,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_out13",
+        "value": 0.1,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_out21",
+        "value": 0.1,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_out22",
+        "value": 0.1,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_out23",
+        "value": 0.1,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_out31",
+        "value": 0.1,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_out32",
+        "value": 0.1,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_out33",
+        "value": 0.1,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_sigma1",
+        "value": 0.154,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_sigma2",
+        "value": 0.154,
+        "unit": "1/s"
+      },
+      {
+        "parameter": "par_sigma3",
+        "value": 0.154,
+        "unit": "1/s"
+      }
+    ],
+    "initial_counts": [
+      {
+        "target": {
+          "owner": "strainA",
+          "species": "signal1",
+          "port": "amount"
+        },
+        "value": 240.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "strainA",
+          "species": "signal2",
+          "port": "amount"
+        },
+        "value": 100.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "strainA",
+          "species": "signal3",
+          "port": "amount"
+        },
+        "value": 100.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "strainB",
+          "species": "signal1",
+          "port": "amount"
+        },
+        "value": 100.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "strainB",
+          "species": "signal2",
+          "port": "amount"
+        },
+        "value": 240.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "strainB",
+          "species": "signal3",
+          "port": "amount"
+        },
+        "value": 100.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "strainC",
+          "species": "signal1",
+          "port": "amount"
+        },
+        "value": 100.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "strainC",
+          "species": "signal2",
+          "port": "amount"
+        },
+        "value": 100.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "strainC",
+          "species": "signal3",
+          "port": "amount"
+        },
+        "value": 240.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "bath",
+          "species": "signal1",
+          "port": "amount"
+        },
+        "value": 110000.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "bath",
+          "species": "signal2",
+          "port": "amount"
+        },
+        "value": 110000.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "bath",
+          "species": "signal3",
+          "port": "amount"
+        },
+        "value": 110000.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "strainA",
+          "species": "transcript",
+          "port": "amount"
+        },
+        "value": 100.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "strainB",
+          "species": "transcript",
+          "port": "amount"
+        },
+        "value": 100.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "strainC",
+          "species": "transcript",
+          "port": "amount"
+        },
+        "value": 100.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "strainA",
+          "species": "synthase",
+          "port": "amount"
+        },
+        "value": 110.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "strainB",
+          "species": "synthase",
+          "port": "amount"
+        },
+        "value": 90.0,
+        "unit": "molecule"
+      },
+      {
+        "target": {
+          "owner": "strainC",
+          "species": "synthase",
+          "port": "amount"
+        },
+        "value": 100.0,
+        "unit": "molecule"
+      }
+    ],
+    "observables": [
+      {
+        "id": "observe_p1",
+        "target": {
+          "owner": "strainA",
+          "species": "synthase",
+          "port": "amount"
+        }
+      },
+      {
+        "id": "observe_p2",
+        "target": {
+          "owner": "strainB",
+          "species": "synthase",
+          "port": "amount"
+        }
+      },
+      {
+        "id": "observe_p3",
+        "target": {
+          "owner": "strainC",
+          "species": "synthase",
+          "port": "amount"
+        }
+      },
+      {
+        "id": "observe_a13",
+        "target": {
+          "owner": "strainA",
+          "species": "signal3",
+          "port": "amount"
+        }
+      },
+      {
+        "id": "observe_e1",
+        "target": {
+          "owner": "bath",
+          "species": "signal1",
+          "port": "amount"
+        }
+      },
+      {
+        "id": "observe_e2",
+        "target": {
+          "owner": "bath",
+          "species": "signal2",
+          "port": "amount"
+        }
+      },
+      {
+        "id": "observe_e3",
+        "target": {
+          "owner": "bath",
+          "species": "signal3",
+          "port": "amount"
+        }
+      }
+    ],
+    "interventions": []
+  },
+  "digest": "8b7ce425d6cd5f04ae7059df2d32993f85d7c9834bfc200ba00edf467b8fb789",
+  "metadata": {
+    "status": "PROPOSED illustrative P10 candidate, not native execution"
+  }
+}
