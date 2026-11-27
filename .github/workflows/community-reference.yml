@@ -6,6 +6,50 @@ on:
 permissions:
   contents: read
 jobs:
+  wire-packet:
+    name: Proposed M1 executable wire packet
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9
+        with:
+          version: '0.11.29'
+      - run: uv sync --project packages/python --locked
+      - run: uv run --project packages/python --locked --offline python -m unittest discover -s spec/community -v
+      - run: uv run --project packages/python --locked --offline python spec/community/review_wire.py --report artifacts/m1-wire-review.json
+      - run: node spec/community/identity_audit.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: proposed-m1-wire-packet
+          path: artifacts/m1-wire-review.json
+          if-no-files-found: error
+  julia-stage-feasibility:
+    name: Proposed community Julia stage investigation
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.10.13'
+      - run: julia --project=conformance/julia_ode -e 'using Pkg; Pkg.instantiate()'
+      - name: Independent native-method investigation
+        env:
+          JULIA_PKG_OFFLINE: 'true'
+        run: julia --project=conformance/julia_ode conformance/community/feasibility/study.jl artifacts/community-julia-feasibility.json
+      - run: git diff --exit-code -- conformance/julia_ode/Project.toml conformance/julia_ode/Manifest.toml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: proposed-community-julia-stage-feasibility
+          path: artifacts/community-julia-feasibility.json
+          if-no-files-found: error
   stage-feasibility:
     name: Proposed community SciPy stage investigation
     runs-on: ubuntu-24.04

@@ -1,0 +1,690 @@
+{
+  "status": "PROPOSED",
+  "base_revision": "61395717984a9f7a5000eadb0ce37bb6b0b1a5f3",
+  "positive": [
+    {
+      "id": "threshold-n1",
+      "folder": "threshold-n1",
+      "reference_case": "threshold-n1"
+    },
+    {
+      "id": "threshold-n2",
+      "folder": "threshold-n2",
+      "reference_case": "threshold-n2"
+    },
+    {
+      "id": "threshold-n3",
+      "folder": "threshold-n3",
+      "reference_case": "threshold-n3"
+    },
+    {
+      "id": "threshold-n4",
+      "folder": "threshold-n4",
+      "reference_case": "threshold-n4"
+    },
+    {
+      "id": "reversible-transient",
+      "folder": "reversible-transient",
+      "reference_case": "reversible-transient"
+    },
+    {
+      "id": "driven-n1",
+      "folder": "driven-n1",
+      "reference_case": "driven-n1"
+    },
+    {
+      "id": "driven-n2",
+      "folder": "driven-n2",
+      "reference_case": "driven-n2"
+    },
+    {
+      "id": "driven-n3",
+      "folder": "driven-n3",
+      "reference_case": "driven-n3"
+    },
+    {
+      "id": "driven-n4",
+      "folder": "driven-n4",
+      "reference_case": "driven-n4"
+    },
+    {
+      "id": "two-strain-transient",
+      "folder": "two-strain-transient",
+      "reference_case": "two-strain-transient"
+    },
+    {
+      "id": "renamed",
+      "folder": "renamed",
+      "reference_case": "threshold-n1",
+      "same_fir_as": "threshold-n1"
+    },
+    {
+      "id": "permuted",
+      "folder": "permuted",
+      "reference_case": "threshold-n1",
+      "same_fir_as": "threshold-n1"
+    },
+    {
+      "id": "empty-observables",
+      "folder": "empty-observables",
+      "reference_case": "threshold-n1",
+      "same_fir_as": null
+    }
+  ],
+  "rejections": [
+    {
+      "id": "stale-design-digest",
+      "base": "threshold-n1",
+      "target": "design",
+      "file": "reject/stale-design-digest.json",
+      "category": "SOURCE_DIGEST",
+      "path": "/digest"
+    },
+    {
+      "id": "stale-experiment-digest",
+      "base": "threshold-n1",
+      "target": "experiment",
+      "file": "reject/stale-experiment-digest.json",
+      "category": "SOURCE_DIGEST",
+      "path": "/digest"
+    },
+    {
+      "id": "wrong-design-link-id",
+      "base": "threshold-n1",
+      "target": "experiment",
+      "file": "reject/wrong-design-link-id.json",
+      "category": "DESIGN_LINK",
+      "path": "/content/design"
+    },
+    {
+      "id": "wrong-design-link-revision",
+      "base": "threshold-n1",
+      "target": "experiment",
+      "file": "reject/wrong-design-link-revision.json",
+      "category": "DESIGN_LINK",
+      "path": "/content/design"
+    },
+    {
+      "id": "wrong-design-link-digest",
+      "base": "threshold-n1",
+      "target": "experiment",
+      "file": "reject/wrong-design-link-digest.json",
+      "category": "DESIGN_LINK",
+      "path": "/content/design"
+    },
+    {
+      "id": "duplicate-owner-id",
+      "base": "threshold-n1",
+      "target": "design",
+      "file": "reject/duplicate-owner-id.json",
+      "category": "DUPLICATE_ID",
+      "path": "/content/owners"
+    },
+    {
+      "id": "duplicate-owner-role",
+      "base": "threshold-n1",
+      "target": "design",
+      "file": "reject/duplicate-owner-role.json",
+      "category": "DUPLICATE_ID",
+      "path": "/content/owners"
+    },
+    {
+      "id": "duplicate-species-id",
+      "base": "threshold-n1",
+      "target": "design",
+      "file": "reject/duplicate-species-id.json",
+      "category": "DUPLICATE_ID",
+      "path": "/content/owners/1/species"
+    },
+    {
+      "id": "duplicate-species-role",
+      "base": "threshold-n1",
+      "target": "design",
+      "file": "reject/duplicate-species-role.json",
+      "category": "DUPLICATE_ID",
+      "path": "/content/owners/1/species"
+    },
+    {
+      "id": "duplicate-port-id",
+      "base": "threshold-n1",
+      "target": "design",
+      "file": "reject/duplicate-port-id.json",
+      "category": "DUPLICATE_ID",
+      "path": "/content/owners/0/species/0/ports"
+    },
+    {
+      "id": "wrong-port-kind",
+      "base": "threshold-n1",
+      "target": "design",
+      "file": "reject/wrong-port-kind.json",
+      "category": "PORT_KINDS",
+      "path": "/content/owners/0/species/0/ports"
+    },
+    {
+      "id": "alias-endpoint",
+      "base": "threshold-n1",
+      "target": "design",
+      "file": "reject/alias-endpoint.json",
+      "category": "ENDPOINT",
+      "path": "/content/connections/0/source"
+    },
+    {
+      "id": "reversed-edge",
+      "base": "threshold-n1",
+      "target": "design",
+      "file": "reject/reversed-edge.json",
+      "category": "BINDINGS",
+      "path": "/content/connections"
+    },
+    {
+      "id": "duplicate-observable",
+      "base": "threshold-n1",
+      "target": "experiment",
+      "file": "reject/duplicate-observable.json",
+      "category": "DUPLICATE_ID",
+      "path": "/content/observables"
+    },
+    {
+      "id": "source-version",
+      "base": "threshold-n1",
+      "target": "experiment",
+      "file": "reject/source-version.json",
+      "category": "SCHEMA",
+      "path": "/content"
+    },
+    {
+      "id": "population-zero",
+      "base": "threshold-n1",
+      "target": "experiment",
+      "file": "reject/population-zero.json",
+      "category": "SCHEMA",
+      "path": "/content"
+    },
+    {
+      "id": "population-bool",
+      "base": "threshold-n1",
+      "target": "experiment",
+      "file": "reject/population-bool.json",
+      "category": "SCHEMA",
+      "path": "/content"
+    },
+    {
+      "id": "population-fraction",
+      "base": "threshold-n1",
+      "target": "experiment",
+      "file": "reject/population-fraction.json",
+      "category": "SCHEMA",
+      "path": "/content"
+    },
+    {
+      "id": "negative-count",
+      "base": "threshold-n1",
+      "target": "experiment",
+      "file": "reject/negative-count.json",
+      "category": "SCHEMA",
+      "path": "/content"
+    },
+    {
+      "id": "count-unit",
+      "base": "threshold-n1",
+      "target": "experiment",
+      "file": "reject/count-unit.json",
+      "category": "SCHEMA",
+      "path": "/content"
+    },
+    {
+      "id": "threshold-zero",
+      "base": "threshold-n1",
+      "target": "experiment",
+      "file": "reject/threshold-zero.json",
+      "category": "SCHEMA",
+      "path": "/content"
+    },
+    {
+      "id": "hill-five",
+      "base": "threshold-n1",
+      "target": "experiment",
+      "file": "reject/hill-five.json",
+      "category": "SCHEMA",
+      "path": "/content"
+    },
+    {
+      "id": "hill-bool",
+      "base": "threshold-n1",
+      "target": "experiment",
+      "file": "reject/hill-bool.json",
+      "category": "SCHEMA",
+      "path": "/content"
+    },
+    {
+      "id": "fir-source-population",
+      "base": "threshold-n1",
+      "target": "fir",
+      "file": "reject/fir-source-population.json",
+      "category": "SOURCE_CORRESPONDENCE",
+      "path": "/model/populations"
+    },
+    {
+      "id": "fir-source-rate",
+      "base": "threshold-n1",
+      "target": "fir",
+      "file": "reject/fir-source-rate.json",
+      "category": "SOURCE_CORRESPONDENCE",
+      "path": "/model/parameters"
+    },
+    {
+      "id": "fir-source-initial",
+      "base": "threshold-n1",
+      "target": "fir",
+      "file": "reject/fir-source-initial.json",
+      "category": "SOURCE_CORRESPONDENCE",
+      "path": "/model/initial_counts"
+    },
+    {
+      "id": "fir-source-volume",
+      "base": "threshold-n1",
+      "target": "fir",
+      "file": "reject/fir-source-volume.json",
+      "category": "SOURCE_CORRESPONDENCE",
+      "path": "/model/volumes"
+    },
+    {
+      "id": "fir-source-observable",
+      "base": "threshold-n1",
+      "target": "fir",
+      "file": "reject/fir-source-observable.json",
+      "category": "SOURCE_CORRESPONDENCE",
+      "path": "/model/observables"
+    },
+    {
+      "id": "fir-source-owner",
+      "base": "threshold-n1",
+      "target": "fir",
+      "file": "reject/fir-source-owner.json",
+      "category": "SOURCE_CORRESPONDENCE",
+      "path": "/provenance/owners"
+    },
+    {
+      "id": "fir-source-species",
+      "base": "threshold-n1",
+      "target": "fir",
+      "file": "reject/fir-source-species.json",
+      "category": "SOURCE_CORRESPONDENCE",
+      "path": "/provenance/species"
+    },
+    {
+      "id": "fir-stale-design",
+      "base": "threshold-n1",
+      "target": "fir",
+      "file": "reject/fir-stale-design.json",
+      "category": "SOURCE_CORRESPONDENCE",
+      "path": "/provenance/design_digest"
+    },
+    {
+      "id": "fir-wrong-version",
+      "base": "threshold-n1",
+      "target": "fir",
+      "file": "reject/fir-wrong-version.json",
+      "category": "SCHEMA",
+      "path": "/model/schema_version"
+    },
+    {
+      "id": "fir-ssa",
+      "base": "threshold-n1",
+      "target": "fir",
+      "file": "reject/fir-ssa.json",
+      "category": "SCHEMA",
+      "path": "/model/capabilities"
+    },
+    {
+      "id": "fir-unweighted-export",
+      "base": "threshold-n1",
+      "target": "fir",
+      "file": "reject/fir-unweighted-export.json",
+      "category": "SCHEMA",
+      "path": "/model/reactions/0"
+    },
+    {
+      "id": "fir-free-expression",
+      "base": "threshold-n1",
+      "target": "fir",
+      "file": "reject/fir-free-expression.json",
+      "category": "SCHEMA",
+      "path": "/model/reactions/0"
+    },
+    {
+      "id": "result-scope-swap",
+      "base": "threshold-n1",
+      "target": "result",
+      "file": "reject/result-scope-swap.json",
+      "category": "SCOPE_ALIGNMENT",
+      "path": "/state_scopes",
+      "manifest": "reject/result-scope-swap.manifest.json"
+    },
+    {
+      "id": "result-owner-swap",
+      "base": "threshold-n1",
+      "target": "result",
+      "file": "reject/result-owner-swap.json",
+      "category": "SCOPE_ALIGNMENT",
+      "path": "/state_owners",
+      "manifest": "reject/result-owner-swap.manifest.json"
+    },
+    {
+      "id": "result-column-order",
+      "base": "threshold-n1",
+      "target": "result",
+      "file": "reject/result-column-order.json",
+      "category": "SCHEMA",
+      "path": "/state_ids",
+      "manifest": "reject/result-column-order.manifest.json"
+    },
+    {
+      "id": "result-short-row",
+      "base": "threshold-n1",
+      "target": "result",
+      "file": "reject/result-short-row.json",
+      "category": "SCHEMA",
+      "path": "/state_values/0",
+      "manifest": "reject/result-short-row.manifest.json"
+    },
+    {
+      "id": "result-missing-row",
+      "base": "threshold-n1",
+      "target": "result",
+      "file": "reject/result-missing-row.json",
+      "category": "SCHEMA",
+      "path": "/state_values",
+      "manifest": "reject/result-missing-row.manifest.json"
+    },
+    {
+      "id": "result-stale-fir",
+      "base": "threshold-n1",
+      "target": "result",
+      "file": "reject/result-stale-fir.json",
+      "category": "FIR_LINK",
+      "path": "/fir_digest",
+      "manifest": "reject/result-stale-fir.manifest.json"
+    },
+    {
+      "id": "result-observable-scope",
+      "base": "threshold-n1",
+      "target": "result",
+      "file": "reject/result-observable-scope.json",
+      "category": "OBSERVABLE_ALIGNMENT",
+      "path": "/observable_scopes",
+      "manifest": "reject/result-observable-scope.manifest.json"
+    },
+    {
+      "id": "result-observable-owner",
+      "base": "threshold-n1",
+      "target": "result",
+      "file": "reject/result-observable-owner.json",
+      "category": "OBSERVABLE_ALIGNMENT",
+      "path": "/observable_owners",
+      "manifest": "reject/result-observable-owner.manifest.json"
+    },
+    {
+      "id": "result-signed-zero-copy",
+      "base": "threshold-n1",
+      "target": "result",
+      "file": "reject/result-signed-zero-copy.json",
+      "category": "OBSERVABLE_COPY",
+      "path": "/observable_values/0/1",
+      "manifest": "reject/result-signed-zero-copy.manifest.json"
+    },
+    {
+      "id": "result-initial-sender",
+      "base": "threshold-n1",
+      "target": "result",
+      "file": "reject/result-initial-sender.json",
+      "category": "INITIAL_SAMPLE",
+      "path": "/state_values/0",
+      "manifest": "reject/result-initial-sender.manifest.json"
+    },
+    {
+      "id": "manifest-source",
+      "base": "threshold-n1",
+      "target": "manifest",
+      "file": "reject/manifest-source.json",
+      "category": "SOURCE_LINK",
+      "path": "/sources/experiment"
+    },
+    {
+      "id": "manifest-fir",
+      "base": "threshold-n1",
+      "target": "manifest",
+      "file": "reject/manifest-fir.json",
+      "category": "FIR_LINK",
+      "path": "/fir/digest"
+    },
+    {
+      "id": "manifest-result-checksum",
+      "base": "threshold-n1",
+      "target": "manifest",
+      "file": "reject/manifest-result-checksum.json",
+      "category": "RESULT_CHECKSUM",
+      "path": "/output/sha256"
+    },
+    {
+      "id": "manifest-grid",
+      "base": "threshold-n1",
+      "target": "manifest",
+      "file": "reject/manifest-grid.json",
+      "category": "GRID",
+      "path": "/execution/time_grid"
+    },
+    {
+      "id": "manifest-zero-work",
+      "base": "threshold-n1",
+      "target": "manifest",
+      "file": "reject/manifest-zero-work.json",
+      "category": "WORK_COUNT",
+      "path": "/evaluations"
+    },
+    {
+      "id": "manifest-integration",
+      "base": "threshold-n1",
+      "target": "manifest",
+      "file": "reject/manifest-integration.json",
+      "category": "INTEGRATION",
+      "path": "/integration"
+    },
+    {
+      "id": "manifest-old-backend",
+      "base": "threshold-n1",
+      "target": "manifest",
+      "file": "reject/manifest-old-backend.json",
+      "category": "SCHEMA",
+      "path": "/backend"
+    },
+    {
+      "id": "manifest-wrong-jacobian",
+      "base": "threshold-n1",
+      "target": "manifest",
+      "file": "reject/manifest-wrong-jacobian.json",
+      "category": "SCHEMA",
+      "path": "/backend"
+    },
+    {
+      "id": "manifest-float-counter",
+      "base": "threshold-n1",
+      "target": "manifest",
+      "file": "reject/manifest-float-counter.json",
+      "category": "SCHEMA",
+      "path": "/evaluations/nfev"
+    },
+    {
+      "id": "manifest-integral-float-counter",
+      "base": "threshold-n1",
+      "target": "manifest",
+      "file": "reject/manifest-integral-float-counter.json",
+      "category": "INTEGER_TOKEN",
+      "path": "/evaluations/nfev"
+    },
+    {
+      "id": "manifest-invalid-calendar",
+      "base": "threshold-n1",
+      "target": "manifest",
+      "file": "reject/manifest-invalid-calendar.json",
+      "category": "TIMESTAMP",
+      "path": "/timing/started_at_utc"
+    }
+  ],
+  "raw_numbers": [
+    {
+      "id": "source-safe-max",
+      "policy": "source",
+      "file": "raw/source-safe-max.json",
+      "value": {
+        "value": 9007199254740991
+      },
+      "category": null,
+      "path": ""
+    },
+    {
+      "id": "source-unsafe-int",
+      "policy": "source",
+      "file": "raw/source-unsafe-int.json",
+      "value": null,
+      "category": "SOURCE_INTEGER",
+      "path": ""
+    },
+    {
+      "id": "fir-rounding-int",
+      "policy": "fir",
+      "file": "raw/fir-rounding-int.json",
+      "value": {
+        "value": 9007199254740992.0
+      },
+      "category": null,
+      "path": ""
+    },
+    {
+      "id": "transport-large-int",
+      "policy": "transport",
+      "file": "raw/transport-large-int.json",
+      "value": {
+        "value": 9007199254740993
+      },
+      "category": null,
+      "path": ""
+    },
+    {
+      "id": "source-subnormal",
+      "policy": "source",
+      "file": "raw/source-subnormal.json",
+      "value": {
+        "value": 5e-324
+      },
+      "category": null,
+      "path": ""
+    },
+    {
+      "id": "underflow",
+      "policy": "source",
+      "file": "raw/underflow.json",
+      "value": null,
+      "category": "NUMBER_UNDERFLOW",
+      "path": ""
+    },
+    {
+      "id": "overflow",
+      "policy": "source",
+      "file": "raw/overflow.json",
+      "value": null,
+      "category": "NUMBER_RANGE",
+      "path": ""
+    },
+    {
+      "id": "explicit-zero",
+      "policy": "source",
+      "file": "raw/explicit-zero.json",
+      "value": {
+        "value": 0.0
+      },
+      "category": null,
+      "path": ""
+    },
+    {
+      "id": "negative-zero",
+      "policy": "transport",
+      "file": "raw/negative-zero.json",
+      "value": {
+        "value": -0.0
+      },
+      "category": null,
+      "path": ""
+    },
+    {
+      "id": "integer-negative-zero",
+      "policy": "transport",
+      "file": "raw/integer-negative-zero.json",
+      "value": {
+        "value": -0.0
+      },
+      "category": null,
+      "path": ""
+    },
+    {
+      "id": "duplicate-key",
+      "policy": "source",
+      "file": "raw/duplicate-key.json",
+      "value": null,
+      "category": "DUPLICATE_KEY",
+      "path": ""
+    },
+    {
+      "id": "escaped-duplicate",
+      "policy": "source",
+      "file": "raw/escaped-duplicate.json",
+      "value": null,
+      "category": "DUPLICATE_KEY",
+      "path": ""
+    },
+    {
+      "id": "surrogate",
+      "policy": "source",
+      "file": "raw/surrogate.json",
+      "value": null,
+      "category": "UNICODE",
+      "path": ""
+    },
+    {
+      "id": "nan",
+      "policy": "source",
+      "file": "raw/nan.json",
+      "value": null,
+      "category": "NUMBER_RANGE",
+      "path": ""
+    },
+    {
+      "id": "utf8-bom",
+      "policy": "source",
+      "file": "raw/utf8-bom.json",
+      "value": null,
+      "category": "JSON",
+      "path": ""
+    },
+    {
+      "id": "fractional-population-token",
+      "policy": "source",
+      "file": "raw/fractional-population-token.json",
+      "value": {
+        "value": 3.0
+      },
+      "category": null,
+      "path": ""
+    },
+    {
+      "id": "exponent-population-token",
+      "policy": "source",
+      "file": "raw/exponent-population-token.json",
+      "value": {
+        "value": 3.0
+      },
+      "category": null,
+      "path": ""
+    }
+  ]
+}
