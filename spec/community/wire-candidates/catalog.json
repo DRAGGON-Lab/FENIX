@@ -69,6 +69,12 @@
       "folder": "empty-observables",
       "reference_case": "threshold-n1",
       "same_fir_as": null
+    },
+    {
+      "id": "late-first",
+      "folder": "late-first",
+      "reference_case": "threshold-n1",
+      "same_fir_as": "threshold-n1"
     }
   ],
   "rejections": [

@@ -228,4 +228,6 @@ function main(report_path)
     println("Tail observations: ",join([row["outcome"] for row in tails],", "))
 end
 
-abspath(PROGRAM_FILE)==@__FILE__ && main(only(ARGS))
+if abspath(PROGRAM_FILE) == @__FILE__
+    main(only(ARGS))
+end

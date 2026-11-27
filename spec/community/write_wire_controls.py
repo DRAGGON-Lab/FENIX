@@ -17,10 +17,10 @@ def main():
     catalog["positive"] = [
         row
         for row in catalog["positive"]
-        if row["id"] not in ("renamed", "permuted", "empty-observables")
+        if row["id"] not in ("renamed", "permuted", "empty-observables", "late-first")
     ]
     base = HERE / "threshold-n1"
-    for control in ("renamed", "permuted", "empty-observables"):
+    for control in ("renamed", "permuted", "empty-observables", "late-first"):
         docs = {p.name: json.loads(p.read_bytes()) for p in base.glob("*.json")}
         d, e, f = (docs[key + ".json"] for key in ("design", "experiment", "fir"))
         if control == "renamed":
@@ -61,7 +61,7 @@ def main():
             for key in ("reactions", "equations", "observables"):
                 f["model"][key].reverse()
             e["content"]["observables"].reverse()
-        else:
+        elif control == "empty-observables":
             e["content"]["observables"] = []
             f["model"]["observables"] = []
         d["digest"] = hashlib.sha256(rfc8785.dumps(d["content"])).hexdigest()
@@ -87,6 +87,9 @@ def main():
         for label in ("zero", "analytical"):
             result = docs[label + ".result.json"]
             result["fir_digest"] = digest
+            if control == "late-first" and label == "analytical":
+                for key in ("times", "state_values", "observable_values"):
+                    result[key] = result[key][1:]
             if control == "empty-observables":
                 for key in (
                     "observable_ids",
@@ -104,6 +107,11 @@ def main():
                 manifest = docs[f"{label}.{language}.manifest.json"]
                 manifest["fir"]["digest"] = digest
                 manifest["output"]["sha256"] = hashlib.sha256(raw).hexdigest()
+                manifest["execution"]["time_grid"] = result["times"]
+                if language == "julia":
+                    manifest["backend"]["solver"]["options"]["save_start"] = (
+                        result["times"][0] == 0
+                    )
                 for kind, source in (("design", d), ("experiment", e)):
                     manifest["sources"][kind] = {
                         k: source["content"][k]

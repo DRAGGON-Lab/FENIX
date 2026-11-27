@@ -24,7 +24,7 @@ class WireTests(unittest.TestCase):
     def test_complete_literal_catalog(self):
         report = review_wire.audit()
         self.assertEqual(
-            report["counts"], {"positive": 13, "rejections": 56, "raw_numbers": 17}
+            report["counts"], {"positive": 14, "rejections": 56, "raw_numbers": 17}
         )
         self.assertEqual(report["native_implementation"], "NOT RUN")
         self.assertEqual(report["scientific_acceptance"], "PENDING")
@@ -194,6 +194,8 @@ class WireTests(unittest.TestCase):
         m["output"]["sha256"] = hashlib.sha256(raw).hexdigest()
         wire.result_record(self.d, self.e, self.f, r, m, raw)
         r["observable_values"][0][1] = 0.0
+        raw = (json.dumps(r) + "\n").encode()
+        m["output"]["sha256"] = hashlib.sha256(raw).hexdigest()
         with self.assertRaises(wire.Rejection) as error:
             wire.result_record(self.d, self.e, self.f, r, m, raw)
         self.assertEqual(error.exception.category, "OBSERVABLE_COPY")
@@ -203,6 +205,35 @@ class WireTests(unittest.TestCase):
             with self.assertRaises(wire.Rejection) as error:
                 wire.decode(raw)
             self.assertEqual(error.exception.category, "JSON")
+
+    def test_result_object_cannot_disagree_with_its_supplied_bytes(self):
+        folder = review_wire.FIXTURES / "threshold-n1"
+        raw = (folder / "analytical.result.json").read_bytes()
+        result = wire.decode(raw, "transport")
+        manifest = review_wire.read(
+            folder / "analytical.python.manifest.json", "transport"
+        )
+        # A positive-time, unobserved column can otherwise remain plausible.
+        result["state_values"][1][3] += 0.5
+        with self.assertRaises(wire.Rejection) as caught:
+            wire.result_record(self.d, self.e, self.f, result, manifest, raw)
+        self.assertEqual(caught.exception.category, "RESULT_BYTES")
+
+    def test_transport_overflow_is_field_specific_and_large_counter_is_exact(self):
+        folder = review_wire.FIXTURES / "threshold-n1"
+        raw = (folder / "zero.result.json").read_bytes()
+        result = wire.decode(raw, "transport")
+        manifest = review_wire.read(folder / "zero.python.manifest.json", "transport")
+        result["state_values"][0][3] = wire.IntegerToken("1" + "0" * 400)
+        with self.assertRaises(wire.Rejection) as caught:
+            wire.result_record(self.d, self.e, self.f, result, manifest, raw)
+        self.assertEqual(
+            (caught.exception.category, caught.exception.path),
+            ("NUMBER_RANGE", "/state_values"),
+        )
+        result = wire.decode(raw, "transport")
+        manifest["execution"]["max_nfev"] = wire.IntegerToken("1" + "0" * 6000)
+        wire.result_record(self.d, self.e, self.f, result, manifest, raw)
 
 
 if __name__ == "__main__":

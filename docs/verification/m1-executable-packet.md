@@ -15,7 +15,7 @@ format or package dependency is changed. No issue closure or merge is requested.
 The [complete profile proposal](../../spec/community/executable-profile-proposal.md)
 specifies the finite source/FIR formats, source correspondence, numeric policies,
 version-specific normalization and scoped result/backend contracts. The
-[literal catalog](../../spec/community/wire-candidates/README.md) contains 13
+[literal catalog](../../spec/community/wire-candidates/README.md) contains 14
 positive packets, 56 rejection witnesses and 17 lexical projections. Schema and
 byte artifacts are candidate expectations for independent review, not accepted
 golden values. The analytical result/manifest examples are explicitly
@@ -25,14 +25,14 @@ illustrative, not source-linked evidence of native solver execution.
 
 | Check | Outcome |
 |---|---|
-| Six wire-packet control tests | PASS locally |
-| Python literal validator / analytical sample mapping | PASS locally — all 86 catalog rows |
-| Independent ECMAScript source/model/identity bytes | PASS locally — 13 positive packets |
+| Eight wire-packet control tests | PASS locally |
+| Python literal validator / analytical sample mapping | PASS locally — all 87 catalog rows |
+| Independent ECMAScript source/model/identity bytes | PASS locally — 14 positive packets |
 | Every rate/count/population/volume changes mathematical identity | PASS locally |
 | Reaction/equation AST vs independent laws and asymmetric open-system probes | PASS locally |
 | Ruff on new Python review/writer/test files | PASS locally |
-| Repository checker, harness and existing Python package regressions | NOT RUN — pending final checks |
-| Original community and retained SciPy feasibility suites | NOT RUN — pending final checks |
+| Repository checker, harness and existing Python package regressions | PASS locally — checker / 6 harness / 88 package tests |
+| Original community and retained SciPy feasibility suites | PASS locally — 8 reference / 9 feasibility tests |
 | Julia stage feasibility and kernel derivative regressions | NOT RUN locally — runtime unavailable; hosted result pending |
 | Native M1 authoring/compile/solve/capture/readback and clean installations | NOT RUN — exact packet acceptance pending |
 

@@ -39,6 +39,7 @@ for (const entry of catalog.positive) {
 }
 assert.equal(digests.renamed,digests['threshold-n1']);
 assert.equal(digests.permuted,digests['threshold-n1']);
+assert.equal(digests['late-first'],digests['threshold-n1']);
 assert.notEqual(digests['empty-observables'],digests['threshold-n1']);
 // Independent scalar boundaries, including ECMAScript's fixed/exponential cutovers.
 for (const [number, expected] of [[-0,'0'],[5e-324,'5e-324'],[1e-6,'0.000001'],

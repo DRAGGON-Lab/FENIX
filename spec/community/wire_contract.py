@@ -296,10 +296,53 @@ def same_float(left, right):
     return struct.pack(">d", float(left)) == struct.pack(">d", float(right))
 
 
+def same_data(left, right):
+    if isinstance(left, dict) and isinstance(right, dict):
+        return left.keys() == right.keys() and all(
+            same_data(left[k], right[k]) for k in left
+        )
+    if isinstance(left, list) and isinstance(right, list):
+        return len(left) == len(right) and all(
+            same_data(a, b) for a, b in zip(left, right, strict=True)
+        )
+    if isinstance(left, (int, float)) and isinstance(right, (int, float)):
+        return same_float(left, right)
+    return type(left) is type(right) and left == right
+
+
+def finite(value):
+    try:
+        return math.isfinite(float(value))
+    except OverflowError:
+        return False
+
+
 def result_record(design, experiment, fir, result, manifest, raw_result):
     normalized, _, _, fir_digest = producer(design, experiment, fir)
     schema("ode-result-m1.schema.json", result)
     schema("run-manifest-m1.schema.json", manifest)
+    for key in ("times", "state_values", "observable_values"):
+        rows = result[key] if key != "times" else [result[key]]
+        require(
+            all(finite(value) for row in rows for value in row),
+            "NUMBER_RANGE",
+            "/" + key,
+        )
+    for key in ("time_grid", "rtol", "atol", "max_step"):
+        values = (
+            manifest["execution"][key]
+            if key == "time_grid"
+            else [manifest["execution"][key]]
+        )
+        require(
+            all(finite(value) for value in values), "NUMBER_RANGE", "/execution/" + key
+        )
+    require(
+        finite(manifest["timing"]["elapsed_seconds"]),
+        "NUMBER_RANGE",
+        "/timing/elapsed_seconds",
+    )
+    require(same_data(result, decode(raw_result, "transport")), "RESULT_BYTES", "")
     integer_fields = [
         (manifest["execution"]["max_nfev"], "/execution/max_nfev"),
         (manifest["evaluations"]["nfev"], "/evaluations/nfev"),
@@ -316,7 +359,11 @@ def result_record(design, experiment, fir, result, manifest, raw_result):
             )
         )
     for value, path in integer_fields:
-        require(isinstance(value, int) and not isinstance(value, bool), "INTEGER_TOKEN", path)
+        require(
+            isinstance(value, int) and not isinstance(value, bool),
+            "INTEGER_TOKEN",
+            path,
+        )
     require(result["fir_digest"] == fir_digest, "FIR_LINK", "/fir_digest")
     require(manifest["fir"]["digest"] == fir_digest, "FIR_LINK", "/fir/digest")
     for kind, source in (("design", design), ("experiment", experiment)):

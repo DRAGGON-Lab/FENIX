@@ -118,6 +118,9 @@ def audit():
     ]
     assert len(ids) == len(set(ids)), "duplicate catalog IDs"
     identities = {row["id"]: positive(row) for row in catalog["positive"]}
+    for row in catalog["positive"]:
+        if row.get("same_fir_as"):
+            assert identities[row["id"]] == identities[row["same_fir_as"]], row["id"]
     rejections = [negative(row) for row in catalog["rejections"]]
     for row in catalog["raw_numbers"]:
         raw_case(row)

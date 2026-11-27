@@ -2,15 +2,15 @@
 
 **PROPOSED; not approved fixtures or native implementation evidence.**
 Refs #31 and #34. The [executable profile proposal](../executable-profile-proposal.md)
-defines the exact review scope and remaining PI gate. The catalog contains 13
+defines the exact review scope and remaining PI gate. The catalog contains 14
 positive source/FIR/result packets, 56 single-defect rejection witnesses and 17
 raw-number/Unicode/JSON parser projections. Each rejection declares its category
 and JSON Pointer. Raw projections isolate lexical policy, not full document
 acceptance. No precedence among simultaneously invalid documents is specified.
 
 Ten packets map the unchanged independent analytical cases to canonical state
-IDs. Three controls cover consistent source renaming, source/FIR declaration
-permutation and empty observables. Each positive folder retains literal Design,
+IDs. Four controls cover consistent source renaming, source/FIR declaration
+permutation, empty observables and a late first sample. Each positive folder retains literal Design,
 Experiment, FIR, normalized model, exact model/identity JCS bytes, SHA-256 digest,
 zero/positive-time analytical result and illustrative Python/Julia manifest.
 The analytical matrices are direct binary64 roundings of 160-digit Decimal laws.
