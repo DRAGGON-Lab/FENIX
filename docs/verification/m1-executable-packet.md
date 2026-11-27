@@ -46,7 +46,7 @@ and the separately revision-bound hosted numerical receipts.
 | Ruff on new Python review/writer/test files | PASS locally |
 | Repository checker, harness and existing Python package regressions | PASS locally — checker / 6 harness / 88 package tests |
 | Original community and retained SciPy feasibility suites | PASS locally — 8 reference / 9 feasibility tests |
-| Julia stage feasibility and kernel derivative regressions | NOT RUN locally — runtime unavailable; hosted result pending |
+| Julia stage feasibility and kernel derivative regressions | PASS hosted at `5de3833` — 84 kernel checks / 40 integrations / 120 samples; NOT RUN locally |
 | Native M1 authoring/compile/solve/capture/readback and clean installations | NOT RUN — exact packet acceptance pending |
 
 Local Python environment uses locked dependencies, Python 3.12.16 and uv 0.13.10;
@@ -59,9 +59,34 @@ BigFloat laws. Reports retain exact source/lock hashes, observed versions,
 sample errors, weighted-balance bounds, first domain failures and work counts.
 
 Julia tail outcomes are observations, not copied SciPy expectations. The strict
-failure scope already approved by the PI remains intact. A missing or failing
-hosted Julia result leaves method feasibility open. No passing wire test can
-substitute for that evidence or for exact-revision human acceptance.
+failure scope already approved by the PI remains intact. No passing wire test
+can substitute for method evidence or exact-revision human acceptance.
+
+## Hosted Julia evidence
+
+The [Julia job](https://github.com/DRAGGON-Lab/FENIX/actions/runs/45966519973/job/140396383028)
+passed at head `5de3833e411cea1510ca55aef4f444013d527e02` (tested merge
+`d194731870220f2af49f2a332d29e882f20fc6d7`). The
+[exact retained JSON receipt](m1-executable-packet/julia-5de3833.json) has SHA-256
+`3f9001eea63f26e28f72d0c87c20ae6126d33950d12363d245618a8627b5463e`.
+Its source/reference/settings/lock hashes were checked against the current
+files, all matching. The downloaded artifact ZIP was independently checked
+against GitHub's recorded SHA-256
+`611f26a3722f19c294d7be21ef2e19e9f635c1941a9b1a482b8bbea57d1b96be`.
+No receipt bytes were regenerated or relabelled as approved.
+
+Observed Julia 1.10.13, SciMLBase 3.58.0, OrdinaryDiffEqTsit5 2.1.5 and
+OrdinaryDiffEqRosenbrock 2.7.5. The maximum component-error/state-bound ratio is
+approximately `0.015121`; maximum closed-drift/weighted-bound ratio is
+approximately `1.13e-7`. Both Tsit5 and Rodas5P reject negative sensing stages
+in the tail at both settings; all four first-failure states/times are retained.
+Together with the unchanged SciPy receipt, this supplies 80 bounded integrations
+and 240 four-state sample comparisons across all four proposed methods.
+
+The first hosted Julia attempt at `2b774c3` **FAILED** on an entry-point syntax
+error before integration. It was corrected at `5de3833`; the successful run
+above supersedes that engineering failure. No scientific expectation, bound or
+reference was changed to obtain the passing result.
 
 ## Remaining human and native gates
 
