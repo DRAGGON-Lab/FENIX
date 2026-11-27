@@ -89,3 +89,10 @@ comparison and regression checks. Candidate CI retains the raw Python report and
 it with independently derived Julia values. Full numerical-stage feasibility,
 complete source/profile rejections and canonical identity vectors retain the
 ADR's further gates. This catalog establishes analytical special-case coverage.
+
+The separate [proposed stage-feasibility investigation](feasibility/README.md)
+now compares the unchanged analytical laws with SciPy methods and retains
+long-tail negative-stage controls. The PI has approved its recommended strict
+failure and bounded completion scope; see the
+[acceptance record](../../docs/verification/m1-completion-scope-acceptance.md).
+Complete executable-profile acceptance and Julia stage evidence remain separate.
