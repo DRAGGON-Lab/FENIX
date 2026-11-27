@@ -10,6 +10,8 @@ from wire_contract import (
     HERE,
     Rejection,
     decode,
+    decode_manifest,
+    decode_result,
     producer,
     result_record,
     same_float,
@@ -20,6 +22,16 @@ FIXTURES = HERE / "wire-candidates"
 
 
 def read(path, policy="source"):
+    if policy == "manifest" or (
+        policy == "transport" and path.name.endswith("manifest.json")
+    ):
+        return decode_manifest(path.read_bytes())
+    if (
+        policy == "result"
+        or policy == "transport"
+        and ("result" in path.name or path.name.startswith("result-"))
+    ):
+        return decode_result(path.read_bytes())
     return decode(path.read_bytes(), policy)
 
 
@@ -41,7 +53,7 @@ def positive(row):
     assert digest == (folder / "digest.txt").read_text().strip(), "digest"
     for label in ("zero", "analytical"):
         raw = (folder / f"{label}.result.json").read_bytes()
-        result = decode(raw, "transport")
+        result = decode_result(raw)
         for language in ("python", "julia"):
             manifest = read(folder / f"{label}.{language}.manifest.json", "transport")
             assert (
@@ -55,12 +67,12 @@ def negative(row):
     design, experiment, fir = load(folder)
     raw = (folder / "zero.result.json").read_bytes()
     result, manifest = (
-        decode(raw, "transport"),
+        decode_result(raw),
         read(folder / "zero.python.manifest.json", "transport"),
     )
     candidate = read(
         FIXTURES / row["file"],
-        "transport"
+        row["target"]
         if row["target"] in ("result", "manifest")
         else "fir"
         if row["target"] == "fir"
@@ -106,16 +118,50 @@ def raw_case(row):
             assert same_float(actual["value"], row["value"]["value"]), row["id"]
 
 
-def audit():
-    manifest = read(HERE / "review-manifest.json", "transport")
-    root = HERE.parents[1]
+def packet_files(root):
+    roots = (
+        "spec/community",
+        "conformance/community",
+        "docs/verification/m1-executable-packet",
+    )
+    files = {
+        str(p.relative_to(root))
+        for folder in roots
+        for p in (root / folder).rglob("*")
+        if p.is_file() and "__pycache__" not in p.parts and p.suffix != ".pyc"
+    }
+    files.discard("spec/community/review-manifest.json")
+    files.update(
+        (
+            "docs/verification/m1-executable-packet.md",
+            ".github/workflows/community-reference.yml",
+            "conformance/julia_ode/Project.toml",
+            "conformance/julia_ode/Manifest.toml",
+            "packages/python/uv.lock",
+        )
+    )
+    return files
+
+
+def validate_fingerprints(root, manifest):
+    assert set(manifest["sha256"]) == packet_files(root), (
+        "incomplete fingerprint coverage"
+    )
     for name, expected in manifest["sha256"].items():
-        path = (root / name).resolve()
-        assert path.is_relative_to(root), "artifact path escapes repository"
+        path = root / name
+        assert not path.is_symlink() and path.resolve().is_relative_to(root), (
+            "invalid artifact path"
+        )
         assert hashlib.sha256(path.read_bytes()).hexdigest() == expected, (
             "artifact fingerprint",
             name,
         )
+
+
+def audit():
+    manifest = read(HERE / "review-manifest.json", "transport")
+    root = HERE.parents[1]
+    validate_fingerprints(root, manifest)
     catalog = read(FIXTURES / "catalog.json", "transport")
     assert catalog["status"] == "PROPOSED", (
         "approval status must be explicitly revised, never inferred"

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "scientific-integer-rounding",
+    "kind": "result",
+    "raw": "{\"times\":[9007199254740993]}",
+    "path": [
+      "times",
+      0
+    ],
+    "bits": "4340000000000000"
+  },
+  {
+    "id": "negative-integer-zero",
+    "kind": "result",
+    "raw": "{\"times\":[-0]}",
+    "path": [
+      "times",
+      0
+    ],
+    "bits": "8000000000000000"
+  },
+  {
+    "id": "exact-budget",
+    "kind": "manifest",
+    "raw": "{\"execution\":{\"max_nfev\":9007199254740993}}",
+    "path": [
+      "execution",
+      "max_nfev"
+    ],
+    "decimal": "9007199254740993"
+  },
+  {
+    "id": "exact-counter",
+    "kind": "manifest",
+    "raw": "{\"evaluations\":{\"nfev\":9007199254740993}}",
+    "path": [
+      "evaluations",
+      "nfev"
+    ],
+    "decimal": "9007199254740993"
+  }
+]

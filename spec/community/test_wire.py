@@ -229,7 +229,7 @@ class WireTests(unittest.TestCase):
             wire.result_record(self.d, self.e, self.f, result, manifest, raw)
         self.assertEqual(
             (caught.exception.category, caught.exception.path),
-            ("NUMBER_RANGE", "/state_values"),
+            ("NUMBER_RANGE", "/state_values/0/3"),
         )
         result = wire.decode(raw, "transport")
         manifest["execution"]["max_nfev"] = wire.IntegerToken("1" + "0" * 6000)

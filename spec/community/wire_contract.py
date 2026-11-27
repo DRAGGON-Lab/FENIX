@@ -118,6 +118,47 @@ def decode(raw, policy="source"):
     return value
 
 
+def decode_result(raw):
+    return transport_fields(decode(raw, "transport"), "result")
+
+
+def decode_manifest(raw):
+    return transport_fields(decode(raw, "transport"), "manifest")
+
+
+def transport_fields(value, kind):
+    value = copy.deepcopy(value)
+
+    def convert(node, path=()):
+        if isinstance(node, dict):
+            return {k: convert(v, (*path, k)) for k, v in node.items()}
+        if isinstance(node, list):
+            return [convert(v, (*path, i)) for i, v in enumerate(node)]
+        scientific = (
+            kind == "result"
+            and path
+            and path[0] in ("times", "state_values", "observable_values")
+        ) or (
+            kind == "manifest"
+            and (
+                path[:2] in (("execution", "time_grid"),)
+                or path
+                in (
+                    ("execution", "rtol"),
+                    ("execution", "atol"),
+                    ("execution", "max_step"),
+                    ("timing", "elapsed_seconds"),
+                )
+            )
+        )
+        if scientific and isinstance(node, (int, float)) and not isinstance(node, bool):
+            require(finite(node), "NUMBER_RANGE", pointer(path))
+            return float(node)
+        return node
+
+    return convert(value)
+
+
 def schema(name, value):
     document = json.loads((HERE / name).read_bytes())
     Draft7Validator.check_schema(document)
@@ -318,6 +359,8 @@ def finite(value):
 
 
 def result_record(design, experiment, fir, result, manifest, raw_result):
+    result = transport_fields(result, "result")
+    manifest = transport_fields(manifest, "manifest")
     normalized, _, _, fir_digest = producer(design, experiment, fir)
     schema("ode-result-m1.schema.json", result)
     schema("run-manifest-m1.schema.json", manifest)
@@ -342,7 +385,7 @@ def result_record(design, experiment, fir, result, manifest, raw_result):
         "NUMBER_RANGE",
         "/timing/elapsed_seconds",
     )
-    require(same_data(result, decode(raw_result, "transport")), "RESULT_BYTES", "")
+    require(same_data(result, decode_result(raw_result)), "RESULT_BYTES", "")
     integer_fields = [
         (manifest["execution"]["max_nfev"], "/execution/max_nfev"),
         (manifest["evaluations"]["nfev"], "/evaluations/nfev"),
@@ -381,7 +424,15 @@ def result_record(design, experiment, fir, result, manifest, raw_result):
     )
     times = result["times"]
     require(all(b > a for a, b in pairwise(times)), "GRID", "/times")
-    require(times == manifest["execution"]["time_grid"], "GRID", "/execution/time_grid")
+    require(
+        len(times) == len(manifest["execution"]["time_grid"])
+        and all(
+            same_float(a, b)
+            for a, b in zip(times, manifest["execution"]["time_grid"], strict=True)
+        ),
+        "GRID",
+        "/execution/time_grid",
+    )
     require(result["state_owners"] == list(OWNERS), "SCOPE_ALIGNMENT", "/state_owners")
     require(result["state_scopes"] == list(SCOPES), "SCOPE_ALIGNMENT", "/state_scopes")
     observations = normalized["observables"]

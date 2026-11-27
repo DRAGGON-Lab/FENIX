@@ -158,12 +158,39 @@ function regression_tests(cases)
     end
 end
 
+function tail_comparisons(row, config)
+    get(row,"outcome","") == "SUCCESS" || return Any[]
+    result = Any[]
+    setprecision(BigFloat,1024) do
+        for (t, values) in zip(row["times"],row["states"])
+            time = BigFloat(t)
+            q = exp(-time/2)
+            expected = BigFloat[0,0,48q,2q+2*(1-q)+16q*(time/2+log1p(2q)-log(BigFloat(3)))]
+            bounds = BigFloat(config["state_bound"]["absolute"]) .+ BigFloat(config["state_bound"]["relative"]).*abs.(expected)
+            ratios = abs.(BigFloat.(values).-expected)./bounds
+            push!(result,Dict("time"=>t,"reference"=>string.(expected),"state_error_ratios"=>string.(ratios),"within_state_bound"=>all(<=(1),ratios)))
+        end
+    end
+    result
+end
+
 function main(report_path)
     config = JSON.parsefile(joinpath(@__DIR__, "settings.json"))
     catalog_path = joinpath(@__DIR__, "..", "cases.json")
     data = JSON.parsefile(catalog_path)
     validate_catalog(data)
     regression_tests(data["cases"])
+    @testset "Successful tail independent controls" begin
+        valid = Dict{String,Any}("outcome"=>"SUCCESS", "times"=>[0,1000],
+            "states"=>[[0.0,0.0,48.0,2.0],[0.0,0.0,3.419797155236988e-216,2.0]])
+        @test all(c["within_state_bound"] for c in tail_comparisons(valid,config))
+        for column in 1:4
+            broken = deepcopy(valid)
+            broken["states"][2][column] += 1.0
+            @test !all(c["within_state_bound"] for c in tail_comparisons(broken,config))
+        end
+    end
+
     references = samples(1024)
     runs, tails = Any[], Any[]
     setprecision(BigFloat,1024) do
@@ -203,11 +230,13 @@ function main(report_path)
             row = integrate(tail,method,controls,config["tail_control"]["max_step"],config["max_rhs_calls"])
             stop = get(row,"failure_time",1000.0)
             row["analytical_environment_at_stop"] = string(48*exp(-BigFloat(stop)/2))
+            row["comparisons"] = tail_comparisons(row,config)
             push!(tails,row)
         end
     end
     passed = length(runs)==40 && all(row["outcome"]=="SUCCESS" && length(row["comparisons"])==3 &&
         all(c["within_state_bound"] && get(c,"within_balance_bound",true) for c in row["comparisons"]) for row in runs)
+    tails_pass = all(r["outcome"] != "SUCCESS" || (length(r["comparisons"]) == length(r["times"]) && all(c["within_state_bound"] for c in r["comparisons"])) for r in tails)
     files = ["settings.json","study.jl","../cases.json","../reference.jl",
              "../../julia_ode/Project.toml","../../julia_ode/Manifest.toml"]
     report = Dict("status"=>"PROPOSED","runtime"=>Dict("julia"=>string(VERSION),
@@ -217,12 +246,14 @@ function main(report_path)
         "settings"=>config,"source_revision"=>get(ENV,"GITHUB_SHA","unrecorded"),
         "reference_state_ids"=>data["state_ids"],"runs"=>runs,"tail_controls"=>tails,
         "bounded_reference_matrix"=>passed ? "PASS" : "FAIL",
+        "tail_reference_validation"=>tails_pass ? "PASS" : "FAIL",
         "tail_policy"=>"observed; explicit domain/output failure allowed; no SciPy outcome inferred",
         "native_implementation"=>"NOT RUN","pi_executable_profile_acceptance"=>"PENDING")
     mkpath(dirname(report_path))
     open(report_path,"w") do io
         JSON.print(io,report,2)
     end
+    @assert tails_pass "successful tail disagrees with analytical law"
     @assert passed "bounded Julia reference matrix failed; inspect retained report"
     println("PASS proposed Julia bounded matrix: 40 integrations / 120 samples")
     println("Tail observations: ",join([row["outcome"] for row in tails],", "))
