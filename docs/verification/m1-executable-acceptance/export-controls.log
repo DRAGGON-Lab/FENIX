@@ -1,0 +1,2 @@
+PASS retained commit/tree proof and all 307 packet fingerprints (no Git or network)
+PASS corrupted inventory rejected; no .git in exported checkout

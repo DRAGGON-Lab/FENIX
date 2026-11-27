@@ -1,0 +1,11 @@
+test_claude_import_requirements (test_check_repo.TestRepositoryHarness.test_claude_import_requirements) ... ok
+test_duplicate_legacy_agent (test_check_repo.TestRepositoryHarness.test_duplicate_legacy_agent) ... ok
+test_ignores_links_inside_code_fences (test_check_repo.TestRepositoryHarness.test_ignores_links_inside_code_fences) ... ok
+test_missing_required_file (test_check_repo.TestRepositoryHarness.test_missing_required_file) ... ok
+test_relative_links (test_check_repo.TestRepositoryHarness.test_relative_links) ... ok
+test_valid_structure (test_check_repo.TestRepositoryHarness.test_valid_structure) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.410s
+
+OK

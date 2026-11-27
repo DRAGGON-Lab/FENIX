@@ -348,3 +348,25 @@ sensing-stage rejection and bounded completion claims. Valid mathematical
 requests may fail explicitly; clipping, signed continuation and a universal
 completion guarantee are not authorized. Complete wire/reference/numerical
 profile and native implementation acceptance remain separate gates.
+
+## Accepted bounded M1 executable specification and references — 2026-11-27
+
+The human PI explicitly approved the complete bounded #31/#34 executable
+specification and independent scientific reference packet at PR #95 head
+`7a90803f852da9b7cd7593f7d8dc54380cbe445d`, merged as
+`301dc0542a8bc08750de5796df3269881819b1ca`, based on the acceptance review in
+[PR #96](https://github.com/DRAGGON-Lab/FENIX/pull/96). The
+[acceptance record](verification/m1-executable-acceptance.md) preserves the explicit
+human decision, scope, artifact identity and remaining native gates. Acceptance
+covers the finite BioIR/FIR/result/manifest contracts, numerical representation
+and canonicalization, literal positive/negative references, four-method evidence,
+and state/population-weighted conservation bounds, including initial
+representation error. The earlier mathematical and strict-failure approvals
+remain intact. Historical receipts and reviewed artifacts retain their exact
+bytes and historical status labels; this later record supplies their acceptance.
+
+The PI authorized #31/#34 closure after successful final CI, review and merge,
+then Python #32, Julia #33 and independent integration #35 in order through
+focused PRs. EP-05 remains open pending all native/integration requirements;
+this bounded specification/reference approval supplies no native implementation,
+parent, release or biological-validity acceptance.
