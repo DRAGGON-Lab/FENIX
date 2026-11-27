@@ -1,0 +1,49 @@
+{
+  "kind": "ODEResult",
+  "schema_version": "0.2.0",
+  "fir_digest": "2b99d2a775efaa2511457d8ab135634d735562dd24f7f2c7a9e4e087cbe9506f",
+  "time_unit": "s",
+  "times": [
+    0
+  ],
+  "state_ids": [
+    "env.signal",
+    "receiver.reporter",
+    "receiver.signal",
+    "sender.signal"
+  ],
+  "state_units": [
+    "molecule",
+    "molecule",
+    "molecule",
+    "molecule"
+  ],
+  "state_values": [
+    [
+      24.0,
+      0.0,
+      12.0,
+      4.0
+    ]
+  ],
+  "state_owners": [
+    "env",
+    "receiver",
+    "receiver",
+    "sender"
+  ],
+  "state_scopes": [
+    "environment_total",
+    "representative_cell",
+    "representative_cell",
+    "representative_cell"
+  ],
+  "observable_ids": [],
+  "observable_state_ids": [],
+  "observable_units": [],
+  "observable_owners": [],
+  "observable_scopes": [],
+  "observable_values": [
+    []
+  ]
+}

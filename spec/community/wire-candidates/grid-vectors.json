@@ -1,0 +1,64 @@
+[
+  {
+    "times": [
+      0,
+      9007199254740992,
+      9007199254740993
+    ],
+    "manifest": [
+      0,
+      9007199254740992,
+      9007199254740993
+    ],
+    "accepted": false
+  },
+  {
+    "times": [
+      -0.0
+    ],
+    "manifest": [
+      0.0
+    ],
+    "accepted": false
+  },
+  {
+    "times": [
+      0.0
+    ],
+    "manifest": [
+      -0.0
+    ],
+    "accepted": false
+  },
+  {
+    "times": [
+      -0.0
+    ],
+    "manifest": [
+      -0.0
+    ],
+    "accepted": true
+  },
+  {
+    "times": [
+      0.0
+    ],
+    "manifest": [
+      0.0
+    ],
+    "accepted": true
+  },
+  {
+    "times": [
+      0,
+      9007199254740992,
+      9007199254740994
+    ],
+    "manifest": [
+      0,
+      9007199254740992,
+      9007199254740994
+    ],
+    "accepted": true
+  }
+]

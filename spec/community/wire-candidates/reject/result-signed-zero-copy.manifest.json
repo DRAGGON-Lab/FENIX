@@ -1,0 +1,84 @@
+{
+  "kind": "RunManifest",
+  "schema_version": "0.2.0",
+  "status": "success",
+  "repeatability": "bounded_numerical_agreement",
+  "sources": {
+    "design": {
+      "schema_version": "0.2.0",
+      "id": "community-threshold-n1",
+      "revision": 1,
+      "digest": "33d3832d3ebaaecfb1da5866a15f954991e42110e81410d176ea84c125277127"
+    },
+    "experiment": {
+      "schema_version": "0.2.0",
+      "id": "threshold-n1",
+      "revision": 1,
+      "digest": "2f859eebf3260d869adc3a5a3959be823fb34534da3a8b8ec7803dfc5be855d8"
+    }
+  },
+  "fir": {
+    "schema_version": "0.2.0",
+    "canonicalization_version": "0.2.0",
+    "digest": "59fde299f0d40008aada523b25a44f4abf89e2438ffb16217e5607f6e11eb92c"
+  },
+  "execution": {
+    "profile": "ode",
+    "time_grid": [
+      0
+    ],
+    "rtol": 1e-09,
+    "atol": 1e-11,
+    "max_step": 1.0,
+    "max_nfev": 9007199254740993
+  },
+  "randomness": {
+    "rng": "none",
+    "seed": null
+  },
+  "evaluations": {
+    "nfev": 0
+  },
+  "timing": {
+    "started_at_utc": "2026-11-16T12:00:00.000000Z",
+    "finished_at_utc": "2026-11-16T12:00:00.125000Z",
+    "elapsed_seconds": 0.125
+  },
+  "integration": "skipped_zero_grid",
+  "output": {
+    "schema_version": "0.2.0",
+    "media_type": "application/json",
+    "encoding": "utf-8",
+    "sha256": "c57b0326ea38c5cb73d8dcd49aa7c024409c59e74f6c751500d211b5a1f9ca12"
+  },
+  "producer": {
+    "name": "P08-analytical-illustration-not-a-native-run",
+    "version": "not-executed",
+    "build_id": null
+  },
+  "backend": {
+    "profile": "python-scipy-community-ode/0.1.0",
+    "solver": {
+      "name": "scipy.integrate.solve_ivp",
+      "method": "Radau",
+      "options": {
+        "first_step": null,
+        "vectorized": false,
+        "dense_output": false,
+        "events": null,
+        "jacobian": "state_dependent_exact"
+      }
+    },
+    "environment": {
+      "python_implementation": "illustrative_not_observed",
+      "python_version": "illustrative_not_observed",
+      "rfc8785_version": "illustrative_not_observed",
+      "numpy_version": "illustrative_not_observed",
+      "scipy_version": "illustrative_not_observed"
+    },
+    "evaluations": {
+      "njev": 0,
+      "nlu": 0
+    }
+  }
+}

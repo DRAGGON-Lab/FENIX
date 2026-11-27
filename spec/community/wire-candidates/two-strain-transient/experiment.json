@@ -1,0 +1,100 @@
+{
+  "content": {
+    "kind": "Experiment",
+    "schema_version": "0.2.0",
+    "id": "two-strain-transient",
+    "revision": 1,
+    "design": {
+      "id": "community-two-strain-transient",
+      "revision": 1,
+      "digest": "8be3a6d0fc32334e2252af658cb542343f027d9fbd0f6da39398e16c319350a8"
+    },
+    "populations": {
+      "sender": 3,
+      "receiver": 5
+    },
+    "initial_counts": {
+      "sender.signal": {
+        "value": 8,
+        "unit": "molecule"
+      },
+      "receiver.signal": {
+        "value": 12,
+        "unit": "molecule"
+      },
+      "env.signal": {
+        "value": 24,
+        "unit": "molecule"
+      },
+      "receiver.reporter": {
+        "value": 0,
+        "unit": "molecule"
+      }
+    },
+    "parameters": {
+      "sender_production": {
+        "value": 0,
+        "unit": "molecule/s"
+      },
+      "sender_decay": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "receiver_decay": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "env_decay": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "reporter_decay": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "reporter_basal": {
+        "value": 0,
+        "unit": "molecule/s"
+      },
+      "reporter_induced": {
+        "value": 0,
+        "unit": "molecule/s"
+      },
+      "sender_export": {
+        "value": 1,
+        "unit": "1/s"
+      },
+      "sender_import": {
+        "value": 1,
+        "unit": "1/s"
+      },
+      "receiver_export": {
+        "value": 1,
+        "unit": "1/s"
+      },
+      "receiver_import": {
+        "value": 1,
+        "unit": "1/s"
+      },
+      "threshold": {
+        "value": 2,
+        "unit": "molecule/L"
+      },
+      "hill_n": {
+        "value": 1,
+        "unit": "1"
+      }
+    },
+    "observables": [
+      {
+        "id": "reporter",
+        "state": "receiver.reporter"
+      },
+      {
+        "id": "external",
+        "state": "env.signal"
+      }
+    ]
+  },
+  "digest": "6eccb926400495c9bcfa2173bc2ba6dfc95e5de83ad4825223f467bb51484654"
+}

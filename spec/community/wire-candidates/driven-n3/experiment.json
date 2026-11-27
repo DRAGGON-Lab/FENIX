@@ -1,0 +1,100 @@
+{
+  "content": {
+    "kind": "Experiment",
+    "schema_version": "0.2.0",
+    "id": "driven-n3",
+    "revision": 1,
+    "design": {
+      "id": "community-driven-n3",
+      "revision": 1,
+      "digest": "ab427560dd90b1e01dfeaf300497c13587f3d190179de672efb35a86e39393bf"
+    },
+    "populations": {
+      "sender": 3,
+      "receiver": 5
+    },
+    "initial_counts": {
+      "sender.signal": {
+        "value": 0,
+        "unit": "molecule"
+      },
+      "receiver.signal": {
+        "value": 0,
+        "unit": "molecule"
+      },
+      "env.signal": {
+        "value": 48,
+        "unit": "molecule"
+      },
+      "receiver.reporter": {
+        "value": 2,
+        "unit": "molecule"
+      }
+    },
+    "parameters": {
+      "sender_production": {
+        "value": 0,
+        "unit": "molecule/s"
+      },
+      "sender_decay": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "receiver_decay": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "env_decay": {
+        "value": 0.5,
+        "unit": "1/s"
+      },
+      "reporter_decay": {
+        "value": 1.5,
+        "unit": "1/s"
+      },
+      "reporter_basal": {
+        "value": 1,
+        "unit": "molecule/s"
+      },
+      "reporter_induced": {
+        "value": 4,
+        "unit": "molecule/s"
+      },
+      "sender_export": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "sender_import": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "receiver_export": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "receiver_import": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "threshold": {
+        "value": 2,
+        "unit": "molecule/L"
+      },
+      "hill_n": {
+        "value": 3,
+        "unit": "1"
+      }
+    },
+    "observables": [
+      {
+        "id": "reporter",
+        "state": "receiver.reporter"
+      },
+      {
+        "id": "external",
+        "state": "env.signal"
+      }
+    ]
+  },
+  "digest": "44f51d59134866a05c9839f4fe5721598c65e70c854fece06b789499b3b458f5"
+}

@@ -1,0 +1,159 @@
+{
+  "content": {
+    "kind": "Design",
+    "schema_version": "0.2.0",
+    "id": "community-threshold-n1",
+    "revision": 1,
+    "owners": [
+      {
+        "id": "env",
+        "role": "env",
+        "volume": {
+          "value": 12,
+          "unit": "L"
+        },
+        "species": [
+          {
+            "id": "a",
+            "role": "signal",
+            "ports": [
+              {
+                "id": "density",
+                "kind": "density_out"
+              },
+              {
+                "id": "in",
+                "kind": "transport_in"
+              },
+              {
+                "id": "out",
+                "kind": "transport_out"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "receiver",
+        "role": "receiver",
+        "volume": {
+          "value": 3,
+          "unit": "L"
+        },
+        "species": [
+          {
+            "id": "b",
+            "role": "reporter",
+            "ports": [
+              {
+                "id": "read",
+                "kind": "sensor_in"
+              }
+            ]
+          },
+          {
+            "id": "a",
+            "role": "signal",
+            "ports": [
+              {
+                "id": "in",
+                "kind": "transport_in"
+              },
+              {
+                "id": "out",
+                "kind": "transport_out"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sender",
+        "role": "sender",
+        "volume": {
+          "value": 2,
+          "unit": "L"
+        },
+        "species": [
+          {
+            "id": "a",
+            "role": "signal",
+            "ports": [
+              {
+                "id": "in",
+                "kind": "transport_in"
+              },
+              {
+                "id": "out",
+                "kind": "transport_out"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "connections": [
+      {
+        "source": {
+          "owner": "env",
+          "species": "a",
+          "port": "density"
+        },
+        "target": {
+          "owner": "receiver",
+          "species": "b",
+          "port": "read"
+        }
+      },
+      {
+        "source": {
+          "owner": "env",
+          "species": "a",
+          "port": "out"
+        },
+        "target": {
+          "owner": "receiver",
+          "species": "a",
+          "port": "in"
+        }
+      },
+      {
+        "source": {
+          "owner": "receiver",
+          "species": "a",
+          "port": "out"
+        },
+        "target": {
+          "owner": "env",
+          "species": "a",
+          "port": "in"
+        }
+      },
+      {
+        "source": {
+          "owner": "env",
+          "species": "a",
+          "port": "out"
+        },
+        "target": {
+          "owner": "sender",
+          "species": "a",
+          "port": "in"
+        }
+      },
+      {
+        "source": {
+          "owner": "sender",
+          "species": "a",
+          "port": "out"
+        },
+        "target": {
+          "owner": "env",
+          "species": "a",
+          "port": "in"
+        }
+      }
+    ]
+  },
+  "digest": "d889881081a97519c10812e3c6bdf79d59110e57b8257ab1bd0d69af3794e87e"
+}

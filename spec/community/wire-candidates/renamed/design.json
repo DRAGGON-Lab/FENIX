@@ -1,0 +1,159 @@
+{
+  "content": {
+    "kind": "Design",
+    "schema_version": "0.2.0",
+    "id": "renamed-design",
+    "revision": 1,
+    "owners": [
+      {
+        "id": "producer",
+        "role": "sender",
+        "volume": {
+          "value": 2,
+          "unit": "L"
+        },
+        "species": [
+          {
+            "id": "signalX",
+            "role": "signal",
+            "ports": [
+              {
+                "id": "sendX",
+                "kind": "transport_out"
+              },
+              {
+                "id": "receiveX",
+                "kind": "transport_in"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "sensor",
+        "role": "receiver",
+        "volume": {
+          "value": 3,
+          "unit": "L"
+        },
+        "species": [
+          {
+            "id": "signalX",
+            "role": "signal",
+            "ports": [
+              {
+                "id": "sendX",
+                "kind": "transport_out"
+              },
+              {
+                "id": "receiveX",
+                "kind": "transport_in"
+              }
+            ]
+          },
+          {
+            "id": "reportX",
+            "role": "reporter",
+            "ports": [
+              {
+                "id": "readX",
+                "kind": "sensor_in"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "medium",
+        "role": "env",
+        "volume": {
+          "value": 12,
+          "unit": "L"
+        },
+        "species": [
+          {
+            "id": "signalX",
+            "role": "signal",
+            "ports": [
+              {
+                "id": "sendX",
+                "kind": "transport_out"
+              },
+              {
+                "id": "receiveX",
+                "kind": "transport_in"
+              },
+              {
+                "id": "senseX",
+                "kind": "density_out"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "connections": [
+      {
+        "source": {
+          "owner": "producer",
+          "species": "signalX",
+          "port": "sendX"
+        },
+        "target": {
+          "owner": "medium",
+          "species": "signalX",
+          "port": "receiveX"
+        }
+      },
+      {
+        "source": {
+          "owner": "medium",
+          "species": "signalX",
+          "port": "sendX"
+        },
+        "target": {
+          "owner": "producer",
+          "species": "signalX",
+          "port": "receiveX"
+        }
+      },
+      {
+        "source": {
+          "owner": "sensor",
+          "species": "signalX",
+          "port": "sendX"
+        },
+        "target": {
+          "owner": "medium",
+          "species": "signalX",
+          "port": "receiveX"
+        }
+      },
+      {
+        "source": {
+          "owner": "medium",
+          "species": "signalX",
+          "port": "sendX"
+        },
+        "target": {
+          "owner": "sensor",
+          "species": "signalX",
+          "port": "receiveX"
+        }
+      },
+      {
+        "source": {
+          "owner": "medium",
+          "species": "signalX",
+          "port": "senseX"
+        },
+        "target": {
+          "owner": "sensor",
+          "species": "reportX",
+          "port": "readX"
+        }
+      }
+    ]
+  },
+  "digest": "fb793beef6ac3cfdd190259783fd55db97cce59afd1df8527fb4d29ed727f7a6"
+}

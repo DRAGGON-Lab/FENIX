@@ -96,3 +96,9 @@ long-tail negative-stage controls. The PI has approved its recommended strict
 failure and bounded completion scope; see the
 [acceptance record](../../docs/verification/m1-completion-scope-acceptance.md).
 Complete executable-profile acceptance and Julia stage evidence remain separate.
+
+The [M1 executable packet](../../spec/community/executable-profile-proposal.md)
+implements the remaining concrete wire/identity/rejection review candidates and
+adds an independent Julia stage-feasibility CI job. The original ten-case
+definitions and Decimal/BigFloat evaluators are unchanged. Packet acceptance,
+native language implementation and integration remain distinct gates.

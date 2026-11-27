@@ -1,0 +1,100 @@
+{
+  "content": {
+    "kind": "Experiment",
+    "schema_version": "0.2.0",
+    "id": "threshold-n1",
+    "revision": 1,
+    "design": {
+      "id": "other",
+      "revision": 1,
+      "digest": "33d3832d3ebaaecfb1da5866a15f954991e42110e81410d176ea84c125277127"
+    },
+    "populations": {
+      "sender": 3,
+      "receiver": 5
+    },
+    "initial_counts": {
+      "sender.signal": {
+        "value": 4,
+        "unit": "molecule"
+      },
+      "receiver.signal": {
+        "value": 12,
+        "unit": "molecule"
+      },
+      "env.signal": {
+        "value": 24,
+        "unit": "molecule"
+      },
+      "receiver.reporter": {
+        "value": 0,
+        "unit": "molecule"
+      }
+    },
+    "parameters": {
+      "sender_production": {
+        "value": 0,
+        "unit": "molecule/s"
+      },
+      "sender_decay": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "receiver_decay": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "env_decay": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "reporter_decay": {
+        "value": 0.5,
+        "unit": "1/s"
+      },
+      "reporter_basal": {
+        "value": 0,
+        "unit": "molecule/s"
+      },
+      "reporter_induced": {
+        "value": 4,
+        "unit": "molecule/s"
+      },
+      "sender_export": {
+        "value": 1,
+        "unit": "1/s"
+      },
+      "sender_import": {
+        "value": 1,
+        "unit": "1/s"
+      },
+      "receiver_export": {
+        "value": 1,
+        "unit": "1/s"
+      },
+      "receiver_import": {
+        "value": 2,
+        "unit": "1/s"
+      },
+      "threshold": {
+        "value": 2,
+        "unit": "molecule/L"
+      },
+      "hill_n": {
+        "value": 1,
+        "unit": "1"
+      }
+    },
+    "observables": [
+      {
+        "id": "reporter",
+        "state": "receiver.reporter"
+      },
+      {
+        "id": "external",
+        "state": "env.signal"
+      }
+    ]
+  },
+  "digest": "41627b541405023554a0e78c3989da84c2a54e8aff58a2019d5595fb307c6408"
+}

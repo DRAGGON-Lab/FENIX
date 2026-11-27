@@ -1,0 +1,484 @@
+{
+  "model": {
+    "schema_version": "0.2.0",
+    "template": "community.exchange.hill.v1",
+    "time_unit": "s",
+    "volumes": {
+      "sender": {
+        "value": 2,
+        "unit": "L"
+      },
+      "receiver": {
+        "value": 3,
+        "unit": "L"
+      },
+      "env": {
+        "value": 12,
+        "unit": "L"
+      }
+    },
+    "populations": {
+      "sender": 3,
+      "receiver": 5
+    },
+    "initial_counts": {
+      "sender.signal": {
+        "value": 4,
+        "unit": "molecule"
+      },
+      "receiver.signal": {
+        "value": 12,
+        "unit": "molecule"
+      },
+      "env.signal": {
+        "value": 24,
+        "unit": "molecule"
+      },
+      "receiver.reporter": {
+        "value": 0,
+        "unit": "molecule"
+      }
+    },
+    "parameters": {
+      "sender_production": {
+        "value": 0,
+        "unit": "molecule/s"
+      },
+      "sender_decay": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "receiver_decay": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "env_decay": {
+        "value": 0,
+        "unit": "1/s"
+      },
+      "reporter_decay": {
+        "value": 0.5,
+        "unit": "1/s"
+      },
+      "reporter_basal": {
+        "value": 0,
+        "unit": "molecule/s"
+      },
+      "reporter_induced": {
+        "value": 4,
+        "unit": "molecule/s"
+      },
+      "sender_export": {
+        "value": 1,
+        "unit": "1/s"
+      },
+      "sender_import": {
+        "value": 1,
+        "unit": "1/s"
+      },
+      "receiver_export": {
+        "value": 1,
+        "unit": "1/s"
+      },
+      "receiver_import": {
+        "value": 2,
+        "unit": "1/s"
+      },
+      "threshold": {
+        "value": 2,
+        "unit": "molecule/L"
+      },
+      "hill_n": {
+        "value": 1,
+        "unit": "1"
+      }
+    },
+    "observables": [
+      {
+        "id": "reporter",
+        "state": "receiver.reporter"
+      },
+      {
+        "id": "external",
+        "state": "env.signal"
+      }
+    ],
+    "capabilities": {
+      "ode": true,
+      "ssa": false
+    },
+    "reactions": [
+      {
+        "id": "sender.export",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "sender_export"
+          },
+          "right": {
+            "op": "state",
+            "id": "sender.signal"
+          }
+        },
+        "stoichiometry": {
+          "sender.signal": -1,
+          "env.signal": {
+            "op": "population",
+            "id": "sender"
+          }
+        }
+      },
+      {
+        "id": "sender.import",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "sender_import"
+          },
+          "right": {
+            "op": "multiply",
+            "left": {
+              "op": "volume",
+              "id": "sender"
+            },
+            "right": {
+              "op": "divide",
+              "left": {
+                "op": "state",
+                "id": "env.signal"
+              },
+              "right": {
+                "op": "volume",
+                "id": "env"
+              }
+            }
+          }
+        },
+        "stoichiometry": {
+          "sender.signal": 1,
+          "env.signal": {
+            "op": "negate",
+            "value": {
+              "op": "population",
+              "id": "sender"
+            }
+          }
+        }
+      },
+      {
+        "id": "sender.decay",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "sender_decay"
+          },
+          "right": {
+            "op": "state",
+            "id": "sender.signal"
+          }
+        },
+        "stoichiometry": {
+          "sender.signal": -1
+        }
+      },
+      {
+        "id": "receiver.export",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "receiver_export"
+          },
+          "right": {
+            "op": "state",
+            "id": "receiver.signal"
+          }
+        },
+        "stoichiometry": {
+          "receiver.signal": -1,
+          "env.signal": {
+            "op": "population",
+            "id": "receiver"
+          }
+        }
+      },
+      {
+        "id": "receiver.import",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "receiver_import"
+          },
+          "right": {
+            "op": "multiply",
+            "left": {
+              "op": "volume",
+              "id": "receiver"
+            },
+            "right": {
+              "op": "divide",
+              "left": {
+                "op": "state",
+                "id": "env.signal"
+              },
+              "right": {
+                "op": "volume",
+                "id": "env"
+              }
+            }
+          }
+        },
+        "stoichiometry": {
+          "receiver.signal": 1,
+          "env.signal": {
+            "op": "negate",
+            "value": {
+              "op": "population",
+              "id": "receiver"
+            }
+          }
+        }
+      },
+      {
+        "id": "receiver.decay",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "receiver_decay"
+          },
+          "right": {
+            "op": "state",
+            "id": "receiver.signal"
+          }
+        },
+        "stoichiometry": {
+          "receiver.signal": -1
+        }
+      },
+      {
+        "id": "sender.production",
+        "flux": {
+          "op": "parameter",
+          "id": "sender_production"
+        },
+        "stoichiometry": {
+          "sender.signal": 1
+        }
+      },
+      {
+        "id": "env.decay",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "env_decay"
+          },
+          "right": {
+            "op": "state",
+            "id": "env.signal"
+          }
+        },
+        "stoichiometry": {
+          "env.signal": -1
+        }
+      },
+      {
+        "id": "reporter.production",
+        "flux": {
+          "op": "add",
+          "left": {
+            "op": "parameter",
+            "id": "reporter_basal"
+          },
+          "right": {
+            "op": "multiply",
+            "left": {
+              "op": "parameter",
+              "id": "reporter_induced"
+            },
+            "right": {
+              "op": "hill",
+              "density": {
+                "op": "divide",
+                "left": {
+                  "op": "state",
+                  "id": "env.signal"
+                },
+                "right": {
+                  "op": "volume",
+                  "id": "env"
+                }
+              },
+              "threshold": {
+                "op": "parameter",
+                "id": "threshold"
+              },
+              "exponent": {
+                "op": "parameter",
+                "id": "hill_n"
+              }
+            }
+          }
+        },
+        "stoichiometry": {
+          "receiver.reporter": 1
+        }
+      },
+      {
+        "id": "reporter.decay",
+        "flux": {
+          "op": "multiply",
+          "left": {
+            "op": "parameter",
+            "id": "reporter_decay"
+          },
+          "right": {
+            "op": "state",
+            "id": "receiver.reporter"
+          }
+        },
+        "stoichiometry": {
+          "receiver.reporter": -1
+        }
+      }
+    ],
+    "equations": [
+      {
+        "state": "sender.signal",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "add",
+          "left": {
+            "op": "subtract",
+            "left": {
+              "op": "subtract",
+              "left": {
+                "op": "flux",
+                "id": "sender.import"
+              },
+              "right": {
+                "op": "flux",
+                "id": "sender.export"
+              }
+            },
+            "right": {
+              "op": "flux",
+              "id": "sender.decay"
+            }
+          },
+          "right": {
+            "op": "flux",
+            "id": "sender.production"
+          }
+        }
+      },
+      {
+        "state": "receiver.signal",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "subtract",
+            "left": {
+              "op": "flux",
+              "id": "receiver.import"
+            },
+            "right": {
+              "op": "flux",
+              "id": "receiver.export"
+            }
+          },
+          "right": {
+            "op": "flux",
+            "id": "receiver.decay"
+          }
+        }
+      },
+      {
+        "state": "env.signal",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "add",
+            "left": {
+              "op": "multiply",
+              "left": {
+                "op": "population",
+                "id": "sender"
+              },
+              "right": {
+                "op": "subtract",
+                "left": {
+                  "op": "flux",
+                  "id": "sender.export"
+                },
+                "right": {
+                  "op": "flux",
+                  "id": "sender.import"
+                }
+              }
+            },
+            "right": {
+              "op": "multiply",
+              "left": {
+                "op": "population",
+                "id": "receiver"
+              },
+              "right": {
+                "op": "subtract",
+                "left": {
+                  "op": "flux",
+                  "id": "receiver.export"
+                },
+                "right": {
+                  "op": "flux",
+                  "id": "receiver.import"
+                }
+              }
+            }
+          },
+          "right": {
+            "op": "flux",
+            "id": "env.decay"
+          }
+        }
+      },
+      {
+        "state": "receiver.reporter",
+        "unit": "molecule/s",
+        "rhs": {
+          "op": "subtract",
+          "left": {
+            "op": "flux",
+            "id": "reporter.production"
+          },
+          "right": {
+            "op": "flux",
+            "id": "reporter.decay"
+          }
+        }
+      }
+    ]
+  },
+  "provenance": {
+    "design_digest": "33d3832d3ebaaecfb1da5866a15f954991e42110e81410d176ea84c125277127",
+    "experiment_digest": "2f859eebf3260d869adc3a5a3959be823fb34534da3a8b8ec7803dfc5be855d8",
+    "owners": {
+      "sender": "sender",
+      "receiver": "receiver",
+      "env": "env"
+    },
+    "species": {
+      "sender.signal": "a",
+      "receiver.signal": "a",
+      "env.signal": "a",
+      "receiver.reporter": "b"
+    }
+  }
+}

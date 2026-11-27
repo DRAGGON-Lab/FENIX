@@ -1,0 +1,92 @@
+{
+  "kind": "RunManifest",
+  "schema_version": "0.2.0",
+  "status": "success",
+  "repeatability": "bounded_numerical_agreement",
+  "sources": {
+    "design": {
+      "schema_version": "0.2.0",
+      "id": "community-threshold-n1",
+      "revision": 1,
+      "digest": "33d3832d3ebaaecfb1da5866a15f954991e42110e81410d176ea84c125277127"
+    },
+    "experiment": {
+      "schema_version": "0.2.0",
+      "id": "threshold-n1",
+      "revision": 1,
+      "digest": "f5a15ff9f2d2a9bfd13c97b541b23a665a33b96fd6838dd9e8ecc1b4dc1cb61d"
+    }
+  },
+  "fir": {
+    "schema_version": "0.2.0",
+    "canonicalization_version": "0.2.0",
+    "digest": "2b99d2a775efaa2511457d8ab135634d735562dd24f7f2c7a9e4e087cbe9506f"
+  },
+  "execution": {
+    "profile": "ode",
+    "time_grid": [
+      0
+    ],
+    "rtol": 1e-09,
+    "atol": 1e-11,
+    "max_step": 1.0,
+    "max_nfev": 9007199254740993
+  },
+  "randomness": {
+    "rng": "none",
+    "seed": null
+  },
+  "evaluations": {
+    "nfev": 0
+  },
+  "timing": {
+    "started_at_utc": "2026-11-16T12:00:00.000000Z",
+    "finished_at_utc": "2026-11-16T12:00:00.125000Z",
+    "elapsed_seconds": 0.125
+  },
+  "integration": "skipped_zero_grid",
+  "output": {
+    "schema_version": "0.2.0",
+    "media_type": "application/json",
+    "encoding": "utf-8",
+    "sha256": "62c0ad762d8d48c88e55f6cd1aaacc1c3907a604711c1834f0acb393fd0976eb"
+  },
+  "producer": {
+    "name": "P08-analytical-illustration-not-a-native-run",
+    "version": "not-executed",
+    "build_id": null
+  },
+  "backend": {
+    "profile": "julia-sciml-community-ode/0.1.0",
+    "solver": {
+      "name": "SciMLBase.solve",
+      "method": "Rodas5P",
+      "options": {
+        "dt": null,
+        "adaptive": true,
+        "saveat": "requested_grid",
+        "save_start": true,
+        "save_end": true,
+        "save_everystep": false,
+        "dense": false,
+        "callback": null,
+        "force_dtmin": false,
+        "dtmin": "backend_default",
+        "maxiters": 9223372036854775807,
+        "jacobian": "state_dependent_exact_inplace",
+        "time_derivative": "autonomous_zero_inplace"
+      }
+    },
+    "environment": {
+      "julia_version": "illustrative_not_observed",
+      "scimlbase_version": "illustrative_not_observed",
+      "ordinarydiffeqtsit5_version": "illustrative_not_observed",
+      "ordinarydiffeqrosenbrock_version": "illustrative_not_observed",
+      "json_version": "illustrative_not_observed"
+    },
+    "evaluations": {
+      "njev": 0,
+      "nw": 0
+    }
+  }
+}

@@ -129,6 +129,12 @@ executable-profile gates above.
 
 ## Review questions for the PI
 
+The [executable wire/evidence packet](executable-profile-proposal.md) now supplies
+concrete source/FIR identity, scoped result/backend schemas, literal positive and
+rejection catalogs and independent identity/method review tools. It is PROPOSED
+and requires exact-revision acceptance; existing mathematical and completion-scope
+approvals do not automatically approve it.
+
 1. Review the proposed population-valued signed update coefficients. They extend
    P02's fixed M0 stoichiometry so that a per-cell transfer flux also updates the
    total extracellular state in the same reaction.

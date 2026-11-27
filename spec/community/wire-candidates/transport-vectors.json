@@ -1,0 +1,107 @@
+[
+  {
+    "id": "scientific-integer-rounding",
+    "kind": "result",
+    "raw": "{\"times\":[9007199254740993]}",
+    "path": [
+      "times",
+      0
+    ],
+    "bits": "4340000000000000"
+  },
+  {
+    "id": "negative-integer-zero",
+    "kind": "result",
+    "raw": "{\"times\":[-0]}",
+    "path": [
+      "times",
+      0
+    ],
+    "bits": "8000000000000000"
+  },
+  {
+    "id": "exact-budget",
+    "kind": "manifest",
+    "raw": "{\"execution\":{\"max_nfev\":9007199254740993}}",
+    "path": [
+      "execution",
+      "max_nfev"
+    ],
+    "decimal": "9007199254740993"
+  },
+  {
+    "id": "exact-counter",
+    "kind": "manifest",
+    "raw": "{\"evaluations\":{\"nfev\":9007199254740993}}",
+    "path": [
+      "evaluations",
+      "nfev"
+    ],
+    "decimal": "9007199254740993"
+  },
+  {
+    "id": "state",
+    "kind": "result",
+    "raw": "{\"state_values\":[[9007199254740993]]}",
+    "path": [
+      "state_values",
+      0,
+      0
+    ],
+    "bits": "4340000000000000"
+  },
+  {
+    "id": "observable",
+    "kind": "result",
+    "raw": "{\"observable_values\":[[9007199254740993]]}",
+    "path": [
+      "observable_values",
+      0,
+      0
+    ],
+    "bits": "4340000000000000"
+  },
+  {
+    "id": "manifest-grid",
+    "kind": "manifest",
+    "raw": "{\"execution\":{\"time_grid\":[9007199254740993]}}",
+    "path": [
+      "execution",
+      "time_grid",
+      0
+    ],
+    "bits": "4340000000000000"
+  },
+  {
+    "id": "elapsed",
+    "kind": "manifest",
+    "raw": "{\"timing\":{\"elapsed_seconds\":9007199254740993}}",
+    "path": [
+      "timing",
+      "elapsed_seconds"
+    ],
+    "bits": "4340000000000000"
+  },
+  {
+    "id": "scientific-integer-overflow",
+    "kind": "result",
+    "raw": "{\"times\":[10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000]}",
+    "path": [
+      "times",
+      0
+    ],
+    "category": "NUMBER_RANGE",
+    "error_path": "/times/0"
+  },
+  {
+    "id": "counter-fractional-spelling",
+    "kind": "manifest",
+    "raw": "{\"evaluations\":{\"nfev\":9007199254740993.0}}",
+    "path": [
+      "evaluations",
+      "nfev"
+    ],
+    "category": "INTEGER_TOKEN",
+    "error_path": "/evaluations/nfev"
+  }
+]
