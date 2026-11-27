@@ -1,0 +1,509 @@
+{
+  "total_count": 4,
+  "jobs": [
+    {
+      "id": 140414683650,
+      "run_id": 45972078514,
+      "workflow_name": "Candidate community analytical references",
+      "head_branch": "spec/31-m1-wire-packet",
+      "run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/runs/45972078514",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVuD9588AAAAgsV4KAg",
+      "head_sha": "7a90803f852da9b7cd7593f7d8dc54380cbe445d",
+      "url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/jobs/140414683650",
+      "html_url": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/45972078514/job/140414683650",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-27T09:14:42Z",
+      "started_at": "2026-11-27T09:14:44Z",
+      "completed_at": "2026-11-27T09:15:13Z",
+      "name": "Proposed community SciPy stage investigation",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-27T09:14:45Z",
+          "completed_at": "2026-11-27T09:14:48Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-27T09:14:48Z",
+          "completed_at": "2026-11-27T09:14:52Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-27T09:14:52Z",
+          "completed_at": "2026-11-27T09:14:58Z"
+        },
+        {
+          "name": "Run astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-27T09:14:58Z",
+          "completed_at": "2026-11-27T09:15:02Z"
+        },
+        {
+          "name": "Run uv sync --project packages/python --locked",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-27T09:15:02Z",
+          "completed_at": "2026-11-27T09:15:03Z"
+        },
+        {
+          "name": "Run uv run --project packages/python --locked --offline python -m unittest discover -s conformance/community/feasibility -v",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-27T09:15:03Z",
+          "completed_at": "2026-11-27T09:15:06Z"
+        },
+        {
+          "name": "Run uv run --project packages/python --locked --offline python conformance/community/feasibility/study.py --base-revision \"$GITHUB_SHA\" --report artifacts/community-stage-feasibility.json",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-27T09:15:06Z",
+          "completed_at": "2026-11-27T09:15:07Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-27T09:15:07Z",
+          "completed_at": "2026-11-27T09:15:09Z"
+        },
+        {
+          "name": "Post Run astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-27T09:15:09Z",
+          "completed_at": "2026-11-27T09:15:09Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-27T09:15:09Z",
+          "completed_at": "2026-11-27T09:15:09Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-11-27T09:15:09Z",
+          "completed_at": "2026-11-27T09:15:09Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-27T09:15:09Z",
+          "completed_at": "2026-11-27T09:15:09Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/check-runs/140414683650",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000003613,
+      "runner_name": "GitHub Actions 1000003613",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 140414683915,
+      "run_id": 45972078514,
+      "workflow_name": "Candidate community analytical references",
+      "head_branch": "spec/31-m1-wire-packet",
+      "run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/runs/45972078514",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVuD9588AAAAgsV4LCw",
+      "head_sha": "7a90803f852da9b7cd7593f7d8dc54380cbe445d",
+      "url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/jobs/140414683915",
+      "html_url": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/45972078514/job/140414683915",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-27T09:14:42Z",
+      "started_at": "2026-11-27T09:14:44Z",
+      "completed_at": "2026-11-27T09:15:15Z",
+      "name": "Proposed M1 executable wire packet",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-27T09:14:45Z",
+          "completed_at": "2026-11-27T09:14:46Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-27T09:14:46Z",
+          "completed_at": "2026-11-27T09:14:47Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-27T09:14:47Z",
+          "completed_at": "2026-11-27T09:14:54Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-27T09:14:54Z",
+          "completed_at": "2026-11-27T09:14:55Z"
+        },
+        {
+          "name": "Run astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-27T09:14:55Z",
+          "completed_at": "2026-11-27T09:14:58Z"
+        },
+        {
+          "name": "Run uv sync --project packages/python --locked",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-27T09:14:58Z",
+          "completed_at": "2026-11-27T09:14:59Z"
+        },
+        {
+          "name": "Run uv run --project packages/python --locked --offline python -m unittest discover -s spec/community -v",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-27T09:14:59Z",
+          "completed_at": "2026-11-27T09:15:06Z"
+        },
+        {
+          "name": "Run uv run --project packages/python --locked --offline python spec/community/review_wire.py --report artifacts/m1-wire-review.json",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-27T09:15:06Z",
+          "completed_at": "2026-11-27T09:15:10Z"
+        },
+        {
+          "name": "Run node spec/community/identity_audit.cjs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-27T09:15:10Z",
+          "completed_at": "2026-11-27T09:15:11Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-27T09:15:11Z",
+          "completed_at": "2026-11-27T09:15:12Z"
+        },
+        {
+          "name": "Post Run astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-27T09:15:12Z",
+          "completed_at": "2026-11-27T09:15:12Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-11-27T09:15:12Z",
+          "completed_at": "2026-11-27T09:15:12Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-11-27T09:15:12Z",
+          "completed_at": "2026-11-27T09:15:12Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-11-27T09:15:12Z",
+          "completed_at": "2026-11-27T09:15:12Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-11-27T09:15:12Z",
+          "completed_at": "2026-11-27T09:15:12Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/check-runs/140414683915",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000003614,
+      "runner_name": "GitHub Actions 1000003614",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 140414683942,
+      "run_id": 45972078514,
+      "workflow_name": "Candidate community analytical references",
+      "head_branch": "spec/31-m1-wire-packet",
+      "run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/runs/45972078514",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVuD9588AAAAgsV4LJg",
+      "head_sha": "7a90803f852da9b7cd7593f7d8dc54380cbe445d",
+      "url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/jobs/140414683942",
+      "html_url": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/45972078514/job/140414683942",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-27T09:14:42Z",
+      "started_at": "2026-11-27T09:14:44Z",
+      "completed_at": "2026-11-27T09:15:46Z",
+      "name": "Candidate community analytical references",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-27T09:14:45Z",
+          "completed_at": "2026-11-27T09:14:48Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-27T09:14:48Z",
+          "completed_at": "2026-11-27T09:14:53Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-27T09:14:53Z",
+          "completed_at": "2026-11-27T09:14:59Z"
+        },
+        {
+          "name": "Run julia-actions/setup-julia@v2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-27T09:14:59Z",
+          "completed_at": "2026-11-27T09:15:04Z"
+        },
+        {
+          "name": "Run python -m unittest discover -s conformance/community -v",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-27T09:15:04Z",
+          "completed_at": "2026-11-27T09:15:05Z"
+        },
+        {
+          "name": "Run python conformance/community/reference.py > community-reference.json",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-27T09:15:05Z",
+          "completed_at": "2026-11-27T09:15:05Z"
+        },
+        {
+          "name": "Run julia --project=conformance/julia -e 'using Pkg; Pkg.instantiate()'",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-27T09:15:05Z",
+          "completed_at": "2026-11-27T09:15:37Z"
+        },
+        {
+          "name": "Run julia --project=conformance/julia conformance/community/reference.jl community-reference.json",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-27T09:15:37Z",
+          "completed_at": "2026-11-27T09:15:38Z"
+        },
+        {
+          "name": "Run julia --project=conformance/julia conformance/community/test_reference.jl community-reference.json",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-27T09:15:38Z",
+          "completed_at": "2026-11-27T09:15:41Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-27T09:15:41Z",
+          "completed_at": "2026-11-27T09:15:43Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-11-27T09:15:43Z",
+          "completed_at": "2026-11-27T09:15:43Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-11-27T09:15:43Z",
+          "completed_at": "2026-11-27T09:15:43Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-11-27T09:15:43Z",
+          "completed_at": "2026-11-27T09:15:43Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/check-runs/140414683942",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000003616,
+      "runner_name": "GitHub Actions 1000003616",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 140414684147,
+      "run_id": 45972078514,
+      "workflow_name": "Candidate community analytical references",
+      "head_branch": "spec/31-m1-wire-packet",
+      "run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/runs/45972078514",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVuD9588AAAAgsV4L8w",
+      "head_sha": "7a90803f852da9b7cd7593f7d8dc54380cbe445d",
+      "url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/jobs/140414684147",
+      "html_url": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/45972078514/job/140414684147",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-27T09:14:42Z",
+      "started_at": "2026-11-27T09:14:44Z",
+      "completed_at": "2026-11-27T09:17:46Z",
+      "name": "Proposed community Julia stage investigation",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-27T09:14:45Z",
+          "completed_at": "2026-11-27T09:14:48Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-27T09:14:48Z",
+          "completed_at": "2026-11-27T09:14:52Z"
+        },
+        {
+          "name": "Run julia-actions/setup-julia@v2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-27T09:14:52Z",
+          "completed_at": "2026-11-27T09:14:56Z"
+        },
+        {
+          "name": "Run julia --project=conformance/julia_ode -e 'using Pkg; Pkg.instantiate()'",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-27T09:14:56Z",
+          "completed_at": "2026-11-27T09:17:30Z"
+        },
+        {
+          "name": "Independent native-method investigation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-27T09:17:30Z",
+          "completed_at": "2026-11-27T09:17:41Z"
+        },
+        {
+          "name": "Run git diff --exit-code -- conformance/julia_ode/Project.toml conformance/julia_ode/Manifest.toml",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-27T09:17:41Z",
+          "completed_at": "2026-11-27T09:17:41Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-27T09:17:41Z",
+          "completed_at": "2026-11-27T09:17:43Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-27T09:17:43Z",
+          "completed_at": "2026-11-27T09:17:43Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-27T09:17:43Z",
+          "completed_at": "2026-11-27T09:17:43Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/check-runs/140414684147",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000003623,
+      "runner_name": "GitHub Actions 1000003623",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

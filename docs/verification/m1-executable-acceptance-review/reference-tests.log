@@ -1,0 +1,13 @@
+test_analytical_catalog (test_reference.TestReferences.test_analytical_catalog) ... ok
+test_catalog_metadata_corruption_is_detected_before_evaluation (test_reference.TestReferences.test_catalog_metadata_corruption_is_detected_before_evaluation) ... ok
+test_complete_catalog_corruption_is_detected_before_evaluation (test_reference.TestReferences.test_complete_catalog_corruption_is_detected_before_evaluation) ... ok
+test_initial_state_corruption_is_detected (test_reference.TestReferences.test_initial_state_corruption_is_detected) ... ok
+test_object_order_and_numeric_spellings_preserve_definitions (test_reference.TestReferences.test_object_order_and_numeric_spellings_preserve_definitions) ... ok
+test_parameter_corruption_is_detected (test_reference.TestReferences.test_parameter_corruption_is_detected) ... ok
+test_parameter_unit_member_order_preserves_valid_metadata (test_reference.TestReferences.test_parameter_unit_member_order_preserves_valid_metadata) ... ok
+test_trajectory_preserving_mutations_are_rejected (test_reference.TestReferences.test_trajectory_preserving_mutations_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 10.785s
+
+OK

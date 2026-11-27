@@ -1,0 +1,85 @@
+{
+  "total_count": 4,
+  "artifacts": [
+    {
+      "id": 15185546666,
+      "node_id": "MDg6QXJ0aWZhY3QxNTE4NTU0NjY2Ng==",
+      "name": "proposed-m1-wire-packet",
+      "size_in_bytes": 12654,
+      "url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/artifacts/15185546666",
+      "archive_download_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/artifacts/15185546666/zip",
+      "expired": false,
+      "digest": "sha256:3385853796fcc652893e9bc946b62a45ce878403cca2120d133e26297977c42d",
+      "created_at": "2026-11-27T09:15:11Z",
+      "updated_at": "2026-11-27T09:15:11Z",
+      "expires_at": "2027-02-25T09:14:42Z",
+      "workflow_run": {
+        "id": 45972078514,
+        "repository_id": 1457585639,
+        "head_repository_id": 1457585639,
+        "head_branch": "spec/31-m1-wire-packet",
+        "head_sha": "7a90803f852da9b7cd7593f7d8dc54380cbe445d"
+      }
+    },
+    {
+      "id": 15185507432,
+      "node_id": "MDg6QXJ0aWZhY3QxNTE4NTUwNzQzMg==",
+      "name": "candidate-community-reference",
+      "size_in_bytes": 2396,
+      "url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/artifacts/15185507432",
+      "archive_download_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/artifacts/15185507432/zip",
+      "expired": false,
+      "digest": "sha256:8824151704cc15186947af097478acdb446c6cdd4aa87d93b67b6e0449c870db",
+      "created_at": "2026-11-27T09:15:42Z",
+      "updated_at": "2026-11-27T09:15:42Z",
+      "expires_at": "2027-02-25T09:14:42Z",
+      "workflow_run": {
+        "id": 45972078514,
+        "repository_id": 1457585639,
+        "head_repository_id": 1457585639,
+        "head_branch": "spec/31-m1-wire-packet",
+        "head_sha": "7a90803f852da9b7cd7593f7d8dc54380cbe445d"
+      }
+    },
+    {
+      "id": 15185302358,
+      "node_id": "MDg6QXJ0aWZhY3QxNTE4NTMwMjM1OA==",
+      "name": "proposed-community-stage-feasibility",
+      "size_in_bytes": 17301,
+      "url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/artifacts/15185302358",
+      "archive_download_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/artifacts/15185302358/zip",
+      "expired": false,
+      "digest": "sha256:80cc97d73d8c46b9c5bd7ecd00e99972eabcb96b506278e337c4c418c0d69c82",
+      "created_at": "2026-11-27T09:15:09Z",
+      "updated_at": "2026-11-27T09:15:09Z",
+      "expires_at": "2027-02-25T09:14:42Z",
+      "workflow_run": {
+        "id": 45972078514,
+        "repository_id": 1457585639,
+        "head_repository_id": 1457585639,
+        "head_branch": "spec/31-m1-wire-packet",
+        "head_sha": "7a90803f852da9b7cd7593f7d8dc54380cbe445d"
+      }
+    },
+    {
+      "id": 15185118717,
+      "node_id": "MDg6QXJ0aWZhY3QxNTE4NTExODcxNw==",
+      "name": "proposed-community-julia-stage-feasibility",
+      "size_in_bytes": 28100,
+      "url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/artifacts/15185118717",
+      "archive_download_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/artifacts/15185118717/zip",
+      "expired": false,
+      "digest": "sha256:0422f4a0d33837cbbfbf71d7ce571a4a599dc26c4a5ec0a06a3b9a7e79a98642",
+      "created_at": "2026-11-27T09:17:43Z",
+      "updated_at": "2026-11-27T09:17:43Z",
+      "expires_at": "2027-02-25T09:14:42Z",
+      "workflow_run": {
+        "id": 45972078514,
+        "repository_id": 1457585639,
+        "head_repository_id": 1457585639,
+        "head_branch": "spec/31-m1-wire-packet",
+        "head_sha": "7a90803f852da9b7cd7593f7d8dc54380cbe445d"
+      }
+    }
+  ]
+}

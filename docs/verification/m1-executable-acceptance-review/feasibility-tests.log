@@ -1,0 +1,15 @@
+test_all_cases_methods_settings_against_independent_laws (test_study.FeasibilityTests.test_all_cases_methods_settings_against_independent_laws) ... ok
+test_balance_bound_accounts_for_initial_representation (test_study.FeasibilityTests.test_balance_bound_accounts_for_initial_representation) ... ok
+test_changed_signal_weight_or_sign_is_detected (test_study.FeasibilityTests.test_changed_signal_weight_or_sign_is_detected) ... ok
+test_comparator_detects_changed_sample (test_study.FeasibilityTests.test_comparator_detects_changed_sample) ... ok
+test_incomplete_failed_negative_and_nonfinite_output (test_study.FeasibilityTests.test_incomplete_failed_negative_and_nonfinite_output) ... ok
+test_retained_receipt_is_bound_to_candidate_files (test_study.FeasibilityTests.test_retained_receipt_is_bound_to_candidate_files) ... ok
+test_rhs_and_jacobian_against_decimal_balance_equations (test_study.FeasibilityTests.test_rhs_and_jacobian_against_decimal_balance_equations)
+High precision differences do not use the float Jacobian or RHS. ... ok
+test_rhs_budget_and_backend_options (test_study.FeasibilityTests.test_rhs_budget_and_backend_options) ... ok
+test_stage_rejection_and_no_clipping (test_study.FeasibilityTests.test_stage_rejection_and_no_clipping) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 36.100s
+
+OK

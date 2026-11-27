@@ -1,0 +1,1161 @@
+{
+  "total_count": 7,
+  "jobs": [
+    {
+      "id": 140414683723,
+      "run_id": 45972078529,
+      "workflow_name": "Scaffold smoke tests",
+      "head_branch": "spec/31-m1-wire-packet",
+      "run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/runs/45972078529",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVuD9588AAAAgsV4KSw",
+      "head_sha": "7a90803f852da9b7cd7593f7d8dc54380cbe445d",
+      "url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/jobs/140414683723",
+      "html_url": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/45972078529/job/140414683723",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-27T09:14:42Z",
+      "started_at": "2026-11-27T09:14:44Z",
+      "completed_at": "2026-11-27T09:29:47Z",
+      "name": "Julia-only package",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-27T09:14:45Z",
+          "completed_at": "2026-11-27T09:14:46Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-27T09:14:46Z",
+          "completed_at": "2026-11-27T09:14:48Z"
+        },
+        {
+          "name": "Run julia-actions/setup-julia@v2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-27T09:14:48Z",
+          "completed_at": "2026-11-27T09:14:51Z"
+        },
+        {
+          "name": "Julia native content and package checks (no Python dependency)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-27T09:14:51Z",
+          "completed_at": "2026-11-27T09:24:47Z"
+        },
+        {
+          "name": "Install pinned reference tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-27T09:24:47Z",
+          "completed_at": "2026-11-27T09:24:51Z"
+        },
+        {
+          "name": "Load reference tools offline (not scientific conformance)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-27T09:24:51Z",
+          "completed_at": "2026-11-27T09:24:52Z"
+        },
+        {
+          "name": "Audit proposed Julia results profile independently in Julia",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-27T09:24:52Z",
+          "completed_at": "2026-11-27T09:25:07Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-27T09:25:07Z",
+          "completed_at": "2026-11-27T09:25:08Z"
+        },
+        {
+          "name": "Test 29 approved Julia native-content projections",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-27T09:25:08Z",
+          "completed_at": "2026-11-27T09:25:19Z"
+        },
+        {
+          "name": "Test native Julia P01 committed documents and raw inputs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-27T09:25:19Z",
+          "completed_at": "2026-11-27T09:25:29Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-27T09:25:29Z",
+          "completed_at": "2026-11-27T09:25:30Z"
+        },
+        {
+          "name": "Test native Julia FIR and compiler against approved references",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-27T09:25:30Z",
+          "completed_at": "2026-11-27T09:25:48Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-27T09:25:48Z",
+          "completed_at": "2026-11-27T09:25:49Z"
+        },
+        {
+          "name": "Install locked native SciML conformance environment",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-27T09:25:49Z",
+          "completed_at": "2026-11-27T09:27:34Z"
+        },
+        {
+          "name": "Test native Julia ODE sampling and analytical accuracy",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-27T09:27:34Z",
+          "completed_at": "2026-11-27T09:28:00Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-11-27T09:28:00Z",
+          "completed_at": "2026-11-27T09:28:01Z"
+        },
+        {
+          "name": "Test native Julia source-linked results and readback",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-27T09:28:01Z",
+          "completed_at": "2026-11-27T09:28:54Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-11-27T09:28:54Z",
+          "completed_at": "2026-11-27T09:28:56Z"
+        },
+        {
+          "name": "Check locked native SciML environment",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-11-27T09:28:56Z",
+          "completed_at": "2026-11-27T09:28:56Z"
+        },
+        {
+          "name": "Independently validate candidate P01 fixtures in Julia",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-11-27T09:28:56Z",
+          "completed_at": "2026-11-27T09:29:02Z"
+        },
+        {
+          "name": "Test candidate production-decay oracle in Julia",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-11-27T09:29:02Z",
+          "completed_at": "2026-11-27T09:29:07Z"
+        },
+        {
+          "name": "Evaluate candidate production-decay oracle in Julia",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-11-27T09:29:07Z",
+          "completed_at": "2026-11-27T09:29:11Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-11-27T09:29:11Z",
+          "completed_at": "2026-11-27T09:29:12Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-11-27T09:29:12Z",
+          "completed_at": "2026-11-27T09:29:14Z"
+        },
+        {
+          "name": "Test native Julia rejection diagnostics and harness boundaries",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-11-27T09:29:14Z",
+          "completed_at": "2026-11-27T09:29:32Z"
+        },
+        {
+          "name": "Produce independent Julia rejection report",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26,
+          "started_at": "2026-11-27T09:29:32Z",
+          "completed_at": "2026-11-27T09:29:42Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-11-27T09:29:42Z",
+          "completed_at": "2026-11-27T09:29:43Z"
+        },
+        {
+          "name": "Check tracked environment files were not rewritten",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28,
+          "started_at": "2026-11-27T09:29:44Z",
+          "completed_at": "2026-11-27T09:29:44Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 56,
+          "started_at": "2026-11-27T09:29:44Z",
+          "completed_at": "2026-11-27T09:29:44Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 57,
+          "started_at": "2026-11-27T09:29:44Z",
+          "completed_at": "2026-11-27T09:29:44Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/check-runs/140414683723",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000003612,
+      "runner_name": "GitHub Actions 1000003612",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 140414684096,
+      "run_id": 45972078529,
+      "workflow_name": "Scaffold smoke tests",
+      "head_branch": "spec/31-m1-wire-packet",
+      "run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/runs/45972078529",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVuD9588AAAAgsV4LwA",
+      "head_sha": "7a90803f852da9b7cd7593f7d8dc54380cbe445d",
+      "url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/jobs/140414684096",
+      "html_url": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/45972078529/job/140414684096",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-27T09:14:42Z",
+      "started_at": "2026-11-27T09:14:44Z",
+      "completed_at": "2026-11-27T09:15:19Z",
+      "name": "Python-only package",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-27T09:14:44Z",
+          "completed_at": "2026-11-27T09:14:46Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-27T09:14:46Z",
+          "completed_at": "2026-11-27T09:14:47Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-27T09:14:47Z",
+          "completed_at": "2026-11-27T09:14:47Z"
+        },
+        {
+          "name": "Run astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-27T09:14:47Z",
+          "completed_at": "2026-11-27T09:14:50Z"
+        },
+        {
+          "name": "Install Python package without Julia",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-27T09:14:50Z",
+          "completed_at": "2026-11-27T09:14:52Z"
+        },
+        {
+          "name": "Python content and packaging tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-27T09:14:52Z",
+          "completed_at": "2026-11-27T09:14:55Z"
+        },
+        {
+          "name": "Check Python content style and types",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-27T09:14:55Z",
+          "completed_at": "2026-11-27T09:15:00Z"
+        },
+        {
+          "name": "Test 29 approved P01 native-content projections",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-27T09:15:00Z",
+          "completed_at": "2026-11-27T09:15:00Z"
+        },
+        {
+          "name": "Test native P01 documents and raw inputs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-27T09:15:00Z",
+          "completed_at": "2026-11-27T09:15:00Z"
+        },
+        {
+          "name": "Test native FIR validation, normalization and compilation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-27T09:15:00Z",
+          "completed_at": "2026-11-27T09:15:01Z"
+        },
+        {
+          "name": "Test candidate P01 catalog and report failure detection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-27T09:15:01Z",
+          "completed_at": "2026-11-27T09:15:01Z"
+        },
+        {
+          "name": "Independently validate candidate P01 fixtures in Python",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-27T09:15:01Z",
+          "completed_at": "2026-11-27T09:15:01Z"
+        },
+        {
+          "name": "Test candidate production-decay oracle and report failures",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-27T09:15:01Z",
+          "completed_at": "2026-11-27T09:15:03Z"
+        },
+        {
+          "name": "Audit fixed candidates with exact rational Taylor enclosures",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-27T09:15:03Z",
+          "completed_at": "2026-11-27T09:15:04Z"
+        },
+        {
+          "name": "Evaluate candidate production-decay oracle in Python",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-27T09:15:04Z",
+          "completed_at": "2026-11-27T09:15:04Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-11-27T09:15:04Z",
+          "completed_at": "2026-11-27T09:15:05Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-27T09:15:05Z",
+          "completed_at": "2026-11-27T09:15:06Z"
+        },
+        {
+          "name": "Test rejection diagnostics, catalog integrity and report failure detection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-11-27T09:15:06Z",
+          "completed_at": "2026-11-27T09:15:11Z"
+        },
+        {
+          "name": "Produce independent Python rejection report",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-11-27T09:15:11Z",
+          "completed_at": "2026-11-27T09:15:11Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-11-27T09:15:11Z",
+          "completed_at": "2026-11-27T09:15:12Z"
+        },
+        {
+          "name": "Build Python distributions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-11-27T09:15:12Z",
+          "completed_at": "2026-11-27T09:15:14Z"
+        },
+        {
+          "name": "Test wheel in a clean environment without development dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-11-27T09:15:14Z",
+          "completed_at": "2026-11-27T09:15:16Z"
+        },
+        {
+          "name": "Post Run astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 42,
+          "started_at": "2026-11-27T09:15:16Z",
+          "completed_at": "2026-11-27T09:15:17Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 43,
+          "started_at": "2026-11-27T09:15:17Z",
+          "completed_at": "2026-11-27T09:15:17Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 44,
+          "started_at": "2026-11-27T09:15:17Z",
+          "completed_at": "2026-11-27T09:15:17Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 45,
+          "started_at": "2026-11-27T09:15:17Z",
+          "completed_at": "2026-11-27T09:15:17Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/check-runs/140414684096",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000003619,
+      "runner_name": "GitHub Actions 1000003619",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 140414684118,
+      "run_id": 45972078529,
+      "workflow_name": "Scaffold smoke tests",
+      "head_branch": "spec/31-m1-wire-packet",
+      "run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/runs/45972078529",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVuD9588AAAAgsV4L1g",
+      "head_sha": "7a90803f852da9b7cd7593f7d8dc54380cbe445d",
+      "url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/jobs/140414684118",
+      "html_url": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/45972078529/job/140414684118",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-27T09:14:42Z",
+      "started_at": "2026-11-27T09:14:44Z",
+      "completed_at": "2026-11-27T09:15:05Z",
+      "name": "Repository harness",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-27T09:14:45Z",
+          "completed_at": "2026-11-27T09:14:48Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-27T09:14:48Z",
+          "completed_at": "2026-11-27T09:14:51Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-27T09:14:51Z",
+          "completed_at": "2026-11-27T09:14:52Z"
+        },
+        {
+          "name": "Run astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-27T09:14:52Z",
+          "completed_at": "2026-11-27T09:14:57Z"
+        },
+        {
+          "name": "Install locked Python environment",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-27T09:14:57Z",
+          "completed_at": "2026-11-27T09:14:59Z"
+        },
+        {
+          "name": "Check agent instruction layout and documentation links",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-27T09:14:59Z",
+          "completed_at": "2026-11-27T09:14:59Z"
+        },
+        {
+          "name": "Test offline harness validator",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-27T09:14:59Z",
+          "completed_at": "2026-11-27T09:14:59Z"
+        },
+        {
+          "name": "Audit proposed Julia results profile independently in Python",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-27T09:14:59Z",
+          "completed_at": "2026-11-27T09:15:00Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-27T09:15:00Z",
+          "completed_at": "2026-11-27T09:15:01Z"
+        },
+        {
+          "name": "Post Run astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-11-27T09:15:01Z",
+          "completed_at": "2026-11-27T09:15:01Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-27T09:15:01Z",
+          "completed_at": "2026-11-27T09:15:01Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-11-27T09:15:01Z",
+          "completed_at": "2026-11-27T09:15:02Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-11-27T09:15:02Z",
+          "completed_at": "2026-11-27T09:15:02Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/check-runs/140414684118",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000003625,
+      "runner_name": "GitHub Actions 1000003625",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 140414684135,
+      "run_id": 45972078529,
+      "workflow_name": "Scaffold smoke tests",
+      "head_branch": "spec/31-m1-wire-packet",
+      "run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/runs/45972078529",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVuD9588AAAAgsV4L5w",
+      "head_sha": "7a90803f852da9b7cd7593f7d8dc54380cbe445d",
+      "url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/jobs/140414684135",
+      "html_url": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/45972078529/job/140414684135",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-27T09:14:42Z",
+      "started_at": "2026-11-27T09:14:44Z",
+      "completed_at": "2026-11-27T09:15:14Z",
+      "name": "Candidate P03 serialization evidence",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-27T09:14:45Z",
+          "completed_at": "2026-11-27T09:14:46Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-27T09:14:46Z",
+          "completed_at": "2026-11-27T09:14:47Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-27T09:14:47Z",
+          "completed_at": "2026-11-27T09:14:48Z"
+        },
+        {
+          "name": "Run astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-27T09:14:48Z",
+          "completed_at": "2026-11-27T09:14:52Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-27T09:14:52Z",
+          "completed_at": "2026-11-27T09:14:53Z"
+        },
+        {
+          "name": "Run uv sync --project packages/python --locked",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-27T09:14:53Z",
+          "completed_at": "2026-11-27T09:14:54Z"
+        },
+        {
+          "name": "Run uv run --project packages/python --locked --offline python -m unittest discover -s conformance/canonicalization/tests -v",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-27T09:14:54Z",
+          "completed_at": "2026-11-27T09:15:06Z"
+        },
+        {
+          "name": "Run uv run --project packages/python --locked --offline python conformance/canonicalization/review_p03.py --report artifacts/p03-python.json",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-27T09:15:06Z",
+          "completed_at": "2026-11-27T09:15:07Z"
+        },
+        {
+          "name": "Run node --test conformance/canonicalization/tests/test_review.cjs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-27T09:15:07Z",
+          "completed_at": "2026-11-27T09:15:07Z"
+        },
+        {
+          "name": "Run node conformance/canonicalization/review_p03.cjs --report artifacts/p03-node.json",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-27T09:15:07Z",
+          "completed_at": "2026-11-27T09:15:07Z"
+        },
+        {
+          "name": "Run uv run --project packages/python --locked --offline python conformance/canonicalization/review_p03.py --compare artifacts/p03-python.json artifacts/p03-node.json",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-27T09:15:07Z",
+          "completed_at": "2026-11-27T09:15:07Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-27T09:15:07Z",
+          "completed_at": "2026-11-27T09:15:09Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-27T09:15:09Z",
+          "completed_at": "2026-11-27T09:15:10Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-11-27T09:15:10Z",
+          "completed_at": "2026-11-27T09:15:10Z"
+        },
+        {
+          "name": "Post Run astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-11-27T09:15:10Z",
+          "completed_at": "2026-11-27T09:15:10Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-11-27T09:15:10Z",
+          "completed_at": "2026-11-27T09:15:11Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26,
+          "started_at": "2026-11-27T09:15:11Z",
+          "completed_at": "2026-11-27T09:15:11Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-11-27T09:15:11Z",
+          "completed_at": "2026-11-27T09:15:11Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/check-runs/140414684135",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000003620,
+      "runner_name": "GitHub Actions 1000003620",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 140421690010,
+      "run_id": 45972078529,
+      "workflow_name": "Scaffold smoke tests",
+      "head_branch": "spec/31-m1-wire-packet",
+      "run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/runs/45972078529",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVuD9588AAAAgscjymg",
+      "head_sha": "7a90803f852da9b7cd7593f7d8dc54380cbe445d",
+      "url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/jobs/140421690010",
+      "html_url": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/45972078529/job/140421690010",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-27T09:29:47Z",
+      "started_at": "2026-11-27T09:29:48Z",
+      "completed_at": "2026-11-27T09:29:53Z",
+      "name": "Candidate production-decay reference agreement",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-27T09:29:49Z",
+          "completed_at": "2026-11-27T09:29:50Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-27T09:29:50Z",
+          "completed_at": "2026-11-27T09:29:51Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-27T09:29:51Z",
+          "completed_at": "2026-11-27T09:29:51Z"
+        },
+        {
+          "name": "Run actions/download-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-27T09:29:51Z",
+          "completed_at": "2026-11-27T09:29:51Z"
+        },
+        {
+          "name": "Compare all four precision runs against fixed expectations",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-27T09:29:51Z",
+          "completed_at": "2026-11-27T09:29:51Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-27T09:29:51Z",
+          "completed_at": "2026-11-27T09:29:51Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-27T09:29:51Z",
+          "completed_at": "2026-11-27T09:29:52Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-27T09:29:52Z",
+          "completed_at": "2026-11-27T09:29:52Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/check-runs/140421690010",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000003646,
+      "runner_name": "GitHub Actions 1000003646",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 140421690015,
+      "run_id": 45972078529,
+      "workflow_name": "Scaffold smoke tests",
+      "head_branch": "spec/31-m1-wire-packet",
+      "run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/runs/45972078529",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVuD9588AAAAgscjynw",
+      "head_sha": "7a90803f852da9b7cd7593f7d8dc54380cbe445d",
+      "url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/jobs/140421690015",
+      "html_url": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/45972078529/job/140421690015",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-27T09:29:47Z",
+      "started_at": "2026-11-27T09:29:49Z",
+      "completed_at": "2026-11-27T09:30:05Z",
+      "name": "Candidate P01 reference conformance",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-27T09:29:50Z",
+          "completed_at": "2026-11-27T09:29:52Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-27T09:29:52Z",
+          "completed_at": "2026-11-27T09:29:55Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-27T09:29:55Z",
+          "completed_at": "2026-11-27T09:29:56Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-27T09:29:56Z",
+          "completed_at": "2026-11-27T09:29:59Z"
+        },
+        {
+          "name": "Run actions/download-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-27T09:29:59Z",
+          "completed_at": "2026-11-27T09:30:01Z"
+        },
+        {
+          "name": "Compare independent native reports against catalog expectations",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-27T09:30:01Z",
+          "completed_at": "2026-11-27T09:30:01Z"
+        },
+        {
+          "name": "Independently cross-check P01 bytes and content digests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-27T09:30:01Z",
+          "completed_at": "2026-11-27T09:30:01Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-27T09:30:01Z",
+          "completed_at": "2026-11-27T09:30:01Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-27T09:30:01Z",
+          "completed_at": "2026-11-27T09:30:02Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-27T09:30:02Z",
+          "completed_at": "2026-11-27T09:30:02Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-27T09:30:02Z",
+          "completed_at": "2026-11-27T09:30:02Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/check-runs/140421690015",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000003645,
+      "runner_name": "GitHub Actions 1000003645",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 140421690140,
+      "run_id": 45972078529,
+      "workflow_name": "Scaffold smoke tests",
+      "head_branch": "spec/31-m1-wire-packet",
+      "run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/runs/45972078529",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVuD9588AAAAgscjzHA",
+      "head_sha": "7a90803f852da9b7cd7593f7d8dc54380cbe445d",
+      "url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/actions/jobs/140421690140",
+      "html_url": "https://github.com/DRAGGON-Lab/FENIX/actions/runs/45972078529/job/140421690140",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-27T09:29:47Z",
+      "started_at": "2026-11-27T09:29:49Z",
+      "completed_at": "2026-11-27T09:30:00Z",
+      "name": "Candidate BioIR/FIR rejection reference agreement",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-27T09:29:49Z",
+          "completed_at": "2026-11-27T09:29:51Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-27T09:29:51Z",
+          "completed_at": "2026-11-27T09:29:52Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-27T09:29:52Z",
+          "completed_at": "2026-11-27T09:29:52Z"
+        },
+        {
+          "name": "Run astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-27T09:29:52Z",
+          "completed_at": "2026-11-27T09:29:55Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-27T09:29:55Z",
+          "completed_at": "2026-11-27T09:29:55Z"
+        },
+        {
+          "name": "Run uv sync --project packages/python --locked",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-27T09:29:55Z",
+          "completed_at": "2026-11-27T09:29:56Z"
+        },
+        {
+          "name": "Run actions/download-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-27T09:29:56Z",
+          "completed_at": "2026-11-27T09:29:57Z"
+        },
+        {
+          "name": "Compare native rejection reports with fixed catalog diagnostics",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-27T09:29:57Z",
+          "completed_at": "2026-11-27T09:29:57Z"
+        },
+        {
+          "name": "Independently check BioIR mutation digests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-27T09:29:57Z",
+          "completed_at": "2026-11-27T09:29:57Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-27T09:29:57Z",
+          "completed_at": "2026-11-27T09:29:57Z"
+        },
+        {
+          "name": "Post Run astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-11-27T09:29:57Z",
+          "completed_at": "2026-11-27T09:29:57Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-11-27T09:29:57Z",
+          "completed_at": "2026-11-27T09:29:58Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-11-27T09:29:58Z",
+          "completed_at": "2026-11-27T09:29:58Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-11-27T09:29:58Z",
+          "completed_at": "2026-11-27T09:29:58Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/DRAGGON-Lab/FENIX/check-runs/140421690140",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000003644,
+      "runner_name": "GitHub Actions 1000003644",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}
