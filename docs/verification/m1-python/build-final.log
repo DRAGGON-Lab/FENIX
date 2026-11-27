@@ -1,0 +1,241 @@
+Building source distribution...
+/private/tmp/fenix-m1-uv-cache/builds-v0/.tmpOXWN9E/lib/python3.12/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: SetuptoolsDeprecationWarning: `project.license` as a TOML table is deprecated
+!!
+
+        ********************************************************************************
+        Please use a simple string containing a SPDX expression for `project.license`. You can also use `project.license-files`. (Both options available on setuptools>=77.0.0).
+
+        By 2027-Feb-18, you need to update your project and remove deprecated calls
+        or your builds will no longer be supported.
+
+        See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+        ********************************************************************************
+
+!!
+  corresp(dist, value, root_dir)
+running egg_info
+writing src/fenix_bio.egg-info/PKG-INFO
+writing dependency_links to src/fenix_bio.egg-info/dependency_links.txt
+writing requirements to src/fenix_bio.egg-info/requires.txt
+writing top-level names to src/fenix_bio.egg-info/top_level.txt
+reading manifest file 'src/fenix_bio.egg-info/SOURCES.txt'
+writing manifest file 'src/fenix_bio.egg-info/SOURCES.txt'
+/private/tmp/fenix-m1-uv-cache/builds-v0/.tmpOXWN9E/lib/python3.12/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: SetuptoolsDeprecationWarning: `project.license` as a TOML table is deprecated
+!!
+
+        ********************************************************************************
+        Please use a simple string containing a SPDX expression for `project.license`. You can also use `project.license-files`. (Both options available on setuptools>=77.0.0).
+
+        By 2027-Feb-18, you need to update your project and remove deprecated calls
+        or your builds will no longer be supported.
+
+        See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+        ********************************************************************************
+
+!!
+  corresp(dist, value, root_dir)
+running sdist
+running egg_info
+writing src/fenix_bio.egg-info/PKG-INFO
+writing dependency_links to src/fenix_bio.egg-info/dependency_links.txt
+writing requirements to src/fenix_bio.egg-info/requires.txt
+writing top-level names to src/fenix_bio.egg-info/top_level.txt
+reading manifest file 'src/fenix_bio.egg-info/SOURCES.txt'
+writing manifest file 'src/fenix_bio.egg-info/SOURCES.txt'
+running check
+creating fenix_bio-0.0.0
+creating fenix_bio-0.0.0/src/fenix
+creating fenix_bio-0.0.0/src/fenix/bioir
+creating fenix_bio-0.0.0/src/fenix/community
+creating fenix_bio-0.0.0/src/fenix/community/schemas
+creating fenix_bio-0.0.0/src/fenix/fir
+creating fenix_bio-0.0.0/src/fenix_bio.egg-info
+creating fenix_bio-0.0.0/tests
+copying files to fenix_bio-0.0.0...
+copying README.md -> fenix_bio-0.0.0
+copying pyproject.toml -> fenix_bio-0.0.0
+copying src/fenix/__init__.py -> fenix_bio-0.0.0/src/fenix
+copying src/fenix/compiler.py -> fenix_bio-0.0.0/src/fenix
+copying src/fenix/execution.py -> fenix_bio-0.0.0/src/fenix
+copying src/fenix/py.typed -> fenix_bio-0.0.0/src/fenix
+copying src/fenix/results.py -> fenix_bio-0.0.0/src/fenix
+copying src/fenix/bioir/__init__.py -> fenix_bio-0.0.0/src/fenix/bioir
+copying src/fenix/bioir/_content.py -> fenix_bio-0.0.0/src/fenix/bioir
+copying src/fenix/bioir/_decode.py -> fenix_bio-0.0.0/src/fenix/bioir
+copying src/fenix/bioir/_documents.py -> fenix_bio-0.0.0/src/fenix/bioir
+copying src/fenix/bioir/_json.py -> fenix_bio-0.0.0/src/fenix/bioir
+copying src/fenix/community/__init__.py -> fenix_bio-0.0.0/src/fenix/community
+copying src/fenix/community/_documents.py -> fenix_bio-0.0.0/src/fenix/community
+copying src/fenix/community/_execution.py -> fenix_bio-0.0.0/src/fenix/community
+copying src/fenix/community/_results.py -> fenix_bio-0.0.0/src/fenix/community
+copying src/fenix/community/_wire.py -> fenix_bio-0.0.0/src/fenix/community
+copying src/fenix/community/schemas/bioir-m1.schema.json -> fenix_bio-0.0.0/src/fenix/community/schemas
+copying src/fenix/community/schemas/fir-m1.schema.json -> fenix_bio-0.0.0/src/fenix/community/schemas
+copying src/fenix/community/schemas/ode-result-m1.schema.json -> fenix_bio-0.0.0/src/fenix/community/schemas
+copying src/fenix/community/schemas/run-manifest-m1.schema.json -> fenix_bio-0.0.0/src/fenix/community/schemas
+copying src/fenix/fir/__init__.py -> fenix_bio-0.0.0/src/fenix/fir
+copying src/fenix/fir/_document.py -> fenix_bio-0.0.0/src/fenix/fir
+copying src/fenix/fir/_errors.py -> fenix_bio-0.0.0/src/fenix/fir
+copying src/fenix/fir/_model.py -> fenix_bio-0.0.0/src/fenix/fir
+copying src/fenix/fir/_validation.py -> fenix_bio-0.0.0/src/fenix/fir
+copying src/fenix_bio.egg-info/PKG-INFO -> fenix_bio-0.0.0/src/fenix_bio.egg-info
+copying src/fenix_bio.egg-info/SOURCES.txt -> fenix_bio-0.0.0/src/fenix_bio.egg-info
+copying src/fenix_bio.egg-info/dependency_links.txt -> fenix_bio-0.0.0/src/fenix_bio.egg-info
+copying src/fenix_bio.egg-info/requires.txt -> fenix_bio-0.0.0/src/fenix_bio.egg-info
+copying src/fenix_bio.egg-info/top_level.txt -> fenix_bio-0.0.0/src/fenix_bio.egg-info
+copying tests/test_bioir.py -> fenix_bio-0.0.0/tests
+copying tests/test_compiler.py -> fenix_bio-0.0.0/tests
+copying tests/test_documents.py -> fenix_bio-0.0.0/tests
+copying tests/test_execution.py -> fenix_bio-0.0.0/tests
+copying tests/test_fir.py -> fenix_bio-0.0.0/tests
+copying tests/test_fir_validation.py -> fenix_bio-0.0.0/tests
+copying tests/test_json.py -> fenix_bio-0.0.0/tests
+copying tests/test_results.py -> fenix_bio-0.0.0/tests
+copying tests/test_smoke.py -> fenix_bio-0.0.0/tests
+Writing fenix_bio-0.0.0/setup.cfg
+Creating tar archive
+removing 'fenix_bio-0.0.0' (and everything under it)
+Building wheel from source distribution...
+/private/tmp/fenix-m1-uv-cache/builds-v0/.tmpRBzqR8/lib/python3.12/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: SetuptoolsDeprecationWarning: `project.license` as a TOML table is deprecated
+!!
+
+        ********************************************************************************
+        Please use a simple string containing a SPDX expression for `project.license`. You can also use `project.license-files`. (Both options available on setuptools>=77.0.0).
+
+        By 2027-Feb-18, you need to update your project and remove deprecated calls
+        or your builds will no longer be supported.
+
+        See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+        ********************************************************************************
+
+!!
+  corresp(dist, value, root_dir)
+running egg_info
+writing src/fenix_bio.egg-info/PKG-INFO
+writing dependency_links to src/fenix_bio.egg-info/dependency_links.txt
+writing requirements to src/fenix_bio.egg-info/requires.txt
+writing top-level names to src/fenix_bio.egg-info/top_level.txt
+reading manifest file 'src/fenix_bio.egg-info/SOURCES.txt'
+writing manifest file 'src/fenix_bio.egg-info/SOURCES.txt'
+/private/tmp/fenix-m1-uv-cache/builds-v0/.tmpRBzqR8/lib/python3.12/site-packages/setuptools/config/_apply_pyprojecttoml.py:82: SetuptoolsDeprecationWarning: `project.license` as a TOML table is deprecated
+!!
+
+        ********************************************************************************
+        Please use a simple string containing a SPDX expression for `project.license`. You can also use `project.license-files`. (Both options available on setuptools>=77.0.0).
+
+        By 2027-Feb-18, you need to update your project and remove deprecated calls
+        or your builds will no longer be supported.
+
+        See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+        ********************************************************************************
+
+!!
+  corresp(dist, value, root_dir)
+running bdist_wheel
+running build
+running build_py
+creating build/lib/fenix
+copying src/fenix/execution.py -> build/lib/fenix
+copying src/fenix/compiler.py -> build/lib/fenix
+copying src/fenix/results.py -> build/lib/fenix
+copying src/fenix/__init__.py -> build/lib/fenix
+creating build/lib/fenix/fir
+copying src/fenix/fir/_errors.py -> build/lib/fenix/fir
+copying src/fenix/fir/__init__.py -> build/lib/fenix/fir
+copying src/fenix/fir/_document.py -> build/lib/fenix/fir
+copying src/fenix/fir/_validation.py -> build/lib/fenix/fir
+copying src/fenix/fir/_model.py -> build/lib/fenix/fir
+creating build/lib/fenix/bioir
+copying src/fenix/bioir/_json.py -> build/lib/fenix/bioir
+copying src/fenix/bioir/_documents.py -> build/lib/fenix/bioir
+copying src/fenix/bioir/_decode.py -> build/lib/fenix/bioir
+copying src/fenix/bioir/__init__.py -> build/lib/fenix/bioir
+copying src/fenix/bioir/_content.py -> build/lib/fenix/bioir
+creating build/lib/fenix/community
+copying src/fenix/community/_documents.py -> build/lib/fenix/community
+copying src/fenix/community/_results.py -> build/lib/fenix/community
+copying src/fenix/community/__init__.py -> build/lib/fenix/community
+copying src/fenix/community/_wire.py -> build/lib/fenix/community
+copying src/fenix/community/_execution.py -> build/lib/fenix/community
+running egg_info
+writing src/fenix_bio.egg-info/PKG-INFO
+writing dependency_links to src/fenix_bio.egg-info/dependency_links.txt
+writing requirements to src/fenix_bio.egg-info/requires.txt
+writing top-level names to src/fenix_bio.egg-info/top_level.txt
+reading manifest file 'src/fenix_bio.egg-info/SOURCES.txt'
+writing manifest file 'src/fenix_bio.egg-info/SOURCES.txt'
+copying src/fenix/py.typed -> build/lib/fenix
+creating build/lib/fenix/community/schemas
+copying src/fenix/community/schemas/bioir-m1.schema.json -> build/lib/fenix/community/schemas
+copying src/fenix/community/schemas/run-manifest-m1.schema.json -> build/lib/fenix/community/schemas
+copying src/fenix/community/schemas/fir-m1.schema.json -> build/lib/fenix/community/schemas
+copying src/fenix/community/schemas/ode-result-m1.schema.json -> build/lib/fenix/community/schemas
+installing to build/bdist.macosx-10.15-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.macosx-10.15-x86_64/wheel
+creating build/bdist.macosx-10.15-x86_64/wheel/fenix
+creating build/bdist.macosx-10.15-x86_64/wheel/fenix/fir
+copying build/lib/fenix/fir/_errors.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/fir
+copying build/lib/fenix/fir/__init__.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/fir
+copying build/lib/fenix/fir/_document.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/fir
+copying build/lib/fenix/fir/_validation.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/fir
+copying build/lib/fenix/fir/_model.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/fir
+copying build/lib/fenix/execution.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix
+copying build/lib/fenix/compiler.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix
+copying build/lib/fenix/results.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix
+creating build/bdist.macosx-10.15-x86_64/wheel/fenix/bioir
+copying build/lib/fenix/bioir/_json.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/bioir
+copying build/lib/fenix/bioir/_documents.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/bioir
+copying build/lib/fenix/bioir/_decode.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/bioir
+copying build/lib/fenix/bioir/__init__.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/bioir
+copying build/lib/fenix/bioir/_content.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/bioir
+copying build/lib/fenix/__init__.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix
+copying build/lib/fenix/py.typed -> build/bdist.macosx-10.15-x86_64/wheel/./fenix
+creating build/bdist.macosx-10.15-x86_64/wheel/fenix/community
+copying build/lib/fenix/community/_documents.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/community
+copying build/lib/fenix/community/_results.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/community
+copying build/lib/fenix/community/__init__.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/community
+copying build/lib/fenix/community/_wire.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/community
+copying build/lib/fenix/community/_execution.py -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/community
+creating build/bdist.macosx-10.15-x86_64/wheel/fenix/community/schemas
+copying build/lib/fenix/community/schemas/bioir-m1.schema.json -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/community/schemas
+copying build/lib/fenix/community/schemas/run-manifest-m1.schema.json -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/community/schemas
+copying build/lib/fenix/community/schemas/fir-m1.schema.json -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/community/schemas
+copying build/lib/fenix/community/schemas/ode-result-m1.schema.json -> build/bdist.macosx-10.15-x86_64/wheel/./fenix/community/schemas
+running install_egg_info
+Copying src/fenix_bio.egg-info to build/bdist.macosx-10.15-x86_64/wheel/./fenix_bio-0.0.0-py3.12.egg-info
+running install_scripts
+creating build/bdist.macosx-10.15-x86_64/wheel/fenix_bio-0.0.0.dist-info/WHEEL
+creating '/private/tmp/fenix-m1-python/packages/python/dist/.tmp-967u2fuu/fenix_bio-0.0.0-py3-none-any.whl' and adding 'build/bdist.macosx-10.15-x86_64/wheel' to it
+adding 'fenix/__init__.py'
+adding 'fenix/compiler.py'
+adding 'fenix/execution.py'
+adding 'fenix/py.typed'
+adding 'fenix/results.py'
+adding 'fenix/bioir/__init__.py'
+adding 'fenix/bioir/_content.py'
+adding 'fenix/bioir/_decode.py'
+adding 'fenix/bioir/_documents.py'
+adding 'fenix/bioir/_json.py'
+adding 'fenix/community/__init__.py'
+adding 'fenix/community/_documents.py'
+adding 'fenix/community/_execution.py'
+adding 'fenix/community/_results.py'
+adding 'fenix/community/_wire.py'
+adding 'fenix/community/schemas/bioir-m1.schema.json'
+adding 'fenix/community/schemas/fir-m1.schema.json'
+adding 'fenix/community/schemas/ode-result-m1.schema.json'
+adding 'fenix/community/schemas/run-manifest-m1.schema.json'
+adding 'fenix/fir/__init__.py'
+adding 'fenix/fir/_document.py'
+adding 'fenix/fir/_errors.py'
+adding 'fenix/fir/_model.py'
+adding 'fenix/fir/_validation.py'
+adding 'fenix_bio-0.0.0.dist-info/METADATA'
+adding 'fenix_bio-0.0.0.dist-info/WHEEL'
+adding 'fenix_bio-0.0.0.dist-info/top_level.txt'
+adding 'fenix_bio-0.0.0.dist-info/RECORD'
+removing build/bdist.macosx-10.15-x86_64/wheel
+Successfully built packages/python/dist/fenix_bio-0.0.0.tar.gz
+Successfully built packages/python/dist/fenix_bio-0.0.0-py3-none-any.whl

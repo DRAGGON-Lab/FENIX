@@ -1,0 +1,33 @@
+name: Native Python M1 community
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  python-community:
+    name: Native Python M1 community and clean wheel
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9
+        with:
+          version: '0.11.29'
+      - run: uv sync --project packages/python --locked
+      - run: uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_community -v
+      - run: uv run --project packages/python --locked --offline ruff check packages/python/src/fenix/community packages/python/tests_native_community
+      - run: uv run --project packages/python --locked --offline ruff format --check packages/python/src/fenix/community packages/python/tests_native_community
+      - run: uv run --project packages/python --locked --offline mypy --config-file packages/python/pyproject.toml
+      - run: uv build --project packages/python
+      - name: Independent runtime-only wheel
+        run: |
+          uv venv --python 3.12 /tmp/fenix-community-wheel
+          uv export --project packages/python --locked --no-dev --no-emit-project -o /tmp/fenix-community-runtime.txt
+          uv pip install --python /tmp/fenix-community-wheel/bin/python --require-hashes -r /tmp/fenix-community-runtime.txt
+          uv pip install --python /tmp/fenix-community-wheel/bin/python --no-deps packages/python/dist/*.whl
+          /tmp/fenix-community-wheel/bin/python -m unittest discover -s packages/python/tests_native_community -v
+          /tmp/fenix-community-wheel/bin/python -m unittest discover -s packages/python/tests -v

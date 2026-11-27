@@ -1,0 +1,8 @@
+test_original_92 (test_conformance.TestNativeConformance.test_original_92) ... ok
+test_rejection_catalog_97_p01 (test_conformance.TestNativeConformance.test_rejection_catalog_97_p01) ... ok
+test_serialized_envelopes_match_schema (test_conformance.TestNativeConformance.test_serialized_envelopes_match_schema) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.332s
+
+OK

@@ -1,0 +1,602 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:fenix:proposed:p08:run-manifest-m1",
+  "title": "PROPOSED P08 community run manifest 0.2.0",
+  "$comment": "Structural candidate only. Raw tokens, exact source correspondence and independent scientific approval remain separate.",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "const": "RunManifest"
+    },
+    "schema_version": {
+      "const": "0.2.0"
+    },
+    "status": {
+      "const": "success"
+    },
+    "repeatability": {
+      "const": "bounded_numerical_agreement"
+    },
+    "sources": {
+      "type": "object",
+      "properties": {
+        "design": {
+          "$ref": "#/definitions/source"
+        },
+        "experiment": {
+          "$ref": "#/definitions/source"
+        }
+      },
+      "required": [
+        "design",
+        "experiment"
+      ],
+      "additionalProperties": false
+    },
+    "fir": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "0.2.0"
+        },
+        "canonicalization_version": {
+          "const": "0.2.0"
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        }
+      },
+      "required": [
+        "schema_version",
+        "canonicalization_version",
+        "digest"
+      ],
+      "additionalProperties": false
+    },
+    "execution": {
+      "type": "object",
+      "properties": {
+        "profile": {
+          "const": "ode"
+        },
+        "time_grid": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          },
+          "minItems": 1
+        },
+        "rtol": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "atol": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "max_step": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "max_nfev": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "profile",
+        "time_grid",
+        "rtol",
+        "atol",
+        "max_step",
+        "max_nfev"
+      ],
+      "additionalProperties": false
+    },
+    "randomness": {
+      "type": "object",
+      "properties": {
+        "rng": {
+          "const": "none"
+        },
+        "seed": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "rng",
+        "seed"
+      ],
+      "additionalProperties": false
+    },
+    "evaluations": {
+      "type": "object",
+      "properties": {
+        "nfev": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "nfev"
+      ],
+      "additionalProperties": false
+    },
+    "timing": {
+      "type": "object",
+      "properties": {
+        "started_at_utc": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{6}Z$",
+          "minLength": 27,
+          "maxLength": 27
+        },
+        "finished_at_utc": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{6}Z$",
+          "minLength": 27,
+          "maxLength": 27
+        },
+        "elapsed_seconds": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "started_at_utc",
+        "finished_at_utc",
+        "elapsed_seconds"
+      ],
+      "additionalProperties": false
+    },
+    "integration": {
+      "enum": [
+        "performed",
+        "skipped_zero_grid"
+      ]
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "0.2.0"
+        },
+        "media_type": {
+          "const": "application/json"
+        },
+        "encoding": {
+          "const": "utf-8"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        }
+      },
+      "required": [
+        "schema_version",
+        "media_type",
+        "encoding",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "producer": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "build_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "required": [
+        "name",
+        "version",
+        "build_id"
+      ],
+      "additionalProperties": false
+    },
+    "backend": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/pythonScipyODE"
+        },
+        {
+          "$ref": "#/definitions/juliaScimlODE"
+        }
+      ]
+    }
+  },
+  "required": [
+    "kind",
+    "schema_version",
+    "status",
+    "repeatability",
+    "sources",
+    "fir",
+    "execution",
+    "randomness",
+    "evaluations",
+    "timing",
+    "integration",
+    "output",
+    "producer",
+    "backend"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "source": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "0.2.0"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+          "maxLength": 64,
+          "not": {
+            "pattern": "[^A-Za-z0-9_-]"
+          }
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "revision",
+        "digest"
+      ],
+      "additionalProperties": false
+    },
+    "pythonScipyODE": {
+      "type": "object",
+      "properties": {
+        "profile": {
+          "const": "python-scipy-community-ode/0.1.0"
+        },
+        "solver": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "const": "scipy.integrate.solve_ivp"
+            },
+            "method": {
+              "enum": [
+                "DOP853",
+                "Radau"
+              ]
+            },
+            "options": {
+              "type": "object",
+              "properties": {
+                "first_step": {
+                  "type": "null"
+                },
+                "vectorized": {
+                  "const": false
+                },
+                "dense_output": {
+                  "const": false
+                },
+                "events": {
+                  "type": "null"
+                },
+                "jacobian": {
+                  "enum": [
+                    "state_dependent_exact",
+                    "not_supplied"
+                  ]
+                }
+              },
+              "required": [
+                "first_step",
+                "vectorized",
+                "dense_output",
+                "events",
+                "jacobian"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "name",
+            "method",
+            "options"
+          ],
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "method": {
+                    "const": "Radau"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "options": {
+                    "properties": {
+                      "jacobian": {
+                        "const": "state_dependent_exact"
+                      }
+                    }
+                  }
+                }
+              },
+              "else": {
+                "properties": {
+                  "options": {
+                    "properties": {
+                      "jacobian": {
+                        "const": "not_supplied"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "environment": {
+          "type": "object",
+          "properties": {
+            "python_implementation": {
+              "type": "string",
+              "minLength": 1
+            },
+            "python_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "rfc8785_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "numpy_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "scipy_version": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "python_implementation",
+            "python_version",
+            "rfc8785_version",
+            "numpy_version",
+            "scipy_version"
+          ],
+          "additionalProperties": false
+        },
+        "evaluations": {
+          "type": "object",
+          "properties": {
+            "njev": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "nlu": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "njev",
+            "nlu"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "profile",
+        "solver",
+        "environment",
+        "evaluations"
+      ],
+      "additionalProperties": false
+    },
+    "juliaScimlODE": {
+      "type": "object",
+      "properties": {
+        "profile": {
+          "const": "julia-sciml-community-ode/0.1.0"
+        },
+        "solver": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "const": "SciMLBase.solve"
+            },
+            "method": {
+              "enum": [
+                "Tsit5",
+                "Rodas5P"
+              ]
+            },
+            "options": {
+              "type": "object",
+              "properties": {
+                "dt": {
+                  "type": "null"
+                },
+                "adaptive": {
+                  "const": true
+                },
+                "saveat": {
+                  "const": "requested_grid"
+                },
+                "save_start": {
+                  "type": "boolean"
+                },
+                "save_end": {
+                  "const": true
+                },
+                "save_everystep": {
+                  "const": false
+                },
+                "dense": {
+                  "const": false
+                },
+                "callback": {
+                  "type": "null"
+                },
+                "force_dtmin": {
+                  "const": false
+                },
+                "dtmin": {
+                  "const": "backend_default"
+                },
+                "maxiters": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "jacobian": {
+                  "const": "state_dependent_exact_inplace"
+                },
+                "time_derivative": {
+                  "const": "autonomous_zero_inplace"
+                }
+              },
+              "required": [
+                "dt",
+                "adaptive",
+                "saveat",
+                "save_start",
+                "save_end",
+                "save_everystep",
+                "dense",
+                "callback",
+                "force_dtmin",
+                "dtmin",
+                "maxiters",
+                "jacobian",
+                "time_derivative"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "name",
+            "method",
+            "options"
+          ],
+          "additionalProperties": false
+        },
+        "environment": {
+          "type": "object",
+          "properties": {
+            "julia_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "scimlbase_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "ordinarydiffeqtsit5_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "ordinarydiffeqrosenbrock_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "json_version": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "julia_version",
+            "scimlbase_version",
+            "ordinarydiffeqtsit5_version",
+            "ordinarydiffeqrosenbrock_version",
+            "json_version"
+          ],
+          "additionalProperties": false
+        },
+        "evaluations": {
+          "type": "object",
+          "properties": {
+            "njev": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "nw": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "njev",
+            "nw"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "profile",
+        "solver",
+        "environment",
+        "evaluations"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "backend": {
+            "properties": {
+              "profile": {
+                "const": "python-scipy-community-ode/0.1.0"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "execution": {
+            "properties": {
+              "rtol": {
+                "minimum": 2.220446049250313e-14
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

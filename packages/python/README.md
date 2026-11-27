@@ -413,3 +413,71 @@ embedded build identifier; readback preserves non-null recorded IDs. Build-ID
 generation and broader provenance (#42) retain separate gates. Julia results
 and the PI-accepted independent ODE evidence (#29) are now integrated; see the
 [alpha candidate](../../docs/verification/m0-alpha/README.md) for remaining release gates.
+
+## Bounded M1 community API
+
+`fenix.community` implements the [PI-accepted P08 executable profile](../../docs/verification/m1-executable-acceptance.md).
+It has a separate namespace and schema/template dispatch from M0. Each Design
+and Experiment is immutable and content-verified; returned dictionaries are fresh
+copies. Author explicitly with `Design.from_content(content)` and
+`Experiment.from_content(content, design=design)`, using the closed accepted
+0.2.0 JSON shapes. `replace_content` checks logical identity and increasing
+revision against the current document. Raw readers verify supplied digests,
+strict numeric tokens, Unicode, bindings and exact local Design correspondence.
+There is no network resolver, migration or callback serialization.
+
+```python
+from pathlib import Path
+from fenix.community import Design, Experiment, compile_experiment, run_experiment, RunRecord
+from fenix.execution import ODEExecutionSpec
+
+packet = Path("spec/community/wire-candidates/two-strain-transient")
+design = Design.from_json((packet / "design.json").read_bytes())
+experiment = Experiment.from_json((packet / "experiment.json").read_bytes(), design=design)
+fir = compile_experiment(experiment)
+settings = ODEExecutionSpec(time_grid=(0.0, 1.0, 4.0), method="Radau",
+                           rtol=1e-9, atol=1e-11, max_step=1.0, max_nfev=200000)
+record = run_experiment(experiment, settings, build_id="example-build")
+verified = RunRecord.from_json(record.result_bytes, record.manifest_bytes,
+                              experiment=experiment)
+assert verified.result.to_dict()["fir_digest"] == fir.digest
+```
+
+The example inputs are repository references; the installed library itself loads
+only its packaged finite contracts and native dependencies. It does not import
+reference tools or require the repository, Julia, jsonschema, or development
+packages. Schema title/status labels retain their reviewed historical bytes;
+the acceptance record supplies the later scientific decision.
+
+`FIR.from_json(raw, experiment=experiment)` verifies every source value and map
+before mathematical normalization. `model_bytes()`, `identity_bytes()` and
+`digest` implement the accepted 0.2.0 domain wrapper and three sortable collections.
+Provenance remains outside identity and must agree with the supplied immutable
+sources. Only the finite exchange/Hill template is supported.
+
+`solve_ode(fir, settings)` uses DOP853 or Radau without clipping, fallback or
+analytical substitution. The canonical state order is `env.signal,
+receiver.reporter, receiver.signal, sender.signal`, with explicit per-cell/total
+scope metadata in captured results. Radau uses the full state-dependent exact
+Jacobian. Undefined/nonfinite arithmetic, negative sensing stages, exhausted work
+budgets, incomplete output and negative returned counts fail explicitly through
+`ODEExecutionError`. Valid mathematics can fail at internal sensing stages.
+Zero-only grids validate and skip integration. This API promises bounded
+numerical agreement within the accepted profile, not universal success or replay.
+
+Capture compiles once and solves once. Readback recompiles without solving,
+checks original result bytes/checksum, exact sources/identity, state and observable
+columns/scopes, grids (including signed zero), integer-form counters and backend
+options. `expected_manifest_sha256` can supply an externally trusted checksum.
+Python and Julia wire profiles can be read without executing either backend;
+this package produces Python/SciPy runs only. Observed runtime/build fields are
+opaque on readback. Consistency checks do not authenticate execution or establish
+accuracy or biological validity. M1 native implementation review and independent
+Julia/integration gates remain separate from contract/reference acceptance.
+
+```sh
+uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_community -v
+uv run --project packages/python --locked --offline ruff check packages/python/src/fenix/community packages/python/tests_native_community
+uv run --project packages/python --locked --offline ruff format --check packages/python/src/fenix/community packages/python/tests_native_community
+uv run --project packages/python --locked --offline mypy --config-file packages/python/pyproject.toml
+```

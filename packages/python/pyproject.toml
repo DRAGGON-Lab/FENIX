@@ -20,7 +20,7 @@ dependencies = [
 where = ["src"]
 
 [tool.setuptools.package-data]
-fenix = ["py.typed"]
+fenix = ["py.typed", "community/schemas/*.json"]
 
 [tool.ruff]
 target-version = "py312"
