@@ -107,6 +107,15 @@ def raw_case(row):
 
 
 def audit():
+    manifest = read(HERE / "review-manifest.json", "transport")
+    root = HERE.parents[1]
+    for name, expected in manifest["sha256"].items():
+        path = (root / name).resolve()
+        assert path.is_relative_to(root), "artifact path escapes repository"
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == expected, (
+            "artifact fingerprint",
+            name,
+        )
     catalog = read(FIXTURES / "catalog.json", "transport")
     assert catalog["status"] == "PROPOSED", (
         "approval status must be explicitly revised, never inferred"

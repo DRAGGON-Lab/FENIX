@@ -21,6 +21,19 @@ byte artifacts are candidate expectations for independent review, not accepted
 golden values. The analytical result/manifest examples are explicitly
 illustrative, not source-linked evidence of native solver execution.
 
+The [artifact manifest](../../spec/community/review-manifest.json) fingerprints
+the complete contract/candidate/tool set, unchanged analytical references,
+frozen settings and dependency locks. The wire auditor verifies these hashes
+before processing the catalog. Exact-revision review must include that manifest
+and the separately revision-bound hosted numerical receipts.
+
+| Unchanged reference artifact | SHA-256 |
+|---|---|
+| `conformance/community/cases.json` | `af83c53f942e21b63f87519b8540145e627c9082462fc9aeb3d9937329c6aa6b` |
+| `conformance/community/reference.py` | `075e9dd3207a0d45bf5665ea17f0cd581d6ad2aa76252db0c5c6dcdf2167630f` |
+| `conformance/community/reference.jl` | `04c7712400cbc4512ca06454e7215085b1e310dc929e628dc89fd230e654729b` |
+| `conformance/community/feasibility/settings.json` | `a39091f231a5b101c1e430d53eec6327e337b0e3f04a2870473bcfbc64ef3fc8` |
+
 ## Verification
 
 | Check | Outcome |
