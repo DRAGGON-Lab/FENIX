@@ -49,7 +49,10 @@ for (const [number, expected] of [[-0,'0'],[5e-324,'5e-324'],[1e-6,'0.000001'],
 console.log('PASS independent ECMAScript source/model/identity bytes:',catalog.positive.length);
 for (const row of parse(path.join(root,'transport-vectors.json'))) {
   const token = row.raw.match(/-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?/)[0];
-  if (row.bits) {
+  if (row.category) {
+    if (row.category === "NUMBER_RANGE") assert(!Number.isFinite(Number(token)));
+    else assert(!/^-?(0|[1-9][0-9]*)$/.test(token));
+  } else if (row.bits) {
     const bytes=Buffer.alloc(8);bytes.writeDoubleBE(Number(token));
     assert.equal(bytes.toString('hex'),row.bits);
   } else assert.equal(BigInt(token).toString(),row.decimal);

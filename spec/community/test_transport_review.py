@@ -25,6 +25,14 @@ class TransportReview(unittest.TestCase):
                     if row["kind"] == "result"
                     else wire.decode_manifest
                 )
+                if "category" in row:
+                    with self.assertRaises(wire.Rejection) as caught:
+                        decode(row["raw"])
+                    self.assertEqual(
+                        (caught.exception.category, caught.exception.path),
+                        (row["category"], row["error_path"]),
+                    )
+                    continue
                 value = decode(row["raw"])
                 for key in row["path"]:
                     value = value[key]

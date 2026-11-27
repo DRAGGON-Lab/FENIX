@@ -96,3 +96,25 @@ bounded numerical evidence/criteria. The existing approval of completion scope
 does not supply this separate decision. After acceptance, Python #32 proceeds
 first, then Julia #33, then independent integration/installation gate #35.
 Oscillator delivery #84 and its separate P10 contract remain downstream.
+
+## Review corrections after 08462bd — pending scientific review
+
+The numeric transport decoder now converts scientific integer-form tokens to
+finite binary64 before ordering, initial-state and grid checks. Budgets,
+evaluation counters and source revisions retain exact integer decoding. Result
+and manifest grids compare elementwise binary64 bits, including signed zero.
+Literal independent bit/decimal vectors and grid witnesses are retained beside
+the original catalog; these transport-only witnesses are not trajectory oracles.
+An independently derived packet inventory now requires complete fingerprint
+coverage, including conformance tools, workflow, verification handoff and receipts.
+Julia successful tails are compared in all four columns with the existing
+analytical law and unchanged bounds, including precision refinement and explicit
+corrupted-success controls. Historical receipts remain unchanged and historical.
+
+PASS locally: 11 wire-review tests, independent ECMAScript audit, 88 package
+regressions, eight community reference tests, nine retained SciPy feasibility
+tests, six harness tests, repository checker and Ruff. The original overflow
+control now expects the precise `/state_values/0/3` diagnostic. Only affected
+PROPOSED expectations and fingerprints changed. Final reviewed head/merge SHAs
+and hosted community/M0 gate evidence are recorded in PR #95's description.
+No native implementation, issue closure or PI ratification follows from this fix.
