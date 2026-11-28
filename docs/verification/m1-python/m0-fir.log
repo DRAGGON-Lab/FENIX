@@ -1,0 +1,8 @@
+test_all_207_rejection_cases (test_fir_conformance.TestNativeFIR.test_all_207_rejection_cases) ... ok
+test_canonical_catalog (test_fir_conformance.TestNativeFIR.test_canonical_catalog) ... ok
+test_compiler_producer_controls (test_fir_conformance.TestNativeFIR.test_compiler_producer_controls) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 4.187s
+
+OK

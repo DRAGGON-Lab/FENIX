@@ -1,0 +1,55 @@
+{
+  "review": "Native Python M1 engineering review",
+  "status": "PASS",
+  "blocking_findings": [],
+  "resolved_findings": [
+    {
+      "severity": "low",
+      "location": "packages/python/src/fenix/community/_results.py:190",
+      "trigger": "Unpaired-surrogate str supplied to RunRecord.from_json as either input",
+      "initial_outcome": "UnicodeEncodeError without category/path",
+      "final_outcome": "CommunityValidationError UNICODE at empty path",
+      "disposition": "Parent repaired input encoding and added regression; independent reproduction verified both branches"
+    }
+  ],
+  "independent_schema_mutations": [
+    {
+      "schema": "ode-result",
+      "mutations": 144,
+      "differences": 0,
+      "status": "PASS"
+    },
+    {
+      "schema": "run-manifest",
+      "mutations": 585,
+      "differences": 0,
+      "status": "PASS"
+    },
+    {
+      "schema": "bioir",
+      "mutations": 846,
+      "differences": 0,
+      "status": "PASS"
+    },
+    {
+      "schema": "fir",
+      "mutations": 2979,
+      "differences": 0,
+      "status": "PASS"
+    }
+  ],
+  "reproduction_command": "packages/python/.venv/bin/python /private/tmp/fenix-python-m1-schema-probes.py --root .",
+  "packaged_schema_copies_match_accepted_bytes": true,
+  "source_files_sha256": {
+    "packages/python/src/fenix/community/_documents.py": "eb97de5d1ffc4583da19ceda6661e67506c88f3b7c6850ddd3e94e49b964675d",
+    "packages/python/src/fenix/community/_results.py": "5b0ffe704ffbcb7002f4a086069c0af952beed78915f2bba809bb4340781e6eb",
+    "packages/python/src/fenix/community/__init__.py": "7f86b8b9bca41410476e4c12ff4b9962bab31f4d5f80365ee07c26ce7e5b964c",
+    "packages/python/src/fenix/community/_wire.py": "36c90c563615af6f9b2343a8122256573e816725afbff929f7145b1435e2f57d",
+    "packages/python/src/fenix/community/_execution.py": "abc8b76e4f4d11d07772902807b209e063ecf0f14c1331c06482d4b4955e5980"
+  },
+  "limitations": [
+    "Full native suite, M0 regressions, wheel install and protected CI are root-owned and not independently executed here",
+    "Scalar differential probes cover fixed representatives, not exhaustive generated-input conformance",
+    "Numerical kernel reviewed separately"
+  ]
+}

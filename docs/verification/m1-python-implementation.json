@@ -1,0 +1,342 @@
+{
+  "schema_version": "1.0",
+  "issue": 32,
+  "status": "LOCAL_VERIFICATION_PASS",
+  "implementation_acceptance": "PENDING_REVIEW_AND_CI",
+  "created_utc": "2026-11-27T21:41:37.542181+00:00",
+  "base_revision": "cf2ecbaf558b4843dbaa7d4467b2888e1b389e69",
+  "branch": "feat/32-python-community",
+  "approved_contract_head": "7a90803f852da9b7cd7593f7d8dc54380cbe445d",
+  "approved_contract_merge": "301dc0542a8bc08750de5796df3269881819b1ca",
+  "source_files_sha256": {
+    "packages/python/src/fenix/community/__init__.py": "7f86b8b9bca41410476e4c12ff4b9962bab31f4d5f80365ee07c26ce7e5b964c",
+    "packages/python/src/fenix/community/_documents.py": "eb97de5d1ffc4583da19ceda6661e67506c88f3b7c6850ddd3e94e49b964675d",
+    "packages/python/src/fenix/community/_execution.py": "ef446e86dc70cece77bfed3d16dd32bdcc1cc4e36df76dd1ef952b06a208e79f",
+    "packages/python/src/fenix/community/_results.py": "4b5bb73cbf0925286944c4fd7e2568bb762c4b8e627ce5c3d6540a41f95d5881",
+    "packages/python/src/fenix/community/_wire.py": "36c90c563615af6f9b2343a8122256573e816725afbff929f7145b1435e2f57d",
+    "packages/python/src/fenix/community/schemas/bioir-m1.schema.json": "e5af1fcf444d6b2cffdfc4fcac4169f640f46de5560e35d77aaea8300240ade4",
+    "packages/python/src/fenix/community/schemas/fir-m1.schema.json": "d00aa5f65108c37a7649708b12d301487c94645cc7cde191bb91cdc357c4aeeb",
+    "packages/python/src/fenix/community/schemas/ode-result-m1.schema.json": "b570d05acfd8b6519cc1ba3c05af3ba2ed611e6689eb8f330c2a684131dc8d11",
+    "packages/python/src/fenix/community/schemas/run-manifest-m1.schema.json": "6e5c7f8f944e61457436cd9c32fedbeaa9072a0e49288cb6b894fac38a10b82b",
+    "packages/python/tests_native_community/test_community.py": "583610d02b4301876dbab6f2a932779affa9cb744c36a2b8d8877350e46dced4",
+    "packages/python/pyproject.toml": "e0b74872ef2ad64d3c8816e38f404a571cb569aa44aeb4ef9f7c2606b50b5dd7",
+    "packages/python/README.md": "4d51f0733b219b9f81e35ac0087e245776b70ec33dd277161867935e2abfb570",
+    ".github/workflows/native-community-python.yml": "18c75061642bc1785daf731636b21c429e1aa055b40cf8b402d5d1ecef859393"
+  },
+  "protected_artifacts": {
+    "status": "PASS",
+    "count": 307,
+    "missing_or_changed": [],
+    "manifest_sha256": "30255a118bcd17ba8f75d500eaec161bf9c1443f77c15ba74282e7c032f4da81",
+    "runtime_schema_copies_match": true,
+    "locks_unchanged": true
+  },
+  "environment": {
+    "python": "3.12.13",
+    "uv": "0.11.29",
+    "numpy": "2.5.5",
+    "scipy": "1.18.1",
+    "julia_runtime_dependency": false,
+    "new_runtime_dependencies": []
+  },
+  "coverage": {
+    "positive_packets": 14,
+    "rejection_witnesses": 56,
+    "lexical_projections": 17,
+    "transport_vectors": 10,
+    "grid_vectors": 6,
+    "native_test_methods": 16,
+    "full_suite_methods_at_measured_run": 15,
+    "additional_late_first_test_methods": 1,
+    "methods": [
+      "DOP853",
+      "Radau"
+    ],
+    "settings": 2,
+    "bounded_integrations": 40,
+    "four_state_samples": 120,
+    "independent_schema_mutations": 4554,
+    "schema_differences": 0,
+    "m0_package_test_methods": 88,
+    "m0_projection_suites": [
+      "content",
+      "documents",
+      "fir"
+    ]
+  },
+  "checks": [
+    {
+      "name": "community",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_community -v",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:30:49.290263+00:00",
+      "finished_utc": "2026-11-27T21:31:59.362345+00:00",
+      "log": "docs/verification/m1-python/community.log",
+      "log_sha256": "748c2b5f3e7d1469d43e591199ccfb6dcbaea06121c85b07cc00865883fb8679"
+    },
+    {
+      "name": "m0-package",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests -v",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:30:49.296194+00:00",
+      "finished_utc": "2026-11-27T21:31:45.688681+00:00",
+      "log": "docs/verification/m1-python/m0-package.log",
+      "log_sha256": "05a15825d5de8e10ea411b2b568e54b304fb95f2c5fce6ef321622727f745613"
+    },
+    {
+      "name": "m0-content",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_content -v",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:30:49.303739+00:00",
+      "finished_utc": "2026-11-27T21:30:51.282594+00:00",
+      "log": "docs/verification/m1-python/m0-content.log",
+      "log_sha256": "4bcbd0036f337017d6d51ccbb74ac3c2639ad501cb28cc75ff5147fe709dcbfb"
+    },
+    {
+      "name": "m0-documents",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_documents -v",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:30:51.283984+00:00",
+      "finished_utc": "2026-11-27T21:30:54.446784+00:00",
+      "log": "docs/verification/m1-python/m0-documents.log",
+      "log_sha256": "ae2e553cfcd1052aaa91dd2d3a73f0cf92af966378658388030f86e891c79935"
+    },
+    {
+      "name": "m0-fir",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_fir -v",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:30:54.447891+00:00",
+      "finished_utc": "2026-11-27T21:31:00.584608+00:00",
+      "log": "docs/verification/m1-python/m0-fir.log",
+      "log_sha256": "ad74c7f21f0781c5bca4b318a2b0e54cbeeee0db1f936ce6203ecd0bfa9514dd"
+    },
+    {
+      "name": "repo",
+      "command": "uv run --project packages/python --locked --offline python scripts/check_repo.py",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:31:00.585637+00:00",
+      "finished_utc": "2026-11-27T21:31:03.023125+00:00",
+      "log": "docs/verification/m1-python/repo.log",
+      "log_sha256": "8e8c8f9c13bdb5c2b4d3f55f913fc3adac04cb5fc5d4b3b77e976b236487fb49"
+    },
+    {
+      "name": "harness",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s scripts/tests -v",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:31:03.024182+00:00",
+      "finished_utc": "2026-11-27T21:31:04.685075+00:00",
+      "log": "docs/verification/m1-python/harness.log",
+      "log_sha256": "ed0340e049c9fcddac221619816a4ae31ed9bcaea516fc75377fb7d8299a1b77"
+    },
+    {
+      "name": "protected-packet",
+      "command": "uv run --project packages/python --locked --offline python docs/verification/m1-executable-acceptance/audit_packet.py",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:31:04.686332+00:00",
+      "finished_utc": "2026-11-27T21:31:06.047974+00:00",
+      "log": "docs/verification/m1-python/protected-packet.log",
+      "log_sha256": "ffd2ba8123fe5841ed60ab6cccf365e963d40c073200888c993256c68b0e2978"
+    },
+    {
+      "name": "ruff",
+      "command": "uv run --project packages/python --locked --offline ruff check packages/python/src/fenix/community packages/python/tests_native_community",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:31:06.049001+00:00",
+      "finished_utc": "2026-11-27T21:31:06.309248+00:00",
+      "log": "docs/verification/m1-python/ruff.log",
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "name": "format",
+      "command": "uv run --project packages/python --locked --offline ruff format --check packages/python/src/fenix/community packages/python/tests_native_community",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:31:06.310245+00:00",
+      "finished_utc": "2026-11-27T21:31:06.469037+00:00",
+      "log": "docs/verification/m1-python/format.log",
+      "log_sha256": "ef7d13d02214e98ca902b05257cdbe6a8e84f3b4714508efdc19766460b54209"
+    },
+    {
+      "name": "community-final",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_community -v",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:33:47.952076+00:00",
+      "finished_utc": "2026-11-27T21:34:54.516356+00:00",
+      "log": "docs/verification/m1-python/community-final.log",
+      "log_sha256": "2d3cfcdcf907b118e59cad1b8b0c3e0a33e3c065ddc67f656f3dc04b33930940"
+    },
+    {
+      "name": "schema-probes",
+      "command": "uv run --project packages/python --locked --offline python docs/verification/m1-python/schema_probes.py --root .",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:33:47.964394+00:00",
+      "finished_utc": "2026-11-27T21:35:58.734177+00:00",
+      "log": "docs/verification/m1-python/schema-probes.log",
+      "log_sha256": "7392aaeade3f5d3298cbf6f87d4c4f330587486f6b0991b8cbdbd8b588d9d3b9"
+    },
+    {
+      "name": "mypy-final",
+      "command": "uv run --project packages/python --locked --offline mypy --config-file packages/python/pyproject.toml",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:33:47.973184+00:00",
+      "finished_utc": "2026-11-27T21:33:52.525129+00:00",
+      "log": "docs/verification/m1-python/mypy-final.log",
+      "log_sha256": "2d6b2fd3da664bcd3c10a511fd2cb9bf5f7517722cb0753d911d03540bfa3cbf"
+    },
+    {
+      "name": "build-final",
+      "command": "uv build --project packages/python --offline",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:33:52.526114+00:00",
+      "finished_utc": "2026-11-27T21:34:12.068175+00:00",
+      "log": "docs/verification/m1-python/build-final.log",
+      "log_sha256": "cc4b68e5605592c734749672716bf1ae3d6670df0bdd48678e5ddec8f515427f"
+    },
+    {
+      "name": "style-final",
+      "command": "uv run --project packages/python --locked --offline ruff check packages/python/src/fenix/community packages/python/tests_native_community",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:34:12.069290+00:00",
+      "finished_utc": "2026-11-27T21:34:12.402642+00:00",
+      "log": "docs/verification/m1-python/style-final.log",
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "name": "format-final",
+      "command": "uv run --project packages/python --locked --offline ruff format --check packages/python/src/fenix/community packages/python/tests_native_community",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:34:12.403333+00:00",
+      "finished_utc": "2026-11-27T21:34:12.551098+00:00",
+      "log": "docs/verification/m1-python/format-final.log",
+      "log_sha256": "ef7d13d02214e98ca902b05257cdbe6a8e84f3b4714508efdc19766460b54209"
+    },
+    {
+      "name": "wheel-community",
+      "command": "/private/tmp/fenix-m1-python-wheel/bin/python -m unittest discover -s packages/python/tests_native_community -v",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:35:41.061317+00:00",
+      "finished_utc": "2026-11-27T21:39:39.353730+00:00",
+      "log": "docs/verification/m1-python/wheel-community.log",
+      "log_sha256": "807267940061c9f55939ebdd605e30efa8d0ea16e0598a3d75ad376399f365a2"
+    },
+    {
+      "name": "wheel-m0",
+      "command": "/private/tmp/fenix-m1-python-wheel/bin/python -m unittest discover -s packages/python/tests -v",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:35:41.066364+00:00",
+      "finished_utc": "2026-11-27T21:39:25.047851+00:00",
+      "log": "docs/verification/m1-python/wheel-m0.log",
+      "log_sha256": "5d5c6847bdc247708c691ffa1bddb2aae4c2130b8ad6c83bb0b54420b411fb61"
+    },
+    {
+      "name": "wheel-runtime",
+      "command": "/private/tmp/fenix-m1-python-wheel/bin/python -c 'import importlib.util, fenix.community, sys; assert importlib.util.find_spec(\"jsonschema\") is None; assert importlib.util.find_spec(\"mypy\") is None; assert fenix.community.__file__.startswith(sys.prefix); print(\"PASS runtime-only wheel:\",fenix.community.__file__)'",
+      "status": "PASS",
+      "exit_code": 0,
+      "started_utc": "2026-11-27T21:35:41.072526+00:00",
+      "finished_utc": "2026-11-27T21:38:43.299340+00:00",
+      "log": "docs/verification/m1-python/wheel-runtime.log",
+      "log_sha256": "622485ab286d8faf1d613d2c391de3d20b7d8597dee7f0b9ac14c0e4d85c586c"
+    },
+    {
+      "name": "wheel-late-first",
+      "command": "/private/tmp/fenix-m1-python-wheel/bin/python -m unittest discover -s packages/python/tests_native_community -k late_first -v",
+      "status": "PASS",
+      "exit_code": 0,
+      "finished_utc": "2026-11-27T21:40:42.532896+00:00",
+      "log": "docs/verification/m1-python/wheel-late-first.log",
+      "log_sha256": "45859a3a389c018ff72f94aa2ea3d5db757070db435412092faa8fae7425534b"
+    }
+  ],
+  "installation": {
+    "status": "PASS",
+    "wheel": "packages/python/dist/fenix_bio-0.0.0-py3-none-any.whl",
+    "wheel_sha256": "dc4ed81400692b208a222cbe7a2b98867f4a8453eefe2b84c8d3faacad12ad91",
+    "source_and_schema_wheel_parity": "PASS",
+    "build_command": "UV_CACHE_DIR=/private/tmp/fenix-m1-uv-cache uv build --project packages/python --offline",
+    "venv_command": "UV_CACHE_DIR=/private/tmp/fenix-m1-uv-cache uv venv --python packages/python/.venv/bin/python /private/tmp/fenix-m1-python-wheel",
+    "export_command": "UV_CACHE_DIR=/private/tmp/fenix-m1-uv-cache uv export --project packages/python --locked --offline --no-dev --no-emit-project -o /private/tmp/fenix-m1-python-runtime.txt",
+    "runtime_install_command": "UV_CACHE_DIR=/private/tmp/fenix-m1-uv-cache uv pip install --python /private/tmp/fenix-m1-python-wheel/bin/python --require-hashes -r /private/tmp/fenix-m1-python-runtime.txt",
+    "wheel_install_command": "UV_CACHE_DIR=/private/tmp/fenix-m1-uv-cache uv pip install --offline --python /private/tmp/fenix-m1-python-wheel/bin/python --no-deps --reinstall-package fenix-bio packages/python/dist/fenix_bio-0.0.0-py3-none-any.whl",
+    "runtime_requirements_sha256": "e95a975b53cb6c0926d6d9469371bf91ad5ef2cb4783712dc7acfc4f0f150bf8",
+    "development_packages_absent": [
+      "jsonschema",
+      "mypy"
+    ],
+    "library_execution": "offline; no repository, Julia or development runtime dependency"
+  },
+  "prior_attempts": [
+    {
+      "status": "FAIL",
+      "stage": "red regression before implementation",
+      "command": "uv run --project packages/python --locked --offline python -m unittest discover -s packages/python/tests_native_community -v",
+      "reason": "fenix.community did not exist; reproduced missing native capability"
+    },
+    {
+      "status": "FAIL",
+      "stage": "development type checking",
+      "command": "uv run --project packages/python --locked --offline mypy --config-file packages/python/pyproject.toml",
+      "reason": "SciPy method literal typing, tuple length inference and variable/raw union narrowing; repaired, final strict20-source check PASS"
+    },
+    {
+      "status": "FAIL",
+      "stage": "offline clean-environment dependency installation",
+      "command": "UV_CACHE_DIR=/private/tmp/fenix-m1-uv-cache uv pip install --offline --python /private/tmp/fenix-m1-python-wheel/bin/python --require-hashes -r /private/tmp/fenix-m1-python-runtime.txt",
+      "reason": "Index/cache metadata unavailable; hash-locked network installation PASS, all library and wheel checks subsequently offline"
+    }
+  ],
+  "review": {
+    "engineering": "PASS; Unicode error repaired and independently reproduced; bounded Draft7 differential campaign with zero divergences",
+    "numerical": "PASS; zero-signal derivative denominator overflow rejected; initial representation term made explicit with exact nonzero control; independent focused repair tests PASS",
+    "unresolved_blockers": [],
+    "scope_limit": "Reviewer snapshots preserved; full source/check fingerprints recorded separately; no human/native scientific approval inferred"
+  },
+  "remaining_gates": [
+    "Final PR CI and human implementation review",
+    "Native Julia #33 focused PR",
+    "Independent native cross-language/installation #35",
+    "Final EP-05 acceptance; parent stays open"
+  ],
+  "evidence_sha256": {
+    "docs/verification/m1-python/build-final.log": "cc4b68e5605592c734749672716bf1ae3d6670df0bdd48678e5ddec8f515427f",
+    "docs/verification/m1-python/community-final.log": "2d3cfcdcf907b118e59cad1b8b0c3e0a33e3c065ddc67f656f3dc04b33930940",
+    "docs/verification/m1-python/community.log": "748c2b5f3e7d1469d43e591199ccfb6dcbaea06121c85b07cc00865883fb8679",
+    "docs/verification/m1-python/engineering-review.json": "546374c9f7f2e9409d6523fbb5e4a7aeeda52f7dc5c6afa230c7aae43957cb21",
+    "docs/verification/m1-python/format-final.log": "ef7d13d02214e98ca902b05257cdbe6a8e84f3b4714508efdc19766460b54209",
+    "docs/verification/m1-python/format.log": "ef7d13d02214e98ca902b05257cdbe6a8e84f3b4714508efdc19766460b54209",
+    "docs/verification/m1-python/harness.log": "ed0340e049c9fcddac221619816a4ae31ed9bcaea516fc75377fb7d8299a1b77",
+    "docs/verification/m1-python/m0-content.log": "4bcbd0036f337017d6d51ccbb74ac3c2639ad501cb28cc75ff5147fe709dcbfb",
+    "docs/verification/m1-python/m0-documents.log": "ae2e553cfcd1052aaa91dd2d3a73f0cf92af966378658388030f86e891c79935",
+    "docs/verification/m1-python/m0-fir.log": "ad74c7f21f0781c5bca4b318a2b0e54cbeeee0db1f936ce6203ecd0bfa9514dd",
+    "docs/verification/m1-python/m0-package.log": "05a15825d5de8e10ea411b2b568e54b304fb95f2c5fce6ef321622727f745613",
+    "docs/verification/m1-python/mypy-final.log": "2d6b2fd3da664bcd3c10a511fd2cb9bf5f7517722cb0753d911d03540bfa3cbf",
+    "docs/verification/m1-python/protected-packet.log": "ffd2ba8123fe5841ed60ab6cccf365e963d40c073200888c993256c68b0e2978",
+    "docs/verification/m1-python/repo.log": "8e8c8f9c13bdb5c2b4d3f55f913fc3adac04cb5fc5d4b3b77e976b236487fb49",
+    "docs/verification/m1-python/ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "docs/verification/m1-python/schema-probes.log": "7392aaeade3f5d3298cbf6f87d4c4f330587486f6b0991b8cbdbd8b588d9d3b9",
+    "docs/verification/m1-python/schema_probes.py": "2bfa1d05fb1b767f142aebec1bb9f0c77cc5ca61f59d8b347b7b155e99dc2be8",
+    "docs/verification/m1-python/style-final.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "docs/verification/m1-python/wheel-community.log": "807267940061c9f55939ebdd605e30efa8d0ea16e0598a3d75ad376399f365a2",
+    "docs/verification/m1-python/wheel-late-first.log": "45859a3a389c018ff72f94aa2ea3d5db757070db435412092faa8fae7425534b",
+    "docs/verification/m1-python/wheel-m0.log": "5d5c6847bdc247708c691ffa1bddb2aae4c2130b8ad6c83bb0b54420b411fb61",
+    "docs/verification/m1-python/wheel-runtime.log": "622485ab286d8faf1d613d2c391de3d20b7d8597dee7f0b9ac14c0e4d85c586c"
+  },
+  "documentation_sha256": "cb86d943a7ca3884c329fcdeed511ae5fd43818a4b92483011e9b509419708e2"
+}

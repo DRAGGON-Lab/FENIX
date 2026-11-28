@@ -1,0 +1,20 @@
+test_accepted_positive_bytes_and_scoped_records (test_community.CommunityTests.test_accepted_positive_bytes_and_scoped_records) ... ok
+test_all_accepted_rejections (test_community.CommunityTests.test_all_accepted_rejections) ... ok
+test_budget_and_strict_tail_failure (test_community.CommunityTests.test_budget_and_strict_tail_failure) ... ok
+test_capture_once_and_readback_without_solver (test_community.CommunityTests.test_capture_once_and_readback_without_solver) ... ok
+test_coupled_methods_against_independent_laws (test_community.CommunityTests.test_coupled_methods_against_independent_laws) ... ok
+test_failed_and_corrupted_backend_returns (test_community.CommunityTests.test_failed_and_corrupted_backend_returns) ... ok
+test_grid_witnesses_after_binary64_conversion (test_community.CommunityTests.test_grid_witnesses_after_binary64_conversion) ... ok
+test_immutable_sources_and_revision_rules (test_community.CommunityTests.test_immutable_sources_and_revision_rules) ... ok
+test_invalid_capture_metadata_rejects_before_solving (test_community.CommunityTests.test_invalid_capture_metadata_rejects_before_solving) ... ok
+test_jacobian_and_rhs_against_independent_decimal_equations (test_community.CommunityTests.test_jacobian_and_rhs_against_independent_decimal_equations) ... ok
+test_lexical_and_binary64_transport_projections (test_community.CommunityTests.test_lexical_and_binary64_transport_projections) ... ok
+test_malformed_unicode_readback_is_a_validation_error (test_community.CommunityTests.test_malformed_unicode_readback_is_a_validation_error) ... ok
+test_nonfinite_jacobian_intermediate_rejects (test_community.CommunityTests.test_nonfinite_jacobian_intermediate_rejects) ... ok
+test_nonzero_initial_representation_term (test_community.CommunityTests.test_nonzero_initial_representation_term) ... ok
+test_zero_grid_large_budget_signed_zero_and_empty_observables (test_community.CommunityTests.test_zero_grid_large_budget_signed_zero_and_empty_observables) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 60.625s
+
+OK
