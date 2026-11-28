@@ -3,7 +3,8 @@
 Refs #35. This gate runs the accepted P08 profile through independently installed
 Python and Julia packages. The Python wheel installs only locked runtime
 dependencies. Julia loads an archived package tree with its own locked
-environment and depot. Each runtime compiles and executes its own inputs,
+environment and depot. The gate checks the archive locks before and after execution
+and retains their hashes. Each runtime compiles and executes its own inputs,
 then reads the other runtime's original result and manifest bytes.
 
 Each producer supplies ten cases with two methods and two settings, for 80
@@ -31,9 +32,12 @@ prepared as in the workflow, reproduce with:
 ```sh
 mkdir -p artifacts/m1-native
 revision=$(git rev-parse HEAD)
+julia_project=conformance/julia_ode
 python conformance/native_community/python_m1.py produce "$PWD" artifacts/m1-native "$revision"
-julia --project=conformance/julia_ode conformance/native_community/julia_m1.jl produce "$PWD" artifacts/m1-native "$revision"
-julia --project=conformance/julia_ode conformance/native_community/julia_m1.jl read "$PWD" artifacts/m1-native "$revision"
+julia --project="$julia_project" conformance/native_community/julia_m1.jl produce "$PWD" artifacts/m1-native "$revision"
+julia --project="$julia_project" conformance/native_community/julia_m1.jl read "$PWD" artifacts/m1-native "$revision"
 python conformance/native_community/python_m1.py read "$PWD" artifacts/m1-native "$revision"
+mkdir -p artifacts/m1-native/environment/julia
+cp "$julia_project"/{Project,Manifest}.toml artifacts/m1-native/environment/julia/
 PYTHONPATH=conformance/community python conformance/native_community/compare.py "$PWD" artifacts/m1-native "$revision"
 ```

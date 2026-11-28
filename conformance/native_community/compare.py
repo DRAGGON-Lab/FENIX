@@ -29,6 +29,15 @@ def compare(root, exchange, revision):
     catalog = load(root / "conformance/community/cases.json")
     validate_catalog(catalog)
     settings = load(root / "conformance/community/feasibility/settings.json")
+    julia_environment = exchange / "environment/julia"
+    installed_locks = {}
+    for name in ("Project.toml", "Manifest.toml"):
+        installed = sha(julia_environment / name)
+        assert installed == sha(root / "conformance/julia_ode" / name), (
+            "installed Julia lock",
+            name,
+        )
+        installed_locks[name] = installed
     producers = {}
     for runtime, methods in METHODS.items():
         peer = "julia" if runtime == "python" else "python"
@@ -186,6 +195,7 @@ def compare(root, exchange, revision):
                 "conformance/julia_ode/Manifest.toml",
             )
         },
+        "installed_julia_environment_sha256": installed_locks,
         "native_runs": sum(len(rows) for rows in producers.values()),
         "peer_readbacks": 80,
         "state_samples": samples,

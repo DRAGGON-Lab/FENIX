@@ -32,6 +32,14 @@ def main():
     with TemporaryDirectory() as path:
         copied = Path(path) / "exchange"
         shutil.copytree(args.exchange, copied)
+        installed_lock = copied / "environment/julia/Manifest.toml"
+        original_lock = installed_lock.read_bytes()
+        installed_lock.write_bytes(original_lock + b"\n")
+        require_rejection(
+            args.root, copied, args.revision, ("installed Julia lock", "Manifest.toml")
+        )
+        installed_lock.write_bytes(original_lock)
+
         peer_path = copied / "julia-read.json"
         unmodified = peer_path.read_bytes()
         peer = load(peer_path)
@@ -61,7 +69,9 @@ def main():
             )
             stamp(report_path, report)
         require_rejection(args.root, copied, args.revision, (key, 1))
-    print("PASS missing peer receipt and rehashed state corruption rejected")
+    print(
+        "PASS altered lock, missing peer receipt, and rehashed state corruption rejected"
+    )
 
 
 if __name__ == "__main__":
