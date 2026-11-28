@@ -1,0 +1,50 @@
+{
+  "review": "Independent native M1 integration engineering review",
+  "status": "PASS",
+  "timestamp_utc": "2026-11-28T10:26:49.237148+00:00",
+  "initial_review_revision": "674b2cc",
+  "final_review_revision": "b6e0a659140a9a55b3c00a8d0bb808ff131480e9",
+  "source_files_sha256": {
+    "conformance/native_community/compare.py": "edefbd59fd75675cd5cb3d24903a9de4fcca5101f71dc238eb8efd21852bf077",
+    "conformance/native_community/test_compare.py": "9a0a00b88b805331d6e3ef1e75a26b6041009159dc9576a23960850c88e5aa9e",
+    "conformance/native_community/python_m1.py": "0e80a4dbc7cb049b5e0414819c93a41047c101aecee8412a6de2eeb536fad843",
+    "conformance/native_community/julia_m1.jl": "49bd907711e3a02ec308b02b2f7c7aa10a11a9d5de3a028405984dd33cad1068",
+    ".github/workflows/native-community-integration.yml": "e63d8c3dfde50737c479f675262aabb4fd70ec9b845759522dc2943ae7620031"
+  },
+  "unresolved_blocking_findings": [],
+  "resolved_findings": [
+    {
+      "id": "E1",
+      "severity": "P2",
+      "initial_location": ".github/workflows/native-community-integration.yml:39,55; compare.py:186",
+      "trigger": "Archive-only installed Julia Project/Manifest rewrite or mutation",
+      "impact": "Original guard checked checkout locks, and receipt hashed checkout Manifest rather than the actually installed archived environment",
+      "reproduction": "Scratch archive Manifest altered while original workflow git diff checkout-lock guard returned0",
+      "disposition": "RESOLVED: workflow cmp checks actual archive Project/Manifest before and after execution; retains used lock files; comparator verifies and records installed lock hashes; test_compare.py mutates retained Manifest"
+    }
+  ],
+  "focused_checks": [
+    {
+      "name": "installed-lock mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "stale source revision",
+      "status": "PASS"
+    },
+    {
+      "name": "missing peer matrix row",
+      "status": "PASS"
+    }
+  ],
+  "reproduction_command": "PYTHONPATH=conformance/community:conformance/native_community /private/tmp/fenix-m1-python/packages/python/.venv/bin/python /private/tmp/fenix-m1-integration-review-probes.py /private/tmp/fenix-m1-integration",
+  "shared_exchange_modified": false,
+  "full_positive_integration_status": "NOT RUN BY REVIEWER; parent-owned producers/readers still running",
+  "hosted_final_ci_status": "NOT RUN BY REVIEWER",
+  "scope_limits": [
+    "Fixed accepted ten-case/four-method/two-setting matrix",
+    "No execution-authentication or biological-validity inference",
+    "No repository or shared-exchange files edited by reviewer"
+  ],
+  "reproduction_script_sha256": "1191e85bda191bb9d838ec46a092821ecc6454f0ab54190a5781c41f35b78569"
+}
