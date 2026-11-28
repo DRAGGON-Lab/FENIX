@@ -99,7 +99,7 @@ function _json_number!(c, path)
     end
     raw = String(c.bytes[start:c.index-1])
     occursin(r"\A-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?\z", raw) || _json_syntax()
-    c.numeric_policy === :tokens && return _JSONNumberToken(raw)
+    c.numeric_policy in (:tokens, :community_tokens) && return _JSONNumberToken(raw)
     if c.numeric_policy === :p01 && !occursin(r"[.eE]", raw)
         digits = startswith(raw, "-") ? raw[2:end] : raw
         if length(digits) > 16 || (length(digits) == 16 && digits > "9007199254740991")
@@ -139,6 +139,14 @@ end
 function _json_value!(c, path)
     _json_space!(c)
     b = _json_peek(c)
+    if c.numeric_policy === :community_tokens && b in (0x4e, 0x49, 0x2d)
+        for literal in ("NaN", "Infinity", "-Infinity")
+            stop = c.index + ncodeunits(literal) - 1
+            if stop <= length(c.bytes) && c.bytes[c.index:stop] == codeunits(literal)
+                _json_error("NUMBER_RANGE", path, "nonfinite literal is not valid JSON")
+            end
+        end
+    end
     if b == 0x22
         return _json_string!(c, path)
     elseif b == 0x7b

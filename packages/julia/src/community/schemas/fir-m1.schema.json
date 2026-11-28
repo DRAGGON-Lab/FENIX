@@ -1,0 +1,936 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PROPOSED M1 fir-m1.schema.json",
+  "definitions": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+      "maxLength": 64,
+      "not": {
+        "pattern": "[^A-Za-z0-9_-]"
+      }
+    },
+    "rates": {
+      "type": "object",
+      "properties": {
+        "sender_production": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "molecule/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "sender_decay": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "1/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "receiver_decay": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "1/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "env_decay": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "1/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "reporter_decay": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "1/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "reporter_basal": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "molecule/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "reporter_induced": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "molecule/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "threshold": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "const": "molecule/L"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "hill_n": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4
+            },
+            "unit": {
+              "const": "1"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "sender_import": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "1/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "sender_export": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "1/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "receiver_import": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "1/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "receiver_export": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "1/s"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "sender_production",
+        "sender_decay",
+        "receiver_decay",
+        "env_decay",
+        "reporter_decay",
+        "reporter_basal",
+        "reporter_induced",
+        "threshold",
+        "hill_n",
+        "sender_import",
+        "sender_export",
+        "receiver_import",
+        "receiver_export"
+      ],
+      "additionalProperties": false
+    },
+    "populations": {
+      "type": "object",
+      "properties": {
+        "sender": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "receiver": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "sender",
+        "receiver"
+      ],
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "properties": {
+        "sender.signal": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "molecule"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "receiver.signal": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "molecule"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "env.signal": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "molecule"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "receiver.reporter": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "const": "molecule"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "sender.signal",
+        "receiver.signal",
+        "env.signal",
+        "receiver.reporter"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "model": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "0.2.0"
+        },
+        "template": {
+          "const": "community.exchange.hill.v1"
+        },
+        "time_unit": {
+          "const": "s"
+        },
+        "volumes": {
+          "type": "object",
+          "properties": {
+            "sender": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "unit": {
+                  "const": "L"
+                }
+              },
+              "required": [
+                "value",
+                "unit"
+              ],
+              "additionalProperties": false
+            },
+            "receiver": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "unit": {
+                  "const": "L"
+                }
+              },
+              "required": [
+                "value",
+                "unit"
+              ],
+              "additionalProperties": false
+            },
+            "env": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "unit": {
+                  "const": "L"
+                }
+              },
+              "required": [
+                "value",
+                "unit"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "sender",
+            "receiver",
+            "env"
+          ],
+          "additionalProperties": false
+        },
+        "populations": {
+          "$ref": "#/definitions/populations"
+        },
+        "initial_counts": {
+          "$ref": "#/definitions/counts"
+        },
+        "parameters": {
+          "$ref": "#/definitions/rates"
+        },
+        "observables": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "$ref": "#/definitions/id"
+              },
+              "state": {
+                "enum": [
+                  "sender.signal",
+                  "receiver.signal",
+                  "env.signal",
+                  "receiver.reporter"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "state"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "capabilities": {
+          "const": {
+            "ode": true,
+            "ssa": false
+          }
+        },
+        "reactions": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 10,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              {
+                "id": "sender.export",
+                "flux": {
+                  "op": "multiply",
+                  "left": {
+                    "op": "parameter",
+                    "id": "sender_export"
+                  },
+                  "right": {
+                    "op": "state",
+                    "id": "sender.signal"
+                  }
+                },
+                "stoichiometry": {
+                  "sender.signal": -1,
+                  "env.signal": {
+                    "op": "population",
+                    "id": "sender"
+                  }
+                }
+              },
+              {
+                "id": "sender.import",
+                "flux": {
+                  "op": "multiply",
+                  "left": {
+                    "op": "parameter",
+                    "id": "sender_import"
+                  },
+                  "right": {
+                    "op": "multiply",
+                    "left": {
+                      "op": "volume",
+                      "id": "sender"
+                    },
+                    "right": {
+                      "op": "divide",
+                      "left": {
+                        "op": "state",
+                        "id": "env.signal"
+                      },
+                      "right": {
+                        "op": "volume",
+                        "id": "env"
+                      }
+                    }
+                  }
+                },
+                "stoichiometry": {
+                  "sender.signal": 1,
+                  "env.signal": {
+                    "op": "negate",
+                    "value": {
+                      "op": "population",
+                      "id": "sender"
+                    }
+                  }
+                }
+              },
+              {
+                "id": "sender.decay",
+                "flux": {
+                  "op": "multiply",
+                  "left": {
+                    "op": "parameter",
+                    "id": "sender_decay"
+                  },
+                  "right": {
+                    "op": "state",
+                    "id": "sender.signal"
+                  }
+                },
+                "stoichiometry": {
+                  "sender.signal": -1
+                }
+              },
+              {
+                "id": "receiver.export",
+                "flux": {
+                  "op": "multiply",
+                  "left": {
+                    "op": "parameter",
+                    "id": "receiver_export"
+                  },
+                  "right": {
+                    "op": "state",
+                    "id": "receiver.signal"
+                  }
+                },
+                "stoichiometry": {
+                  "receiver.signal": -1,
+                  "env.signal": {
+                    "op": "population",
+                    "id": "receiver"
+                  }
+                }
+              },
+              {
+                "id": "receiver.import",
+                "flux": {
+                  "op": "multiply",
+                  "left": {
+                    "op": "parameter",
+                    "id": "receiver_import"
+                  },
+                  "right": {
+                    "op": "multiply",
+                    "left": {
+                      "op": "volume",
+                      "id": "receiver"
+                    },
+                    "right": {
+                      "op": "divide",
+                      "left": {
+                        "op": "state",
+                        "id": "env.signal"
+                      },
+                      "right": {
+                        "op": "volume",
+                        "id": "env"
+                      }
+                    }
+                  }
+                },
+                "stoichiometry": {
+                  "receiver.signal": 1,
+                  "env.signal": {
+                    "op": "negate",
+                    "value": {
+                      "op": "population",
+                      "id": "receiver"
+                    }
+                  }
+                }
+              },
+              {
+                "id": "receiver.decay",
+                "flux": {
+                  "op": "multiply",
+                  "left": {
+                    "op": "parameter",
+                    "id": "receiver_decay"
+                  },
+                  "right": {
+                    "op": "state",
+                    "id": "receiver.signal"
+                  }
+                },
+                "stoichiometry": {
+                  "receiver.signal": -1
+                }
+              },
+              {
+                "id": "sender.production",
+                "flux": {
+                  "op": "parameter",
+                  "id": "sender_production"
+                },
+                "stoichiometry": {
+                  "sender.signal": 1
+                }
+              },
+              {
+                "id": "env.decay",
+                "flux": {
+                  "op": "multiply",
+                  "left": {
+                    "op": "parameter",
+                    "id": "env_decay"
+                  },
+                  "right": {
+                    "op": "state",
+                    "id": "env.signal"
+                  }
+                },
+                "stoichiometry": {
+                  "env.signal": -1
+                }
+              },
+              {
+                "id": "reporter.production",
+                "flux": {
+                  "op": "add",
+                  "left": {
+                    "op": "parameter",
+                    "id": "reporter_basal"
+                  },
+                  "right": {
+                    "op": "multiply",
+                    "left": {
+                      "op": "parameter",
+                      "id": "reporter_induced"
+                    },
+                    "right": {
+                      "op": "hill",
+                      "density": {
+                        "op": "divide",
+                        "left": {
+                          "op": "state",
+                          "id": "env.signal"
+                        },
+                        "right": {
+                          "op": "volume",
+                          "id": "env"
+                        }
+                      },
+                      "threshold": {
+                        "op": "parameter",
+                        "id": "threshold"
+                      },
+                      "exponent": {
+                        "op": "parameter",
+                        "id": "hill_n"
+                      }
+                    }
+                  }
+                },
+                "stoichiometry": {
+                  "receiver.reporter": 1
+                }
+              },
+              {
+                "id": "reporter.decay",
+                "flux": {
+                  "op": "multiply",
+                  "left": {
+                    "op": "parameter",
+                    "id": "reporter_decay"
+                  },
+                  "right": {
+                    "op": "state",
+                    "id": "receiver.reporter"
+                  }
+                },
+                "stoichiometry": {
+                  "receiver.reporter": -1
+                }
+              }
+            ]
+          }
+        },
+        "equations": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              {
+                "state": "sender.signal",
+                "unit": "molecule/s",
+                "rhs": {
+                  "op": "add",
+                  "left": {
+                    "op": "subtract",
+                    "left": {
+                      "op": "subtract",
+                      "left": {
+                        "op": "flux",
+                        "id": "sender.import"
+                      },
+                      "right": {
+                        "op": "flux",
+                        "id": "sender.export"
+                      }
+                    },
+                    "right": {
+                      "op": "flux",
+                      "id": "sender.decay"
+                    }
+                  },
+                  "right": {
+                    "op": "flux",
+                    "id": "sender.production"
+                  }
+                }
+              },
+              {
+                "state": "receiver.signal",
+                "unit": "molecule/s",
+                "rhs": {
+                  "op": "subtract",
+                  "left": {
+                    "op": "subtract",
+                    "left": {
+                      "op": "flux",
+                      "id": "receiver.import"
+                    },
+                    "right": {
+                      "op": "flux",
+                      "id": "receiver.export"
+                    }
+                  },
+                  "right": {
+                    "op": "flux",
+                    "id": "receiver.decay"
+                  }
+                }
+              },
+              {
+                "state": "env.signal",
+                "unit": "molecule/s",
+                "rhs": {
+                  "op": "subtract",
+                  "left": {
+                    "op": "add",
+                    "left": {
+                      "op": "multiply",
+                      "left": {
+                        "op": "population",
+                        "id": "sender"
+                      },
+                      "right": {
+                        "op": "subtract",
+                        "left": {
+                          "op": "flux",
+                          "id": "sender.export"
+                        },
+                        "right": {
+                          "op": "flux",
+                          "id": "sender.import"
+                        }
+                      }
+                    },
+                    "right": {
+                      "op": "multiply",
+                      "left": {
+                        "op": "population",
+                        "id": "receiver"
+                      },
+                      "right": {
+                        "op": "subtract",
+                        "left": {
+                          "op": "flux",
+                          "id": "receiver.export"
+                        },
+                        "right": {
+                          "op": "flux",
+                          "id": "receiver.import"
+                        }
+                      }
+                    }
+                  },
+                  "right": {
+                    "op": "flux",
+                    "id": "env.decay"
+                  }
+                }
+              },
+              {
+                "state": "receiver.reporter",
+                "unit": "molecule/s",
+                "rhs": {
+                  "op": "subtract",
+                  "left": {
+                    "op": "flux",
+                    "id": "reporter.production"
+                  },
+                  "right": {
+                    "op": "flux",
+                    "id": "reporter.decay"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "template",
+        "time_unit",
+        "volumes",
+        "populations",
+        "initial_counts",
+        "parameters",
+        "observables",
+        "capabilities",
+        "reactions",
+        "equations"
+      ],
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "design_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "experiment_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$",
+          "minLength": 64,
+          "maxLength": 64
+        },
+        "owners": {
+          "type": "object",
+          "properties": {
+            "sender": {
+              "$ref": "#/definitions/id"
+            },
+            "receiver": {
+              "$ref": "#/definitions/id"
+            },
+            "env": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "required": [
+            "sender",
+            "receiver",
+            "env"
+          ],
+          "additionalProperties": false
+        },
+        "species": {
+          "type": "object",
+          "properties": {
+            "sender.signal": {
+              "$ref": "#/definitions/id"
+            },
+            "receiver.signal": {
+              "$ref": "#/definitions/id"
+            },
+            "env.signal": {
+              "$ref": "#/definitions/id"
+            },
+            "receiver.reporter": {
+              "$ref": "#/definitions/id"
+            }
+          },
+          "required": [
+            "sender.signal",
+            "receiver.signal",
+            "env.signal",
+            "receiver.reporter"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "design_digest",
+        "experiment_digest",
+        "owners",
+        "species"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "model",
+    "provenance"
+  ],
+  "additionalProperties": false
+}

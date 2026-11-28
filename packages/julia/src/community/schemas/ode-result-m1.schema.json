@@ -1,0 +1,162 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:fenix:proposed:p08:ode-result-m1",
+  "title": "PROPOSED P08 scoped ODE result 0.2.0",
+  "$comment": "Finite M1 structure only; correspondence/raw transport checks are separate.",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "const": "ODEResult"
+    },
+    "schema_version": {
+      "const": "0.2.0"
+    },
+    "fir_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "minLength": 64,
+      "maxLength": 64
+    },
+    "time_unit": {
+      "const": "s"
+    },
+    "times": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0
+      },
+      "minItems": 1
+    },
+    "state_ids": {
+      "const": [
+        "env.signal",
+        "receiver.reporter",
+        "receiver.signal",
+        "sender.signal"
+      ]
+    },
+    "state_units": {
+      "const": [
+        "molecule",
+        "molecule",
+        "molecule",
+        "molecule"
+      ]
+    },
+    "state_values": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "minimum": 0
+        },
+        "minItems": 4,
+        "maxItems": 4
+      },
+      "minItems": 1
+    },
+    "observable_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+        "maxLength": 64,
+        "not": {
+          "pattern": "[^A-Za-z0-9_-]"
+        }
+      },
+      "uniqueItems": true
+    },
+    "observable_state_ids": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "env.signal",
+          "receiver.reporter",
+          "receiver.signal",
+          "sender.signal"
+        ]
+      }
+    },
+    "observable_units": {
+      "type": "array",
+      "items": {
+        "const": "molecule"
+      }
+    },
+    "observable_values": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "minItems": 1
+    },
+    "state_owners": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "env",
+          "receiver",
+          "sender"
+        ]
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "state_scopes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "environment_total",
+          "representative_cell"
+        ]
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "observable_owners": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "env",
+          "receiver",
+          "sender"
+        ]
+      }
+    },
+    "observable_scopes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "environment_total",
+          "representative_cell"
+        ]
+      }
+    }
+  },
+  "required": [
+    "kind",
+    "schema_version",
+    "fir_digest",
+    "time_unit",
+    "times",
+    "state_ids",
+    "state_units",
+    "state_values",
+    "observable_ids",
+    "observable_state_ids",
+    "observable_units",
+    "observable_values",
+    "state_owners",
+    "state_scopes",
+    "observable_owners",
+    "observable_scopes"
+  ],
+  "additionalProperties": false
+}
