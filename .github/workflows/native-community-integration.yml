@@ -1,0 +1,70 @@
+name: Native M1 cross-language conformance
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  cross-language:
+    name: Independent native M1 identity, accuracy and readback
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9
+        with:
+          version: '0.11.29'
+      - name: Python-only installation and production
+        run: |
+          uv build --project packages/python
+          uv venv --python 3.12 /tmp/fenix-m1-wheel
+          uv export --project packages/python --locked --no-dev --no-emit-project -o /tmp/fenix-m1-runtime.txt
+          uv pip install --python /tmp/fenix-m1-wheel/bin/python --require-hashes -r /tmp/fenix-m1-runtime.txt
+          uv pip install --python /tmp/fenix-m1-wheel/bin/python --no-deps packages/python/dist/*.whl
+          /tmp/fenix-m1-wheel/bin/python -I -c 'import importlib.util, sys, fenix.community; assert fenix.community.__file__.startswith(sys.prefix); assert importlib.util.find_spec("jsonschema") is None'
+          mkdir -p artifacts/m1-native
+          /tmp/fenix-m1-wheel/bin/python conformance/native_community/python_m1.py produce "$PWD" artifacts/m1-native "$GITHUB_SHA"
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.10.13'
+      - name: Install archived Julia package with separate depot
+        env:
+          JULIA_DEPOT_PATH: /tmp/fenix-m1-julia-depot
+          JULIA_PKG_PRECOMPILE_AUTO: '0'
+        run: |
+          mkdir -p /tmp/fenix-m1-julia
+          git archive HEAD packages/julia conformance/julia_ode | tar -x -C /tmp/fenix-m1-julia
+          julia --project=/tmp/fenix-m1-julia/conformance/julia_ode -e 'using Pkg; Pkg.instantiate()'
+          for file in Project.toml Manifest.toml; do
+            cmp "conformance/julia_ode/$file" "/tmp/fenix-m1-julia/conformance/julia_ode/$file"
+          done
+      - name: Native Julia production and Python artifact readback
+        env:
+          JULIA_DEPOT_PATH: /tmp/fenix-m1-julia-depot
+          JULIA_PKG_OFFLINE: 'true'
+          JULIA_LOAD_PATH: '@:@stdlib'
+        run: |
+          julia --project=/tmp/fenix-m1-julia/conformance/julia_ode -e 'using Fenix; @assert startswith(pathof(Fenix), "/tmp/fenix-m1-julia/packages/julia/")'
+          julia --project=/tmp/fenix-m1-julia/conformance/julia_ode conformance/native_community/julia_m1.jl produce "$PWD" artifacts/m1-native "$GITHUB_SHA"
+          julia --project=/tmp/fenix-m1-julia/conformance/julia_ode conformance/native_community/julia_m1.jl read "$PWD" artifacts/m1-native "$GITHUB_SHA"
+          mkdir -p artifacts/m1-native/environment/julia
+          for file in Project.toml Manifest.toml; do
+            cmp "conformance/julia_ode/$file" "/tmp/fenix-m1-julia/conformance/julia_ode/$file"
+            cp "/tmp/fenix-m1-julia/conformance/julia_ode/$file" "artifacts/m1-native/environment/julia/$file"
+          done
+      - name: Native Python reads Julia artifacts and independent mathematical check
+        run: |
+          /tmp/fenix-m1-wheel/bin/python conformance/native_community/python_m1.py read "$PWD" artifacts/m1-native "$GITHUB_SHA"
+          PYTHONPATH=conformance/community python conformance/native_community/compare.py "$PWD" artifacts/m1-native "$GITHUB_SHA"
+          PYTHONPATH=conformance/community python conformance/native_community/test_compare.py "$PWD" artifacts/m1-native "$GITHUB_SHA"
+          python docs/verification/m1-executable-acceptance/audit_packet.py
+          git diff --exit-code -- packages/python/uv.lock conformance/julia_ode
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-m1-cross-language
+          path: artifacts/m1-native/
+          if-no-files-found: error
