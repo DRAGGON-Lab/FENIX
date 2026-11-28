@@ -32,3 +32,11 @@ corrupted-output controls.
 The [package guide](../../packages/julia/README.md) provides the API example and
 local verification command. The [CI workflow](../../.github/workflows/native-community-julia.yml)
 also runs the package and native suite from a separately extracted archive.
+
+The final local native suite passed 635 assertions on Julia 1.10.13. All four
+long-tail attempts rejected a negative sensing stage. The existing native M0
+package suite also passed. Independent reviewers found no outstanding
+engineering or numerical issues and verified the protected packet hashes.
+The [local receipt](m1-julia/receipt.json) binds the commands, logs, and pinned
+environment to the implementation revision. The dedicated hosted job tracks
+the separate archived-package verification.

@@ -1,0 +1,56 @@
+{
+  "implementation_revision": "1f0b220b8e8d88161aada84cc63e5cd298cfce84",
+  "runtime": "Julia 1.10.13",
+  "recorded_utc": "2026-11-28T10:22:54.888972+00:00",
+  "checks": [
+    {
+      "name": "native",
+      "command": "JULIA_DEPOT_PATH=/private/tmp/fenix-m1-julia-depot JULIA_PKG_OFFLINE=true /private/tmp/fenix-julia-runtime/julia-1.10.13/bin/julia --project=conformance/julia_ode packages/julia/test_native_community/runtests.jl",
+      "status": "PASS",
+      "assertions": 635,
+      "log": "docs/verification/m1-julia/native.log",
+      "log_sha256": "ad238106901e0070d87d5814a54766c40a94fe9091c2f8506a40723809d61c1d"
+    },
+    {
+      "name": "m0",
+      "command": "JULIA_DEPOT_PATH=/private/tmp/fenix-m1-julia-depot JULIA_PKG_OFFLINE=true /private/tmp/fenix-julia-runtime/julia-1.10.13/bin/julia --project=conformance/julia_ode packages/julia/test/runtests.jl",
+      "status": "PASS",
+      "assertions": 1549,
+      "log": "docs/verification/m1-julia/m0.log",
+      "log_sha256": "418e4542d5e0b04e63d366bb94b2f3b6bbadced5f7966564ead01b36feabf4f6"
+    }
+  ],
+  "accepted_packet_manifest_sha256": "30255a118bcd17ba8f75d500eaec161bf9c1443f77c15ba74282e7c032f4da81",
+  "locked_environment_sha256": {
+    "conformance/julia_ode/Project.toml": "bc8f951f11988d9443d3960ed02500d4227428f100cf86591d2a11ee56d616ca",
+    "conformance/julia_ode/Manifest.toml": "4624b98301546ce12f4b583e7954d3845a70b2b200b0bd11ec70d26059944855"
+  },
+  "engineering_review": {
+    "status": "PASS",
+    "receipt": "docs/verification/m1-julia/engineering-review.json",
+    "probe_script": "docs/verification/m1-julia/engineering_probes.jl"
+  },
+  "numerical_review": {
+    "status": "PASS",
+    "independent_kernel_assertions": 97,
+    "stated_findings_resolved": true,
+    "tail_outcomes": [
+      "STAGE_DOMAIN",
+      "STAGE_DOMAIN",
+      "STAGE_DOMAIN",
+      "STAGE_DOMAIN"
+    ]
+  },
+  "previous_attempts": [
+    {
+      "status": "FAIL",
+      "phase": "red",
+      "observed": "Community namespace absent"
+    },
+    {
+      "status": "FAIL",
+      "phase": "first native run",
+      "observed": "Exact manifest tokens were converted before transport validation; corrected private token mode"
+    }
+  ]
+}
