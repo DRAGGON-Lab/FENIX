@@ -300,3 +300,46 @@ bits must survive transport; separate solver reruns need not be bit-identical.
 See the [implementation evidence](../../docs/verification/ep03-julia-results.md).
 Human implementation acceptance, #29, parent epic acceptance and release
 authorization remain separate gates.
+
+## Bounded M1 community API
+
+`Fenix.Community` implements the [accepted P08 executable profile](../../docs/verification/m1-executable-acceptance.md).
+Build committed sources with `from_content(Design, content)` and
+`from_content(Experiment, content; design)` using the accepted finite 0.2.0
+shapes. `replace_content` checks logical identity and increasing revisions.
+Raw readers accept UTF-8 strings or byte vectors and verify source digests,
+explicit port tuples, and exact local Design linkage. Exported dictionaries
+and byte vectors are fresh copies.
+
+```julia
+using Fenix
+const C = Fenix.Community
+packet = "spec/community/wire-candidates/two-strain-transient"
+design = C.from_json(C.Design, read(joinpath(packet, "design.json")))
+experiment = C.from_json(C.Experiment, read(joinpath(packet, "experiment.json")); design)
+spec = C.ODEExecutionSpec(time_grid=(0.0, 1.0, 4.0), method="Rodas5P",
+    rtol=1e-9, atol=1e-11, max_step=1.0, max_nfev=200000)
+record = C.run_experiment(experiment, spec)
+verified = C.from_json(C.RunRecord, C.result_bytes(record), C.manifest_bytes(record); experiment)
+@assert C.to_dict(verified.result)["fir_digest"] == C.digest(C.compile_experiment(experiment))
+```
+
+`model_bytes` and `identity_bytes` expose the exact mathematical FIR bytes.
+Source maps are verified separately from identity. The bundled finite schemas
+match the accepted packet and are read locally by the package.
+
+`solve_ode` uses Tsit5 or Rodas5P and returns sample-major counts ordered as
+`env.signal, receiver.reporter, receiver.signal, sender.signal`. SciML receives
+an exact in-place Jacobian and an autonomous zero time derivative. Sensing stages
+with negative extracellular counts fail explicitly. Zero-only grids validate
+and skip integration. Work budgets count RHS calls.
+
+Capture compiles and solves once. Readback recompiles locally, preserves the
+original byte streams, and checks scopes, signed-zero grids and copies, exact
+work counters, source and FIR identity, and checksums. Readback supports both
+accepted backend wire profiles. `expected_manifest_sha256` can bind readback to
+an externally trusted checksum.
+
+```sh
+JULIA_PKG_OFFLINE=true julia --project=conformance/julia_ode packages/julia/test_native_community/runtests.jl
+```
