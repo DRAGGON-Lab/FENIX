@@ -1,0 +1,61 @@
+{
+  "review": "Native Julia M1 independent engineering review",
+  "timestamp_utc": "2026-11-28T10:18:15.242799+00:00",
+  "status": "PASS",
+  "blocking_findings": [],
+  "confirmed_findings": [],
+  "base_revision": "1f0b220b8e8d88161aada84cc63e5cd298cfce84",
+  "source_files_sha256": {
+    "packages/julia/src/Fenix.jl": "a21a207bf7854e6dd835024399f681e3fbdebb9cb54e950e07a24e77f4ccb01b",
+    "packages/julia/src/PortableJSON.jl": "33b68955d041e51d5ca06c076ee7c0db5d558d6f586bb871bc12ed946927c15b",
+    "packages/julia/src/Community.jl": "ba561ac698b97dc73dca402989852b817f6fd1432e43f1e8eeeace885d0724c3",
+    "packages/julia/src/community/wire.jl": "0f01d54cc8f39f5c8da57f21ccc13b12d8ad18eefc1dc270baaf3c2cb5f1afd6",
+    "packages/julia/src/community/documents.jl": "7f08d284c78e44910896a314d046c253ccf6e9fbc441079c1f1cdda20456c446",
+    "packages/julia/src/community/results.jl": "eb1b1f764e9530457d024c86904f929d7f6cc195ef180fa7a0b271b2a2b974b7",
+    "packages/julia/test_native_community/runtests.jl": "b42f39387a9cbb6579a638e7734e607f80263246159ecd98be776395d7fda720"
+  },
+  "schema_copies": "PASS all four packaged schema hashes match accepted spec originals",
+  "focused_checks": [
+    {
+      "name": "valid and invalid calendar/leap-second timestamps",
+      "status": "PASS"
+    },
+    {
+      "name": "reject fractional/exponent/boolean exact work-counter tokens",
+      "status": "PASS"
+    },
+    {
+      "name": "5001-digit exact budget readback and manifest-byte preservation",
+      "status": "PASS"
+    },
+    {
+      "name": "input/output byte-vector mutation isolation and fresh source trees",
+      "status": "PASS"
+    }
+  ],
+  "reproduction_script": "/private/tmp/fenix-julia-engineering-probes.jl",
+  "reproduction_command": "JULIA_DEPOT_PATH=/private/tmp/fenix-m1-julia-depot JULIA_PKG_OFFLINE=true JULIA_NUM_PRECOMPILE_TASKS=2 JULIA_NUM_THREADS=1 /private/tmp/fenix-julia-runtime/julia-1.10.13/bin/julia --project=conformance/julia_ode /private/tmp/fenix-julia-engineering-probes.jl",
+  "protected_checks_in_this_review": [
+    {
+      "name": "Full native Julia suite",
+      "status": "NOT RUN",
+      "reason": "Parent owns full runtime verification; reviewer ran focused probes only"
+    },
+    {
+      "name": "M0 regression suite and clean installation",
+      "status": "NOT RUN",
+      "reason": "Parent-owned checks"
+    },
+    {
+      "name": "Hosted final-head CI",
+      "status": "NOT RUN",
+      "reason": "No hosted status assessed by reviewer"
+    }
+  ],
+  "boundaries": [
+    "No package, expectation, scientific contract or fixture edited by reviewer",
+    "Numerical kernel reviewed separately",
+    "No scientific/implementation/release acceptance inferred from this technical review",
+    "Fixed probes do not establish exhaustive input conformance"
+  ]
+}

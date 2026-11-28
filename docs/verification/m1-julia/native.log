@@ -1,0 +1,30 @@
+┌ Info: Native Julia tail outcome
+│   method = "Tsit5"
+│   rtol = 1.0e-9
+└   category = "STAGE_DOMAIN"
+┌ Info: Native Julia tail outcome
+│   method = "Tsit5"
+│   rtol = 1.0e-11
+└   category = "STAGE_DOMAIN"
+┌ Info: Native Julia tail outcome
+│   method = "Rodas5P"
+│   rtol = 1.0e-9
+└   category = "STAGE_DOMAIN"
+┌ Info: Native Julia tail outcome
+│   method = "Rodas5P"
+│   rtol = 1.0e-11
+└   category = "STAGE_DOMAIN"
+Test Summary:            | Pass  Total  Time
+Bundled accepted schemas |    4      4  0.2s
+Test Summary:           | Pass  Total     Time
+Accepted literal packet |  280    280  1m24.7s
+Test Summary:                                            | Pass  Total     Time
+Native coupled methods against independent BigFloat laws |  192    192  1m34.8s
+Test Summary:               | Pass  Total  Time
+Numeric transport and grids |   40     40  3.6s
+Test Summary:                            | Pass  Total   Time
+Immutable sources, capture, and readback |   21     21  14.7s
+Test Summary:                         | Pass  Total   Time
+Numerical failure and kernel controls |   16     16  14.8s
+Test Summary:                                  | Pass  Total   Time
+Asymmetric independent RHS and Jacobian probes |   82     82  11.2s
